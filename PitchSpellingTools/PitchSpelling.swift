@@ -103,18 +103,4 @@ public struct PitchSpelling {
         self.coarse = coarse
         self.fine = fine
     }
-    
-    /*
-    public init?(
-        letterName: String,
-        coarse: Float = 0,
-        fine: Float = 0
-    )
-    {
-        guard let letterName = LetterName(rawValue: letterName) else { return nil }
-        guard let coarse = CoarseAdjustment(rawValue: coarse) else { return nil }
-        guard let fine = FineAdjustment(rawValue: fine) else { return nil }
-        return nil
-    }
-    */
 }
