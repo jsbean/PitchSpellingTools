@@ -41,137 +41,90 @@ public struct PitchSpellingResource {
         01.00: [
             (.C, .Sharp, .None),
             (.D, .Flat, .None)
-        ]
+        ],
+        
+        01.25: [
+            (.C, .Sharp, .Up),
+            (.D, .Flat, .Up),
+            (.D, .QuarterFlat, .Down)
+        ],
+        
+        01.50: [
+            (.D, .QuarterSharp, .None)
+        ],
+        
+        01.75: [
+            (.D, .QuarterFlat, .Up),
+            (.D, .Natural, .Down)
+        ],
+        
+        02.00: [
+            (.D, .Natural, .None)
+        ],
+        
+        02.25: [
+            (.D, .Natural, .Up),
+            (.D, .QuarterSharp, .Down)
+        ],
+        
+        02.50: [
+            (.D, .QuarterSharp, .None)
+        ],
+        
+        02.75: [
+            (.D, .QuarterSharp, .Up),
+            (.D, .Sharp, .Down),
+            (.E, .Flat, .Down)
+        ],
+        
+        03.00: [
+            (.D, .Sharp, .None),
+            (.E, .Flat, .None)
+        ],
+        
+        03.25: [
+            (.D, .Sharp, .Up),
+            (.E, .Flat, .Up),
+            (.E, .QuarterFlat, .Down)
+        ],
+        
+        03.50: [
+            (.E, .QuarterFlat, .None)
+        ],
+        
+        03.75: [
+            (.E, .QuarterFlat, .Up),
+            (.E, .Natural, .Down)
+        ],
+        
+        04.00: [
+            (.E, .Natural, .None)
+        ],
+        
+        04.25: [
+            (.E, .Natural, .Up),
+            (.E, .QuarterSharp, .Down),
+            (.F, .QuarterFlat, .Down)
+        ],
+        
+        04.50: [
+            (.E, .QuarterSharp, .None),
+            (.F, .QuarterFlat, .None)
+        ],
+        
+        04.75: [
+            (.E, .QuarterSharp, .Up),
+            (.F, .QuarterFlat, .Up),
+            (.F, .Natural, .Down)
+        ],
+        
+        05.00: [
+            (.F, .Natural, .None)
+        ],
+        
+        
         
         /*
-        "1.00": [
-            {
-                "letterName": "C", "coarse": "1.00", "fine": "0.00"
-            },
-            {
-                "letterName": "D", "coarse": "-1.00", "fine": "0.00"
-            }
-        ],
-        "1.25": [
-            {
-                "letterName": "C", "coarse": "1.00", "fine": "0.25"
-            },
-            {
-                "letterName": "D", "coarse": "-1.00", "fine": "0.25"
-            },
-            {
-                "letterName": "D", "coarse": "-.50", "fine": "-0.25"
-            }
-        ],
-        "1.50": [
-            {
-                "letterName": "D", "coarse": "-0.50", "fine": "0.00"
-            }
-        ],
-        "1.75": [
-            {
-                "letterName": "D", "coarse": "-0.50", "fine": "0.25"
-            },
-            {
-                "letterName": "D", "coarse": "0.00", "fine": "-0.25"
-            }
-        ],
-        "2.00": [
-            {
-                "letterName": "D", "coarse": "0.00", "fine": "0.00"
-            }
-        ],
-        "2.25": [
-            {
-                "letterName": "D", "coarse": "0.00", "fine": "0.25"
-            },
-            {
-                "letterName": "D", "coarse": "0.50", "fine": "-0.25"
-            }
-        ],
-        "2.50": [
-            {
-                "letterName": "D", "coarse": "0.50", "fine": "0.00"
-            }
-        ],
-        "2.75": [
-            {
-                "letterName": "D", "coarse": "0.50", "fine": "0.25"
-            },
-            {
-                "letterName": "D", "coarse": "1.00", "fine": "-0.25"
-            },
-            {
-                "letterName": "E", "coarse": "-1.00", "fine": "-0.25"
-            }
-        ],
-        "3.00": [
-            {
-                "letterName": "D", "coarse": "1.00", "fine": "0.00"
-            },
-            {
-                "letterName": "E", "coarse": "-1.00", "fine": "0.00"
-            }
-        ],
-        "3.25": [
-            {
-                "letterName": "D", "coarse": "1.00", "fine": "0.25"
-            },
-            {
-                "letterName": "E", "coarse": "-1.00", "fine": "0.25"
-            },
-            {
-                "letterName": "E", "coarse": "-0.50", "fine": "-0.25"
-            }
-        ],
-        "3.50": [
-            {
-                "letterName": "E", "coarse": "-0.50", "fine": "0.00"
-            }
-        ],
-        "3.75": [
-            {
-                "letterName": "E", "coarse": "-0.5", "fine": "0.25"
-            },
-            {
-                "letterName": "E", "coarse": "0.00", "fine": "-0.25"
-            }
-        ],
-        "4.00": [
-            {
-                "letterName": "E", "coarse": "0.00", "fine": "0.00"
-            }
-        ],
-        "4.25": [
-            {
-                "letterName": "E", "coarse": "0.00", "fine": "0.25"
-            },
-            {
-                "letterName": "E", "coarse": "0.50", "fine": "-0.25"
-            },
-            {
-                "letterName": "F", "coarse": "-0.50", "fine": "-0.25"
-            }
-        ],
-        "4.50": [
-            {
-                "letterName": "E", "coarse": "0.50", "fine": "0.00"
-            },
-            {
-                "letterName": "F", "coarse": "-0.50", "fine": "0.00"
-            }
-        ],
-        "4.75": [
-            {
-                "letterName": "E", "coarse": "0.50", "fine": "0.25"
-            },
-            {
-                "letterName": "F", "coarse": "-0.50", "fine": "0.25"
-            },
-            {
-                "letterName": "F", "coarse": "0.00", "fine": "-0.25"
-            }
-        ],
         "5.00": [
             {
                 "letterName": "F", "coarse": "0.00", "fine": "0.00"
