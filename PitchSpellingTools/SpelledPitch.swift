@@ -9,6 +9,9 @@
 import Foundation
 import Pitch
 
+/**
+ Structure that extends a `Pitch` with a `PitchSpelling`.
+ */
 public struct SpelledPitch {
     
     public let pitch: Pitch
