@@ -122,228 +122,139 @@ public struct PitchSpellingResource {
             (.F, .Natural, .None)
         ],
         
+        05.25: [
+            (.F, .Natural, .Up),
+            (.F, .QuarterSharp, .Down)
+        ],
         
+        05.50: [
+            (.F, .QuarterSharp, .None)
+        ],
         
-        /*
-        "5.00": [
-            {
-                "letterName": "F", "coarse": "0.00", "fine": "0.00"
-            }
+        05.75: [
+            (.F, .QuarterSharp, .Up),
+            (.F, .Sharp, .Down),
+            (.G, .Flat, .Down)
         ],
-        "5.25": [
-            {
-                "letterName": "F", "coarse": "0.00", "fine": "0.25"
-            },
-            {
-                "letterName": "F", "coarse": "0.50", "fine": "-0.25"
-            }
+        
+        06.00: [
+            (.F, .Sharp, .None),
+            (.G, .Flat, .None)
         ],
-        "5.50": [
-            {
-                "letterName": "F", "coarse": "0.50", "fine": "0.00"
-            }
+        
+        06.25: [
+            (.F, .Sharp, .Up),
+            (.G, .Flat, .Up),
+            (.G, .QuarterFlat, .Down)
         ],
-        "5.75": [
-            {
-                "letterName": "F", "coarse": "0.50", "fine": "0.25"
-            },
-            {
-                "letterName": "F", "coarse": "1.00", "fine": "-0.25"
-            },
-            {
-                "letterName": "G", "coarse": "-1.00", "fine": "-0.25"
-            }
+        
+        06.50: [
+            (.G, .QuarterFlat, .None)
         ],
-        "6.00": [
-            {
-                "letterName": "F", "coarse": "1.00", "fine": "0.00"
-            },
-            {
-                "letterName": "G", "coarse": "-1.00", "fine": "0.00"
-            }
+        
+        06.75: [
+            (.G, .QuarterFlat, .Up),
+            (.G, .Natural, .Down)
         ],
-        "6.25": [
-            {
-                "letterName": "F", "coarse": "1.00", "fine": "0.25"
-            },
-            {
-                "letterName": "G", "coarse": "-1.00", "fine": "0.25"
-            },
-            {
-                "letterName": "G", "coarse": "-0.50", "fine": "-0.25"
-            }
+        
+        07.00: [
+            (.G, .Natural, .None)
         ],
-        "6.50": [
-            {
-                "letterName": "G", "coarse": "0.50", "fine": "0.00"
-            }
+        
+        07.25: [
+            (.G, .Natural, .Up),
+            (.G, .QuarterSharp, .Down)
         ],
-        "6.75": [
-            {
-                "letterName": "G", "coarse": "-0.50", "fine": "0.25"
-            },
-            {
-                "letterName": "G", "coarse": "0.00", "fine": "-0.25"
-            }
+        
+        07.50: [
+            (.G, .QuarterSharp, .None)
         ],
-        "7.00": [
-            {
-                "letterName": "G", "coarse": "0.00", "fine": "0.00"
-            },
+        
+        07.75: [
+            (.G, .QuarterSharp, .Up),
+            (.G, .Sharp, .Down),
+            (.A, .Flat, .Down)
         ],
-        "7.25": [
-            {
-                "letterName": "G", "coarse": "0.00", "fine": "0.25"
-            },
-            {
-                "letterName": "G", "coarse": "0.50", "fine": "-0.25"
-            }
+        
+        08.00: [
+            (.G, .Sharp, .None),
+            (.A, .Flat, .None)
         ],
-        "7.50": [
-            {
-                "letterName": "G", "coarse": "0.50", "fine": "0.00"
-            }
+        
+        08.25: [
+            (.G, .Sharp, .Up),
+            (.A, .Flat, .Up),
+            (.A, .QuarterFlat, .Down)
         ],
-        "7.75": [
-            {
-                "letterName": "G", "coarse": "0.50", "fine": "0.25"
-            },
-            {
-                "letterName": "G", "coarse": "1.00", "fine": "-0.25"
-            },
-            {
-                "letterName": "A", "coarse": "-1.00", "fine": "-0.25"
-            }
+        
+        08.50: [
+            (.A, .QuarterFlat, .None)
         ],
-        "8.00": [
-            {
-                "letterName": "G", "coarse": "1.00", "fine": "0.00"
-            },
-            {
-                "letterName": "A", "coarse": "-1.00", "fine": "0.00"
-            }
+        
+        08.75: [
+            (.A, .QuarterFlat, .Up),
+            (.A, .Natural, .Down)
         ],
-        "8.25": [
-            {
-                "letterName": "G", "coarse": "1.00", "fine": "0.25"
-            },
-            {
-                "letterName": "A", "coarse": "-1.00", "fine": "0.25"
-            },
-            {
-                "letterName": "A", "coarse": "-0.50", "fine": "-0.25"
-            }
+        
+        09.00: [
+            (.A, .Natural, .None)
         ],
-        "8.50": [
-            {
-                "letterName": "A", "coarse": "-0.50", "fine": "0.00"
-            }
+        
+        09.25: [
+            (.A, .Natural, .Up),
+            (.A, .QuarterSharp, .Down)
         ],
-        "8.75": [
-            {
-                "letterName": "A", "coarse": "-0.50", "fine": "0.25"
-            },
-            {
-                "letterName": "A", "coarse": "0.00", "fine": "-0.25"
-            }
+        
+        09.50: [
+            (.A, .QuarterSharp, .None)
         ],
-        "9.00": [
-            {
-                "letterName": "A", "coarse": "0.00", "fine": "0.00"
-            }
+        
+        09.75: [
+            (.A, .QuarterSharp, .Up),
+            (.A, .Sharp, .Down),
+            (.B, .Flat, .Down)
         ],
-        "9.25": [
-            {
-                "letterName": "A", "coarse": "0.00", "fine": "0.25"
-            },
-            {
-                "letterName": "A", "coarse": "0.50", "fine": "-0.25"
-            }
+        
+        10.00: [
+            (.A, .Sharp, .None),
+            (.B, .Flat, .None)
         ],
-        "9.50": [
-            {
-                "letterName": "A", "coarse": "0.50", "fine": "0.00"
-            }
+        
+        10.25: [
+            (.A, .Sharp, .Up),
+            (.B, .Flat, .Up),
+            (.B, .QuarterFlat, .Down)
         ],
-        "9.75": [
-            {
-                "letterName": "A", "coarse": "0.50", "fine": "0.25"
-            },
-            {
-                "letterName": "A", "coarse": "1.00", "fine": "-0.25"
-            },
-            {
-                "letterName": "B", "coarse": "-1.00", "fine": "-0.25"
-            }
+        
+        10.50: [
+            (.B, .QuarterFlat, .None)
         ],
-        "10.00": [
-            {
-                "letterName": "A", "coarse": "1.00", "fine": "0.00"
-            },
-            {
-                "letterName": "B", "coarse": "-1.00", "fine": "0.00"
-            }
+        
+        10.75: [
+            (.B, .QuarterFlat, .Up),
+            (.B, .Natural, .Down)
         ],
-        "10.25": [
-            {
-                "letterName": "A", "coarse": "1.00", "fine": "0.25"
-            },
-            {
-                "letterName": "B", "coarse": "-1.00", "fine": "0.25"
-            },
-            {
-                "letterName": "B", "coarse": "-0.50", "fine": "-0.25"
-            }
+        
+        11.00: [
+            (.B, .Natural, .None)
         ],
-        "10.50": [
-            {
-                "letterName": "B", "coarse": "-0.50", "fine": "0.00"
-            }
+        
+        11.25: [
+            (.B, .Natural, .Up),
+            (.B, .QuarterSharp, .Down),
+            (.C, .QuarterFlat, .Down)
         ],
-        "10.75": [
-            {
-                "letterName": "B", "coarse": "-0.50", "fine": "0.25"
-            },
-            {
-                "letterName": "B", "coarse": "0.00", "fine": "-0.25"
-            }
+        
+        11.50: [
+            (.B, .QuarterSharp, .None),
+            (.C, .QuarterFlat, .None)
         ],
-        "11.00": [
-            {
-                "letterName": "B", "coarse": "0.00", "fine": "0.00"
-            }
-        ],
-        "11.25": [
-            {
-                "letterName": "B", "coarse": "0.00", "fine": "0.25"
-            },
-            {
-                "letterName": "B", "coarse": "0.50", "fine": "-0.25"
-            },
-            {
-                "letterName": "C", "coarse": "-0.50", "fine": "-0.25"
-            }
-        ],
-        "11.50": [
-            {
-                "letterName": "B", "coarse": "0.50", "fine": "0.00"
-            },
-            {
-                "letterName": "C", "coarse": "-0.50", "fine": "0.00"
-            }
-        ],
-        "11.75": [
-            {
-                "letterName": "B", "coarse": "0.50", "fine": "0.25"
-            },
-            {
-                "letterName": "C", "coarse": "-0.50", "fine": "0.25"
-            },
-            {
-                "letterName": "C", "coarse": "0.00", "fine": "-0.25"
-            }
+        
+        11.75: [
+            (.B, .QuarterSharp, .Up),
+            (.C, .QuarterFlat, .Up),
+            (.C, .Natural, .Down)
         ]
-         */
     ]
     
     public subscript(pitchClass: PitchClass) -> [PitchSpelling] {
