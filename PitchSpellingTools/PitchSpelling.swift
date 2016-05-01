@@ -42,7 +42,7 @@ public struct PitchSpelling {
     
     /**
      Fine resolution component of a `PitchSpelling`. 
-        Analogous to an up or down arrow of an accidental.
+        Analogous to an up or down (or lack of) arrow of an accidental.
      
      - note: In 48-EDO, represents 1/8th-tone adjustment. 
         May be useful for other cases (e.g., -14c adjustment for 5th partial, etc.).

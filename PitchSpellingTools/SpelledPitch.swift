@@ -22,3 +22,15 @@ public struct SpelledPitch {
         self.spelling = spelling
     }
 }
+
+extension SpelledPitch: Equatable { }
+
+public func == (lhs: SpelledPitch, rhs: SpelledPitch) -> Bool {
+    return lhs.pitch == rhs.pitch
+}
+
+extension SpelledPitch: Comparable { }
+
+public func < (lhs: SpelledPitch, rhs: SpelledPitch) -> Bool {
+    return lhs.pitch < rhs.pitch
+}

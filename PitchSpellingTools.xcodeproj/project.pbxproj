@@ -30,6 +30,8 @@
 		0752A5611CD69C4D007C25AB /* PitchSpellingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0752A55D1CD69C4D007C25AB /* PitchSpellingTests.swift */; };
 		076BAFE81CD6B51D005594C6 /* PitchSpellingsByPitchClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BAFE71CD6B51D005594C6 /* PitchSpellingsByPitchClass.swift */; };
 		076BAFE91CD6B51D005594C6 /* PitchSpellingsByPitchClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BAFE71CD6B51D005594C6 /* PitchSpellingsByPitchClass.swift */; };
+		076BAFEB1CD6B67F005594C6 /* SpelledPitchDyad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BAFEA1CD6B67F005594C6 /* SpelledPitchDyad.swift */; };
+		076BAFEC1CD6B67F005594C6 /* SpelledPitchDyad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BAFEA1CD6B67F005594C6 /* SpelledPitchDyad.swift */; };
 		0796D2671CD69DE20066A863 /* ArithmeticTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8EAD3EEE9B48491A9702342 /* ArithmeticTools.framework */; };
 		0796D2681CD69DE20066A863 /* ArrayTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C77002FDA01213CBAAB1C93 /* ArrayTools.framework */; };
 		0796D2691CD69DE20066A863 /* EnumTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A2B207911C2928768FB7C3 /* EnumTools.framework */; };
@@ -110,6 +112,7 @@
 		0752A55C1CD69C4D007C25AB /* IntervalQualityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntervalQualityTests.swift; path = PitchSpellingToolsTests/IntervalQualityTests.swift; sourceTree = "<group>"; };
 		0752A55D1CD69C4D007C25AB /* PitchSpellingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSpellingTests.swift; path = PitchSpellingToolsTests/PitchSpellingTests.swift; sourceTree = "<group>"; };
 		076BAFE71CD6B51D005594C6 /* PitchSpellingsByPitchClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSpellingsByPitchClass.swift; path = PitchSpellingTools/PitchSpellingsByPitchClass.swift; sourceTree = "<group>"; };
+		076BAFEA1CD6B67F005594C6 /* SpelledPitchDyad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpelledPitchDyad.swift; path = PitchSpellingTools/SpelledPitchDyad.swift; sourceTree = "<group>"; };
 		0796D26F1CD6A0F60066A863 /* SpelledPitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpelledPitch.swift; path = PitchSpellingTools/SpelledPitch.swift; sourceTree = "<group>"; };
 		0C77002FDA01213CBAAB1C93 /* ArrayTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArrayTools.framework; path = Carthage/Build/iOS/ArrayTools.framework; sourceTree = "<group>"; };
 		0E73E8AA02B7743AB38C7C94 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = PitchSpellingToolsTests/Info.plist; sourceTree = "<group>"; };
@@ -243,6 +246,7 @@
 				0752A53E1CD69BD0007C25AB /* MonadSpeller.swift */,
 				0752A53F1CD69BD0007C25AB /* PitchSetSpeller.swift */,
 				0796D26F1CD6A0F60066A863 /* SpelledPitch.swift */,
+				076BAFEA1CD6B67F005594C6 /* SpelledPitchDyad.swift */,
 				0752A5401CD69BD0007C25AB /* PitchSpeller.swift */,
 				0752A5411CD69BD0007C25AB /* PitchSpelling.swift */,
 				0752A5431CD69BD0007C25AB /* VerticalitySpeller.swift */,
@@ -448,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				076BAFE81CD6B51D005594C6 /* PitchSpellingsByPitchClass.swift in Sources */,
+				076BAFEB1CD6B67F005594C6 /* SpelledPitchDyad.swift in Sources */,
 				0752A5461CD69BD0007C25AB /* HorizontalitySpeller.swift in Sources */,
 				0752A5441CD69BD0007C25AB /* DyadSpeller.swift in Sources */,
 				0752A5541CD69BD0007C25AB /* VerticalitySpeller.swift in Sources */,
@@ -483,6 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				076BAFE91CD6B51D005594C6 /* PitchSpellingsByPitchClass.swift in Sources */,
+				076BAFEC1CD6B67F005594C6 /* SpelledPitchDyad.swift in Sources */,
 				0752A5471CD69BD0007C25AB /* HorizontalitySpeller.swift in Sources */,
 				0752A5451CD69BD0007C25AB /* DyadSpeller.swift in Sources */,
 				0752A5551CD69BD0007C25AB /* VerticalitySpeller.swift in Sources */,
