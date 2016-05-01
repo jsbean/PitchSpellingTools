@@ -11,10 +11,14 @@ import Foundation
 /**
  Subjective psychoacoustical attribute of sound allowing ordering on a frequency-related scale.
  */
-public struct Pitch: PitchType {
+public class Pitch {
+    
+    // MARK - Type Properties
     
     /// Middle C.
     public static let MiddleC = Pitch(noteNumber: 60)
+    
+    // MARK: - Instance Properties
     
     /// `NoteNumber` representation of `Pitch`.
     public let noteNumber: NoteNumber
@@ -24,6 +28,8 @@ public struct Pitch: PitchType {
     
     /// Modulo 12 representation of `NoteNumber` representation of `Pitch`.
     public var pitchClass: PitchClass { return PitchClass(self) }
+    
+    // MARK: - Initializers
     
     /**
      Create a `Pitch` with a `NoteNumber` value.
@@ -39,6 +45,14 @@ public struct Pitch: PitchType {
     public init(frequency: Frequency) {
         self.frequency = frequency
         self.noteNumber = NoteNumber(frequency: frequency)
+    }
+    
+    /**
+     Create a `Pitch` with another `Pitch`.
+     */
+    public init(pitch: Pitch) {
+        self.frequency = pitch.frequency
+        self.noteNumber = NoteNumber(pitch.frequency)
     }
 }
 

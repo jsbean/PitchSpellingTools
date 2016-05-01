@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import Pitch
 
 /**
  - warning: Not yet implemented!
  */
 public struct DyadSpeller: PitchSpeller {
     
-    
+    private let dyad: Dyad
+
 }

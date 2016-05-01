@@ -12,17 +12,17 @@ import Pitch
 /**
  Structure that extends a `Pitch` with a `PitchSpelling`.
  */
-public struct SpelledPitch {
+public class SpelledPitch: Pitch {
     
-    public let pitch: Pitch
     public let spelling: PitchSpelling
     
     public init(pitch: Pitch, spelling: PitchSpelling) {
-        self.pitch = pitch
         self.spelling = spelling
+        super.init(pitch: pitch)
     }
 }
 
+/*
 extension SpelledPitch: Equatable { }
 
 public func == (lhs: SpelledPitch, rhs: SpelledPitch) -> Bool {
@@ -34,3 +34,4 @@ extension SpelledPitch: Comparable { }
 public func < (lhs: SpelledPitch, rhs: SpelledPitch) -> Bool {
     return lhs.pitch < rhs.pitch
 }
+*/
