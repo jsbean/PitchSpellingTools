@@ -14,24 +14,13 @@ import Pitch
  */
 public class SpelledPitch: Pitch {
     
-    public let spelling: PitchSpelling
+    private let spelling: PitchSpelling
     
+    /**
+     Create a `SpelledPitch` with a given `pitch` and `spelling`.
+     */
     public init(pitch: Pitch, spelling: PitchSpelling) {
         self.spelling = spelling
         super.init(pitch: pitch)
     }
 }
-
-/*
-extension SpelledPitch: Equatable { }
-
-public func == (lhs: SpelledPitch, rhs: SpelledPitch) -> Bool {
-    return lhs.pitch == rhs.pitch
-}
-
-extension SpelledPitch: Comparable { }
-
-public func < (lhs: SpelledPitch, rhs: SpelledPitch) -> Bool {
-    return lhs.pitch < rhs.pitch
-}
-*/
