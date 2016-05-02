@@ -1,5 +1,5 @@
 //
-//  PitchSpellingsByPitchClass.swift
+//  PitchSpellings.swift
 //  PitchSpellingTools
 //
 //  Created by James Bean on 5/1/16.
@@ -9,7 +9,7 @@
 import Foundation
 import Pitch
 
-internal struct PitchSpellingResource {
+internal struct PitchSpellings {
     
     private typealias PitchSpellingComponents = (
         letterName: PitchSpelling.LetterName,
@@ -17,7 +17,7 @@ internal struct PitchSpellingResource {
         fine: PitchSpelling.FineAdjustment
     )
     
-    private let componentsByPitchClass: [PitchClass: [PitchSpellingComponents]] = [
+    private static let componentsByPitchClass: [PitchClass: [PitchSpellingComponents]] = [
         
         00.00: [
             (.C, .Natural, .None)
@@ -257,10 +257,36 @@ internal struct PitchSpellingResource {
         ]
     ]
     
-    internal subscript(pitchClass: PitchClass) -> [PitchSpelling] {
-        guard let components = componentsByPitchClass[pitchClass] else { return [] }
-        return components.map {
-            PitchSpelling(letterName: $0.letterName, coarse: $0.coarse, fine: $0.fine)
+    internal static func spellings(forPitchClass pitchClass: PitchClass) -> [PitchSpelling]? {
+        if let components = PitchSpellings.componentsByPitchClass[pitchClass] {
+            return components.map {
+                PitchSpelling(letterName: $0.letterName, coarse: $0.coarse, fine: $0.fine)
+            }
         }
+        return nil
     }
+    
+    internal static func defaultSpelling(forPitchClass pitchClass: PitchClass)
+        -> PitchSpelling?
+    {
+        if let components = PitchSpellings.componentsByPitchClass[pitchClass]?.first {
+            return PitchSpelling(
+                letterName: components.letterName,
+                coarse: components.coarse,
+                fine: components.fine
+            )
+        }
+        return nil
+    }
+    
+    /*
+    internal subscript(pitchClass: PitchClass) -> [PitchSpelling] {
+        if let components = PitchSpellings.componentsByPitchClass[pitchClass] {
+            return components.map {
+                PitchSpelling(letterName: $0.letterName, coarse: $0.coarse, fine: $0.fine)
+            }
+        }
+        return []
+    }
+    */
 }
