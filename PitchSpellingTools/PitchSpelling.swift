@@ -13,8 +13,6 @@ import Foundation
  */
 public struct PitchSpelling {
     
-    public typealias Sharpness = Int
-    
     public enum Resolution: Float {
         
         // chromatic
