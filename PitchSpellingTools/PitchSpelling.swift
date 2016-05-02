@@ -85,11 +85,23 @@ public struct PitchSpelling {
             case Down = -1
         }
         
+        public enum Resolution: Float {
+            case HalfStep = 0
+            case QuarterStep = 0.5
+        }
+        
         public var direction: Direction {
             switch self {
-            case Natural: return .None
-            case Sharp, QuarterSharp: return .Up
-            case Flat, QuarterFlat: return .Down
+            case .Natural: return .None
+            case .Sharp, .QuarterSharp: return .Up
+            case .Flat, .QuarterFlat: return .Down
+            }
+        }
+        
+        public var resolution: Resolution {
+            switch self {
+            case .QuarterSharp, .QuarterFlat: return .QuarterStep
+            default: return .HalfStep
             }
         }
         
@@ -143,8 +155,12 @@ public struct PitchSpelling {
     /// Coarse resolution of a `PitchSpelling`.
     public let coarse: CoarseAdjustment
     
-    /// - warning: Not yet implemented!
-    public var resolution: Resolution { return .HalfStep } // compute at init
+    public var resolution: Resolution {
+        return fine != .None
+            ? .EighthStep
+            : coarse.resolution == .QuarterStep ? .QuarterStep
+            : .HalfStep
+    }
     
     public var sharpness: Sharpness {
         return PitchSpelling.sharpnessByPitchSpelling[quantized(to: .HalfStep)] ?? 0
