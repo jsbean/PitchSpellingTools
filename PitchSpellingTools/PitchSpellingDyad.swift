@@ -14,10 +14,13 @@ public struct PitchSpellingDyad {
     private let b: PitchSpelling
     
     public var isCoarseMatching: Bool { return a.coarse == b.coarse }
-    //public var isCoarseDirectionMatching: Bool { return a.coarseDirection == b.coarseDirection }
+    
+    
+    public var isCoarseDirectionMatching: Bool {
+        return a.coarse.direction == b.coarse.direction
+    }
     
     public var isFineMatching: Bool { return a.fine == b.fine }
-    //public var isFineDirectionMatching: Bool { return a.fineDirection == b.fineDirection }
     
     public init(_ a: PitchSpelling, _ b: PitchSpelling) {
         self.a = a

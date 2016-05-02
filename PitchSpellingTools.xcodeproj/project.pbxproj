@@ -277,19 +277,19 @@
 			isa = PBXGroup;
 			children = (
 				A3B90C1E0151F49FEB7FC3DF /* Supporting Files */,
+				0752A5411CD69BD0007C25AB /* PitchSpelling.swift */,
 				0752A53B1CD69BD0007C25AB /* DyadSpeller.swift */,
+				076BAFEA1CD6B67F005594C6 /* SpelledPitchDyad.swift */,
 				0752A53C1CD69BD0007C25AB /* HorizontalitySpeller.swift */,
+				07F6F1461CD7E7FF0026E89D /* PitchSpellingDyad.swift */,
 				0752A53D1CD69BD0007C25AB /* IntervalQuality.swift */,
 				0752A53E1CD69BD0007C25AB /* MonadSpeller.swift */,
 				0752A53F1CD69BD0007C25AB /* PitchSetSpeller.swift */,
 				0796D26F1CD6A0F60066A863 /* SpelledPitch.swift */,
 				076BAFED1CD6BA41005594C6 /* Pitch+SpelledPitch.swift */,
-				076BAFEA1CD6B67F005594C6 /* SpelledPitchDyad.swift */,
-				07F6F1461CD7E7FF0026E89D /* PitchSpellingDyad.swift */,
 				0752A5401CD69BD0007C25AB /* PitchSpeller.swift */,
 				0752A5431CD69BD0007C25AB /* VerticalitySpeller.swift */,
 				076BAFE71CD6B51D005594C6 /* PitchSpellings.swift */,
-				0752A5411CD69BD0007C25AB /* PitchSpelling.swift */,
 			);
 			name = PitchSpellingTools;
 			sourceTree = "<group>";

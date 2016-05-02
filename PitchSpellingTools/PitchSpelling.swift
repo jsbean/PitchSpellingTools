@@ -13,30 +13,33 @@ import Foundation
  */
 public struct PitchSpelling {
     
+    public typealias Resolution = Float
+    public typealias Sharpness = Int
+    
     /**
      Letter name component of a `PitchSpelling`
      */
     public enum LetterName: String {
         
-        /// A.
+        /// A, la.
         case A
         
-        /// B.
+        /// B, si.
         case B
         
-        /// C.
+        /// C, do.
         case C
         
-        /// D.
+        /// D, re.
         case D
         
-        /// E.
+        /// E, mi.
         case E
         
-        /// F.
+        /// F, fa.
         case F
         
-        /// G.
+        /// G, sol.
         case G
     }
     
@@ -105,7 +108,10 @@ public struct PitchSpelling {
     public let coarse: CoarseAdjustment
     
     /// - warning: Not yet implemented!
-    public var resolution: Float { return 0.0 }
+    public var resolution: Float { return 0.0 } // compute at init
+    
+    /// - warning: Not yet implemented!
+    public var sharpness: Sharpness { return 0 } // compute at init
     
     /**
      Create a `PitchSpelling`.
