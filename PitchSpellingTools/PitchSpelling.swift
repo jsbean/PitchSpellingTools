@@ -163,8 +163,13 @@ public struct PitchSpelling {
     }
 }
 
+extension PitchSpelling: Hashable {
+    
+    public var hashValue: Int { return "\(letterName),\(coarse),\(fine)".hashValue }
+}
+
 extension PitchSpelling: Equatable { }
 
 public func == (lhs: PitchSpelling, rhs: PitchSpelling) -> Bool {
-    return lhs.letterName == rhs.letterName && lhs.coarse == rhs.coarse && lhs.fine == rhs.fine
+    return lhs.hashValue == rhs.hashValue
 }
