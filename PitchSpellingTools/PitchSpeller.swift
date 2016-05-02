@@ -6,7 +6,6 @@
 //  Copyright © 2016 James Bean. All rights reserved.
 //
 
-import Foundation
 import Pitch
 
 /**

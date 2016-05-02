@@ -6,8 +6,6 @@
 //  Copyright © 2016 James Bean. All rights reserved.
 //
 
-import Foundation
-
 /**
  Spelled representation of a `Pitch`.
  */

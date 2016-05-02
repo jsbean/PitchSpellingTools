@@ -6,7 +6,6 @@
 //
 //
 
-import Foundation
 import ArithmeticTools
 
 public struct SpelledPitchDyad {

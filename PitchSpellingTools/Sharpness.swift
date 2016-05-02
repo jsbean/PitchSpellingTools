@@ -6,6 +6,4 @@
 //
 //
 
-import Foundation
-
 public typealias Sharpness = Float
