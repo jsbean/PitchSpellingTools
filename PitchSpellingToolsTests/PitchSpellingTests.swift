@@ -17,4 +17,12 @@ class PitchSpellingTests: XCTestCase {
         XCTAssert(ps.coarse == .Natural)
         XCTAssert(ps.fine == .None)
     }
+    
+    func testCSharpnessIsZero() {
+        XCTAssertEqual(PitchSpelling(.C).sharpness, 0)
+    }
+    
+    func testBFlatSharpnessIsNegativeOne() {
+        XCTAssertEqual(PitchSpelling(.B, .Flat).sharpness, -1)
+    }
 }

@@ -118,7 +118,20 @@ public struct PitchSpelling {
     }
     
     private static let sharpnessByPitchSpelling: [PitchSpelling: Sharpness] = [
-        :
+        PitchSpelling(.F, .Flat): -7,
+        PitchSpelling(.C, .Flat): -6,
+        PitchSpelling(.G, .Flat): -5,
+        PitchSpelling(.D, .Flat): -4,
+        PitchSpelling(.A, .Flat): -3,
+        PitchSpelling(.E, .Flat): -2,
+        PitchSpelling(.B, .Flat): -1,
+        PitchSpelling(.F, .Sharp): 1,
+        PitchSpelling(.C, .Sharp): 2,
+        PitchSpelling(.G, .Sharp): 3,
+        PitchSpelling(.D, .Sharp): 4,
+        PitchSpelling(.A, .Sharp): 5,
+        PitchSpelling(.E, .Sharp): 6,
+        PitchSpelling(.B, .Sharp): 7
     ]
     
     /// LetterName of a `PitchSpelling`.
@@ -134,7 +147,9 @@ public struct PitchSpelling {
     public var resolution: Resolution { return .HalfStep } // compute at init
     
     /// - warning: Not yet implemented!
-    public var sharpness: Sharpness { return 0 } // compute at init
+    public var sharpness: Sharpness {
+        return PitchSpelling.sharpnessByPitchSpelling[quantized(to: .HalfStep)] ?? 0
+    }
     
     /**
      Create a `PitchSpelling`.
@@ -161,7 +176,7 @@ public struct PitchSpelling {
         self.fine = fine
     }
     
-    public func quantize(toResolution resolution: Resolution) -> PitchSpelling {
+    public func quantized(to resolution: Resolution) -> PitchSpelling {
         switch resolution {
         case .EighthStep:
             return self
