@@ -13,7 +13,6 @@ import Foundation
  */
 public struct PitchSpelling {
     
-    //public typealias Resolution = Float
     public typealias Sharpness = Int
     
     public enum Resolution: Float {
