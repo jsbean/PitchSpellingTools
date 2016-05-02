@@ -104,3 +104,9 @@ public struct PitchSpelling {
         self.fine = fine
     }
 }
+
+extension PitchSpelling: Equatable { }
+
+public func == (lhs: PitchSpelling, rhs: PitchSpelling) -> Bool {
+    return lhs.letterName == rhs.letterName && lhs.coarse == rhs.coarse && lhs.fine == rhs.fine
+}

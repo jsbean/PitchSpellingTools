@@ -283,9 +283,9 @@
 				076BAFED1CD6BA41005594C6 /* Pitch+SpelledPitch.swift */,
 				076BAFEA1CD6B67F005594C6 /* SpelledPitchDyad.swift */,
 				0752A5401CD69BD0007C25AB /* PitchSpeller.swift */,
-				0752A5411CD69BD0007C25AB /* PitchSpelling.swift */,
 				0752A5431CD69BD0007C25AB /* VerticalitySpeller.swift */,
 				076BAFE71CD6B51D005594C6 /* PitchSpellings.swift */,
+				0752A5411CD69BD0007C25AB /* PitchSpelling.swift */,
 			);
 			name = PitchSpellingTools;
 			sourceTree = "<group>";

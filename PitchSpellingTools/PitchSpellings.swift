@@ -278,15 +278,4 @@ internal struct PitchSpellings {
         }
         return nil
     }
-    
-    /*
-    internal subscript(pitchClass: PitchClass) -> [PitchSpelling] {
-        if let components = PitchSpellings.componentsByPitchClass[pitchClass] {
-            return components.map {
-                PitchSpelling(letterName: $0.letterName, coarse: $0.coarse, fine: $0.fine)
-            }
-        }
-        return []
-    }
-    */
 }
