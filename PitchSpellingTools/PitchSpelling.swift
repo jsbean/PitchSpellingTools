@@ -94,6 +94,14 @@ public struct PitchSpelling {
             }
         }
         
+        public var quantizedToHalfStep: CoarseAdjustment {
+            switch direction {
+            case .None: return .Natural
+            case .Up: return .Sharp
+            case .Down: return .Flat
+            }
+        }
+        
         /// Natural.
         case Natural = 0
         
@@ -137,6 +145,21 @@ public struct PitchSpelling {
         self.letterName = letterName
         self.coarse = coarse
         self.fine = fine
+    }
+    
+    public func quantize(toResolution resolution: Resolution) -> PitchSpelling {
+        switch resolution {
+        case .EighthStep:
+            return self
+        case .QuarterStep:
+            return PitchSpelling(letterName: letterName, coarse: coarse, fine: .None)
+        case .HalfStep:
+            return PitchSpelling(
+                letterName: letterName,
+                coarse: coarse.quantizedToHalfStep,
+                fine: .None
+            )
+        }
     }
 }
 
