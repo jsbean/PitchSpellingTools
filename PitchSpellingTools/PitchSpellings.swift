@@ -259,9 +259,7 @@ internal struct PitchSpellings {
     
     internal static func spellings(forPitchClass pitchClass: PitchClass) -> [PitchSpelling]? {
         if let components = PitchSpellings.componentsByPitchClass[pitchClass] {
-            return components.map {
-                PitchSpelling(letterName: $0.letterName, coarse: $0.coarse, fine: $0.fine)
-            }
+            return components.map { PitchSpelling($0.letterName, $0.coarse, $0.fine) }
         }
         return nil
     }

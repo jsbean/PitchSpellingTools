@@ -118,6 +118,10 @@ public struct PitchSpelling {
         case Flat = -1
     }
     
+    private static let sharpnessByPitchSpelling: [PitchSpelling: Sharpness] = [
+        :
+    ]
+    
     /// LetterName of a `PitchSpelling`.
     public let letterName: LetterName
     
@@ -140,6 +144,17 @@ public struct PitchSpelling {
         letterName: LetterName,
         coarse: CoarseAdjustment = .Natural,
         fine: FineAdjustment = .None
+    )
+    {
+        self.letterName = letterName
+        self.coarse = coarse
+        self.fine = fine
+    }
+    
+    public init(
+        _ letterName: LetterName,
+        _ coarse: CoarseAdjustment = .Natural,
+        _ fine: FineAdjustment = .None
     )
     {
         self.letterName = letterName
