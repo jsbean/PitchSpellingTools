@@ -13,7 +13,18 @@ import Pitch
  */
 public struct DyadSpeller: PitchSpeller {
     
+    /// - warning: Not yet implemented!
+    private var allPitchSpellingDyads: [PitchSpellingDyad] { return [] }
+    
     private let dyad: Dyad
 
-    // initially implement only coarse
+    public init(dyad: Dyad) {
+        self.dyad = dyad
+    }
+    
+    // spell all with default spellings (F# not Gb, even if F natural, etc.)
+    
+    // spell those that can be spelled objectively
+    
+    
 }
