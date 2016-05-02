@@ -13,8 +13,20 @@ import Foundation
  */
 public struct PitchSpelling {
     
-    public typealias Resolution = Float
+    //public typealias Resolution = Float
     public typealias Sharpness = Int
+    
+    public enum Resolution: Float {
+        
+        // chromatic
+        case HalfStep = 0
+        
+        // quartertone
+        case QuarterStep = 0.5
+        
+        // eighth-tone
+        case EighthStep = 0.25
+    }
     
     /**
      Letter name component of a `PitchSpelling`
@@ -108,7 +120,7 @@ public struct PitchSpelling {
     public let coarse: CoarseAdjustment
     
     /// - warning: Not yet implemented!
-    public var resolution: Float { return 0.0 } // compute at init
+    public var resolution: Resolution { return .HalfStep } // compute at init
     
     /// - warning: Not yet implemented!
     public var sharpness: Sharpness { return 0 } // compute at init
