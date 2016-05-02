@@ -16,4 +16,5 @@ public struct DyadSpeller: PitchSpeller {
     
     private let dyad: Dyad
 
+    // initially implement only coarse
 }

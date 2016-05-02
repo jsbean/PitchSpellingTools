@@ -10,6 +10,7 @@ import Foundation
 import EnumTools
 import Pitch
 
+/// Quality of Interval between two `SpelledPitch` objects.
 public class IntervalQuality: EnumTree {
     
     public typealias EnumKind = IntervalQualityKind

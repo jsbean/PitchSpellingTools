@@ -65,8 +65,22 @@ public struct PitchSpelling {
      */
     public enum CoarseAdjustment: Float {
         
+        public enum Direction: Float {
+            case None = 0
+            case Up = 1
+            case Down = -1
+        }
+        
+        public var direction: Direction {
+            switch self {
+            case Natural: return .None
+            case Sharp, QuarterSharp: return .Up
+            case Flat, QuarterFlat: return .Down
+            }
+        }
+        
         /// Natural.
-        case Natural
+        case Natural = 0
         
         /// QuarterSharp.
         case QuarterSharp = 0.5
@@ -89,6 +103,9 @@ public struct PitchSpelling {
     
     /// Coarse resolution of a `PitchSpelling`.
     public let coarse: CoarseAdjustment
+    
+    /// - warning: Not yet implemented!
+    public var resolution: Float { return 0.0 }
     
     /**
      Create a `PitchSpelling`.
