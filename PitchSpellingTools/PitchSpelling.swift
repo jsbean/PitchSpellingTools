@@ -146,7 +146,6 @@ public struct PitchSpelling {
     /// - warning: Not yet implemented!
     public var resolution: Resolution { return .HalfStep } // compute at init
     
-    /// - warning: Not yet implemented!
     public var sharpness: Sharpness {
         return PitchSpelling.sharpnessByPitchSpelling[quantized(to: .HalfStep)] ?? 0
     }
