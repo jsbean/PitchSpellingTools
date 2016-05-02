@@ -75,18 +75,18 @@ public struct PitchSpelling {
      */
     public enum CoarseAdjustment: Float {
         
-        public enum Direction: Float {
+        internal enum Direction: Float {
             case None = 0
             case Up = 1
             case Down = -1
         }
         
-        public enum Resolution: Float {
+        private enum Resolution: Float {
             case HalfStep = 0
             case QuarterStep = 0.5
         }
         
-        public var direction: Direction {
+        internal var direction: Direction {
             switch self {
             case .Natural: return .None
             case .Sharp, .QuarterSharp: return .Up
@@ -94,14 +94,14 @@ public struct PitchSpelling {
             }
         }
         
-        public var resolution: Resolution {
+        private var resolution: Resolution {
             switch self {
             case .QuarterSharp, .QuarterFlat: return .QuarterStep
             default: return .HalfStep
             }
         }
         
-        public var quantizedToHalfStep: CoarseAdjustment {
+        private var quantizedToHalfStep: CoarseAdjustment {
             switch direction {
             case .None: return .Natural
             case .Up: return .Sharp
