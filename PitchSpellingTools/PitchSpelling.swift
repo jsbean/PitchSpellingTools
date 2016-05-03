@@ -11,19 +11,6 @@
  */
 public struct PitchSpelling {
     
-    public enum Resolution: Float {
-        
-        // chromatic
-        case halfStep = 0
-        
-        // quartertone
-        case quarterStep = 0.5
-        
-        // eighth-tone
-        case eighthStep = 0.25
-    }
-    
-    
     /**
      Fine resolution component of a `PitchSpelling`. 
         Analogous to an up or down (or lack of) arrow of an accidental.
