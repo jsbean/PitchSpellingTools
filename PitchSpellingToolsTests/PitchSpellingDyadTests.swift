@@ -23,14 +23,6 @@ class PitchSpellingDyadTests: XCTestCase {
     }
     
     func testIntervalQuality() {
-        for letterNameLower in PitchSpelling.LetterName.allCases {
-            for letterNameHigher in PitchSpelling.LetterName.allCases {
-                let dyad = PitchSpellingDyad(
-                    PitchSpelling(letterNameLower),
-                    PitchSpelling(letterNameHigher)
-                )
-                print("\(dyad): \(dyad.intervalQuality)")
-            }
-        }
+        // go through all possible intervals
     }
 }
