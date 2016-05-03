@@ -13,7 +13,9 @@ import Pitch
  Quality of Interval between two `SpelledPitch` objects.
  
  >`IntervalQuality.Third.Major`
+ 
  >`IntervalQuality.Seventh.Diminished`
+ 
  >`IntervalQuality.Fourth.Augmented`
  */
 public class IntervalQuality: EnumTree {
