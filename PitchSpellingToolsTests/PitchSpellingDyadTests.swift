@@ -56,4 +56,14 @@ class PitchSpellingDyadTests: XCTestCase {
         let dyad = PitchSpellingDyad(PitchSpelling(.b, .flat), PitchSpelling(.c, .sharp))
         XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Second.Augmented)
     }
+    
+    func testCCFlatDiminishedUnison() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.c, .flat))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Unison.Diminished)
+    }
+    
+    func testCFlatCAugmentedUnison() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.c, .flat), PitchSpelling(.c))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Unison.Augmented)
+    }
 }
