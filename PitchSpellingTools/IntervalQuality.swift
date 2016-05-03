@@ -115,10 +115,16 @@ public class IntervalQuality: EnumTree {
         11: [.MajorSeventh, .DiminishedUnison],
     ]
     
-    public func intervalQualityKinds(withIntervalClass intervalClass: IntervalClass)
+    internal func intervalQualityKinds(withIntervalClass intervalClass: IntervalClass)
         -> [IntervalQualityKind]
     {
         return intervalQualityKinds(withIntervalClass: intervalClass) ?? []
+    }
+    
+    public func intervalQuality(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
+        -> IntervalQualityKind
+    {
+        return .AugmentedFifth
     }
 }
 

@@ -48,6 +48,18 @@ public struct PitchSpelling {
         
         /// G, sol.
         case g
+        
+        public var steps: Int {
+            switch self {
+            case .c: return 0
+            case .d: return 1
+            case .e: return 2
+            case .f: return 3
+            case .g: return 4
+            case .a: return 5
+            case .b: return 6
+            }
+        }
     }
     
     /**

@@ -22,6 +22,8 @@ public struct PitchSpellingDyad {
     public var isFineMatching: Bool { return a.fine == b.fine }
     
     public var meanSharpness: Sharpness { return [a.sharpness, b.sharpness].mean! }
+
+    public var intervalQuality: IntervalQualityKind = IntervalQuality.Fifth.Perfect
     
     public init(_ a: PitchSpelling, _ b: PitchSpelling) {
         self.a = a
