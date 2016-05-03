@@ -125,7 +125,7 @@ public class IntervalQuality: EnumTree {
             case -2: return Diminished
             case -1: return Minor
             case 0: return Major
-            case 1: return Augmented
+            case 2: return Augmented
             default: fatalError() // impossible?
             }
         }

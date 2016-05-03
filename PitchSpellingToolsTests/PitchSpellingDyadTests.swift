@@ -50,4 +50,14 @@ class PitchSpellingDyadTests: XCTestCase {
         let dyad = PitchSpellingDyad(PitchSpelling(.c, .sharp), PitchSpelling(.e, .flat))
         XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.Diminished)
     }
+    
+    func testBbDSharpAugmentedThird() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.b, .flat), PitchSpelling(.d, .sharp))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.Augmented)
+    }
+    
+    func testBbCSharpAugmentedSecond() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.b, .flat), PitchSpelling(.c, .sharp))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Second.Augmented)
+    }
 }
