@@ -9,11 +9,6 @@
 import EnumTools
 import Pitch
 
-// there are three types of interval families:
-// - P, D, A (4, 5, 8)
-// -
-// 
-
 /// Quality of Interval between two `SpelledPitch` objects.
 public class IntervalQuality: EnumTree {
     
