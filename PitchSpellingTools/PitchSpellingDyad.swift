@@ -13,8 +13,8 @@ import ArithmeticTools
  */
 public struct PitchSpellingDyad {
 
-    private let lower: PitchSpelling
-    private let higher: PitchSpelling
+    internal let lower: PitchSpelling
+    internal let higher: PitchSpelling
 
     /**
     `true` if `coarse` values of both `PitchSpelling` objects are equivalent.
