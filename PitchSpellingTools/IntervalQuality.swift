@@ -49,7 +49,6 @@ public class IntervalQuality: EnumTree {
             _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
         ) -> EnumKind
         {
-            print("unison method")
             // refactor
             if coarseAdjustmentLower.direction == coarseAdjustmentHigher.direction {
                 return Perfect
@@ -73,8 +72,6 @@ public class IntervalQuality: EnumTree {
             _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
         ) -> EnumKind
         {
-            
-            print("second method")
             // refactor
             if coarseAdjustmentLower.direction == coarseAdjustmentHigher.direction {
                 return Major
@@ -245,7 +242,7 @@ public class IntervalQuality: EnumTree {
     }
     
     public static func intervalFamily(withAmountOfSteps steps: Int) -> EnumFamily.Type {
-        print("steps: \(steps); mod 7: \(steps % 7)")
+        // refine where to do abs(steps)
         switch abs(steps) % 7 {
         case 0: return Unison.self
         case 1: return Second.self
