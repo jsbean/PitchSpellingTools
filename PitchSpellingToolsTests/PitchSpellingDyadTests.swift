@@ -15,4 +15,9 @@ class PitchSpellingDyadTests: XCTestCase {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.c))
         XCTAssertEqual(dyad.meanSharpness, 0)
     }
+    
+    func testIntervalQualityTwoCsUnison() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.c))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQualityKind.PerfectUnison)
+    }
 }

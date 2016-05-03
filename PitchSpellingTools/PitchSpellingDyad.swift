@@ -10,23 +10,33 @@ import ArithmeticTools
 
 public struct PitchSpellingDyad {
     
-    private let a: PitchSpelling
-    private let b: PitchSpelling
+    private let lower: PitchSpelling
+    private let higher: PitchSpelling
     
-    public var isCoarseMatching: Bool { return a.coarse == b.coarse }
+    public var isCoarseMatching: Bool { return lower.coarse == higher.coarse }
     
     public var isCoarseDirectionMatching: Bool {
-        return a.coarse.direction == b.coarse.direction
+        return lower.coarse.direction == higher.coarse.direction
     }
     
-    public var isFineMatching: Bool { return a.fine == b.fine }
+    public var isFineMatching: Bool { return lower.fine == higher.fine }
     
-    public var meanSharpness: Sharpness { return [a.sharpness, b.sharpness].mean! }
+    public var meanSharpness: Sharpness { return [lower.sharpness, higher.sharpness].mean! }
 
-    public var intervalQuality: IntervalQualityKind = IntervalQuality.Fifth.Perfect
+    public var intervalQuality: IntervalQualityKind {
+        // get steps
+        let steps = (higher.letterName.steps - lower.letterName.steps) % 7
+        
+        
+        
+        
+        //let family = IntervalQuality.intervalFamily(withAmountOfSteps: steps)
+        return IntervalQuality.Unison.Perfect
+        //return .PerfectUnison
+    }
     
-    public init(_ a: PitchSpelling, _ b: PitchSpelling) {
-        self.a = a
-        self.b = b
+    public init(_ lower: PitchSpelling, _ higher: PitchSpelling) {
+        self.lower = lower
+        self.higher = higher
     }
 }

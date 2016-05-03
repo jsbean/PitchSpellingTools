@@ -15,12 +15,55 @@ public class IntervalQuality: EnumTree {
     public typealias EnumKind = IntervalQualityKind
     public typealias EnumFamily = IntervalQuality
     
+    private static let intervalQualityKindByIntervalClass:
+        [IntervalClass: [IntervalQualityKind]] =
+        [
+            00: [.PerfectUnison, .AugmentedSeventh],
+            01: [.MinorSecond, .AugmentedUnison],
+            02: [.MajorSecond, .DiminishedThird],
+            03: [.MinorThird, .AugmentedSecond],
+            04: [.MajorThird, .DiminishedFourth],
+            05: [.PerfectFourth, .AugmentedThird],
+            06: [.DiminishedFifth, .AugmentedFourth],
+            07: [.PerfectFifth, .DiminishedFifth],
+            08: [.MinorSixth, .AugmentedFifth],
+            09: [.MajorSixth, .DiminishedSeventh],
+            10: [.MinorSeventh, .AugmentedSixth],
+            11: [.MajorSeventh, .DiminishedUnison],
+            ]
+    
     public class Unison: EnumFamily {
         public static let Diminished: EnumKind = .DiminishedUnison
         public static let Perfect: EnumKind = .PerfectUnison
         public static let Augmented: EnumKind = .AugmentedUnison
         
         public override class var members: [EnumKind] { return [Perfect, Augmented] }
+        
+        public override class func kind(
+            coarseAdjustmentLower: PitchSpelling.CoarseAdjustment,
+            _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
+        ) -> EnumKind
+        {
+            // refactor
+            if coarseAdjustmentLower.direction == coarseAdjustmentHigher.direction {
+                return Perfect
+            } else if coarseAdjustmentLower.direction.rawValue > coarseAdjustmentHigher.direction.rawValue {
+                return Diminished
+            } else {
+                return Augmented
+            }
+            
+            /*
+            switch (coarseAdjustmentLower.direction, coarseAdjustmentHigher.direction) {
+            case (.none, .none): return Perfect
+            case (.none, .up): return Augmented
+            case (.none, .down): return Diminished
+            case (.up, .none): return Diminished
+            default: break
+            }
+            return Perfect
+            */
+        }
     }
     
     public class Second: EnumFamily {
@@ -98,22 +141,13 @@ public class IntervalQuality: EnumTree {
         ]
     }
     
-    private static let intervalQualityKindByIntervalClass:
-        [IntervalClass: [IntervalQualityKind]] =
-    [
-        00: [.PerfectUnison, .AugmentedSeventh],
-        01: [.MinorSecond, .AugmentedUnison],
-        02: [.MajorSecond, .DiminishedThird],
-        03: [.MinorThird, .AugmentedSecond],
-        04: [.MajorThird, .DiminishedFourth],
-        05: [.PerfectFourth, .AugmentedThird],
-        06: [.DiminishedFifth, .AugmentedFourth],
-        07: [.PerfectFifth, .DiminishedFifth],
-        08: [.MinorSixth, .AugmentedFifth],
-        09: [.MajorSixth, .DiminishedSeventh],
-        10: [.MinorSeventh, .AugmentedSixth],
-        11: [.MajorSeventh, .DiminishedUnison],
-    ]
+    public class func kind(
+        coarseAdjustmentLower: PitchSpelling.CoarseAdjustment,
+        _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
+    ) -> EnumKind
+    {
+        return .AugmentedFifth
+    }
     
     internal func intervalQualityKinds(withIntervalClass intervalClass: IntervalClass)
         -> [IntervalQualityKind]
@@ -121,8 +155,22 @@ public class IntervalQuality: EnumTree {
         return intervalQualityKinds(withIntervalClass: intervalClass) ?? []
     }
     
-    public func intervalQuality(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
-        -> IntervalQualityKind
+    public static func intervalFamily(withAmountOfSteps steps: Int) -> EnumFamily.Type {
+        switch steps % 7 {
+        case 0: return Unison.self
+        case 1: return Second.self
+        case 2: return Third.self
+        case 3: return Fourth.self
+        case 4: return Fifth.self
+        case 5: return Sixth.self
+        case 6: return Seventh.self
+        default: fatalError()
+        }
+    }
+    
+    public static func intervalQuality(
+        forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
+    ) -> IntervalQualityKind
     {
         return .AugmentedFifth
     }
