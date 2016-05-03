@@ -10,6 +10,8 @@ import Foundation
 
 extension PitchSpelling {
     
+    // MARK: - Sharpness
+    
     private static let sharpnessByPitchSpelling: [PitchSpelling: Sharpness] = [
         PitchSpelling(.f, .flat): -7,
         PitchSpelling(.c, .flat): -6,
@@ -27,6 +29,8 @@ extension PitchSpelling {
         PitchSpelling(.b, .sharp): 7
     ]
     
+    
+    /// Sharpness (distance from middle-c on circle of fifths)
     public var sharpness: Sharpness {
         return PitchSpelling.sharpnessByPitchSpelling[quantized(to: .halfStep)] ?? 0
     }

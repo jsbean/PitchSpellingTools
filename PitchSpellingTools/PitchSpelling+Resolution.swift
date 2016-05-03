@@ -22,6 +22,7 @@ extension PitchSpelling {
         case eighthStep = 0.25
     }
     
+    /// `Resolution` (e.g., halfstep (chromatic), quarter-step, or eighth-step)
     public var resolution: Resolution {
         return fine != .none
             ? .eighthStep
@@ -29,6 +30,9 @@ extension PitchSpelling {
             : .halfStep
     }
     
+    /**
+     - returns: A `PitchSpelling` object that is quantized to the given `resolution`.
+     */
     public func quantized(to resolution: Resolution) -> PitchSpelling {
         switch resolution {
         case .eighthStep:
