@@ -23,7 +23,7 @@ public struct PitchSpelling {
         case eighthStep = 0.25
     }
     
-        
+    
     /**
      Fine resolution component of a `PitchSpelling`. 
         Analogous to an up or down (or lack of) arrow of an accidental.
@@ -43,61 +43,7 @@ public struct PitchSpelling {
         case down = -1
     }
     
-    /**
-     Coarse resolution component of a `PitchSpelling`.
-        Analogous to the body of an accidental.
-     */
-    public enum CoarseAdjustment: Float {
-        
-        internal enum Direction: Float {
-            case none = 0
-            case up = 1
-            case down = -1
-        }
-        
-        private enum Resolution: Float {
-            case halfStep = 0
-            case quarterStep = 0.5
-        }
-        
-        internal var direction: Direction {
-            switch self {
-            case .natural: return .none
-            case .sharp, .quarterSharp: return .up
-            case .flat, .quarterFlat: return .down
-            }
-        }
-        
-        private var resolution: Resolution {
-            switch self {
-            case .quarterSharp, .quarterFlat: return .quarterStep
-            default: return .halfStep
-            }
-        }
-        
-        private var quantizedToHalfStep: CoarseAdjustment {
-            switch direction {
-            case .none: return .natural
-            case .up: return .sharp
-            case .down: return .flat
-            }
-        }
-        
-        /// Natural.
-        case natural = 0
-        
-        /// QuarterSharp.
-        case quarterSharp = 0.5
-        
-        /// Sharp.
-        case sharp = 1
-        
-        /// QuarterFlat.
-        case quarterFlat = -0.5
-        
-        /// Flat.
-        case flat = -1
-    }
+
     
     private static let sharpnessByPitchSpelling: [PitchSpelling: Sharpness] = [
         PitchSpelling(.f, .flat): -7,
