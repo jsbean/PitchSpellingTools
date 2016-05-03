@@ -21,4 +21,22 @@ extension PitchSpelling {
         // eighth-tone
         case eighthStep = 0.25
     }
+    
+    public var resolution: Resolution {
+        return fine != .none
+            ? .eighthStep
+            : coarse.resolution == .quarterStep ? .quarterStep
+            : .halfStep
+    }
+    
+    public func quantized(to resolution: Resolution) -> PitchSpelling {
+        switch resolution {
+        case .eighthStep:
+            return self
+        case .quarterStep:
+            return PitchSpelling(letterName: letterName, coarse: coarse, fine: .none)
+        case .halfStep:
+            return PitchSpelling(letterName, coarse.quantizedToHalfStep, .none)
+        }
+    }
 }

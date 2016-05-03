@@ -11,8 +11,6 @@
  */
 public struct PitchSpelling {
     
-
-    
     /// LetterName of a `PitchSpelling`.
     public let letterName: LetterName
     
@@ -22,13 +20,6 @@ public struct PitchSpelling {
     /// Coarse resolution of a `PitchSpelling`.
     public let coarse: CoarseAdjustment
     
-    public var resolution: Resolution {
-        return fine != .none
-            ? .eighthStep
-            : coarse.resolution == .quarterStep ? .quarterStep
-            : .halfStep
-    }
-
     /**
      Create a `PitchSpelling`.
      */
@@ -54,20 +45,7 @@ public struct PitchSpelling {
         self.fine = fine
     }
     
-    public func quantized(to resolution: Resolution) -> PitchSpelling {
-        switch resolution {
-        case .eighthStep:
-            return self
-        case .quarterStep:
-            return PitchSpelling(letterName: letterName, coarse: coarse, fine: .none)
-        case .halfStep:
-            return PitchSpelling(
-                letterName: letterName,
-                coarse: coarse.quantizedToHalfStep,
-                fine: .none
-            )
-        }
-    }
+
 }
 
 extension PitchSpelling: Hashable {
