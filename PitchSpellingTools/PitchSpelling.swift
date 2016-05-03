@@ -14,13 +14,13 @@ public struct PitchSpelling {
     public enum Resolution: Float {
         
         // chromatic
-        case HalfStep = 0
+        case halfStep = 0
         
         // quartertone
-        case QuarterStep = 0.5
+        case quarterStep = 0.5
         
         // eighth-tone
-        case EighthStep = 0.25
+        case eighthStep = 0.25
     }
     
     /**
@@ -29,25 +29,25 @@ public struct PitchSpelling {
     public enum LetterName: String {
         
         /// A, la.
-        case A
+        case a
         
         /// B, si.
-        case B
+        case b
         
         /// C, do.
-        case C
+        case c
         
         /// D, re.
-        case D
+        case d
         
         /// E, mi.
-        case E
+        case e
         
         /// F, fa.
-        case F
+        case f
         
         /// G, sol.
-        case G
+        case g
     }
     
     /**
@@ -60,13 +60,13 @@ public struct PitchSpelling {
     public enum FineAdjustment: Float {
         
         /// None.
-        case None = 0
+        case none = 0
         
         /// Up.
-        case Up = 1
+        case up = 1
         
         /// Down.
-        case Down = -1
+        case down = -1
     }
     
     /**
@@ -76,70 +76,70 @@ public struct PitchSpelling {
     public enum CoarseAdjustment: Float {
         
         internal enum Direction: Float {
-            case None = 0
-            case Up = 1
-            case Down = -1
+            case none = 0
+            case up = 1
+            case down = -1
         }
         
         private enum Resolution: Float {
-            case HalfStep = 0
-            case QuarterStep = 0.5
+            case halfStep = 0
+            case quarterStep = 0.5
         }
         
         internal var direction: Direction {
             switch self {
-            case .Natural: return .None
-            case .Sharp, .QuarterSharp: return .Up
-            case .Flat, .QuarterFlat: return .Down
+            case .natural: return .none
+            case .sharp, .quarterSharp: return .up
+            case .flat, .quarterFlat: return .down
             }
         }
         
         private var resolution: Resolution {
             switch self {
-            case .QuarterSharp, .QuarterFlat: return .QuarterStep
-            default: return .HalfStep
+            case .quarterSharp, .quarterFlat: return .quarterStep
+            default: return .halfStep
             }
         }
         
         private var quantizedToHalfStep: CoarseAdjustment {
             switch direction {
-            case .None: return .Natural
-            case .Up: return .Sharp
-            case .Down: return .Flat
+            case .none: return .natural
+            case .up: return .sharp
+            case .down: return .flat
             }
         }
         
         /// Natural.
-        case Natural = 0
+        case natural = 0
         
         /// QuarterSharp.
-        case QuarterSharp = 0.5
+        case quarterSharp = 0.5
         
         /// Sharp.
-        case Sharp = 1
+        case sharp = 1
         
         /// QuarterFlat.
-        case QuarterFlat = -0.5
+        case quarterFlat = -0.5
         
         /// Flat.
-        case Flat = -1
+        case flat = -1
     }
     
     private static let sharpnessByPitchSpelling: [PitchSpelling: Sharpness] = [
-        PitchSpelling(.F, .Flat): -7,
-        PitchSpelling(.C, .Flat): -6,
-        PitchSpelling(.G, .Flat): -5,
-        PitchSpelling(.D, .Flat): -4,
-        PitchSpelling(.A, .Flat): -3,
-        PitchSpelling(.E, .Flat): -2,
-        PitchSpelling(.B, .Flat): -1,
-        PitchSpelling(.F, .Sharp): 1,
-        PitchSpelling(.C, .Sharp): 2,
-        PitchSpelling(.G, .Sharp): 3,
-        PitchSpelling(.D, .Sharp): 4,
-        PitchSpelling(.A, .Sharp): 5,
-        PitchSpelling(.E, .Sharp): 6,
-        PitchSpelling(.B, .Sharp): 7
+        PitchSpelling(.f, .flat): -7,
+        PitchSpelling(.c, .flat): -6,
+        PitchSpelling(.g, .flat): -5,
+        PitchSpelling(.d, .flat): -4,
+        PitchSpelling(.a, .flat): -3,
+        PitchSpelling(.e, .flat): -2,
+        PitchSpelling(.b, .flat): -1,
+        PitchSpelling(.f, .sharp): 1,
+        PitchSpelling(.c, .sharp): 2,
+        PitchSpelling(.g, .sharp): 3,
+        PitchSpelling(.d, .sharp): 4,
+        PitchSpelling(.a, .sharp): 5,
+        PitchSpelling(.e, .sharp): 6,
+        PitchSpelling(.b, .sharp): 7
     ]
     
     /// LetterName of a `PitchSpelling`.
@@ -152,14 +152,14 @@ public struct PitchSpelling {
     public let coarse: CoarseAdjustment
     
     public var resolution: Resolution {
-        return fine != .None
-            ? .EighthStep
-            : coarse.resolution == .QuarterStep ? .QuarterStep
-            : .HalfStep
+        return fine != .none
+            ? .eighthStep
+            : coarse.resolution == .quarterStep ? .quarterStep
+            : .halfStep
     }
     
     public var sharpness: Sharpness {
-        return PitchSpelling.sharpnessByPitchSpelling[quantized(to: .HalfStep)] ?? 0
+        return PitchSpelling.sharpnessByPitchSpelling[quantized(to: .halfStep)] ?? 0
     }
     
     /**
@@ -167,8 +167,8 @@ public struct PitchSpelling {
      */
     public init(
         letterName: LetterName,
-        coarse: CoarseAdjustment = .Natural,
-        fine: FineAdjustment = .None
+        coarse: CoarseAdjustment = .natural,
+        fine: FineAdjustment = .none
     )
     {
         self.letterName = letterName
@@ -178,8 +178,8 @@ public struct PitchSpelling {
     
     public init(
         _ letterName: LetterName,
-        _ coarse: CoarseAdjustment = .Natural,
-        _ fine: FineAdjustment = .None
+        _ coarse: CoarseAdjustment = .natural,
+        _ fine: FineAdjustment = .none
     )
     {
         self.letterName = letterName
@@ -189,15 +189,15 @@ public struct PitchSpelling {
     
     public func quantized(to resolution: Resolution) -> PitchSpelling {
         switch resolution {
-        case .EighthStep:
+        case .eighthStep:
             return self
-        case .QuarterStep:
-            return PitchSpelling(letterName: letterName, coarse: coarse, fine: .None)
-        case .HalfStep:
+        case .quarterStep:
+            return PitchSpelling(letterName: letterName, coarse: coarse, fine: .none)
+        case .halfStep:
             return PitchSpelling(
                 letterName: letterName,
                 coarse: coarse.quantizedToHalfStep,
-                fine: .None
+                fine: .none
             )
         }
     }

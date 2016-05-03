@@ -13,16 +13,16 @@ import Pitch
 class PitchSpellingTests: XCTestCase {
 
     func testInitJustLetterName() {
-        let ps = PitchSpelling(letterName: .F)
-        XCTAssert(ps.coarse == .Natural)
-        XCTAssert(ps.fine == .None)
+        let ps = PitchSpelling(letterName: .f)
+        XCTAssert(ps.coarse == .natural)
+        XCTAssert(ps.fine == .none)
     }
     
     func testCSharpnessIsZero() {
-        XCTAssertEqual(PitchSpelling(.C).sharpness, 0)
+        XCTAssertEqual(PitchSpelling(.c).sharpness, 0)
     }
     
     func testBFlatSharpnessIsNegativeOne() {
-        XCTAssertEqual(PitchSpelling(.B, .Flat).sharpness, -1)
+        XCTAssertEqual(PitchSpelling(.b, .flat).sharpness, -1)
     }
 }

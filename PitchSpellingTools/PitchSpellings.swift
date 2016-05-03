@@ -10,249 +10,243 @@ import Pitch
 
 internal struct PitchSpellings {
     
-    private typealias PitchSpellingComponents = (
-        letterName: PitchSpelling.LetterName,
-        coarse: PitchSpelling.CoarseAdjustment,
-        fine: PitchSpelling.FineAdjustment
-    )
-    
     private static let spellingsByPitchClass: [PitchClass: [PitchSpelling]] = [
         
         00.00: [
-            PitchSpelling(.C, .Natural, .None)
+            PitchSpelling(.c, .natural, .none)
         ],
         
         00.25: [
-            PitchSpelling(.C, .Natural, .Up),
-            PitchSpelling(.C, .QuarterSharp, .Down)
+            PitchSpelling(.c, .natural, .up),
+            PitchSpelling(.c, .quarterSharp, .down)
         ],
         
         00.50: [
-            PitchSpelling(.C, .QuarterSharp, .None)
+            PitchSpelling(.c, .quarterSharp, .none)
         ],
         
         00.75: [
-            PitchSpelling(.C, .QuarterSharp, .Up),
-            PitchSpelling(.C, .Sharp, .Down),
-            PitchSpelling(.D, .Flat, .Down)
+            PitchSpelling(.c, .quarterSharp, .up),
+            PitchSpelling(.c, .sharp, .down),
+            PitchSpelling(.d, .flat, .down)
         ],
         
         01.00: [
-            PitchSpelling(.C, .Sharp, .None),
-            PitchSpelling(.D, .Flat, .None)
+            PitchSpelling(.c, .sharp, .none),
+            PitchSpelling(.d, .flat, .none)
         ],
         
         01.25: [
-            PitchSpelling(.C, .Sharp, .Up),
-            PitchSpelling(.D, .Flat, .Up),
-            PitchSpelling(.D, .QuarterFlat, .Down)
+            PitchSpelling(.c, .sharp, .up),
+            PitchSpelling(.d, .flat, .up),
+            PitchSpelling(.d, .quarterFlat, .down)
         ],
         
         01.50: [
-            PitchSpelling(.D, .QuarterSharp, .None)
+            PitchSpelling(.d, .quarterSharp, .none)
         ],
         
         01.75: [
-            PitchSpelling(.D, .QuarterFlat, .Up),
-            PitchSpelling(.D, .Natural, .Down)
+            PitchSpelling(.d, .quarterFlat, .up),
+            PitchSpelling(.d, .natural, .down)
         ],
         
         02.00: [
-            PitchSpelling(.D, .Natural, .None)
+            PitchSpelling(.d, .natural, .none)
         ],
         
         02.25: [
-            PitchSpelling(.D, .Natural, .Up),
-            PitchSpelling(.D, .QuarterSharp, .Down)
+            PitchSpelling(.d, .natural, .up),
+            PitchSpelling(.d, .quarterSharp, .down)
         ],
         
         02.50: [
-            PitchSpelling(.D, .QuarterSharp, .None)
+            PitchSpelling(.d, .quarterSharp, .none)
         ],
         
         02.75: [
-            PitchSpelling(.D, .QuarterSharp, .Up),
-            PitchSpelling(.D, .Sharp, .Down),
-            PitchSpelling(.E, .Flat, .Down)
+            PitchSpelling(.d, .quarterSharp, .up),
+            PitchSpelling(.d, .sharp, .down),
+            PitchSpelling(.e, .flat, .down)
         ],
         
         03.00: [
-            PitchSpelling(.D, .Sharp, .None),
-            PitchSpelling(.E, .Flat, .None)
+            PitchSpelling(.d, .sharp, .none),
+            PitchSpelling(.e, .flat, .none)
         ],
         
         03.25: [
-            PitchSpelling(.D, .Sharp, .Up),
-            PitchSpelling(.E, .Flat, .Up),
-            PitchSpelling(.E, .QuarterFlat, .Down)
+            PitchSpelling(.d, .sharp, .up),
+            PitchSpelling(.e, .flat, .up),
+            PitchSpelling(.e, .quarterFlat, .down)
         ],
         
         03.50: [
-            PitchSpelling(.E, .QuarterFlat, .None)
+            PitchSpelling(.e, .quarterFlat, .none)
         ],
         
         03.75: [
-            PitchSpelling(.E, .QuarterFlat, .Up),
-            PitchSpelling(.E, .Natural, .Down)
+            PitchSpelling(.e, .quarterFlat, .up),
+            PitchSpelling(.e, .natural, .down)
         ],
         
         04.00: [
-            PitchSpelling(.E, .Natural, .None)
+            PitchSpelling(.e, .natural, .none)
         ],
         
         04.25: [
-            PitchSpelling(.E, .Natural, .Up),
-            PitchSpelling(.E, .QuarterSharp, .Down),
-            PitchSpelling(.F, .QuarterFlat, .Down)
+            PitchSpelling(.e, .natural, .up),
+            PitchSpelling(.e, .quarterSharp, .down),
+            PitchSpelling(.f, .quarterFlat, .down)
         ],
         
         04.50: [
-            PitchSpelling(.E, .QuarterSharp, .None),
-            PitchSpelling(.F, .QuarterFlat, .None)
+            PitchSpelling(.e, .quarterSharp, .none),
+            PitchSpelling(.f, .quarterFlat, .none)
         ],
         
         04.75: [
-            PitchSpelling(.E, .QuarterSharp, .Up),
-            PitchSpelling(.F, .QuarterFlat, .Up),
-            PitchSpelling(.F, .Natural, .Down)
+            PitchSpelling(.e, .quarterSharp, .up),
+            PitchSpelling(.f, .quarterFlat, .up),
+            PitchSpelling(.f, .natural, .down)
         ],
         
         05.00: [
-            PitchSpelling(.F, .Natural, .None)
+            PitchSpelling(.f, .natural, .none)
         ],
         
         05.25: [
-            PitchSpelling(.F, .Natural, .Up),
-            PitchSpelling(.F, .QuarterSharp, .Down)
+            PitchSpelling(.f, .natural, .up),
+            PitchSpelling(.f, .quarterSharp, .down)
         ],
         
         05.50: [
-            PitchSpelling(.F, .QuarterSharp, .None)
+            PitchSpelling(.f, .quarterSharp, .none)
         ],
         
         05.75: [
-            PitchSpelling(.F, .QuarterSharp, .Up),
-            PitchSpelling(.F, .Sharp, .Down),
-            PitchSpelling(.G, .Flat, .Down)
+            PitchSpelling(.f, .quarterSharp, .up),
+            PitchSpelling(.f, .sharp, .down),
+            PitchSpelling(.g, .flat, .down)
         ],
         
         06.00: [
-            PitchSpelling(.F, .Sharp, .None),
-            PitchSpelling(.G, .Flat, .None)
+            PitchSpelling(.f, .sharp, .none),
+            PitchSpelling(.g, .flat, .none)
         ],
         
         06.25: [
-            PitchSpelling(.F, .Sharp, .Up),
-            PitchSpelling(.G, .Flat, .Up),
-            PitchSpelling(.G, .QuarterFlat, .Down)
+            PitchSpelling(.f, .sharp, .up),
+            PitchSpelling(.g, .flat, .up),
+            PitchSpelling(.g, .quarterFlat, .down)
         ],
         
         06.50: [
-            PitchSpelling(.G, .QuarterFlat, .None)
+            PitchSpelling(.g, .quarterFlat, .none)
         ],
         
         06.75: [
-            PitchSpelling(.G, .QuarterFlat, .Up),
-            PitchSpelling(.G, .Natural, .Down)
+            PitchSpelling(.g, .quarterFlat, .up),
+            PitchSpelling(.g, .natural, .down)
         ],
         
         07.00: [
-            PitchSpelling(.G, .Natural, .None)
+            PitchSpelling(.g, .natural, .none)
         ],
         
         07.25: [
-            PitchSpelling(.G, .Natural, .Up),
-            PitchSpelling(.G, .QuarterSharp, .Down)
+            PitchSpelling(.g, .natural, .up),
+            PitchSpelling(.g, .quarterSharp, .down)
         ],
         
         07.50: [
-            PitchSpelling(.G, .QuarterSharp, .None)
+            PitchSpelling(.g, .quarterSharp, .none)
         ],
         
         07.75: [
-            PitchSpelling(.G, .QuarterSharp, .Up),
-            PitchSpelling(.G, .Sharp, .Down),
-            PitchSpelling(.A, .Flat, .Down)
+            PitchSpelling(.g, .quarterSharp, .up),
+            PitchSpelling(.g, .sharp, .down),
+            PitchSpelling(.a, .flat, .down)
         ],
         
         08.00: [
-            PitchSpelling(.G, .Sharp, .None),
-            PitchSpelling(.A, .Flat, .None)
+            PitchSpelling(.g, .sharp, .none),
+            PitchSpelling(.a, .flat, .none)
         ],
         
         08.25: [
-            PitchSpelling(.G, .Sharp, .Up),
-            PitchSpelling(.A, .Flat, .Up),
-            PitchSpelling(.A, .QuarterFlat, .Down)
+            PitchSpelling(.g, .sharp, .up),
+            PitchSpelling(.a, .flat, .up),
+            PitchSpelling(.a, .quarterFlat, .down)
         ],
         
         08.50: [
-            PitchSpelling(.A, .QuarterFlat, .None)
+            PitchSpelling(.a, .quarterFlat, .none)
         ],
         
         08.75: [
-            PitchSpelling(.A, .QuarterFlat, .Up),
-            PitchSpelling(.A, .Natural, .Down)
+            PitchSpelling(.a, .quarterFlat, .up),
+            PitchSpelling(.a, .natural, .down)
         ],
         
         09.00: [
-            PitchSpelling(.A, .Natural, .None)
+            PitchSpelling(.a, .natural, .none)
         ],
         
         09.25: [
-            PitchSpelling(.A, .Natural, .Up),
-            PitchSpelling(.A, .QuarterSharp, .Down)
+            PitchSpelling(.a, .natural, .up),
+            PitchSpelling(.a, .quarterSharp, .down)
         ],
         
         09.50: [
-            PitchSpelling(.A, .QuarterSharp, .None)
+            PitchSpelling(.a, .quarterSharp, .none)
         ],
         
         09.75: [
-            PitchSpelling(.A, .QuarterSharp, .Up),
-            PitchSpelling(.A, .Sharp, .Down),
-            PitchSpelling(.B, .Flat, .Down)
+            PitchSpelling(.a, .quarterSharp, .up),
+            PitchSpelling(.a, .sharp, .down),
+            PitchSpelling(.b, .flat, .down)
         ],
         
         10.00: [
-            PitchSpelling(.A, .Sharp, .None),
-            PitchSpelling(.B, .Flat, .None)
+            PitchSpelling(.a, .sharp, .none),
+            PitchSpelling(.b, .flat, .none)
         ],
         
         10.25: [
-            PitchSpelling(.A, .Sharp, .Up),
-            PitchSpelling(.B, .Flat, .Up),
-            PitchSpelling(.B, .QuarterFlat, .Down)
+            PitchSpelling(.a, .sharp, .up),
+            PitchSpelling(.b, .flat, .up),
+            PitchSpelling(.b, .quarterFlat, .down)
         ],
         
         10.50: [
-            PitchSpelling(.B, .QuarterFlat, .None)
+            PitchSpelling(.b, .quarterFlat, .none)
         ],
         
         10.75: [
-            PitchSpelling(.B, .QuarterFlat, .Up),
-            PitchSpelling(.B, .Natural, .Down)
+            PitchSpelling(.b, .quarterFlat, .up),
+            PitchSpelling(.b, .natural, .down)
         ],
         
         11.00: [
-            PitchSpelling(.B, .Natural, .None)
+            PitchSpelling(.b, .natural, .none)
         ],
         
         11.25: [
-            PitchSpelling(.B, .Natural, .Up),
-            PitchSpelling(.B, .QuarterSharp, .Down),
-            PitchSpelling(.C, .QuarterFlat, .Down)
+            PitchSpelling(.b, .natural, .up),
+            PitchSpelling(.b, .quarterSharp, .down),
+            PitchSpelling(.c, .quarterFlat, .down)
         ],
         
         11.50: [
-            PitchSpelling(.B, .QuarterSharp, .None),
-            PitchSpelling(.C, .QuarterFlat, .None)
+            PitchSpelling(.b, .quarterSharp, .none),
+            PitchSpelling(.c, .quarterFlat, .none)
         ],
         
         11.75: [
-            PitchSpelling(.B, .QuarterSharp, .Up),
-            PitchSpelling(.C, .QuarterFlat, .Up),
-            PitchSpelling(.C, .Natural, .Down)
+            PitchSpelling(.b, .quarterSharp, .up),
+            PitchSpelling(.c, .quarterFlat, .up),
+            PitchSpelling(.c, .natural, .down)
         ]
     ]
     

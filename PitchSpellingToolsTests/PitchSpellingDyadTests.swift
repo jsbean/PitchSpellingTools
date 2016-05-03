@@ -12,7 +12,7 @@ import XCTest
 class PitchSpellingDyadTests: XCTestCase {
     
     func testTwoCMeanSharpnessZero() {
-        let dyad = PitchSpellingDyad(PitchSpelling(.C), PitchSpelling(.C))
+        let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.c))
         XCTAssertEqual(dyad.meanSharpness, 0)
     }
 }
