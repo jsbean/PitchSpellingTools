@@ -44,8 +44,6 @@ public struct PitchSpelling {
         self.coarse = coarse
         self.fine = fine
     }
-    
-
 }
 
 extension PitchSpelling: Hashable {
