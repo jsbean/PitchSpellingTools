@@ -29,9 +29,8 @@ extension PitchSpelling {
         PitchSpelling(.b, .sharp): 7
     ]
     
-    
     /// Sharpness (distance from middle-c on circle of fifths)
     public var sharpness: Sharpness {
-        return PitchSpelling.sharpnessByPitchSpelling[quantized(to: .halfStep)] ?? 0
+        return PitchSpelling.sharpnessByPitchSpelling[self.quantized(to: .halfStep)] ?? 0
     }
 }
