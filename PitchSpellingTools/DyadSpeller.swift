@@ -22,21 +22,6 @@ public struct DyadSpeller: PitchSpeller {
             }
         }
         return result
-        /*
-        return dyad.lower.pitchSpellings.reduce([]) { accum, lower in
-            dyad.higher.pitchSpellings.map { higher in
-                PitchSpellingDyad(lower, higher)
-            }
-        }
-        */
-        
-        /*
-        dyad.lower.pitchSpellings.forEach { lower in
-            dyad.higher.pitchSpellings.forEach { higher in
-                result.append(PitchSpellingDyad(lower, higher))
-            }
-        }
-        */
     }
     
     private var dyad: Dyad
