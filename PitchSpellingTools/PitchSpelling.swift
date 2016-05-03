@@ -11,43 +11,7 @@
  */
 public struct PitchSpelling {
     
-    /**
-     Fine resolution component of a `PitchSpelling`. 
-        Analogous to an up or down (or lack of) arrow of an accidental.
-     
-     - note: In 48-EDO, represents 1/8th-tone adjustment. 
-        May be useful for other cases (e.g., -14c adjustment for 5th partial, etc.).
-     */
-    public enum FineAdjustment: Float {
-        
-        /// None.
-        case none = 0
-        
-        /// Up.
-        case up = 1
-        
-        /// Down.
-        case down = -1
-    }
-    
 
-    
-    private static let sharpnessByPitchSpelling: [PitchSpelling: Sharpness] = [
-        PitchSpelling(.f, .flat): -7,
-        PitchSpelling(.c, .flat): -6,
-        PitchSpelling(.g, .flat): -5,
-        PitchSpelling(.d, .flat): -4,
-        PitchSpelling(.a, .flat): -3,
-        PitchSpelling(.e, .flat): -2,
-        PitchSpelling(.b, .flat): -1,
-        PitchSpelling(.f, .sharp): 1,
-        PitchSpelling(.c, .sharp): 2,
-        PitchSpelling(.g, .sharp): 3,
-        PitchSpelling(.d, .sharp): 4,
-        PitchSpelling(.a, .sharp): 5,
-        PitchSpelling(.e, .sharp): 6,
-        PitchSpelling(.b, .sharp): 7
-    ]
     
     /// LetterName of a `PitchSpelling`.
     public let letterName: LetterName
@@ -64,11 +28,7 @@ public struct PitchSpelling {
             : coarse.resolution == .quarterStep ? .quarterStep
             : .halfStep
     }
-    
-    public var sharpness: Sharpness {
-        return PitchSpelling.sharpnessByPitchSpelling[quantized(to: .halfStep)] ?? 0
-    }
-    
+
     /**
      Create a `PitchSpelling`.
      */
