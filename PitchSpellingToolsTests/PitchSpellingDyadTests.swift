@@ -37,14 +37,17 @@ class PitchSpellingDyadTests: XCTestCase {
     }
     
     func testCEMajorThird() {
-        
+        let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.e))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.Major)
     }
     
     func testCEFlatMinorThird() {
-        
+        let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.e, .flat))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.Minor)
     }
     
     func testCSharpEFlatDiminishedThird() {
-        
+        let dyad = PitchSpellingDyad(PitchSpelling(.c, .sharp), PitchSpelling(.e, .flat))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.Diminished)
     }
 }
