@@ -22,10 +22,6 @@ class PitchSpellingDyadTests: XCTestCase {
         XCTAssertEqual(dyad.intervalQuality, IntervalQualityKind.PerfectUnison)
     }
     
-    func testIntervalQuality() {
-        // go through all possible intervals
-    }
-    
     func testCGPerfectFifth() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.g))
         XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Fifth.Perfect)
