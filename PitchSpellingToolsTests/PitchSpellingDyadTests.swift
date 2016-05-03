@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import EnumTools
 @testable import PitchSpellingTools
 
 class PitchSpellingDyadTests: XCTestCase {
@@ -19,5 +20,17 @@ class PitchSpellingDyadTests: XCTestCase {
     func testIntervalQualityTwoCsUnison() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.c))
         XCTAssertEqual(dyad.intervalQuality, IntervalQualityKind.PerfectUnison)
+    }
+    
+    func testIntervalQuality() {
+        for letterNameLower in PitchSpelling.LetterName.allCases {
+            for letterNameHigher in PitchSpelling.LetterName.allCases {
+                let dyad = PitchSpellingDyad(
+                    PitchSpelling(letterNameLower),
+                    PitchSpelling(letterNameHigher)
+                )
+                print("\(dyad): \(dyad.intervalQuality)")
+            }
+        }
     }
 }

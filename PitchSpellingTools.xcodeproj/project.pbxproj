@@ -249,8 +249,8 @@
 				0752A5411CD69BD0007C25AB /* PitchSpelling.swift */,
 				078175021CD8F5BD00AAB396 /* PitchSpelling+LetterName.swift */,
 				078175051CD8F5F000AAB396 /* PitchSpelling+CoarseAdjustment.swift */,
-				078175081CD8F64500AAB396 /* PitchSpelling+Resolution.swift */,
 				0781750B1CD8F67C00AAB396 /* PitchSpelling+FineAdjustment.swift */,
+				078175081CD8F64500AAB396 /* PitchSpelling+Resolution.swift */,
 				0781750E1CD8F69700AAB396 /* PitchSpelling+Sharpness.swift */,
 			);
 			name = PitchSpelling;
@@ -316,10 +316,10 @@
 				A3B90C1E0151F49FEB7FC3DF /* Supporting Files */,
 				078175111CD8F70600AAB396 /* PitchSpelling */,
 				076BAFE71CD6B51D005594C6 /* PitchSpellings.swift */,
+				07F6F1461CD7E7FF0026E89D /* PitchSpellingDyad.swift */,
 				0752A53D1CD69BD0007C25AB /* IntervalQuality.swift */,
 				0752A53B1CD69BD0007C25AB /* DyadSpeller.swift */,
 				076BAFEA1CD6B67F005594C6 /* SpelledPitchDyad.swift */,
-				07F6F1461CD7E7FF0026E89D /* PitchSpellingDyad.swift */,
 				0752A53C1CD69BD0007C25AB /* HorizontalitySpeller.swift */,
 				07F6F1491CD7F8310026E89D /* Sharpness.swift */,
 				0752A53E1CD69BD0007C25AB /* MonadSpeller.swift */,

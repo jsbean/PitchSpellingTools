@@ -24,15 +24,19 @@ public struct PitchSpellingDyad {
     public var meanSharpness: Sharpness { return [lower.sharpness, higher.sharpness].mean! }
 
     public var intervalQuality: IntervalQualityKind {
-        // get steps
+        
+        // refactor
+        // refine where to put the abs(steps)
+        
         let steps = (higher.letterName.steps - lower.letterName.steps) % 7
         
+        // gets the specific subclass IntervalFamily for the amount of steps
+        let family = IntervalQuality.intervalFamily(withAmountOfSteps: steps)
         
+        // gets the specific quality static let property
+        let qualityKind = family.kind(lower.coarse, higher.coarse)
         
-        
-        //let family = IntervalQuality.intervalFamily(withAmountOfSteps: steps)
-        return IntervalQuality.Unison.Perfect
-        //return .PerfectUnison
+        return qualityKind
     }
     
     public init(_ lower: PitchSpelling, _ higher: PitchSpelling) {

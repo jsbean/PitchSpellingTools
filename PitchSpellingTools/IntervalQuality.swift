@@ -9,6 +9,11 @@
 import EnumTools
 import Pitch
 
+// there are three types of interval families:
+// - P, D, A (4, 5, 8)
+// -
+// 
+
 /// Quality of Interval between two `SpelledPitch` objects.
 public class IntervalQuality: EnumTree {
     
@@ -17,20 +22,20 @@ public class IntervalQuality: EnumTree {
     
     private static let intervalQualityKindByIntervalClass:
         [IntervalClass: [IntervalQualityKind]] =
-        [
-            00: [.PerfectUnison, .AugmentedSeventh],
-            01: [.MinorSecond, .AugmentedUnison],
-            02: [.MajorSecond, .DiminishedThird],
-            03: [.MinorThird, .AugmentedSecond],
-            04: [.MajorThird, .DiminishedFourth],
-            05: [.PerfectFourth, .AugmentedThird],
-            06: [.DiminishedFifth, .AugmentedFourth],
-            07: [.PerfectFifth, .DiminishedFifth],
-            08: [.MinorSixth, .AugmentedFifth],
-            09: [.MajorSixth, .DiminishedSeventh],
-            10: [.MinorSeventh, .AugmentedSixth],
-            11: [.MajorSeventh, .DiminishedUnison],
-            ]
+    [
+        00: [.PerfectUnison, .AugmentedSeventh],
+        01: [.MinorSecond, .AugmentedUnison],
+        02: [.MajorSecond, .DiminishedThird],
+        03: [.MinorThird, .AugmentedSecond],
+        04: [.MajorThird, .DiminishedFourth],
+        05: [.PerfectFourth, .AugmentedThird],
+        06: [.DiminishedFifth, .AugmentedFourth],
+        07: [.PerfectFifth, .DiminishedFifth],
+        08: [.MinorSixth, .AugmentedFifth],
+        09: [.MajorSixth, .DiminishedSeventh],
+        10: [.MinorSeventh, .AugmentedSixth],
+        11: [.MajorSeventh, .DiminishedUnison],
+    ]
     
     public class Unison: EnumFamily {
         public static let Diminished: EnumKind = .DiminishedUnison
@@ -38,6 +43,108 @@ public class IntervalQuality: EnumTree {
         public static let Augmented: EnumKind = .AugmentedUnison
         
         public override class var members: [EnumKind] { return [Perfect, Augmented] }
+        
+        public override class func kind(
+            coarseAdjustmentLower: PitchSpelling.CoarseAdjustment,
+            _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
+        ) -> EnumKind
+        {
+            print("unison method")
+            // refactor
+            if coarseAdjustmentLower.direction == coarseAdjustmentHigher.direction {
+                return Perfect
+            } else if coarseAdjustmentLower.direction.rawValue > coarseAdjustmentHigher.direction.rawValue {
+                return Diminished
+            } else {
+                return Augmented
+            }
+        }
+    }
+    
+    public class Second: EnumFamily {
+        public static let Minor: EnumKind = .MinorSecond
+        public static let Major: EnumKind = .MajorSecond
+        public static let Augmented: EnumKind = .AugmentedSecond
+        
+        public override class var members: [EnumKind] { return [Minor, Major, Augmented] }
+        
+        public override class func kind(
+            coarseAdjustmentLower: PitchSpelling.CoarseAdjustment,
+            _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
+        ) -> EnumKind
+        {
+            
+            print("second method")
+            // refactor
+            if coarseAdjustmentLower.direction == coarseAdjustmentHigher.direction {
+                return Major
+            } else if coarseAdjustmentLower.direction.rawValue > coarseAdjustmentHigher.direction.rawValue {
+                return Minor
+            } else {
+                return Augmented
+            }
+        }
+    }
+    
+    public class Third: EnumFamily {
+        public static let Diminished: EnumKind = .DiminishedThird
+        public static let Minor: EnumKind = .MinorThird
+        public static let Major: EnumKind = .MajorThird
+        public static let Augmented: EnumKind = .AugmentedThird
+        
+        public override class var members: [EnumKind] {
+            return [Diminished, Minor, Major, Augmented]
+        }
+        
+        public override class func kind(
+            coarseAdjustmentLower: PitchSpelling.CoarseAdjustment,
+            _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
+        ) -> EnumKind
+        {
+            let diff = coarseAdjustmentHigher.direction.rawValue - coarseAdjustmentLower.direction.rawValue
+            switch diff {
+            case -2: return Diminished
+            case -1: return Minor
+            case 0: return Major
+            case 1: return Augmented
+            default: fatalError() // impossible?
+            }
+        }
+    }
+    
+    public class Fourth: EnumFamily {
+        public static let Diminished: EnumKind = .DiminishedFourth
+        public static let Perfect: EnumKind = .PerfectFourth
+        public static let Augmented: EnumKind = .AugmentedFourth
+        
+        public override class var members: [EnumKind] {
+            return [Diminished, Perfect, Augmented]
+        }
+
+        public override class func kind(
+            coarseAdjustmentLower: PitchSpelling.CoarseAdjustment,
+            _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
+        ) -> EnumKind
+        {
+            // refactor
+            if coarseAdjustmentLower.direction == coarseAdjustmentHigher.direction {
+                return Perfect
+            } else if coarseAdjustmentLower.direction.rawValue > coarseAdjustmentHigher.direction.rawValue {
+                return Diminished
+            } else {
+                return Augmented
+            }
+        }
+    }
+    
+    public class Fifth: EnumFamily {
+        public static let Diminished: EnumKind = .DiminishedFifth
+        public static let Perfect: EnumKind = .PerfectFifth
+        public static let Augmented: EnumKind = .AugmentedFifth
+        
+        public override class var members: [EnumKind] {
+            return [Diminished, Perfect, Augmented]
+        }
         
         public override class func kind(
             coarseAdjustmentLower: PitchSpelling.CoarseAdjustment,
@@ -52,56 +159,6 @@ public class IntervalQuality: EnumTree {
             } else {
                 return Augmented
             }
-            
-            /*
-            switch (coarseAdjustmentLower.direction, coarseAdjustmentHigher.direction) {
-            case (.none, .none): return Perfect
-            case (.none, .up): return Augmented
-            case (.none, .down): return Diminished
-            case (.up, .none): return Diminished
-            default: break
-            }
-            return Perfect
-            */
-        }
-    }
-    
-    public class Second: EnumFamily {
-        public static let Minor: EnumKind = .MinorSecond
-        public static let Major: EnumKind = .MajorSecond
-        public static let Augmented: EnumKind = .AugmentedSecond
-        
-        public override class var members: [EnumKind] { return [Minor, Major, Augmented] }
-    }
-    
-    public class Third: EnumFamily {
-        public static let Diminished: EnumKind = .DiminishedThird
-        public static let Minor: EnumKind = .MinorThird
-        public static let Major: EnumKind = .MajorThird
-        public static let Augmented: EnumKind = .AugmentedThird
-        
-        public override class var members: [EnumKind] {
-            return [Diminished, Minor, Major, Augmented]
-        }
-    }
-    
-    public class Fourth: EnumFamily {
-        public static let Diminished: EnumKind = .DiminishedFourth
-        public static let Perfect: EnumKind = .PerfectFourth
-        public static let Augmented: EnumKind = .AugmentedFourth
-        
-        public override class var members: [EnumKind] {
-            return [Diminished, Perfect, Augmented]
-        }
-    }
-    
-    public class Fifth: EnumFamily {
-        public static let Diminished: EnumKind = .DiminishedFifth
-        public static let Perfect: EnumKind = .PerfectFifth
-        public static let Augmented: EnumKind = .AugmentedFifth
-        
-        public override class var members: [EnumKind] {
-            return [Diminished, Perfect, Augmented]
         }
     }
     
@@ -114,6 +171,22 @@ public class IntervalQuality: EnumTree {
         public override class var members: [EnumKind] {
             return [Diminished, Minor, Major, Augmented]
         }
+        
+        
+        public override class func kind(
+            coarseAdjustmentLower: PitchSpelling.CoarseAdjustment,
+            _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
+        ) -> EnumKind
+        {
+            let diff = coarseAdjustmentHigher.direction.rawValue - coarseAdjustmentLower.direction.rawValue
+            switch diff {
+            case -2: return Diminished
+            case -1: return Minor
+            case 0: return Major
+            case 1: return Augmented
+            default: fatalError() // impossible?
+            }
+        }
     }
     
     public class Seventh: EnumFamily {
@@ -124,6 +197,22 @@ public class IntervalQuality: EnumTree {
         
         public override class var members: [EnumKind] {
             return [Diminished, Minor, Major, Augmented]
+        }
+        
+        
+        public override class func kind(
+            coarseAdjustmentLower: PitchSpelling.CoarseAdjustment,
+            _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
+        ) -> EnumKind
+        {
+            let diff = coarseAdjustmentHigher.direction.rawValue - coarseAdjustmentLower.direction.rawValue
+            switch diff {
+            case -2: return Diminished
+            case -1: return Minor
+            case 0: return Major
+            case 1: return Augmented
+            default: fatalError() // impossible?
+            }
         }
     }
     
@@ -156,7 +245,8 @@ public class IntervalQuality: EnumTree {
     }
     
     public static func intervalFamily(withAmountOfSteps steps: Int) -> EnumFamily.Type {
-        switch steps % 7 {
+        print("steps: \(steps); mod 7: \(steps % 7)")
+        switch abs(steps) % 7 {
         case 0: return Unison.self
         case 1: return Second.self
         case 2: return Third.self
@@ -166,13 +256,6 @@ public class IntervalQuality: EnumTree {
         case 6: return Seventh.self
         default: fatalError()
         }
-    }
-    
-    public static func intervalQuality(
-        forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
-    ) -> IntervalQualityKind
-    {
-        return .AugmentedFifth
     }
 }
 
