@@ -13,7 +13,11 @@ import Pitch
 class DyadSpellerTests: XCTestCase {
 
     func testPitchSpellingDyads() {
-        //let dyad = Dyad(Pitch(noteNumber: 61), Pitch(noteNumber: 68))
-        //let speller = DyadSpeller(dyad: dyad)
+        let dyad = Dyad(Pitch(noteNumber: 61), Pitch(noteNumber: 68))
+        let speller = DyadSpeller(dyad: dyad)
+        print(speller.allPitchSpellingDyads)
+        for dyad in speller.allPitchSpellingDyads {
+            print("\(dyad): quality: \(dyad.intervalQuality)")
+        }
     }
 }

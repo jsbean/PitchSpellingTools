@@ -13,15 +13,13 @@ import Pitch
  */
 public struct DyadSpeller: PitchSpeller {
     
-    /// - warning: Not yet implemented!
+    /// All possible combinations of `PitchSpellings` of each `Pitch`
     public var allPitchSpellingDyads: [PitchSpellingDyad] {
-        var result: [PitchSpellingDyad] = []
-        for lower in dyad.lower.pitchSpellings {
-            for higher in dyad.higher.pitchSpellings {
-                result.append(PitchSpellingDyad(lower, higher))
+        return dyad.lower.pitchSpellings.reduce([]) { accum, lower in
+            accum + dyad.higher.pitchSpellings.map { higher in
+                PitchSpellingDyad(lower, higher)
             }
         }
-        return result
     }
     
     private var dyad: Dyad
@@ -31,12 +29,7 @@ public struct DyadSpeller: PitchSpeller {
     }
     
     mutating public func spell() {
+        // allowed types: Major, Minor, Diminished,
         self.dyad = dyad.spelled()
     }
-    
-    // spell all with default spellings (F# not Gb, even if F natural, etc.)
-    
-    // spell those that can be spelled objectively
-    
-    
 }
