@@ -29,7 +29,7 @@ public struct DyadSpeller: PitchSpeller {
     }
     
     mutating public func spell() {
-        // allowed types: Major, Minor, Diminished,
+        // allowed types: Perfect, Major, Minor
         self.dyad = dyad.spelled()
     }
 }
