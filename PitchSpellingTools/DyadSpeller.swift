@@ -15,10 +15,8 @@ public struct DyadSpeller: PitchSpeller {
     
     /// All possible combinations of `PitchSpellings` of each `Pitch`
     public var allPitchSpellingDyads: [PitchSpellingDyad] {
-        return dyad.lower.pitchSpellings.reduce([]) { accum, lower in
-            accum + dyad.higher.pitchSpellings.map { higher in
-                PitchSpellingDyad(lower, higher)
-            }
+        return dyad.lower.pitchSpellings.reduce([]) { accum, lo in
+            accum + dyad.higher.pitchSpellings.map { hi in PitchSpellingDyad(lo, hi) }
         }
     }
     
