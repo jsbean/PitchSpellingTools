@@ -10,6 +10,8 @@ import Pitch
 
 extension Pitch {
     
+    public var canBeSpelledObjectively: Bool { return pitchSpellings.count == 1 }
+    
     public var pitchSpellings: [PitchSpelling] {
         return PitchSpellings.spellings(forPitchClass: pitchClass)!
     }

@@ -10,6 +10,10 @@ import Pitch
 
 extension Dyad {
     
+    public var canBeSpelledObjectively: Bool {
+        return lower.canBeSpelledObjectively && higher.canBeSpelledObjectively
+    }
+    
     // TODO / FIXME
     public func spelled() -> Dyad {
         return Dyad(
