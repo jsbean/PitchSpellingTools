@@ -14,6 +14,14 @@ extension Dyad {
         return lower.canBeSpelledObjectively && higher.canBeSpelledObjectively
     }
     
+    public func spelledWithDefaultSpellings() -> Dyad {
+        return Dyad(
+            SpelledPitch(pitch: lower, spelling: lower.defaultPitchSpelling),
+            SpelledPitch(pitch: higher, spelling: higher.defaultPitchSpelling)
+        )
+        
+    }
+    
     // TODO / FIXME
     public func spelled() -> Dyad {
         return Dyad(

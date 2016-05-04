@@ -27,7 +27,6 @@ public struct DyadSpeller: PitchSpeller {
     }
     
     mutating public func spell() {
-        // allowed types: Perfect, Major, Minor
-        self.dyad = dyad.spelled()
+        if dyad.canBeSpelledObjectively { dyad = dyad.spelledWithDefaultSpellings() }
     }
 }
