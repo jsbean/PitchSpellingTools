@@ -18,7 +18,17 @@ public class DyadSpeller: PitchSpeller {
     public let allPitchSpellingDyads: [PitchSpellingDyad]
     
     private var dyad: Dyad
+    
+    /**
+     Make a `DyadSpeller` of the best-suited subclass for the given `dyad`.
+     */
+    public static func makeDyadSpeller(forDyad dyad: Dyad) -> DyadSpeller? {
+        return DyadSpellerFactory.makeDyadSpeller(forDyad: dyad)
+    }
 
+    /**
+     Create a `DyadSpeller` for the given `dyad`.
+     */
     public required init(dyad: Dyad) {
         self.dyad = dyad
         
