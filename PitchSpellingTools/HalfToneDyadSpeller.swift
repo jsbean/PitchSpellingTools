@@ -8,12 +8,12 @@
 
 import Pitch
 
-public class HalfToneDyadSpeller: DyadSpeller {
+internal class HalfToneDyadSpeller: DyadSpeller {
     
     /**
      - returns: `DyadSpeller.Result`.
      */
-    public override func spell() -> Result {
+    internal override func spell() -> Result {
         let stepPreserving = allPitchSpellingDyads.filter { $0.isStepPreserving }
         switch stepPreserving.count {
         case 0: return .none

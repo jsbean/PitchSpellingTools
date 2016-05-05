@@ -8,4 +8,4 @@
 
 import Pitch
 
-public class EighthToneDyadSpeller: DyadSpeller { }
+internal class EighthToneDyadSpeller: DyadSpeller { }

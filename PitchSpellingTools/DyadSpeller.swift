@@ -14,7 +14,7 @@ import Pitch
  */
 public class DyadSpeller: PitchSpeller {
 
-    public enum Error: ErrorType { case error } // refine }
+    public enum Error: ErrorType { case error } // refine
     
     public enum Result {
         case none

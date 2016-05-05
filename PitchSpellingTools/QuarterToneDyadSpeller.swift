@@ -8,9 +8,9 @@
 
 import Pitch
 
-public class QuarterToneDyadSpeller: DyadSpeller {
+internal class QuarterToneDyadSpeller: DyadSpeller {
     
-    public override func spell() -> Result {
+    internal override func spell() -> Result {
         return .none
     }
 }
