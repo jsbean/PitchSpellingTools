@@ -17,7 +17,7 @@ public class DyadSpeller: PitchSpeller {
     /// All possible combinations of `PitchSpellings` of each `Pitch`
     public let allPitchSpellingDyads: [PitchSpellingDyad]
     
-    private var dyad: Dyad
+    internal var dyad: Dyad
     
     /**
      Make a `DyadSpeller` of the best-suited subclass for the given `dyad`.

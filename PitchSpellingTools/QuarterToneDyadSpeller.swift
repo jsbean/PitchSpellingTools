@@ -6,9 +6,11 @@
 //
 //
 
-import Foundation
+import Pitch
 
 public class QuarterToneDyadSpeller: DyadSpeller {
     
-    
+    public override func spell() -> Dyad {
+        return self.dyad
+    }
 }

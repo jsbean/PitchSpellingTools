@@ -12,9 +12,9 @@ import EnumTools
 
 class PitchSpellingDyadTests: XCTestCase {
     
-    func testTwoCMeanSharpnessZero() {
+    func testTwoCMeanDistanceZero() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.c))
-        XCTAssertEqual(dyad.meanSharpness, 0)
+        XCTAssertEqual(dyad.meanDistance, 0)
     }
     
     func testIntervalQualityTwoCsUnison() {

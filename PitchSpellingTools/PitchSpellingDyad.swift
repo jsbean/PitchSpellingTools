@@ -35,8 +35,8 @@ public struct PitchSpellingDyad {
      */
     public var isFineMatching: Bool { return lower.fine == higher.fine }
     
-    /// Mean of `sharpness` values of both `PitchSpelling` objects.
-    public var meanSharpness: Sharpness { return [lower.sharpness, higher.sharpness].mean! }
+    /// Mean of `distance` values of both `PitchSpelling` objects.
+    public var meanDistance: Float { return [lower.distance, higher.distance].mean! }
     
     /// Amount of steps between two `PitchSpelling` objects.
     public var steps: Int {

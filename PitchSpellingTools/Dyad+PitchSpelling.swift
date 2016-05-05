@@ -23,7 +23,6 @@ extension Dyad {
     }
     
     public func spelledWithDefaultSpellings() -> Dyad {
-        print("spelled with defaults")
         return Dyad(
             SpelledPitch(pitch: lower, spelling: lower.defaultPitchSpelling),
             SpelledPitch(pitch: higher, spelling: higher.defaultPitchSpelling)

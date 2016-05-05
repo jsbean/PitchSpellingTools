@@ -284,6 +284,20 @@
 			name = PitchSpelling;
 			sourceTree = "<group>";
 		};
+		07BB2F751CDBBE0200DC4D7A /* DyadSpeller */ = {
+			isa = PBXGroup;
+			children = (
+				07F6F1461CD7E7FF0026E89D /* PitchSpellingDyad.swift */,
+				071890F01CD9618600C5CD17 /* PitchSpellingDyad+CustomStringConvertible.swift */,
+				0752A53B1CD69BD0007C25AB /* DyadSpeller.swift */,
+				07BB2F691CDBB8C300DC4D7A /* DyadSpellerFactory.swift */,
+				07BB2F6C1CDBB9F900DC4D7A /* QuarterToneDyadSpeller.swift */,
+				07BB2F6F1CDBBA1300DC4D7A /* EighthToneDyadSpeller.swift */,
+				07BB2F721CDBBA2400DC4D7A /* HalfToneDyadSpeller.swift */,
+			);
+			name = DyadSpeller;
+			sourceTree = "<group>";
+		};
 		5C9E70D0CD3D73A06EDA9A94 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,16 +357,10 @@
 			children = (
 				A3B90C1E0151F49FEB7FC3DF /* Supporting Files */,
 				078175111CD8F70600AAB396 /* PitchSpelling */,
+				07BB2F751CDBBE0200DC4D7A /* DyadSpeller */,
 				076BAFE71CD6B51D005594C6 /* PitchSpellings.swift */,
-				07F6F1461CD7E7FF0026E89D /* PitchSpellingDyad.swift */,
-				071890F01CD9618600C5CD17 /* PitchSpellingDyad+CustomStringConvertible.swift */,
 				0752A53D1CD69BD0007C25AB /* IntervalQuality.swift */,
 				071890E71CD95BD600C5CD17 /* Dyad+PitchSpelling.swift */,
-				0752A53B1CD69BD0007C25AB /* DyadSpeller.swift */,
-				07BB2F691CDBB8C300DC4D7A /* DyadSpellerFactory.swift */,
-				07BB2F6C1CDBB9F900DC4D7A /* QuarterToneDyadSpeller.swift */,
-				07BB2F6F1CDBBA1300DC4D7A /* EighthToneDyadSpeller.swift */,
-				07BB2F721CDBBA2400DC4D7A /* HalfToneDyadSpeller.swift */,
 				076BAFEA1CD6B67F005594C6 /* SpelledPitchDyad.swift */,
 				0752A53C1CD69BD0007C25AB /* HorizontalitySpeller.swift */,
 				07F6F1491CD7F8310026E89D /* Sharpness.swift */,
