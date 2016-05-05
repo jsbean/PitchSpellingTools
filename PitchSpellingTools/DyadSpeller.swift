@@ -22,6 +22,7 @@ public class DyadSpeller: PitchSpeller {
         case multiple([PitchSpellingDyad])
     }
     
+    /*
     /**
      Spell with given `dyad` with the pitchSpellings found in the given `pitchSpellingDyad`.
 
@@ -32,6 +33,7 @@ public class DyadSpeller: PitchSpeller {
         try dyad.spellLower(with: pitchSpellingDyad.lower)
         try dyad.spellHigher(with: pitchSpellingDyad.higher)
     }
+    */
     
     /// All possible combinations of `PitchSpellings` of each `Pitch`
     internal let allPitchSpellingDyads: [PitchSpellingDyad]
@@ -40,6 +42,7 @@ public class DyadSpeller: PitchSpeller {
         return allPitchSpellingDyads.filter { $0.isStepPreserving }
     }
     
+    /// - warning: default implementation is `.none`. Must be overriden
     public var options: Result {
         return .none
     }
@@ -64,15 +67,41 @@ public class DyadSpeller: PitchSpeller {
         ).map { PitchSpellingDyad($0.0, $0.1) }
     }
     
-    // forcibly spell
+    /**
+     Spell the pitches in `dyad` with their default spellings. Often in the case that there is
+     no hope to spell the pitches agreeably.
+     
+     - throws: `PitchSpelling.Error` in the case the pitches in `dyad` are currently 
+     unspellable.
+     */
+    public func spellWithDefaultSpellings() throws {
+        try dyad.spellWithDefaultSpellings()
+    }
+    
+    /**
+     Spell `dyad` with the pitchSpellings found in the given `pitchSpellingDyad`.
+     
+     - throws: `PitchSpelling.Error.invalidSpellingForPitch` if either pitchSpelling in the
+     `pitchSpellingDyad` is unfit for the target pitch of `dyad`.
+     */
+    public func spell(with pitchSpellingDyad: PitchSpellingDyad) throws {
+        try dyad.spellLower(with: pitchSpellingDyad.lower)
+        try dyad.spellHigher(with: pitchSpellingDyad.higher)
+    }
+    
+    /**
+     Forcibly spell the pitches in `dyad`.
+     
+     - throws: `PitchSpeller.Error` if 
+     */
     public func spell() throws {
         switch options {
         case .none:
-            try dyad.spellWithDefaultSpellings()
+            try spellWithDefaultSpellings()
         case .single(let pitchSpellingDyad):
-            try DyadSpeller.spell(dyad, with: pitchSpellingDyad)
+            try spell(with: pitchSpellingDyad)
         case .multiple(let pitchSpellingDyads):
-            try DyadSpeller.spell(dyad, with: pitchSpellingDyads.first!)
+            try spell(with: pitchSpellingDyads.first!)
         }
     }
 }
