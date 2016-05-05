@@ -10,12 +10,15 @@ import Pitch
 
 internal struct DyadSpellerFactory {
     
-    internal static func makeDyadSpeller(forDyad dyad: Dyad) -> DyadSpeller? {
-        var classType: DyadSpeller.Type {
-            if dyad.hasEighthTone { return EighthToneDyadSpeller.self }
-            else if dyad.hasQuarterTone { return QuarterToneDyadSpeller.self }
-            else { return HalfToneDyadSpeller.self }
+    internal static func makeSpeller(forDyad dyad: Dyad) -> DyadSpeller? {
+        var classType: DyadSpeller.Type? {
+            switch dyad.finestResolution {
+            case 0.25: return EighthToneDyadSpeller.self
+            case 0.5: return QuarterToneDyadSpeller.self
+            case 1.0: return HalfToneDyadSpeller.self
+            default: return nil
+            }
         }
-        return classType.init(dyad: dyad)
+        return classType?.init(dyad: dyad)
     }
 }

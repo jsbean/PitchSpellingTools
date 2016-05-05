@@ -17,13 +17,17 @@ public class DyadSpeller: PitchSpeller {
     /// All possible combinations of `PitchSpellings` of each `Pitch`
     public let allPitchSpellingDyads: [PitchSpellingDyad]
     
+    public var stepPreservingPitchSpellingDyads: [PitchSpellingDyad] {
+        return allPitchSpellingDyads.filter { $0.isStepPreserving }
+    }
+    
     internal var dyad: Dyad
     
     /**
      Make a `DyadSpeller` of the best-suited subclass for the given `dyad`.
      */
-    public static func makeDyadSpeller(forDyad dyad: Dyad) -> DyadSpeller? {
-        return DyadSpellerFactory.makeDyadSpeller(forDyad: dyad)
+    public static func makeSpeller(forDyad dyad: Dyad) -> DyadSpeller? {
+        return DyadSpellerFactory.makeSpeller(forDyad: dyad)
     }
 
     /**
@@ -42,6 +46,11 @@ public class DyadSpeller: PitchSpeller {
      - warning: Not yet implemented!
      */
     public func spell() -> Dyad {
-        return dyad.canBeSpelledObjectively ? dyad.spelledWithDefaultSpellings() : dyad
+        print("allPitchSpellingDyads:")
+        allPitchSpellingDyads.forEach { print($0) }
+        print("step preserving:")
+        stepPreservingPitchSpellingDyads.forEach { print($0) }
+        
+        return dyad.canBeSpelledObjectively ? dyad.spelledWithDefaultSpellings() ?? dyad : dyad
     }
 }

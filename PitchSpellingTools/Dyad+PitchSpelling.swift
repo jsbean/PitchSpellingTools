@@ -18,14 +18,23 @@ extension Dyad {
         return higher.resolution == 0.5 || lower.resolution == 0.5
     }
     
+    public var finestResolution: Float {
+        return [higher.resolution, lower.resolution].minElement()!
+    }
+    
     public var canBeSpelledObjectively: Bool {
         return lower.canBeSpelledObjectively && higher.canBeSpelledObjectively
     }
     
-    public func spelledWithDefaultSpellings() -> Dyad {
+    public func spelledWithDefaultSpellings() -> Dyad? {
+        guard let lowerSpelling = lower.defaultPitchSpelling,
+            higherSpelling = higher.defaultPitchSpelling
+        else {
+            return nil
+        }
         return Dyad(
-            SpelledPitch(pitch: lower, spelling: lower.defaultPitchSpelling),
-            SpelledPitch(pitch: higher, spelling: higher.defaultPitchSpelling)
+            SpelledPitch(pitch: lower, spelling: lowerSpelling),
+            SpelledPitch(pitch: higher, spelling: higherSpelling)
         )
     }
 }

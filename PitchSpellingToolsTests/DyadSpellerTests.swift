@@ -12,6 +12,30 @@ import Pitch
 
 class DyadSpellerTests: XCTestCase {
 
+    func testFactoryHalfTone() {
+        let dyad = Dyad(Pitch(noteNumber: 61), Pitch(noteNumber: 68))
+        let speller = DyadSpeller.makeSpeller(forDyad: dyad)
+        XCTAssertTrue(speller is HalfToneDyadSpeller)
+    }
+    
+    func testFactoryQuarterTone() {
+        let dyad = Dyad(Pitch(noteNumber: 61), Pitch(noteNumber: 67.5))
+        let speller = DyadSpeller.makeSpeller(forDyad: dyad)
+        XCTAssertTrue(speller is QuarterToneDyadSpeller)
+    }
+    
+    func testFactoryEighthTone() {
+        let dyad = Dyad(Pitch(noteNumber: 61.25), Pitch(noteNumber: 67.5))
+        let speller = DyadSpeller.makeSpeller(forDyad: dyad)
+        XCTAssertTrue(speller is EighthToneDyadSpeller)
+    }
+    
+    func testFactoryNil() {
+        let dyad = Dyad(Pitch(noteNumber: 61.25), Pitch(noteNumber: 61.8))
+        let speller = DyadSpeller.makeSpeller(forDyad: dyad)
+        XCTAssertNil(speller)
+    }
+    
     func testPitchSpellingDyads() {
         let dyad = Dyad(Pitch(noteNumber: 61), Pitch(noteNumber: 68))
         let speller = DyadSpeller(dyad: dyad)
@@ -19,8 +43,6 @@ class DyadSpellerTests: XCTestCase {
     }
     
     func testSpellCGWithDefaults() {
-        //let dyad = Dyad(Pitch(noteNumber: 60), Pitch(noteNumber: 67))
-        //var speller = DyadSpeller(dyad: dyad)
-        //let spelledDyad = speller.spell()
+        
     }
 }
