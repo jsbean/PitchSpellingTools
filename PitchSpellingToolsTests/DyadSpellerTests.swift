@@ -43,6 +43,8 @@ class DyadSpellerTests: XCTestCase {
     }
     
     func testSpellCGWithDefaults() {
-        
+        let dyad = Dyad(Pitch(noteNumber: 61), Pitch(noteNumber: 68))
+        let speller = DyadSpeller(dyad: dyad)
+        speller.spell()
     }
 }

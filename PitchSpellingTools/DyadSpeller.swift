@@ -14,6 +14,16 @@ import Pitch
  */
 public class DyadSpeller: PitchSpeller {
     
+    internal enum Error: ErrorType {
+        case noStepPreservingPitchSpellingDyads
+    }
+    
+    public enum Result {
+        case none
+        case single(PitchSpelling)
+        case multiple([PitchSpelling])
+    }
+    
     /// All possible combinations of `PitchSpellings` of each `Pitch`
     public let allPitchSpellingDyads: [PitchSpellingDyad]
     
@@ -45,12 +55,14 @@ public class DyadSpeller: PitchSpeller {
     /**
      - warning: Not yet implemented!
      */
-    public func spell() -> Dyad {
-        print("allPitchSpellingDyads:")
+    public func spell() -> Result {
         allPitchSpellingDyads.forEach { print($0) }
         print("step preserving:")
-        stepPreservingPitchSpellingDyads.forEach { print($0) }
+        stepPreservingPitchSpellingDyads.forEach {
+            print("\($0): meanDistance: \($0.meanDistance)")
         
-        return dyad.canBeSpelledObjectively ? dyad.spelledWithDefaultSpellings() ?? dyad : dyad
+        }
+        return .none
+        //return dyad.canBeSpelledObjectively ? dyad.spelledWithDefaultSpellings() ?? dyad : dyad
     }
 }

@@ -6,9 +6,13 @@
 //
 //
 
-import Foundation
+import Pitch
 
 public class HalfToneDyadSpeller: DyadSpeller {
     
-    
+    public override func spell() -> Result {
+        guard let first = stepPreservingPitchSpellingDyads.first else { fatalError() }
+        
+        return .none
+    }
 }
