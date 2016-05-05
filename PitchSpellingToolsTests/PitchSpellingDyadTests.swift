@@ -66,4 +66,29 @@ class PitchSpellingDyadTests: XCTestCase {
         let dyad = PitchSpellingDyad(PitchSpelling(.c, .flat), PitchSpelling(.c))
         XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Unison.Augmented)
     }
+    
+    func testCEStepPreserving() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.e))
+        XCTAssertTrue(dyad.isStepPreserving)
+    }
+    
+    func testCEFlatStepPreserving() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.e, .flat))
+        XCTAssertTrue(dyad.isStepPreserving)
+    }
+    
+    func testCDFlatStepPreserving() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.d, .flat))
+        XCTAssertTrue(dyad.isStepPreserving)
+    }
+    
+    func testGSharpBFlatNotStepPreserving() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.g, .sharp), PitchSpelling(.b, .flat))
+        XCTAssertFalse(dyad.isStepPreserving)
+    }
+    
+    func testCSharpFNotStepPreserving() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.c, .sharp), PitchSpelling(.f))
+        XCTAssertFalse(dyad.isStepPreserving)
+    }
 }
