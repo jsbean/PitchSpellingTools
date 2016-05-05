@@ -48,7 +48,7 @@ class DyadSpellerTests: XCTestCase {
             XCTFail()
             return
         }
-        switch speller.spell() {
+        switch speller.options {
         case .none, .single: XCTFail()
         case .multiple: break
         }

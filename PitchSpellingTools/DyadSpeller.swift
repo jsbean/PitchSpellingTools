@@ -40,10 +40,14 @@ public class DyadSpeller: PitchSpeller {
         return allPitchSpellingDyads.filter { $0.isStepPreserving }
     }
     
+    public var options: Result {
+        return .none
+    }
+    
     internal var dyad: Dyad
     
     /**
-     Make a `DyadSpeller` of the best-suited subclass for the given `dyad`.
+     Make the best-suited subclass of `DyadSpeller` for the given `dyad`.
      */
     public static func makeSpeller(for dyad: Dyad) -> DyadSpeller? {
         return DyadSpellerFactory.makeSpeller(for: dyad)
@@ -59,11 +63,9 @@ public class DyadSpeller: PitchSpeller {
             dyad.higher.pitchSpellings
         ).map { PitchSpellingDyad($0.0, $0.1) }
     }
-
-    /**
-     - warning: Not yet implemented!
-     */
-    public func spell() -> Result {
-        return .none
+    
+    // forcibly spell
+    public func spell() throws {
+        
     }
 }

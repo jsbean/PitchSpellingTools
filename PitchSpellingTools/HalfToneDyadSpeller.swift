@@ -13,7 +13,7 @@ internal class HalfToneDyadSpeller: DyadSpeller {
     /**
      - returns: `DyadSpeller.Result`.
      */
-    internal override func spell() -> Result {
+    internal override var options: Result {
         let stepPreserving = allPitchSpellingDyads.filter { $0.isStepPreserving }
         switch stepPreserving.count {
         case 0: return .none

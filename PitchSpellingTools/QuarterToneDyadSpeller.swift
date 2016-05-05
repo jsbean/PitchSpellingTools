@@ -10,7 +10,7 @@ import Pitch
 
 internal class QuarterToneDyadSpeller: DyadSpeller {
     
-    internal override func spell() -> Result {
+    internal override var options: Result {
         return .none
     }
 }
