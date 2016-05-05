@@ -15,18 +15,10 @@ extension Dyad {
     }
     
     public func spelledWithDefaultSpellings() -> Dyad {
+        print("spelled with defaults")
         return Dyad(
             SpelledPitch(pitch: lower, spelling: lower.defaultPitchSpelling),
             SpelledPitch(pitch: higher, spelling: higher.defaultPitchSpelling)
-        )
-        
-    }
-    
-    // TODO / FIXME
-    public func spelled() -> Dyad {
-        return Dyad(
-            SpelledPitch(pitch: self.lower, spelling: PitchSpelling(.c)),
-            SpelledPitch(pitch: self.higher, spelling: PitchSpelling(.c))
         )
     }
 }

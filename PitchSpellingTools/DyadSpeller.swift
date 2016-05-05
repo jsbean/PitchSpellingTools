@@ -6,6 +6,7 @@
 //  Copyright © 2016 James Bean. All rights reserved.
 //
 
+import ArrayTools
 import Pitch
 
 /**
@@ -14,16 +15,16 @@ import Pitch
 public struct DyadSpeller: PitchSpeller {
     
     /// All possible combinations of `PitchSpellings` of each `Pitch`
-    public var allPitchSpellingDyads: [PitchSpellingDyad] {
-        return dyad.lower.pitchSpellings.reduce([]) { accum, lo in
-            accum + dyad.higher.pitchSpellings.map { hi in PitchSpellingDyad(lo, hi) }
-        }
-    }
+    public let allPitchSpellingDyads: [PitchSpellingDyad]
     
     private var dyad: Dyad
 
     public init(dyad: Dyad) {
         self.dyad = dyad
+        
+        self.allPitchSpellingDyads = combinations(
+            dyad.lower.pitchSpellings, dyad.higher.pitchSpellings
+        ).map { PitchSpellingDyad($0.0, $0.1) }
     }
     
     mutating public func spell() {

@@ -22,4 +22,8 @@ public class SpelledPitch: Pitch {
         self.spelling = spelling
         super.init(pitch: pitch)
     }
+    
+    public override var description: String {
+        return "\(super.description): \(spelling)"
+    }
 }

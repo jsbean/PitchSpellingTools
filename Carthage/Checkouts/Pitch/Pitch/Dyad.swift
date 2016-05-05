@@ -7,12 +7,12 @@
 //
 
 import Foundation
-import ArithmeticTools
+import func ArithmeticTools.ordered
 
 /**
  Collection of two pitches.
  */
-public struct Dyad {
+public struct Dyad: CustomStringConvertible {
     
     /// Lower of two `Pitch` values.
     public let lower: Pitch
@@ -31,4 +31,6 @@ public struct Dyad {
         self.lower = lower
         self.higher = higher
     }
+    
+    public var description: String { return "\(lower), \(higher)" }
 }

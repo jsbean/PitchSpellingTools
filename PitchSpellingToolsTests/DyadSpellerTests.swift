@@ -15,9 +15,13 @@ class DyadSpellerTests: XCTestCase {
     func testPitchSpellingDyads() {
         let dyad = Dyad(Pitch(noteNumber: 61), Pitch(noteNumber: 68))
         let speller = DyadSpeller(dyad: dyad)
-        print(speller.allPitchSpellingDyads)
-        for dyad in speller.allPitchSpellingDyads {
-            print("\(dyad): quality: \(dyad.intervalQuality)")
-        }
+        XCTAssertEqual(speller.allPitchSpellingDyads.count, 4)
+    }
+    
+    func testSpellCGWithDefaults() {
+        let dyad = Dyad(Pitch(noteNumber: 60), Pitch(noteNumber: 67))
+        print("dyad before: \(dyad)")
+        var speller = DyadSpeller(dyad: dyad)
+        speller.spell()
     }
 }

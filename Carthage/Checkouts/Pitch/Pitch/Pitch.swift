@@ -11,7 +11,7 @@ import Foundation
 /**
  Subjective psychoacoustical attribute of sound allowing ordering on a frequency-related scale.
  */
-public class Pitch {
+public class Pitch: CustomStringConvertible {
     
     // MARK - Type Properties
     
@@ -19,6 +19,8 @@ public class Pitch {
     public static let MiddleC = Pitch(noteNumber: 60)
     
     // MARK: - Instance Properties
+    
+    public var description: String { return "\(noteNumber)" }
     
     /// `NoteNumber` representation of `Pitch`.
     public let noteNumber: NoteNumber
