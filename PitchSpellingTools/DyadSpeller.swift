@@ -77,7 +77,11 @@ public class DyadSpeller: PitchSpeller {
     }
     
     /**
-     Forcibly spell the pitches in `dyad`.
+     Forcibly spell the pitches in `dyad`. In the case that no options are available wherein
+     the pitches in `dyad` can be spelled amicably, the pitches are spelled with the default
+     values. In the case that there are more than one options available wherein the pitches
+     can be spelled amicably, the `PitchSpellingDyad` with the least `meanDistance` value is
+     chosen.
      
      - throws: `PitchSpeller.Error` if 
      */
