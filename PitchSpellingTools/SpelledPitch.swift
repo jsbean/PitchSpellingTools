@@ -17,6 +17,8 @@ public class SpelledPitch: Pitch {
     
     /**
      Create a `SpelledPitch` with a given `pitch` and `spelling`.
+     
+     - TODO: ensure `PitchSpelling` is valid for given `pitch`.
      */
     public init(pitch: Pitch, spelling: PitchSpelling) {
         self.spelling = spelling

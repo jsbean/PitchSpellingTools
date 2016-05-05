@@ -23,11 +23,12 @@ public struct DyadSpeller: PitchSpeller {
         self.dyad = dyad
         
         self.allPitchSpellingDyads = combinations(
-            dyad.lower.pitchSpellings, dyad.higher.pitchSpellings
+            dyad.lower.pitchSpellings,
+            dyad.higher.pitchSpellings
         ).map { PitchSpellingDyad($0.0, $0.1) }
     }
     
-    mutating public func spell() {
-        if dyad.canBeSpelledObjectively { dyad = dyad.spelledWithDefaultSpellings() }
+    mutating public func spell() -> Dyad {
+        return dyad.canBeSpelledObjectively ? dyad.spelledWithDefaultSpellings() : dyad
     }
 }

@@ -33,4 +33,6 @@ extension PitchSpelling {
     public var sharpness: Sharpness {
         return PitchSpelling.sharpnessByPitchSpelling[self.quantized(to: .halfStep)] ?? 0
     }
+    
+    public var distance: Float { return abs(sharpness) }
 }

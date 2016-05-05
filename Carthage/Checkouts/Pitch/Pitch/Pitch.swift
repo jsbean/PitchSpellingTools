@@ -54,7 +54,7 @@ public class Pitch: CustomStringConvertible {
      */
     public init(pitch: Pitch) {
         self.frequency = pitch.frequency
-        self.noteNumber = NoteNumber(pitch.frequency)
+        self.noteNumber = NoteNumber(frequency: pitch.frequency)
     }
 }
 

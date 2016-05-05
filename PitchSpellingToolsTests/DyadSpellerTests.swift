@@ -19,9 +19,8 @@ class DyadSpellerTests: XCTestCase {
     }
     
     func testSpellCGWithDefaults() {
-        let dyad = Dyad(Pitch(noteNumber: 60), Pitch(noteNumber: 67))
-        print("dyad before: \(dyad)")
-        var speller = DyadSpeller(dyad: dyad)
-        speller.spell()
+        //let dyad = Dyad(Pitch(noteNumber: 60), Pitch(noteNumber: 67))
+        //var speller = DyadSpeller(dyad: dyad)
+        //let spelledDyad = speller.spell()
     }
 }

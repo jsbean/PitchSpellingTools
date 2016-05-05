@@ -8,24 +8,13 @@
 
 import Pitch
 
-/**
- - warning: Not yet implemented!
- */
 public protocol PitchSpeller {
     
 }
 
 extension PitchSpeller {
-    
-    /**
-     - warning: Not yet implemented!
-     
-     - returns: `PitchSpelling` for given `IntervalClass`. 
-        `nil` if `intervalClass` is not divisable by `0.25`.
-     */
-    public static func spellings(forIntervalClass intervalClass: IntervalClass)
-        -> [PitchSpelling]
-    {
-        return []
+
+    internal func spell(pitch: Pitch, withSpelling spelling: PitchSpelling) -> SpelledPitch? {
+        return SpelledPitch(pitch: pitch, spelling: spelling)
     }
 }
