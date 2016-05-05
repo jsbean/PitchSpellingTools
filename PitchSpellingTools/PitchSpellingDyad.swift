@@ -35,8 +35,7 @@ public struct PitchSpellingDyad {
      */
     public var isFineMatching: Bool { return lower.fine == higher.fine }
     
-    /// - warning: Not yet implemented!
-    public var isStepPreserving: Bool { return false }
+    public var isStepPreserving: Bool { return intervalQuality.isStepPreserving }
     
     /// Mean of `distance` values of both `PitchSpelling` objects.
     public var meanDistance: Float { return [lower.distance, higher.distance].mean! }

@@ -352,4 +352,22 @@ public enum IntervalQualityKind: String {
     case MinorSeventh = "m7"
     case MajorSeventh = "M7"
     case AugmentedSeventh = "A7"
+    
+    internal static var stepPreserving: [IntervalQualityKind] = [
+        .PerfectUnison,
+        .MinorSecond,
+        .MajorSecond,
+        .MinorThird,
+        .MajorThird,
+        .PerfectFourth,
+        .PerfectFifth,
+        .MinorSixth,
+        .MajorSixth,
+        .MinorSeventh,
+        .MajorSeventh
+    ]
+    
+    public var isStepPreserving: Bool {
+        return IntervalQualityKind.stepPreserving.contains(self)
+    }
 }
