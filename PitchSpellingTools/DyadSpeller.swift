@@ -22,19 +22,6 @@ public class DyadSpeller: PitchSpeller {
         case multiple([PitchSpellingDyad])
     }
     
-    /*
-    /**
-     Spell with given `dyad` with the pitchSpellings found in the given `pitchSpellingDyad`.
-
-     - throws: `PitchSpelling.Error.invalidSpellingForPitch` if either pitchSpelling in the
-     `pitchSpellingDyad` is unfit for the target pitch of the `dyad`.
-     */
-    public static func spell(dyad: Dyad, with pitchSpellingDyad: PitchSpellingDyad) throws {
-        try dyad.spellLower(with: pitchSpellingDyad.lower)
-        try dyad.spellHigher(with: pitchSpellingDyad.higher)
-    }
-    */
-    
     /// All possible combinations of `PitchSpellings` of each `Pitch`
     internal let allPitchSpellingDyads: [PitchSpellingDyad]
     
