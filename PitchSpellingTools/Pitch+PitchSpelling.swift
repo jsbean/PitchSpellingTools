@@ -19,4 +19,8 @@ extension Pitch {
     public var defaultPitchSpelling: PitchSpelling {
         return PitchSpellings.defaultSpelling(forPitchClass: pitchClass)!
     }
+    
+    public var resolution: Float {
+        return noteNumber % 1 == 0 ? 1.0 : noteNumber % 0.5 == 0 ? 0.5 : 0.25
+    }
 }

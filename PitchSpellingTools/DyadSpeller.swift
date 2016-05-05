@@ -12,14 +12,14 @@ import Pitch
 /**
  - warning: Not yet implemented!
  */
-public struct DyadSpeller: PitchSpeller {
+public class DyadSpeller: PitchSpeller {
     
     /// All possible combinations of `PitchSpellings` of each `Pitch`
     public let allPitchSpellingDyads: [PitchSpellingDyad]
     
     private var dyad: Dyad
 
-    public init(dyad: Dyad) {
+    public required init(dyad: Dyad) {
         self.dyad = dyad
         
         self.allPitchSpellingDyads = combinations(
@@ -28,7 +28,10 @@ public struct DyadSpeller: PitchSpeller {
         ).map { PitchSpellingDyad($0.0, $0.1) }
     }
     
-    mutating public func spell() -> Dyad {
+    /**
+     - warning: Not yet implemented!
+     */
+    public func spell() -> Dyad {
         return dyad.canBeSpelledObjectively ? dyad.spelledWithDefaultSpellings() : dyad
     }
 }
