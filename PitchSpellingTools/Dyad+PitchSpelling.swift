@@ -12,6 +12,7 @@ extension Dyad {
     
     public enum Error: ErrorType {
         case pitchNotFound
+        case cannotSpellPitches
     }
     
     public var hasEighthTone: Bool {
@@ -30,16 +31,14 @@ extension Dyad {
         return lower.canBeSpelledObjectively && higher.canBeSpelledObjectively
     }
     
-    public func spelledWithDefaultSpellings() -> Dyad? {
+    public func spellWithDefaultSpellings() throws {
         guard let lowerSpelling = lower.defaultPitchSpelling,
             higherSpelling = higher.defaultPitchSpelling
         else {
-            return nil
+            throw Error.cannotSpellPitches
         }
-        return Dyad(
-            SpelledPitch(pitch: lower, spelling: lowerSpelling),
-            SpelledPitch(pitch: higher, spelling: higherSpelling)
-        )
+        try spellLower(with: lowerSpelling)
+        try spellHigher(with: higherSpelling)
     }
     
     public func spellHigher(with spelling: PitchSpelling) throws {

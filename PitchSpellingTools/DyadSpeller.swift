@@ -66,6 +66,13 @@ public class DyadSpeller: PitchSpeller {
     
     // forcibly spell
     public func spell() throws {
-        
+        switch options {
+        case .none:
+            try dyad.spellWithDefaultSpellings()
+        case .single(let pitchSpellingDyad):
+            try DyadSpeller.spell(dyad, with: pitchSpellingDyad)
+        case .multiple(let pitchSpellingDyads):
+            try DyadSpeller.spell(dyad, with: pitchSpellingDyads.first!)
+        }
     }
 }
