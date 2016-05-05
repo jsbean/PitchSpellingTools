@@ -8,12 +8,13 @@
 
 import Pitch
 
+// TODO: make class ?
 public protocol PitchSpeller {
     
 }
 
 extension PitchSpeller {
-
+    
     internal func spell(pitch: Pitch, with spelling: PitchSpelling) -> SpelledPitch? {
         return SpelledPitch(pitch: pitch, spelling: spelling)
     }

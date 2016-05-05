@@ -8,11 +8,4 @@
 
 import Pitch
 
-public class EighthToneDyadSpeller: DyadSpeller {
-    
-    public override func spell() -> Result {
-        return .none
-    }
-    
-    
-}
+public class EighthToneDyadSpeller: DyadSpeller { }

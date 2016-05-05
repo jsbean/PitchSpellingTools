@@ -10,6 +10,10 @@ import Pitch
 
 extension Dyad {
     
+    public enum Error: ErrorType {
+        case pitchNotFound
+    }
+    
     public var hasEighthTone: Bool {
         return higher.resolution == 0.25 || lower.resolution == 0.25
     }
@@ -36,5 +40,13 @@ extension Dyad {
             SpelledPitch(pitch: lower, spelling: lowerSpelling),
             SpelledPitch(pitch: higher, spelling: higherSpelling)
         )
+    }
+    
+    public func spellHigher(with spelling: PitchSpelling) throws {
+        try higher.spell(with: spelling)
+    }
+    
+    public func spellLower(with spelling: PitchSpelling) throws {
+        try lower.spell(with: spelling)
     }
 }

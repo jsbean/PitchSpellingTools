@@ -13,21 +13,30 @@ import Pitch
  - warning: Not yet implemented!
  */
 public class DyadSpeller: PitchSpeller {
-    
-    internal enum Error: ErrorType {
-        case noStepPreservingPitchSpellingDyads
-    }
+
+    public enum Error: ErrorType { case error } // refine }
     
     public enum Result {
         case none
-        case single(PitchSpelling)
-        case multiple([PitchSpelling])
+        case single(PitchSpellingDyad)
+        case multiple([PitchSpellingDyad])
+    }
+    
+    /**
+     Spell with given `dyad` with the pitchSpellings found in the given `pitchSpellingDyad`.
+
+     - throws: `PitchSpelling.Error.invalidSpellingForPitch` if either pitchSpelling in the
+     `pitchSpellingDyad` is unfit for the target pitch of the `dyad`.
+     */
+    public static func spell(dyad: Dyad, with pitchSpellingDyad: PitchSpellingDyad) throws {
+        try dyad.spellLower(with: pitchSpellingDyad.lower)
+        try dyad.spellHigher(with: pitchSpellingDyad.higher)
     }
     
     /// All possible combinations of `PitchSpellings` of each `Pitch`
     public let allPitchSpellingDyads: [PitchSpellingDyad]
     
-    public var stepPreservingPitchSpellingDyads: [PitchSpellingDyad] {
+    internal var stepPreservingPitchSpellingDyads: [PitchSpellingDyad] {
         return allPitchSpellingDyads.filter { $0.isStepPreserving }
     }
     
@@ -51,18 +60,11 @@ public class DyadSpeller: PitchSpeller {
             dyad.higher.pitchSpellings
         ).map { PitchSpellingDyad($0.0, $0.1) }
     }
-    
+
     /**
      - warning: Not yet implemented!
      */
     public func spell() -> Result {
-        allPitchSpellingDyads.forEach { print($0) }
-        print("step preserving:")
-        stepPreservingPitchSpellingDyads.forEach {
-            print("\($0): meanDistance: \($0.meanDistance)")
-        
-        }
         return .none
-        //return dyad.canBeSpelledObjectively ? dyad.spelledWithDefaultSpellings() ?? dyad : dyad
     }
 }

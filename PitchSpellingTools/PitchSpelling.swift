@@ -6,10 +6,16 @@
 //  Copyright © 2016 James Bean. All rights reserved.
 //
 
+import Pitch
+
 /**
  Spelled representation of a `Pitch`.
  */
 public struct PitchSpelling {
+    
+    public enum Error: ErrorType {
+        case invalidSpellingForPitch(Pitch, PitchSpelling)
+    }
     
     /// LetterName of a `PitchSpelling`.
     public let letterName: LetterName
@@ -43,6 +49,10 @@ public struct PitchSpelling {
         self.letterName = letterName
         self.coarse = coarse
         self.fine = fine
+    }
+    
+    public func isValid(for pitch: Pitch) -> Bool {
+        return pitch.pitchSpellings.contains(self)
     }
 }
 

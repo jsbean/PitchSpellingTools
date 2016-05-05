@@ -11,8 +11,11 @@ import Pitch
 public class HalfToneDyadSpeller: DyadSpeller {
     
     public override func spell() -> Result {
-        guard let first = stepPreservingPitchSpellingDyads.first else { fatalError() }
-        
-        return .none
+        let stepPreserving = allPitchSpellingDyads.filter { $0.isStepPreserving }
+        switch stepPreserving.count {
+        case 0: return .none
+        case 1: return .single(stepPreserving.first!)
+        default: return .multiple(stepPreserving.sort { $0.meanDistance < $1.meanDistance })
+        }
     }
 }
