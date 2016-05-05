@@ -34,7 +34,7 @@ public class DyadSpeller: PitchSpeller {
     }
     
     /// All possible combinations of `PitchSpellings` of each `Pitch`
-    public let allPitchSpellingDyads: [PitchSpellingDyad]
+    internal let allPitchSpellingDyads: [PitchSpellingDyad]
     
     internal var stepPreservingPitchSpellingDyads: [PitchSpellingDyad] {
         return allPitchSpellingDyads.filter { $0.isStepPreserving }
@@ -45,8 +45,8 @@ public class DyadSpeller: PitchSpeller {
     /**
      Make a `DyadSpeller` of the best-suited subclass for the given `dyad`.
      */
-    public static func makeSpeller(forDyad dyad: Dyad) -> DyadSpeller? {
-        return DyadSpellerFactory.makeSpeller(forDyad: dyad)
+    public static func makeSpeller(for dyad: Dyad) -> DyadSpeller? {
+        return DyadSpellerFactory.makeSpeller(for: dyad)
     }
 
     /**
@@ -54,7 +54,6 @@ public class DyadSpeller: PitchSpeller {
      */
     public required init(dyad: Dyad) {
         self.dyad = dyad
-        
         self.allPitchSpellingDyads = combinations(
             dyad.lower.pitchSpellings,
             dyad.higher.pitchSpellings

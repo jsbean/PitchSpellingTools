@@ -10,6 +10,11 @@ import Pitch
 
 public class HalfToneDyadSpeller: DyadSpeller {
     
+    /**
+     <#Description#>
+     
+     - returns: <#return value description#>
+     */
     public override func spell() -> Result {
         let stepPreserving = allPitchSpellingDyads.filter { $0.isStepPreserving }
         switch stepPreserving.count {

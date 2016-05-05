@@ -10,7 +10,7 @@ import Pitch
 
 internal struct DyadSpellerFactory {
     
-    internal static func makeSpeller(forDyad dyad: Dyad) -> DyadSpeller? {
+    internal static func makeSpeller(for dyad: Dyad) -> DyadSpeller? {
         var classType: DyadSpeller.Type? {
             switch dyad.finestResolution {
             case 0.25: return EighthToneDyadSpeller.self
