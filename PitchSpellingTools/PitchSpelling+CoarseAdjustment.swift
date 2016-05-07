@@ -10,6 +10,8 @@ import Foundation
 
 extension PitchSpelling {
     
+    // MARK: - Coarse Adjustment
+    
     /**
      Coarse resolution component of a `PitchSpelling`.
      Analogous to the body of an accidental.

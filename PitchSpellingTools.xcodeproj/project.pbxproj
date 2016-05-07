@@ -274,12 +274,12 @@
 			isa = PBXGroup;
 			children = (
 				0752A5411CD69BD0007C25AB /* PitchSpelling.swift */,
-				071890ED1CD9614800C5CD17 /* PitchSpelling+CustomStringConvertible.swift */,
 				078175021CD8F5BD00AAB396 /* PitchSpelling+LetterName.swift */,
 				078175051CD8F5F000AAB396 /* PitchSpelling+CoarseAdjustment.swift */,
 				0781750B1CD8F67C00AAB396 /* PitchSpelling+FineAdjustment.swift */,
 				078175081CD8F64500AAB396 /* PitchSpelling+Resolution.swift */,
 				0781750E1CD8F69700AAB396 /* PitchSpelling+Sharpness.swift */,
+				071890ED1CD9614800C5CD17 /* PitchSpelling+CustomStringConvertible.swift */,
 			);
 			name = PitchSpelling;
 			sourceTree = "<group>";

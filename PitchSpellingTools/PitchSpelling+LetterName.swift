@@ -10,6 +10,8 @@ import Foundation
 
 extension PitchSpelling {
     
+    // MARK: - LetterName
+    
     /**
      Letter name component of a `PitchSpelling`
      */

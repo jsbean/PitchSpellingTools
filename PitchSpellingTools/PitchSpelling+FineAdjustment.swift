@@ -10,6 +10,8 @@ import Foundation
 
 extension PitchSpelling {
     
+    // MARK: - Fine Adjustment
+    
     /**
      Fine resolution component of a `PitchSpelling`.
      Analogous to an up or down (or lack of) arrow of an accidental.

@@ -13,6 +13,8 @@ import Pitch
  */
 public struct PitchSpelling {
     
+    // MARK: - Errors
+    
     /**
      Errors possible when attempting to spell a `Pitch`.
      */
@@ -23,6 +25,8 @@ public struct PitchSpelling {
         case invalidSpelling(Pitch, PitchSpelling)
     }
     
+    // MARK: - Instance Properties
+    
     /// LetterName of a `PitchSpelling`.
     public let letterName: LetterName
     
@@ -32,8 +36,10 @@ public struct PitchSpelling {
     /// Coarse resolution of a `PitchSpelling`.
     public let coarse: CoarseAdjustment
     
+    // MARK: - Initializers
+    
     /**
-     Create a `PitchSpelling`.
+     Create a `PitchSpelling` (with argument labels).
      */
     public init(
         letterName: LetterName,
@@ -47,7 +53,7 @@ public struct PitchSpelling {
     }
     
     /**
-     Create a `PitchSpelling`.
+     Create a `PitchSpelling` (without argument labels).
      */
     public init(
         _ letterName: LetterName,
@@ -59,6 +65,8 @@ public struct PitchSpelling {
         self.coarse = coarse
         self.fine = fine
     }
+
+    // MARK: - Instance Methods
     
     /**
      - returns: `true` if this `PitchSpelling` can be applied to the given `Pitch`.
