@@ -36,7 +36,7 @@ public class DyadSpeller: PitchSpeller {
         return allPitchSpellingDyads.filter { $0.isStepPreserving }
     }
     
-    /// - warning: default implementation is `.none`. Must be overriden
+    /// - warning: Default implementation is `.none`. Must be overriden.
     public var options: Result {
         return .none
     }
