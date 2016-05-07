@@ -83,7 +83,7 @@ public class DyadSpeller: PitchSpeller {
      can be spelled amicably, the `PitchSpellingDyad` with the least `meanDistance` value is
      chosen.
      
-     - throws: `PitchSpeller.Error` if 
+     - throws: `PitchSpeller.Error` if
      */
     public func spell() throws {
         switch options {

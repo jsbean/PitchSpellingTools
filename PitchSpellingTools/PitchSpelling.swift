@@ -14,7 +14,7 @@ import Pitch
 public struct PitchSpelling {
     
     public enum Error: ErrorType {
-        case invalidSpellingForPitch(Pitch, PitchSpelling)
+        case invalidSpelling(Pitch, PitchSpelling)
     }
     
     /// LetterName of a `PitchSpelling`.
