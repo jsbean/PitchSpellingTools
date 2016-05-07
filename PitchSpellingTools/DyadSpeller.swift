@@ -9,16 +9,23 @@
 import ArrayTools
 import Pitch
 
-/**
- - warning: Not yet implemented!
- */
+/// Applies `PitchSpelling` objects to the pitches in a `Dyad`.
 public class DyadSpeller: PitchSpeller {
 
     public enum Error: ErrorType { case error } // refine
     
+    /**
+     Result from an attempt to spell a `Dyad`.
+     */
     public enum Result {
+        
+        /// No `PitchSpellingDyad` objects found fulfilling given requirements.
         case none
+        
+        /// Single `PitchSpellingDyad` object found fulfilling given requirements.
         case single(PitchSpellingDyad)
+        
+        /// Multiple `PitchSpellingDyad` objects found fulfilling given requirements.
         case multiple([PitchSpellingDyad])
     }
     
