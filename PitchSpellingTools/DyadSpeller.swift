@@ -43,6 +43,8 @@ public class DyadSpeller: PitchSpeller {
     
     internal var dyad: Dyad
     
+    // MARK: - Type Methods
+    
     /**
      Make the best-suited subclass of `DyadSpeller` for the given `dyad`.
      */
@@ -50,6 +52,8 @@ public class DyadSpeller: PitchSpeller {
         return DyadSpellerFactory.makeSpeller(for: dyad)
     }
 
+    // MARK: - Initializers
+    
     /**
      Create a `DyadSpeller` for the given `dyad`.
      */
@@ -60,6 +64,8 @@ public class DyadSpeller: PitchSpeller {
             dyad.higher.pitchSpellings
         ).map { PitchSpellingDyad($0.0, $0.1) }
     }
+    
+    // MARK: - Instance Methods
     
     /**
      Spell the pitches in `dyad` with their default spellings. Often in the case that there is
