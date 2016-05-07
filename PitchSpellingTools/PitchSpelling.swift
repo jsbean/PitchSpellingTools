@@ -13,7 +13,13 @@ import Pitch
  */
 public struct PitchSpelling {
     
+    /**
+     Errors possible when attempting to spell a `Pitch`.
+     */
     public enum Error: ErrorType {
+        /**
+         If the a given `PitchSpelling` is not applicable to the given `Pitch`.
+         */
         case invalidSpelling(Pitch, PitchSpelling)
     }
     
@@ -40,6 +46,9 @@ public struct PitchSpelling {
         self.fine = fine
     }
     
+    /**
+     Create a `PitchSpelling`.
+     */
     public init(
         _ letterName: LetterName,
         _ coarse: CoarseAdjustment = .natural,
@@ -51,6 +60,10 @@ public struct PitchSpelling {
         self.fine = fine
     }
     
+    /**
+     - returns: `true` if this `PitchSpelling` can be applied to the given `Pitch`.
+     Otherwise, `false`.
+     */
     public func isValid(for pitch: Pitch) -> Bool {
         return pitch.pitchSpellings.contains(self)
     }
