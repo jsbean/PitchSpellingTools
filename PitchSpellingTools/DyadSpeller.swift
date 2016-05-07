@@ -29,14 +29,18 @@ public class DyadSpeller: PitchSpeller {
         case multiple([PitchSpellingDyad])
     }
     
-    /// All possible combinations of `PitchSpellings` of each `Pitch`
+    // All possible combinations of `PitchSpellings` of each `Pitch`
     internal let allPitchSpellingDyads: [PitchSpellingDyad]
     
     internal var stepPreservingPitchSpellingDyads: [PitchSpellingDyad] {
         return allPitchSpellingDyads.filter { $0.isStepPreserving }
     }
     
-    /// - warning: Default implementation is `.none`. Must be overriden.
+    /**
+     `Result` with the
+     
+     - warning: Default implementation is `.none`. Must be overriden.
+     */
     public var options: Result {
         return .none
     }
@@ -69,7 +73,7 @@ public class DyadSpeller: PitchSpeller {
     
     /**
      Spell the pitches in `dyad` with their default spellings. Often in the case that there is
-     no hope to spell the pitches agreeably.
+     no hope to spell the pitches amicably.
      
      - throws: `PitchSpelling.Error` in the case the pitches in `dyad` are currently 
      unspellable.
@@ -90,13 +94,18 @@ public class DyadSpeller: PitchSpeller {
     }
     
     /**
-     Forcibly spell the pitches in `dyad`. In the case that no options are available wherein
-     the pitches in `dyad` can be spelled amicably, the pitches are spelled with the default
-     values. In the case that there are more than one options available wherein the pitches
-     can be spelled amicably, the `PitchSpellingDyad` with the least `meanDistance` value is
-     chosen.
+     Forcibly spell the pitches in `dyad`. 
      
-     - throws: `PitchSpeller.Error` if
+     In the case that no options are available wherein
+     the pitches in `dyad` can be spelled amicably, 
+     the pitches are spelled with the default values.
+     
+     In the case that there are more than one options available wherein 
+     the pitches can be spelled amicably, 
+     the `PitchSpellingDyad` with the least `meanDistance` value is chosen.
+     
+     - throws: `PitchSpeller.Error` if either `Pitch` cannot be spelled with the available
+     `PitchSpelling` object.
      */
     public func spell() throws {
         switch options {
