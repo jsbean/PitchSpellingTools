@@ -73,7 +73,7 @@ public struct PitchSpelling {
      Otherwise, `false`.
      */
     public func isValid(for pitch: Pitch) -> Bool {
-        return pitch.pitchSpellings.contains(self)
+        return pitch.spellings.contains(self)
     }
 }
 

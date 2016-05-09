@@ -32,8 +32,8 @@ extension Dyad {
     }
     
     public func spellWithDefaultSpellings() throws {
-        guard let lowerSpelling = lower.defaultPitchSpelling,
-            higherSpelling = higher.defaultPitchSpelling
+        guard let lowerSpelling = lower.defaultSpelling,
+            higherSpelling = higher.defaultSpelling
         else {
             throw Error.cannotSpellPitches
         }

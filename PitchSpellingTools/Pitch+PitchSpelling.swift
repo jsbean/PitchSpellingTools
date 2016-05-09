@@ -16,15 +16,15 @@ extension Pitch {
      >`Pitch(noteNumber: 60) // => true (.c, .natural)`
      >`Pitch(noteNumber: 68) // => false (.a, .flat) / (.g, .sharp)`
      */
-    public var canBeSpelledObjectively: Bool { return pitchSpellings.count == 1 }
+    public var canBeSpelledObjectively: Bool { return spellings.count == 1 }
  
     /// All `PitchSpelling` structures available for this `Pitch`.
-    public var pitchSpellings: [PitchSpelling] {
+    public var spellings: [PitchSpelling] {
         return PitchSpellings.spellings(forPitchClass: pitchClass) ?? []
     }
     
     /// The first available `PitchSpelling` for this `Pitch`, if present. Otherwise `nil`.
-    public var defaultPitchSpelling: PitchSpelling? {
+    public var defaultSpelling: PitchSpelling? {
         return PitchSpellings.defaultSpelling(forPitchClass: pitchClass)
     }
     
