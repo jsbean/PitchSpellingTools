@@ -28,18 +28,18 @@ public class IntervalQuality: EnumTree {
     private static let intervalQualityKindByIntervalClass:
         [IntervalClass: [IntervalQualityKind]] =
     [
-        00: [.PerfectUnison, .AugmentedSeventh],
-        01: [.MinorSecond, .AugmentedUnison],
-        02: [.MajorSecond, .DiminishedThird],
-        03: [.MinorThird, .AugmentedSecond],
-        04: [.MajorThird, .DiminishedFourth],
-        05: [.PerfectFourth, .AugmentedThird],
-        06: [.DiminishedFifth, .AugmentedFourth],
-        07: [.PerfectFifth, .DiminishedFifth],
-        08: [.MinorSixth, .AugmentedFifth],
-        09: [.MajorSixth, .DiminishedSeventh],
-        10: [.MinorSeventh, .AugmentedSixth],
-        11: [.MajorSeventh, .DiminishedUnison],
+        00.0: [.PerfectUnison, .AugmentedSeventh],
+        01.0: [.MinorSecond, .AugmentedUnison],
+        02.0: [.MajorSecond, .DiminishedThird],
+        03.0: [.MinorThird, .AugmentedSecond],
+        04.0: [.MajorThird, .DiminishedFourth],
+        05.0: [.PerfectFourth, .AugmentedThird],
+        06.0: [.DiminishedFifth, .AugmentedFourth],
+        07.0: [.PerfectFifth, .DiminishedFifth],
+        08.0: [.MinorSixth, .AugmentedFifth],
+        09.0: [.MajorSixth, .DiminishedSeventh],
+        10.0: [.MinorSeventh, .AugmentedSixth],
+        11.0: [.MajorSeventh, .DiminishedUnison],
     ]
     
     // MARK: - Interval Families

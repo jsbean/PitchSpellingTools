@@ -10,7 +10,7 @@ import Pitch
 
 internal struct PitchSpellings {
     
-    private static let spellingsByPitchClass: [PitchClass: [PitchSpelling]] = [
+    private static let spellingsByPitchClass: [PitchClass: Set<PitchSpelling>] = [
         
         00.00: [
             PitchSpelling(.c, .natural, .none)
@@ -250,7 +250,9 @@ internal struct PitchSpellings {
         ]
     ]
     
-    internal static func spellings(forPitchClass pitchClass: PitchClass) -> [PitchSpelling]? {
+    internal static func spellings(forPitchClass pitchClass: PitchClass)
+        -> Set<PitchSpelling>?
+    {
         return PitchSpellings.spellingsByPitchClass[pitchClass]
     }
     

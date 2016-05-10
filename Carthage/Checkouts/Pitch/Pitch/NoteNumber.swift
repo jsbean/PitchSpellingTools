@@ -7,39 +7,38 @@
 //
 
 import Foundation
+import ArithmeticTools
 
-/** 
- MIDI specification Note Number.
- 
- >Middle-c (c4) has the `NoteNumber` `60`. The octave above (c5), has the `NoteNumber` `72`.
- 
- Microtonal intervals are represented with decimal values:
- 
- >The quarter-tone value above middle-c has the `NoteNumber` `60.5`
+/**
+ MIDI equivalent nn. 60.0 = middle-c.
  */
-public typealias NoteNumber = Float
+public struct NoteNumber: FloatWrapping {
+    
+    public let value: Float
 
-extension NoteNumber {
+    public init(floatLiteral value: Float) {
+        self.value = value
+    }
+    
+    public init(integerLiteral value: Int) {
+        self.value = Float(value)
+    }
     
     /**
      Create a `NoteNumber` with `Frequency` value.
-    */
-    public init(frequency: Frequency) {
-        self = 69.0 + (12.0 * (log(frequency / 440.0)/log(2.0)))
+     */
+    public init(_ frequency: Frequency) {
+        self.value = 69.0 + (12.0 * (log(frequency.value / 440.0)/log(2.0)))
     }
-}
-
-/**
- Quantize a given `NoteNumber` value to the desired `resolution`.
  
- - `1`: quantize to a half-tone
- - `0.5`: quantize to a quarter-tone
- - `0.25`: quantize to an eighth-tone
- 
- - returns: `NoteNumber` that is quantized to the desired `resolution`.
- */
-public func quantize(noteNumber noteNumber: NoteNumber, toResolution resolution: Float)
-    -> NoteNumber
-{
-    return round(noteNumber / resolution) * resolution
+    /**
+     - `1`: quantize to a half-tone
+     - `0.5`: quantize to a quarter-tone
+     - `0.25`: quantize to an eighth-tone
+     
+     - returns: `NoteNumber` that is quantized to the desired `resolution`.
+     */
+    public func quantized(to resolution: Float) -> NoteNumber {
+        return NoteNumber(floatLiteral: round(value / resolution) * resolution)
+    }
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2016 James Bean. All rights reserved.
 //
 
-import Foundation
+import ArithmeticTools
 
 /**
  Subjective psychoacoustical attribute of sound allowing ordering on a frequency-related scale.
@@ -16,7 +16,7 @@ public class Pitch: CustomStringConvertible {
     // MARK - Type Properties
     
     /// Middle C.
-    public static let MiddleC = Pitch(noteNumber: 60)
+    public static let middleC = Pitch(noteNumber: 60.0)
     
     // MARK: - Instance Properties
     
@@ -38,7 +38,8 @@ public class Pitch: CustomStringConvertible {
      */
     public init(noteNumber: NoteNumber) {
         self.noteNumber = noteNumber
-        self.frequency = Frequency(noteNumber: noteNumber)
+        self.frequency = Frequency(noteNumber)
+        
     }
     
     /**
@@ -46,7 +47,7 @@ public class Pitch: CustomStringConvertible {
      */
     public init(frequency: Frequency) {
         self.frequency = frequency
-        self.noteNumber = NoteNumber(frequency: frequency)
+        self.noteNumber = NoteNumber(frequency)
     }
     
     /**
@@ -54,17 +55,15 @@ public class Pitch: CustomStringConvertible {
      */
     public init(pitch: Pitch) {
         self.frequency = pitch.frequency
-        self.noteNumber = NoteNumber(frequency: pitch.frequency)
+        self.noteNumber = NoteNumber(pitch.frequency)
     }
 }
 
-extension Pitch: Equatable { }
+extension Pitch: Comparable { }
 
 public func == (lhs: Pitch, rhs: Pitch) -> Bool {
     return lhs.noteNumber == rhs.noteNumber
 }
-
-extension Pitch: Comparable { }
 
 public func < (lhs: Pitch, rhs: Pitch) -> Bool {
     return lhs.noteNumber < rhs.noteNumber

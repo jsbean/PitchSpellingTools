@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ - warning: Not yet implemented!
+ */
 public struct Verticality {
     
     public var pitches: [Pitch] = []

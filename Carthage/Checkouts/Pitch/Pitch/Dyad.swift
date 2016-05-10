@@ -21,7 +21,7 @@ public struct Dyad: CustomStringConvertible {
     public let higher: Pitch
     
     /// `Interval` between two `Pitch` values.
-    public var interval: Interval { return Interval(self) }
+    public var interval: Interval { return Interval(dyad: self) }
     
     /**
      Create a `Dyad` with two `Pitch` values.
@@ -33,4 +33,10 @@ public struct Dyad: CustomStringConvertible {
     }
     
     public var description: String { return "\(lower), \(higher)" }
+}
+
+extension Dyad: Equatable { }
+
+public func == (lhs: Dyad, rhs: Dyad) -> Bool {
+    return lhs.lower == rhs.lower && lhs.higher == rhs.higher
 }

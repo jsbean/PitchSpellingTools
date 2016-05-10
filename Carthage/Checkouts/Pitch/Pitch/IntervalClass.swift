@@ -6,17 +6,23 @@
 //  Copyright © 2016 James Bean. All rights reserved.
 //
 
-import Foundation
+import ArithmeticTools
 
 /// Modulo 12 representation of an `Interval` value.
-public typealias IntervalClass = Float
-
-public extension IntervalClass {
-
-    /**
-     Create an `IntervalClass` with an `Interval`
-     */
+public struct IntervalClass: FloatWrapping {
+    
+    public let value: Float
+    
+    public init(floatLiteral value: Float) {
+        self.value = value
+    }
+    
+    public init(integerLiteral value: Int) {
+        self.value = Float(value)
+    }
+    
+    /// Create an `IntervalClass` with an `Interval`.
     public init(_ interval: Interval) {
-        self = interval % 12.0
+        self.value = interval.value % 12.0
     }
 }

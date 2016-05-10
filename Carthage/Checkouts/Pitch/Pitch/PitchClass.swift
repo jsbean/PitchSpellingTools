@@ -6,17 +6,24 @@
 //  Copyright © 2016 James Bean. All rights reserved.
 //
 
-import Foundation
+import ArithmeticTools
 
-/// Modulo 12 representation of `NoteNumber` representation of `Pitch`.
-public typealias PitchClass = Float
-
-extension PitchClass {
+/**
+ <#Description#>
+ */
+public struct PitchClass: FloatWrapping {
     
-    /**
-     Create a `PitchClass` with a `Pitch`.
-     */
+    public let value: Float
+    
+    public init(floatLiteral: Float) {
+        self.value = floatLiteral % 12.0
+    }
+    
+    public init(integerLiteral value: Int) {
+        self.value = Float(value) % 12.0
+    }
+    
     public init(_ pitch: Pitch) {
-        self = pitch.noteNumber % 12.0
+        self.value = pitch.noteNumber.value % 12.0
     }
 }

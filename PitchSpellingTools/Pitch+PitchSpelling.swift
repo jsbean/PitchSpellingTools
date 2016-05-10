@@ -19,7 +19,7 @@ extension Pitch {
     public var canBeSpelledObjectively: Bool { return spellings.count == 1 }
  
     /// All `PitchSpelling` structures available for this `Pitch`.
-    public var spellings: [PitchSpelling] {
+    public var spellings: Set<PitchSpelling> {
         return PitchSpellings.spellings(forPitchClass: pitchClass) ?? []
     }
     
@@ -37,10 +37,10 @@ extension Pitch {
      - TODO: make `throw` in the case of a strange resolution (e.g., 60.81356)
      */
     public var resolution: Float {
-        if noteNumber % 1 == 0 { return 1.0 }
-        else if noteNumber % 0.5 == 0 { return 0.5 }
-        else if noteNumber % 0.25 == 0 { return 0.25 }
-        return 0
+        if noteNumber.value % 1.0 == 0.0 { return 1.0 }
+        else if noteNumber.value % 0.5 == 0.0 { return 0.5 }
+        else if noteNumber.value % 0.25 == 0.0 { return 0.25 }
+        return 0.0
     }
     
     /**
