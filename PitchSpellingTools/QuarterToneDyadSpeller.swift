@@ -8,7 +8,10 @@
 
 import Pitch
 
-internal class QuarterToneDyadSpeller: DyadSpeller {
+internal class QuarterToneDyadSpeller: HalfToneDyadSpeller {
+    
+    // priorities: coarse direction match
+    
     
     internal override var options: Result {
         

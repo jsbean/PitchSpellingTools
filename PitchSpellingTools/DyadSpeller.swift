@@ -32,12 +32,8 @@ public class DyadSpeller: PitchSpeller {
     }
     
     // All possible combinations of `PitchSpellings` of each `Pitch`
-    internal let allPitchSpellingDyads: [PitchSpellingDyad]
-    
-    internal var stepPreservingPitchSpellingDyads: [PitchSpellingDyad] {
-        return allPitchSpellingDyads.filter { $0.isStepPreserving }
-    }
-    
+    internal let pitchSpellingDyads: [PitchSpellingDyad]
+
     /**
      `Result` with the
      
@@ -65,7 +61,7 @@ public class DyadSpeller: PitchSpeller {
      */
     public required init(dyad: Dyad) {
         self.dyad = dyad
-        self.allPitchSpellingDyads = combinations(dyad.lower.spellings, dyad.higher.spellings)
+        self.pitchSpellingDyads = combinations(dyad.lower.spellings, dyad.higher.spellings)
             .map { PitchSpellingDyad($0.0, $0.1) }
     }
     

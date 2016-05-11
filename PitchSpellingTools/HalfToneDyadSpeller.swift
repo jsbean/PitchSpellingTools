@@ -10,6 +10,10 @@ import Pitch
 
 internal class HalfToneDyadSpeller: DyadSpeller {
     
+    internal var stepPreservingPitchSpellingDyads: [PitchSpellingDyad] {
+        return pitchSpellingDyads.filter { $0.isStepPreserving }
+    }
+    
     /**
      - returns: `DyadSpeller.Result`.
      */

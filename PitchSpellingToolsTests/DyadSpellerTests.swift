@@ -39,7 +39,7 @@ class DyadSpellerTests: XCTestCase {
     func testPitchSpellingDyads() {
         let dyad = Dyad(Pitch(noteNumber: 61), Pitch(noteNumber: 68))
         let speller = DyadSpeller(dyad: dyad)
-        XCTAssertEqual(speller.allPitchSpellingDyads.count, 4)
+        XCTAssertEqual(speller.pitchSpellingDyads.count, 4)
     }
     
     func testSpellCSharpGSharp() {
