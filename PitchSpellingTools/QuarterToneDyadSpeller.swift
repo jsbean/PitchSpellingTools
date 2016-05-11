@@ -10,11 +10,6 @@ import Pitch
 
 internal class QuarterToneDyadSpeller: HalfToneDyadSpeller {
     
-    // priorities:
-    // - step preserving
-    // - coarse direction match (sharp, quartersharp; flat, quarterflat)
-    // - least distance (d nat, )
-    
     internal lazy var coarseMatching: [PitchSpellingDyad] = {
         return self.pitchSpellingDyads.filter { $0.isCoarseMatching }
     }()
@@ -31,6 +26,7 @@ internal class QuarterToneDyadSpeller: HalfToneDyadSpeller {
         return Array(Set(self.stepPreserving).union(self.coarseDirectionMatching))
     }()
     
+    /// - warning: Not yet implemented!
     internal override var options: Result {
         
         // check if either or both are spellable objectively
