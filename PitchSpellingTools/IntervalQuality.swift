@@ -12,32 +12,64 @@ import Pitch
 
 // TODO: implement stepPreserving intervals for each type
 
-private protocol IntervalQualityType: EnumTree {
+internal protocol IntervalQualityType: EnumTree {
+    
     static var diminished: IntervalQuality.EnumKind { get }
+    
     static var augmented: IntervalQuality.EnumKind { get }
+    
+    static func directionDifference(fromPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
+        -> Float
+    
+    static func adjustDifference(difference: Float,
+        forLowerPitchSpelling pitchSpelling: PitchSpelling
+    ) -> Float
 }
 
-private protocol PerfectIntervalQuatlityType: IntervalQualityType {
+extension IntervalQualityType {
+    
+    static func adjustDifference(difference: Float,
+        forLowerPitchSpelling pitchSpelling: PitchSpelling
+    ) -> Float
+    {
+        return difference
+    }
+    
+    static func directionDifference(fromPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
+        -> Float
+    {
+        let lowerDirection = pitchSpellingDyad.lower.coarse.direction.rawValue
+        let higherDirection = pitchSpellingDyad.higher.coarse.direction.rawValue
+        let difference = (higherDirection - lowerDirection)
+        return adjustDifference(difference, forLowerPitchSpelling: pitchSpellingDyad.lower)
+    }
+}
+
+internal protocol PerfectIntervalQuatlityType: IntervalQualityType {
     static var perfect: IntervalQuality.EnumKind { get }
     static var perfectMembers: [IntervalQuality.EnumKind] { get }
 }
 
 extension PerfectIntervalQuatlityType {
+    
     static var perfectMembers: [IntervalQuality.EnumKind] {
         return [perfect, diminished, augmented]
     }
 }
 
-private protocol ImperfectIntervalQualityType: IntervalQualityType {
+internal protocol ImperfectIntervalQualityType: IntervalQualityType {
     static var major: IntervalQuality.EnumKind { get }
     static var minor: IntervalQuality.EnumKind { get }
     static var imperfectMembers: [IntervalQuality.EnumKind] { get }
 }
 
 extension ImperfectIntervalQualityType {
+    
     static var imperfectMembers: [IntervalQuality.EnumKind] {
         return [major, minor, diminished, augmented]
     }
+
+    
 }
 
 /**
@@ -94,13 +126,20 @@ public class IntervalQuality: EnumTree {
             forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
         ) -> EnumKind
         {
-            let lowerDirection = pitchSpellingDyad.lower.coarse.direction
-            let higherDirection = pitchSpellingDyad.higher.coarse.direction
-            switch compare(lowerDirection, higherDirection) {
-            case .equal: return perfect
-            case .lessThan: return augmented
-            case .greaterThan: return diminished
+            let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
+            switch difference {
+            case -1, -2: return diminished
+            case -0: return perfect
+            case +1, +2: return augmented
+            default: fatalError("Such an interval couldn't possibly exist")
             }
+        }
+        
+        static func adjustDifference(difference: Float,
+            forLowerPitchSpelling pitchSpelling: PitchSpelling
+        ) -> Float
+        {
+            return pitchSpelling.letterName == .b ? difference - 1 : difference
         }
     }
     
@@ -198,7 +237,7 @@ public class IntervalQuality: EnumTree {
         // DEFAULT Perfect implementation
         public override class func kind(
             forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
-            ) -> EnumKind
+        ) -> EnumKind
         {
             // exception if lower is F
             let lowerDirection = pitchSpellingDyad.lower.coarse.direction.rawValue
