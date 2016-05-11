@@ -98,4 +98,11 @@ class PitchSpellingDyadTests: XCTestCase {
         )
         XCTAssertTrue(dyad.isStepPreserving)
     }
+    
+    func testCQuarterSharpFSharpStepPreserving() {
+        let dyad = PitchSpellingDyad(
+            PitchSpelling(.c, .quarterSharp), PitchSpelling(.f, .sharp)
+        )
+        XCTAssertTrue(dyad.isStepPreserving)
+    }
 }
