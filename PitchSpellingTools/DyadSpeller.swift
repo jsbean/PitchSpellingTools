@@ -9,6 +9,8 @@
 import ArrayTools
 import Pitch
 
+// consider making DyadSpelling a protocol
+
 /// Applies `PitchSpelling` objects to the pitches in a `Dyad`.
 public class DyadSpeller: PitchSpeller {
 
