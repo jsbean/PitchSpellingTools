@@ -41,13 +41,17 @@ extension Dyad {
     }
     
     public func spellWithDefaultSpellings() throws {
-        guard let lowerSpelling = lower.defaultSpelling,
-            higherSpelling = higher.defaultSpelling
-        else {
+        
+        guard let defaultSpellingDyad = defaultSpellingDyad else {
             throw Error.cannotSpellPitches
         }
-        try spellLower(with: lowerSpelling)
-        try spellHigher(with: higherSpelling)
+        
+        try spell(with: defaultSpellingDyad)
+    }
+    
+    public func spell(with spellingDyad: PitchSpellingDyad) throws {
+        try spellHigher(with: spellingDyad.higher)
+        try spellLower(with: spellingDyad.lower)
     }
     
     public func spellHigher(with spelling: PitchSpelling) throws {
