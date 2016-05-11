@@ -61,11 +61,10 @@ extension PerfectIntervalQuatlityType {
     static func intervalQuality(fromDirectionDifference difference: Float)
         -> IntervalQuality.EnumKind
     {
-        switch difference {
-        case -1, -2: return diminished
-        case -0: return perfect
-        case +1, +2: return augmented
-        default: fatalError("Such an interval couldn't possibly exist")
+        switch compare(difference, 0) {
+        case .lessThan: return diminished
+        case .equal: return perfect
+        case .greaterThan: return augmented
         }
     }
     
