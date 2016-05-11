@@ -82,6 +82,13 @@ extension ImperfectIntervalQualityType {
         return [major, minor, diminished, augmented]
     }
     
+    static func adjustDifference(difference: Float,
+        forLowerPitchSpelling pitchSpelling: PitchSpelling
+    ) -> Float
+    {
+        return [.b, .e].contains(pitchSpelling.letterName) ? difference - 1 : difference
+    }
+    
     static func intervalQuality(fromDirectionDifference difference: Float)
         -> IntervalQuality.EnumKind
     {
@@ -177,19 +184,11 @@ public class IntervalQuality: EnumTree {
         
         public override class var members: [EnumKind] { return imperfectMembers }
         
-        // DEFAULT Impefect implementation
         public override class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
             -> EnumKind
         {
             let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
             return intervalQuality(fromDirectionDifference: difference)
-        }
-        
-        static func adjustDifference(difference: Float,
-            forLowerPitchSpelling pitchSpelling: PitchSpelling
-        ) -> Float
-        {
-            return [.b, .e].contains(pitchSpelling.letterName) ? difference - 1 : difference
         }
     }
     
@@ -210,25 +209,12 @@ public class IntervalQuality: EnumTree {
         
         public override class var members: [EnumKind] { return imperfectMembers }
         
-        // DEFAULT Impefect implementation
-        public override class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
-            -> EnumKind
+        public override class func kind(
+            forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
+        ) -> EnumKind
         {
-            // exception if lower is B or E
-            let lowerDirection = pitchSpellingDyad.lower.coarse.direction.rawValue
-            let higherDirection = pitchSpellingDyad.higher.coarse.direction.rawValue
-            var difference: Float {
-                var result = (higherDirection - lowerDirection)
-                if [.b, .e].contains(pitchSpellingDyad.lower.letterName) { result -= 1 }
-                return result
-            }
-            switch difference {
-            case -2: return diminished
-            case -1: return minor
-            case +0: return major
-            case +1: return augmented
-            default: fatalError("Such an interval couldn't possibly exist")
-            }
+            let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
+            return intervalQuality(fromDirectionDifference: difference)
         }
     }
     
@@ -246,26 +232,18 @@ public class IntervalQuality: EnumTree {
         
         public override class var members: [EnumKind] { return perfectMembers }
         
-        // DEFAULT Perfect implementation
-        public override class func kind(
-            forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
-        ) -> EnumKind
+        public override class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
+            -> EnumKind
         {
-            // exception if lower is F
-            let lowerDirection = pitchSpellingDyad.lower.coarse.direction.rawValue
-            let higherDirection = pitchSpellingDyad.higher.coarse.direction.rawValue
-            var difference: Float {
-                var result = (higherDirection - lowerDirection)
-                if pitchSpellingDyad.lower.letterName == .f { result += 1 }
-                return result
-            }
-
-            switch difference {
-            case -1, -2: return diminished
-            case -0: return perfect
-            case +1, +2: return augmented
-            default: fatalError("Such an interval couldn't possibly exist")
-            }
+            let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
+            return intervalQuality(fromDirectionDifference: difference)
+        }
+        
+        static func adjustDifference(difference: Float,
+            forLowerPitchSpelling pitchSpelling: PitchSpelling
+        ) -> Float
+        {
+            return pitchSpelling.letterName == .f ? difference + 1 : difference
         }
     }
     
@@ -283,26 +261,19 @@ public class IntervalQuality: EnumTree {
         
         public override class var members: [EnumKind] { return perfectMembers }
     
-        // DEFAULT Perfect implementation
         public override class func kind(
             forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
-            ) -> EnumKind
+        ) -> EnumKind
         {
-            // exception if lower is B
-            let lowerDirection = pitchSpellingDyad.lower.coarse.direction.rawValue
-            let higherDirection = pitchSpellingDyad.higher.coarse.direction.rawValue
-            var difference: Float {
-                var result = (higherDirection - lowerDirection)
-                if pitchSpellingDyad.lower.letterName == .b { result -= 1 }
-                return result
-            }
-            
-            switch difference {
-            case -1, -2: return diminished
-            case -0: return perfect
-            case +1, +2: return augmented
-            default: fatalError("Such an interval couldn't possibly exist")
-            }
+            let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
+            return intervalQuality(fromDirectionDifference: difference)
+        }
+        
+        static func adjustDifference(difference: Float,
+            forLowerPitchSpelling pitchSpelling: PitchSpelling
+        ) -> Float
+        {
+            return pitchSpelling.letterName == .b ? difference - 1 : difference
         }
     }
     
@@ -323,25 +294,12 @@ public class IntervalQuality: EnumTree {
         
         public override class var members: [EnumKind] { return imperfectMembers }
         
-        // DEFAULT Impefect implementation
-        public override class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
-            -> EnumKind
+        public override class func kind(
+            forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
+            ) -> EnumKind
         {
-            // exception if lower is B or E
-            let lowerDirection = pitchSpellingDyad.lower.coarse.direction.rawValue
-            let higherDirection = pitchSpellingDyad.higher.coarse.direction.rawValue
-            var difference: Float {
-                var result = (higherDirection - lowerDirection)
-                if [.b, .e].contains(pitchSpellingDyad.lower.letterName) { result -= 1 }
-                return result
-            }
-            switch difference {
-            case -2: return diminished
-            case -1: return minor
-            case +0: return major
-            case +1: return augmented
-            default: fatalError("Such an interval couldn't possibly exist")
-            }
+            let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
+            return intervalQuality(fromDirectionDifference: difference)
         }
     }
     
