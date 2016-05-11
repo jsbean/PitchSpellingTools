@@ -19,7 +19,7 @@ extension Pitch {
     public var canBeSpelledObjectively: Bool { return spellings.count == 1 }
  
     /// All `PitchSpelling` structures available for this `Pitch`.
-    public var spellings: Set<PitchSpelling> {
+    public var spellings: [PitchSpelling] {
         return PitchSpellings.spellings(forPitchClass: pitchClass) ?? []
     }
     
@@ -52,7 +52,7 @@ extension Pitch {
      */
     public func spell(with spelling: PitchSpelling) throws -> SpelledPitch {
         
-        guard spelling.isValid(for: self) else {
+        guard spelling.isValid(forPitch: self) else {
             throw PitchSpelling.Error.invalidSpelling(self, spelling)
         }
         

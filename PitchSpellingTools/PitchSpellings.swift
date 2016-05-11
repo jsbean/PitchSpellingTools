@@ -6,11 +6,12 @@
 //
 //
 
+import ArithmeticTools
 import Pitch
 
 internal struct PitchSpellings {
     
-    private static let spellingsByPitchClass: [PitchClass: Set<PitchSpelling>] = [
+    private static let spellingsByPitchClass: [PitchClass: [PitchSpelling]] = [
         
         00.00: [
             PitchSpelling(.c, .natural, .none)
@@ -250,8 +251,7 @@ internal struct PitchSpellings {
         ]
     ]
     
-    internal static func spellings(forPitchClass pitchClass: PitchClass)
-        -> Set<PitchSpelling>?
+    internal static func spellings(forPitchClass pitchClass: PitchClass) -> [PitchSpelling]?
     {
         return PitchSpellings.spellingsByPitchClass[pitchClass]
     }

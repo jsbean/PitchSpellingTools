@@ -72,7 +72,7 @@ public struct PitchSpelling {
      - returns: `true` if this `PitchSpelling` can be applied to the given `Pitch`.
      Otherwise, `false`.
      */
-    public func isValid(for pitch: Pitch) -> Bool {
+    public func isValid(forPitch pitch: Pitch) -> Bool {
         return pitch.spellings.contains(self)
     }
 }
