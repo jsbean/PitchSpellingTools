@@ -12,6 +12,12 @@ import Pitch
 /// Applies `PitchSpelling` objects to the pitches in a `Dyad`.
 public class DyadSpeller: PitchSpeller {
 
+    internal enum Spellability {
+        case neither
+        case one(objective: Pitch, subjective: Pitch)
+        case both
+    }
+    
     // TODO: refine
     public enum Error: ErrorType { case error }
     

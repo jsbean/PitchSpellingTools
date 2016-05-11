@@ -47,13 +47,14 @@ internal class QuarterToneDyadSpeller: HalfToneDyadSpeller {
         return .none
     }
     
-    enum ObjectivelySpellable {
-        case Neither
-        case One(objective: (Pitch, PitchSpelling), subjective: Pitch)
-        case Both
+    private var spellability: Spellability {
+        if dyad.canBeSpelledObjectively { return .both }
+        else if dyad.lower.canBeSpelledObjectively && !dyad.higher.canBeSpelledObjectively {
+            return .one(objective: dyad.lower, subjective: dyad.higher)
+        } else if !dyad.lower.canBeSpelledObjectively && dyad.higher.canBeSpelledObjectively {
+            return .one(objective: dyad.higher, subjective: dyad.lower)
+        } else {
+            return .neither
+        }
     }
-    
-    private func
-    
-    // [PitchSpellingDyad] -> Result
 }
