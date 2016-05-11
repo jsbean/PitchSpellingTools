@@ -94,11 +94,17 @@ public class DyadSpeller: PitchSpeller {
      
      In the case that no options are available wherein
      the pitches in `dyad` can be spelled amicably, 
-     the pitches are spelled with the default values.
+     the default `PitchSpelling` value for each `Pitch` is chosen. 
+     It should be noted that at the half-tone level, this is not actually a reality.
+     
+     In the case that there is exactly one option available wherein
+     the pitches can be spelled amicable, this `PitchSpellingDyad` is chosen.
      
      In the case that there are more than one options available wherein 
      the pitches can be spelled amicably, 
      the `PitchSpellingDyad` with the least `meanDistance` value is chosen.
+     
+     >`(c sharp, f sharp); not (d flat, g flat)`
      
      - throws: `PitchSpeller.Error` if either `Pitch` cannot be spelled with the available
      `PitchSpelling` object.

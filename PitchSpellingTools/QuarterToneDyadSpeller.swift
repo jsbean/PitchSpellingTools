@@ -12,7 +12,7 @@ internal class QuarterToneDyadSpeller: HalfToneDyadSpeller {
     
     // priorities:
     // - coarse direction match (sharp, quartersharp; flat, quarterflat)
-    // - least distance
+    // - least distance (d nat, )
     
     internal var coarseMatchingPitchSpellingDyads: [PitchSpellingDyad] {
         return pitchSpellingDyads.filter { $0.isCoarseMatching }
