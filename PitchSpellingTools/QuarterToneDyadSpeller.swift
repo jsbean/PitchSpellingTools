@@ -43,8 +43,7 @@ internal class QuarterToneDyadSpeller: HalfToneDyadSpeller {
         // - - - none:
         // - - - single: exit
         // - - - multiple: match stepPreserving ∪ coarseMatching
-        
-        
+       
         return .none
     }
 }
