@@ -59,3 +59,14 @@ public struct PitchSpellingDyad {
         self.higher = higher
     }
 }
+
+extension PitchSpellingDyad: Hashable {
+    
+    public var hashValue: Int { return lower.hashValue * higher.hashValue }
+}
+
+extension PitchSpellingDyad: Equatable { }
+
+public func == (lhs: PitchSpellingDyad, rhs: PitchSpellingDyad) -> Bool {
+    return lhs.lower == rhs.lower && lhs.higher == rhs.higher
+}

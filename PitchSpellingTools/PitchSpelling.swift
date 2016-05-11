@@ -82,8 +82,6 @@ extension PitchSpelling: Hashable {
     public var hashValue: Int { return "\(letterName),\(coarse),\(fine)".hashValue }
 }
 
-extension PitchSpelling: Equatable { }
-
 public func == (lhs: PitchSpelling, rhs: PitchSpelling) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
