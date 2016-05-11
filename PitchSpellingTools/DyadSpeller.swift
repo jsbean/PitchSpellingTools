@@ -61,7 +61,6 @@ public class DyadSpeller: PitchSpeller {
      */
     public required init(dyad: Dyad) {
         self.dyad = dyad
-        //self.pitchSpellingDyads =
     }
     
     // MARK: - Instance Methods

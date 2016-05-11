@@ -47,7 +47,13 @@ internal class QuarterToneDyadSpeller: HalfToneDyadSpeller {
         return .none
     }
     
+    enum ObjectivelySpellable {
+        case Neither
+        case One(objective: (Pitch, PitchSpelling), subjective: Pitch)
+        case Both
+    }
     
+    private func
     
     // [PitchSpellingDyad] -> Result
 }
