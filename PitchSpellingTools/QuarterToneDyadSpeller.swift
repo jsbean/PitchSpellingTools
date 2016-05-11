@@ -15,35 +15,38 @@ internal class QuarterToneDyadSpeller: HalfToneDyadSpeller {
     // - coarse direction match (sharp, quartersharp; flat, quarterflat)
     // - least distance (d nat, )
     
-    internal var coarseMatching: [PitchSpellingDyad] {
-        return pitchSpellingDyads.filter { $0.isCoarseMatching }
-    }
+    internal lazy var coarseMatching: [PitchSpellingDyad] = {
+        return self.pitchSpellingDyads.filter { $0.isCoarseMatching }
+    }()
     
-    internal var coarseDirectionMatching: [PitchSpellingDyad] {
-        return pitchSpellingDyads.filter { $0.isCoarseDirectionMatching }
-    }
+    internal lazy var coarseDirectionMatching: [PitchSpellingDyad] = {
+        return self.pitchSpellingDyads.filter { $0.isCoarseDirectionMatching }
+    }()
     
-    internal var coarseMatchingAndStepPreserving: [PitchSpellingDyad] {
-        return Array(Set(stepPreserving).union(coarseMatching))
-    }
+    internal lazy var coarseMatchingAndStepPreserving: [PitchSpellingDyad] = {
+        return Array(Set(self.stepPreserving).union(self.coarseMatching))
+    }()
     
-    internal var coarseDirectionMatchingAndStepPreserving: [PitchSpellingDyad] {
-        return Array(Set(stepPreserving).union(coarseDirectionMatching))
-    }
+    internal lazy var coarseDirectionMatchingAndStepPreserving: [PitchSpellingDyad] = {
+        return Array(Set(self.stepPreserving).union(self.coarseDirectionMatching))
+    }()
     
     internal override var options: Result {
-        switch stepPreserving.count {
-        case 0:
-            return .none // refine ...
-            // fall back to ...
-            // c ctr sharp
-            //
-        case 1:
-            return .single(stepPreserving.first!)
-        default:
-            break
-            // further refine
-        }
+        
+        // check if either or both are spellable objectively
+        // - this may actually be quite common: aside from
+        // - - c-qtr-flat/b-qtr-sharp and
+        // - - f-qtr-flat/e-qtr-sharp
+        // - all quarter-step spellings are objective (if we are avoiding 3/4 sharps/flats)
+        
+        // if both objective: exit with .single(PitchSpellingDyad(obj1, obj2)
+        
+        // if one objective: filter for PitchSpellingDyads that contain the objective Spelling
+        // - priorities:
+        // - - first check for stepPreserving:
+        // - - - none:
+        // - - - single: exit
+        // - - - multiple: match stepPreserving ∪ coarseMatching
         
         
         return .none

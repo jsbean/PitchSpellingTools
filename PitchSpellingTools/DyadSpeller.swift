@@ -9,12 +9,11 @@
 import ArrayTools
 import Pitch
 
-// consider making DyadSpelling a protocol
-
 /// Applies `PitchSpelling` objects to the pitches in a `Dyad`.
 public class DyadSpeller: PitchSpeller {
 
-    public enum Error: ErrorType { case error } // refine
+    // TODO: refine
+    public enum Error: ErrorType { case error }
     
     /**
      Result from an attempt to spell a `Dyad`.
@@ -32,7 +31,12 @@ public class DyadSpeller: PitchSpeller {
     }
     
     // All possible combinations of `PitchSpellings` of each `Pitch`
-    internal let pitchSpellingDyads: [PitchSpellingDyad]
+    internal lazy var pitchSpellingDyads: [PitchSpellingDyad] = {
+        combinations(
+            self.dyad.lower.spellings,
+            self.dyad.higher.spellings
+        ).map { PitchSpellingDyad($0.0, $0.1) }
+    }()
 
     /**
      `Result` with the
@@ -61,8 +65,7 @@ public class DyadSpeller: PitchSpeller {
      */
     public required init(dyad: Dyad) {
         self.dyad = dyad
-        self.pitchSpellingDyads = combinations(dyad.lower.spellings, dyad.higher.spellings)
-            .map { PitchSpellingDyad($0.0, $0.1) }
+        //self.pitchSpellingDyads =
     }
     
     // MARK: - Instance Methods
