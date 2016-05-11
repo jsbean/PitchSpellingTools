@@ -31,6 +31,15 @@ extension Dyad {
         return lower.canBeSpelledObjectively && higher.canBeSpelledObjectively
     }
     
+    public var defaultSpellingDyad: PitchSpellingDyad? {
+        guard let lowerSpelling = lower.defaultSpelling,
+            higherSpelling = higher.defaultSpelling
+        else {
+            return nil
+        }
+        return PitchSpellingDyad(lowerSpelling, higherSpelling)
+    }
+    
     public func spellWithDefaultSpellings() throws {
         guard let lowerSpelling = lower.defaultSpelling,
             higherSpelling = higher.defaultSpelling

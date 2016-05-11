@@ -26,8 +26,15 @@ internal class QuarterToneDyadSpeller: HalfToneDyadSpeller {
         return Array(Set(self.stepPreserving).union(self.coarseDirectionMatching))
     }()
     
+    // find a way to do this so it is not just a chain of matches
+    
     /// - warning: Not yet implemented!
     internal override var options: Result {
+        switch spellability {
+        case .both: return .single(dyad.defaultSpellingDyad!)
+        case .neither: break
+        case .one: break
+        }
         
         // check if either or both are spellable objectively
         // - this may actually be quite common: aside from
@@ -48,7 +55,7 @@ internal class QuarterToneDyadSpeller: HalfToneDyadSpeller {
     }
     
     // TODO: refactor
-    private var spellability: Spellability {
+    private var spellability: ObjectiveSpellability {
         if dyad.canBeSpelledObjectively { return .both }
         else if dyad.lower.canBeSpelledObjectively && !dyad.higher.canBeSpelledObjectively {
             return .one(objective: dyad.lower, subjective: dyad.higher)
