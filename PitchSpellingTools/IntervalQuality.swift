@@ -68,6 +68,13 @@ extension PerfectIntervalQuatlityType {
         default: fatalError("Such an interval couldn't possibly exist")
         }
     }
+    
+    static func adjustDifference(difference: Float,
+        forLowerPitchSpelling pitchSpelling: PitchSpelling
+    ) -> Float
+    {
+        return pitchSpelling.letterName == .b ? difference - 1 : difference
+    }
 }
 
 internal protocol ImperfectIntervalQualityType: IntervalQualityType {
@@ -158,13 +165,6 @@ public class IntervalQuality: EnumTree {
         {
             let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
             return intervalQuality(fromDirectionDifference: difference)
-        }
-        
-        static func adjustDifference(difference: Float,
-            forLowerPitchSpelling pitchSpelling: PitchSpelling
-        ) -> Float
-        {
-            return pitchSpelling.letterName == .b ? difference - 1 : difference
         }
     }
     
@@ -267,13 +267,6 @@ public class IntervalQuality: EnumTree {
         {
             let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
             return intervalQuality(fromDirectionDifference: difference)
-        }
-        
-        static func adjustDifference(difference: Float,
-            forLowerPitchSpelling pitchSpelling: PitchSpelling
-        ) -> Float
-        {
-            return pitchSpelling.letterName == .b ? difference - 1 : difference
         }
     }
     
