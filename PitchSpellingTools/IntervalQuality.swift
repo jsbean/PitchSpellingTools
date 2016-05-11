@@ -18,6 +18,8 @@ internal protocol IntervalQualityType: EnumTree {
     
     static var augmented: IntervalQuality.EnumKind { get }
     
+    static func intervalQuality(fromDirectionDifference difference: Float) -> EnumKind
+    
     static func directionDifference(fromPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
         -> Float
     
@@ -55,6 +57,17 @@ extension PerfectIntervalQuatlityType {
     static var perfectMembers: [IntervalQuality.EnumKind] {
         return [perfect, diminished, augmented]
     }
+    
+    static func intervalQuality(fromDirectionDifference difference: Float)
+        -> IntervalQuality.EnumKind
+    {
+        switch difference {
+        case -1, -2: return diminished
+        case -0: return perfect
+        case +1, +2: return augmented
+        default: fatalError("Such an interval couldn't possibly exist")
+        }
+    }
 }
 
 internal protocol ImperfectIntervalQualityType: IntervalQualityType {
@@ -68,8 +81,18 @@ extension ImperfectIntervalQualityType {
     static var imperfectMembers: [IntervalQuality.EnumKind] {
         return [major, minor, diminished, augmented]
     }
-
     
+    static func intervalQuality(fromDirectionDifference difference: Float)
+        -> IntervalQuality.EnumKind
+    {
+        switch difference {
+        case -2: return diminished
+        case -1: return minor
+        case +0: return major
+        case +1: return augmented
+        default: fatalError("Such an interval couldn't possibly exist")
+        }
+    }
 }
 
 /**
@@ -127,12 +150,7 @@ public class IntervalQuality: EnumTree {
         ) -> EnumKind
         {
             let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
-            switch difference {
-            case -1, -2: return diminished
-            case -0: return perfect
-            case +1, +2: return augmented
-            default: fatalError("Such an interval couldn't possibly exist")
-            }
+            return intervalQuality(fromDirectionDifference: difference)
         }
         
         static func adjustDifference(difference: Float,
@@ -163,14 +181,7 @@ public class IntervalQuality: EnumTree {
         public override class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
             -> EnumKind
         {
-            // exception if lower is B or E
-            let lowerDirection = pitchSpellingDyad.lower.coarse.direction.rawValue
-            let higherDirection = pitchSpellingDyad.higher.coarse.direction.rawValue
-            var difference: Float {
-                var result = (higherDirection - lowerDirection)
-                if [.b, .e].contains(pitchSpellingDyad.lower.letterName) { result -= 1 }
-                return result
-            }
+            let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
             switch difference {
             case -2: return diminished
             case -1: return minor
@@ -178,6 +189,13 @@ public class IntervalQuality: EnumTree {
             case +1: return augmented
             default: fatalError("Such an interval couldn't possibly exist")
             }
+        }
+        
+        static func adjustDifference(difference: Float,
+            forLowerPitchSpelling pitchSpelling: PitchSpelling
+        ) -> Float
+        {
+            return [.b, .e].contains(pitchSpelling.letterName) ? difference - 1 : difference
         }
     }
     
@@ -372,13 +390,9 @@ public class IntervalQuality: EnumTree {
         }
     }
     
-    public class var members: [EnumKind] {
-        print("members container")
-        return []
-    }
+    public class var members: [EnumKind] { return [] }
     
     public class var subFamilies: [EnumFamily.Type] {
-        print("subfamilies container")
         return [
             Unison.self,
             Second.self,
@@ -389,16 +403,6 @@ public class IntervalQuality: EnumTree {
             Seventh.self
         ]
     }
-    
-    /*
-    public class func kind(
-        coarseAdjustmentLower: PitchSpelling.CoarseAdjustment,
-        _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
-    ) -> EnumKind
-    {
-        return .augmentedFifth
-    }
-    */
     
     public class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
         -> EnumKind
@@ -425,8 +429,6 @@ public class IntervalQuality: EnumTree {
     {
         return intervalQualityKinds(withIntervalClass: intervalClass) ?? []
     }
-    
-    
 }
 
 /**
