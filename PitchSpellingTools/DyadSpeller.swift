@@ -108,12 +108,9 @@ public class DyadSpeller: PitchSpeller {
      */
     public func spell() throws {
         switch options {
-        case .none:
-            try spellWithDefaultSpellings()
-        case .single(let pitchSpellingDyad):
-            try spell(with: pitchSpellingDyad)
-        case .multiple(let pitchSpellingDyads):
-            try spell(with: pitchSpellingDyads.first!)
+        case .none: try spellWithDefaultSpellings()
+        case .single(let pitchSpellingDyad): try spell(with: pitchSpellingDyad)
+        case .multiple(let pitchSpellingDyads): try spell(with: pitchSpellingDyads.first!)
         }
     }
 }
