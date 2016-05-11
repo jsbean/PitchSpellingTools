@@ -320,25 +320,12 @@ public class IntervalQuality: EnumTree {
         
         public override class var members: [EnumKind] { return imperfectMembers }
         
-        // DEFAULT Impefect implementation
-        public override class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
-            -> EnumKind
+        public override class func kind(
+            forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
+        ) -> EnumKind
         {
-            // exception if lower is B or E
-            let lowerDirection = pitchSpellingDyad.lower.coarse.direction.rawValue
-            let higherDirection = pitchSpellingDyad.higher.coarse.direction.rawValue
-            var difference: Float {
-                var result = (higherDirection - lowerDirection)
-                if [.b, .e].contains(pitchSpellingDyad.lower.letterName) { result -= 1 }
-                return result
-            }
-            switch difference {
-            case -2: return diminished
-            case -1: return minor
-            case +0: return major
-            case +1: return augmented
-            default: fatalError("Such an interval couldn't possibly exist")
-            }
+            let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
+            return intervalQuality(fromDirectionDifference: difference)
         }
     }
     
