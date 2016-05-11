@@ -47,6 +47,7 @@ internal class QuarterToneDyadSpeller: HalfToneDyadSpeller {
         return .none
     }
     
+    // TODO: refactor
     private var spellability: Spellability {
         if dyad.canBeSpelledObjectively { return .both }
         else if dyad.lower.canBeSpelledObjectively && !dyad.higher.canBeSpelledObjectively {
