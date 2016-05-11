@@ -63,9 +63,8 @@ public class DyadSpeller: PitchSpeller {
      */
     public required init(dyad: Dyad) {
         self.dyad = dyad
-        self.allPitchSpellingDyads = combinations(
-            Array(dyad.lower.spellings), Array(dyad.higher.spellings)
-        ).map { PitchSpellingDyad($0.0, $0.1) }
+        self.allPitchSpellingDyads = combinations(dyad.lower.spellings, dyad.higher.spellings)
+            .map { PitchSpellingDyad($0.0, $0.1) }
     }
     
     // MARK: - Instance Methods
