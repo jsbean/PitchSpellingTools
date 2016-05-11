@@ -182,13 +182,7 @@ public class IntervalQuality: EnumTree {
             -> EnumKind
         {
             let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
-            switch difference {
-            case -2: return diminished
-            case -1: return minor
-            case +0: return major
-            case +1: return augmented
-            default: fatalError("Such an interval couldn't possibly exist")
-            }
+            return intervalQuality(fromDirectionDifference: difference)
         }
         
         static func adjustDifference(difference: Float,
