@@ -52,9 +52,24 @@ class PitchSpellingDyadTests: XCTestCase {
         XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.augmented)
     }
     
-    func testBbCSharpaugmentedSecond() {
+    func testBbCSharpAugmentedSecond() {
         let dyad = PitchSpellingDyad(PitchSpelling(.b, .flat), PitchSpelling(.c, .sharp))
         XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Second.augmented)
+    }
+    
+    func testGASharpAugmentedSecond() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.g), PitchSpelling(.a, .sharp))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Second.augmented)
+    }
+    
+    func testBCFlatDiminishedSecond() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.b), PitchSpelling(.c, .flat))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Second.diminished)
+    }
+    
+    func testEFlatDiminishedSecond() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.e), PitchSpelling(.f, .flat))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Second.diminished)
     }
     
     func testCCFlatdiminishedUnison() {
@@ -129,13 +144,8 @@ class PitchSpellingDyadTests: XCTestCase {
         XCTAssertTrue(dyad.isStepPreserving)
     }
     
-    func testBNaturalFSharpStepPreserving() {
+    func testBFSharpStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.b), PitchSpelling(.f, .sharp))
-        XCTAssertTrue(dyad.isStepPreserving)
-    }
-    
-    func testFBFlatStepPreserving() {
-        let dyad = PitchSpellingDyad(PitchSpelling(.f), PitchSpelling(.b, .flat))
         XCTAssertTrue(dyad.isStepPreserving)
     }
     
@@ -145,6 +155,11 @@ class PitchSpellingDyadTests: XCTestCase {
             PitchSpelling(.f, .threeQuarterSharp)
         )
         print("interval quality: \(dyad.intervalQuality)")
+        XCTAssertTrue(dyad.isStepPreserving)
+    }
+    
+    func testFBFlatStepPreserving() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.f), PitchSpelling(.b, .flat))
         XCTAssertTrue(dyad.isStepPreserving)
     }
 }

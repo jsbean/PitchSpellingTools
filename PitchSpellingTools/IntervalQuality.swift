@@ -10,6 +10,8 @@ import ArithmeticTools
 import EnumTools
 import Pitch
 
+// TODO: implement stepPreserving intervals for each type
+
 private protocol IntervalQualityType: EnumTree {
     static var diminished: IntervalQuality.EnumKind { get }
     static var augmented: IntervalQuality.EnumKind { get }
@@ -87,6 +89,7 @@ public class IntervalQuality: EnumTree {
         
         public override class var members: [EnumKind] { return perfectMembers }
         
+        // DEFAULT Perfect implementation
         public override class func kind(
             forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
         ) -> EnumKind
@@ -117,26 +120,26 @@ public class IntervalQuality: EnumTree {
         
         public override class var members: [EnumKind] { return imperfectMembers }
         
+        // DEFAULT Impefect implementation
         public override class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
             -> EnumKind
         {
-            return major
+            // exception if lower is B or E
+            let lowerDirection = pitchSpellingDyad.lower.coarse.direction.rawValue
+            let higherDirection = pitchSpellingDyad.higher.coarse.direction.rawValue
+            var difference: Float {
+                var result = (higherDirection - lowerDirection)
+                if [.b, .e].contains(pitchSpellingDyad.lower.letterName) { result -= 1 }
+                return result
+            }
+            switch difference {
+            case -2: return diminished
+            case -1: return minor
+            case +0: return major
+            case +1: return augmented
+            default: fatalError("Such an interval couldn't possibly exist")
+            }
         }
-        
-//        public override class func kind(
-//            coarseAdjustmentLower: PitchSpelling.CoarseAdjustment,
-//            _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
-//        ) -> EnumKind
-//        {
-//            // refactor
-//            if coarseAdjustmentLower.direction == coarseAdjustmentHigher.direction {
-//                return major
-//            } else if coarseAdjustmentLower.direction.rawValue > coarseAdjustmentHigher.direction.rawValue {
-//                return minor
-//            } else {
-//                return augmented
-//            }
-//        }
     }
     
     /// Third interval family.
@@ -156,26 +159,26 @@ public class IntervalQuality: EnumTree {
         
         public override class var members: [EnumKind] { return imperfectMembers }
         
+        // DEFAULT Impefect implementation
         public override class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
             -> EnumKind
         {
-            return major
+            // exception if lower is B or E
+            let lowerDirection = pitchSpellingDyad.lower.coarse.direction.rawValue
+            let higherDirection = pitchSpellingDyad.higher.coarse.direction.rawValue
+            var difference: Float {
+                var result = (higherDirection - lowerDirection)
+                if [.b, .e].contains(pitchSpellingDyad.lower.letterName) { result -= 1 }
+                return result
+            }
+            switch difference {
+            case -2: return diminished
+            case -1: return minor
+            case +0: return major
+            case +1: return augmented
+            default: fatalError("Such an interval couldn't possibly exist")
+            }
         }
-        
-//        public override class func kind(
-//            coarseAdjustmentLower: PitchSpelling.CoarseAdjustment,
-//            _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
-//        ) -> EnumKind
-//        {
-//            let diff = coarseAdjustmentHigher.direction.rawValue - coarseAdjustmentLower.direction.rawValue
-//            switch diff {
-//            case -2: return diminished
-//            case -1: return minor
-//            case 0: return major
-//            case 2: return augmented
-//            default: fatalError() // impossible?
-//            }
-//        }
     }
     
     /// Fourth interval family.
@@ -192,26 +195,27 @@ public class IntervalQuality: EnumTree {
         
         public override class var members: [EnumKind] { return perfectMembers }
         
-        public override class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
-            -> EnumKind
+        // DEFAULT Perfect implementation
+        public override class func kind(
+            forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
+            ) -> EnumKind
         {
-            return perfect
-        }
+            // exception if lower is F
+            let lowerDirection = pitchSpellingDyad.lower.coarse.direction.rawValue
+            let higherDirection = pitchSpellingDyad.higher.coarse.direction.rawValue
+            var difference: Float {
+                var result = (higherDirection - lowerDirection)
+                if pitchSpellingDyad.lower.letterName == .f { result += 1 }
+                return result
+            }
 
-//        public override class func kind(
-//            coarseAdjustmentLower: PitchSpelling.CoarseAdjustment,
-//            _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
-//        ) -> EnumKind
-//        {
-//            // refactor
-//            if coarseAdjustmentLower.direction == coarseAdjustmentHigher.direction {
-//                return perfect
-//            } else if coarseAdjustmentLower.direction.rawValue > coarseAdjustmentHigher.direction.rawValue {
-//                return diminished
-//            } else {
-//                return augmented
-//            }
-//        }
+            switch difference {
+            case -1, -2: return diminished
+            case -0: return perfect
+            case +1, +2: return augmented
+            default: fatalError("Such an interval couldn't possibly exist")
+            }
+        }
     }
     
     /// Fifth interval family.
@@ -227,28 +231,28 @@ public class IntervalQuality: EnumTree {
         public static let augmented: EnumKind = .augmentedFifth
         
         public override class var members: [EnumKind] { return perfectMembers }
-        
-        public override class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
-            -> EnumKind
+    
+        // DEFAULT Perfect implementation
+        public override class func kind(
+            forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
+            ) -> EnumKind
         {
-            return perfect
+            // exception if lower is B
+            let lowerDirection = pitchSpellingDyad.lower.coarse.direction.rawValue
+            let higherDirection = pitchSpellingDyad.higher.coarse.direction.rawValue
+            var difference: Float {
+                var result = (higherDirection - lowerDirection)
+                if pitchSpellingDyad.lower.letterName == .b { result -= 1 }
+                return result
+            }
+            
+            switch difference {
+            case -1, -2: return diminished
+            case -0: return perfect
+            case +1, +2: return augmented
+            default: fatalError("Such an interval couldn't possibly exist")
+            }
         }
-        
-//        public override class func kind(
-//            coarseAdjustmentLower: PitchSpelling.CoarseAdjustment,
-//            _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
-//        ) -> EnumKind
-//        {
-//            
-//            // refactor
-//            if coarseAdjustmentLower.direction == coarseAdjustmentHigher.direction {
-//                return perfect
-//            } else if coarseAdjustmentLower.direction.rawValue > coarseAdjustmentHigher.direction.rawValue {
-//                return diminished
-//            } else {
-//                return augmented
-//            }
-//        }
     }
     
     /// Sixth interval family.
@@ -268,26 +272,26 @@ public class IntervalQuality: EnumTree {
         
         public override class var members: [EnumKind] { return imperfectMembers }
         
+        // DEFAULT Impefect implementation
         public override class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
             -> EnumKind
         {
-            return major
+            // exception if lower is B or E
+            let lowerDirection = pitchSpellingDyad.lower.coarse.direction.rawValue
+            let higherDirection = pitchSpellingDyad.higher.coarse.direction.rawValue
+            var difference: Float {
+                var result = (higherDirection - lowerDirection)
+                if [.b, .e].contains(pitchSpellingDyad.lower.letterName) { result -= 1 }
+                return result
+            }
+            switch difference {
+            case -2: return diminished
+            case -1: return minor
+            case +0: return major
+            case +1: return augmented
+            default: fatalError("Such an interval couldn't possibly exist")
+            }
         }
-        
-//        public override class func kind(
-//            coarseAdjustmentLower: PitchSpelling.CoarseAdjustment,
-//            _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
-//        ) -> EnumKind
-//        {
-//            let diff = coarseAdjustmentHigher.direction.rawValue - coarseAdjustmentLower.direction.rawValue
-//            switch diff {
-//            case -2: return diminished
-//            case -1: return minor
-//            case 0: return major
-//            case 1: return augmented
-//            default: fatalError() // impossible?
-//            }
-//        }
     }
     
     /// Seventh interval family.
@@ -307,26 +311,26 @@ public class IntervalQuality: EnumTree {
         
         public override class var members: [EnumKind] { return imperfectMembers }
         
+        // DEFAULT Impefect implementation
         public override class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
             -> EnumKind
         {
-            return major
+            // exception if lower is B or E
+            let lowerDirection = pitchSpellingDyad.lower.coarse.direction.rawValue
+            let higherDirection = pitchSpellingDyad.higher.coarse.direction.rawValue
+            var difference: Float {
+                var result = (higherDirection - lowerDirection)
+                if [.b, .e].contains(pitchSpellingDyad.lower.letterName) { result -= 1 }
+                return result
+            }
+            switch difference {
+            case -2: return diminished
+            case -1: return minor
+            case +0: return major
+            case +1: return augmented
+            default: fatalError("Such an interval couldn't possibly exist")
+            }
         }
-        
-//        public override class func kind(
-//            coarseAdjustmentLower: PitchSpelling.CoarseAdjustment,
-//            _ coarseAdjustmentHigher: PitchSpelling.CoarseAdjustment
-//        ) -> EnumKind
-//        {
-//            let diff = coarseAdjustmentHigher.direction.rawValue - coarseAdjustmentLower.direction.rawValue
-//            switch diff {
-//            case -2: return diminished
-//            case -1: return minor
-//            case 0: return major
-//            case 1: return augmented
-//            default: fatalError() // impossible?
-//            }
-//        }
     }
     
     public class var members: [EnumKind] {

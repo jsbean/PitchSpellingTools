@@ -1,4 +1,11 @@
-//
+func testBNaturalFThreeQuarterSharpStepPreserving() {
+    let dyad = PitchSpellingDyad(
+        PitchSpelling(.b, .natural),
+        PitchSpelling(.f, .threeQuarterSharp)
+    )
+    print("interval quality: \(dyad.intervalQuality)")
+    XCTAssertTrue(dyad.isStepPreserving)
+}//
 //  EnumTree.swift
 //  EnumTools
 //
