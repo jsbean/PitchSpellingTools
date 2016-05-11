@@ -19,52 +19,52 @@ class PitchSpellingDyadTests: XCTestCase {
     
     func testIntervalQualityTwoCsUnison() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.c))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQualityKind.PerfectUnison)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQualityKind.perfectUnison)
     }
     
-    func testCGPerfectFifth() {
+    func testCGperfectFifth() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.g))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Fifth.Perfect)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Fifth.perfect)
     }
     
-    func testGCPerfectFourth() {
+    func testGCperfectFourth() {
         let dyad = PitchSpellingDyad(PitchSpelling(.g), PitchSpelling(.c))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Fourth.Perfect)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Fourth.perfect)
     }
     
-    func testCEMajorThird() {
+    func testCEmajorThird() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.e))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.Major)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.major)
     }
     
-    func testCEFlatMinorThird() {
+    func testCEFlatminorThird() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.e, .flat))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.Minor)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.minor)
     }
     
-    func testCSharpEFlatDiminishedThird() {
+    func testCSharpEFlatdiminishedThird() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c, .sharp), PitchSpelling(.e, .flat))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.Diminished)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.diminished)
     }
     
-    func testBbDSharpAugmentedThird() {
+    func testBbDSharpaugmentedThird() {
         let dyad = PitchSpellingDyad(PitchSpelling(.b, .flat), PitchSpelling(.d, .sharp))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.Augmented)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.augmented)
     }
     
-    func testBbCSharpAugmentedSecond() {
+    func testBbCSharpaugmentedSecond() {
         let dyad = PitchSpellingDyad(PitchSpelling(.b, .flat), PitchSpelling(.c, .sharp))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Second.Augmented)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Second.augmented)
     }
     
-    func testCCFlatDiminishedUnison() {
+    func testCCFlatdiminishedUnison() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.c, .flat))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Unison.Diminished)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Unison.diminished)
     }
     
-    func testCFlatCAugmentedUnison() {
+    func testCFlatCaugmentedUnison() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c, .flat), PitchSpelling(.c))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Unison.Augmented)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Unison.augmented)
     }
     
     func testCEStepPreserving() {
@@ -126,6 +126,25 @@ class PitchSpellingDyadTests: XCTestCase {
         let dyad = PitchSpellingDyad(
             PitchSpelling(.c, .quarterSharp),
             PitchSpelling(.f, .threeQuarterSharp))
+        XCTAssertTrue(dyad.isStepPreserving)
+    }
+    
+    func testBNaturalFSharpStepPreserving() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.b), PitchSpelling(.f, .sharp))
+        XCTAssertTrue(dyad.isStepPreserving)
+    }
+    
+    func testFBFlatStepPreserving() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.f), PitchSpelling(.b, .flat))
+        XCTAssertTrue(dyad.isStepPreserving)
+    }
+    
+    func testBNaturalFThreeQuarterSharpStepPreserving() {
+        let dyad = PitchSpellingDyad(
+            PitchSpelling(.b, .natural),
+            PitchSpelling(.f, .threeQuarterSharp)
+        )
+        print("interval quality: \(dyad.intervalQuality)")
         XCTAssertTrue(dyad.isStepPreserving)
     }
 }

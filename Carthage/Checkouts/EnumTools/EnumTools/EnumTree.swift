@@ -11,7 +11,7 @@ import Foundation
 /**
  Wrap a many-cased Enum with a hierarchical structure.
  */
-public protocol EnumTree {
+public protocol EnumTree: class {
     
     // MARK: - AssociatedTypes
     
@@ -48,17 +48,6 @@ extension EnumTree where
     EnumFamily: EnumTree,
     EnumFamily.EnumKind == EnumKind
 {
-    
-    /**
-     - note: Returns `[]`. Override in embedded subclasses to return all appropriate cases.
-     */
-    public static var members: [EnumKind] { return [] }
-    
-    /**
-     - note: Returns `[]`. Override in embedded subclasses to return all appropriate values.
-    */
-    public static var subFamilies: [EnumFamily.Type] { return [] }
-    
     /**
      - returns: `true` if `members` or any subFamily's `members` contains `kind` value.
      */

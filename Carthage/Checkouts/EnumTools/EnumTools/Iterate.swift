@@ -21,7 +21,9 @@ import Foundation
  >let allCases: [InstrumentKind] = iterateEnum(InstrumentKind).map { $0 }
  >```
  
- - authors: [rintaro](http://stackoverflow.com/users/3804019/rintaro) / [kemetrixom](http://stackoverflow.com/users/3443689/kametrixom) @ [Stackoverflow](http://stackoverflow.com/a/28341290).
+ - authors: [rintaro](http://stackoverflow.com/users/3804019/rintaro) / 
+    [kemetrixom](http://stackoverflow.com/users/3443689/kametrixom) @ 
+    [Stackoverflow](http://stackoverflow.com/a/28341290).
  
  - parameter _: Enum type.
  

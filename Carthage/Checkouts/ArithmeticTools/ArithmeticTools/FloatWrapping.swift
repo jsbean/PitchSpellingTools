@@ -18,7 +18,14 @@ public protocol FloatWrapping:
     associatedtype IntegerLiteralType = Int
     init(floatLiteral: Float)
     init(integerLiteral: Int)
+    init(_ float: Float)
     var value: Float { get }
+}
+
+extension FloatWrapping {
+    public init(_ float: Float) {
+        self.init(floatLiteral: float)
+    }
 }
 
 // MARK: - Hashable

@@ -55,6 +55,10 @@
 		078142BC1C7CF494004B68D3 /* SequenceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142B21C7CF494004B68D3 /* SequenceTypeTests.swift */; };
 		079D1FC11C9657C100A272B9 /* ArrayTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079D1FC01C9657C100A272B9 /* ArrayTools.framework */; };
 		079D1FC31C9657CF00A272B9 /* ArrayTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079D1FC21C9657CF00A272B9 /* ArrayTools.framework */; };
+		07F5382F1CE3AEAC001294CC /* Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F5382E1CE3AEAC001294CC /* Comparison.swift */; };
+		07F538301CE3AEAC001294CC /* Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F5382E1CE3AEAC001294CC /* Comparison.swift */; };
+		07F538321CE3AEC6001294CC /* ComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F538311CE3AEC6001294CC /* ComparisonTests.swift */; };
+		07F538331CE3AEC6001294CC /* ComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F538311CE3AEC6001294CC /* ComparisonTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +131,8 @@
 		078142B21C7CF494004B68D3 /* SequenceTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceTypeTests.swift; sourceTree = "<group>"; };
 		079D1FC01C9657C100A272B9 /* ArrayTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArrayTools.framework; path = Carthage/Build/iOS/ArrayTools.framework; sourceTree = "<group>"; };
 		079D1FC21C9657CF00A272B9 /* ArrayTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArrayTools.framework; path = Carthage/Build/Mac/ArrayTools.framework; sourceTree = "<group>"; };
+		07F5382E1CE3AEAC001294CC /* Comparison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comparison.swift; sourceTree = "<group>"; };
+		07F538311CE3AEC6001294CC /* ComparisonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparisonTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,14 +212,13 @@
 		078142541C7CECD5004B68D3 /* ArithmeticTools */ = {
 			isa = PBXGroup;
 			children = (
-				078142A21C7CF3F1004B68D3 /* ArithmeticType.swift */,
+				07F538341CE3AF11001294CC /* Power */,
 				075F16E51CE2570600545125 /* FloatWrapping.swift */,
+				07F5382E1CE3AEAC001294CC /* Comparison.swift */,
+				078142A21C7CF3F1004B68D3 /* ArithmeticType.swift */,
 				078142A31C7CF3F1004B68D3 /* Array+ArithmeticType.swift */,
 				078142A41C7CF3F1004B68D3 /* Functions.swift */,
 				078142A51C7CF3F1004B68D3 /* SequenceType+ArithmeticType.swift */,
-				0719FA861C875584009EACB4 /* PowerGenerator.swift */,
-				074276C61C8768A100D50A30 /* PowerSequence.swift */,
-				074276CC1C877EE400D50A30 /* Power.swift */,
 				074276C41C8767F300D50A30 /* Supporting Files */,
 			);
 			path = ArithmeticTools;
@@ -235,6 +240,7 @@
 				074276CF1C877EF700D50A30 /* PowerTests.swift */,
 				071D19C41C94BEB100543F77 /* OrderedTests.swift */,
 				074276C51C8767FD00D50A30 /* Supporting Files */,
+				07F538311CE3AEC6001294CC /* ComparisonTests.swift */,
 			);
 			path = ArithmeticToolsTests;
 			sourceTree = "<group>";
@@ -262,6 +268,16 @@
 				079D1FC21C9657CF00A272B9 /* ArrayTools.framework */,
 			);
 			name = Mac;
+			sourceTree = "<group>";
+		};
+		07F538341CE3AF11001294CC /* Power */ = {
+			isa = PBXGroup;
+			children = (
+				0719FA861C875584009EACB4 /* PowerGenerator.swift */,
+				074276C61C8768A100D50A30 /* PowerSequence.swift */,
+				074276CC1C877EE400D50A30 /* Power.swift */,
+			);
+			name = Power;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -480,6 +496,7 @@
 				075F16E61CE2570600545125 /* FloatWrapping.swift in Sources */,
 				078142AA1C7CF3F1004B68D3 /* Functions.swift in Sources */,
 				074276CD1C877EE400D50A30 /* Power.swift in Sources */,
+				07F5382F1CE3AEAC001294CC /* Comparison.swift in Sources */,
 				0719FA871C875584009EACB4 /* PowerGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,6 +507,7 @@
 			files = (
 				0719FA8A1C876792009EACB4 /* PowerGeneratorTests.swift in Sources */,
 				071F3C721C8227F300F6BD28 /* RandomTests.swift in Sources */,
+				07F538321CE3AEC6001294CC /* ComparisonTests.swift in Sources */,
 				074276D01C877EF700D50A30 /* PowerTests.swift in Sources */,
 				078142BB1C7CF494004B68D3 /* SequenceTypeTests.swift in Sources */,
 				078142B51C7CF494004B68D3 /* GreatestCommonDivisorTests.swift in Sources */,
@@ -514,6 +532,7 @@
 				075F16E71CE2570600545125 /* FloatWrapping.swift in Sources */,
 				078142AB1C7CF3F1004B68D3 /* Functions.swift in Sources */,
 				074276CE1C877EE400D50A30 /* Power.swift in Sources */,
+				07F538301CE3AEAC001294CC /* Comparison.swift in Sources */,
 				0719FA881C875584009EACB4 /* PowerGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,6 +543,7 @@
 			files = (
 				0719FA8B1C876792009EACB4 /* PowerGeneratorTests.swift in Sources */,
 				071F3C731C8227F300F6BD28 /* RandomTests.swift in Sources */,
+				07F538331CE3AEC6001294CC /* ComparisonTests.swift in Sources */,
 				074276D11C877EF700D50A30 /* PowerTests.swift in Sources */,
 				078142BC1C7CF494004B68D3 /* SequenceTypeTests.swift in Sources */,
 				078142B61C7CF494004B68D3 /* GreatestCommonDivisorTests.swift in Sources */,

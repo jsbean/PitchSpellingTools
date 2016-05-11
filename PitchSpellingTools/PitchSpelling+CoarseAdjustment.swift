@@ -6,7 +6,7 @@
 //
 //
 
-import Foundation
+import EnumTools
 
 extension PitchSpelling {
     
@@ -16,7 +16,7 @@ extension PitchSpelling {
      Coarse resolution component of a `PitchSpelling`.
      Analogous to the body of an accidental.
      */
-    public enum CoarseAdjustment: Float {
+    public enum CoarseAdjustment: Float, Comparable {
         
         internal enum Direction: Float {
             case none = 0
@@ -24,7 +24,7 @@ extension PitchSpelling {
             case down = -1
         }
         
-        internal enum Resolution: Float {
+        internal enum Resolution: Float, Comparable {
             case halfStep = 0
             case quarterStep = 0.5
         }

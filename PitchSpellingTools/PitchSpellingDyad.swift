@@ -42,13 +42,16 @@ public struct PitchSpellingDyad {
     
     /// Amount of steps between two `PitchSpelling` objects.
     public var steps: Int {
-        return abs(Int.mod(higher.letterName.steps - lower.letterName.steps, 7))
+        let difference = higher.letterName.steps - lower.letterName.steps
+        return abs(Int.mod(difference, 7))
     }
 
     /// `IntervalQuality` between `PitchSpelling` objects.
     public var intervalQuality: IntervalQualityKind {
-        let family = IntervalQuality.intervalFamily(withAmountOfSteps: steps)
-        return family.kind(lower.coarse, higher.coarse)
+        //let family = IntervalQuality.intervalFamily(withAmountOfSteps: steps)
+        
+        //return family.kind(lower.coarse, higher.coarse)
+        return IntervalQuality.kind(forPitchSpellingDyad: self)
     }
     
     /**

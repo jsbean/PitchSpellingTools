@@ -8,13 +8,12 @@
 
 import XCTest
 import EnumTools
-import Pitch
 @testable import PitchSpellingTools
 
 class IntervalQualityTests: XCTestCase {
 
     func testIntervalQuality() {
-        let m3 = IntervalQuality.Third.Minor
+        let m3 = IntervalQuality.Third.minor
         XCTAssert(IntervalQuality.Third.has(m3))
     }
 }
