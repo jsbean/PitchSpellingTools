@@ -30,18 +30,11 @@ extension PitchSpelling {
         }
         
         internal var direction: Direction {
-            switch self {
-            case .natural: return .none
-            case .sharp, .quarterSharp: return .up
-            case .flat, .quarterFlat: return .down
-            }
+            return self == .natural ? .none : rawValue > 0 ? .up : .down
         }
         
         internal var resolution: Resolution {
-            switch self {
-            case .quarterSharp, .quarterFlat: return .quarterStep
-            default: return .halfStep
-            }
+            return rawValue % 1 == 0 ? .halfStep : .quarterStep
         }
         
         internal var quantizedToHalfStep: CoarseAdjustment {
@@ -61,10 +54,16 @@ extension PitchSpelling {
         /// Sharp.
         case sharp = 1
         
+        /// ThreeQuarterSharp.
+        case threeQuarterSharp = 1.5
+        
         /// QuarterFlat.
         case quarterFlat = -0.5
         
         /// Flat.
         case flat = -1
+        
+        /// ThreeQuarterFlat.
+        case threeQuarterFlat = -1.5
     }
 }
