@@ -13,7 +13,6 @@ import Pitch
 private protocol IntervalQualityType: EnumTree {
     static var diminished: IntervalQuality.EnumKind { get }
     static var augmented: IntervalQuality.EnumKind { get }
-    //static var members: [IntervalQuality.EnumKind] { get }
 }
 
 private protocol PerfectIntervalQuatlityType: IntervalQualityType {
@@ -88,12 +87,12 @@ public class IntervalQuality: EnumTree {
         
         public override class var members: [EnumKind] { return perfectMembers }
         
-        // this should be the baseline
-        public override class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
-            -> EnumKind
+        public override class func kind(
+            forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
+        ) -> EnumKind
         {
-            let lowerDirection = pitchSpellingDyad.lower.coarse.direction.rawValue
-            let higherDirection = pitchSpellingDyad.higher.coarse.direction.rawValue
+            let lowerDirection = pitchSpellingDyad.lower.coarse.direction
+            let higherDirection = pitchSpellingDyad.higher.coarse.direction
             switch compare(lowerDirection, higherDirection) {
             case .equal: return perfect
             case .lessThan: return augmented
@@ -365,13 +364,7 @@ public class IntervalQuality: EnumTree {
         return family.kind(forPitchSpellingDyad: pitchSpellingDyad)
     }
     
-    internal func intervalQualityKinds(withIntervalClass intervalClass: IntervalClass)
-        -> [IntervalQualityKind]
-    {
-        return intervalQualityKinds(withIntervalClass: intervalClass) ?? []
-    }
-    
-    public static func intervalFamily(withAmountOfSteps steps: Int) -> EnumFamily.Type {
+    private static func intervalFamily(withAmountOfSteps steps: Int) -> EnumFamily.Type {
         switch abs(steps) % 7 {
         case 0: return Unison.self
         case 1: return Second.self
@@ -383,6 +376,14 @@ public class IntervalQuality: EnumTree {
         default: fatalError()
         }
     }
+    
+    private func intervalQualityKinds(withIntervalClass intervalClass: IntervalClass)
+        -> [IntervalQualityKind]
+    {
+        return intervalQualityKinds(withIntervalClass: intervalClass) ?? []
+    }
+    
+    
 }
 
 /**

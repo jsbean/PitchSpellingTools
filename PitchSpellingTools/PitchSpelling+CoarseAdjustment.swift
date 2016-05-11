@@ -18,7 +18,7 @@ extension PitchSpelling {
      */
     public enum CoarseAdjustment: Float, Comparable {
         
-        internal enum Direction: Float {
+        internal enum Direction: Float, Comparable {
             case none = 0
             case up = 1
             case down = -1
