@@ -39,13 +39,9 @@ public class DyadSpeller: PitchSpeller {
     }()
 
     /**
-     `Result` with the
-     
      - warning: Default implementation is `.none`. Must be overriden.
      */
-    public var options: Result {
-        return .none
-    }
+    public var options: Result { return .none }
     
     internal var dyad: Dyad
     
