@@ -40,19 +40,25 @@ class HalfToneDyadSpellerTests: XCTestCase {
     }
     
     func testForceSpell61_68() {
-        let dyad = Dyad(Pitch(noteNumber: 61.0), Pitch(noteNumber: 68.0))
+        ensureSpelling(
+            of: (61.0, 68.0),
+            with: (PitchSpelling(.c, .sharp), PitchSpelling(.g, .sharp))
+        )
+    }
+    
+    func ensureSpelling(of pitches: (NoteNumber, NoteNumber),
+        with pitchSpellings: (PitchSpelling, PitchSpelling)
+    )
+    {
+        let dyad = Dyad(Pitch(noteNumber: pitches.0), Pitch(noteNumber: pitches.1))
         guard let speller = DyadSpeller.makeSpeller(forDyad: dyad) else { XCTFail(); return }
         do {
             let spelledDyad = try speller.spell()
-            
-            print("spelledDyad: \(spelledDyad)")
-            guard let higher = spelledDyad.higher as? SpelledPitch else {
-                XCTFail()
-                return
-            }
-            XCTAssertEqual(higher.spelling, PitchSpelling(.g, .sharp))
+            XCTAssertEqual(spelledDyad.lower.spelling, pitchSpellings.0)
+            XCTAssertEqual(spelledDyad.higher.spelling, pitchSpellings.1)
         } catch {
             XCTFail()
         }
+
     }
 }
