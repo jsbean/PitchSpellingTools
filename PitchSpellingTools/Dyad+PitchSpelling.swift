@@ -32,11 +32,13 @@ extension Dyad {
     }
     
     public var defaultSpellingDyad: PitchSpellingDyad? {
+        
         guard let lowerSpelling = lower.defaultSpelling,
             higherSpelling = higher.defaultSpelling
         else {
             return nil
         }
+        
         return PitchSpellingDyad(lowerSpelling, higherSpelling)
     }
     
@@ -56,11 +58,11 @@ extension Dyad {
         )
     }
     
-    public func spellHigher(with spelling: PitchSpelling) throws -> SpelledPitch {
+    internal func spellHigher(with spelling: PitchSpelling) throws -> SpelledPitch {
         return try higher.spell(with: spelling)
     }
     
-    public func spellLower(with spelling: PitchSpelling) throws -> SpelledPitch {
+    internal func spellLower(with spelling: PitchSpelling) throws -> SpelledPitch {
         return try lower.spell(with: spelling)
     }
 }
