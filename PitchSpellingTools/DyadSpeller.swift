@@ -56,8 +56,16 @@ public class DyadSpeller: PitchSpeller {
     /**
      Make the best-suited subclass of `DyadSpeller` for the given `dyad`.
      */
-    public static func makeSpeller(for dyad: Dyad) -> DyadSpeller? {
-        return DyadSpellerFactory.makeSpeller(for: dyad)
+    public static func makeSpeller(forDyad dyad: Dyad) -> DyadSpeller? {
+        var classType: DyadSpeller.Type? {
+            switch dyad.finestResolution {
+            case 0.25: return EighthToneDyadSpeller.self
+            case 0.5: return QuarterToneDyadSpeller.self
+            case 1.0: return HalfToneDyadSpeller.self
+            default: return nil
+            }
+        }
+        return classType?.init(dyad: dyad)
     }
 
     // MARK: - Initializers

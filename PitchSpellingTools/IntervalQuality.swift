@@ -85,8 +85,9 @@ public class IntervalQuality: EnumTree {
         
         public override class var members: [EnumKind] { return imperfectMembers }
         
-        public override class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
-            -> EnumKind
+        public override class func kind(
+            forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
+        ) -> EnumKind
         {
             let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
             return intervalQuality(fromDirectionDifference: difference)
