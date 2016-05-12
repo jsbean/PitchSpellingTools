@@ -13,7 +13,7 @@ import Pitch
  */
 public class SpelledPitch: Pitch {
     
-    private let spelling: PitchSpelling
+    public let spelling: PitchSpelling
     
     /**
      Create a `SpelledPitch` with a given `pitch` and `spelling`.

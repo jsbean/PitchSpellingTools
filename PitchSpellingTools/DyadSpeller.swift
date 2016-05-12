@@ -86,8 +86,8 @@ public class DyadSpeller: PitchSpeller {
      - throws: `PitchSpelling.Error` in the case the pitches in `dyad` are currently 
      unspellable.
      */
-    public func spellWithDefaultSpellings() throws {
-        try dyad.spellWithDefaultSpellings()
+    public func spellWithDefaultSpellings() throws -> SpelledDyad {
+        return try dyad.spellWithDefaultSpellings()
     }
     
     /**
@@ -96,9 +96,8 @@ public class DyadSpeller: PitchSpeller {
      - throws: `PitchSpelling.Error.invalidSpellingForPitch` if either pitchSpelling in the
      `pitchSpellingDyad` is unfit for the target pitch of `dyad`.
      */
-    public func spell(with pitchSpellingDyad: PitchSpellingDyad) throws {
-        try dyad.spellLower(with: pitchSpellingDyad.lower)
-        try dyad.spellHigher(with: pitchSpellingDyad.higher)
+    public func spell(with pitchSpellingDyad: PitchSpellingDyad) throws -> SpelledDyad {
+        return try dyad.spell(with: pitchSpellingDyad)
     }
     
     /**
@@ -121,11 +120,14 @@ public class DyadSpeller: PitchSpeller {
      - throws: `PitchSpeller.Error` if either `Pitch` cannot be spelled with the available
      `PitchSpelling` object.
      */
-    public func spell() throws {
+    public func spell() throws -> SpelledDyad {
         switch options {
-        case .none: try spellWithDefaultSpellings()
-        case .single(let pitchSpellingDyad): try spell(with: pitchSpellingDyad)
-        case .multiple(let pitchSpellingDyads): try spell(with: pitchSpellingDyads.first!)
+        case .none:
+            return try spellWithDefaultSpellings()
+        case .single(let pitchSpellingDyad):
+            return try spell(with: pitchSpellingDyad)
+        case .multiple(let pitchSpellingDyads):
+            return try spell(with: pitchSpellingDyads.first!)
         }
     }
 }

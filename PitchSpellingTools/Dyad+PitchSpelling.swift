@@ -40,25 +40,27 @@ extension Dyad {
         return PitchSpellingDyad(lowerSpelling, higherSpelling)
     }
     
-    public func spellWithDefaultSpellings() throws {
+    public func spellWithDefaultSpellings() throws -> SpelledDyad {
         
         guard let defaultSpellingDyad = defaultSpellingDyad else {
             throw Error.cannotSpellPitches
         }
         
-        try spell(with: defaultSpellingDyad)
+        return try spell(with: defaultSpellingDyad)
     }
     
-    public func spell(with spellingDyad: PitchSpellingDyad) throws {
-        try spellHigher(with: spellingDyad.higher)
-        try spellLower(with: spellingDyad.lower)
+    public func spell(with spellingDyad: PitchSpellingDyad) throws -> SpelledDyad {
+        return SpelledDyad(
+            higher: try spellHigher(with: spellingDyad.higher),
+            lower: try spellLower(with: spellingDyad.lower)
+        )
     }
     
-    public func spellHigher(with spelling: PitchSpelling) throws {
-        try higher.spell(with: spelling)
+    public func spellHigher(with spelling: PitchSpelling) throws -> SpelledPitch {
+        return try higher.spell(with: spelling)
     }
     
-    public func spellLower(with spelling: PitchSpelling) throws {
-        try lower.spell(with: spelling)
+    public func spellLower(with spelling: PitchSpelling) throws -> SpelledPitch {
+        return try lower.spell(with: spelling)
     }
 }

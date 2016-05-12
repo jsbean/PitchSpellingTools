@@ -38,4 +38,21 @@ class HalfToneDyadSpellerTests: XCTestCase {
         default: XCTFail()
         }
     }
+    
+    func testForceSpell61_68() {
+        let dyad = Dyad(Pitch(noteNumber: 61.0), Pitch(noteNumber: 68.0))
+        guard let speller = DyadSpeller.makeSpeller(forDyad: dyad) else { XCTFail(); return }
+        do {
+            let spelledDyad = try speller.spell()
+            
+            print("spelledDyad: \(spelledDyad)")
+            guard let higher = spelledDyad.higher as? SpelledPitch else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(higher.spelling, PitchSpelling(.g, .sharp))
+        } catch {
+            XCTFail()
+        }
+    }
 }
