@@ -46,12 +46,24 @@ class HalfToneDyadSpellerTests: XCTestCase {
         )
     }
     
+    func testForceSpell63_70() {
+        ensureSpelling(
+            of: (63, 70),
+            with: (PitchSpelling(.e, .flat), PitchSpelling(.b, .flat))
+        )
+    }
+    
     func ensureSpelling(of pitches: (NoteNumber, NoteNumber),
         with pitchSpellings: (PitchSpelling, PitchSpelling)
     )
     {
         let dyad = Dyad(Pitch(noteNumber: pitches.0), Pitch(noteNumber: pitches.1))
-        guard let speller = DyadSpeller.makeSpeller(forDyad: dyad) else { XCTFail(); return }
+        
+        guard let speller = DyadSpeller.makeSpeller(forDyad: dyad) else {
+            XCTFail()
+            return
+        }
+        
         do {
             let spelledDyad = try speller.spell()
             XCTAssertEqual(spelledDyad.lower.spelling, pitchSpellings.0)
@@ -59,6 +71,5 @@ class HalfToneDyadSpellerTests: XCTestCase {
         } catch {
             XCTFail()
         }
-
     }
 }
