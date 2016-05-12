@@ -216,4 +216,24 @@ class PitchSpellingDyadTests: XCTestCase {
         let dyad = PitchSpellingDyad(PitchSpelling(.a, .sharp), PitchSpelling(.e))
         XCTAssertEqual(dyad.intervalQuality, IntervalQuality.fifth.diminished)
     }
+    
+    func testFBAgumentedFourth() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.f), PitchSpelling(.b))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.fourth.augmented)
+    }
+    
+    func testBFADimishedFifth() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.b), PitchSpelling(.f))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.fifth.diminished)
+    }
+    
+    func testFSharpCDiminishedFifth() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.f, .sharp), PitchSpelling(.c))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.fifth.diminished)
+    }
+    
+    func testCFSharpAugmentedFourth() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.f, .sharp))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.fourth.augmented)
+    }
 }
