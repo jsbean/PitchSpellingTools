@@ -31,8 +31,8 @@ extension PerfectIntervalQuatlityType {
     }
     
     static func adjustDifference(difference: Float,
-                                 forLowerPitchSpelling pitchSpelling: PitchSpelling
-        ) -> Float
+        forLowerPitchSpelling pitchSpelling: PitchSpelling
+    ) -> Float
     {
         return pitchSpelling.letterName == .b ? difference - 1 : difference
     }

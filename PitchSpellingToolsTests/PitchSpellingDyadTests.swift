@@ -154,12 +154,21 @@ class PitchSpellingDyadTests: XCTestCase {
             PitchSpelling(.b, .natural),
             PitchSpelling(.f, .threeQuarterSharp)
         )
-        print("interval quality: \(dyad.intervalQuality)")
         XCTAssertTrue(dyad.isStepPreserving)
     }
     
     func testFBFlatStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.f), PitchSpelling(.b, .flat))
         XCTAssertTrue(dyad.isStepPreserving)
+    }
+    
+    func testBCStepPreserving() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.b), PitchSpelling(.c))
+        XCTAssertTrue(dyad.isStepPreserving)
+    }
+    
+    func testBCIntervalQualityMinorSecond() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.b), PitchSpelling(.c))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Second.minor)
     }
 }
