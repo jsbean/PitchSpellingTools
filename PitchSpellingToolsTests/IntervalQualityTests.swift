@@ -13,7 +13,7 @@ import EnumTools
 class IntervalQualityTests: XCTestCase {
 
     func testIntervalQuality() {
-        let m3 = IntervalQuality.Third.minor
-        XCTAssert(IntervalQuality.Third.has(m3))
+        let m3 = IntervalQuality.third.minor
+        XCTAssert(IntervalQuality.third.has(m3))
     }
 }

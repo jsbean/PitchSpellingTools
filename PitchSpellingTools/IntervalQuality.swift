@@ -13,11 +13,11 @@ import Pitch
 /**
  Quality of Interval between two `SpelledPitch` objects.
  
- >`IntervalQuality.Third.major`
+ >`IntervalQuality.third.major`
  
- >`IntervalQuality.Seventh.diminished`
+ >`IntervalQuality.seventh.diminished`
  
- >`IntervalQuality.Fourth.augmented`
+ >`IntervalQuality.fourth.augmented`
  */
 public class IntervalQuality: EnumTree {
 
@@ -46,7 +46,7 @@ public class IntervalQuality: EnumTree {
     // MARK: - Interval Families
     
     /// Unison interval family.
-    public class Unison: EnumFamily, PerfectIntervalQuatlityType {
+    public class unison: EnumFamily, PerfectIntervalQuatlityType {
         
         /// diminished Unison interval.
         public static let diminished: EnumKind = .diminishedUnison
@@ -70,7 +70,7 @@ public class IntervalQuality: EnumTree {
     }
     
     /// Second interval family.
-    public class Second: EnumFamily, ImperfectIntervalQualityType {
+    public class second: EnumFamily, ImperfectIntervalQualityType {
         
         public static let diminished: EnumKind = .diminishedSecond
         
@@ -94,7 +94,7 @@ public class IntervalQuality: EnumTree {
     }
     
     /// Third interval family.
-    public class Third: EnumFamily, ImperfectIntervalQualityType {
+    public class third: EnumFamily, ImperfectIntervalQualityType {
         
         /// diminished Third interval.
         public static let diminished: EnumKind = .diminishedThird
@@ -120,7 +120,7 @@ public class IntervalQuality: EnumTree {
     }
     
     /// Fourth interval family.
-    public class Fourth: EnumFamily, PerfectIntervalQuatlityType {
+    public class fourth: EnumFamily, PerfectIntervalQuatlityType {
         
         /// diminished Fourth interval.
         public static let diminished: EnumKind = .diminishedFourth
@@ -150,7 +150,7 @@ public class IntervalQuality: EnumTree {
     }
     
     /// Fifth interval family.
-    public class Fifth: EnumFamily, PerfectIntervalQuatlityType {
+    public class fifth: EnumFamily, PerfectIntervalQuatlityType {
         
         /// diminished Fifth interval.
         public static let diminished: EnumKind = .diminishedFifth
@@ -173,7 +173,7 @@ public class IntervalQuality: EnumTree {
     }
     
     /// Sixth interval family.
-    public class Sixth: EnumFamily, ImperfectIntervalQualityType {
+    public class sixth: EnumFamily, ImperfectIntervalQualityType {
         
         /// diminished Sixth interval.
         public static let diminished: EnumKind = .diminishedSixth
@@ -199,7 +199,7 @@ public class IntervalQuality: EnumTree {
     }
     
     /// Seventh interval family.
-    public class Seventh: EnumFamily, ImperfectIntervalQualityType {
+    public class seventh: EnumFamily, ImperfectIntervalQualityType {
         
         /// diminished Seventh interval.
         public static let diminished: EnumKind = .diminishedSeventh
@@ -228,13 +228,13 @@ public class IntervalQuality: EnumTree {
     
     public class var subFamilies: [EnumFamily.Type] {
         return [
-            Unison.self,
-            Second.self,
-            Third.self,
-            Fourth.self,
-            Fifth.self,
-            Sixth.self,
-            Seventh.self
+            unison.self,
+            second.self,
+            third.self,
+            fourth.self,
+            fifth.self,
+            sixth.self,
+            seventh.self
         ]
     }
     
@@ -247,13 +247,13 @@ public class IntervalQuality: EnumTree {
     
     private static func intervalFamily(withAmountOfSteps steps: Int) -> EnumFamily.Type {
         switch abs(steps) % 7 {
-        case 0: return Unison.self
-        case 1: return Second.self
-        case 2: return Third.self
-        case 3: return Fourth.self
-        case 4: return Fifth.self
-        case 5: return Sixth.self
-        case 6: return Seventh.self
+        case 0: return unison.self
+        case 1: return second.self
+        case 2: return third.self
+        case 3: return fourth.self
+        case 4: return fifth.self
+        case 5: return sixth.self
+        case 6: return seventh.self
         default: fatalError()
         }
     }

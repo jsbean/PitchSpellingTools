@@ -24,62 +24,62 @@ class PitchSpellingDyadTests: XCTestCase {
     
     func testCGperfectFifth() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.g))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Fifth.perfect)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.fifth.perfect)
     }
     
     func testGCperfectFourth() {
         let dyad = PitchSpellingDyad(PitchSpelling(.g), PitchSpelling(.c))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Fourth.perfect)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.fourth.perfect)
     }
     
     func testCEmajorThird() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.e))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.major)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.third.major)
     }
     
     func testCEFlatminorThird() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.e, .flat))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.minor)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.third.minor)
     }
     
     func testCSharpEFlatdiminishedThird() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c, .sharp), PitchSpelling(.e, .flat))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.diminished)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.third.diminished)
     }
     
     func testBbDSharpaugmentedThird() {
         let dyad = PitchSpellingDyad(PitchSpelling(.b, .flat), PitchSpelling(.d, .sharp))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Third.augmented)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.third.augmented)
     }
     
     func testBbCSharpAugmentedSecond() {
         let dyad = PitchSpellingDyad(PitchSpelling(.b, .flat), PitchSpelling(.c, .sharp))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Second.augmented)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.second.augmented)
     }
     
     func testGASharpAugmentedSecond() {
         let dyad = PitchSpellingDyad(PitchSpelling(.g), PitchSpelling(.a, .sharp))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Second.augmented)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.second.augmented)
     }
     
     func testBCFlatDiminishedSecond() {
         let dyad = PitchSpellingDyad(PitchSpelling(.b), PitchSpelling(.c, .flat))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Second.diminished)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.second.diminished)
     }
     
     func testEFlatDiminishedSecond() {
         let dyad = PitchSpellingDyad(PitchSpelling(.e), PitchSpelling(.f, .flat))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Second.diminished)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.second.diminished)
     }
     
     func testCCFlatdiminishedUnison() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.c, .flat))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Unison.diminished)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.unison.diminished)
     }
     
     func testCFlatCaugmentedUnison() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c, .flat), PitchSpelling(.c))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Unison.augmented)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.unison.augmented)
     }
     
     func testCEStepPreserving() {
@@ -169,6 +169,6 @@ class PitchSpellingDyadTests: XCTestCase {
     
     func testBCIntervalQualityMinorSecond() {
         let dyad = PitchSpellingDyad(PitchSpelling(.b), PitchSpelling(.c))
-        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.Second.minor)
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.second.minor)
     }
 }
