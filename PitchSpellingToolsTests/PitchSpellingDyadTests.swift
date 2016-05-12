@@ -171,4 +171,39 @@ class PitchSpellingDyadTests: XCTestCase {
         let dyad = PitchSpellingDyad(PitchSpelling(.b), PitchSpelling(.c))
         XCTAssertEqual(dyad.intervalQuality, IntervalQuality.second.minor)
     }
+    
+    func testBGSharpMajorSixth() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.b), PitchSpelling(.g, .sharp))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.sixth.major)
+    }
+    
+    func testBGMinorSixth() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.b), PitchSpelling(.g))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.sixth.minor)
+    }
+    
+    func testECMinorSixth() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.e), PitchSpelling(.c))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.sixth.minor)
+    }
+    
+    func testECSharpMajorSixth() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.e), PitchSpelling(.c, .sharp))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.sixth.major)
+    }
+    
+    func testCASharpAugmentedSixth() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.a, .sharp))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.sixth.augmented)
+    }
+    
+    func testEFlatCSharpAugmentedSixth() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.e, .flat), PitchSpelling(.c, .sharp))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.sixth.augmented)
+    }
+    
+    func testGESharpAugmentedSixth() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.g), PitchSpelling(.e, .sharp))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.sixth.augmented)
+    }
 }
