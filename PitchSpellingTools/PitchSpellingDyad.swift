@@ -48,9 +48,6 @@ public struct PitchSpellingDyad {
 
     /// `IntervalQuality` between `PitchSpelling` objects.
     public var intervalQuality: IntervalQualityKind {
-        //let family = IntervalQuality.intervalFamily(withAmountOfSteps: steps)
-        
-        //return family.kind(lower.coarse, higher.coarse)
         return IntervalQuality.kind(forPitchSpellingDyad: self)
     }
     
