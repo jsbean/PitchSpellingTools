@@ -11,7 +11,6 @@ import EnumTools
 internal protocol ImperfectIntervalQualityType: IntervalQualityType {
     static var major: IntervalQuality.EnumKind { get }
     static var minor: IntervalQuality.EnumKind { get }
-    static var imperfectMembers: [IntervalQuality.EnumKind] { get }
 }
 
 extension ImperfectIntervalQualityType {
@@ -19,8 +18,6 @@ extension ImperfectIntervalQualityType {
     static var imperfectMembers: [IntervalQuality.EnumKind] {
         return [diminished, minor, major, augmented]
     }
-    
-    static var members: [IntervalQuality.EnumKind] { return imperfectMembers }
     
     static var stepPreserving: [IntervalQuality.EnumKind] { return [minor, major] }
     

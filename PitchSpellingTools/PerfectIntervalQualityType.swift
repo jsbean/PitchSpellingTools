@@ -10,7 +10,6 @@ import ArithmeticTools
 
 internal protocol PerfectIntervalQuatlityType: IntervalQualityType {
     static var perfect: IntervalQuality.EnumKind { get }
-    static var perfectMembers: [IntervalQuality.EnumKind] { get }
 }
 
 extension PerfectIntervalQuatlityType {
@@ -18,8 +17,6 @@ extension PerfectIntervalQuatlityType {
     static var perfectMembers: [IntervalQuality.EnumKind] {
         return [diminished, perfect, augmented]
     }
-    
-    static var members: [IntervalQuality.EnumKind] { return perfectMembers }
     
     static var stepPreserving: [IntervalQuality.EnumKind] { return [perfect] }
     
