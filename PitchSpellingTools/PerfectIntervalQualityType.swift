@@ -16,8 +16,10 @@ internal protocol PerfectIntervalQuatlityType: IntervalQualityType {
 extension PerfectIntervalQuatlityType {
     
     static var perfectMembers: [IntervalQuality.EnumKind] {
-        return [perfect, diminished, augmented]
+        return [diminished, perfect, augmented]
     }
+    
+    static var members: [IntervalQuality.EnumKind] { return perfectMembers }
     
     static var stepPreserving: [IntervalQuality.EnumKind] { return [perfect] }
     

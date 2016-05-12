@@ -20,6 +20,8 @@ extension ImperfectIntervalQualityType {
         return [diminished, minor, major, augmented]
     }
     
+    static var members: [IntervalQuality.EnumKind] { return imperfectMembers }
+    
     static var stepPreserving: [IntervalQuality.EnumKind] { return [minor, major] }
     
     static func adjustDifference(difference: Float,

@@ -48,6 +48,9 @@ extension EnumTree where
     EnumFamily: EnumTree,
     EnumFamily.EnumKind == EnumKind
 {
+    
+    public static var subFamilies: [EnumKind] { return [] }
+    
     /**
      - returns: `true` if `members` or any subFamily's `members` contains `kind` value.
      */

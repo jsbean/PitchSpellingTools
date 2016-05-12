@@ -57,7 +57,7 @@ public class IntervalQuality: EnumTree {
         /// augmented Unison interval.
         public static let augmented: EnumKind = .augmentedUnison
         
-        public override class var members: [EnumKind] { return perfectMembers }
+        //public static var members: [EnumKind] { return perfectMembers }
         
         // DEFAULT Perfect implementation
         public override class func kind(
@@ -133,8 +133,9 @@ public class IntervalQuality: EnumTree {
         
         public override class var members: [EnumKind] { return perfectMembers }
         
-        public override class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
-            -> EnumKind
+        public override class func kind(
+            forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
+        ) -> EnumKind
         {
             let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
             return intervalQuality(fromDirectionDifference: difference)
