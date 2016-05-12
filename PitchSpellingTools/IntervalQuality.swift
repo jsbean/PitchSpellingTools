@@ -10,11 +10,6 @@ import ArithmeticTools
 import EnumTools
 import Pitch
 
-// TODO: implement stepPreserving intervals for each type
-
-
-
-
 /**
  Quality of Interval between two `SpelledPitch` objects.
  
