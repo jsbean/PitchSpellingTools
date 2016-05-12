@@ -62,6 +62,8 @@
 		0796D2711CD6A0F60066A863 /* SpelledPitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0796D26F1CD6A0F60066A863 /* SpelledPitch.swift */; };
 		0796E1241CE402B50084667B /* IntervalQualityKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0796E1231CE402B50084667B /* IntervalQualityKind.swift */; };
 		0796E1251CE402B50084667B /* IntervalQualityKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0796E1231CE402B50084667B /* IntervalQualityKind.swift */; };
+		0796E1271CE402FA0084667B /* IntervalQualityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0796E1261CE402FA0084667B /* IntervalQualityType.swift */; };
+		0796E1281CE402FA0084667B /* IntervalQualityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0796E1261CE402FA0084667B /* IntervalQualityType.swift */; };
 		07BB2F6A1CDBB8C300DC4D7A /* DyadSpellerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BB2F691CDBB8C300DC4D7A /* DyadSpellerFactory.swift */; };
 		07BB2F6B1CDBB8C300DC4D7A /* DyadSpellerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BB2F691CDBB8C300DC4D7A /* DyadSpellerFactory.swift */; };
 		07BB2F6D1CDBB9F900DC4D7A /* QuarterToneDyadSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BB2F6C1CDBB9F900DC4D7A /* QuarterToneDyadSpeller.swift */; };
@@ -176,6 +178,7 @@
 		0781750E1CD8F69700AAB396 /* PitchSpelling+Sharpness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+Sharpness.swift"; path = "PitchSpellingTools/PitchSpelling+Sharpness.swift"; sourceTree = "<group>"; };
 		0796D26F1CD6A0F60066A863 /* SpelledPitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpelledPitch.swift; path = PitchSpellingTools/SpelledPitch.swift; sourceTree = "<group>"; };
 		0796E1231CE402B50084667B /* IntervalQualityKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntervalQualityKind.swift; path = PitchSpellingTools/IntervalQualityKind.swift; sourceTree = "<group>"; };
+		0796E1261CE402FA0084667B /* IntervalQualityType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntervalQualityType.swift; path = PitchSpellingTools/IntervalQualityType.swift; sourceTree = "<group>"; };
 		07BB2F691CDBB8C300DC4D7A /* DyadSpellerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DyadSpellerFactory.swift; path = PitchSpellingTools/DyadSpellerFactory.swift; sourceTree = "<group>"; };
 		07BB2F6C1CDBB9F900DC4D7A /* QuarterToneDyadSpeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuarterToneDyadSpeller.swift; path = PitchSpellingTools/QuarterToneDyadSpeller.swift; sourceTree = "<group>"; };
 		07BB2F6F1CDBBA1300DC4D7A /* EighthToneDyadSpeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EighthToneDyadSpeller.swift; path = PitchSpellingTools/EighthToneDyadSpeller.swift; sourceTree = "<group>"; };
@@ -366,6 +369,7 @@
 				07BB2F751CDBBE0200DC4D7A /* DyadSpeller */,
 				076BAFE71CD6B51D005594C6 /* PitchSpellings.swift */,
 				0752A53D1CD69BD0007C25AB /* IntervalQuality.swift */,
+				0796E1261CE402FA0084667B /* IntervalQualityType.swift */,
 				0796E1231CE402B50084667B /* IntervalQualityKind.swift */,
 				071890E71CD95BD600C5CD17 /* Dyad+PitchSpelling.swift */,
 				076BAFEA1CD6B67F005594C6 /* SpelledPitchDyad.swift */,
@@ -618,6 +622,7 @@
 				07F6F14A1CD7F8310026E89D /* Sharpness.swift in Sources */,
 				07E2E1411CDAC32400FDF3E8 /* SpelledPitch+CustomStringConvertible.swift in Sources */,
 				0752A5441CD69BD0007C25AB /* DyadSpeller.swift in Sources */,
+				0796E1271CE402FA0084667B /* IntervalQualityType.swift in Sources */,
 				0752A5541CD69BD0007C25AB /* VerticalitySpeller.swift in Sources */,
 				07F6F1471CD7E7FF0026E89D /* PitchSpellingDyad.swift in Sources */,
 				0752A5501CD69BD0007C25AB /* PitchSpelling.swift in Sources */,
@@ -681,6 +686,7 @@
 				07F6F14B1CD7F8310026E89D /* Sharpness.swift in Sources */,
 				07E2E1421CDAC32400FDF3E8 /* SpelledPitch+CustomStringConvertible.swift in Sources */,
 				0752A5451CD69BD0007C25AB /* DyadSpeller.swift in Sources */,
+				0796E1281CE402FA0084667B /* IntervalQualityType.swift in Sources */,
 				0752A5551CD69BD0007C25AB /* VerticalitySpeller.swift in Sources */,
 				07F6F1481CD7E7FF0026E89D /* PitchSpellingDyad.swift in Sources */,
 				0752A5511CD69BD0007C25AB /* PitchSpelling.swift in Sources */,
