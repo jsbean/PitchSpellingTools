@@ -23,4 +23,19 @@ class HalfToneDyadSpellerTests: XCTestCase {
         default: XCTFail()
         }
     }
+    
+    func test61_68() {
+        let dyad = Dyad(Pitch(noteNumber: 61.0), Pitch(noteNumber: 68.0))
+        let speller = DyadSpeller.makeSpeller(forDyad: dyad)
+        guard let options = speller?.options else { XCTFail(); return }
+        switch options {
+        case .multiple(let pitchSpellingDyads):
+            let expected = [
+                PitchSpellingDyad(PitchSpelling(.c, .sharp), PitchSpelling(.g, .sharp)),
+                PitchSpellingDyad(PitchSpelling(.d, .flat), PitchSpelling(.a, .flat))
+            ]
+            XCTAssertEqual(pitchSpellingDyads, expected)
+        default: XCTFail()
+        }
+    }
 }
