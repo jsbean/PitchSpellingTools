@@ -14,37 +14,42 @@ internal struct PitchSpellings {
     private static let spellingsByPitchClass: [PitchClass: [PitchSpelling]] = [
         
         00.00: [
-            PitchSpelling(.c, .natural, .none)
+            PitchSpelling(.c)
         ],
         
         00.25: [
             PitchSpelling(.c, .natural, .up),
-            PitchSpelling(.c, .quarterSharp, .down)
+            PitchSpelling(.c, .quarterSharp, .down),
+            PitchSpelling(.d, .threeQuarterFlat, .down)
         ],
         
         00.50: [
-            PitchSpelling(.c, .quarterSharp, .none)
+            PitchSpelling(.c, .quarterSharp, .none),
+            PitchSpelling(.d, .threeQuarterFlat)
         ],
         
         00.75: [
-            PitchSpelling(.c, .quarterSharp, .up),
             PitchSpelling(.c, .sharp, .down),
-            PitchSpelling(.d, .flat, .down)
+            PitchSpelling(.d, .flat, .down),
+            PitchSpelling(.c, .quarterSharp, .up),
+            PitchSpelling(.d, .threeQuarterFlat, .up)
         ],
         
         01.00: [
-            PitchSpelling(.c, .sharp, .none),
-            PitchSpelling(.d, .flat, .none)
+            PitchSpelling(.c, .sharp),
+            PitchSpelling(.d, .flat)
         ],
         
         01.25: [
             PitchSpelling(.c, .sharp, .up),
             PitchSpelling(.d, .flat, .up),
-            PitchSpelling(.d, .quarterFlat, .down)
+            PitchSpelling(.d, .quarterFlat, .down),
+            PitchSpelling(.c, .threeQuarterSharp, .down)
         ],
         
         01.50: [
-            PitchSpelling(.d, .quarterSharp, .none)
+            PitchSpelling(.d, .quarterFlat),
+            PitchSpelling(.c, .threeQuarterSharp)
         ],
         
         01.75: [
@@ -53,27 +58,30 @@ internal struct PitchSpellings {
         ],
         
         02.00: [
-            PitchSpelling(.d, .natural, .none)
+            PitchSpelling(.d)
         ],
         
         02.25: [
             PitchSpelling(.d, .natural, .up),
-            PitchSpelling(.d, .quarterSharp, .down)
+            PitchSpelling(.d, .quarterSharp, .down),
+            PitchSpelling(.e, .threeQuarterFlat, .down)
         ],
         
         02.50: [
-            PitchSpelling(.d, .quarterSharp, .none)
+            PitchSpelling(.d, .quarterSharp),
+            PitchSpelling(.e, .threeQuarterFlat)
         ],
         
         02.75: [
-            PitchSpelling(.d, .quarterSharp, .up),
             PitchSpelling(.d, .sharp, .down),
-            PitchSpelling(.e, .flat, .down)
+            PitchSpelling(.e, .flat, .down),
+            PitchSpelling(.d, .quarterSharp, .up),
+            PitchSpelling(.e, .threeQuarterFlat, .up)
         ],
         
         03.00: [
-            PitchSpelling(.d, .sharp, .none),
-            PitchSpelling(.e, .flat, .none)
+            PitchSpelling(.d, .sharp),
+            PitchSpelling(.e, .flat)
         ],
         
         03.25: [
@@ -83,7 +91,8 @@ internal struct PitchSpellings {
         ],
         
         03.50: [
-            PitchSpelling(.e, .quarterFlat, .none)
+            PitchSpelling(.e, .quarterFlat),
+            PitchSpelling(.d, .threeQuarterSharp)
         ],
         
         03.75: [
@@ -92,7 +101,7 @@ internal struct PitchSpellings {
         ],
         
         04.00: [
-            PitchSpelling(.e, .natural, .none)
+            PitchSpelling(.e)
         ],
         
         04.25: [
@@ -102,8 +111,8 @@ internal struct PitchSpellings {
         ],
         
         04.50: [
-            PitchSpelling(.e, .quarterSharp, .none),
-            PitchSpelling(.f, .quarterFlat, .none)
+            PitchSpelling(.e, .quarterSharp),
+            PitchSpelling(.f, .quarterFlat)
         ],
         
         04.75: [
@@ -113,7 +122,7 @@ internal struct PitchSpellings {
         ],
         
         05.00: [
-            PitchSpelling(.f, .natural, .none)
+            PitchSpelling(.f)
         ],
         
         05.25: [
@@ -122,7 +131,8 @@ internal struct PitchSpellings {
         ],
         
         05.50: [
-            PitchSpelling(.f, .quarterSharp, .none)
+            PitchSpelling(.f, .quarterSharp),
+            PitchSpelling(.g, .threeQuarterFlat)
         ],
         
         05.75: [
@@ -132,8 +142,8 @@ internal struct PitchSpellings {
         ],
         
         06.00: [
-            PitchSpelling(.f, .sharp, .none),
-            PitchSpelling(.g, .flat, .none)
+            PitchSpelling(.f, .sharp),
+            PitchSpelling(.g, .flat)
         ],
         
         06.25: [
@@ -143,7 +153,8 @@ internal struct PitchSpellings {
         ],
         
         06.50: [
-            PitchSpelling(.g, .quarterFlat, .none)
+            PitchSpelling(.g, .quarterFlat),
+            PitchSpelling(.f, .threeQuarterSharp)
         ],
         
         06.75: [
@@ -152,7 +163,7 @@ internal struct PitchSpellings {
         ],
         
         07.00: [
-            PitchSpelling(.g, .natural, .none)
+            PitchSpelling(.g)
         ],
         
         07.25: [
@@ -161,7 +172,8 @@ internal struct PitchSpellings {
         ],
         
         07.50: [
-            PitchSpelling(.g, .quarterSharp, .none)
+            PitchSpelling(.g, .quarterSharp),
+            PitchSpelling(.a, .threeQuarterFlat)
         ],
         
         07.75: [
@@ -171,8 +183,8 @@ internal struct PitchSpellings {
         ],
         
         08.00: [
-            PitchSpelling(.g, .sharp, .none),
-            PitchSpelling(.a, .flat, .none)
+            PitchSpelling(.g, .sharp),
+            PitchSpelling(.a, .flat)
         ],
         
         08.25: [
@@ -182,7 +194,8 @@ internal struct PitchSpellings {
         ],
         
         08.50: [
-            PitchSpelling(.a, .quarterFlat, .none)
+            PitchSpelling(.a, .quarterFlat),
+            PitchSpelling(.g, .threeQuarterSharp)
         ],
         
         08.75: [
@@ -191,7 +204,7 @@ internal struct PitchSpellings {
         ],
         
         09.00: [
-            PitchSpelling(.a, .natural, .none)
+            PitchSpelling(.a)
         ],
         
         09.25: [
@@ -200,7 +213,7 @@ internal struct PitchSpellings {
         ],
         
         09.50: [
-            PitchSpelling(.a, .quarterSharp, .none)
+            PitchSpelling(.a)
         ],
         
         09.75: [
@@ -210,8 +223,8 @@ internal struct PitchSpellings {
         ],
         
         10.00: [
-            PitchSpelling(.a, .sharp, .none),
-            PitchSpelling(.b, .flat, .none)
+            PitchSpelling(.a, .sharp),
+            PitchSpelling(.b, .flat)
         ],
         
         10.25: [
@@ -221,7 +234,8 @@ internal struct PitchSpellings {
         ],
         
         10.50: [
-            PitchSpelling(.b, .quarterFlat, .none)
+            PitchSpelling(.b, .quarterFlat),
+            PitchSpelling(.a, .threeQuarterSharp)
         ],
         
         10.75: [
@@ -230,7 +244,7 @@ internal struct PitchSpellings {
         ],
         
         11.00: [
-            PitchSpelling(.b, .natural, .none)
+            PitchSpelling(.b)
         ],
         
         11.25: [
