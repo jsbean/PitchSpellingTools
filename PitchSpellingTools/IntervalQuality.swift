@@ -275,13 +275,13 @@ public class IntervalQuality: EnumTree {
     
     /**
      Interval quantity families:
-     - `unison`
-     - `second`
-     - `third`
-     - `fourth`
-     - `fifth`
-     - `sixth`
-     - `seventh`
+        - `unison`
+        - `second`
+        - `third`
+        - `fourth`
+        - `fifth`
+        - `sixth`
+        - `seventh`
      */
     public class var subFamilies: [EnumFamily.Type] {
         return [
