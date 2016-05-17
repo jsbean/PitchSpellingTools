@@ -57,6 +57,9 @@ extension PitchSpelling {
         /// ThreeQuarterSharp.
         case threeQuarterSharp = 1.5
         
+        /// DoubleSharp.
+        case doubleSharp = 2.0
+        
         /// QuarterFlat.
         case quarterFlat = -0.5
         
@@ -65,5 +68,8 @@ extension PitchSpelling {
         
         /// ThreeQuarterFlat.
         case threeQuarterFlat = -1.5
+        
+        /// DoubleFlat.
+        case doubleFlat = -2.0
     }
 }
