@@ -23,10 +23,12 @@ extension PitchSpelling: StringLiteralConvertible {
     }
     
     public init(stringLiteral value: StringLiteralType) {
-        self = PitchSpelling(.c)
+        guard let (head, tail) = value.destructured else { fatalError() }
+        guard let letterName = LetterName(string: head) else { fatalError() }
+        self = PitchSpelling(letterName)
     }
     
-    private func letterName(withString string: String) -> LetterName? {
-        return LetterName(string: String(string.characters.first!))
+    private static func letterName(withString string: String) -> LetterName? {
+        return LetterName(string: string)
     }
 }

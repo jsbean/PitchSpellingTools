@@ -39,7 +39,10 @@ extension PitchSpelling {
         case g
         
         public init?(string: String) {
-            if let letterName = LetterName.init(rawValue: string) { self = letterName }
+            if let letterName = LetterName.init(rawValue: string) {
+                self = letterName
+                return
+            }
             var letterName: LetterName? {
                 switch string {
                 case "A": return .a
