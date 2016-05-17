@@ -8,19 +8,26 @@
 
 import EnumTools
 
+/// Definition of imperfect interval quality types.
 internal protocol ImperfectIntervalQualityType: IntervalQualityType {
+    
+    /// Major interval quality type.
     static var major: IntervalQuality.EnumKind { get }
+    
+    /// Minor interval quality type.
     static var minor: IntervalQuality.EnumKind { get }
 }
 
 extension ImperfectIntervalQualityType {
     
+    /// Members that are available to imperfect interval quality types.
     static var imperfectMembers: [IntervalQuality.EnumKind] {
         return [doubleDiminished, diminished, minor, major, augmented, doubleAugmented]
     }
     
+    /// The imperfect interval quality types that preserve step.
     static var stepPreserving: [IntervalQuality.EnumKind] { return [minor, major] }
-    
+
     static func adjustDifference(difference: Float,
         forLowerPitchSpelling pitchSpelling: PitchSpelling
     ) -> Float

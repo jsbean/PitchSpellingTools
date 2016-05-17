@@ -8,11 +8,15 @@
 
 import ArithmeticTools
 
-internal protocol PerfectIntervalQuatlityType: IntervalQualityType {
+
+/// Definition of perfect interval quality types
+internal protocol PerfectIntervalQualityType: IntervalQualityType {
+    
+    
     static var perfect: IntervalQuality.EnumKind { get }
 }
 
-extension PerfectIntervalQuatlityType {
+extension PerfectIntervalQualityType {
     
     static var perfectMembers: [IntervalQuality.EnumKind] {
         return [diminished, perfect, augmented]

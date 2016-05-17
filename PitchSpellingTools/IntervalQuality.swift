@@ -46,7 +46,7 @@ public class IntervalQuality: EnumTree {
     // MARK: - Interval Families
     
     /// Unison interval family.
-    public class unison: EnumFamily, PerfectIntervalQuatlityType {
+    public class unison: EnumFamily, PerfectIntervalQualityType {
         
         
         public static let doubleDiminished: EnumKind = .doubleDiminishedUnison
@@ -132,7 +132,7 @@ public class IntervalQuality: EnumTree {
     }
     
     /// Fourth interval family.
-    public class fourth: EnumFamily, PerfectIntervalQuatlityType {
+    public class fourth: EnumFamily, PerfectIntervalQualityType {
         
         public static let doubleDiminished: EnumKind = .doubleDiminishedFourth
         
@@ -166,7 +166,7 @@ public class IntervalQuality: EnumTree {
     }
     
     /// Fifth interval family.
-    public class fifth: EnumFamily, PerfectIntervalQuatlityType {
+    public class fifth: EnumFamily, PerfectIntervalQualityType {
         
         public static let doubleDiminished: EnumKind = .doubleDiminishedFifth
         

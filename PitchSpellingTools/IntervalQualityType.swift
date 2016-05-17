@@ -8,22 +8,29 @@
 
 import EnumTools
 
+/// Type of interval qualities.
 internal protocol IntervalQualityType: EnumTree {
     
+    /// Double Diminished.
     static var doubleDiminished: IntervalQuality.EnumKind { get }
     
+    /// Diminished.
     static var diminished: IntervalQuality.EnumKind { get }
     
+    /// Augmented.
     static var augmented: IntervalQuality.EnumKind { get }
     
+    /// DoubleAugmented.
     static var doubleAugmented: IntervalQuality.EnumKind { get }
     
+    /// Array of `IntervalQualityType` values that preserve `step`.
     static var stepPreserving: [IntervalQuality.EnumKind] { get }
     
     static func intervalQuality(fromDirectionDifference difference: Float) -> EnumKind
     
     static func directionDifference(fromPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
         -> Float
+    
     
     static func adjustDifference(difference: Float,
         forLowerPitchSpelling pitchSpelling: PitchSpelling
