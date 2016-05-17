@@ -8,20 +8,21 @@
 
 import ArithmeticTools
 
-
 /// Definition of perfect interval quality types
 internal protocol PerfectIntervalQualityType: IntervalQualityType {
     
-    
+    /// Perfect interval quality type.
     static var perfect: IntervalQuality.EnumKind { get }
 }
 
 extension PerfectIntervalQualityType {
     
+        /// Members that are available to perfect interval quality types
     static var perfectMembers: [IntervalQuality.EnumKind] {
-        return [diminished, perfect, augmented]
+        return [doubleDiminished, diminished, perfect, augmented, doubleAugmented]
     }
     
+    /// The perfect interval quality type that preserves step.
     static var stepPreserving: [IntervalQuality.EnumKind] { return [perfect] }
     
     static func intervalQuality(fromDirectionDifference difference: Float)
