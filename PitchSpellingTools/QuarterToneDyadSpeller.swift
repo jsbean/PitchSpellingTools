@@ -11,11 +11,11 @@ import Pitch
 internal class QuarterToneDyadSpeller: HalfToneDyadSpeller {
     
     internal lazy var coarseMatching: [PitchSpellingDyad] = {
-        return self.pitchSpellingDyads.filter { $0.isCoarseMatching }
+        return self.pitchSpellingDyads.lazy.filter { $0.isCoarseMatching }
     }()
     
     internal lazy var coarseDirectionMatching: [PitchSpellingDyad] = {
-        return self.pitchSpellingDyads.filter { $0.isCoarseDirectionMatching }
+        return self.pitchSpellingDyads.lazy.filter { $0.isCoarseDirectionMatching }
     }()
     
     internal lazy var coarseMatchingAndStepPreserving: [PitchSpellingDyad] = {

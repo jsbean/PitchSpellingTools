@@ -103,7 +103,8 @@ internal struct PitchSpellings {
         ],
         
         04.00: [
-            PitchSpelling(.e)
+            PitchSpelling(.e),
+            PitchSpelling(.f, .flat)
         ],
         
         04.25: [
@@ -258,7 +259,8 @@ internal struct PitchSpellings {
         ],
         
         11.00: [
-            PitchSpelling(.b)
+            PitchSpelling(.b),
+            PitchSpelling(.c, .flat)
         ],
         
         11.25: [
