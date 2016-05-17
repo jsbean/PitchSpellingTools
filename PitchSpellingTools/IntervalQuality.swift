@@ -48,7 +48,6 @@ public class IntervalQuality: EnumTree {
     /// Unison interval family.
     public class unison: EnumFamily, PerfectIntervalQualityType {
         
-        
         /// Double Diminished Unison interval.
         public static let doubleDiminished: EnumKind = .doubleDiminishedUnison
         
