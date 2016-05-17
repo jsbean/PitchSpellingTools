@@ -275,6 +275,7 @@ public class IntervalQuality: EnumTree {
     
     /**
      Interval quantity families:
+     
         - `unison`
         - `second`
         - `third`

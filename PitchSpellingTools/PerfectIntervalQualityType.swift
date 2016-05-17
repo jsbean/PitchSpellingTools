@@ -17,7 +17,7 @@ internal protocol PerfectIntervalQualityType: IntervalQualityType {
 
 extension PerfectIntervalQualityType {
     
-        /// Members that are available to perfect interval quality types
+    /// Members that are available to perfect interval quality types
     static var perfectMembers: [IntervalQuality.EnumKind] {
         return [doubleDiminished, diminished, perfect, augmented, doubleAugmented]
     }
