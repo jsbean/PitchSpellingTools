@@ -38,6 +38,25 @@ extension PitchSpelling {
         /// G, sol.
         case g
         
+        public init?(string: String) {
+            if let letterName = LetterName.init(rawValue: string) { self = letterName }
+            var letterName: LetterName? {
+                switch string {
+                case "A": return .a
+                case "B": return .b
+                case "C": return .c
+                case "D": return .d
+                case "E": return .e
+                case "F": return .f
+                case "G": return .g
+                default: return nil
+                }
+            }
+            if let letterName = letterName { self = letterName }
+            else { return nil }
+        }
+
+        /// Amount of steps from c
         public var steps: Int {
             switch self {
             case .c: return 0

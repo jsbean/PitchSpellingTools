@@ -1,3 +1,4 @@
 github "dn-m/ArrayTools" "v1.2.8"
-github "dn-m/EnumTools" "v0.3.1"
-github "dn-m/ArithmeticTools" "v0.3.5"
+github "dn-m/EnumTools" "v0.4.2"
+github "dn-m/StringTools" "v0.2.1"
+github "dn-m/ArithmeticTools" "v0.3.8"

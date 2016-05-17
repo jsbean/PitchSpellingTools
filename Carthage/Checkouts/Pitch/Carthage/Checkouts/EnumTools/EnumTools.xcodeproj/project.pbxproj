@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0796E11E1CE3B3590084667B /* Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0796E11D1CE3B3590084667B /* Comparable.swift */; };
+		0796E11F1CE3B3590084667B /* Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0796E11D1CE3B3590084667B /* Comparable.swift */; };
+		0796E1211CE3B3C10084667B /* ComparableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0796E1201CE3B3C10084667B /* ComparableTests.swift */; };
+		0796E1221CE3B3C10084667B /* ComparableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0796E1201CE3B3C10084667B /* ComparableTests.swift */; };
 		07994EFE1C7E3CFC00296896 /* EnumTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 07994EFD1C7E3CFC00296896 /* EnumTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07994F051C7E3CFC00296896 /* EnumTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07994EFA1C7E3CFC00296896 /* EnumTools.framework */; };
 		07994F231C7E3D1000296896 /* EnumTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07994F191C7E3D1000296896 /* EnumTools.framework */; };
@@ -62,6 +66,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0796E11D1CE3B3590084667B /* Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comparable.swift; sourceTree = "<group>"; };
+		0796E1201CE3B3C10084667B /* ComparableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparableTests.swift; sourceTree = "<group>"; };
 		07994EFA1C7E3CFC00296896 /* EnumTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EnumTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07994EFD1C7E3CFC00296896 /* EnumTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EnumTools.h; path = EnumTools/EnumTools.h; sourceTree = "<group>"; };
 		07994EFF1C7E3CFC00296896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -134,6 +140,7 @@
 			children = (
 				07994F361C7E3DE300296896 /* Iterate.swift */,
 				07B08FC51C9B067300FD7A07 /* EnumTree.swift */,
+				0796E11D1CE3B3590084667B /* Comparable.swift */,
 				07E3485E1CA458A70075F00C /* Supporting Files */,
 			);
 			path = EnumTools;
@@ -143,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				07994F391C7E3DFA00296896 /* IterateTests.swift */,
+				0796E1201CE3B3C10084667B /* ComparableTests.swift */,
 				07E3485F1CA458B20075F00C /* Supporting Files */,
 			);
 			path = EnumToolsTests;
@@ -340,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0796E11E1CE3B3590084667B /* Comparable.swift in Sources */,
 				07B08FC61C9B067300FD7A07 /* EnumTree.swift in Sources */,
 				07994F371C7E3DE300296896 /* Iterate.swift in Sources */,
 			);
@@ -350,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07994F3A1C7E3DFA00296896 /* IterateTests.swift in Sources */,
+				0796E1211CE3B3C10084667B /* ComparableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0796E11F1CE3B3590084667B /* Comparable.swift in Sources */,
 				07B08FC71C9B067300FD7A07 /* EnumTree.swift in Sources */,
 				07994F381C7E3DE300296896 /* Iterate.swift in Sources */,
 			);
@@ -367,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07994F3B1C7E3DFA00296896 /* IterateTests.swift in Sources */,
+				0796E1221CE3B3C10084667B /* ComparableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

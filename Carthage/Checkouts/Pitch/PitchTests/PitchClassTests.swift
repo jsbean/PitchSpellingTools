@@ -33,4 +33,8 @@ class PitchClassTests: XCTestCase {
         let pc: PitchClass = 15
         XCTAssertEqual(pc, PitchClass(integerLiteral: 3))
     }
+    
+    func testPitchClassInitWithFloat() {
+        let _: PitchClass = 15.0
+    }
 }
