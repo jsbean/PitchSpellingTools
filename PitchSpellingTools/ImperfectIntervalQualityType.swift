@@ -32,10 +32,12 @@ extension ImperfectIntervalQualityType {
         -> IntervalQuality.EnumKind
     {
         switch difference {
+        case -3: fatalError("double augmented")
         case -2: return diminished
         case -1: return minor
         case +0: return major
         case +1: return augmented
+        case +2: fatalError("double augmented")
         default: fatalError("Such an interval couldn't possibly exist")
         }
     }

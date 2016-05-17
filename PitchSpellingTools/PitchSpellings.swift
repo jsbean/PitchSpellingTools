@@ -14,7 +14,9 @@ internal struct PitchSpellings {
     private static let spellingsByPitchClass: [PitchClass: [PitchSpelling]] = [
         
         00.00: [
-            PitchSpelling(.c)
+            PitchSpelling(.c),
+            PitchSpelling(.b, .sharp),
+            PitchSpelling(.d, .doubleFlat)
         ],
         
         00.25: [
@@ -58,7 +60,9 @@ internal struct PitchSpellings {
         ],
         
         02.00: [
-            PitchSpelling(.d)
+            PitchSpelling(.d),
+            PitchSpelling(.c, .doubleSharp),
+            PitchSpelling(.e, .doubleFlat)
         ],
         
         02.25: [
@@ -104,7 +108,8 @@ internal struct PitchSpellings {
         
         04.00: [
             PitchSpelling(.e),
-            PitchSpelling(.f, .flat)
+            PitchSpelling(.f, .flat),
+            PitchSpelling(.d, .doubleSharp)
         ],
         
         04.25: [
@@ -125,7 +130,9 @@ internal struct PitchSpellings {
         ],
         
         05.00: [
-            PitchSpelling(.f)
+            PitchSpelling(.f),
+            PitchSpelling(.e, .sharp),
+            PitchSpelling(.g, .doubleFlat)
         ],
         
         05.25: [
@@ -170,7 +177,9 @@ internal struct PitchSpellings {
         ],
         
         07.00: [
-            PitchSpelling(.g)
+            PitchSpelling(.g),
+            PitchSpelling(.f, .doubleSharp),
+            PitchSpelling(.a, .doubleFlat)
         ],
         
         07.25: [
@@ -215,7 +224,9 @@ internal struct PitchSpellings {
         ],
         
         09.00: [
-            PitchSpelling(.a)
+            PitchSpelling(.a),
+            PitchSpelling(.g, .doubleSharp),
+            PitchSpelling(.b, .doubleFlat)
         ],
         
         09.25: [
@@ -260,7 +271,8 @@ internal struct PitchSpellings {
         
         11.00: [
             PitchSpelling(.b),
-            PitchSpelling(.c, .flat)
+            PitchSpelling(.c, .flat),
+            PitchSpelling(.a, .doubleSharp)
         ],
         
         11.25: [
