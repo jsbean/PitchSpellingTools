@@ -16,7 +16,7 @@ internal protocol ImperfectIntervalQualityType: IntervalQualityType {
 extension ImperfectIntervalQualityType {
     
     static var imperfectMembers: [IntervalQuality.EnumKind] {
-        return [diminished, minor, major, augmented]
+        return [doubleDiminished, diminished, minor, major, augmented, doubleAugmented]
     }
     
     static var stepPreserving: [IntervalQuality.EnumKind] { return [minor, major] }
@@ -32,12 +32,12 @@ extension ImperfectIntervalQualityType {
         -> IntervalQuality.EnumKind
     {
         switch difference {
-        case -3: fatalError("double augmented")
+        case -3: return doubleDiminished
         case -2: return diminished
         case -1: return minor
         case +0: return major
         case +1: return augmented
-        case +2: fatalError("double augmented")
+        case +2: return doubleAugmented
         default: fatalError("Such an interval couldn't possibly exist")
         }
     }

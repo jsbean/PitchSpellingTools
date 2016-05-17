@@ -48,6 +48,9 @@ public class IntervalQuality: EnumTree {
     /// Unison interval family.
     public class unison: EnumFamily, PerfectIntervalQuatlityType {
         
+        
+        public static let doubleDiminished: EnumKind = .doubleDiminishedUnison
+        
         /// diminished Unison interval.
         public static let diminished: EnumKind = .diminishedUnison
         
@@ -57,9 +60,9 @@ public class IntervalQuality: EnumTree {
         /// augmented Unison interval.
         public static let augmented: EnumKind = .augmentedUnison
         
-        //public static var members: [EnumKind] { return perfectMembers }
         
-        // DEFAULT Perfect implementation
+        public static let doubleAugmented: EnumKind = .doubleAugmentedUnison
+        
         public override class func kind(
             forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
         ) -> EnumKind
@@ -72,6 +75,8 @@ public class IntervalQuality: EnumTree {
     /// Second interval family.
     public class second: EnumFamily, ImperfectIntervalQualityType {
         
+        public static let doubleDiminished: EnumKind = .doubleDiminishedSecond
+        
         public static let diminished: EnumKind = .diminishedSecond
         
         /// minor Second interval.
@@ -82,6 +87,8 @@ public class IntervalQuality: EnumTree {
         
         /// augmented Second interval.
         public static let augmented: EnumKind = .augmentedSecond
+        
+        public static let doubleAugmented: EnumKind = .doubleAugmentedSecond
         
         public override class var members: [EnumKind] { return imperfectMembers }
         
@@ -97,6 +104,8 @@ public class IntervalQuality: EnumTree {
     /// Third interval family.
     public class third: EnumFamily, ImperfectIntervalQualityType {
         
+        public static let doubleDiminished: EnumKind = .doubleDiminishedThird
+        
         /// diminished Third interval.
         public static let diminished: EnumKind = .diminishedThird
         
@@ -108,6 +117,8 @@ public class IntervalQuality: EnumTree {
         
         /// augmented Third interval.
         public static let augmented: EnumKind = .augmentedThird
+        
+        public static let doubleAugmented: EnumKind = .doubleAugmentedThird
         
         public override class var members: [EnumKind] { return imperfectMembers }
         
@@ -123,6 +134,8 @@ public class IntervalQuality: EnumTree {
     /// Fourth interval family.
     public class fourth: EnumFamily, PerfectIntervalQuatlityType {
         
+        public static let doubleDiminished: EnumKind = .doubleDiminishedFourth
+        
         /// diminished Fourth interval.
         public static let diminished: EnumKind = .diminishedFourth
         
@@ -131,6 +144,8 @@ public class IntervalQuality: EnumTree {
         
         /// augmented Fouth interval.
         public static let augmented: EnumKind = .augmentedFourth
+        
+        public static let doubleAugmented: EnumKind = .doubleAugmentedFourth
         
         public override class var members: [EnumKind] { return perfectMembers }
         
@@ -153,6 +168,8 @@ public class IntervalQuality: EnumTree {
     /// Fifth interval family.
     public class fifth: EnumFamily, PerfectIntervalQuatlityType {
         
+        public static let doubleDiminished: EnumKind = .doubleDiminishedFifth
+        
         /// diminished Fifth interval.
         public static let diminished: EnumKind = .diminishedFifth
         
@@ -161,6 +178,8 @@ public class IntervalQuality: EnumTree {
         
         /// augmented Fifth interval.
         public static let augmented: EnumKind = .augmentedFifth
+        
+        public static let doubleAugmented: EnumKind = .doubleDiminishedFifth
         
         public override class var members: [EnumKind] { return perfectMembers }
     
@@ -176,6 +195,8 @@ public class IntervalQuality: EnumTree {
     /// Sixth interval family.
     public class sixth: EnumFamily, ImperfectIntervalQualityType {
         
+        public static let doubleDiminished: EnumKind = .doubleDiminishedSixth
+        
         /// diminished Sixth interval.
         public static let diminished: EnumKind = .diminishedSixth
         
@@ -188,11 +209,13 @@ public class IntervalQuality: EnumTree {
         /// augmented Sixth interval.
         public static let augmented: EnumKind = .augmentedSixth
         
+        public static let doubleAugmented: EnumKind = .doubleAugmentedSixth
+        
         public override class var members: [EnumKind] { return imperfectMembers }
         
         public override class func kind(
             forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
-            ) -> EnumKind
+        ) -> EnumKind
         {
             let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
             return intervalQuality(fromDirectionDifference: difference)
@@ -201,6 +224,8 @@ public class IntervalQuality: EnumTree {
     
     /// Seventh interval family.
     public class seventh: EnumFamily, ImperfectIntervalQualityType {
+        
+        public static let doubleDiminished: EnumKind = .doubleDiminishedSeventh
         
         /// diminished Seventh interval.
         public static let diminished: EnumKind = .diminishedSeventh
@@ -213,6 +238,8 @@ public class IntervalQuality: EnumTree {
         
         /// augmented Seventh interal.
         public static let augmented: EnumKind = .augmentedSeventh
+        
+        public static var doubleAugmented: EnumKind = .doubleAugmentedSeventh
         
         public override class var members: [EnumKind] { return imperfectMembers }
         

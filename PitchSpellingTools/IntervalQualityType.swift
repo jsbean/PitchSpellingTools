@@ -10,9 +10,13 @@ import EnumTools
 
 internal protocol IntervalQualityType: EnumTree {
     
+    static var doubleDiminished: IntervalQuality.EnumKind { get }
+    
     static var diminished: IntervalQuality.EnumKind { get }
     
     static var augmented: IntervalQuality.EnumKind { get }
+    
+    static var doubleAugmented: IntervalQuality.EnumKind { get }
     
     static var stepPreserving: [IntervalQuality.EnumKind] { get }
     
