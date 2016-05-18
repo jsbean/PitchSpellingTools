@@ -1,14 +1,24 @@
 //
 //  PitchSetSpeller.swift
-//  Pitch
+//  PitchSpellingTools
 //
-//  Created by James Bean on 3/17/16.
-//  Copyright © 2016 James Bean. All rights reserved.
+//  Created by James Bean on 5/17/16.
+//
 //
 
+import Pitch
+
 /**
- - warning: Not yet implemented!
+ Spells `PitchSet` values.
  */
-public protocol PitchSetSpeller: PitchSpeller {
+public struct PitchSetSpeller: PitchSpeller {
+    
+    private let pitchSet: PitchSet
+    
+    public init(pitchSet: PitchSet) {
+        self.pitchSet = pitchSet
+    }
+
+    
     
 }

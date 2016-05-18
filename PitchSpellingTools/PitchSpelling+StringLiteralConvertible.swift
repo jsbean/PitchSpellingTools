@@ -22,8 +22,11 @@ extension PitchSpelling: StringLiteralConvertible {
         self.init(stringLiteral: String(value))
     }
     
+    /**
+     - warning: Not yet implemented!
+     */
     public init(stringLiteral value: StringLiteralType) {
-        guard let (head, tail) = value.destructured else { fatalError() }
+        guard let (head, _) = value.destructured else { fatalError() }
         guard let letterName = LetterName(string: head) else { fatalError() }
         // get coarse adjustment
         self = PitchSpelling(letterName)
