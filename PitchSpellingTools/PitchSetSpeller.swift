@@ -6,6 +6,7 @@
 //
 //
 
+import ArrayTools
 import Pitch
 
 /**
@@ -18,7 +19,4 @@ public struct PitchSetSpeller: PitchSpeller {
     public init(pitchSet: PitchSet) {
         self.pitchSet = pitchSet
     }
-
-    
-    
 }
