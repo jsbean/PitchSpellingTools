@@ -68,3 +68,8 @@ public func == (lhs: Pitch, rhs: Pitch) -> Bool {
 public func < (lhs: Pitch, rhs: Pitch) -> Bool {
     return lhs.noteNumber < rhs.noteNumber
 }
+
+extension Pitch: Hashable {
+
+    public var hashValue: Int { return noteNumber.hashValue }
+}

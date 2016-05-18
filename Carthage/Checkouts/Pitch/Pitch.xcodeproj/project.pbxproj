@@ -43,6 +43,10 @@
 		07CC26AB1C94E8620099C21C /* ArithmeticTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CC26A91C94E8620099C21C /* ArithmeticTools.framework */; };
 		07CC26B31C94E89E0099C21C /* ArrayTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CC26A81C94E8620099C21C /* ArrayTools.framework */; };
 		07CC26B41C94E89E0099C21C /* ArithmeticTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CC26A91C94E8620099C21C /* ArithmeticTools.framework */; };
+		07D6FC951CEBF33F00E3D409 /* PitchSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D6FC941CEBF33F00E3D409 /* PitchSetTests.swift */; };
+		07D6FC961CEBF33F00E3D409 /* PitchSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D6FC941CEBF33F00E3D409 /* PitchSetTests.swift */; };
+		07D6FC981CEBF73600E3D409 /* OrderedPitchSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D6FC971CEBF73600E3D409 /* OrderedPitchSet.swift */; };
+		07D6FC991CEBF73600E3D409 /* OrderedPitchSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D6FC971CEBF73600E3D409 /* OrderedPitchSet.swift */; };
 		A8D7132CC49299D7A21F159D /* ArrayTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2FB7073AC462C303F41B42F /* ArrayTools.framework */; };
 		B1C31B27763F03CEE0F613E0 /* EnumTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5F6CBC5DDEE46563901FA8 /* EnumTools.framework */; };
 		C7A52FAB101C14743D800007 /* ArithmeticTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E0E20452242D0350AA49DC4 /* ArithmeticTools.framework */; };
@@ -113,6 +117,8 @@
 		07CC26A51C94E6A00099C21C /* NoteNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteNumber.swift; sourceTree = "<group>"; };
 		07CC26A81C94E8620099C21C /* ArrayTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArrayTools.framework; path = Carthage/Build/iOS/ArrayTools.framework; sourceTree = "<group>"; };
 		07CC26A91C94E8620099C21C /* ArithmeticTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArithmeticTools.framework; path = Carthage/Build/iOS/ArithmeticTools.framework; sourceTree = "<group>"; };
+		07D6FC941CEBF33F00E3D409 /* PitchSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchSetTests.swift; sourceTree = "<group>"; };
+		07D6FC971CEBF73600E3D409 /* OrderedPitchSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedPitchSet.swift; sourceTree = "<group>"; };
 		0E0E20452242D0350AA49DC4 /* ArithmeticTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArithmeticTools.framework; path = Carthage/Build/Mac/ArithmeticTools.framework; sourceTree = "<group>"; };
 		246C689217A6E5C782338DAA /* EnumTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumTools.framework; path = Carthage/Build/Mac/EnumTools.framework; sourceTree = "<group>"; };
 		3A5F6CBC5DDEE46563901FA8 /* EnumTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumTools.framework; path = Carthage/Build/iOS/EnumTools.framework; sourceTree = "<group>"; };
@@ -203,6 +209,7 @@
 				07AD1D471C95D402003225B2 /* PitchClass.swift */,
 				07AD1D3E1C95D2B8003225B2 /* Dyad.swift */,
 				075DBB611C9B9D3A00E2D3FD /* PitchSet.swift */,
+				07D6FC971CEBF73600E3D409 /* OrderedPitchSet.swift */,
 				07AD1D411C95D320003225B2 /* Verticality.swift */,
 			);
 			path = Pitch;
@@ -213,6 +220,7 @@
 			children = (
 				07CC267A1C94E0930099C21C /* Supporting Files */,
 				07CC269F1C94E4E00099C21C /* PitchTests.swift */,
+				07D6FC941CEBF33F00E3D409 /* PitchSetTests.swift */,
 				07638DE71CDED8E9005F98DB /* NoteNumberTests.swift */,
 				07638DE41CDED426005F98DB /* PitchClassTests.swift */,
 			);
@@ -498,6 +506,7 @@
 				07AD1D421C95D320003225B2 /* Verticality.swift in Sources */,
 				075DBB621C9B9D3A00E2D3FD /* PitchSet.swift in Sources */,
 				07CC26A31C94E5630099C21C /* Frequency.swift in Sources */,
+				07D6FC981CEBF73600E3D409 /* OrderedPitchSet.swift in Sources */,
 				07AD1D481C95D402003225B2 /* PitchClass.swift in Sources */,
 				07CC26991C94E4910099C21C /* Pitch.swift in Sources */,
 				07AD1D451C95D3B0003225B2 /* Interval.swift in Sources */,
@@ -510,6 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07CC26A01C94E4E00099C21C /* PitchTests.swift in Sources */,
+				07D6FC951CEBF33F00E3D409 /* PitchSetTests.swift in Sources */,
 				07638DE51CDED426005F98DB /* PitchClassTests.swift in Sources */,
 				07638DE81CDED8E9005F98DB /* NoteNumberTests.swift in Sources */,
 			);
@@ -524,6 +534,7 @@
 				07AD1D431C95D320003225B2 /* Verticality.swift in Sources */,
 				075DBB631C9B9D3A00E2D3FD /* PitchSet.swift in Sources */,
 				07CC26A41C94E5630099C21C /* Frequency.swift in Sources */,
+				07D6FC991CEBF73600E3D409 /* OrderedPitchSet.swift in Sources */,
 				07AD1D491C95D402003225B2 /* PitchClass.swift in Sources */,
 				07CC269A1C94E4910099C21C /* Pitch.swift in Sources */,
 				07AD1D461C95D3B0003225B2 /* Interval.swift in Sources */,
@@ -536,6 +547,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07CC26A11C94E4E00099C21C /* PitchTests.swift in Sources */,
+				07D6FC961CEBF33F00E3D409 /* PitchSetTests.swift in Sources */,
 				07638DE61CDED426005F98DB /* PitchClassTests.swift in Sources */,
 				07638DE91CDED8E9005F98DB /* NoteNumberTests.swift in Sources */,
 			);
