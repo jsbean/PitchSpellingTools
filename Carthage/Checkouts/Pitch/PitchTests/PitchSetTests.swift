@@ -28,4 +28,16 @@ class PitchSetTests: XCTestCase {
         let expected = [Pitch(noteNumber: 60), Pitch(noteNumber: 61)]
         XCTAssertEqual(Set(set.map { $0 }), Set(expected))
     }
+    
+    func testDyads() {
+        let set = PitchSet(
+            pitches: [
+                Pitch(noteNumber: 60),
+                Pitch(noteNumber: 61),
+                Pitch(noteNumber: 62),
+                Pitch(noteNumber: 63)
+            ]
+        )
+        XCTAssertEqual(set.dyads.count, 6)
+    }
 }

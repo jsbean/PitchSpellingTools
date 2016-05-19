@@ -16,6 +16,8 @@ public struct PitchSetSpeller: PitchSpeller {
     
     private let pitchSet: PitchSet
     
+    // sort dyads by spelling complexity
+    
     public init(pitchSet: PitchSet) {
         self.pitchSet = pitchSet
     }

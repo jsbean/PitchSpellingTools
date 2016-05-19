@@ -6,7 +6,7 @@
 //  Copyright © 2016 James Bean. All rights reserved.
 //
 
-import Foundation
+import ArrayTools
 
 /**
  Unordered collection of pitches.
@@ -21,6 +21,17 @@ public struct PitchSet: SequenceType {
     
     public var pitchClassSet: Set<PitchClass> {
         return Set(pitches.lazy.map { $0.pitchClass })
+    }
+    
+    public var dyads: [Dyad] {
+        var result: [Dyad] = []
+        var pitchesArray = Array(pitches)
+        for a in 0 ..< pitchesArray.count {
+            for b in a + 1 ..< pitchesArray.count {
+                result.append(Dyad(pitchesArray[a], pitchesArray[b]))
+            }
+        }
+        return result
     }
     
     public init(pitches: Pitch...) {

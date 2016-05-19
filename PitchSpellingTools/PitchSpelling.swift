@@ -10,6 +10,8 @@ import Pitch
 
 /**
  Spelled representation of a `Pitch`.
+ 
+ - TODO: Conform to `StringLiteralConvertible`.
  */
 public struct PitchSpelling {
     
@@ -19,8 +21,9 @@ public struct PitchSpelling {
      Errors possible when attempting to spell a `Pitch`.
      */
     public enum Error: ErrorType {
+        
         /**
-         If the a given `PitchSpelling` is not applicable to the given `Pitch`.
+         If the given `PitchSpelling` is not applicable to the given `Pitch`.
          */
         case invalidSpelling(Pitch, PitchSpelling)
     }
@@ -40,6 +43,16 @@ public struct PitchSpelling {
     
     /**
      Create a `PitchSpelling` (with argument labels).
+     
+     **Example:**
+     
+     ```
+     let cNatural = PitchSpelling(letterName: .c)
+     let aFlat = PitchSpelling(letterName: .a, coarse: .flat)
+     let gQuarterSharp = PitchSpelling(letterName: .g, coarse: .quarterSharp)
+     let dQuarterFlatDown = PitchSpelling(letterName: .d, coarse: .quarterFlat, fine: .down)
+     let bDoubleSharp = PitchSpelling(letterName: .b, coarse: .doubleSharp)
+     ```
      */
     public init(
         letterName: LetterName,
@@ -54,6 +67,16 @@ public struct PitchSpelling {
     
     /**
      Create a `PitchSpelling` (without argument labels).
+     
+     **Example:**
+     
+     ```
+     let cNatural = PitchSpelling(.c)
+     let aFlat = PitchSpelling(.a, .flat)
+     let gQuarterSharp = PitchSpelling(.g, .quarterSharp)
+     let dQuarterFlatDown = PitchSpelling(.d, .quarterFlat, .down)
+     let bDoubleSharp = PitchSpelling(.b, .doubleSharp)
+     ```
      */
     public init(
         _ letterName: LetterName,
