@@ -20,9 +20,12 @@ public struct PitchSetSpeller: PitchSpeller {
             .sort { $0.interval.complexity! < $1.interval.complexity! }
     }
     
-    public let dyads: [Dyad]
+    private let dyads: [Dyad]
     private let pitchSet: PitchSet
     
+    /**
+     Create a `PitchSetSpeller` with a `PitchSet`.
+     */
     public init(_ pitchSet: PitchSet) {
         self.pitchSet = pitchSet
         self.dyads = PitchSetSpeller.makeSortedDyads(fromDyads: pitchSet.dyads)
