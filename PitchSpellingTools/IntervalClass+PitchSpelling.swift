@@ -1,17 +1,16 @@
 //
-//  IntervalClass.swift
-//  Pitch
+//  IntervalClass+PitchSpelling.swift
+//  PitchSpellingTools
 //
-//  Created by James Bean on 3/13/16.
-//  Copyright © 2016 James Bean. All rights reserved.
+//  Created by James Bean on 5/19/16.
+//
 //
 
-import ArithmeticTools
+import Pitch
 
-/// Modulo 12 representation of an `Interval` value.
-public struct IntervalClass: FloatWrapping {
+extension IntervalClass {
     
-    public typealias Complexity = Int
+    public typealias SpellingComplexity = Int
     
     private static let intervalClassOrderedBySpellingComplexity: [IntervalClass] = [
         
@@ -32,7 +31,7 @@ public struct IntervalClass: FloatWrapping {
         
         // perfectable intervals 1/4 tone neighborhood
         00.50, 11.50, 07.50, 06.50, 05.50, 04.50,
-
+        
         // major third, major sixth
         04.00, 09.00,
         
@@ -64,22 +63,7 @@ public struct IntervalClass: FloatWrapping {
         03.50, 08.50,
     ]
     
-    public let value: Float
-    
-    public var complexity: Complexity? {
+    public var complexity: SpellingComplexity? {
         return IntervalClass.intervalClassOrderedBySpellingComplexity.indexOf(self)
-    }
-    
-    public init(floatLiteral value: Float) {
-        self.value = value
-    }
-    
-    public init(integerLiteral value: Int) {
-        self.value = Float(value)
-    }
-    
-    /// Create an `IntervalClass` with an `Interval`.
-    public init(_ interval: Interval) {
-        self.value = interval.value % 12.0
     }
 }

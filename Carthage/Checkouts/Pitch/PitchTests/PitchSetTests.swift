@@ -16,7 +16,7 @@ class PitchSetTests: XCTestCase {
     }
     
     func testInitWithOnePitchVariadic() {
-        let _ = PitchSet(pitches: Pitch(noteNumber: 60))
+        let _ = PitchSet(Pitch(noteNumber: 60))
     }
     
     func testInitWithArray() {
@@ -39,5 +39,9 @@ class PitchSetTests: XCTestCase {
             ]
         )
         XCTAssertEqual(set.dyads.count, 6)
+    }
+    
+    func testArrayLiteralConvertible() {
+        let _: PitchSet = [Pitch(noteNumber: 60), Pitch(noteNumber: 61)]
     }
 }

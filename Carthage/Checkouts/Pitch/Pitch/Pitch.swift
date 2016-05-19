@@ -9,7 +9,7 @@
 import ArithmeticTools
 
 /**
- Subjective psychoacoustical attribute of sound allowing ordering on a frequency-related scale.
+ The quality of a sound governed by the rate of vibrations producing it.
  */
 public class Pitch: CustomStringConvertible {
     
@@ -35,6 +35,11 @@ public class Pitch: CustomStringConvertible {
     
     /**
      Create a `Pitch` with a `NoteNumber` value.
+     
+     **Example:**
+     ```
+     let p = Pitch(noteNumber: 60) // => middle C
+     ```
      */
     public init(noteNumber: NoteNumber) {
         self.noteNumber = noteNumber
@@ -44,6 +49,11 @@ public class Pitch: CustomStringConvertible {
     
     /**
      Create a `Pitch` with a `Frequency` value.
+     
+     **Example:**
+     ```
+     let p = Pitch(frequency: 440) // => A below middle C
+     ```
      */
     public init(frequency: Frequency) {
         self.frequency = frequency

@@ -24,7 +24,8 @@ public struct Dyad: CustomStringConvertible {
     public var interval: Interval { return Interval(dyad: self) }
     
     /**
-     Create a `Dyad` with two `Pitch` values.
+     Create a `Dyad` with two `Pitch` values. 
+     These pitches need not be ordered; they are ordered upon initialization.
      */
     public init(_ a: Pitch, _ b: Pitch) {
         let (lower, higher) = ordered(a,b)

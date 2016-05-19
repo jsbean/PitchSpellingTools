@@ -65,7 +65,7 @@ public class DyadSpeller: PitchSpeller {
             default: return nil
             }
         }
-        return classType?.init(dyad: dyad)
+        return classType?.init(dyad)
     }
 
     // MARK: - Initializers
@@ -73,7 +73,7 @@ public class DyadSpeller: PitchSpeller {
     /**
      Create a `DyadSpeller` for the given `dyad`.
      */
-    public required init(dyad: Dyad) {
+    public required init(_ dyad: Dyad) {
         self.dyad = dyad
     }
     
