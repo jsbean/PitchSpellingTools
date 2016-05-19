@@ -13,8 +13,10 @@ extension Pitch {
     /**
      `true` if only one `PitchSpelling` exists for this `Pitch`. Otherwise `false`.
      
-     >`Pitch(noteNumber: 60) // => true (.c, .natural)`
-     >`Pitch(noteNumber: 68) // => false (.a, .flat) / (.g, .sharp)`
+     ```
+     Pitch(noteNumber: 60) // => true (.c, .natural)
+     Pitch(noteNumber: 68) // => false (.a, .flat) / (.g, .sharp)
+     ```
      */
     public var canBeSpelledObjectively: Bool { return spellings.count == 1 }
  
