@@ -16,12 +16,11 @@ public struct PitchSetSpeller: PitchSpeller {
     
     private static func makeSortedDyads(fromDyads dyads: [Dyad]) -> [Dyad] {
         return dyads
-            .filter { $0.interval.intervalClass.complexity != nil }
-            .sort { $0.interval.intervalClass.complexity! < $1.interval.intervalClass.complexity!
-        }
+            .filter { $0.interval.complexity != nil }
+            .sort { $0.interval.complexity! < $1.interval.complexity! }
     }
     
-    private let dyads: [Dyad]
+    public let dyads: [Dyad]
     private let pitchSet: PitchSet
     
     // sort dyads by spelling complexity
