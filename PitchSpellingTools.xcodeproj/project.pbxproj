@@ -49,8 +49,8 @@
 		0781750A1CD8F64500AAB396 /* PitchSpelling+Resolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078175081CD8F64500AAB396 /* PitchSpelling+Resolution.swift */; };
 		0781750C1CD8F67C00AAB396 /* PitchSpelling+FineAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781750B1CD8F67C00AAB396 /* PitchSpelling+FineAdjustment.swift */; };
 		0781750D1CD8F67C00AAB396 /* PitchSpelling+FineAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781750B1CD8F67C00AAB396 /* PitchSpelling+FineAdjustment.swift */; };
-		0781750F1CD8F69700AAB396 /* PitchSpelling+Sharpness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781750E1CD8F69700AAB396 /* PitchSpelling+Sharpness.swift */; };
-		078175101CD8F69700AAB396 /* PitchSpelling+Sharpness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781750E1CD8F69700AAB396 /* PitchSpelling+Sharpness.swift */; };
+		0781750F1CD8F69700AAB396 /* PitchSpelling+SpellingDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781750E1CD8F69700AAB396 /* PitchSpelling+SpellingDistance.swift */; };
+		078175101CD8F69700AAB396 /* PitchSpelling+SpellingDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781750E1CD8F69700AAB396 /* PitchSpelling+SpellingDistance.swift */; };
 		079525611CEE2BFE005B91DB /* PitchSetSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079525601CEE2BFE005B91DB /* PitchSetSpellerTests.swift */; };
 		079525621CEE2BFE005B91DB /* PitchSetSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079525601CEE2BFE005B91DB /* PitchSetSpellerTests.swift */; };
 		0796D2671CD69DE20066A863 /* ArithmeticTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8EAD3EEE9B48491A9702342 /* ArithmeticTools.framework */; };
@@ -75,6 +75,8 @@
 		079DABC31CEE349B0019649D /* Interval+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079DABC11CEE349B0019649D /* Interval+PitchSpelling.swift */; };
 		079DABC51CEE34B50019649D /* IntervalClass+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079DABC41CEE34B50019649D /* IntervalClass+PitchSpelling.swift */; };
 		079DABC61CEE34B50019649D /* IntervalClass+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079DABC41CEE34B50019649D /* IntervalClass+PitchSpelling.swift */; };
+		079DABC81CEE4C6A0019649D /* LineOfFifths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079DABC71CEE4C6A0019649D /* LineOfFifths.swift */; };
+		079DABC91CEE4C6A0019649D /* LineOfFifths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079DABC71CEE4C6A0019649D /* LineOfFifths.swift */; };
 		07BB2F6D1CDBB9F900DC4D7A /* QuarterToneDyadSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BB2F6C1CDBB9F900DC4D7A /* QuarterToneDyadSpeller.swift */; };
 		07BB2F6E1CDBB9F900DC4D7A /* QuarterToneDyadSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BB2F6C1CDBB9F900DC4D7A /* QuarterToneDyadSpeller.swift */; };
 		07BB2F701CDBBA1300DC4D7A /* EighthToneDyadSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BB2F6F1CDBBA1300DC4D7A /* EighthToneDyadSpeller.swift */; };
@@ -197,7 +199,7 @@
 		078175051CD8F5F000AAB396 /* PitchSpelling+CoarseAdjustment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+CoarseAdjustment.swift"; path = "PitchSpellingTools/PitchSpelling+CoarseAdjustment.swift"; sourceTree = "<group>"; };
 		078175081CD8F64500AAB396 /* PitchSpelling+Resolution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+Resolution.swift"; path = "PitchSpellingTools/PitchSpelling+Resolution.swift"; sourceTree = "<group>"; };
 		0781750B1CD8F67C00AAB396 /* PitchSpelling+FineAdjustment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+FineAdjustment.swift"; path = "PitchSpellingTools/PitchSpelling+FineAdjustment.swift"; sourceTree = "<group>"; };
-		0781750E1CD8F69700AAB396 /* PitchSpelling+Sharpness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+Sharpness.swift"; path = "PitchSpellingTools/PitchSpelling+Sharpness.swift"; sourceTree = "<group>"; };
+		0781750E1CD8F69700AAB396 /* PitchSpelling+SpellingDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+SpellingDistance.swift"; path = "PitchSpellingTools/PitchSpelling+SpellingDistance.swift"; sourceTree = "<group>"; };
 		079525601CEE2BFE005B91DB /* PitchSetSpellerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSetSpellerTests.swift; path = PitchSpellingTools/PitchSetSpellerTests.swift; sourceTree = "<group>"; };
 		0796D26F1CD6A0F60066A863 /* SpelledPitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpelledPitch.swift; path = PitchSpellingTools/SpelledPitch.swift; sourceTree = "<group>"; };
 		0796E1231CE402B50084667B /* IntervalQualityKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntervalQualityKind.swift; path = PitchSpellingTools/IntervalQualityKind.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		0796E12C1CE403CF0084667B /* ImperfectIntervalQualityType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImperfectIntervalQualityType.swift; path = PitchSpellingTools/ImperfectIntervalQualityType.swift; sourceTree = "<group>"; };
 		079DABC11CEE349B0019649D /* Interval+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Interval+PitchSpelling.swift"; path = "PitchSpellingTools/Interval+PitchSpelling.swift"; sourceTree = "<group>"; };
 		079DABC41CEE34B50019649D /* IntervalClass+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "IntervalClass+PitchSpelling.swift"; path = "PitchSpellingTools/IntervalClass+PitchSpelling.swift"; sourceTree = "<group>"; };
+		079DABC71CEE4C6A0019649D /* LineOfFifths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineOfFifths.swift; path = PitchSpellingTools/LineOfFifths.swift; sourceTree = "<group>"; };
 		07BB2F6C1CDBB9F900DC4D7A /* QuarterToneDyadSpeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuarterToneDyadSpeller.swift; path = PitchSpellingTools/QuarterToneDyadSpeller.swift; sourceTree = "<group>"; };
 		07BB2F6F1CDBBA1300DC4D7A /* EighthToneDyadSpeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EighthToneDyadSpeller.swift; path = PitchSpellingTools/EighthToneDyadSpeller.swift; sourceTree = "<group>"; };
 		07BB2F721CDBBA2400DC4D7A /* HalfToneDyadSpeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HalfToneDyadSpeller.swift; path = PitchSpellingTools/HalfToneDyadSpeller.swift; sourceTree = "<group>"; };
@@ -336,7 +339,7 @@
 				078175051CD8F5F000AAB396 /* PitchSpelling+CoarseAdjustment.swift */,
 				0781750B1CD8F67C00AAB396 /* PitchSpelling+FineAdjustment.swift */,
 				078175081CD8F64500AAB396 /* PitchSpelling+Resolution.swift */,
-				0781750E1CD8F69700AAB396 /* PitchSpelling+Sharpness.swift */,
+				0781750E1CD8F69700AAB396 /* PitchSpelling+SpellingDistance.swift */,
 				071890ED1CD9614800C5CD17 /* PitchSpelling+CustomStringConvertible.swift */,
 				07254E971CEB904A00DF10B8 /* PitchSpelling+StringLiteralConvertible.swift */,
 			);
@@ -422,6 +425,7 @@
 				078175111CD8F70600AAB396 /* PitchSpelling */,
 				07BB2F751CDBBE0200DC4D7A /* DyadSpeller */,
 				076BAFE71CD6B51D005594C6 /* PitchSpellings.swift */,
+				079DABC71CEE4C6A0019649D /* LineOfFifths.swift */,
 				07FF36421CEBFCDA003D4BE6 /* PitchSetSpeller.swift */,
 				0752A53D1CD69BD0007C25AB /* IntervalQuality.swift */,
 				075AADE91CE53FF10070CABF /* SpelledDyad.swift */,
@@ -671,6 +675,7 @@
 				0752A5441CD69BD0007C25AB /* DyadSpeller.swift in Sources */,
 				0796E1271CE402FA0084667B /* IntervalQualityType.swift in Sources */,
 				07F6F1471CD7E7FF0026E89D /* PitchSpellingDyad.swift in Sources */,
+				079DABC81CEE4C6A0019649D /* LineOfFifths.swift in Sources */,
 				0752A5501CD69BD0007C25AB /* PitchSpelling.swift in Sources */,
 				07FF36431CEBFCDA003D4BE6 /* PitchSetSpeller.swift in Sources */,
 				0796D2701CD6A0F60066A863 /* SpelledPitch.swift in Sources */,
@@ -680,7 +685,7 @@
 				0752A54A1CD69BD0007C25AB /* MonadSpeller.swift in Sources */,
 				0752A54E1CD69BD0007C25AB /* PitchSpeller.swift in Sources */,
 				07254E981CEB904A00DF10B8 /* PitchSpelling+StringLiteralConvertible.swift in Sources */,
-				0781750F1CD8F69700AAB396 /* PitchSpelling+Sharpness.swift in Sources */,
+				0781750F1CD8F69700AAB396 /* PitchSpelling+SpellingDistance.swift in Sources */,
 				079DABC51CEE34B50019649D /* IntervalClass+PitchSpelling.swift in Sources */,
 				07BB2F731CDBBA2400DC4D7A /* HalfToneDyadSpeller.swift in Sources */,
 				0781750C1CD8F67C00AAB396 /* PitchSpelling+FineAdjustment.swift in Sources */,
@@ -743,6 +748,7 @@
 				0752A5451CD69BD0007C25AB /* DyadSpeller.swift in Sources */,
 				0796E1281CE402FA0084667B /* IntervalQualityType.swift in Sources */,
 				07F6F1481CD7E7FF0026E89D /* PitchSpellingDyad.swift in Sources */,
+				079DABC91CEE4C6A0019649D /* LineOfFifths.swift in Sources */,
 				0752A5511CD69BD0007C25AB /* PitchSpelling.swift in Sources */,
 				07FF36441CEBFCDA003D4BE6 /* PitchSetSpeller.swift in Sources */,
 				0796D2711CD6A0F60066A863 /* SpelledPitch.swift in Sources */,
@@ -752,7 +758,7 @@
 				0752A54B1CD69BD0007C25AB /* MonadSpeller.swift in Sources */,
 				0752A54F1CD69BD0007C25AB /* PitchSpeller.swift in Sources */,
 				07254E991CEB904A00DF10B8 /* PitchSpelling+StringLiteralConvertible.swift in Sources */,
-				078175101CD8F69700AAB396 /* PitchSpelling+Sharpness.swift in Sources */,
+				078175101CD8F69700AAB396 /* PitchSpelling+SpellingDistance.swift in Sources */,
 				079DABC61CEE34B50019649D /* IntervalClass+PitchSpelling.swift in Sources */,
 				07BB2F741CDBBA2400DC4D7A /* HalfToneDyadSpeller.swift in Sources */,
 				0781750D1CD8F67C00AAB396 /* PitchSpelling+FineAdjustment.swift in Sources */,

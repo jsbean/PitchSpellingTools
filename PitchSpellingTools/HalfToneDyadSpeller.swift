@@ -19,9 +19,14 @@ internal class HalfToneDyadSpeller: DyadSpeller {
      */
     internal override var options: Result {
         switch stepPreserving.count {
-        case 0: return .none
-        case 1: return .single(stepPreserving.first!)
-        default: return .multiple(stepPreserving.sort { $0.meanDistance < $1.meanDistance })
+        case 0:
+            return .none
+        case 1:
+            return .single(stepPreserving.first!)
+        default:
+            return .multiple(
+                stepPreserving.sort { $0.meanSpellingDistance < $1.meanSpellingDistance }
+            )
         }
     }
 }

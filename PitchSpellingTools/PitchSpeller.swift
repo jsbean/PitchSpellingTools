@@ -18,13 +18,10 @@ extension PitchSpeller {
     internal func spell(pitch: Pitch, with spelling: PitchSpelling) -> SpelledPitch? {
         return SpelledPitch(pitch: pitch, spelling: spelling)
     }
-    
-    /**
-     - warning: Not yet implemented!
-     */
-    internal func leastDistant(from pitchSpellings: [PitchSpelling]) -> PitchSpelling? {
-        return pitchSpellings
-            .sort { $0.distance < $1.distance }
-            .first
-    }
+//    
+//    internal func leastDistant(from pitchSpellings: [PitchSpelling]) -> PitchSpelling? {
+//        return pitchSpellings
+//            .sort { $0.distance < $1.distance }
+//            .first
+//    }
 }

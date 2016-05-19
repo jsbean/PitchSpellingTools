@@ -38,7 +38,9 @@ public struct PitchSpellingDyad {
     public var isStepPreserving: Bool { return intervalQuality.isStepPreserving }
     
     /// Mean of `distance` values of both `PitchSpelling` objects.
-    public var meanDistance: Float { return [lower.distance, higher.distance].mean! }
+    public var meanSpellingDistance: Float {
+        return [lower.spellingDistance, higher.spellingDistance].mean!
+    }
     
     /// Amount of steps between two `PitchSpelling` objects.
     public var steps: Int {
