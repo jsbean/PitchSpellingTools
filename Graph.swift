@@ -10,5 +10,11 @@ import Foundation
 
 internal struct Graph {
     
+    /// - warning: Not yet implemented!
+    internal lazy var paths: PathCollection = {
+        fatalError()
+        PathCollection()
+    }()
+    
     
 }
