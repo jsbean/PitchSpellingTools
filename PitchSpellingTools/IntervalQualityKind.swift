@@ -11,8 +11,6 @@ import Foundation
 /**
  All interval qualities with a half-step resolution.
  Flat resource which is wrapped hierarchically by `IntervalQuality`.
- 
- - TODO: add double augmented, double flat
  */
 public enum IntervalQualityKind: String {
     
