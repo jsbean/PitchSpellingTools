@@ -85,7 +85,8 @@ internal struct PitchSpellings {
         
         03.00: [
             PitchSpelling(.e, .flat),
-            PitchSpelling(.d, .sharp)
+            PitchSpelling(.d, .sharp),
+            PitchSpelling(.f, .doubleFlat)
         ],
         
         03.25: [
@@ -248,7 +249,8 @@ internal struct PitchSpellings {
         
         10.00: [
             PitchSpelling(.b, .flat),
-            PitchSpelling(.a, .sharp)
+            PitchSpelling(.a, .sharp),
+            PitchSpelling(.c, .doubleFlat)
         ],
         
         10.25: [
