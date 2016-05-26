@@ -17,6 +17,9 @@ internal struct Path {
     /// variance in distance from middle c
     internal var variance: Float { fatalError() }
     
+    /// - warning: Not yet implemented!
+    internal var isStepPreserving: Bool { fatalError() }
+    
     private var nodes: [Node] = []
     
     internal init(nodes: [Node]) {

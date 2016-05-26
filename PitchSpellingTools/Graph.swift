@@ -28,9 +28,6 @@ internal struct Graph {
         }
     }()
     
-    /// All `Node` objects in the graph.
-    internal lazy var nodes: [Node] = { self.levels.flatMap { $0.nodes } }()
-    
     /// All possible `Path` objects. That is, every possible way of spelling a `PitchSet`.
     internal lazy var allPaths: PathCollection = { return self.paths() }()
 

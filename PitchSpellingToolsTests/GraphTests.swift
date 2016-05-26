@@ -26,7 +26,6 @@ class GraphTests: XCTestCase {
         )
         
         XCTAssertEqual(graph.levels.count, 1)
-        XCTAssertEqual(graph.nodes.count, 3)
         XCTAssertEqual(graph.allPaths.count, 3)
     }
     
@@ -40,7 +39,6 @@ class GraphTests: XCTestCase {
         )
         
         XCTAssertEqual(graph.levels.count, 2)
-        XCTAssertEqual(graph.nodes.count, 3 + 3)
         XCTAssertEqual(graph.allPaths.count, 9)
     }
     
@@ -55,7 +53,6 @@ class GraphTests: XCTestCase {
         )
         
         XCTAssertEqual(graph.levels.count, 3)
-        XCTAssertEqual(graph.nodes.count, 3 + 3 + 3)
         XCTAssertEqual(graph.allPaths.count, 3 * 3 * 3)
     }
     
@@ -71,7 +68,6 @@ class GraphTests: XCTestCase {
         )
         
         XCTAssertEqual(graph.levels.count, 4)
-        XCTAssertEqual(graph.nodes.count, 3 + 2  + 2 + 3)
         XCTAssertEqual(graph.allPaths.count, 3 * 2 * 2 * 3)
     }
     
