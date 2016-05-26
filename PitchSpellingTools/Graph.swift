@@ -48,9 +48,9 @@ internal struct Graph {
      */
     internal mutating func paths(
         compatibleWithCoarseDirection coarseDirectionPreference:
-            PitchSpelling.CoarseAdjustment.Direction? = nil,
+            PitchSpelling.CoarseAdjustment.Direction = .none,
         compatibleWithFineDirection fineDirectionPreference:
-            PitchSpelling.FineAdjustment? = nil
+            PitchSpelling.FineAdjustment = .none
     ) -> PathCollection
     {
         guard let firstLevel = self.levels.first else { return PathCollection(paths: []) }
