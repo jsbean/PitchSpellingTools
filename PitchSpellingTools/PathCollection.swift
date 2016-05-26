@@ -27,6 +27,10 @@ internal struct PathCollection: SequenceType {
         self.paths = paths
     }
     
+    internal init(nodes: [Node]) {
+        self.init(paths: nodes.map { Path(nodes: [$0]) })
+    }
+    
     // TODO: init with preference for coarse / fine direction
     
     /**

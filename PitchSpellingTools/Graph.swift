@@ -50,14 +50,20 @@ internal struct Graph {
         compatibleWithCoarseDirection coarseDirectionPreference:
             PitchSpelling.CoarseAdjustment.Direction = .none,
         compatibleWithFineDirection fineDirectionPreference:
-            PitchSpelling.FineAdjustment = .none
+            PitchSpelling.FineAdjustment = .none,
+        allowingUnconventionalEnharmonics allowsUnconventionalEnharmonics: Bool = false
     ) -> PathCollection
     {
+        // bail if the pitchSet is empty
         guard let firstLevel = self.levels.first else { return PathCollection(paths: []) }
         
-        // TODO: do one level of filtering here for coarse / fine direction
+        let nodes = filterNodes(firstLevel.nodes,
+            forCoarseDirectionPreference: coarseDirectionPreference,
+            forFineDirectionPreference: fineDirectionPreference,
+            forAllowingUnconventionalEnharmonics: allowsUnconventionalEnharmonics
+        )
         
-        var collection = PathCollection(level: firstLevel)
+        var collection = PathCollection(nodes: nodes)
         
         // TODO: do another level of filtering here for coarse / fine direction
 
@@ -68,5 +74,79 @@ internal struct Graph {
             collection.addPaths(to: levelB, branchingFrom: levelA)
         }
         return collection
+    }
+    
+    private func filterNodes(nodes: [Node],
+        forCoarseDirectionPreference coarseDirectionPreference:
+            PitchSpelling.CoarseAdjustment.Direction,
+        forFineDirectionPreference fineDirectionPreference: PitchSpelling.FineAdjustment,
+        forAllowingUnconventionalEnharmonics allowsUnconventionalEnharmonics: Bool
+    ) -> [Node]
+    {
+        var nodes = nodes
+        nodes = filterNodes(nodes, forFineDirectionPreference: fineDirectionPreference)
+        nodes = filterNodes(nodes, forCoarseDirectionPreference: coarseDirectionPreference)
+        nodes = filterNodes(nodes,
+            forAllowingUnconventionalEnharmonics: allowsUnconventionalEnharmonics
+        )
+        return nodes
+    }
+    
+    private func filterNodes(nodes: [Node],
+        forCoarseDirectionPreference coarseDirectionPreference:
+            PitchSpelling.CoarseAdjustment.Direction
+    ) -> [Node]
+    {
+        switch coarseDirectionPreference {
+        case .none: return nodes
+        case .up: return nodes.filter { $0.spelling.coarse.direction.rawValue >= 0 }
+        case .down: return nodes.filter { $0.spelling.coarse.direction.rawValue <= 0 }
+        }
+    }
+    
+    private func filterNodes(nodes: [Node],
+        forFineDirectionPreference fineDirectionPreference: PitchSpelling.FineAdjustment
+    ) -> [Node]
+    {
+        switch fineDirectionPreference {
+        case .none: return nodes
+        case .up: return nodes.filter { $0.spelling.fine.rawValue >= 0 }
+        case .down: return nodes.filter { $0.spelling.fine.rawValue <= 0 }
+        }
+    }
+    
+    private func filterNodes(nodes: [Node],
+        forAllowingUnconventionalEnharmonics allowsUnconventionalEnharmonics: Bool
+    ) -> [Node]
+    {
+        guard !allowsUnconventionalEnharmonics else { return nodes }
+
+        var nodes = nodes
+        
+        // c flat
+        nodes = nodes.filter {
+            !($0.spelling.letterName == .c && $0.spelling.coarse == .flat)
+        }
+            
+        // f flat
+        nodes = nodes.filter {
+            !($0.spelling.letterName == .f && $0.spelling.coarse == .flat)
+        }
+            
+        // e sharp
+        nodes = nodes.filter {
+            !($0.spelling.letterName == .e && $0.spelling.coarse == .sharp)
+        }
+            
+        // b sharp
+        nodes = nodes.filter {
+            !($0.spelling.letterName == .b && $0.spelling.coarse == .sharp)
+        }
+        
+        nodes = nodes.filter {
+            !($0.spelling.coarse == .doubleSharp || $0.spelling.coarse == .doubleFlat)
+        }
+        
+        return nodes
     }
 }

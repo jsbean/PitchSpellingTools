@@ -26,7 +26,6 @@ class GraphTests: XCTestCase {
         )
         
         XCTAssertEqual(graph.levels.count, 1)
-        XCTAssertEqual(graph.allPaths.count, 3)
     }
     
     func testInitWithDyadPitchSet() {
@@ -69,6 +68,30 @@ class GraphTests: XCTestCase {
         
         XCTAssertEqual(graph.levels.count, 4)
         XCTAssertEqual(graph.allPaths.count, 3 * 2 * 2 * 3)
+    }
+    
+    func testPathsDoNotAllowUnconventionalEnharmonicsCNatural() {
+        var graph = Graph(pitchSet: [Pitch.middleC])
+        let paths = graph.paths(allowingUnconventionalEnharmonics: false)
+        XCTAssertEqual(paths.count, 1)
+    }
+    
+    func testPathsAllowUnconventionalEnharmonicsCNatural() {
+        var graph = Graph(pitchSet: [Pitch.middleC])
+        let paths = graph.paths(allowingUnconventionalEnharmonics: true)
+        XCTAssertEqual(paths.count, 3)
+    }
+    
+    func testPathsDoNotAllowUnconventionalEnharmonicsEb() {
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 63)])
+        let paths = graph.paths(allowingUnconventionalEnharmonics: false)
+        XCTAssertEqual(paths.count, 2)
+    }
+    
+    func testPathsAllowUnconventionalEnharmonicsEFlat() {
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 63)])
+        let paths = graph.paths(allowingUnconventionalEnharmonics: true)
+        XCTAssertEqual(paths.count, 3)
     }
     
     func testPathsCompatibleWithCoarseDirection() {
