@@ -10,7 +10,7 @@ import Foundation
 
 internal struct Level {
     
-    private let nodes: [Node]
+    internal let nodes: [Node]
     
     internal init(nodes: [Node]) {
         self.nodes = nodes

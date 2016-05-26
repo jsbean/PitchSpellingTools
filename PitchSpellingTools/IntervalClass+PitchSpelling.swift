@@ -63,7 +63,7 @@ extension IntervalClass {
         03.50, 08.50,
     ]
     
-    public var complexity: SpellingComplexity? {
+    public var spellingComplexity: SpellingComplexity? {
         return IntervalClass.intervalClassOrderedBySpellingComplexity.indexOf(self)
     }
 }
