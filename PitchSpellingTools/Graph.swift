@@ -54,6 +54,7 @@ internal struct Graph {
         allowingUnconventionalEnharmonics allowsUnconventionalEnharmonics: Bool = false
     ) -> PathCollection
     {
+        
         // bail if the pitchSet is empty
         guard let firstLevel = self.levels.first else { return PathCollection(paths: []) }
         
@@ -115,6 +116,7 @@ internal struct Graph {
         }
     }
     
+    // filters out double sharps, double flats, e sharp, b sharp, f flat, c flat
     private func filterNodes(nodes: [Node],
         forAllowingUnconventionalEnharmonics allowsUnconventionalEnharmonics: Bool
     ) -> [Node]

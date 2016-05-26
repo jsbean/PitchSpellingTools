@@ -31,15 +31,6 @@ internal struct PathCollection: SequenceType {
         self.init(paths: nodes.map { Path(nodes: [$0]) })
     }
     
-    // TODO: init with preference for coarse / fine direction
-    
-    /**
-     Create a `PathCollection` with the first `Level` of `Nodes`.
-     */
-    internal init(level: Level) {
-        self.init(paths: level.nodes.map { Path(nodes: [$0]) })
-    }
-    
     /**
      Add `Path` objects to the given `nextLevel` branching from the given `previouslLevel`.
      */
