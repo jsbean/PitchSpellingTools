@@ -28,7 +28,7 @@ internal struct Graph {
         }
     }()
     
-    /// All `Node` objects in the graph
+    /// All `Node` objects in the graph.
     internal lazy var nodes: [Node] = { self.levels.flatMap { $0.nodes } }()
     
     /// All possible `Path` objects. That is, every possible way of spelling a `PitchSet`.
@@ -46,10 +46,14 @@ internal struct Graph {
     /**
      `Path` objects with the given preferences for compatibility with coarse and/or fine
      directions. If `nil` is given for either, no preference will be made for that aspect.
+     
+     - warning: Not yet fully implemented!
      */
     internal mutating func paths(
-        compatibleWithCoarseDirection: PitchSpelling.CoarseAdjustment.Direction? = nil,
-        andOrFineDirection: PitchSpelling.FineAdjustment? = nil
+        compatibleWithCoarseDirection coarseDirectionPreference:
+            PitchSpelling.CoarseAdjustment.Direction? = nil,
+        compatibleWithFineDirection fineDirectionPreference:
+            PitchSpelling.FineAdjustment? = nil
     ) -> PathCollection
     {
         guard let firstLevel = self.levels.first else { return PathCollection(paths: []) }

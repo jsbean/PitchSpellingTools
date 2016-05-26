@@ -75,13 +75,21 @@ class GraphTests: XCTestCase {
         XCTAssertEqual(graph.allPaths.count, 3 * 2 * 2 * 3)
     }
     
-    func testInitWithManyAndTestTime() {
-        for amountPitches in 0 ..< 16 {
-            let pitches = (0..<amountPitches).map { _ in
-                Pitch(noteNumber: NoteNumber(Float(Int.random(min: 48, max: 71))))
-            }
-            let pitchSet = PitchSet(pitches)
-            var graph = Graph(pitchSet: pitchSet)
-        }
+    func testPathsCompatibleWithCoarseDirection() {
+        
+        var graph = Graph(
+            pitchSet: [
+                Pitch(noteNumber: 60),
+                Pitch(noteNumber: 67.5),
+                Pitch(noteNumber: 70.5),
+                Pitch(noteNumber: 71)
+            ]
+        )
+        let _ = graph.paths(compatibleWithCoarseDirection: .up)
+        let _ = graph.paths(compatibleWithFineDirection: .down)
+        let _ = graph.paths(
+            compatibleWithCoarseDirection: .down,
+            compatibleWithFineDirection: .down
+        )
     }
 }
