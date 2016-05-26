@@ -18,8 +18,9 @@ internal struct PathCollection {
  
     internal var paths: [Path] = []
     
-    // ?
-    internal init(graph: Graph) {
+    internal init() {
         
     }
+    
+    
 }

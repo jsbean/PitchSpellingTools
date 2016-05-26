@@ -8,11 +8,13 @@
 
 import Foundation
 
-internal struct Edge {
-    
-    internal let nodes: (Node, Node)
-    
-    internal init(nodes: (Node, Node)) {
-        self.nodes = nodes
-    }
-}
+internal typealias Edge = (Node?, Node?)
+
+//internal struct Edge {
+//    
+//    internal let nodes: (Node, Node)
+//    
+//    internal init(nodes: (Node, Node)) {
+//        self.nodes = nodes
+//    }
+//}
