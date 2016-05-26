@@ -8,6 +8,9 @@
 
 import Pitch
 
+/**
+ Graph of potential spelling representations of a `PitchSet`.
+ */
 internal struct Graph {
 
     private static func makeLevel(withSpellingsForPitch pitch: Pitch) -> Level {
@@ -15,44 +18,54 @@ internal struct Graph {
         return Level(nodes: nodes)
     }
     
+    /**
+     Array of `Level` objects, created lazily. Each `Level` is a collection of `Node` objects,
+     each holding a `PitchSpelling` for the same `Pitch`.
+    */
     internal lazy var levels: [Level] = {
-        self.pitchSet.map { Graph.makeLevel(withSpellingsForPitch: $0) }
+        return self.pitchSet.sortedBySpellingComplexity.lazy.map {
+            Graph.makeLevel(withSpellingsForPitch: $0)
+        }
     }()
     
+    /// All `Node` objects in the graph
     internal lazy var nodes: [Node] = { self.levels.flatMap { $0.nodes } }()
     
-    internal lazy var paths: [[Node]] = {
-        
-        if self.levels.count == 1 { return self.levels.first!.nodes.map { [$0] } }
-        var result: [[Node]] = []
-        
-        // Create connections
-        for a in 0..<self.levels.count - 1 {
-            let levelA = self.levels[a]
-            let levelB = self.levels[a + 1]
-
-            for nodeA in levelA.nodes {
-                
-                // encapsulate below surface of Path
-                var paths = result.filter { $0.contains(nodeA) }
-                result = result.filter { !$0.contains(nodeA) }
-                
-                for nodeB in levelB.nodes {
-                    if paths.count == 0 { paths = [[nodeA]] }
-                    for path in paths {
-                        var newPath = path
-                        newPath.append(nodeB)
-                        result.append(newPath)
-                    }
-                }
-            }
-        }
-        return result
-    }()
+    /// All possible `Path` objects. That is, every possible way of spelling a `PitchSet`.
+    internal lazy var allPaths: PathCollection = { return self.paths() }()
 
     private let pitchSet: PitchSet
     
+    /**
+     Create a `Graph` with a `pitchSet` in order to apply to it `PitchSpelling` values.
+     */
     internal init(pitchSet: PitchSet) {
         self.pitchSet = pitchSet
+    }
+    
+    /**
+     `Path` objects with the given preferences for compatibility with coarse and/or fine
+     directions. If `nil` is given for either, no preference will be made for that aspect.
+     */
+    internal mutating func paths(
+        compatibleWithCoarseDirection: PitchSpelling.CoarseAdjustment.Direction? = nil,
+        andOrFineDirection: PitchSpelling.FineAdjustment? = nil
+    ) -> PathCollection
+    {
+        guard let firstLevel = self.levels.first else { return PathCollection(paths: []) }
+        
+        // TODO: do one level of filtering here for coarse / fine direction
+        
+        var collection = PathCollection(level: firstLevel)
+        
+        // TODO: do another level of filtering here for coarse / fine direction
+
+        // go up until the penultimate level (as we are connecting to the next one)
+        for a in 0 ..< self.levels.count - 1 {
+            let levelA = self.levels[a]
+            let levelB = self.levels[a + 1]
+            collection.addPaths(to: levelB, branchingFrom: levelA)
+        }
+        return collection
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import ArithmeticTools
 import Pitch
 @testable import PitchSpellingTools
 
@@ -26,7 +27,7 @@ class GraphTests: XCTestCase {
         
         XCTAssertEqual(graph.levels.count, 1)
         XCTAssertEqual(graph.nodes.count, 3)
-        XCTAssertEqual(graph.paths.count, 3)
+        XCTAssertEqual(graph.allPaths.count, 3)
     }
     
     func testInitWithDyadPitchSet() {
@@ -40,7 +41,7 @@ class GraphTests: XCTestCase {
         
         XCTAssertEqual(graph.levels.count, 2)
         XCTAssertEqual(graph.nodes.count, 3 + 3)
-        XCTAssertEqual(graph.paths.count, 9)
+        XCTAssertEqual(graph.allPaths.count, 9)
     }
     
     func testInitWithTriadPitchSet() {
@@ -55,7 +56,7 @@ class GraphTests: XCTestCase {
         
         XCTAssertEqual(graph.levels.count, 3)
         XCTAssertEqual(graph.nodes.count, 3 + 3 + 3)
-        XCTAssertEqual(graph.paths.count, 3 * 3 * 3)
+        XCTAssertEqual(graph.allPaths.count, 3 * 3 * 3)
     }
     
     func testInitWithTetrachordWithQuarterTones() {
@@ -71,6 +72,16 @@ class GraphTests: XCTestCase {
         
         XCTAssertEqual(graph.levels.count, 4)
         XCTAssertEqual(graph.nodes.count, 3 + 2  + 2 + 3)
-        XCTAssertEqual(graph.paths.count, 3 * 2 * 2 * 3)
+        XCTAssertEqual(graph.allPaths.count, 3 * 2 * 2 * 3)
+    }
+    
+    func testInitWithManyAndTestTime() {
+        for amountPitches in 0 ..< 16 {
+            let pitches = (0..<amountPitches).map { _ in
+                Pitch(noteNumber: NoteNumber(Float(Int.random(min: 48, max: 71))))
+            }
+            let pitchSet = PitchSet(pitches)
+            var graph = Graph(pitchSet: pitchSet)
+        }
     }
 }
