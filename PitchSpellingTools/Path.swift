@@ -17,11 +17,27 @@ internal struct Path {
     /// variance in distance from middle c
     internal var variance: Float { fatalError() }
     
-    /// - warning: Not yet implemented!
-    internal var isStepPreserving: Bool { fatalError() }
+    internal var isStepPreserving: Bool {
+        for edge in edges { if !edge.isStepPreserving { return false } }
+        return true
+    }
+    
+    private var edges: [PitchSpellingDyad] {
+        var result: [PitchSpellingDyad] = []
+        for n in 0 ..< nodes.count - 1 {
+            let nodeA = nodes[n]
+            let nodeB = nodes[n + 1]
+            let edge = PitchSpellingDyad(nodeA.spelling, nodeB.spelling)
+            result.append(edge)
+        }
+        return result
+    }
     
     private var nodes: [Node] = []
     
+    /**
+     Create a `Path` with the given array of `Node` objects.
+     */
     internal init(nodes: [Node]) {
         self.nodes = nodes
     }
