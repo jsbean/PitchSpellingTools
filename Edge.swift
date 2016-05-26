@@ -8,13 +8,11 @@
 
 import Foundation
 
-internal final class Edge {
+internal struct Edge {
     
-    private let before: Node
-    private let after: Node
+    internal let nodes: (Node, Node)
     
-    internal init(nodeBefore before: Node, nodeAfter after: Node) {
-        self.before = before
-        self.after = after
+    internal init(nodes: (Node, Node)) {
+        self.nodes = nodes
     }
 }

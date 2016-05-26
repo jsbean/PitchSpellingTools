@@ -20,10 +20,13 @@ class GraphTests: XCTestCase {
         var graph = Graph(pitchSet: [Pitch(noteNumber: 60)])
         XCTAssertEqual(graph.levels.count, 1)
         XCTAssertEqual(graph.nodes.count, 3)
+        XCTAssertEqual(graph.edges.count, 0)
     }
     
     func testInitWithDyadPitchSet() {
         var graph = Graph(pitchSet: [Pitch(noteNumber: 60), Pitch(noteNumber: 67)])
         XCTAssertEqual(graph.levels.count, 2)
+        XCTAssertEqual(graph.nodes.count, 3 + 3)
+        XCTAssertEqual(graph.edges.count, 9)
     }
 }
