@@ -94,6 +94,36 @@ class GraphTests: XCTestCase {
         XCTAssertEqual(paths.count, 3)
     }
     
+    func testPathsCompatibleWithFineDirection_C_up() {
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 60.25)])
+        let paths = graph.paths(compatibleWithFineDirection: .up)
+        XCTAssertEqual(paths.count, 1)
+    }
+    
+    func testPathsCompatibleWithFineDirection_C_qtr_down() {
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 60.25)])
+        let paths = graph.paths(compatibleWithFineDirection: .down)
+        XCTAssertEqual(paths.count, 2)
+    }
+    
+    func testPathsCompatibleWithCoarseDirectionCSharp() {
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 61)])
+        let paths = graph.paths(compatibleWithCoarseDirection: .up)
+        XCTAssertEqual(paths.count, 1)
+    }
+    
+    func testPathsCompatibleWithCoarseDirectionDFlat() {
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 61)])
+        let paths = graph.paths(compatibleWithCoarseDirection: .down)
+        XCTAssertEqual(paths.count, 1)
+    }
+    
+    func testPathsCompatibleWithNaturalCSharpOrDFlat() {
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 61)])
+        let paths = graph.paths(compatibleWithCoarseDirection: .none)
+        XCTAssertEqual(paths.count, 2)
+    }
+    
     func testPathsCompatibleWithCoarseDirection() {
         
         var graph = Graph(
