@@ -11,6 +11,7 @@ import Foundation
 internal final class Path {
     
     /// - warning: Not yet implemented!
+    /// variance in distance from middle c
     internal var variance: Float { fatalError() }
     
     /// - warning: Not yet implemented!

@@ -352,12 +352,12 @@
 		070156111CF4AAFF00C256E9 /* PitchSpellingGraph */ = {
 			isa = PBXGroup;
 			children = (
-				070156121CF4AB2500C256E9 /* Edge.swift */,
 				070156131CF4AB2500C256E9 /* Graph.swift */,
+				070156171CF4AB2500C256E9 /* PathCollection.swift */,
+				070156161CF4AB2500C256E9 /* Path.swift */,
 				070156141CF4AB2500C256E9 /* Level.swift */,
 				070156151CF4AB2500C256E9 /* Node.swift */,
-				070156161CF4AB2500C256E9 /* Path.swift */,
-				070156171CF4AB2500C256E9 /* PathCollection.swift */,
+				070156121CF4AB2500C256E9 /* Edge.swift */,
 			);
 			name = PitchSpellingGraph;
 			sourceTree = "<group>";

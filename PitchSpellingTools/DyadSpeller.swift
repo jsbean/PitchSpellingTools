@@ -38,10 +38,8 @@ public class DyadSpeller: PitchSpeller {
     
     // All possible combinations of `PitchSpellings` of each `Pitch`.
     internal lazy var pitchSpellingDyads: [PitchSpellingDyad] = {
-        combinations(
-            self.dyad.lower.spellings,
-            self.dyad.higher.spellings
-        ).lazy.map { PitchSpellingDyad($0.0, $0.1) }
+        combinations(self.dyad.lower.spellings, self.dyad.higher.spellings).lazy.map { PitchSpellingDyad($0.0, $0.1)
+        }
     }()
 
     /**

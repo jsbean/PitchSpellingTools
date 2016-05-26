@@ -8,7 +8,18 @@
 
 import Foundation
 
+/**
+ - warning: Not yet implemented!
+ - TODO: Conform to `SequenceType` or `CollectionType` ?
+ 
+ */
 internal struct PathCollection {
     
+ 
+    internal var paths: [Path] = []
     
+    // ?
+    internal init(graph: Graph) {
+        
+    }
 }
