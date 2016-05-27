@@ -20,13 +20,12 @@ internal struct Graph {
     
     /**
      Array of `Level` objects, created lazily. Each `Level` is a collection of `Node` objects,
-     each holding a `PitchSpelling` for the same `Pitch`.
+     each holding a `PitchSpelling` for the same `Pitch`. 
+     
+     `Pitch` objects are ordered by the `IntervalClass.spellingComplexity` 
+     of the `IntervalClass` between them and `PitchClass` `0`.
     */
-    internal lazy var levels: [Level] = {
-        return self.pitchSet.sortedBySpellingComplexity.lazy.map {
-            Graph.makeLevel(withSpellingsForPitch: $0)
-        }
-    }()
+    internal var levels: [Level] = []
     
     /// All possible `Path` objects. That is, every possible way of spelling a `PitchSet`.
     internal lazy var allPaths: PathCollection = {
@@ -58,33 +57,48 @@ internal struct Graph {
         allowingUnconventionalEnharmonics allowsUnconventionalEnharmonics: Bool = false
     ) -> PathCollection
     {
-        
         // bail if the pitchSet is empty
-        guard let firstLevel = self.levels.first else { return PathCollection(paths: []) }
+        guard Array(pitchSet).count > 0 else { return PathCollection(paths: []) }
+    
+        // create all levels
+        self.levels = makeAllLevels()
         
+        // set basic preferences for spelling
         let filter = NodeFilter(
             coarseDirectionPreference: coarseDirectionPreference,
             fineDirectionPreference: fineDirectionPreference,
             allowsUnconventionalEnharmonics: allowsUnconventionalEnharmonics
         )
-        
+    
+        // filter all pitches' spellings
         filterLevels(with: filter)
-
         
-        // wrap up
+        // create the path collection, now that the settings have been implemented
+        return makePathCollection()
+    }
+    
+    private func makeAllLevels() -> [Level] {
+        return pitchSet.sortedBySpellingComplexity.lazy.map {
+            Graph.makeLevel(withSpellingsForPitch: $0)
+        }
+    }
+    
+    private func makePathCollection() -> PathCollection {
+        guard let firstLevel = self.levels.first else { return PathCollection(paths: []) }
+        
+        // prepare collection with first pitch's worth of spellings
         var collection = PathCollection(nodes: firstLevel.nodes)
-
-        // go up until the penultimate level (as we are connecting to the next one)
+        
+        // create all paths available within given constraints
         for a in 0 ..< self.levels.count - 1 {
             let levelA = self.levels[a]
             let levelB = self.levels[a + 1]
-
             collection.addPaths(to: levelB, branchingFrom: levelA)
         }
         return collection
     }
     
-    private mutating func filterLevels(with filter: NodeFilter) {
+    private func filterLevels(with filter: NodeFilter) {
         levels.forEach { $0.filter(with: filter) }
     }
 }

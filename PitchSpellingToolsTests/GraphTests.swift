@@ -18,31 +18,15 @@ class GraphTests: XCTestCase {
     }
     
     func testInitWithMonadPitchSet() {
-        
-        var graph = Graph(
-            pitchSet: [
-                Pitch(noteNumber: 60)
-            ]
-        )
-        
-        XCTAssertEqual(graph.levels.count, 1)
+        let _ = Graph(pitchSet: [Pitch(noteNumber: 60)])
     }
     
     func testInitWithDyadPitchSet() {
-        
-        var graph = Graph(
-            pitchSet: [
-                Pitch(noteNumber: 60),
-                Pitch(noteNumber: 67)
-            ]
-        )
-        
-        XCTAssertEqual(graph.levels.count, 2)
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 60), Pitch(noteNumber: 67)])
         XCTAssertEqual(graph.allPaths.count, 9)
     }
     
     func testInitWithTriadPitchSet() {
-        
         var graph = Graph(
             pitchSet: [
                 Pitch(noteNumber: 60),
@@ -50,8 +34,6 @@ class GraphTests: XCTestCase {
                 Pitch(noteNumber: 69)
             ]
         )
-        
-        XCTAssertEqual(graph.levels.count, 3)
         XCTAssertEqual(graph.allPaths.count, 3 * 3 * 3)
     }
     
@@ -66,7 +48,6 @@ class GraphTests: XCTestCase {
             ]
         )
         
-        XCTAssertEqual(graph.levels.count, 4)
         XCTAssertEqual(graph.allPaths.count, 3 * 2 * 2 * 3)
     }
     
@@ -142,6 +123,14 @@ class GraphTests: XCTestCase {
         
         // Eb -> Ab, Eb -> G#, D# -> G#, D# -> Ab
         XCTAssertEqual(paths.count, 4)
+    }
+    
+    func testPathCompatibleWithCoarseEFlatAFlatThenDSharpGSharp() {
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 63), Pitch(noteNumber: 68)])
+        let sharpSide = graph.paths(compatibleWithCoarseDirection: .up)
+        XCTAssertEqual(sharpSide.count, 1)
+        let flatSide = graph.paths(compatibleWithCoarseDirection: .down)
+        XCTAssertEqual(flatSide.count, 1)
     }
     
     func testPathsCompatibleWithCoarseDirection() {
