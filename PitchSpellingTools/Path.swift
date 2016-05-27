@@ -7,6 +7,7 @@
 //
 //
 
+import ArithmeticTools
 import ArrayTools
 
 /**
@@ -17,19 +18,19 @@ internal struct Path {
     
     /// - warning: Not yet implemented!
     /// variance in distance from middle c
-    internal var variance: Float { fatalError() }
+    internal var variance: Float { fatalError() } // is this really a thing ?
     
-    internal var isStepPreserving: Bool {
-        return edges.allMatch { $0.isStepPreserving }
+    internal var meanCoarseDistance: Float? {
+        return (nodes.map { abs($0.spelling.coarse.rawValue) }).mean
     }
+    
+    internal var isStepPreserving: Bool { return edges.allMatch { $0.isStepPreserving } }
     
     internal var isCoarseResolutionCompatible: Bool {
         return edges.allMatch { $0.isCoarseResolutionCompatible }
     }
     
-    internal var isFineCompatible: Bool {
-        return edges.allMatch { $0.isFineCompatible }
-    }
+    internal var isFineCompatible: Bool { return edges.allMatch { $0.isFineCompatible } }
 
     internal var last: Node? { return nodes.last }
     

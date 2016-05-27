@@ -34,7 +34,7 @@ internal struct PathCollection: SequenceType {
     }
     
     internal mutating func applyFiltersToPaths() {
-        print("paths before: \(paths)")
+        print("paths before amount: \(paths.count): \(paths)")
         var filterIndex = 0
         while filterIndex < filters.count && paths.count > 1 {
             let filter = filters[filterIndex]
@@ -44,7 +44,7 @@ internal struct PathCollection: SequenceType {
         if paths.count < 1 {
             print("no paths that fit both!")
         }
-        print("paths after: \(paths)")
+        print("paths after amount: \(paths.count): \(paths)")
     }
     
     /**
@@ -88,12 +88,8 @@ internal struct PathCollection: SequenceType {
         for node in nodes {
             for path in pathsToExtend {
 
-//                // check here if we can bail before creating possible paths that shouldn't
-//                if let lastNodeInPath = path.last {
-//                    let dyad = PitchSpellingDyad(lastNodeInPath.spelling, node.spelling)
-//                    if !dyad.isStepPreserving { continue }
-//                }
-                
+                // TODO: bail if a predicate is not followed, 
+                // we can prevent creating all of the subpaths as necessary
                 paths.append(path + node)
             }
         }
