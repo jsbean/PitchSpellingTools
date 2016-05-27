@@ -28,11 +28,16 @@ extension ImperfectIntervalQualityType {
     /// The imperfect interval quality types that preserve step.
     static var stepPreserving: [IntervalQuality.EnumKind] { return [minor, major] }
 
+    /**
+     Ensures that interval qualities are correct for all intervals
+     */
     static func adjustDifference(difference: Float,
         forLowerPitchSpelling pitchSpelling: PitchSpelling
     ) -> Float
     {
-        return [.b, .e].contains(pitchSpelling.letterName) ? difference - 1 : difference
+        return [.d, .e, .a, .b,].contains(pitchSpelling.letterName)
+            ? difference - 1
+            : difference
     }
     
     static func intervalQuality(fromDirectionDifference difference: Float)

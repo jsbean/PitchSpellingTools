@@ -165,4 +165,26 @@ class GraphTests: XCTestCase {
         // C -> F -> Ab, not C -> F -> G#
         XCTAssertEqual(stepPreservingPaths.count, 1)
     }
+    
+    func testTriad_61_69_66() {
+        var graph = Graph(
+            pitchSet: [
+                Pitch(noteNumber: 66),
+                Pitch(noteNumber: 61),
+                Pitch(noteNumber: 69)
+            ]
+        )
+        let paths = graph.paths
+        let stepPreservingPaths = paths.stepPreserving
+        XCTAssertEqual(stepPreservingPaths.count, 1)
+    }
+    
+    func testDyad_61_66() {
+        var graph = Graph(pitchSet: [ Pitch(noteNumber: 66), Pitch(noteNumber: 61)])
+        let paths = graph.paths
+        let stepPreservingPaths = paths.stepPreserving
+        
+        // C# -> G# || Db -> Gb
+        XCTAssertEqual(stepPreservingPaths.count, 2)
+    }
 }
