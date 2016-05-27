@@ -124,6 +124,26 @@ class GraphTests: XCTestCase {
         XCTAssertEqual(paths.count, 2)
     }
     
+    func testPathsCompatibleWithCoarseDSharpGSharp() {
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 63), Pitch(noteNumber: 68)])
+        let paths = graph.paths(compatibleWithCoarseDirection: .up)
+        XCTAssertEqual(paths.count, 1)
+    }
+    
+    func testPathsCompatibleWithCoarseEFlatAFlat() {
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 63), Pitch(noteNumber: 68)])
+        let paths = graph.paths(compatibleWithCoarseDirection: .down)
+        XCTAssertEqual(paths.count, 1)
+    }
+    
+    func testPathCompatibleWithCoarseEitherSharpOrFlatButNotUnconventional() {
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 63), Pitch(noteNumber: 68)])
+        let paths = graph.paths()
+        
+        // Eb -> Ab, Eb -> G#, D# -> G#, D# -> Ab
+        XCTAssertEqual(paths.count, 4)
+    }
+    
     func testPathsCompatibleWithCoarseDirection() {
         
         var graph = Graph(
