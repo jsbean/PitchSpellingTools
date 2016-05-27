@@ -1,3 +1,4 @@
+
 //
 //  Path.swift
 //  PitchSpellingTools
@@ -59,9 +60,10 @@ internal struct Path {
 
 extension Path: CustomStringConvertible {
     
-    internal var description: String { return "\(nodes)" }
+    internal var description: String {
+        return nodes.map { "\($0.spelling)" }.joinWithSeparator(" -> ")
+    }
 }
-
 
 /**
  - returns: `Path` object with the given `Node` appended to the given `Path`.

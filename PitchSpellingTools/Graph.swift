@@ -27,9 +27,13 @@ internal struct Graph {
     */
     internal var levels: [Level] = []
     
+    internal lazy var paths: PathCollection = {
+        self.paths()
+    }()
+    
     /// All possible `Path` objects. That is, every possible way of spelling a `PitchSet`.
     internal lazy var allPaths: PathCollection = {
-        return self.paths(allowingUnconventionalEnharmonics: true)
+        self.paths(allowingUnconventionalEnharmonics: true)
     }()
 
     private let pitchSet: PitchSet
@@ -60,7 +64,7 @@ internal struct Graph {
         // bail if the pitchSet is empty
         if Array(pitchSet).isEmpty { return PathCollection(paths: []) }
     
-        // create all levels
+        // regenerate all levels upon finding paths
         self.levels = makeAllLevels()
         
         // set basic preferences for spelling

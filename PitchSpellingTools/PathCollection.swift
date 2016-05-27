@@ -20,6 +20,10 @@ internal struct PathCollection: SequenceType {
     /// All `Path` objects contained herein.
     internal var paths: [Path] = []
     
+    internal var stepPreserving: PathCollection {
+        return PathCollection(paths: paths.filter { $0.isStepPreserving })
+    }
+    
     /**
      Create a `PathCollection` with the given array of `Path` objects.
      */

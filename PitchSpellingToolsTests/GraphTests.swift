@@ -150,4 +150,19 @@ class GraphTests: XCTestCase {
             compatibleWithFineDirection: .down
         )
     }
+    
+    func testTriadCFAFlatOrGSharp() {
+        var graph = Graph(
+            pitchSet: [
+                Pitch(noteNumber: 60),
+                Pitch(noteNumber: 65),
+                Pitch(noteNumber: 68)
+            ]
+        )
+        let paths = graph.paths
+        let stepPreservingPaths = paths.stepPreserving
+
+        // C -> F -> Ab, not C -> F -> G#
+        XCTAssertEqual(stepPreservingPaths.count, 1)
+    }
 }
