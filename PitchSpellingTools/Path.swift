@@ -24,6 +24,10 @@ internal struct Path {
         return true
     }
     
+    internal var isCoarseResolutionCompatible: Bool {
+        fatalError()
+    }
+    
     internal var isFineCompatible: Bool {
         for edge in edges { if !edge.isFineCompatible { return false } }
         return true
@@ -34,7 +38,10 @@ internal struct Path {
         return true
     }
     
+    
+    
     internal var last: Node? { return nodes.last }
+    
     
     private var edges: [PitchSpellingDyad] {
         var result: [PitchSpellingDyad] = []

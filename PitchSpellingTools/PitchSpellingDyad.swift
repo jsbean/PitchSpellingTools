@@ -22,12 +22,32 @@ public struct PitchSpellingDyad {
      */
     public var isCoarseMatching: Bool { return lower.coarse == higher.coarse }
     
+    public var isCoarseCompatible: Bool {
+        return eitherIsNatural || isCoarseMatching
+    }
+    
     /**
     `true` if `coarse.direction` values of both `PitchSpelling` objects are equivalent.
      Otherwise `false`.
      */
     public var isCoarseDirectionMatching: Bool {
         return lower.coarse.direction == higher.coarse.direction
+    }
+    
+    public var isCoarseDirectionCompatible: Bool {
+        return eitherIsNatural || isCoarseDirectionMatching
+    }
+    
+    public var isCoarseResolutionMatching: Bool {
+        return lower.coarse.resolution == higher.coarse.resolution
+    }
+    
+    public var isCoarseResolutionCompatible: Bool {
+        return eitherIsNatural || isCoarseResolutionMatching
+    }
+    
+    private var eitherIsNatural: Bool {
+        return lower.coarse == .natural || higher.coarse == .natural
     }
     
     /**

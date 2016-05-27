@@ -20,12 +20,31 @@ internal struct PathCollection: SequenceType {
     /// All `Path` objects contained herein.
     internal var paths: [Path] = []
     
+    private let filters: [(Path) -> Bool] = [
+        { $0.isFineCompatible },
+        { $0.isStepPreserving },
+    ]
+    
     internal var stepPreserving: PathCollection {
         return PathCollection(paths: paths.filter { $0.isStepPreserving })
     }
     
     internal var fineCompatible: PathCollection {
         return PathCollection(paths: paths.filter { $0.isFineCompatible })
+    }
+    
+    internal mutating func applyFiltersToPaths() {
+        print("paths before: \(paths)")
+        var filterIndex = 0
+        while filterIndex < filters.count && paths.count > 1 {
+            let filter = filters[filterIndex]
+            paths = paths.filter { filter($0) }
+            filterIndex += 1
+        }
+        if paths.count < 1 {
+            print("no paths that fit both!")
+        }
+        print("paths after: \(paths)")
     }
     
     /**

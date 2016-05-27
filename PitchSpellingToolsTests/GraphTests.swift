@@ -218,6 +218,8 @@ class GraphTests: XCTestCase {
         XCTAssertEqual(intersection.count, 3)
     }
     
+    
+    
     func testManyPitchesTiming() {
         var graph = Graph(
             pitchSet: [
@@ -235,9 +237,19 @@ class GraphTests: XCTestCase {
                 Pitch(noteNumber: 71)
             ]
         )
-        let startTime = CFAbsoluteTimeGetCurrent()
-        let _ = graph.paths
-        let stopTime = CFAbsoluteTimeGetCurrent()
-        let _ = stopTime - startTime
+        
+        measureBlock {
+            let _ = graph.paths
+        }
+    }
+    
+    func testApplyFiltersToPathsFailure() {
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 60.25), Pitch(noteNumber: 60.5)])
+        graph.paths.applyFiltersToPaths()
+    }
+    
+    func testApplyFiltersToPaths() {
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 60.25), Pitch(noteNumber: 65.75)])
+        graph.paths.applyFiltersToPaths()
     }
 }
