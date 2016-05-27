@@ -180,7 +180,7 @@ class GraphTests: XCTestCase {
     }
     
     func testDyad_61_66() {
-        var graph = Graph(pitchSet: [ Pitch(noteNumber: 66), Pitch(noteNumber: 61)])
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 66), Pitch(noteNumber: 61)])
         let paths = graph.paths
         let stepPreservingPaths = paths.stepPreserving
         
