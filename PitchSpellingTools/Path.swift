@@ -7,7 +7,7 @@
 //
 //
 
-import Foundation
+import ArrayTools
 
 /**
  A possible spelled representation of all `Pitch` objects in a `PitchSet`.
@@ -20,28 +20,18 @@ internal struct Path {
     internal var variance: Float { fatalError() }
     
     internal var isStepPreserving: Bool {
-        for edge in edges { if !edge.isStepPreserving { return false } }
-        return true
+        return edges.allMatch { $0.isStepPreserving }
     }
     
     internal var isCoarseResolutionCompatible: Bool {
-        fatalError()
+        return edges.allMatch { $0.isCoarseResolutionCompatible }
     }
     
     internal var isFineCompatible: Bool {
-        for edge in edges { if !edge.isFineCompatible { return false } }
-        return true
+        return edges.allMatch { $0.isFineCompatible }
     }
-    
-    internal var isFinePreserving: Bool {
-        for edge in edges { if !edge.isFineMatching { return false } }
-        return true
-    }
-    
-    
-    
+
     internal var last: Node? { return nodes.last }
-    
     
     private var edges: [PitchSpellingDyad] {
         var result: [PitchSpellingDyad] = []
