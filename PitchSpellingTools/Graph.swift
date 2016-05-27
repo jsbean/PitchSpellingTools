@@ -58,7 +58,7 @@ internal struct Graph {
     ) -> PathCollection
     {
         // bail if the pitchSet is empty
-        guard Array(pitchSet).count > 0 else { return PathCollection(paths: []) }
+        if Array(pitchSet).isEmpty { return PathCollection(paths: []) }
     
         // create all levels
         self.levels = makeAllLevels()
