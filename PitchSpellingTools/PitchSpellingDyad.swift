@@ -35,6 +35,11 @@ public struct PitchSpellingDyad {
      */
     public var isFineMatching: Bool { return lower.fine == higher.fine }
     
+    public var isFineCompatible: Bool {
+        if lower.fine == .none || higher.fine == .none { return true }
+        return isFineMatching
+    }
+    
     public var isStepPreserving: Bool { return intervalQuality.isStepPreserving }
     
     /// Mean of `distance` values of both `PitchSpelling` objects.

@@ -26,6 +26,12 @@ internal final class Node {
     }
 }
 
+extension Node: Equatable { }
+
+internal func == (lhs: Node, rhs: Node) -> Bool {
+    return lhs.spelling == rhs.spelling
+}
+
 extension Node: CustomStringConvertible {
     
     internal var description: String { return "\(spelling)" }

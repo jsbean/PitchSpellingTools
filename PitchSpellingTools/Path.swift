@@ -24,6 +24,11 @@ internal struct Path {
         return true
     }
     
+    internal var isFineCompatible: Bool {
+        for edge in edges { if !edge.isFineCompatible { return false } }
+        return true
+    }
+    
     internal var isFinePreserving: Bool {
         for edge in edges { if !edge.isFineMatching { return false } }
         return true
@@ -71,6 +76,15 @@ extension Path: CustomStringConvertible {
     internal var description: String {
         return nodes.map { "\($0.spelling)" }.joinWithSeparator(" -> ")
     }
+}
+
+extension Path: Hashable {
+    
+    internal var hashValue: Int { return description.hashValue }
+}
+
+internal func == (lhs: Path, rhs: Path) -> Bool {
+    return lhs.nodes == rhs.nodes
 }
 
 /**

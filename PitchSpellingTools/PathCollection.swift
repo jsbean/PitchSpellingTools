@@ -24,6 +24,10 @@ internal struct PathCollection: SequenceType {
         return PathCollection(paths: paths.filter { $0.isStepPreserving })
     }
     
+    internal var fineCompatible: PathCollection {
+        return PathCollection(paths: paths.filter { $0.isFineCompatible })
+    }
+    
     /**
      Create a `PathCollection` with the given array of `Path` objects.
      */
@@ -85,6 +89,15 @@ internal struct PathCollection: SequenceType {
         var generator = paths.generate()
         return AnyGenerator { return generator.next() }
     }
+}
+
+extension PathCollection: Hashable {
+    
+    internal var hashValue: Int { return description.hashValue }
+}
+
+func == (lhs: PathCollection, rhs: PathCollection) -> Bool {
+    return lhs.paths == rhs.paths
 }
 
 extension PathCollection: CustomStringConvertible {

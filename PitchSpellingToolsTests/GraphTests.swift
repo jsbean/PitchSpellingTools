@@ -212,8 +212,10 @@ class GraphTests: XCTestCase {
         var graph = Graph(pitchSet: [Pitch(noteNumber: 60.25), Pitch(noteNumber: 65.75)])
         let paths = graph.paths
         let stepPreservingPaths = paths.stepPreserving
-        print("- paths:\n\(paths)\n- stepPreserving:\n\(stepPreservingPaths)")
         XCTAssertEqual(stepPreservingPaths.count, 7)
+        let fineCompatiblePaths = paths.fineCompatible
+        let intersection = Set(stepPreservingPaths).intersect(fineCompatiblePaths)
+        XCTAssertEqual(intersection.count, 3)
     }
     
     func testManyPitchesTiming() {
