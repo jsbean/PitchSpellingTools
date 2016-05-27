@@ -16,4 +16,14 @@ class IntervalQualityTests: XCTestCase {
         let m3 = IntervalQuality.third.minor
         XCTAssert(IntervalQuality.third.has(m3))
     }
+    
+    func testAugmentedFourthStepPreserving() {
+        let A4 = IntervalQuality.fourth.augmented
+        XCTAssertTrue(A4.isStepPreserving)
+    }
+    
+    func testDiminishedFifthStepPreserving() {
+        
+    }
 }
+

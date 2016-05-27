@@ -68,6 +68,8 @@ public enum IntervalQualityKind: String {
         .minorThird,
         .majorThird,
         .perfectFourth,
+        .augmentedFourth,
+        .diminishedFifth,
         .perfectFifth,
         .minorSixth,
         .majorSixth,

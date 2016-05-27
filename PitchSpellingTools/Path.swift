@@ -11,6 +11,7 @@ import Foundation
 
 /**
  A possible spelled representation of all `Pitch` objects in a `PitchSet`.
+ - TODO: conform to `CollectionType`.
  */
 internal struct Path {
     
@@ -22,6 +23,13 @@ internal struct Path {
         for edge in edges { if !edge.isStepPreserving { return false } }
         return true
     }
+    
+    internal var isFinePreserving: Bool {
+        for edge in edges { if !edge.isFineMatching { return false } }
+        return true
+    }
+    
+    internal var last: Node? { return nodes.last }
     
     private var edges: [PitchSpellingDyad] {
         var result: [PitchSpellingDyad] = []

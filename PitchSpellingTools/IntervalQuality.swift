@@ -63,6 +63,8 @@ public class IntervalQuality: EnumTree {
         /// Double Augmented Unison interval.
         public static let doubleAugmented: EnumKind = .doubleAugmentedUnison
         
+        public static var stepPreserving: [EnumKind] { return [perfect] }
+        
         public override class func kind(
             forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
         ) -> EnumKind
@@ -154,6 +156,10 @@ public class IntervalQuality: EnumTree {
         /// Double Augmented Fourt interval.
         public static let doubleAugmented: EnumKind = .doubleAugmentedFourth
         
+        public static var stepPreserving: [EnumKind] {
+            return [perfect, diminished, augmented]
+        }
+        
         /// Perfect interval quality type members.
         public override class var members: [EnumKind] { return perfectMembers }
         
@@ -190,6 +196,10 @@ public class IntervalQuality: EnumTree {
         
         /// Double Augmented Fifth interval.
         public static let doubleAugmented: EnumKind = .doubleAugmentedFifth
+        
+        public static var stepPreserving: [EnumKind] {
+            return [perfect, diminished, augmented]
+        }
         
         /// Perfect interval quality type members.
         public override class var members: [EnumKind] { return perfectMembers }

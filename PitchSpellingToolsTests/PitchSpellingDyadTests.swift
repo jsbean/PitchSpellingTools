@@ -133,8 +133,17 @@ class PitchSpellingDyadTests: XCTestCase {
     func testCQuarterSharpGQuarterFlatNotStepPreserving() {
         let dyad = PitchSpellingDyad(
             PitchSpelling(.c, .quarterSharp),
-            PitchSpelling(.g, .quarterFlat))
+            PitchSpelling(.g, .quarterFlat)
+        )
         XCTAssertFalse(dyad.isStepPreserving)
+    }
+    
+    func testCSharpGFlatDoubleDiminishedFifth() {
+        let dyad = PitchSpellingDyad(
+            PitchSpelling(.c, .sharp),
+            PitchSpelling(.g, .flat)
+        )
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.fifth.doubleDiminished)
     }
     
     func testCQuarterSharpFThreeQuarterSharpStepPreserving() {
@@ -275,5 +284,33 @@ class PitchSpellingDyadTests: XCTestCase {
     func testAFSharpStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.a), PitchSpelling(.f, .sharp))
         XCTAssertTrue(dyad.isStepPreserving)
+    }
+    
+    func testCFSharpStepPreserving() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.f, .sharp))
+        print("dyad: \(dyad); intervalQuality: \(dyad.intervalQuality)")
+        XCTAssertTrue(dyad.isStepPreserving)
+    }
+    
+    func testCGFlatStepPreserving() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.g, .flat))
+        print("dyad: \(dyad); intervalQuality: \(dyad.intervalQuality)")
+        XCTAssertTrue(dyad.isStepPreserving)
+    }
+    
+    func testBFlatEStepPreserving() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.b, .flat), PitchSpelling(.e))
+        print("dyad: \(dyad); intervalQuality: \(dyad.intervalQuality)")
+        XCTAssertTrue(dyad.isStepPreserving)
+    }
+    
+    func testASharpEStepPreserving() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.a, .sharp), PitchSpelling(.e))
+        print("dyad: \(dyad); intervalQuality: \(dyad.intervalQuality)")
+        XCTAssertTrue(dyad.isStepPreserving)
+    }
+    
+    func testCUpFQuarterSharpUpStepPreserving() {
+        
     }
 }

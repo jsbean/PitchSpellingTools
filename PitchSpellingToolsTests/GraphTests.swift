@@ -187,4 +187,55 @@ class GraphTests: XCTestCase {
         // C# -> G# || Db -> Gb
         XCTAssertEqual(stepPreservingPaths.count, 2)
     }
+    
+    func testQuarterStepDyad() {
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 60.5), Pitch(noteNumber: 65.5)])
+        let paths = graph.paths
+        let stepPreservingPaths = paths.stepPreserving
+        XCTAssertEqual(stepPreservingPaths.count, 2)
+    }
+    
+    func testMixedWholeStepQuarterStepTriad() {
+        var graph = Graph(
+            pitchSet: [
+                Pitch(noteNumber: 60.5),
+                Pitch(noteNumber: 65.5),
+                Pitch(noteNumber: 68)
+            ]
+        )
+        let paths = graph.paths
+        let stepPreservingPaths = paths.stepPreserving
+        XCTAssertEqual(stepPreservingPaths.count, 2)
+    }
+    
+    func testEighthToneDyad() {
+        var graph = Graph(pitchSet: [Pitch(noteNumber: 60.25), Pitch(noteNumber: 65.75)])
+        let paths = graph.paths
+        let stepPreservingPaths = paths.stepPreserving
+        print("- paths:\n\(paths)\n- stepPreserving:\n\(stepPreservingPaths)")
+        XCTAssertEqual(stepPreservingPaths.count, 7)
+    }
+    
+    func testManyPitchesTiming() {
+        var graph = Graph(
+            pitchSet: [
+                Pitch(noteNumber: 60),
+                Pitch(noteNumber: 61),
+                Pitch(noteNumber: 62),
+                Pitch(noteNumber: 63),
+                Pitch(noteNumber: 64),
+                Pitch(noteNumber: 65),
+                Pitch(noteNumber: 66),
+                Pitch(noteNumber: 67),
+                Pitch(noteNumber: 68),
+                Pitch(noteNumber: 69),
+                Pitch(noteNumber: 70),
+                Pitch(noteNumber: 71)
+            ]
+        )
+        let startTime = CFAbsoluteTimeGetCurrent()
+        let _ = graph.paths
+        let stopTime = CFAbsoluteTimeGetCurrent()
+        let _ = stopTime - startTime
+    }
 }

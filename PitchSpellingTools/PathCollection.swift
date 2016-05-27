@@ -62,8 +62,15 @@ internal struct PathCollection: SequenceType {
      TODO: clarify responsibility of `Graph` and `PathCollection` here.
      */
     private mutating func addPaths(for nodes: [Node], extending pathsToExtend: [Path]) {
-        nodes.forEach { node in
-            pathsToExtend.forEach { path in
+        for node in nodes {
+            for path in pathsToExtend {
+
+//                // check here if we can bail before creating possible paths that shouldn't
+//                if let lastNodeInPath = path.last {
+//                    let dyad = PitchSpellingDyad(lastNodeInPath.spelling, node.spelling)
+//                    if !dyad.isStepPreserving { continue }
+//                }
+                
                 paths.append(path + node)
             }
         }
