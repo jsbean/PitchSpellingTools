@@ -63,10 +63,10 @@ extension Dyad {
     }
     
     internal func spellHigher(with spelling: PitchSpelling) throws -> SpelledPitch {
-        return try higher.spell(with: spelling)
+        return try higher.spelled(with: spelling)
     }
     
     internal func spellLower(with spelling: PitchSpelling) throws -> SpelledPitch {
-        return try lower.spell(with: spelling)
+        return try lower.spelled(with: spelling)
     }
 }

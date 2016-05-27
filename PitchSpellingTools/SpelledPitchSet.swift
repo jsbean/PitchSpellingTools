@@ -10,6 +10,10 @@ import Pitch
 
 public struct SpelledPitchSet {
     
+    private let pitches: Set<SpelledPitch>
     
+    public init(pitches: [SpelledPitch]) {
+        self.pitches = Set(pitches)
+    }
 }
 

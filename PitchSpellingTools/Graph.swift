@@ -82,7 +82,7 @@ internal struct Graph {
     }
     
     private func makeAllLevels() -> [Level] {
-        return pitchSet.sortedBySpellingComplexity.lazy.map {
+        return pitchSet.sortedBySpellingUrgency.lazy.map {
             Graph.makeLevel(withSpellingsForPitch: $0)
         }
     }

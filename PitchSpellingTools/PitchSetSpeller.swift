@@ -81,7 +81,7 @@ public final class PitchSetSpeller: PitchSpeller {
     // make better name
     func spell() throws -> SpelledPitchSet {
         
-        return SpelledPitchSet()
+        return try pitchSet.spelledWithDefaultSpellings()
     }
     
     private func rankObjectivelySpellableDyad(dyad: Dyad) {

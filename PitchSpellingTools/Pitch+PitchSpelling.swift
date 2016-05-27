@@ -89,12 +89,20 @@ extension Pitch {
      - throws: `PitchSpelling.Error.InvalidPitchSpellingForPitch` if the given `spelling` is
      not appropriate for this `Pitch`.
      */
-    public func spell(with spelling: PitchSpelling) throws -> SpelledPitch {
+    public func spelled(with spelling: PitchSpelling) throws -> SpelledPitch {
         
         guard spelling.isValid(forPitch: self) else {
             throw PitchSpelling.Error.invalidSpelling(self, spelling)
         }
         
         return SpelledPitch(pitch: self, spelling: spelling)
+    }
+    
+    public func spelledWithDefaultSpelling() throws -> SpelledPitch {
+        guard let defaultSpelling = defaultSpelling else {
+            throw PitchSpelling.Error.noSpellingForPitch(self)
+        }
+        
+        return try spelled(with: defaultSpelling)
     }
 }

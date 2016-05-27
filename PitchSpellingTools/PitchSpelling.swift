@@ -26,6 +26,8 @@ public struct PitchSpelling {
          If the given `PitchSpelling` is not applicable to the given `Pitch`.
          */
         case invalidSpelling(Pitch, PitchSpelling)
+        
+        case noSpellingForPitch(Pitch)
     }
     
     // MARK: - Instance Properties

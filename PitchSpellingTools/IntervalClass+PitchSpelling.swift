@@ -11,9 +11,9 @@ import Pitch
 extension IntervalClass {
     
     // TODO: change `Complexity` naming to spelling priority
-    public typealias SpellingComplexity = Int
+    public typealias SpellingUrgency = Int
     
-    private static let intervalClassOrderedBySpellingComplexity: [IntervalClass] = [
+    private static let intervalClassOrderedBySpellingUrgency: [IntervalClass] = [
         
         // minor second, major seventh
         01.00, 11.00,
@@ -64,7 +64,7 @@ extension IntervalClass {
         03.50, 08.50,
     ]
     
-    public var spellingComplexity: SpellingComplexity? {
-        return IntervalClass.intervalClassOrderedBySpellingComplexity.indexOf(self)
+    public var spellingUrgency: SpellingUrgency? {
+        return IntervalClass.intervalClassOrderedBySpellingUrgency.indexOf(self)
     }
 }
