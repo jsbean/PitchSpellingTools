@@ -16,17 +16,28 @@ import ArrayTools
  */
 internal struct Path {
     
+    internal var meanStepPreserving: Float {
+        let dyads = self.dyads
+        var amountStepPreserving: Float = 0
+        for dyad in dyads { if dyad.isStepPreserving { amountStepPreserving += 1.0 } }
+        return amountStepPreserving / Float(dyads.count)
+    }
+    
     internal var meanCoarseDistance: Float? {
         return nodes.map { abs($0.spelling.coarse.rawValue) }.mean
     }
     
-    internal var isStepPreserving: Bool { return edges.allMatch { $0.isStepPreserving } }
-    
-    internal var isCoarseResolutionCompatible: Bool {
-        return edges.allMatch { $0.isCoarseResolutionCompatible }
+    internal var isStepPreserving: Bool {
+        return dyads.allMatch { $0.isStepPreserving }
     }
     
-    internal var isFineCompatible: Bool { return edges.allMatch { $0.isFineCompatible } }
+    internal var isCoarseResolutionCompatible: Bool {
+        return dyads.allMatch { $0.isCoarseResolutionCompatible }
+    }
+    
+    internal var isFineCompatible: Bool {
+        return dyads.allMatch { $0.isFineCompatible }
+    }
 
     internal var last: Node? { return nodes.last }
     
@@ -37,6 +48,17 @@ internal struct Path {
             let nodeB = nodes[n + 1]
             let edge = PitchSpellingDyad(nodeA.spelling, nodeB.spelling)
             result.append(edge)
+        }
+        return result
+    }
+    
+    // should only do this computation once
+    private var dyads: [PitchSpellingDyad] {
+        var result: [PitchSpellingDyad] = []
+        for a in 0 ..< nodes.count - 1 {
+            for b in a + 1 ..< nodes.count {
+                result.append(PitchSpellingDyad(nodes[a].spelling, nodes[b].spelling))
+            }
         }
         return result
     }

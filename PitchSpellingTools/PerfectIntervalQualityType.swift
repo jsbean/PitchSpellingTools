@@ -29,12 +29,13 @@ extension PerfectIntervalQualityType {
         -> IntervalQuality.EnumKind
     {
         switch difference {
-        case -2: return doubleDiminished
+        case -2, -3: return doubleDiminished
         case -1: return diminished
         case +0: return perfect
         case +1: return augmented
         case +2: return doubleAugmented
-        default: fatalError("Such an interval couldn't possibly exist, yet")
+        default:
+            fatalError("Such an interval couldn't possibly exist: \(difference), yet")
         }
     }
     

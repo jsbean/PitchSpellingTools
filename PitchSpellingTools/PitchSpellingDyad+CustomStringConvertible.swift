@@ -11,6 +11,6 @@ import Foundation
 extension PitchSpellingDyad: CustomStringConvertible {
     
     public var description: String {
-        return "\(lower) | \(higher)"
+        return "\(a) | \(b)"
     }
 }

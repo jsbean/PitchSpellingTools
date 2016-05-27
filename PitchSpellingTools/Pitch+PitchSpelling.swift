@@ -11,18 +11,55 @@ import Pitch
 extension Pitch {
     
     /**
-     `true` if only one `PitchSpelling` exists for this `Pitch`. Otherwise `false`.
+     `true` for `n	atural` spellable `Pitches`. Otherwise `false`.
      
      ```
      Pitch(noteNumber: 60) // => true (.c, .natural)
      Pitch(noteNumber: 68) // => false (.a, .flat) / (.g, .sharp)
      ```
      */
-    public var canBeSpelledObjectively: Bool { return spellings.count == 1 }
+    public var canBeSpelledObjectively: Bool {
+        for spelling in spellings {
+            if spelling.coarse == .natural && spelling.fine == .none { return true }
+        }
+        return false
+    }
  
     /// All `PitchSpelling` structures available for this `Pitch`.
     public var spellings: [PitchSpelling] {
         return PitchSpellings.spellings(forPitchClass: pitchClass) ?? []
+    }
+    
+    // TODO: Encapsulate this logic within `PitchSpellings` `struct`.
+    public var spellingsWithoutUnconventionalEnharmonics: [PitchSpelling] {
+        var spellings = self.spellings
+        
+        // c flat
+        spellings = spellings.filter {
+            !($0.letterName == .c && $0.coarse == .flat)
+        }
+        
+        // f flat
+        spellings = spellings.filter {
+            !($0.letterName == .f && $0.coarse == .flat)
+        }
+        
+        // e sharp
+        spellings = spellings.filter {
+            !($0.letterName == .e && $0.coarse == .sharp)
+        }
+        
+        // b sharp
+        spellings = spellings.filter {
+            !($0.letterName == .b && $0.coarse == .sharp)
+        }
+        
+        // double flats and sharps
+        spellings = spellings.filter {
+            !($0.coarse == .doubleSharp || $0.coarse == .doubleFlat)
+        }
+        
+        return spellings
     }
     
     /// The first available `PitchSpelling` for this `Pitch`, if present. Otherwise `nil`.

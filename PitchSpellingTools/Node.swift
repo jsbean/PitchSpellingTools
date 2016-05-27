@@ -6,7 +6,7 @@
 //
 //
 
-import Foundation
+import Pitch
 
 /**
  Node in a `Graph`, holding a `PitchSpelling` object for a `Pitch` within a `PitchSet`.
@@ -15,13 +15,19 @@ import Foundation
  */
 internal final class Node {
     
+    internal var rank: Float? // start `nil`
+    
+    // add pitch
+    internal let pitch: Pitch
+    
     /// The `PitchSpelling` held by this `Node`.
     internal let spelling: PitchSpelling
     
     /**
      Create a `Node` with the given `spelling`.
      */
-    internal init(spelling: PitchSpelling) {
+    internal init(pitch: Pitch, spelling: PitchSpelling) {
+        self.pitch = pitch
         self.spelling = spelling
     }
 }

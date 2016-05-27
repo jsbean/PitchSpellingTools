@@ -14,7 +14,7 @@ import Pitch
 internal struct Graph {
 
     private static func makeLevel(withSpellingsForPitch pitch: Pitch) -> Level {
-        let nodes = pitch.spellings.map { Node(spelling: $0) }
+        let nodes = pitch.spellings.map { Node(pitch: pitch, spelling: $0) }
         return Level(nodes: nodes)
     }
     

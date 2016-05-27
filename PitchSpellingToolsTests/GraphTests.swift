@@ -47,7 +47,6 @@ class GraphTests: XCTestCase {
                 Pitch(noteNumber: 71)
             ]
         )
-        
         XCTAssertEqual(graph.allPaths.count, 3 * 2 * 2 * 3)
     }
     
@@ -217,27 +216,49 @@ class GraphTests: XCTestCase {
         let intersection = Set(stepPreservingPaths).intersect(fineCompatiblePaths)
         XCTAssertEqual(intersection.count, 3)
     }
-
-    func testManyPitchesTiming() {
-        let amountPitches = 14
-        let pitchArray = (0 ..< amountPitches).map { _ in
-            Pitch(noteNumber: NoteNumber(Float.random(min: 60, max: 72)))
-        }
-        print("pitchArray: \(pitchArray)")
-        let pitchSet = PitchSet(pitchArray)
-        var graph = Graph(pitchSet: pitchSet)
-        self.measureBlock {
-            let _ = graph.paths()
-        }
-    }
     
-    func testApplyFiltersToPathsFailure() {
-        var graph = Graph(pitchSet: [Pitch(noteNumber: 60.25), Pitch(noteNumber: 60.5)])
-        graph.paths.applyFiltersToPaths()
+    func testChordWithNoStepPreserving() {
+        var graph = Graph(
+            pitchSet: [
+                Pitch(noteNumber: 60),
+                Pitch(noteNumber: 63),
+                Pitch(noteNumber: 66),
+                Pitch(noteNumber: 67)
+            ]
+        )
+        let paths = graph.paths
+        let stepPreservingPaths = paths.stepPreserving
+        XCTAssertEqual(stepPreservingPaths.count, 0)
     }
+
+//    func testManyPitchesTiming() {
+//        let amountPitches = 10
+//        let pitchArray = (0 ..< amountPitches).map { _ in
+//            Pitch(noteNumber: NoteNumber(Float.random(min: 60, max: 72, resolution: 4)))
+//        }
+//        let pitchSet = PitchSet(pitchArray)
+//        var graph = Graph(pitchSet: pitchSet)
+//        self.measureBlock {
+//            let _ = graph.paths()
+//        }
+//    }
+    
+//    func testManyPitches() {
+//        for amountPitches in 0 ..< 12 {
+//            let pitchArray = (0 ..< amountPitches).map { _ in
+//                Pitch(noteNumber: NoteNumber(Float.random(min: 60, max: 72, resolution: 4)))
+//            }
+//            let pitchSet = PitchSet(pitchArray)
+//            var graph = Graph(pitchSet: pitchSet)
+//            var paths = graph.paths()
+//            paths.applyFiltersToPaths()
+//        }
+//    }
     
     func testApplyFiltersToPaths() {
         var graph = Graph(pitchSet: [Pitch(noteNumber: 60.25), Pitch(noteNumber: 65.75)])
         graph.paths.applyFiltersToPaths()
     }
+    
+    
 }

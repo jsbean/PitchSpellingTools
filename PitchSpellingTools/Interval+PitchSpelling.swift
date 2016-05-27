@@ -13,7 +13,7 @@ extension Interval {
     /// `IntervalClass` representation of `Interval`.
     public var intervalClass: IntervalClass { return IntervalClass(self) }
     
-    public var spellingComplexity: IntervalClass.SpellingComplexity? {
+    public var spellingUrgency: IntervalClass.SpellingComplexity? {
         return intervalClass.spellingComplexity
     }
 }

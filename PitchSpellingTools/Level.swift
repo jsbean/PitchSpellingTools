@@ -23,6 +23,8 @@ internal final class Level {
         self.nodes = nodes
     }
     
+    
+    
     internal func filter(with filter: NodeFilter) {
         self.nodes = filter.filter(nodes)
     }

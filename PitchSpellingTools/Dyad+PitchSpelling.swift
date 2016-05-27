@@ -26,9 +26,13 @@ extension Dyad {
     public var finestResolution: Float {
         return [higher.resolution, lower.resolution].minElement()!
     }
-    
+
     public var canBeSpelledObjectively: Bool {
         return lower.canBeSpelledObjectively && higher.canBeSpelledObjectively
+    }
+    
+    public var isfullyAmbiguouslySpellable: Bool {
+        return !lower.canBeSpelledObjectively && !higher.canBeSpelledObjectively
     }
     
     public var defaultSpellingDyad: PitchSpellingDyad? {
@@ -53,8 +57,8 @@ extension Dyad {
     
     public func spell(with spellingDyad: PitchSpellingDyad) throws -> SpelledDyad {
         return SpelledDyad(
-            higher: try spellHigher(with: spellingDyad.higher),
-            lower: try spellLower(with: spellingDyad.lower)
+            higher: try spellHigher(with: spellingDyad.a),
+            lower: try spellLower(with: spellingDyad.b)
         )
     }
     

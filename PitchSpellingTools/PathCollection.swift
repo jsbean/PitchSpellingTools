@@ -6,6 +6,7 @@
 //
 //
 
+import Foundation
 import ArrayTools
 
 /**
@@ -36,17 +37,13 @@ internal struct PathCollection: SequenceType {
     }
     
     internal mutating func applyFiltersToPaths() {
-        print("paths before amount: \(paths.count): \(paths)")
+        var filteredPaths = paths
         var filterIndex = 0
         while filterIndex < filters.count && paths.count > 1 {
             let filter = filters[filterIndex]
-            paths = paths.filter { filter($0) }
+            filteredPaths = filteredPaths.filter { filter($0) }
             filterIndex += 1
         }
-        if paths.count < 1 {
-            print("no paths that fit both!")
-        }
-        print("paths after amount: \(paths.count): \(paths)")
     }
     
     /**

@@ -49,9 +49,9 @@ extension IntervalQualityType {
     static func directionDifference(fromPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
         -> Float
     {
-        let lowerDirection = pitchSpellingDyad.lower.coarse.direction.rawValue
-        let higherDirection = pitchSpellingDyad.higher.coarse.direction.rawValue
+        let lowerDirection = pitchSpellingDyad.b.coarse.direction.rawValue
+        let higherDirection = pitchSpellingDyad.a.coarse.direction.rawValue
         let difference = (higherDirection - lowerDirection)
-        return adjustDifference(difference, forLowerPitchSpelling: pitchSpellingDyad.lower)
+        return adjustDifference(difference, forLowerPitchSpelling: pitchSpellingDyad.b)
     }
 }

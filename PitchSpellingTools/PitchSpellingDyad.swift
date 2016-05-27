@@ -13,14 +13,14 @@ import ArithmeticTools
  */
 public struct PitchSpellingDyad {
 
-    internal let lower: PitchSpelling
-    internal let higher: PitchSpelling
+    internal let a: PitchSpelling
+    internal let b: PitchSpelling
 
     /**
     `true` if `coarse` values of both `PitchSpelling` objects are equivalent.
      Otherwise `false`.
      */
-    public var isCoarseMatching: Bool { return lower.coarse == higher.coarse }
+    public var isCoarseMatching: Bool { return b.coarse == a.coarse }
     
     public var isCoarseCompatible: Bool {
         return eitherIsNatural || isCoarseMatching
@@ -31,7 +31,7 @@ public struct PitchSpellingDyad {
      Otherwise `false`.
      */
     public var isCoarseDirectionMatching: Bool {
-        return lower.coarse.direction == higher.coarse.direction
+        return b.coarse.direction == a.coarse.direction
     }
     
     public var isCoarseDirectionCompatible: Bool {
@@ -39,7 +39,7 @@ public struct PitchSpellingDyad {
     }
     
     public var isCoarseResolutionMatching: Bool {
-        return lower.coarse.resolution == higher.coarse.resolution
+        return b.coarse.resolution == a.coarse.resolution
     }
     
     public var isCoarseResolutionCompatible: Bool {
@@ -47,16 +47,16 @@ public struct PitchSpellingDyad {
     }
     
     private var eitherIsNatural: Bool {
-        return lower.coarse == .natural || higher.coarse == .natural
+        return b.coarse == .natural || a.coarse == .natural
     }
     
     /**
      `true if `fine` values of `PitchSpelling` objects are equivalent. Otherwise `false`..
      */
-    public var isFineMatching: Bool { return lower.fine == higher.fine }
+    public var isFineMatching: Bool { return b.fine == a.fine }
     
     public var isFineCompatible: Bool {
-        if lower.fine == .none || higher.fine == .none { return true }
+        if b.fine == .none || a.fine == .none { return true }
         return isFineMatching
     }
     
@@ -64,12 +64,12 @@ public struct PitchSpellingDyad {
     
     /// Mean of `distance` values of both `PitchSpelling` objects.
     public var meanSpellingDistance: Float {
-        return [lower.spellingDistance, higher.spellingDistance].mean!
+        return [b.spellingDistance, a.spellingDistance].mean!
     }
     
     /// Amount of steps between two `PitchSpelling` objects.
     public var steps: Int {
-        let difference = higher.letterName.steps - lower.letterName.steps
+        let difference = a.letterName.steps - b.letterName.steps
         return abs(Int.mod(difference, 7))
     }
 
@@ -81,19 +81,19 @@ public struct PitchSpellingDyad {
     /**
      Create a `PitchSpellingDyad` with two `PitchSpelling` objects.
      */
-    public init(_ lower: PitchSpelling, _ higher: PitchSpelling) {
-        self.lower = lower
-        self.higher = higher
+    public init(_ b: PitchSpelling, _ a: PitchSpelling) {
+        self.b = b
+        self.a = a
     }
 }
 
 extension PitchSpellingDyad: Hashable {
     
-    public var hashValue: Int { return lower.hashValue * higher.hashValue }
+    public var hashValue: Int { return b.hashValue * a.hashValue }
 }
 
 extension PitchSpellingDyad: Equatable { }
 
 public func == (lhs: PitchSpellingDyad, rhs: PitchSpellingDyad) -> Bool {
-    return lhs.lower == rhs.lower && lhs.higher == rhs.higher
+    return lhs.b == rhs.b && lhs.a == rhs.a
 }

@@ -10,18 +10,19 @@ import Pitch
 
 extension IntervalClass {
     
+    // TODO: change `Complexity` naming to spelling priority
     public typealias SpellingComplexity = Int
     
     private static let intervalClassOrderedBySpellingComplexity: [IntervalClass] = [
+        
+        // minor second, major seventh
+        01.00, 11.00,
         
         // perfectable intervals
         00.00, 07.00, 05.00,
         
         // perfectable intervals 1/8th tone neighborhood
         11.75, 00.25, 06.75, 07.25, 04.75, 05.25,
-        
-        // minor second, major seventh
-        01.00, 11.00,
         
         // minor second, major seventh 1/8th tone neighborood
         00.75, 01.25, 11.25, 10.75,

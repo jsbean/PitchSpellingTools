@@ -12,5 +12,9 @@ import Pitch
 
 class PitchSetSpellerTests: XCTestCase {
 
-    
+    func testMondadCNatural() {
+        let pitchSet: PitchSet = [Pitch.middleC]
+        let speller = PitchSetSpeller(pitchSet)
+        try! speller.spell()
+    }
 }
