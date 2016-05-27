@@ -47,3 +47,7 @@ public func closer<T: ArithmeticType>(to target: T, a: T, b: T) -> T {
 public func ordered<T: Comparable>(a: T, _ b: T) -> (T,T) {
     return a <= b ? (a,b) : (b,a)
 }
+
+public func mean<T: ArithmeticType>(a: T, _ b: T) -> T {
+    return (a + b) / T.two
+}

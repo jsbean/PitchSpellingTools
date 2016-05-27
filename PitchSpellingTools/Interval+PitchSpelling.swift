@@ -14,6 +14,6 @@ extension Interval {
     public var intervalClass: IntervalClass { return IntervalClass(self) }
     
     public var spellingComplexity: IntervalClass.SpellingComplexity? {
-        return intervalClass.complexity
+        return intervalClass.spellingComplexity
     }
 }

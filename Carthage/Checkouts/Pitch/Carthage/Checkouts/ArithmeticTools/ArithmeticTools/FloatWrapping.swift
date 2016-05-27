@@ -8,8 +8,7 @@
 
 import Foundation
 
-public protocol FloatWrapping:
-    FloatLiteralConvertible,
+public protocol FloatWrapping: FloatLiteralConvertible,
     IntegerLiteralConvertible,
     Hashable,
     Comparable
@@ -17,12 +16,13 @@ public protocol FloatWrapping:
     associatedtype FloatLiteralType = Float
     associatedtype IntegerLiteralType = Int
     init(floatLiteral: Float)
+    var value: Float { get set }
     init(integerLiteral: Int)
     init(_ float: Float)
-    var value: Float { get }
 }
 
 extension FloatWrapping {
+    
     public init(_ float: Float) {
         self.init(floatLiteral: float)
     }
@@ -58,6 +58,7 @@ public func < <T: FloatWrapping>(lhs: Float, rhs: T) -> Bool {
     return lhs < rhs.value
 }
 
+/*
 // MARK: - ArithmeticType
 extension FloatWrapping {
     public static var zero: Float { return 0 }
@@ -94,6 +95,7 @@ extension FloatWrapping {
     
     public func format(f: String) -> String { return String(format(f), self) }
 }
+*/
 
 // MARK: - Arithmetic
 public func + <T: FloatWrapping>(augend: T, addend: T) -> T {

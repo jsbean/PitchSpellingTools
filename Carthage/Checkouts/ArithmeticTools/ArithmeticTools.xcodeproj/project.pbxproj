@@ -239,8 +239,8 @@
 				074276C91C8775B800D50A30 /* PowerSequenceTests.swift */,
 				074276CF1C877EF700D50A30 /* PowerTests.swift */,
 				071D19C41C94BEB100543F77 /* OrderedTests.swift */,
-				074276C51C8767FD00D50A30 /* Supporting Files */,
 				07F538311CE3AEC6001294CC /* ComparisonTests.swift */,
+				074276C51C8767FD00D50A30 /* Supporting Files */,
 			);
 			path = ArithmeticToolsTests;
 			sourceTree = "<group>";

@@ -46,4 +46,14 @@ class RandomTests: XCTestCase {
             XCTAssert(r <= (min + range))
         }
     }
+    
+    func testFloatResolution4() {
+        for _ in 0..<100 {
+            let min = Float.random(min: 0, max: 10000)
+            let range = Float.random(min: 1, max: 10000)
+            let resolution: Float = 4
+            let r = Float.random(min: min, max: (min + range), resolution: resolution)
+            XCTAssertEqual(r % (1 / resolution), 0)
+        }
+    }
 }

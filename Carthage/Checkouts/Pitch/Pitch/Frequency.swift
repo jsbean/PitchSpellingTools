@@ -12,7 +12,7 @@ import ArithmeticTools
 /// Periodic vibration in Hertz.
 public struct Frequency: FloatWrapping {
 
-    public let value: Float
+    public var value: Float
     
     /**
      Create a `Frequency` with a `FloatLiteralType`.

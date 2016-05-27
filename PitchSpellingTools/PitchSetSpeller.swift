@@ -16,7 +16,7 @@ public struct PitchSetSpeller: PitchSpeller {
     
     private static func makeSortedDyads(fromDyads dyads: [Dyad]) -> [Dyad] {
         return dyads
-            .lazy.filter { $0.interval.complexity != nil }
+            .lazy.filter { $0.interval.spellingComplexity != nil }
             .lazy.sort { $0.interval.spellingComplexity! < $1.interval.spellingComplexity! }
     }
     

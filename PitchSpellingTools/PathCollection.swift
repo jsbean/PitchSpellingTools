@@ -11,6 +11,7 @@ import ArrayTools
 /**
  Collection of `Path` objects. May be all possible `Path` representations, or may be just 
     a subset (only Sharps, or only compatible with Fine down).
+ - TODO: conform to `CollectionType`.
  */
 internal struct PathCollection: SequenceType {
 
@@ -23,6 +24,7 @@ internal struct PathCollection: SequenceType {
     private let filters: [(Path) -> Bool] = [
         { $0.isFineCompatible },
         { $0.isStepPreserving },
+        { $0.meanCoarseDistance <= 1 },
     ]
     
     internal var stepPreserving: PathCollection {

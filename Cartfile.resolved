@@ -1,5 +1,5 @@
 github "dn-m/ArrayTools" "v1.2.9"
 github "dn-m/EnumTools" "v0.4.2"
 github "dn-m/StringTools" "v0.2.1"
-github "dn-m/ArithmeticTools" "v0.3.8"
-github "dn-m/Pitch" "v0.4.8"
+github "dn-m/ArithmeticTools" "v0.3.14"
+github "dn-m/Pitch" "v0.4.9"

@@ -13,7 +13,7 @@ import ArithmeticTools
  */
 public struct PitchClass: FloatWrapping {
     
-    public let value: Float
+    public var value: Float
     
     /**
      Create a `PitchClass` with a `FloatLiteralType`.

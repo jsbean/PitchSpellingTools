@@ -217,29 +217,17 @@ class GraphTests: XCTestCase {
         let intersection = Set(stepPreservingPaths).intersect(fineCompatiblePaths)
         XCTAssertEqual(intersection.count, 3)
     }
-    
-    
-    
+
     func testManyPitchesTiming() {
-        var graph = Graph(
-            pitchSet: [
-                Pitch(noteNumber: 60),
-                Pitch(noteNumber: 61),
-                Pitch(noteNumber: 62),
-                Pitch(noteNumber: 63),
-                Pitch(noteNumber: 64),
-                Pitch(noteNumber: 65),
-                Pitch(noteNumber: 66),
-                Pitch(noteNumber: 67),
-                Pitch(noteNumber: 68),
-                Pitch(noteNumber: 69),
-                Pitch(noteNumber: 70),
-                Pitch(noteNumber: 71)
-            ]
-        )
-        
-        measureBlock {
-            let _ = graph.paths
+        let amountPitches = 14
+        let pitchArray = (0 ..< amountPitches).map { _ in
+            Pitch(noteNumber: NoteNumber(Float.random(min: 60, max: 72)))
+        }
+        print("pitchArray: \(pitchArray)")
+        let pitchSet = PitchSet(pitchArray)
+        var graph = Graph(pitchSet: pitchSet)
+        self.measureBlock {
+            let _ = graph.paths()
         }
     }
     

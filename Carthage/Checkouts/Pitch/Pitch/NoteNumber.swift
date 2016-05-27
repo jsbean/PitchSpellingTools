@@ -14,7 +14,7 @@ import ArithmeticTools
  */
 public struct NoteNumber: FloatWrapping {
     
-    public let value: Float
+    public var value: Float
 
     /**
      Create a `NoteNumber` with a `FloatLiteralType`.

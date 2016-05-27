@@ -11,6 +11,8 @@ import Foundation
 /**
  ArithmeticType unifies IntegerLiteralConvertible types (Integer and FloatingPoint) for
  generic use.
+ 
+ - TODO: Conform to `IntegerLiteralConvertible` / `FloatLiteralConvertible` ?
  */
 public protocol ArithmeticType: Comparable {
     
@@ -450,6 +452,10 @@ extension Float: ArithmeticType {
     public static func random(min min: Float = 0.0, max: Float = 1.0) -> Float {
         let range = max - min
         return ((Float(arc4random())) / Float(UINT32_MAX) * range) + min
+    }
+    
+    public static func random(min min: Float = 0.0, max: Float = 1.0, resolution: Float) -> Float {
+        return round(random(min: min, max: max) * resolution) / resolution
     }
     
     public var isInteger: Bool { return self % 1 == 0 }
