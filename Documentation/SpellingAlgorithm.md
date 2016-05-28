@@ -96,14 +96,18 @@ For our purposes, half-steps are spelled before perfect intervals, which are spe
 
 In cases where one `Pitch` is objectively spellable, we can do a single pass over all (or often times less than all) of the `Dyad` values. At first, all `Node` values are given a `nil` `rank` value.
 
-At the beginning of each iteration, we check if all of the `Node` values have been given a `rank`. If so, we can `break` the iteration, and make a decision based on the `rank` values of each `Node`.
+Each iteration, we do two general things:
 
-Otherwise we continue to examine each `Dyad` as it comes, penalizing the offensive `Edge` values as necessary.
+- A. Check if all of the `Node` values have been given a `rank`. 
+  - If so, we can `break` the iteration, and make a decision based on the `rank` values of each `Node`.
+- B. Create an appropriate `ComparisonStage`
+  - Examine each `Dyad`, penalizing the offensive `Edge` values as necessary.
 
-The weight of penalties for rule-breaking decrease as the iteration goes on (needs to be refined): 
-```Swift
-((dyads.count - position) / dyads.count) / 2
-```
+**Note:**
+>The weight of penalties for rule-breaking decrease as the iteration goes on (needs to be refined): 
+>```Swift
+>((dyads.count - position) / dyads.count) / 2
+>```
 
 #### Example:
 
