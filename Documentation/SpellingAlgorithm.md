@@ -120,7 +120,7 @@ In the original example, the dyads sorted are:
 - 6. _`(63, 66)`_
 
 <a name = "62-63"></a>
-##### `1. (62, 63)`
+##### 1. `(62, 63)`
 - **A:** Check if all of the `Node` values have been ranked. At this point, no `Node` values have been ranked, so we must keep going.
 
 - **B:** Here, `62` can only be spelled as `d natural`. Therefore we can create a `SemiAmgbiguousComparisonStage`.
@@ -132,7 +132,7 @@ The comparison stage penalizes the `D` / `D#` `PitchSpellingDyad` as it does not
 > Because it is the first to be checked, the penalty is very high.
 
 <a name = "66-67"></a>
-##### `2. (66, 67)`
+##### 2. `(66, 67)`
 
 - **A:** Check if all of the `Node` values have been ranked. At this point, the `Node` values belonging to `Pitch(noteNumber: 62)`, `Pitch(noteNumber: 63)`, and `Pitch(noteNumber: 67)` have been ranked, but not yet `Pitch(noteNumber: 66)`.
 
@@ -141,7 +141,7 @@ The comparison stage penalizes the `D` / `D#` `PitchSpellingDyad` as it does not
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/66_67.jpg" height="240">
 
 <a name = "62-67"></a>
-##### `(62, 67)`
+##### 3. `(62, 67)`
 
 - **A:** Check if all of the `Node` values have been ranked. At this point, all `Node` values have been ranked. We are now able to compare.
 
