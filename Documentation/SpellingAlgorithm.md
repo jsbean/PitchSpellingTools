@@ -147,6 +147,8 @@ The comparison stage penalizes the `D` / `D#` `PitchSpellingDyad` as it does not
 
 - _**B:**_ _(not called)_
 
+---
+
 ### Rules not yet considered
 - Spelling preferences guided by ascending / descending linear structures
 
