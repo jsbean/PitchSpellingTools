@@ -81,7 +81,7 @@ The `SemiAmbiguousComparisonStage` iterates over each possible `PitchSpelling` i
 
 For case 3 above, the `FullyAmbiguousComparisonStage` takes two `Level` values for each `Pitch` in the `Dyad`.
 
-The `FullyAmbiguousComparisonStage` iterates of each possible `PitchSpellingDyad` combination between the two `Level` values of the non-objectively spellable `Pitch` values, penalized the `Edge` containing `PitchSpellingDyad` values that any of a variety of rules.
+The `FullyAmbiguousComparisonStage` iterates over each possible `PitchSpellingDyad` combination between the two `Level` values of the non-objectively spellable `Pitch` values, penalizing the `Edge` containing `PitchSpellingDyad` values that break any of a variety of rules.
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/fully_ambiguous.jpg" height="240">
 
@@ -92,11 +92,27 @@ For each `Dyad` that is examined, infrastructure for judging potential spellings
 
 ### Iterate over `Dyad` values
 
+In cases where one `Pitch` is objectively spellable, we can do a single pass over all (or often times less than all) of the `Dyad` values. At first, all `Node` values are given a `nil` `rank` value.
+
+At the beginning of each iteration, we check if all of the `Node` values have been given a `rank`. If so, we can `break` the iteration, and make a decision based on the `rank` values of each `Node`.
+
+Otherwise we continue to examine each `Dyad` as it comes, penalizing the offensive `Edge` values as necessary.
+
+The weight of penalties for rule-breaking decrease as the iteration goes on (this will be refined): 
+```Swift
+((dyads.count - position) / dyads.count) / 2
+```
+
 In the original example, the dyads sorted are: `[(62, 63), (66, 67), (62, 67), (62, 66), (63, 67), (63, 66)]`.
 
+#### `(62, 63)`
 
+Here, `62` can only be spelled as `d natural`. Therefore we can create a `SemiAmgbiguous`
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/62_63.jpg" height="240">
+
+#### `(60, 67)`
+
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/66_67.jpg" height="240">
 
 ### Rules not yet considered
