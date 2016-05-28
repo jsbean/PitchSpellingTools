@@ -106,4 +106,5 @@ In the original example, the dyads sorted are: `[(62, 63), (66, 67), (62, 67), (
 
 - "Automatic Pitch Spelling: From Numbers to Sharps and Flats", Cambouropoulos [[PDF](http://users.auth.gr/emilios/papers/fortaleza2001.pdf)]
 - "Pitch Spelling Algorithms", Meredith [[PDF](http://www.titanmusic.com/papers/public/ps13-escom-paper.pdf)]
-- "Comparing Pitch Spelling Algorithms", Meredith [[PDF](http://ismir2005.ismir.net/proceedings/1004.pdf)]
+- "Comparing Pitch Spelling Algorithms", Meredith, Wiggins [[PDF](http://ismir2005.ismir.net/proceedings/1004.pdf)]
+- "PST: Pitch Spelling Technology", Chew, Chen [[PDF](http://infolab.usc.edu/imsc/research/project/pst/pst_nsf8.pdf)]
