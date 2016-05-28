@@ -11,7 +11,7 @@ For our purposes, this algorithm is to handle cases of `Pitch` values with a res
 
 By nature, a `PitchSet` is composed of _<sub>n</sub>C<sub>2</sub>_ `Dyad` values (pairs of `Pitch` values). 
 
-In this algorithm, optimum spellings for each `Dyad` comprising the given `PitchSet` are sought. This process continues until all `Pitch` values have been examined.
+In this algorithm, optimum spellings for each `Dyad` comprising the given `PitchSet` are sought. This process continues until all `PitchSpelling` options for all `Pitch` values have been examined, and can therefore be compared by `rank`.
 
 **Example:**
 ```Swift
