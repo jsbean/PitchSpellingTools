@@ -75,11 +75,15 @@ For case 2 above, the `SemiAmbiguousComparisonStage` takes an objectively spella
 
 The `SemiAmbiguousComparisonStage` iterates over each possible `PitchSpelling` in the `Level` of non-objectively spellable `Pitch`, penalizing the `PitchSpelling` values that break any of a variety of rules.
 
+<img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/semi_ambiguous.jpg" height="240">
+
 ##### FullyAmbiguousComparisonStage
 
 For case 3 above, the `FullyAmbiguousComparisonStage` takes two `Level` values for each `Pitch` in the `Dyad`.
 
 The `FullyAmbiguousComparisonStage` iterates of each possible `PitchSpellingDyad` combination between the two `Level` values of the non-objectively spellable `Pitch` values, penalized the `Edge` containing `PitchSpellingDyad` values that any of a variety of rules.
+
+<img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/fully_ambiguous.jpg" height="240">
 
 For each `Dyad` that is examined, infrastructure for judging potential spellings for each `Pitch` therein.
 
