@@ -100,4 +100,5 @@ For each `Dyad` that is examined, infrastructure for judging potential spellings
 
 ### Reading
 
-- [Automatic Pitch Spelling: From Numbers to Sharps and Flats, Cambouropoulos](http://users.auth.gr/emilios/papers/fortaleza2001.pdf)
+- Automatic Pitch Spelling: From Numbers to Sharps and Flats, Cambouropoulos [[PDF](http://users.auth.gr/emilios/papers/fortaleza2001.pdf)]
+- Pitch Spelling Algorithms, Meredith [[PDF](http://www.titanmusic.com/papers/public/ps13-escom-paper.pdf)]
