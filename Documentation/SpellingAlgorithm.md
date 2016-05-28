@@ -49,7 +49,6 @@ In cases where at least one `Pitch` value in the given `PitchSet` is objectively
 
 When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `Pitch` values therein are objectively spellable), the `rank` value of `Edge` values can be used to enforce a decision for an otherwise ambiguous context.
 
-**Note:**
 > `Pitch(noteNumber: 60)` can only be spelled as `c natural`, unless we are allowing `b sharps` and `d doubleFlats`
 
 #### Comparison Stages
@@ -103,7 +102,6 @@ Each iteration, we do two general things:
 - B. Create an appropriate `ComparisonStage`
   - Examine each `Dyad`, penalizing the offensive `Edge` values as necessary.
 
-**Note:**
 >The weight of penalties for rule-breaking decrease as the iteration goes on (needs to be refined): 
 >```Swift
 >((dyads.count - position) / dyads.count) / 2
