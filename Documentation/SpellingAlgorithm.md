@@ -54,7 +54,11 @@ In order to keep track of spelling preferences when there is no clear answer, ce
 
 #### Ranking Potential Spellings
 
-Ranking values are in the range `0.0...1.0`, and both `Node` and `Edge` objects may be ranked. In cases where at least one `Pitch` value in the given `PitchSet` is objectively spellable, a conclusive set of `PitchSpelling` values can be determined by examining the `rank` value of each `Node`. When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `Pitch` values therein are objectively spellable), the `rank` value of `Edge` values can be used to enforce a decision.
+Ranking values are `Float` values in the range `0.0...1.0`, and both `Node` and `Edge` objects may be ranked. 
+
+In cases where at least one `Pitch` value in the given `PitchSet` is objectively spellable, a conclusive set of `PitchSpelling` values can be determined by examining the `rank` value of each `Node`. 
+
+When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `Pitch` values therein are objectively spellable), the `rank` value of `Edge` values can be used to enforce a decision.
 
 #### Comparison Stages
 
@@ -64,12 +68,11 @@ There are three cases possible when attempting to spell a `Dyad`:
 2. One pitch can be spelled objectively (e.g., `(62, 63)`)
 3. Neither pitch can be spelled objectively (e.g., `(63, 66)`)
 
-
-For each `Dyad` that is examined, infrastructure for judging potential spellings for each `Pitch` therein.
+For case 1, no action is needed other than confirming that the objectively spellable `Node` values hold a `rank` of `1.0`.
 
 For cases 2 and 3 above, unique structures are needed to judge its context.
 
-
+For each `Dyad` that is examined, infrastructure for judging potential spellings for each `Pitch` therein.
 
 **Note:**
 > `Pitch(noteNumber: 60)` can only be spelled as `c natural`, unless we are allowing `b sharps` and `d doubleFlats`
