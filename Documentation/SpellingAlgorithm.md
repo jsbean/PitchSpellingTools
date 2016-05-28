@@ -121,10 +121,9 @@ In the original example, the dyads sorted are:
 
 <a name = "62-63"></a>
 ##### `1. (62, 63)`
+- **A:** Check if all of the `Node` values have been ranked. At this point, no `Node` values have been ranked, so we must keep going.
 
-First, we check if all of the `Node` values have been ranked. At this point, no `Node` values have been ranked, so we must keep going.
-
-Here, `62` can only be spelled as `d natural`. Therefore we can create a `SemiAmgbiguousComparisonStage`.
+- **B:** Here, `62` can only be spelled as `d natural`. Therefore we can create a `SemiAmgbiguousComparisonStage`.
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/62_63.jpg" height="240">
 
@@ -135,16 +134,18 @@ The comparison stage penalizes the `D` / `D#` `PitchSpellingDyad` as it does not
 <a name = "66-67"></a>
 ##### `2. (66, 67)`
 
-Again, we check if all of the `Node` values have been ranked. At this point, the `Node` values belonging to `Pitch(noteNumber: 62)`, `Pitch(noteNumber: 63)`, and `Pitch(noteNumber: 67)` have been ranked, but not yet `Pitch(noteNumber: 66)`.
+- **A:** Check if all of the `Node` values have been ranked. At this point, the `Node` values belonging to `Pitch(noteNumber: 62)`, `Pitch(noteNumber: 63)`, and `Pitch(noteNumber: 67)` have been ranked, but not yet `Pitch(noteNumber: 66)`.
 
-We can create a `SemiAmgbiguousComparisonStage` as `67` will be spelled as a `g natural`.
+- **B:** We can create a `SemiAmgbiguousComparisonStage` as `67` will be spelled as a `g natural`.
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/66_67.jpg" height="240">
 
 <a name = "62-67"></a>
 ##### `(62, 67)`
 
-Again, we check if all of the `Node` values have been ranked. At this point, all `Node` values have been ranked. We are now able to compare.
+- **A:** Check if all of the `Node` values have been ranked. At this point, all `Node` values have been ranked. We are now able to compare.
+
+- _**B:**_ _(not called)_
 
 ### Rules not yet considered
 - Spelling preferences guided by ascending / descending linear structures
