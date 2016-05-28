@@ -33,8 +33,8 @@ The case above is interesting, as its optimum spelling contains both sharps and 
 
 In order to keep track of spelling preferences when there is no clear answer, certain data structures have been created:
 
-| Tables   |      Are      |
-|----------|-------------|
+| Structure | Note        |
+|-----------|-------------|
 | [`Node`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Node.swift) |  Wraps a single `PitchSpelling` and its `Pitch`, with a `rank` |
 | [`Edge`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Edge.swift) | A single combination of `Node` values from a `Dyad`, with a `rank` |
 | [`Level`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Level.swift) |    All of the `Node` objects for a given `Pitch` (i.e., every possible way to spell a given `Pitch`)   |
