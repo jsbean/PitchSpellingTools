@@ -385,13 +385,10 @@
 		070156111CF4AAFF00C256E9 /* PitchSpellingGraph */ = {
 			isa = PBXGroup;
 			children = (
-				07A8C8111CF787F200CFD69B /* Edge.swift */,
-				07A8C8121CF787F200CFD69B /* Graph.swift */,
+				07D63D711CFA32BC00E3584D /* Old */,
 				07A8C8131CF787F200CFD69B /* Level.swift */,
+				07A8C8111CF787F200CFD69B /* Edge.swift */,
 				07A8C8141CF787F200CFD69B /* Node.swift */,
-				07A8C8151CF787F200CFD69B /* Path.swift */,
-				07A8C8161CF787F200CFD69B /* PathCollection.swift */,
-				071DD40F1CF7C58F0054695D /* NodeFilter.swift */,
 				078DAE031CF8E8480095AFC9 /* ComparisonStage.swift */,
 				078DAE061CF8E8580095AFC9 /* SemiAmbiguousComparisonStage.swift */,
 				07E7B5771CF9DC0700F2CE0C /* Rankable.swift */,
@@ -427,6 +424,17 @@
 				07BB2F721CDBBA2400DC4D7A /* HalfToneDyadSpeller.swift */,
 			);
 			name = DyadSpeller;
+			sourceTree = "<group>";
+		};
+		07D63D711CFA32BC00E3584D /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				07A8C8121CF787F200CFD69B /* Graph.swift */,
+				07A8C8161CF787F200CFD69B /* PathCollection.swift */,
+				071DD40F1CF7C58F0054695D /* NodeFilter.swift */,
+				07A8C8151CF787F200CFD69B /* Path.swift */,
+			);
+			name = Old;
 			sourceTree = "<group>";
 		};
 		5C9E70D0CD3D73A06EDA9A94 /* iOS */ = {
