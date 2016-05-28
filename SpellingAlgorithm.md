@@ -22,12 +22,7 @@ let pitchSet: PitchSet = [
 
 ### How to start
 
-When considering the most coherent pitch spelling for a pitch set, one could attempt to spell dyads wih certain interval classes first, to ensure that salient relationships are the clearest. In this case, the ordered is done [here](https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/PitchSpellingTools/IntervalClass%2BPitchSpelling.swift). 
-
-
-
-
-
+Dyads wih certain interval classes first are examined first, to ensure that salient relationships are the clearest. In this case, the ordering is done [here](https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/PitchSpellingTools/IntervalClass%2BPitchSpelling.swift). 
 
 
 #### Rules not yet considered
