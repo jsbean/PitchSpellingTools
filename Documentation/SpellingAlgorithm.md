@@ -98,3 +98,6 @@ For each `Dyad` that is examined, infrastructure for judging potential spellings
 ### Rules not yet considered
 - Spelling preferences guided by ascending / descending linear structures
 
+### Reading
+
+- [Automatic Pitch Spelling: From Numbers to Sharps and Flats, Cambouropoulos](http://users.auth.gr/emilios/papers/fortaleza2001.pdf)
