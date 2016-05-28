@@ -16,7 +16,6 @@ let pitchSet: PitchSet = [
   Pitch(noteNumber: 66), 
   Pitch(noteNumber: 67)
 ]
-
 // In this case, there are 6 dyads => [(62, 63), (62, 66), (62, 67), (63, 66), (63, 67), (66, 67)]
 ```
 
