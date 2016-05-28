@@ -46,6 +46,10 @@ There are three cases possible when attempting to spell a `Dyad`:
 2. One pitch can be spelled objectively (e.g., `(62, 63)`)
 3. Neither pitch can be spelled objectively (e.g., `(63, 66)`)
 
+#### Iterate over dyads
+
+<img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/62_63.jpeg" height="240">
+
 **Note:**
 > `Pitch(noteNumber: 60)` can only be spelled as `c natural`, unless we are allowing `b sharps` and `d doubleFlats`
 
