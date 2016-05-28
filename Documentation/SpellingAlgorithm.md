@@ -80,6 +80,8 @@ The `FullyAmbiguousComparisonStage` iterates over each possible `PitchSpellingDy
 
 ## Process
 
+### Prepare `Dyad` values
+
 First, all `Dyad` values for the given `PitchSet` are ordered by `spelling urgency` (looking for a better term...) of their `IntervalClass`. By attempting to spell `Dyad` values with certain `IntervalClass` values first, the most salient relationships are prioritized, and are therefore preserved in their graphical representation.
 
 For our purposes, half-steps are spelled before perfect intervals, which are spelled before imperfect intervals, which are spelled before tritone intervals. To see the details of the ordering, look [here](https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/PitchSpellingTools/IntervalClass%2BPitchSpelling.swift). 
