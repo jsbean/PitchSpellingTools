@@ -10,7 +10,21 @@ import Foundation
 
 protocol ComparisonStage {
     
-    var edges: [Edge] { mutating get }
+    var edges: [Edge] { get }
     
-    func rate(withWeight weight: Float)
+    var rules: [(PitchSpellingDyad) -> Bool] { get }
+    
+    func applyRankings(withWeight weight: Float)
+    
+    // TODO: apply rules
+}
+
+extension ComparisonStage {
+    
+    var rules: [(PitchSpellingDyad) -> Bool] {
+        return [
+            { $0.isFineCompatible },
+            { $0.isStepPreserving }
+        ]
+    }
 }

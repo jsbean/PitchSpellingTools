@@ -68,14 +68,17 @@ public final class PitchSetSpeller: PitchSpeller {
         
         compareOptions()
         
-        // default impl
+        // default impl to return
         return try pitchSet.spelledWithDefaultSpellings()
     }
     
     func compareOptions() {
 
         for (position, dyad) in dyads.enumerate() {
-            if allNodesHaveBeenRanked { break }
+            if allNodesHaveBeenRanked {
+                print("bail if all nodes have been ranked")
+                break
+            }
             
             // bail if both can be spelled objectively
             if dyad.canBeSpelledObjectively {
@@ -88,7 +91,13 @@ public final class PitchSetSpeller: PitchSpeller {
             
             let weight = (Float(dyads.count - position) / Float(dyads.count)) / 2
             
-            comparisonStage.rate(withWeight: weight)
+            comparisonStage.applyRankings(withWeight: weight)
+        }
+
+        if allNodesHaveBeenRanked {
+            print("all nodes have been ranked")
+        } else {
+            //
         }
         
         // check out what each comparison stage has got
@@ -118,13 +127,13 @@ public final class PitchSetSpeller: PitchSpeller {
         let comparisonStage: ComparisonStage
 
         if dyad.isfullyAmbiguouslySpellable {
-            print("fully ambiguous")
+            print("Begin FullyAmbiguous Comparison Stage")
             comparisonStage = FullyAmbiguousComparisonStage(
                 Level(nodes: nodesByPitch[dyad.lower]!),
                 Level(nodes: nodesByPitch[dyad.higher]!)
             )
         } else {
-            print("semi ambiguous")
+            print("Begin SemiAmbiguous Comparison Stage")
             if dyad.higher.canBeSpelledObjectively {
                 comparisonStage = SemiAmbiguousComparisonStage(
                     determinate: nodesByPitch[dyad.higher]!.first!,

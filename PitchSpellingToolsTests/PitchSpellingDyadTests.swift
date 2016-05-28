@@ -310,4 +310,45 @@ class PitchSpellingDyadTests: XCTestCase {
         let dyad = PitchSpellingDyad(PitchSpelling(.g), PitchSpelling(.g, .flat))
         XCTAssertFalse(dyad.isStepPreserving)
     }
+    
+    func testGAFlatMinorSecond() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.g), PitchSpelling(.a, .flat))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.second.minor)
+    }
+    
+    func testDCSharpMajorSeventh() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.d), PitchSpelling(.c, .sharp))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.seventh.major)
+    }
+    
+    func testCBMajorSeventh() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.b))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.seventh.major)
+    }
+    
+    func testGFSharpMajorSeventh() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.g), PitchSpelling(.f, .sharp))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.seventh.major)
+    }
+    
+    func testGFSharpStepPreserving() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.g), PitchSpelling(.f, .sharp))
+        XCTAssertTrue(dyad.isStepPreserving)
+    }
+    
+    func testAGSharpMajorSeventh() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.a), PitchSpelling(.g, .sharp))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.seventh.major)
+    }
+    
+    func testBFlatAMajorSeventh() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.b, .flat), PitchSpelling(.a))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.seventh.major)
+    }
+    
+    func testFSharpEDoubleSharpMajorSeventh() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.f, .sharp), PitchSpelling(.e, .doubleSharp))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.seventh.major)
+    }
 }
+

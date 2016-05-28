@@ -22,6 +22,8 @@ import Foundation
      -----
     | o o | = b
      -----
+ 
+ - TODO: Consider getting rid of `Level` and just using `[Node]`
  */
 final class FullyAmbiguousComparisonStage: ComparisonStage {
     
@@ -41,7 +43,7 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
         self.b = b
     }
     
-    func rate(withWeight weight: Float) {
+    func applyRankings(withWeight weight: Float) {
         for edge in edges {
             
         }

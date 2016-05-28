@@ -274,7 +274,11 @@ public class IntervalQuality: EnumTree {
             forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
         ) -> EnumKind
         {
-            let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
+            var difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
+            
+            // correct G / Fharp issue
+            if pitchSpellingDyad.b.letterName == .g { difference -= 1 }
+            
             return intervalQuality(fromDirectionDifference: difference)
         }
     }

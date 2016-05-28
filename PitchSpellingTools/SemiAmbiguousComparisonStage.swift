@@ -38,19 +38,19 @@ final class SemiAmbiguousComparisonStage: ComparisonStage {
         determinate.rank = 1
     }
     
-    func rate(withWeight weight: Float) {
+    func applyRankings(withWeight weight: Float) {
         for edge in edges {
-            print("edge.psDyad: \(edge.pitchSpellingDyad)")
-            if edge.b.rank == nil { edge.b.rank = 1 }
-            if (
-                !edge.pitchSpellingDyad.isFineCompatible ||
-                !edge.pitchSpellingDyad.isStepPreserving
-            )
-            {
-                print("breaks rules; penalize: weight: \(weight)")
-                edge.b.rank! -= weight
+            for rule in rules {
+                if !rule(edge.pitchSpellingDyad) {
+                    penalize(node: edge.b, withWeight: weight)
+                }
             }
         }
         print("edges: \(edges)")
+    }
+    
+    private func penalize(node node: Node, withWeight weight: Float) {
+        if node.rank == nil { node.rank = 1 }
+        node.rank! -= weight
     }
 }
