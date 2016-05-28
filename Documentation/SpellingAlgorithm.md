@@ -43,7 +43,6 @@ For our purposes, half-steps are spelled before perfect intervals, which are spe
 
 In order to keep track of spelling preferences when there is no clear answer, certain data structures have been created:
 
-
 | Tables   |      Are      |
 |----------|-------------|
 | [`Node`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Node.swift) |  Wraps a single `PitchSpelling` and its `Pitch`, with a `rank` |
@@ -56,7 +55,7 @@ In order to keep track of spelling preferences when there is no clear answer, ce
 
 Ranking values are `Float` values in the range `0.0...1.0`, and both `Node` and `Edge` objects may be ranked. 
 
-In cases where at least one `Pitch` value in the given `PitchSet` is objectively spellable, a conclusive set of `PitchSpelling` values can be determined by examining the `rank` value of each `Node`. 
+In cases where at least one `Pitch` value in the given `PitchSet` is objectively spellable, a conclusive set of `PitchSpelling` values can be determined by comparing the `rank` values of each `Node`. 
 
 When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `Pitch` values therein are objectively spellable), the `rank` value of `Edge` values can be used to enforce a decision for an otherwise ambiguous context.
 
