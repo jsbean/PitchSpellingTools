@@ -15,15 +15,7 @@ let pitchSet: PitchSet = [
   Pitch(noteNumber: 67)
 ]
 
-// In this case, there are 6 dyads
-pitchSet.dyads == [
-  Dyad(Pitch(noteNumber: 62), Pitch(noteNumber: 63)),
-  Dyad(Pitch(noteNumber: 62), Pitch(noteNumber: 66)),
-  Dyad(Pitch(noteNumber: 62), Pitch(noteNumber: 67)),
-  Dyad(Pitch(noteNumber: 63), Pitch(noteNumber: 66)),
-  Dyad(Pitch(noteNumber: 63), Pitch(noteNumber: 67)),
-  Dyad(Pitch(noteNumber: 66), Pitch(noteNumber: 67))
-]
+// In this case, there are 6 dyads => [(62, 63), (62, 66), (62, 67), (63, 66), (63, 67), (66, 67)]
 ```
 
 When considering the most coherent pitch spelling for a pitch set, one could attempt to spell dyads wih certain interval classes first, to ensure that salient relationships are the clearest. In this case, the ordered is done [here](https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/PitchSpellingTools/IntervalClass%2BPitchSpelling.swift). 
