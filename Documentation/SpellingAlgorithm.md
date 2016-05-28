@@ -128,7 +128,9 @@ Here, `62` can only be spelled as `d natural`. Therefore we can create a `SemiAm
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/62_63.jpg" height="240">
 
-The comparison stage penalizes the `D` / `D#` `PitchSpellingDyad` as it does not preserve step count. Because it is the first to be checked, the penalty is very high.
+The comparison stage penalizes the `D` / `D#` `PitchSpellingDyad` as it does not preserve step count. 
+
+> Because it is the first to be checked, the penalty is very high.
 
 <a name = "66-67"></a>
 ##### `2. (66, 67)`
