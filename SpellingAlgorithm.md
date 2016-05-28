@@ -21,7 +21,7 @@ let pitchSet: PitchSet = [
 
 #### Where to start
 
-First, all of the dyads for the given pitch set are ordered by `spelling urgency` (looking for a better term...). By attempting to spell Dyads with certain interval classes first, the most salient relationships are prioritized, and therefore preserved in their graphical representation (for our purposes, half-steps before perfect intervals before imperfect intervals). To see the details of the ordering, look [here](https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/PitchSpellingTools/IntervalClass%2BPitchSpelling.swift). 
+First, all of the dyads for the given pitch set are ordered by `spelling urgency` (looking for a better term...). By attempting to spell `Dyad` values with certain `IntervalClass` values first, the most salient relationships are prioritized, and therefore preserved in their graphical representation (for our purposes, half-steps before perfect intervals before imperfect intervals). To see the details of the ordering, look [here](https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/PitchSpellingTools/IntervalClass%2BPitchSpelling.swift). 
 
 **Example:**
 ```Swift
