@@ -64,12 +64,14 @@ When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `
 There are three cases possible when attempting to spell a `Dyad`:
 
 1. Both pitches can be spelled objectively (e.g., `(60, 67)`)
-2. One pitch can be spelled objectively (e.g., `(62, 63)`)
+2. One pitch can be spelled objectively (e.g., `(62, 63), (66, 67)`)
 3. Neither pitch can be spelled objectively (e.g., `(63, 66)`)
 
-For case 1, no action is needed other than confirming that the objectively spellable `Node` values hold a `rank` of `1.0`.
+For case 1 above, no action is needed other than confirming that the objectively spellable `Node` values hold a `rank` of `1.0`.
 
-For cases 2 and 3 above, unique structures are needed to judge its context.
+For case 2, the `SemiAmbiguousComparisonStage` takes an objectively spellable `Node`, and the `Level` for a non-objectively spellable `Pitch`.
+
+For case 3, the `FullyAmbiguousComparisonStage` takes two `Level` values for each `Pitch` in the `Dyad`.
 
 For each `Dyad` that is examined, infrastructure for judging potential spellings for each `Pitch` therein.
 
