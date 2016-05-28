@@ -26,9 +26,21 @@ First, all of the dyads for the given pitch set are ordered by `spelling urgency
 **Example:**
 ```Swift
 // For the case above, the dyads are now ordered as such:
-// => [(62, 63), (66, 67), (62, 67), (63, 67), (62, 66), (63, 66), ]
-
+// => [(62, 63), (66, 67), (62, 67), (63, 67), (62, 66), (63, 66)]
 ```
+
+#### Nodes, Levels, Edges, ComparisonStages, Rankings
+
+In order to keep track of spelling preferences when there is no clear answer, certain data structures have been created:
+
+- [`Node`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Node.swift): Wraps a single `PitchSpelling` with its `Pitch`, with a `rank`.
+- [`Level`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Level.swift): All of the `Node` objects for a given `Pitch` (i.e., every possible way to spell a given pitch).
+- [`ComparisonStage`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/ComparisonStage.swift): Object that compares potential `PitchSpelling` options for a given `Dyad`.
+- [`Edge`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Edge.swift): Wraps two `Node` objects, with a `rank`. 
+
+#### Comparison Stages
+
+
 
 #### Rules not yet considered
 - Spelling preferences guided by ascending / descending linear structures
