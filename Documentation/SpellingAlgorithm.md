@@ -96,7 +96,7 @@ At the beginning of each iteration, we check if all of the `Node` values have be
 
 Otherwise we continue to examine each `Dyad` as it comes, penalizing the offensive `Edge` values as necessary.
 
-The weight of penalties for rule-breaking decrease as the iteration goes on (this will be refined): 
+The weight of penalties for rule-breaking decrease as the iteration goes on (needs to be refined): 
 ```Swift
 ((dyads.count - position) / dyads.count) / 2
 ```
