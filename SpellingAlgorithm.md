@@ -21,7 +21,7 @@ let pitchSet: PitchSet = [
 
 ### How to start
 
-Dyads wih certain interval classes first are examined first, to ensure that salient relationships are the clearest. In this case, the ordering is done [here](https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/PitchSpellingTools/IntervalClass%2BPitchSpelling.swift). 
+First all of the dyads for the given pitch set are ordered by `spelling urgency` (looking for a better term...). By attempting to spell Dyads wih certain interval classes first, the most salient relationships are prioritized, and preserved in their graphical representation. To see the details of the ordering, look [here](https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/PitchSpellingTools/IntervalClass%2BPitchSpelling.swift). 
 
 
 #### Rules not yet considered
