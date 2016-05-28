@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ - TODO: Create diagnostics description
+ */
 protocol ComparisonStage {
     
     var edges: [Edge] { get }

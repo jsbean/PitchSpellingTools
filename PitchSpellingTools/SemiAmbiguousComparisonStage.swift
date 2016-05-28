@@ -21,6 +21,8 @@ import Foundation
      -----
     | o o | = other
      -----
+ 
+ - TODO: Implement diagnostics description
  */
 final class SemiAmbiguousComparisonStage: ComparisonStage {
     
@@ -47,7 +49,6 @@ final class SemiAmbiguousComparisonStage: ComparisonStage {
                 }
             }
         }
-        print("edges: \(edges)")
     }
     
     private func penalize(node node: Node, withWeight weight: Float) {

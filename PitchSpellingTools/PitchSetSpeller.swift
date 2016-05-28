@@ -48,8 +48,10 @@ public final class PitchSetSpeller: PitchSpeller {
         self.pitchSet = pitchSet
     }
     
+    // TODO: incorporate external coarse / fine preferences
+    
     /**
-     - warning: Not yet implemented!
+     - warning: Not yet fully implemented!
      
      - throws: `PitchSpelling.Error` if unable to apply `PitchSpelling` objects to the given
      `PitchSet`.
@@ -68,7 +70,7 @@ public final class PitchSetSpeller: PitchSpeller {
             )
         }
         
-        // make this return something
+        // make this return something at some point
         compareOptions()
         
         // default impl to return
@@ -80,50 +82,31 @@ public final class PitchSetSpeller: PitchSpeller {
 
         for (position, dyad) in dyads.enumerate() {
             
-            print("Nodes: \(nodesByPitch)")
+            // If all nodes have been given a rank, we are ready to make decisions
+            if allNodesHaveBeenRanked { break }
             
-            if allNodesHaveBeenRanked {
-                print("BREAK IF ALL NODES HAVE BEEN RANKED!")
-                break
-            }
-            
-            // bail if both can be spelled objectively
+            // If both pitches can be spelled objectively,
             if dyad.canBeSpelledObjectively {
-                print("Dyad is objectively spellable: rank = 1 for both")
                 rankObjectivelySpellableDyad(dyad)
                 continue
             }
             
+            // Otherwise, prepare comparison state for Dyad
             let comparisonStage = makeComparisonStage(for: dyad)
             let weight = (Float(dyads.count - position) / Float(dyads.count)) / 2
             comparisonStage.applyRankings(withWeight: weight)
         }
 
         if allNodesHaveBeenRanked {
-            print("all nodes have been ranked")
-            var spelledPitches: [SpelledPitch] = []
-            for (pitch, nodes) in nodesByPitch {
-                // for each pitch, get the highest rated node
-                let bestMatch = nodes.sort { $0.rank > $1.rank }.first!.spelling
-                let spelledPitch = spell(pitch, with: bestMatch)!
-                spelledPitches.append(spelledPitch)
-            }
-            // RETURN PITCH SET FROM HERE!
-            print("spelledPitches: \(spelledPitches)")
+            
+            // TODO: for each node for each pitch, sort by rank, apply PitchSpellings
+            // - done.
             
         } else {
             
-            // make second pass over compairson stage
-            
-            for comparisonStage in comparisonStages {
-                print("ComparisonStage: Edges: \(comparisonStage.edges)")
-                
-            }
-            // compare and merge edges into paths
-        }
-
-        if !allNodesHaveBeenRanked {
-            
+            // TODO: take second pass over comparison stages, weighing them as appropriate
+            // - for comparisonStage in comparisonStages { }
+            // - merge paths
         }
     }
 
@@ -135,32 +118,27 @@ public final class PitchSetSpeller: PitchSpeller {
         nodesByPitch[pitch]!.first!.rank = 1
     }
     
-    // TODO: refactor
+    // TODO: Refactor (get spelled / unspelled from Dyad)
     private func makeComparisonStage(for dyad: Dyad) -> ComparisonStage {
         
         let comparisonStage: ComparisonStage
 
         if dyad.isFullyAmbiguouslySpellable {
-            print("Begin FullyAmbiguous Comparison Stage: \(dyad)")
             comparisonStage = FullyAmbiguousComparisonStage(
                 Level(nodes: nodesByPitch[dyad.lower]!),
                 Level(nodes: nodesByPitch[dyad.higher]!)
             )
         } else {
-            print("Begin SemiAmbiguous Comparison Stage: \(dyad)")
-            if dyad.higher.canBeSpelledObjectively {
-                comparisonStage = SemiAmbiguousComparisonStage(
-                    determinate: nodesByPitch[dyad.higher]!.first!,
-                    other: Level(nodes: nodesByPitch[dyad.lower]!)
-                )
-            } else {
-                comparisonStage = SemiAmbiguousComparisonStage(
-                    determinate: nodesByPitch[dyad.lower]!.first!,
-                    other: Level(nodes: nodesByPitch[dyad.higher]!)
-                )
-            }
+            let (objectivelySpellable, not) = dyad.objectivelySpellableAndNot!
+            comparisonStage = SemiAmbiguousComparisonStage(
+                determinate: nodesByPitch[objectivelySpellable]!.first!,
+                other: Level(nodes: nodesByPitch[not]!)
+            )
         }
+        
+        // add comparison stages for later
         comparisonStages.append(comparisonStage)
+        
         return comparisonStage
     }
 }

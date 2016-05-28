@@ -23,7 +23,7 @@ import ArithmeticTools
     | o o | = b
      -----
  
- - TODO: Consider getting rid of `Level` and just using `[Node]`
+ - TODO: Implement diagnostics description
  */
 final class FullyAmbiguousComparisonStage: ComparisonStage {
     
@@ -47,6 +47,7 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
     
     // TODO: check to see if individual nodes have been ranked, 
     // -- if they have been penalized, integrate that into decision making process
+    // TODO: Refactor
     func applyRankings(withWeight weight: Float) {
         ensureEdgesHaveRankings()
         for edge in edges {
@@ -66,13 +67,13 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
             $0.pitchSpellingDyad.meanSpellingDistance <
             $1.pitchSpellingDyad.meanSpellingDistance
         }
-        print("edges: \(edges)")
     }
     
     private func penalize(edge edge: Edge, withWeight weight: Float) {
         edge.rank! -= weight
     }
     
+    // TODO: Refactor
     private func ensureEdgesHaveRankings() {
         for edge in edges {
             
@@ -80,11 +81,9 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
             if edge.a.rank == nil && edge.b.rank == nil { edge.rank = 1 }
             if edge.a.rank == nil && edge.b.rank != nil { edge.rank = edge.b.rank }
             if edge.a.rank != nil && edge.b.rank == nil { edge.rank = edge.a.rank }
-            if edge.a.rank != nil && edge.b.rank == nil {
+            if edge.a.rank != nil && edge.b.rank != nil {
                 edge.rank = [edge.a.rank!, edge.b.rank!].mean
             }
-            //print("edge.a rank: \(edge.a.rank); edge.b.rank: \(edge.b.rank)")
-            print("edge.rank: \(edge.rank)")
         }
     }
 }

@@ -35,6 +35,13 @@ extension Dyad {
         return !lower.canBeSpelledObjectively && !higher.canBeSpelledObjectively
     }
     
+    public var isSemiAmbiguouslySpellable: Bool {
+        return (
+            (lower.canBeSpelledObjectively && !higher.canBeSpelledObjectively) ||
+            (!lower.canBeSpelledObjectively && higher.canBeSpelledObjectively)
+        )
+    }
+    
     public var defaultSpellingDyad: PitchSpellingDyad? {
         
         guard let lowerSpelling = lower.defaultSpelling,
@@ -44,6 +51,13 @@ extension Dyad {
         }
         
         return PitchSpellingDyad(lowerSpelling, higherSpelling)
+    }
+    
+    public var objectivelySpellableAndNot: (Pitch, Pitch)? {
+        guard isSemiAmbiguouslySpellable else { return nil }
+        return lower.canBeSpelledObjectively && !higher.canBeSpelledObjectively
+            ? (lower, higher)
+            : (higher, lower)
     }
     
     public func spellWithDefaultSpellings() throws -> SpelledDyad {
