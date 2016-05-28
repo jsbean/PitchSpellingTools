@@ -107,7 +107,13 @@ The weight of penalties for rule-breaking decrease as the iteration goes on (nee
 
 #### Example:
 
-In the original example, the dyads sorted are: `[(62, 63), (66, 67), (62, 67), (62, 66), (63, 67), (63, 66)]`.
+In the original example, the dyads sorted are: 
+- 1. `(62, 63)`
+- 2. `(66, 67)`
+- 3. `(62, 67)`
+- 4. `(62, 66)`
+- 5. `(63, 67)`
+- 6. `(63, 66)`
 
 ##### `(62, 63)`
 
