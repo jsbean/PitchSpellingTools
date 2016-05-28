@@ -23,3 +23,15 @@ pitchSet.dyads == [
   Dyad(Pitch(noteNumber: 66), Pitch(noteNumber: 67))
 ]
 ```
+
+When considering the most coherent pitch spelling for a pitch set, one could attempt to spell dyads wih certain interval classes first, to ensure that salient relationships are the clearest. In this case, the ordered is done [here](https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/PitchSpellingTools/IntervalClass%2BPitchSpelling.swift). 
+
+
+
+
+
+
+
+### Rules not yet considered
+- Spelling preferences guided by ascending / descending linear structures
+
