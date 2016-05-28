@@ -69,7 +69,11 @@ There are three cases possible when attempting to spell a `Dyad`:
 
 For case 1 above, no action is needed other than confirming that the objectively spellable `Node` values hold a `rank` of `1.0`.
 
+##### SemiAmbiguousComparisonStage
+
 For case 2, the `SemiAmbiguousComparisonStage` takes an objectively spellable `Node`, and the `Level` for a non-objectively spellable `Pitch`. The `SemiAmbiguousComparisonStage` iterates over each possible `PitchSpelling` in the `Level` of non-objectively spellable `Pitch`, penalizing the `PitchSpelling` values that break any of a variety of rules.
+
+##### FullyAmbiguousComparisonStage
 
 For case 3, the `FullyAmbiguousComparisonStage` takes two `Level` values for each `Pitch` in the `Dyad`.
 
