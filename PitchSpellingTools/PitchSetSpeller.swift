@@ -58,14 +58,17 @@ public final class PitchSetSpeller: PitchSpeller {
      */
     func spell() throws -> SpelledPitchSet {
         
+        // Exit early is pitchSet is empty
         if pitchSet.isEmpty { return SpelledPitchSet(pitches: []) }
         
+        // For now, exit early if pitchSet contains a single pitch
         if pitchSet.isMonadic {
             return SpelledPitchSet(
                 pitches: try pitchSet.map { try $0.spelledWithDefaultSpelling() }
             )
         }
         
+        // make this return something
         compareOptions()
         
         // default impl to return
@@ -75,6 +78,9 @@ public final class PitchSetSpeller: PitchSpeller {
     func compareOptions() {
 
         for (position, dyad) in dyads.enumerate() {
+            
+            print("Nodes: \(nodesByPitch)")
+            
             if allNodesHaveBeenRanked {
                 print("bail if all nodes have been ranked")
                 break
@@ -82,15 +88,13 @@ public final class PitchSetSpeller: PitchSpeller {
             
             // bail if both can be spelled objectively
             if dyad.canBeSpelledObjectively {
+                print("Dyad is objectively spellable: rank = 1 for both")
                 rankObjectivelySpellableDyad(dyad)
                 continue
             }
             
             let comparisonStage = makeComparisonStage(for: dyad)
-            comparisonStages.append(comparisonStage)
-            
             let weight = (Float(dyads.count - position) / Float(dyads.count)) / 2
-            
             comparisonStage.applyRankings(withWeight: weight)
         }
 
@@ -117,13 +121,12 @@ public final class PitchSetSpeller: PitchSpeller {
     }
     
     private func rankObjectivelySpellablePitch(pitch: Pitch) {
-        nodesByPitch[pitch]?.first?.rank = 1
+        nodesByPitch[pitch]!.first!.rank = 1
     }
     
     // TODO: refactor
     private func makeComparisonStage(for dyad: Dyad) -> ComparisonStage {
         
-        print("make comparison stage for dyad: \(dyad)")
         let comparisonStage: ComparisonStage
 
         if dyad.isFullyAmbiguouslySpellable {
@@ -147,6 +150,7 @@ public final class PitchSetSpeller: PitchSpeller {
                 )
             }
         }
+        comparisonStages.append(comparisonStage)
         return comparisonStage
     }
 }

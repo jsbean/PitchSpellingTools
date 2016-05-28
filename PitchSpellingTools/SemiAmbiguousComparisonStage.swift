@@ -39,6 +39,7 @@ final class SemiAmbiguousComparisonStage: ComparisonStage {
     }
     
     func applyRankings(withWeight weight: Float) {
+        ensureNodesHaveRankings()
         for edge in edges {
             for rule in rules {
                 if !rule(edge.pitchSpellingDyad) {
@@ -50,7 +51,10 @@ final class SemiAmbiguousComparisonStage: ComparisonStage {
     }
     
     private func penalize(node node: Node, withWeight weight: Float) {
-        if node.rank == nil { node.rank = 1 }
         node.rank! -= weight
+    }
+    
+    private func ensureNodesHaveRankings() {
+        self.other.nodes.forEach { if $0.rank == nil { $0.rank = 1 } }
     }
 }
