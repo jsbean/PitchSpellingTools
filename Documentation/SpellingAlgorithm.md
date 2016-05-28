@@ -25,6 +25,8 @@ let pitchSet: PitchSet = [
 // In this case, there are 6 dyads => [(62, 63), (62, 66), (62, 67), (63, 66), (63, 67), (66, 67)]
 ```
 
+The case above is interesting, as its optimum spelling contains both sharps and flats. 
+
 ### Where to start
 
 First, all `Dyad` values for the given `PitchSet` are ordered by `spelling urgency` (looking for a better term...) of their `IntervalClass`. By attempting to spell `Dyad` values with certain `IntervalClass` values first, the most salient relationships are prioritized, and are therefore preserved in their graphical representation.
