@@ -77,6 +77,8 @@ The `FullyAmbiguousComparisonStage` iterates over each possible `PitchSpellingDy
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/fully_ambiguous.jpg" height="240">
 
+---
+
 ## Process
 
 ### Prepare `Dyad` values
