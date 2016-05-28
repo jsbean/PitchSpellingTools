@@ -59,6 +59,9 @@ In cases where at least one `Pitch` value in the given `PitchSet` is objectively
 
 When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `Pitch` values therein are objectively spellable), the `rank` value of `Edge` values can be used to enforce a decision for an otherwise ambiguous context.
 
+**Note:**
+> `Pitch(noteNumber: 60)` can only be spelled as `c natural`, unless we are allowing `b sharps` and `d doubleFlats`
+
 #### Comparison Stages
 
 There are three cases possible when attempting to spell a `Dyad`:
@@ -84,9 +87,6 @@ For case 3 above, the `FullyAmbiguousComparisonStage` takes two `Level` values f
 The `FullyAmbiguousComparisonStage` iterates over each possible `PitchSpellingDyad` combination between the two `Level` values of the non-objectively spellable `Pitch` values, penalizing the `Edge` containing `PitchSpellingDyad` values that break any of a variety of rules.
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/fully_ambiguous.jpg" height="240">
-
-**Note:**
-> `Pitch(noteNumber: 60)` can only be spelled as `c natural`, unless we are allowing `b sharps` and `d doubleFlats`
 
 ### Iterate over `Dyad` values
 
