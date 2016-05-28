@@ -33,10 +33,13 @@ First, all of the dyads for the given pitch set are ordered by `spelling urgency
 
 In order to keep track of spelling preferences when there is no clear answer, certain data structures have been created:
 
-- [`Node`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Node.swift): Wraps a single `PitchSpelling` and its `Pitch`, with a `rank`.
-- [`Level`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Level.swift): All of the `Node` objects for a given `Pitch` (i.e., every possible way to spell a given pitch).
-- [`ComparisonStage`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/ComparisonStage.swift): Compares potential `PitchSpelling` options for a given `Dyad`.
-- [`Edge`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Edge.swift): Wraps two `Node` objects, with a `rank`. 
+
+| Tables   |      Are      |
+|----------|-------------|
+| [`Node`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Node.swift) |  Wraps a single `PitchSpelling` and its `Pitch`, with a `rank` |
+| [`Level`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Level.swift) |    All of the `Node` objects for a given `Pitch` (i.e., every possible way to spell a given pitch)   |
+| [`ComparisonStage`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/ComparisonStage.swift)  | Compares potential `PitchSpelling` options for a given `Dyad` |
+| [`Edge`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Edge.swift) | Wraps two `Node` objects, with a `rank` |
 
 Both `Node` and `Edge` objects may be ranked. The reason for this is shown in the next section.
 
