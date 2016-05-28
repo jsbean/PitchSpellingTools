@@ -36,7 +36,7 @@ For our purposes, half-steps are spelled before perfect intervals, which are spe
 **Example:**
 ```Swift
 // For the case above, the dyads are now ordered as such:
-// => [(62, 63), (66, 67), (62, 67), (63, 67), (62, 66), (63, 66)]
+// => [(62, 63), (66, 67), (62, 67), (62, 66), (63, 67), (63, 66)]
 ```
 
 #### Nodes, Levels, Edges, ComparisonStages, Rankings
