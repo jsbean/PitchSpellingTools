@@ -80,7 +80,8 @@ For each `Dyad` that is examined, infrastructure for judging potential spellings
 
 ### Iterate over dyads
 
-<img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/62_63.jpeg" height="240">
+<img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/62_63.jpg" height="240">
+<img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/66_67.jpg" height="240">
 
 ### Rules not yet considered
 - Spelling preferences guided by ascending / descending linear structures
