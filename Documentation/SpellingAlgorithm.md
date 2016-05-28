@@ -105,11 +105,11 @@ The weight of penalties for rule-breaking decrease as the iteration goes on (nee
 ((dyads.count - position) / dyads.count) / 2
 ```
 
-### Example:
+#### Example:
 
 In the original example, the dyads sorted are: `[(62, 63), (66, 67), (62, 67), (62, 66), (63, 67), (63, 66)]`.
 
-#### `(62, 63)`
+##### `(62, 63)`
 
 First, we check if all of the `Node` values have been ranked. At this point, no `Node` values have been ranked, so we must keep going.
 
@@ -119,13 +119,13 @@ Here, `62` can only be spelled as `d natural`. Therefore we can create a `SemiAm
 
 The comparison stage penalizes the `D` / `D#` `PitchSpellingDyad` as it does not preserve step count.
 
-#### `(60, 67)`
+##### `(60, 67)`
 
 Again, we check if all of the `Node` values have been ranked. At this point, only the `Node` values belonging to `Pitch(noteNumber: 63)` have been ranked. Keep going.
 
 As both of these pitches are objectively spellable, we rank them with a `1`, and skip analysis.
 
-#### `(66, 67)`
+##### `(66, 67)`
 
 Again, we check if all of the `Node` values have been ranked. At this point, the `Node` values belonging to `Pitch(noteNumber: 62)`, `Pitch(noteNumber: 63)`, and `Pitch(noteNumber: 67)` have been ranked, but not yet `Pitch(noteNumber: 66)`.
 
