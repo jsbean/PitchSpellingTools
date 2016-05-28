@@ -40,14 +40,17 @@ final class SemiAmbiguousComparisonStage: ComparisonStage {
     
     func rate(withWeight weight: Float) {
         for edge in edges {
+            print("edge.psDyad: \(edge.pitchSpellingDyad)")
+            if edge.b.rank == nil { edge.b.rank = 1 }
             if (
                 !edge.pitchSpellingDyad.isFineCompatible ||
                 !edge.pitchSpellingDyad.isStepPreserving
             )
             {
-                if edge.b.rank == nil { edge.b.rank = 1 }
+                print("breaks rules; penalize: weight: \(weight)")
                 edge.b.rank! -= weight
             }
         }
+        print("edges: \(edges)")
     }
 }

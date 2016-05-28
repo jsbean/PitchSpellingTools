@@ -23,15 +23,15 @@ public final class PitchSetSpeller: PitchSpeller {
         return true
     }
     
-    private var nodesByPitch: [Pitch: [Node]] {
+    private lazy var nodesByPitch: [Pitch: [Node]] = {
         var result: [Pitch: [Node]] = [:]
-        for pitch in pitchSet {
+        for pitch in self.pitchSet {
             result[pitch] = pitch.spellingsWithoutUnconventionalEnharmonics.map {
                 Node(pitch: pitch, spelling: $0)
             }
         }
         return result
-    }
+    }()
     
     private lazy var dyads: [Dyad] = {
         self.pitchSet.dyads.sort { $0.interval.spellingUrgency < $1.interval.spellingUrgency }
@@ -48,20 +48,33 @@ public final class PitchSetSpeller: PitchSpeller {
         self.pitchSet = pitchSet
     }
     
-    func compareOptions() {
+    /**
+     - warning: Not yet implemented!
+     
+     - throws: `PitchSpelling.Error` if unable to apply `PitchSpelling` objects to the given
+     `PitchSet`.
+     
+     - returns: `SpelledPitchSet` containing spelled versions of the given `PitchSet`.
+     */
+    func spell() throws -> SpelledPitchSet {
         
-        print("spell:")
+        if pitchSet.isEmpty { return SpelledPitchSet(pitches: []) }
         
-        // manage monad
-        let pitchArray = Array(pitchSet)
-        if pitchArray.count == 1 {
-            
+        if pitchSet.isMonadic {
+            return SpelledPitchSet(
+                pitches: try pitchSet.map { try $0.spelledWithDefaultSpelling() }
+            )
         }
         
+        compareOptions()
         
+        // default impl
+        return try pitchSet.spelledWithDefaultSpellings()
+    }
+    
+    func compareOptions() {
+
         for (position, dyad) in dyads.enumerate() {
-            
-            print("dyad: \(dyad)")
             if allNodesHaveBeenRanked { break }
             
             // bail if both can be spelled objectively
@@ -73,17 +86,23 @@ public final class PitchSetSpeller: PitchSpeller {
             let comparisonStage = makeComparisonStage(for: dyad)
             comparisonStages.append(comparisonStage)
             
-            let weight = Float(dyads.count - position) / Float(dyads.count)
+            let weight = (Float(dyads.count - position) / Float(dyads.count)) / 2
+            
             comparisonStage.rate(withWeight: weight)
         }
-    }
-    
-    // make better name
-    func spell() throws -> SpelledPitchSet {
         
-        return try pitchSet.spelledWithDefaultSpellings()
+        // check out what each comparison stage has got
+        // if needed, merge edges to form paths, if possible
+        
+        for (pitch, nodes) in nodesByPitch {
+            nodesByPitch[pitch] = nodes.filter { $0.rank != nil }.sort { $0.rank! > $1.rank! }
+        }
+        print("nodesByPitch: \(nodesByPitch)")
+        if !allNodesHaveBeenRanked {
+            // this means we have to make a decision, or pass the buck
+        }
     }
-    
+
     private func rankObjectivelySpellableDyad(dyad: Dyad) {
         [dyad.higher, dyad.lower].forEach { rankObjectivelySpellablePitch($0) }
     }
@@ -95,14 +114,17 @@ public final class PitchSetSpeller: PitchSpeller {
     // TODO: refactor
     private func makeComparisonStage(for dyad: Dyad) -> ComparisonStage {
         
+        print("make comparison stage for dyad: \(dyad)")
         let comparisonStage: ComparisonStage
 
         if dyad.isfullyAmbiguouslySpellable {
+            print("fully ambiguous")
             comparisonStage = FullyAmbiguousComparisonStage(
                 Level(nodes: nodesByPitch[dyad.lower]!),
                 Level(nodes: nodesByPitch[dyad.higher]!)
             )
         } else {
+            print("semi ambiguous")
             if dyad.higher.canBeSpelledObjectively {
                 comparisonStage = SemiAmbiguousComparisonStage(
                     determinate: nodesByPitch[dyad.higher]!.first!,

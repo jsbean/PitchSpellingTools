@@ -17,3 +17,8 @@ public struct SpelledPitchSet {
     }
 }
 
+extension SpelledPitchSet: Equatable { }
+
+public func == (lhs: SpelledPitchSet, rhs: SpelledPitchSet) -> Bool {
+    return lhs.pitches == rhs.pitches
+}

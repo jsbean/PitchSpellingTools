@@ -173,6 +173,15 @@
 			name = Interval;
 			sourceTree = "<group>";
 		};
+		078DAE0F1CF911CF0095AFC9 /* PitchSet */ = {
+			isa = PBXGroup;
+			children = (
+				075DBB611C9B9D3A00E2D3FD /* PitchSet.swift */,
+				07D6FC971CEBF73600E3D409 /* OrderedPitchSet.swift */,
+			);
+			name = PitchSet;
+			sourceTree = "<group>";
+		};
 		07CC26551C94E0850099C21C = {
 			isa = PBXGroup;
 			children = (
@@ -205,8 +214,7 @@
 				07CC26981C94E4910099C21C /* Pitch.swift */,
 				07AD1D471C95D402003225B2 /* PitchClass.swift */,
 				07AD1D3E1C95D2B8003225B2 /* Dyad.swift */,
-				075DBB611C9B9D3A00E2D3FD /* PitchSet.swift */,
-				07D6FC971CEBF73600E3D409 /* OrderedPitchSet.swift */,
+				078DAE0F1CF911CF0095AFC9 /* PitchSet */,
 			);
 			path = Pitch;
 			sourceTree = "<group>";

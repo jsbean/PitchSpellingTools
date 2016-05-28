@@ -17,6 +17,7 @@ extension PitchSet {
     }
     
     public func spelledWithDefaultSpellings() throws -> SpelledPitchSet {
-        return SpelledPitchSet(pitches: try self.map { try $0.spelledWithDefaultSpelling() } )
+        let pitches = try self.map { try $0.spelledWithDefaultSpelling() }
+        return SpelledPitchSet(pitches: pitches)
     }
 }
