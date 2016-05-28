@@ -41,15 +41,21 @@ In order to keep track of spelling preferences when there is no clear answer, ce
 | [`ComparisonStage`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/ComparisonStage.swift)  | Compares potential `PitchSpelling` options for a given `Dyad` |
 | [`Edge`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Edge.swift) | Wraps two `Node` objects, with a `rank` |
 
-Both `Node` and `Edge` objects may be ranked. The reason for this is shown in the next section.
+Ranking values are in the range `0.0...1.0`, and both `Node` and `Edge` objects may be ranked. The reason for this is shown in the next section.
 
-#### Comparison Stages
+For each `Dyad` that is examined, we need an infrastructure for judging potential spellings for each `Pitch` therein.
 
 There are three cases possible when attempting to spell a `Dyad`:
 
 1. Both pitches can be spelled objectively (e.g., `(60, 67)`)
 2. One pitch can be spelled objectively (e.g., `(62, 63)`)
 3. Neither pitch can be spelled objectively (e.g., `(63, 66)`)
+
+##### Comparison Stages
+
+For cases 2 and 3 above, unique structures are needed to judge its context.
+
+
 
 **Note:**
 > `Pitch(noteNumber: 60)` can only be spelled as `c natural`, unless we are allowing `b sharps` and `d doubleFlats`
