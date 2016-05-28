@@ -1,9 +1,13 @@
 ## Eighth-tone PitchSet Spelling Algorithm
 Find the optimum way to spell the pitches of a `PitchSet`.
 
-#### PitchSet
+### PitchSet
 
-A `PitchSet` is considered here an unordered, unique, unspelled collection of `Pitch` values. There is no inherent assumption that this `PitchSet` is a vertical, horizontal, or diagonal collection. For our purposes, this algorithm is to handle cases of `Pitch` values with a resolution of up to an eighth-tone.
+A `PitchSet` is considered here an unordered, unique, unspelled collection of `Pitch` values. There is no inherent assumption that this `PitchSet` is a vertical, horizontal, or diagonal collection. 
+
+For our purposes, this algorithm is to handle cases of `Pitch` values with a resolution of up to an eighth-tone.
+
+#### Dyads
 
 By nature, a `PitchSet` is composed of <sub>n</sub>C<sub>2</sub> `Dyad` values (pairs of `Pitch` values).
 
@@ -19,7 +23,7 @@ let pitchSet: PitchSet = [
 // In this case, there are 6 dyads => [(62, 63), (62, 66), (62, 67), (63, 66), (63, 67), (66, 67)]
 ```
 
-#### Where to start
+### Where to start
 
 First, all of the dyads for the given pitch set are ordered by `spelling urgency` (looking for a better term...). By attempting to spell `Dyad` values with certain `IntervalClass` values first, the most salient relationships are prioritized, and therefore preserved in their graphical representation (for our purposes, half-steps before perfect intervals before imperfect intervals). To see the details of the ordering, look [here](https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/PitchSpellingTools/IntervalClass%2BPitchSpelling.swift). 
 
@@ -60,10 +64,10 @@ For cases 2 and 3 above, unique structures are needed to judge its context.
 **Note:**
 > `Pitch(noteNumber: 60)` can only be spelled as `c natural`, unless we are allowing `b sharps` and `d doubleFlats`
 
-#### Iterate over dyads
+### Iterate over dyads
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/62_63.jpeg" height="240">
 
-#### Rules not yet considered
+### Rules not yet considered
 - Spelling preferences guided by ascending / descending linear structures
 
