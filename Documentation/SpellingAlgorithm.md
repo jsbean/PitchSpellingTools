@@ -109,8 +109,6 @@ Each iteration, we do two general things:
 >((dyads.count - position) / dyads.count) / 2
 >```
 
-#### Example:
-
 In the original example, the dyads sorted are: 
 - 1. [`(62, 63)`](#62-63)
 - 2. [`(66, 67)`](#66-67)
