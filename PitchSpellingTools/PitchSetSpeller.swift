@@ -75,6 +75,7 @@ public final class PitchSetSpeller: PitchSpeller {
         return try pitchSet.spelledWithDefaultSpellings()
     }
     
+    // REFACTOR
     func compareOptions() {
 
         for (position, dyad) in dyads.enumerate() {

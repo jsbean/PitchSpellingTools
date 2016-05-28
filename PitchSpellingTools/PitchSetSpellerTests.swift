@@ -136,4 +136,13 @@ class PitchSetSpellerTests: XCTestCase {
         ]
         do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
     }
+    
+    func test_61__63_5__65_5() {
+        let pitchSet: PitchSet = [
+            Pitch(noteNumber: 61),
+            Pitch(noteNumber: 63.5),
+            Pitch(noteNumber: 65.5)
+        ]
+        do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
+    }
 }
