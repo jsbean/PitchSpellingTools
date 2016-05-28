@@ -90,7 +90,11 @@ For each `Dyad` that is examined, infrastructure for judging potential spellings
 **Note:**
 > `Pitch(noteNumber: 60)` can only be spelled as `c natural`, unless we are allowing `b sharps` and `d doubleFlats`
 
-### Iterate over dyads
+### Iterate over `Dyad` values
+
+In the original example, the dyads sorted are: `[(62, 63), (66, 67), (62, 67), (62, 66), (63, 67), (63, 66)]`.
+
+
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/62_63.jpg" height="240">
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/66_67.jpg" height="240">
