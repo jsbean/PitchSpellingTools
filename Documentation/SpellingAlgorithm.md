@@ -85,8 +85,6 @@ The `FullyAmbiguousComparisonStage` iterates over each possible `PitchSpellingDy
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/fully_ambiguous.jpg" height="240">
 
-For each `Dyad` that is examined, infrastructure for judging potential spellings for each `Pitch` therein.
-
 **Note:**
 > `Pitch(noteNumber: 60)` can only be spelled as `c natural`, unless we are allowing `b sharps` and `d doubleFlats`
 
