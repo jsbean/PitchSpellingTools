@@ -81,7 +81,7 @@ class PitchSetSpellerTests: XCTestCase {
         }
     }
     
-    func testDyadCGFSharp() {
+    func testDyad_C_G_FSharp() {
         let pitchSet: PitchSet = [
             Pitch(noteNumber: 60), Pitch(noteNumber: 66), Pitch(noteNumber: 67)
         ]

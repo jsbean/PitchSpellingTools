@@ -31,7 +31,7 @@ extension Dyad {
         return lower.canBeSpelledObjectively && higher.canBeSpelledObjectively
     }
     
-    public var isfullyAmbiguouslySpellable: Bool {
+    public var isFullyAmbiguouslySpellable: Bool {
         return !lower.canBeSpelledObjectively && !higher.canBeSpelledObjectively
     }
     

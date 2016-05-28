@@ -126,7 +126,7 @@ public final class PitchSetSpeller: PitchSpeller {
         print("make comparison stage for dyad: \(dyad)")
         let comparisonStage: ComparisonStage
 
-        if dyad.isfullyAmbiguouslySpellable {
+        if dyad.isFullyAmbiguouslySpellable {
             print("Begin FullyAmbiguous Comparison Stage")
             comparisonStage = FullyAmbiguousComparisonStage(
                 Level(nodes: nodesByPitch[dyad.lower]!),
@@ -134,6 +134,7 @@ public final class PitchSetSpeller: PitchSpeller {
             )
         } else {
             print("Begin SemiAmbiguous Comparison Stage")
+            print("dyad: \(dyad)")
             if dyad.higher.canBeSpelledObjectively {
                 comparisonStage = SemiAmbiguousComparisonStage(
                     determinate: nodesByPitch[dyad.higher]!.first!,
