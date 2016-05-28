@@ -46,7 +46,8 @@ There are three cases possible when attempting to spell a `Dyad`:
 2. One pitch can be spelled objectively (e.g., `(62, 63)`)
 3. Neither pitch can be spelled objectively (e.g., `(63, 66)`)
 
-`Pitch(noteNumber: 60)` can only be `c natural`, unless we are allowing `b sharps` and `d doubleFlats` (more on that later, though)
+**Note:**
+> `Pitch(noteNumber: 60)` can only be spelled as `c natural`, unless we are allowing `b sharps` and `d doubleFlats` (more on that later, though)
 
 #### Rules not yet considered
 - Spelling preferences guided by ascending / descending linear structures
