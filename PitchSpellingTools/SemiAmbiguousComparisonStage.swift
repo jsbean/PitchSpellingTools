@@ -23,7 +23,7 @@ import Foundation
      -----
  */
 final class SemiAmbiguousComparisonStage: ComparisonStage {
- 
+    
     let determinate: Node
     let other: Level
     

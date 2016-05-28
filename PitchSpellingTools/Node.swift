@@ -13,7 +13,7 @@ import Pitch
  
  - note: Consider factoring this out, unless it has a bigger payload than just a `PitchSpelling`
  */
-internal final class Node {
+internal final class Node: Rankable {
     
     internal var rank: Float? // start `nil`
     

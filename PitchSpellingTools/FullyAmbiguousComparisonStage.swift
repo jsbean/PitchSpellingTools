@@ -33,7 +33,9 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
     lazy var edges: [Edge] = {
         var result: [Edge] = []
         for nodeA in self.a.nodes {
-            for nodeB in self.b.nodes { result.append(Edge(nodeA, nodeB)) } 
+            for nodeB in self.b.nodes {
+                result.append(Edge(nodeA, nodeB))
+            }
         }
         return result
     }()
@@ -44,8 +46,32 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
     }
     
     func applyRankings(withWeight weight: Float) {
+        ensureEdgesHaveRankings()
         for edge in edges {
-            
+            for rule in rules {
+                if !rule(edge.pitchSpellingDyad) {
+                    penalize(edge: edge, withWeight: weight)
+                }
+            }
         }
+        
+        // filter out all but the highest ranking -- these were disqualified
+        let highestRank = edges.sort { $0.rank! > $1.rank! }.first!.rank!
+        edges = edges.filter { $0.rank! == highestRank }
+        
+        // todo modify rank based on mean spelling distance
+        edges = edges.sort {
+            $0.pitchSpellingDyad.meanSpellingDistance <
+            $1.pitchSpellingDyad.meanSpellingDistance
+        }
+        print("edges: \(edges)")
+    }
+    
+    private func penalize(edge edge: Edge, withWeight weight: Float) {
+        edge.rank! -= weight
+    }
+    
+    private func ensureEdgesHaveRankings() {
+        edges.forEach { if $0.rank == nil { $0.rank = 1 } }
     }
 }

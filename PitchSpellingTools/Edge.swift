@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Edge {
+final class Edge: Rankable {
     
     var rank: Float?
     let pitchSpellingDyad: PitchSpellingDyad
@@ -20,5 +20,12 @@ struct Edge {
         self.a = a
         self.b = b
         self.pitchSpellingDyad = PitchSpellingDyad(a.spelling, b.spelling)
+    }
+}
+
+extension Edge: CustomStringConvertible {
+    
+    var description: String {
+        return "\(pitchSpellingDyad); rank: \(rank)"
     }
 }

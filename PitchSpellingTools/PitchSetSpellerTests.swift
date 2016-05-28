@@ -92,4 +92,18 @@ class PitchSetSpellerTests: XCTestCase {
             XCTFail()
         }
     }
+    
+    func testDyad_A_CSharp_FSharp() {
+        let pitchSet: PitchSet = [
+            Pitch(noteNumber: 61),
+            Pitch(noteNumber: 66),
+            Pitch(noteNumber: 69)
+        ]
+        let speller = PitchSetSpeller(pitchSet)
+        do {
+            let _ = try speller.spell()
+        } catch {
+            XCTFail()
+        }
+    }
 }

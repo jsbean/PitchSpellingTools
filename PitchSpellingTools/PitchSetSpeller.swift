@@ -82,7 +82,7 @@ public final class PitchSetSpeller: PitchSpeller {
             print("Nodes: \(nodesByPitch)")
             
             if allNodesHaveBeenRanked {
-                print("bail if all nodes have been ranked")
+                print("BREAK IF ALL NODES HAVE BEEN RANKED!")
                 break
             }
             
@@ -100,19 +100,28 @@ public final class PitchSetSpeller: PitchSpeller {
 
         if allNodesHaveBeenRanked {
             print("all nodes have been ranked")
+            var spelledPitches: [SpelledPitch] = []
+            for (pitch, nodes) in nodesByPitch {
+                // for each pitch, get the highest rated node
+                let bestMatch = nodes.sort { $0.rank > $1.rank }.first!.spelling
+                let spelledPitch = spell(pitch, with: bestMatch)!
+                spelledPitches.append(spelledPitch)
+            }
+            // RETURN PITCH SET FROM HERE!
+            print("spelledPitches: \(spelledPitches)")
         } else {
-            //
+            for comparisonStage in comparisonStages {
+                print("ComparisonStage: Edges: \(comparisonStage.edges)")
+            }
+            // compare and merge edges into paths
         }
         
         // check out what each comparison stage has got
         // if needed, merge edges to form paths, if possible
         
-        for (pitch, nodes) in nodesByPitch {
-            nodesByPitch[pitch] = nodes.filter { $0.rank != nil }.sort { $0.rank! > $1.rank! }
-        }
         print("nodesByPitch: \(nodesByPitch)")
         if !allNodesHaveBeenRanked {
-            // this means we have to make a decision, or pass the buck
+            
         }
     }
 
