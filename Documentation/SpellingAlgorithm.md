@@ -9,7 +9,9 @@ For our purposes, this algorithm is to handle cases of `Pitch` values with a res
 
 #### Dyads
 
-By nature, a `PitchSet` is composed of <sub>n</sub>C<sub>2</sub> `Dyad` values (pairs of `Pitch` values). In this algorithm, optimum spellings for each `Dyad` comprising the given `PitchSet` is sought. This process continues either until all `Pitch` values have been identified a best-suited `PitchSpelling`.
+By nature, a `PitchSet` is composed of <sub>n</sub>C<sub>2</sub> `Dyad` values (pairs of `Pitch` values). 
+
+In this algorithm, optimum spellings for each `Dyad` comprising the given `PitchSet` is sought. This process continues either until all `Pitch` values have been identified a best-suited `PitchSpelling`.
 
 **Example:**
 ```Swift
