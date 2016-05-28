@@ -1,11 +1,11 @@
 ## Eighth-tone PitchSet Spelling Algorithm
-Find the optimum way to spell the pitches of a `PitchSet`, with a resolution of up to an eighth-tone.
+Find the optimum way to spell the pitches of a `PitchSet`.
 
 #### PitchSet
 
-A pitch set is considered here an unordered, unique, unspelled collection of pitches. There is no inherent assumption that this pitch set is a vertical, horizontal, or diagonal collection.
+A `PitchSet` is considered here an unordered, unique, unspelled collection of `Pitch` values. There is no inherent assumption that this `PitchSet` is a vertical, horizontal, or diagonal collection. For our purposes, this algorithm is to handle cases of `Pitch` values with a resolution of up to an eighth-tone.
 
-By nature, a pitch set is composed of <sub>n</sub>C<sub>2</sub> dyads.
+By nature, a `PitchSet` is composed of <sub>n</sub>C<sub>2</sub> `Dyad` values (pairs of `Pitch` values).
 
 **Example:**
 ```Swift
