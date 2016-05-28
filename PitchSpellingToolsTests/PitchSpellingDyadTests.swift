@@ -350,5 +350,25 @@ class PitchSpellingDyadTests: XCTestCase {
         let dyad = PitchSpellingDyad(PitchSpelling(.f, .sharp), PitchSpelling(.e, .doubleSharp))
         XCTAssertEqual(dyad.intervalQuality, IntervalQuality.seventh.major)
     }
+    
+    func testABFlatMinorSecond() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.a), PitchSpelling(.b, .flat))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.second.minor)
+    }
+    
+    func testDEFlatMinorSecond() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.d), PitchSpelling(.e, .flat))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.second.minor)
+    }
+    
+    func testCDFlatMinorSecond() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.d, .flat))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.second.minor)
+    }
+    
+    func testCDMajorSecond() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.d))
+        XCTAssertEqual(dyad.intervalQuality, IntervalQuality.second.major)
+    }
 }
 

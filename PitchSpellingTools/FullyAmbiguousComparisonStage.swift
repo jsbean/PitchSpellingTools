@@ -6,7 +6,7 @@
 //
 //
 
-import Foundation
+import ArithmeticTools
 
 /**
  Compares all of the potential spellings of two `Pitch` objects that cannot be spelled
@@ -45,6 +45,8 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
         self.b = b
     }
     
+    // TODO: check to see if individual nodes have been ranked, 
+    // -- if they have been penalized, integrate that into decision making process
     func applyRankings(withWeight weight: Float) {
         ensureEdgesHaveRankings()
         for edge in edges {
@@ -72,6 +74,17 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
     }
     
     private func ensureEdgesHaveRankings() {
-        edges.forEach { if $0.rank == nil { $0.rank = 1 } }
+        for edge in edges {
+            
+            // encapsulate this beneath Edge surface
+            if edge.a.rank == nil && edge.b.rank == nil { edge.rank = 1 }
+            if edge.a.rank == nil && edge.b.rank != nil { edge.rank = edge.b.rank }
+            if edge.a.rank != nil && edge.b.rank == nil { edge.rank = edge.a.rank }
+            if edge.a.rank != nil && edge.b.rank == nil {
+                edge.rank = [edge.a.rank!, edge.b.rank!].mean
+            }
+            //print("edge.a rank: \(edge.a.rank); edge.b.rank: \(edge.b.rank)")
+            print("edge.rank: \(edge.rank)")
+        }
     }
 }

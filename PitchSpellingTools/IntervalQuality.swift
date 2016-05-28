@@ -100,7 +100,12 @@ public class IntervalQuality: EnumTree {
             forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
         ) -> EnumKind
         {
-            let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
+            var difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
+            
+            // correct A / B Flat ; D / E Flat issues
+            if pitchSpellingDyad.b.letterName == .a { difference += 1 }
+            if pitchSpellingDyad.b.letterName == .d { difference += 1 }
+            
             return intervalQuality(fromDirectionDifference: difference)
         }
     }

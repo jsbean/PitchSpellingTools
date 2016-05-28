@@ -85,12 +85,7 @@ class PitchSetSpellerTests: XCTestCase {
         let pitchSet: PitchSet = [
             Pitch(noteNumber: 60), Pitch(noteNumber: 66), Pitch(noteNumber: 67)
         ]
-        let speller = PitchSetSpeller(pitchSet)
-        do {
-            let _ = try speller.spell()
-        } catch {
-            XCTFail()
-        }
+        do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
     }
     
     func testDyad_A_CSharp_FSharp() {
@@ -99,11 +94,46 @@ class PitchSetSpellerTests: XCTestCase {
             Pitch(noteNumber: 66),
             Pitch(noteNumber: 69)
         ]
-        let speller = PitchSetSpeller(pitchSet)
-        do {
-            let _ = try speller.spell()
-        } catch {
-            XCTFail()
-        }
+        do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
+    }
+    
+    func testDyad_69_70_71() {
+        let pitchSet: PitchSet = [
+            Pitch(noteNumber: 69),
+            Pitch(noteNumber: 70),
+            Pitch(noteNumber: 71)
+        ]
+        do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
+    }
+    
+    func testDyad_60__62_5__69__70() {
+        let pitchSet: PitchSet = [
+            Pitch(noteNumber: 60),
+            Pitch(noteNumber: 62.5),
+            Pitch(noteNumber: 69),
+            Pitch(noteNumber: 70)
+        ]
+        do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
+    }
+    
+    func testCEFlatGAFlatB() {
+        let pitchSet: PitchSet = [
+            Pitch(noteNumber: 60),
+            Pitch(noteNumber: 63),
+            Pitch(noteNumber: 67),
+            Pitch(noteNumber: 68),
+            Pitch(noteNumber: 71)
+        ]
+        do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
+    }
+    
+    func test_60__63_5__65__68() {
+        let pitchSet: PitchSet = [
+            Pitch(noteNumber: 60),
+            Pitch(noteNumber: 63.5),
+            Pitch(noteNumber: 65),
+            Pitch(noteNumber: 68)
+        ]
+        do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
     }
 }

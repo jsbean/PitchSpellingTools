@@ -109,17 +109,18 @@ public final class PitchSetSpeller: PitchSpeller {
             }
             // RETURN PITCH SET FROM HERE!
             print("spelledPitches: \(spelledPitches)")
+            
         } else {
+            
+            // make second pass over compairson stage
+            
             for comparisonStage in comparisonStages {
                 print("ComparisonStage: Edges: \(comparisonStage.edges)")
+                
             }
             // compare and merge edges into paths
         }
-        
-        // check out what each comparison stage has got
-        // if needed, merge edges to form paths, if possible
-        
-        print("nodesByPitch: \(nodesByPitch)")
+
         if !allNodesHaveBeenRanked {
             
         }
@@ -139,14 +140,13 @@ public final class PitchSetSpeller: PitchSpeller {
         let comparisonStage: ComparisonStage
 
         if dyad.isFullyAmbiguouslySpellable {
-            print("Begin FullyAmbiguous Comparison Stage")
+            print("Begin FullyAmbiguous Comparison Stage: \(dyad)")
             comparisonStage = FullyAmbiguousComparisonStage(
                 Level(nodes: nodesByPitch[dyad.lower]!),
                 Level(nodes: nodesByPitch[dyad.higher]!)
             )
         } else {
-            print("Begin SemiAmbiguous Comparison Stage")
-            print("dyad: \(dyad)")
+            print("Begin SemiAmbiguous Comparison Stage: \(dyad)")
             if dyad.higher.canBeSpelledObjectively {
                 comparisonStage = SemiAmbiguousComparisonStage(
                     determinate: nodesByPitch[dyad.higher]!.first!,
