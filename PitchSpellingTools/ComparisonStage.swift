@@ -24,7 +24,9 @@ extension ComparisonStage {
     var rules: [(PitchSpellingDyad) -> Bool] {
         return [
             { $0.isFineCompatible },
-            { $0.isStepPreserving }
+            { $0.isStepPreserving },
+            { $0.isCoarseResolutionCompatible },
+            { $0.isCoarseDirectionCompatible }
         ]
     }
 }

@@ -22,9 +22,7 @@ public struct PitchSpellingDyad {
      */
     public var isCoarseMatching: Bool { return b.coarse == a.coarse }
     
-    public var isCoarseCompatible: Bool {
-        return eitherIsNatural || isCoarseMatching
-    }
+    public var isCoarseCompatible: Bool { return eitherIsNatural || isCoarseMatching }
     
     /**
     `true` if `coarse.direction` values of both `PitchSpelling` objects are equivalent.
@@ -46,9 +44,7 @@ public struct PitchSpellingDyad {
         return eitherIsNatural || isCoarseResolutionMatching
     }
     
-    private var eitherIsNatural: Bool {
-        return b.coarse == .natural || a.coarse == .natural
-    }
+    private var eitherIsNatural: Bool { return b.coarse == .natural || a.coarse == .natural }
     
     /**
      `true if `fine` values of `PitchSpelling` objects are equivalent. Otherwise `false`..
