@@ -53,7 +53,7 @@ In order to keep track of spelling preferences when there is no clear answer, ce
 
 #### Ranking Potential Spellings
 
-Ranking values are in the range `0.0...1.0`, and both `Node` and `Edge` objects may be ranked. When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `Pitch` values therein are objectively spellable), the ranking of
+Ranking values are in the range `0.0...1.0`, and both `Node` and `Edge` objects may be ranked. In cases where at least one `Pitch` value in the given `PitchSet` is objectively spellable, a conclusive set of `PitchSpelling` values can be determined by examining the `rank` value of each `Node`. When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `Pitch` values therein are objectively spellable), the `rank` value of `Edge` values can be used to enforce a decision.
 
 #### Comparison Stages
 
