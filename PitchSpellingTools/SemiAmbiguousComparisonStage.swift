@@ -59,8 +59,11 @@ final class SemiAmbiguousComparisonStage: ComparisonStage {
 extension SemiAmbiguousComparisonStage {
     
     var description: String {
-        var result = ""
-        result += "\(determinate) -> \(other): \(edges)"
+        var result = "SemiAmbiguousComparisonStage:\n"
+        result += "- \(determinate)\n"
+        result += "- \(other)\n"
+        result += "Edges: "
+        edges.forEach { result += "\n- \($0)" }
         return result
     }
 }

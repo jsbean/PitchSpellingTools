@@ -70,8 +70,11 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
 extension FullyAmbiguousComparisonStage {
     
     var description: String {
-        var result = ""
-        result += "\(a): \(b)"
+        var result = "FullyAmbiguousComparisonStage:\n"
+        result += "- \(a)\n"
+        result += "- \(b)\n"
+        result += "Edges: "
+        edges.forEach { result += "\n- \($0)" }
         return result
     }
 }

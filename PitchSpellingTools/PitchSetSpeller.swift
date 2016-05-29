@@ -98,6 +98,7 @@ public final class PitchSetSpeller: PitchSpeller {
             // Otherwise, prepare comparison state for Dyad
             let comparisonStage = makeComparisonStage(for: dyad)
             comparisonStage.applyRankings(withWeight: rankWeight(for: position))
+            print(comparisonStage)
         }
 
         if allNodesHaveBeenRanked {
