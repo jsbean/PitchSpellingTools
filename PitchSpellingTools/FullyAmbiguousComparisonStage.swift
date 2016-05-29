@@ -68,3 +68,12 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
         edge.rank -= weight
     }
 }
+
+extension FullyAmbiguousComparisonStage {
+    
+    var description: String {
+        var result = ""
+        result += "\(a): \(b)"
+        return result
+    }
+}

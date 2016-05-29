@@ -59,3 +59,12 @@ final class SemiAmbiguousComparisonStage: ComparisonStage {
         self.other.nodes.forEach { if $0.rank == nil { $0.rank = 1 } }
     }
 }
+
+extension SemiAmbiguousComparisonStage {
+    
+    var description: String {
+        var result = ""
+        result += "\(determinate): \(other)"
+        return result
+    }
+}

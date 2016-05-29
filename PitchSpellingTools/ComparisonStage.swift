@@ -11,7 +11,7 @@ import Foundation
 /**
  - TODO: Create diagnostics description
  */
-protocol ComparisonStage {
+protocol ComparisonStage: CustomStringConvertible {
     
     var edges: [Edge] { get }
     
