@@ -49,7 +49,6 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
     // -- if they have been penalized, integrate that into decision making process
     // TODO: Refactor
     func applyRankings(withWeight weight: Float) {
-        ensureEdgesHaveRankings()
         for edge in edges {
             for rule in rules {
                 if !rule(edge.pitchSpellingDyad) {
@@ -59,8 +58,8 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
         }
         
         // filter out all but the highest ranking -- these were disqualified
-        let highestRank = edges.sort { $0.rank! > $1.rank! }.first!.rank!
-        edges = edges.filter { $0.rank! == highestRank }
+        let highestRank = edges.sort { $0.rank > $1.rank }.first!.rank
+        edges = edges.filter { $0.rank == highestRank }
         
         // todo modify rank based on mean spelling distance
         edges = edges.sort {
@@ -70,20 +69,6 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
     }
     
     private func penalize(edge edge: Edge, withWeight weight: Float) {
-        edge.rank! -= weight
-    }
-    
-    // TODO: Refactor
-    private func ensureEdgesHaveRankings() {
-        for edge in edges {
-            
-            // encapsulate this beneath Edge surface
-            if edge.a.rank == nil && edge.b.rank == nil { edge.rank = 1 }
-            if edge.a.rank == nil && edge.b.rank != nil { edge.rank = edge.b.rank }
-            if edge.a.rank != nil && edge.b.rank == nil { edge.rank = edge.a.rank }
-            if edge.a.rank != nil && edge.b.rank != nil {
-                edge.rank = [edge.a.rank!, edge.b.rank!].mean
-            }
-        }
+        edge.rank -= weight
     }
 }
