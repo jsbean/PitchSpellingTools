@@ -57,7 +57,7 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
         let highestRank = edges.sort { $0.rank > $1.rank }.first!.rank
         edges = edges.filter { $0.rank == highestRank }
         
-        // todo modify rank based on mean spelling distance
+        // TODO: modify rank based on mean spelling distance
         edges = edges.sort {
             $0.pitchSpellingDyad.meanSpellingDistance <
             $1.pitchSpellingDyad.meanSpellingDistance
