@@ -45,9 +45,6 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
         self.b = b
     }
     
-    // TODO: check to see if individual nodes have been ranked, 
-    // -- if they have been penalized, integrate that into decision making process
-    // TODO: Refactor
     func applyRankings(withWeight weight: Float) {
         for edge in edges {
             for rule in rules where !rule(edge.pitchSpellingDyad) {
@@ -55,6 +52,7 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
             }
         }
         
+        // TODO: Refactor out
         // filter out all but the highest ranking -- these were disqualified
         let highestRank = edges.sort { $0.rank > $1.rank }.first!.rank
         edges = edges.filter { $0.rank == highestRank }
