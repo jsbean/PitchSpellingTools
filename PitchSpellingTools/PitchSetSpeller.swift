@@ -37,8 +37,10 @@ public final class PitchSetSpeller: PitchSpeller {
         self.pitchSet.dyads.sort { $0.interval.spellingUrgency < $1.interval.spellingUrgency }
     }()
     
+    // `ComparisonStage` objects built
     private var comparisonStages: [ComparisonStage] = []
     
+    // `PitchSet` to be spelled
     private let pitchSet: PitchSet
     
     /**
@@ -79,6 +81,8 @@ public final class PitchSetSpeller: PitchSpeller {
     
     // REFACTOR
     func compareOptions() {
+        
+        clearComparisonStages()
 
         for (position, dyad) in dyads.enumerate() {
             
@@ -118,23 +122,24 @@ public final class PitchSetSpeller: PitchSpeller {
         nodesByPitch[pitch]!.first!.rank = 1
     }
     
-    // TODO: Refactor (get spelled / unspelled from Dyad)
-    // FIXME: Get rid of all of the optional unwrapping !
     // FIXME: Make better names
     private func makeComparisonStage(for dyad: Dyad) -> ComparisonStage {
         
         let comparisonStage: ComparisonStage
 
         if dyad.isFullyAmbiguouslySpellable {
+            
             comparisonStage = FullyAmbiguousComparisonStage(
-                Level(pitch: dyad.lower, nodes: nodesByPitch[dyad.lower]!),
-                Level(pitch: dyad.higher, nodes: nodesByPitch[dyad.higher]!)
+                level(for: dyad.lower),
+                level(for: dyad.higher)
             )
+            
         } else {
+            
             let (objectivelySpellable, not) = dyad.objectivelySpellableAndNot!
             comparisonStage = SemiAmbiguousComparisonStage(
-                determinate: nodesByPitch[objectivelySpellable]!.first!,
-                other: Level(pitch: not, nodes: nodesByPitch[not]!)
+                determinate: node(for: objectivelySpellable),
+                other: level(for: not)
             )
         }
         
@@ -142,5 +147,24 @@ public final class PitchSetSpeller: PitchSpeller {
         comparisonStages.append(comparisonStage)
         
         return comparisonStage
+    }
+    
+    private func clearComparisonStages() {
+        comparisonStages = []
+    }
+    
+    private func level(for pitch: Pitch) -> Level {
+        guard let nodes = nodesByPitch[pitch] else { fatalError("Nodes not initialized") }
+        return Level(pitch: pitch, nodes: nodes)
+    }
+    
+    private func node(for objectivelySpellablePitch: Pitch) -> Node {
+        guard let nodes = nodesByPitch[objectivelySpellablePitch]
+            where nodes.count == 1,
+            let node = nodes.first
+        else {
+            fatalError("Not objectively spellable Pitch")
+        }
+        return node
     }
 }

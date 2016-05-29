@@ -14,12 +14,9 @@ import Foundation
 protocol ComparisonStage: CustomStringConvertible {
     
     var edges: [Edge] { get }
-    
     var rules: [(PitchSpellingDyad) -> Bool] { get }
     
     func applyRankings(withWeight weight: Float)
-    
-    // TODO: apply rules
 }
 
 extension ComparisonStage {
