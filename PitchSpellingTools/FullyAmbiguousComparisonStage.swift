@@ -50,10 +50,8 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
     // TODO: Refactor
     func applyRankings(withWeight weight: Float) {
         for edge in edges {
-            for rule in rules {
-                if !rule(edge.pitchSpellingDyad) {
-                    penalize(edge: edge, withWeight: weight)
-                }
+            for rule in rules where !rule(edge.pitchSpellingDyad) {
+                penalize(edge: edge, withWeight: weight)
             }
         }
         
