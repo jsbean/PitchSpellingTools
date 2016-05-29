@@ -6,20 +6,24 @@
 //
 //
 
-import Foundation
+import Pitch
 
 /**
- Level of `Graph` holding the `PitchSpelling` objects for a single `Pitch` in a `PitchSet`.
+ Collection of `PitchSpelling` objects for a single `Pitch` in a `PitchSet`.
  */
 internal final class Level {
     
+    /// `Pitch` to which `nodes` belong.
+    internal let pitch: Pitch
+    
     /// `Node` objects contained herein, each holding a `PitchSpelling`
-    internal var nodes: [Node]
+    internal let nodes: [Node]
     
     /**
      Create a `Level` with an array of `Node` objects, each holding a `PitchSpelling`.
      */
-    internal init(nodes: [Node]) {
+    internal init(pitch: Pitch, nodes: [Node]) {
+        self.pitch = pitch
         self.nodes = nodes
     }
 }
@@ -27,6 +31,6 @@ internal final class Level {
 extension Level: CustomStringConvertible {
     
     internal var description: String {
-        return "\(nodes)"
+        return "\(pitch): \(nodes)"
     }
 }

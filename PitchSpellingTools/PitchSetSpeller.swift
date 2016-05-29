@@ -120,20 +120,21 @@ public final class PitchSetSpeller: PitchSpeller {
     
     // TODO: Refactor (get spelled / unspelled from Dyad)
     // FIXME: Get rid of all of the optional unwrapping !
+    // FIXME: Make better names
     private func makeComparisonStage(for dyad: Dyad) -> ComparisonStage {
         
         let comparisonStage: ComparisonStage
 
         if dyad.isFullyAmbiguouslySpellable {
             comparisonStage = FullyAmbiguousComparisonStage(
-                Level(nodes: nodesByPitch[dyad.lower]!),
-                Level(nodes: nodesByPitch[dyad.higher]!)
+                Level(pitch: dyad.lower, nodes: nodesByPitch[dyad.lower]!),
+                Level(pitch: dyad.higher, nodes: nodesByPitch[dyad.higher]!)
             )
         } else {
             let (objectivelySpellable, not) = dyad.objectivelySpellableAndNot!
             comparisonStage = SemiAmbiguousComparisonStage(
                 determinate: nodesByPitch[objectivelySpellable]!.first!,
-                other: Level(nodes: nodesByPitch[not]!)
+                other: Level(pitch: not, nodes: nodesByPitch[not]!)
             )
         }
         
