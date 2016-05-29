@@ -6,7 +6,7 @@
 //
 //
 
-import Foundation
+import ArithmeticTools
 
 final class Edge {
     
