@@ -148,11 +148,7 @@ public final class PitchSetSpeller: PitchSpeller {
         
         return comparisonStage
     }
-    
-    private func clearComparisonStages() {
-        comparisonStages = []
-    }
-    
+
     private func level(for pitch: Pitch) -> Level {
         guard let nodes = nodesByPitch[pitch] else { fatalError("Nodes not initialized") }
         return Level(pitch: pitch, nodes: nodes)
@@ -166,5 +162,9 @@ public final class PitchSetSpeller: PitchSpeller {
             fatalError("Not objectively spellable Pitch")
         }
         return node
+    }
+    
+    private func clearComparisonStages() {
+        comparisonStages = []
     }
 }
