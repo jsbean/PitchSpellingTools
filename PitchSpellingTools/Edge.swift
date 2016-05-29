@@ -36,6 +36,6 @@ final class Edge {
 extension Edge: CustomStringConvertible {
     
     var description: String {
-        return "\(pitchSpellingDyad); rank: \(rank)"
+        return "\(a) -> \(b) rank: \(rank)"
     }
 }

@@ -60,7 +60,7 @@ extension SemiAmbiguousComparisonStage {
     
     var description: String {
         var result = ""
-        result += "\(determinate): \(other)"
+        result += "\(determinate) -> \(other): \(edges)"
         return result
     }
 }
