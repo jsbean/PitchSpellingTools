@@ -21,8 +21,6 @@ import Foundation
      -----
     | o o | = other
      -----
- 
- - TODO: Implement diagnostics description
  */
 final class SemiAmbiguousComparisonStage: ComparisonStage {
     

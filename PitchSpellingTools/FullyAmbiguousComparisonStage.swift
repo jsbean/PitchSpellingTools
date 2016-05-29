@@ -22,8 +22,6 @@ import ArithmeticTools
      -----
     | o o | = b
      -----
- 
- - TODO: Implement diagnostics description
  */
 final class FullyAmbiguousComparisonStage: ComparisonStage {
     
