@@ -13,7 +13,9 @@ final class Edge {
     let a: Node
     let b: Node
     
-    let pitchSpellingDyad: PitchSpellingDyad
+    lazy var pitchSpellingDyad: PitchSpellingDyad = {
+        PitchSpellingDyad(self.a.spelling, self.b.spelling)
+    }()
     
     // derives edge rank from ranks of nodes, if possible
     lazy var rank: Float = {
@@ -28,7 +30,6 @@ final class Edge {
     init(_ a: Node, _ b: Node) {
         self.a = a
         self.b = b
-        self.pitchSpellingDyad = PitchSpellingDyad(a.spelling, b.spelling)
     }
 }
 
