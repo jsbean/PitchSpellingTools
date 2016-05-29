@@ -79,7 +79,7 @@ public final class PitchSetSpeller: PitchSpeller {
         return try pitchSet.spelledWithDefaultSpellings()
     }
     
-    // REFACTOR
+    // TODO: make enum return value
     func compareOptions() {
         
         clearComparisonStages()
@@ -97,8 +97,7 @@ public final class PitchSetSpeller: PitchSpeller {
             
             // Otherwise, prepare comparison state for Dyad
             let comparisonStage = makeComparisonStage(for: dyad)
-            let weight = (Float(dyads.count - position) / Float(dyads.count)) / 2
-            comparisonStage.applyRankings(withWeight: weight)
+            comparisonStage.applyRankings(withWeight: rankWeight(for: position))
         }
 
         if allNodesHaveBeenRanked {
@@ -113,13 +112,17 @@ public final class PitchSetSpeller: PitchSpeller {
             // - merge paths
         }
     }
-
+    
     private func rankObjectivelySpellableDyad(dyad: Dyad) {
         [dyad.higher, dyad.lower].forEach { rankObjectivelySpellablePitch($0) }
     }
     
     private func rankObjectivelySpellablePitch(pitch: Pitch) {
         nodesByPitch[pitch]!.first!.rank = 1
+    }
+    
+    private func rankWeight(for position: Int) -> Float {
+        return (Float(dyads.count - position) / Float(dyads.count)) / 2
     }
     
     // FIXME: Make better names
