@@ -119,6 +119,7 @@ public final class PitchSetSpeller: PitchSpeller {
     }
     
     // TODO: Refactor (get spelled / unspelled from Dyad)
+    // FIXME: Get rid of all of the optional unwrapping !
     private func makeComparisonStage(for dyad: Dyad) -> ComparisonStage {
         
         let comparisonStage: ComparisonStage

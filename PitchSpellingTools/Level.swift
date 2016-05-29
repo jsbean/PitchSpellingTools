@@ -22,10 +22,11 @@ internal final class Level {
     internal init(nodes: [Node]) {
         self.nodes = nodes
     }
+}
+
+extension Level: CustomStringConvertible {
     
-//    
-//    
-//    internal func filter(with filter: NodeFilter) {
-//        self.nodes = filter.filter(nodes)
-//    }
+    internal var description: String {
+        return "\(nodes)"
+    }
 }

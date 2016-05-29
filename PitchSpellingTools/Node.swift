@@ -40,5 +40,7 @@ internal func == (lhs: Node, rhs: Node) -> Bool {
 
 extension Node: CustomStringConvertible {
     
-    internal var description: String { return "\(spelling); rank: \(rank)" }
+    internal var description: String {
+        return "\(spelling); rank: \(rank)"
+    }
 }
