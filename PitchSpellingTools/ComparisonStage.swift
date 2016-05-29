@@ -8,9 +8,6 @@
 
 import Foundation
 
-/**
- - TODO: Create diagnostics description
- */
 protocol ComparisonStage: CustomStringConvertible {
     
     var edges: [Edge] { get }
