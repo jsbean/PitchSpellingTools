@@ -84,6 +84,7 @@ public final class PitchSetSpeller: PitchSpeller {
         
         clearComparisonStages()
 
+        // wrap up
         for (position, dyad) in dyads.enumerate() {
             
             // If all nodes have been given a rank, we are ready to make decisions
@@ -98,7 +99,6 @@ public final class PitchSetSpeller: PitchSpeller {
             // Otherwise, prepare comparison state for Dyad
             let comparisonStage = makeComparisonStage(for: dyad)
             comparisonStage.applyRankings(withWeight: rankWeight(for: position))
-            print(comparisonStage)
         }
 
         if allNodesHaveBeenRanked {
@@ -122,6 +122,7 @@ public final class PitchSetSpeller: PitchSpeller {
         nodesByPitch[pitch]!.first!.rank = 1
     }
     
+    // TODO: refine
     private func rankWeight(for position: Int) -> Float {
         return (Float(dyads.count - position) / Float(dyads.count)) / 2
     }

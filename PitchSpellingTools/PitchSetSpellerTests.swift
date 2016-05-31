@@ -187,7 +187,7 @@ class PitchSetSpellerTests: XCTestCase {
 //        }
 //    }
 //    
-//    func testManyPitcheseighthStep() {
+//    func testManyPitchesEighthStep() {
 //        let pitchSet: PitchSet = [
 //            Pitch(noteNumber: 60.25),
 //            Pitch(noteNumber: 61.5),
@@ -206,7 +206,7 @@ class PitchSetSpellerTests: XCTestCase {
 //            do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
 //        }
 //    }
-//    
+//
 //    func testSomePitcheseighthStep() {
 //        let pitchSet: PitchSet = [
 //            Pitch(noteNumber: 60.25),

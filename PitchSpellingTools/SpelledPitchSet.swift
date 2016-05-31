@@ -8,14 +8,22 @@
 
 import Pitch
 
-public struct SpelledPitchSet {
+public struct SpelledPitchSet: SequenceType {
     
     private let pitches: Set<SpelledPitch>
     
     public init(pitches: [SpelledPitch]) {
         self.pitches = Set(pitches)
     }
+    
+    /// Generate `Pitches` for iteration.
+    public func generate() -> AnyGenerator<SpelledPitch> {
+        var generator = pitches.generate()
+        return AnyGenerator { return generator.next() }
+    }
 }
+
+
 
 extension SpelledPitchSet: Equatable { }
 

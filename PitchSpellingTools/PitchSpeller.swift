@@ -8,10 +8,7 @@
 
 import Pitch
 
-// TODO: make class ?
-public protocol PitchSpeller {
-    
-}
+public protocol PitchSpeller { }
 
 extension PitchSpeller {
     
