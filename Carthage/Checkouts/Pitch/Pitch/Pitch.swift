@@ -11,7 +11,7 @@ import ArithmeticTools
 /**
  The quality of a sound governed by the rate of vibrations producing it.
  */
-public class Pitch: CustomStringConvertible {
+public struct Pitch: CustomStringConvertible {
     
     // MARK - Type Properties
     
