@@ -19,154 +19,81 @@ class PitchHorizontalitySpellerTests: XCTestCase {
     }
     
     func testMiddleC() {
-        let speller = PitchHorizontalitySpeller(pitches: [Pitch.middleC])
+        let speller = PitchHorizontalitySpeller(pitches: [60])
         XCTAssertEqual(try speller.spell(), [SpelledPitch(60, PitchSpelling(.c))])
     }
     
 
     func testAFlat() {
-        let speller = PitchHorizontalitySpeller(pitches: [Pitch(noteNumber: 68)])
-        do {
-            let spelledPitches = try speller.spell()
-            XCTAssertEqual(
-                spelledPitches,
-                [
-                    SpelledPitch(
-                        pitch: Pitch(noteNumber: 68), spelling: PitchSpelling(.a, .flat)
-                    )
-                ]
-            )
-            
-        } catch { XCTFail() }
+        let speller = PitchHorizontalitySpeller(pitches: [68])
+        XCTAssertEqual(try speller.spell(), [SpelledPitch(68, PitchSpelling(.a, .flat))])
     }
     
     func testCG() {
-        let speller = PitchHorizontalitySpeller(
-            pitches: [Pitch(noteNumber: 60), Pitch(noteNumber: 67)]
+        let speller = PitchHorizontalitySpeller(pitches: [60,67])
+        XCTAssertEqual(
+            try speller.spell(),
+            [
+                SpelledPitch(60, PitchSpelling(.c)), SpelledPitch(67, PitchSpelling(.g))
+            ]
         )
-        do {
-            let spelledPitches = try speller.spell()
-            XCTAssertEqual(
-                spelledPitches,
-                [
-                    SpelledPitch(
-                        pitch: Pitch(noteNumber: 60), spelling: PitchSpelling(.c)
-                    ),
-                    SpelledPitch(
-                        pitch: Pitch(noteNumber: 67), spelling: PitchSpelling(.g)
-                    )
-                ]
-            )
-            
-        } catch { XCTFail() }
     }
     
     func testCEFlat() {
-        let speller = PitchHorizontalitySpeller(
-            pitches: [Pitch(noteNumber: 60), Pitch(noteNumber: 63)]
-        )
-        do {
-            let spelledPitches = try speller.spell()
+        let speller = PitchHorizontalitySpeller(pitches: [60,63])
             XCTAssertEqual(
-                spelledPitches,
-                [
-                    SpelledPitch(
-                        pitch: Pitch(noteNumber: 60), spelling: PitchSpelling(.c)
-                    ),
-                    SpelledPitch(
-                        pitch: Pitch(noteNumber: 63), spelling: PitchSpelling(.e, .flat)
-                    )
-                ]
-            )
-        } catch { XCTFail() }
+            try speller.spell(),
+            [
+                SpelledPitch(60, PitchSpelling(.c)),
+                SpelledPitch(63, PitchSpelling(.e, .flat))
+            ]
+        )
     }
     
     func testCDFlatEFlat() {
-        let speller = PitchHorizontalitySpeller(
-            pitches: [Pitch(noteNumber: 60), Pitch(noteNumber: 61), Pitch(noteNumber: 63)]
-        )
-        do {
-            let spelledPitches = try speller.spell()
+        let speller = PitchHorizontalitySpeller(pitches: [60,61,63])
             XCTAssertEqual(
-                Set(spelledPitches),
-                [
-                    SpelledPitch(
-                        pitch: Pitch(noteNumber: 60), spelling: PitchSpelling(.c)
-                    ),
-                    SpelledPitch(
-                        pitch: Pitch(noteNumber: 61), spelling: PitchSpelling(.d, .flat)
-                    ),
-                    SpelledPitch(
-                        pitch: Pitch(noteNumber: 63), spelling: PitchSpelling(.e, .flat)
-                    )
-                ]
-            )
-        } catch { XCTFail() }
+            Set(try speller.spell()),
+            [
+                SpelledPitch(60, PitchSpelling(.c)),
+                SpelledPitch(61, PitchSpelling(.d, .flat)),
+                SpelledPitch(63, PitchSpelling(.e, .flat))
+            ]
+        )
     }
     
     func test_63_66_68() {
-        let speller = PitchHorizontalitySpeller(
-            pitches: [Pitch(noteNumber: 63), Pitch(noteNumber: 66), Pitch(noteNumber: 68)]
+        let speller = PitchHorizontalitySpeller(pitches: [63,66,68])
+        XCTAssertEqual(
+            Set(try speller.spell()),
+            [
+                SpelledPitch(63, PitchSpelling(.d, .sharp)),
+                SpelledPitch(66, PitchSpelling(.f, .sharp)),
+                SpelledPitch(68, PitchSpelling(.g, .sharp))
+            ]
         )
-        do {
-            let spelledPitches = try speller.spell()
-            XCTAssertEqual(
-                Set(spelledPitches),
-                [
-                    SpelledPitch(
-                        pitch: Pitch(noteNumber: 63), spelling: PitchSpelling(.d, .sharp)
-                    ),
-                    SpelledPitch(
-                        pitch: Pitch(noteNumber: 66), spelling: PitchSpelling(.f, .sharp)
-                    ),
-                    SpelledPitch(
-                        pitch: Pitch(noteNumber: 68), spelling: PitchSpelling(.g, .sharp)
-                    )
-                ]
-            )
-        } catch { XCTFail() }
     }
     
     func test__65_5__69_25() {
-        let speller = PitchHorizontalitySpeller(
-            pitches: [Pitch(noteNumber: 65.5), Pitch(noteNumber: 69.25)]
-        )
-        do {
-            let spelledPitches = try speller.spell()
+        let speller = PitchHorizontalitySpeller(pitches: [65.5, 69.25])
             XCTAssertEqual(
-                Set(spelledPitches),
-                [
-                    SpelledPitch(
-                        pitch: Pitch(noteNumber: 65.5), spelling: PitchSpelling(.f, .quarterSharp)
-                    ),
-                    SpelledPitch(
-                        pitch: Pitch(noteNumber: 69.25), spelling: PitchSpelling(.a, .quarterSharp, .down)
-                    )
-                ]
-            )
-        } catch { XCTFail() }
+            Set(try speller.spell()),
+            [
+                SpelledPitch(65.50, PitchSpelling(.f, .quarterSharp)),
+                SpelledPitch(69.25, PitchSpelling(.a, .quarterSharp, .down))
+            ]
+        )
     }
     
     func test_60_61_62() {
-        let speller = PitchHorizontalitySpeller(
-            pitches: [Pitch(noteNumber: 60), Pitch(noteNumber: 61), Pitch(noteNumber: 62)]
+        let speller = PitchHorizontalitySpeller(pitches: [60,61,62])
+        XCTAssertEqual(
+            Set(try speller.spell()),
+            [
+                SpelledPitch(60, PitchSpelling(.c)),
+                SpelledPitch(61, PitchSpelling(.c, .sharp)),
+                SpelledPitch(62, PitchSpelling(.d))
+            ]
         )
-        do {
-            let spelledPitches = try speller.spell()
-            XCTAssertEqual(
-                Set(spelledPitches),
-                [
-                    SpelledPitch(
-                        pitch: Pitch(noteNumber: 60), spelling: PitchSpelling(.c)
-                    ),
-                    SpelledPitch(
-                        pitch: Pitch(noteNumber: 61), spelling: PitchSpelling(.c, .sharp)
-                    ),
-                    SpelledPitch(
-                        pitch: Pitch(noteNumber: 62), spelling: PitchSpelling(.d)
-                    )
-                ]
-            )
-        } catch { XCTFail() }
     }
 }
