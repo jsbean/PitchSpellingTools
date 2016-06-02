@@ -11,9 +11,23 @@ import Pitch
 
 public struct PitchHorizontalitySpeller: PitchSpeller {
     
-    public enum Error: ErrorType {
-        case Empty
-    }
+    public enum Error: ErrorType { case Empty }
+    
+    // - FIXME: DRY -> encapsulate this into NodeResource Factory / .init
+    /// - warning: assuming we don't want unconventional enharmonics
+    private lazy var nodeResource: NodeResource = {
+//        var result: [Pitch: [Node]] = [:]
+//        for pitch in self.pitches {
+//            result[pitch] = pitch.spellingsWithoutUnconventionalEnharmonics.map {
+//                Node(pitch: pitch, spelling: $0)
+//            }
+//        }
+//        return result
+    }()
+    
+    private lazy var comparisonStageFactory: ComparisonStageFactory = {
+        ComparisonStageFactory(nodeResource: self.nodeResource)
+    }()
     
     let pitches: [Pitch]
     
@@ -32,7 +46,11 @@ public struct PitchHorizontalitySpeller: PitchSpeller {
         }
         
         for index in 0 ..< pitches.count - 1 {
+            
             let previous = previousDyad(atIndex: index)
+            
+            
+            
             let next = nextDyad(atIndex: index)
             
         }

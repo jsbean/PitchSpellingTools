@@ -61,6 +61,8 @@
 		0781750D1CD8F67C00AAB396 /* PitchSpelling+FineAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781750B1CD8F67C00AAB396 /* PitchSpelling+FineAdjustment.swift */; };
 		0781750F1CD8F69700AAB396 /* PitchSpelling+SpellingDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781750E1CD8F69700AAB396 /* PitchSpelling+SpellingDistance.swift */; };
 		078175101CD8F69700AAB396 /* PitchSpelling+SpellingDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781750E1CD8F69700AAB396 /* PitchSpelling+SpellingDistance.swift */; };
+		0788817D1D00654F00A3ADD4 /* NodeResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0788817C1D00654F00A3ADD4 /* NodeResource.swift */; };
+		0788817E1D00654F00A3ADD4 /* NodeResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0788817C1D00654F00A3ADD4 /* NodeResource.swift */; };
 		078DAE041CF8E8480095AFC9 /* ComparisonStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078DAE031CF8E8480095AFC9 /* ComparisonStage.swift */; };
 		078DAE051CF8E8480095AFC9 /* ComparisonStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078DAE031CF8E8480095AFC9 /* ComparisonStage.swift */; };
 		078DAE071CF8E8580095AFC9 /* SemiAmbiguousComparisonStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078DAE061CF8E8580095AFC9 /* SemiAmbiguousComparisonStage.swift */; };
@@ -241,6 +243,7 @@
 		078175081CD8F64500AAB396 /* PitchSpelling+Resolution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+Resolution.swift"; path = "PitchSpellingTools/PitchSpelling+Resolution.swift"; sourceTree = "<group>"; };
 		0781750B1CD8F67C00AAB396 /* PitchSpelling+FineAdjustment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+FineAdjustment.swift"; path = "PitchSpellingTools/PitchSpelling+FineAdjustment.swift"; sourceTree = "<group>"; };
 		0781750E1CD8F69700AAB396 /* PitchSpelling+SpellingDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+SpellingDistance.swift"; path = "PitchSpellingTools/PitchSpelling+SpellingDistance.swift"; sourceTree = "<group>"; };
+		0788817C1D00654F00A3ADD4 /* NodeResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeResource.swift; path = PitchSpellingTools/NodeResource.swift; sourceTree = "<group>"; };
 		078DAE031CF8E8480095AFC9 /* ComparisonStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComparisonStage.swift; path = PitchSpellingTools/ComparisonStage.swift; sourceTree = "<group>"; };
 		078DAE061CF8E8580095AFC9 /* SemiAmbiguousComparisonStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SemiAmbiguousComparisonStage.swift; path = PitchSpellingTools/SemiAmbiguousComparisonStage.swift; sourceTree = "<group>"; };
 		078DAE091CF8E86E0095AFC9 /* FullyAmbiguousComparisonStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FullyAmbiguousComparisonStage.swift; path = PitchSpellingTools/FullyAmbiguousComparisonStage.swift; sourceTree = "<group>"; };
@@ -392,6 +395,7 @@
 				07A8C8131CF787F200CFD69B /* Level.swift */,
 				07A8C8111CF787F200CFD69B /* Edge.swift */,
 				07A8C8141CF787F200CFD69B /* Node.swift */,
+				0788817C1D00654F00A3ADD4 /* NodeResource.swift */,
 				078DAE031CF8E8480095AFC9 /* ComparisonStage.swift */,
 				070732F51D00609600E9F13C /* ComparisonStageFactory.swift */,
 				078DAE061CF8E8580095AFC9 /* SemiAmbiguousComparisonStage.swift */,
@@ -770,6 +774,7 @@
 				0752A5441CD69BD0007C25AB /* DyadSpeller.swift in Sources */,
 				0796E1271CE402FA0084667B /* IntervalQualityType.swift in Sources */,
 				07F6F1471CD7E7FF0026E89D /* PitchSpellingDyad.swift in Sources */,
+				0788817D1D00654F00A3ADD4 /* NodeResource.swift in Sources */,
 				079DABC81CEE4C6A0019649D /* LineOfFifths.swift in Sources */,
 				0752A5501CD69BD0007C25AB /* PitchSpelling.swift in Sources */,
 				078DAE071CF8E8580095AFC9 /* SemiAmbiguousComparisonStage.swift in Sources */,
@@ -865,6 +870,7 @@
 				0752A5451CD69BD0007C25AB /* DyadSpeller.swift in Sources */,
 				0796E1281CE402FA0084667B /* IntervalQualityType.swift in Sources */,
 				07F6F1481CD7E7FF0026E89D /* PitchSpellingDyad.swift in Sources */,
+				0788817E1D00654F00A3ADD4 /* NodeResource.swift in Sources */,
 				079DABC91CEE4C6A0019649D /* LineOfFifths.swift in Sources */,
 				0752A5511CD69BD0007C25AB /* PitchSpelling.swift in Sources */,
 				078DAE081CF8E8580095AFC9 /* SemiAmbiguousComparisonStage.swift in Sources */,

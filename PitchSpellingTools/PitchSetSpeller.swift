@@ -15,22 +15,13 @@ import Pitch
 public final class PitchSetSpeller: PitchSpeller {
     
     private var allNodesHaveBeenRanked: Bool {
-        for (_, nodes) in nodesByPitch {
-            for node in nodes {
-                if node.rank == nil { return false }
-            }
-        }
-        return true
+        return nodeResource.allNodesHaveBeenRanked
     }
     
-    private lazy var nodesByPitch: [Pitch: [Node]] = {
-        var result: [Pitch: [Node]] = [:]
-        for pitch in self.pitchSet {
-            result[pitch] = pitch.spellingsWithoutUnconventionalEnharmonics.map {
-                Node(pitch: pitch, spelling: $0)
-            }
-        }
-        return result
+    /// - warning: this is currently assuming we don't want unconventional enharmonics 
+    /// (e.g., (c flat), (b sharp), (d double sharp), etc)
+    private lazy var nodeResource: NodeResource = {
+        NodeResource(pitchSet: self.pitchSet)
     }()
     
     private lazy var dyads: [Dyad] = {
@@ -43,7 +34,7 @@ public final class PitchSetSpeller: PitchSpeller {
     // TODO: initialize ComparisonStageFactory once, 
     // - then call for it to make a new ComparisonStage for each dyad
     private lazy var comparisonStageFactory: ComparisonStageFactory = {
-        ComparisonStageFactory(nodesByPitch: self.nodesByPitch)
+        ComparisonStageFactory(nodeResource: self.nodeResource)
     }()
     
     // `PitchSet` to be spelled
@@ -126,7 +117,7 @@ public final class PitchSetSpeller: PitchSpeller {
     }
     
     private func rankObjectivelySpellablePitch(pitch: Pitch) {
-        nodesByPitch[pitch]!.first!.rank = 1
+        nodeResource[pitch]!.first!.rank = 1
     }
     
     // TODO: refine

@@ -10,10 +10,10 @@ import Pitch
 
 struct ComparisonStageFactory {
     
-    private let nodesByPitch: [Pitch: [Node]]
+    private let nodeResource: NodeResource
     
-    init(nodesByPitch: [Pitch: [Node]]) {
-        self.nodesByPitch = nodesByPitch
+    init(nodeResource: NodeResource) {
+        self.nodeResource = nodeResource
     }
     
     func makeComparisonStage(for dyad: Dyad) -> ComparisonStage {
@@ -39,7 +39,7 @@ struct ComparisonStageFactory {
     }
 
     private func level(for pitch: Pitch) -> Level {
-        guard let nodes = nodesByPitch[pitch] else { fatalError("Nodes not initialized") }
+        guard let nodes = nodeResource[pitch] else { fatalError("Nodes not initialized") }
         return Level(pitch: pitch, nodes: nodes)
     }
 }
