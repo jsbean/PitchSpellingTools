@@ -11,6 +11,10 @@ import Pitch
 
 final class PitchHorizontalitySpeller: PitchSpeller {
     
+    enum Error: ErrorType {
+        case cannotSpellNodes
+    }
+    
     /// Collection of references to `Node` objects for each `Pitch`.
     private lazy var nodeResource: NodeResource = { NodeResource(pitches: self.pitches) }()
     
@@ -18,6 +22,10 @@ final class PitchHorizontalitySpeller: PitchSpeller {
     private lazy var comparisonStageFactory: ComparisonStageFactory = {
         ComparisonStageFactory(nodeResource: self.nodeResource)
     }()
+    
+    private var pitchesAreObjectivelySpellableOrMonadic: Bool {
+        return pitches.allMatch({ $0.canBeSpelledObjectively }) || pitches.count == 1
+    }
 
     private var comparisonStages: [ComparisonStage] = []
     
@@ -39,17 +47,22 @@ final class PitchHorizontalitySpeller: PitchSpeller {
      */
     func spell() throws -> [SpelledPitch] {
         
-        guard pitches.count > 0 else { return [] }
+        if pitches.isEmpty { return [] }
         
-        if pitches.allMatch({ $0.canBeSpelledObjectively }) || pitches.count == 1 {
-            return try pitches.map { try $0.spelledWithDefaultSpelling() }
-        }
-        
+        return pitchesAreObjectivelySpellableOrMonadic
+            ? try commitDefaultSpellings()
+            : try commitSpellingsByCreatingComparisonStages()
+    }
+    
+    private func commitDefaultSpellings() throws -> [SpelledPitch] {
+        return try pitches.map { try $0.spelledWithDefaultSpelling() }
+    }
+    
+    private func commitSpellingsByCreatingComparisonStages() throws -> [SpelledPitch] {
         createComparisonStages()
-        
         return nodeResource.allNodesHaveBeenRanked
-            ? try commitRankedPitchSpellings()
-            : try commitPitchSpellingsFromComparisonStages()
+            ? try commitRankedSpellings()
+            : try commitSpellingsFromComparisonStages()
     }
     
     private func createComparisonStages() {
@@ -70,16 +83,15 @@ final class PitchHorizontalitySpeller: PitchSpeller {
         return (Float(position) + 1 / Float(pitches.count)) / 2
     }
     
-    private func commitRankedPitchSpellings() throws -> [SpelledPitch] {
-        var spelledPitches: [SpelledPitch] = []
-        for (pitch, nodes) in nodeResource {
-            guard let first = nodes.first?.spelling else { continue }
-            spelledPitches.append(SpelledPitch(pitch: pitch, spelling: first))
+    private func commitRankedSpellings() throws -> [SpelledPitch] {
+        guard nodeResource.allNodesHaveBeenRanked else { throw Error.cannotSpellNodes }
+        return nodeResource.reduce([]) {
+            guard let spelling = $1.1.first?.spelling else { return $0 }
+            return $0 + SpelledPitch(pitch: $1.0, spelling: spelling)
         }
-        return spelledPitches
     }
     
-    private func commitPitchSpellingsFromComparisonStages() throws -> [SpelledPitch] {
+    private func commitSpellingsFromComparisonStages() throws -> [SpelledPitch] {
         nodeResource.sortForRank()
         var spellingByPitch: [Pitch: Node] = [:]
         for comparisonStage in comparisonStages {
