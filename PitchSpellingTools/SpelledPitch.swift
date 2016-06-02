@@ -25,7 +25,11 @@ public struct SpelledPitch {
     public init(pitch: Pitch, spelling: PitchSpelling) {
         self.pitch = pitch
         self.spelling = spelling
-//        super.init(pitch: pitch)
+    }
+    
+    public init(_ pitch: Pitch, _ spelling: PitchSpelling) {
+        self.pitch = pitch
+        self.spelling = spelling
     }
     
     public var description: String {

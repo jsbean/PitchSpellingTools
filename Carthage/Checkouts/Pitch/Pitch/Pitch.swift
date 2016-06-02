@@ -79,6 +79,13 @@ extension Pitch: FloatLiteralConvertible {
     }
 }
 
+extension Pitch: IntegerLiteralConvertible {
+    
+    public init(integerLiteral value: Int) {
+        self.init(noteNumber: NoteNumber(Float(value)))
+    }
+}
+
 extension Pitch: Comparable { }
 
 public func == (lhs: Pitch, rhs: Pitch) -> Bool {

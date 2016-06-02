@@ -20,16 +20,7 @@ class PitchHorizontalitySpellerTests: XCTestCase {
     
     func testMiddleC() {
         let speller = PitchHorizontalitySpeller(pitches: [Pitch.middleC])
-        do {
-            let spelledPitches = try speller.spell()
-            XCTAssertEqual(
-                spelledPitches,
-                [
-                    SpelledPitch(pitch: Pitch(noteNumber: 60), spelling: PitchSpelling(.c))
-                ]
-            )
-            
-        } catch { XCTFail() }
+        XCTAssertEqual(try speller.spell(), [SpelledPitch(60, PitchSpelling(.c))])
     }
     
 
