@@ -27,33 +27,46 @@ public struct PitchHorizontalitySpeller: PitchSpeller {
     public func spell() throws -> [SpelledPitch] {
         guard pitches.count > 0 else { throw Error.Empty }
         
-        // window of unspelled pitches; for now, a single array, maybe abstract if needed
-        var window: [Pitch] = []
-        var spelledPitches: [SpelledPitch] = []
-        var p = 0
-        while p < pitches.count {
-            let pitch = pitches[p]
-            if pitch.canBeSpelledObjectively {
-                // check window
-                // use pitchSet speller to spell window?
-                
-                // right now
-                if window.count > 0 {
-                    let pitchSetSpeller = PitchSetSpeller(PitchSet(window + pitch))
-                    let spelledPitchArray = (try pitchSetSpeller.spell()).map { $0 }
-                    
-                    // purge window
-                    window = []
-                }
-                //spelledPitches.append(try pitch.spelledWithDefaultSpelling())
-            } else {
-                window.append(pitch)
-            }
-     
-            p += 1
+        if pitches.count == 1 {
+            return try pitches.map { try $0.spelledWithDefaultSpelling() }
         }
         
-        return spelledPitches
+        for index in 0 ..< pitches.count - 1 {
+            let previous = previousDyad(atIndex: index)
+            let next = nextDyad(atIndex: index)
+            
+        }
+        
+        
+//        
+//        // window of unspelled pitches; for now, a single array, maybe abstract if needed
+//        var window: [Pitch] = []
+//        var spelledPitches: [SpelledPitch] = []
+//        var p = 0
+//        while p < pitches.count {
+//            let pitch = pitches[p]
+//            if pitch.canBeSpelledObjectively {
+//                // check window
+//                // use pitchSet speller to spell window?
+//                
+//                // right now
+//                if window.count > 0 {
+//                    let pitchSetSpeller = PitchSetSpeller(PitchSet(window + pitch))
+//                    let spelledPitchArray = (try pitchSetSpeller.spell()).map { $0 }
+//                    
+//                    // purge window
+//                    window = []
+//                }
+//                //spelledPitches.append(try pitch.spelledWithDefaultSpelling())
+//            } else {
+//                window.append(pitch)
+//            }
+//     
+//            p += 1
+//        }
+//        
+//        return spelledPitches
+        return []
     }
     
     private func nextDyad(atIndex index: Int) -> Dyad? {

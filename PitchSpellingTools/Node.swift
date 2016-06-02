@@ -30,6 +30,17 @@ internal final class Node {
         self.pitch = pitch
         self.spelling = spelling
     }
+    
+    /**
+     Create a `Node` with a `Pitch` that can be spelled objectively.
+     
+     - returns: `nil` if the given `pitch` is not spellable objectively.
+     */
+    internal init!(objectivelySpellablePitch pitch: Pitch) {
+        guard pitch.canBeSpelledObjectively else { return nil }
+        self.pitch = pitch
+        self.spelling = pitch.defaultSpelling!
+    }
 }
 
 extension Node: Equatable { }

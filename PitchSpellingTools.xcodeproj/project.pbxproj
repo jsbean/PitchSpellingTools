@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0358B050E4505C5A9304924A /* Pitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19C5D6938D829602622CC89 /* Pitch.framework */; };
 		0372ED17FA15BEB7912966C9 /* PitchSpellingTools.h in Headers */ = {isa = PBXBuildFile; fileRef = BB5DF52543AD28E83639D16F /* PitchSpellingTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		070732F61D00609600E9F13C /* ComparisonStageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070732F51D00609600E9F13C /* ComparisonStageFactory.swift */; };
+		070732F71D00609600E9F13C /* ComparisonStageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070732F51D00609600E9F13C /* ComparisonStageFactory.swift */; };
 		071890E81CD95BD600C5CD17 /* Dyad+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071890E71CD95BD600C5CD17 /* Dyad+PitchSpelling.swift */; };
 		071890E91CD95BD600C5CD17 /* Dyad+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071890E71CD95BD600C5CD17 /* Dyad+PitchSpelling.swift */; };
 		071890EB1CD95FC800C5CD17 /* DyadSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071890EA1CD95FC800C5CD17 /* DyadSpellerTests.swift */; };
@@ -212,6 +214,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		070732F51D00609600E9F13C /* ComparisonStageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComparisonStageFactory.swift; path = PitchSpellingTools/ComparisonStageFactory.swift; sourceTree = "<group>"; };
 		0708F5C5B7E4230E47876574 /* PitchSpellingToolsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitchSpellingToolsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		071890E71CD95BD600C5CD17 /* Dyad+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Dyad+PitchSpelling.swift"; path = "PitchSpellingTools/Dyad+PitchSpelling.swift"; sourceTree = "<group>"; };
 		071890EA1CD95FC800C5CD17 /* DyadSpellerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DyadSpellerTests.swift; path = PitchSpellingToolsTests/DyadSpellerTests.swift; sourceTree = "<group>"; };
@@ -390,6 +393,7 @@
 				07A8C8111CF787F200CFD69B /* Edge.swift */,
 				07A8C8141CF787F200CFD69B /* Node.swift */,
 				078DAE031CF8E8480095AFC9 /* ComparisonStage.swift */,
+				070732F51D00609600E9F13C /* ComparisonStageFactory.swift */,
 				078DAE061CF8E8580095AFC9 /* SemiAmbiguousComparisonStage.swift */,
 				078DAE091CF8E86E0095AFC9 /* FullyAmbiguousComparisonStage.swift */,
 				07FF36421CEBFCDA003D4BE6 /* PitchSetSpeller.swift */,
@@ -787,6 +791,7 @@
 				07BB2F731CDBBA2400DC4D7A /* HalfToneDyadSpeller.swift in Sources */,
 				0781750C1CD8F67C00AAB396 /* PitchSpelling+FineAdjustment.swift in Sources */,
 				07BB2F701CDBBA1300DC4D7A /* EighthToneDyadSpeller.swift in Sources */,
+				070732F61D00609600E9F13C /* ComparisonStageFactory.swift in Sources */,
 				07F6F1501CD8006D0026E89D /* Pitch+PitchSpelling.swift in Sources */,
 				0796E12A1CE403960084667B /* PerfectIntervalQualityType.swift in Sources */,
 				071890F11CD9618600C5CD17 /* PitchSpellingDyad+CustomStringConvertible.swift in Sources */,
@@ -881,6 +886,7 @@
 				07BB2F741CDBBA2400DC4D7A /* HalfToneDyadSpeller.swift in Sources */,
 				0781750D1CD8F67C00AAB396 /* PitchSpelling+FineAdjustment.swift in Sources */,
 				07BB2F711CDBBA1300DC4D7A /* EighthToneDyadSpeller.swift in Sources */,
+				070732F71D00609600E9F13C /* ComparisonStageFactory.swift in Sources */,
 				07F6F1511CD8006D0026E89D /* Pitch+PitchSpelling.swift in Sources */,
 				0796E12B1CE403960084667B /* PerfectIntervalQualityType.swift in Sources */,
 				071890F21CD9618600C5CD17 /* PitchSpellingDyad+CustomStringConvertible.swift in Sources */,
