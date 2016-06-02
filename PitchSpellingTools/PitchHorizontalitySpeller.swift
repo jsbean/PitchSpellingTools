@@ -50,15 +50,15 @@ final class PitchHorizontalitySpeller: PitchSpeller {
         if pitches.isEmpty { return [] }
         
         return pitchesAreObjectivelySpellableOrMonadic
-            ? try commitDefaultSpellings()
-            : try commitSpellingsByCreatingComparisonStages()
+            ? try spelledPitchesSpelledWithDefaultSpellings()
+            : try spelledPitchesByCreatingComparisonStages()
     }
     
-    private func commitDefaultSpellings() throws -> [SpelledPitch] {
+    private func spelledPitchesSpelledWithDefaultSpellings() throws -> [SpelledPitch] {
         return try pitches.map { try $0.spelledWithDefaultSpelling() }
     }
     
-    private func commitSpellingsByCreatingComparisonStages() throws -> [SpelledPitch] {
+    private func spelledPitchesByCreatingComparisonStages() throws -> [SpelledPitch] {
         createComparisonStages()
         return nodeResource.allNodesHaveBeenRanked
             ? try commitRankedSpellings()
@@ -91,6 +91,7 @@ final class PitchHorizontalitySpeller: PitchSpeller {
         }
     }
     
+    // TODO: refactor
     private func commitSpellingsFromComparisonStages() throws -> [SpelledPitch] {
         nodeResource.sortForRank()
         var spellingByPitch: [Pitch: Node] = [:]
