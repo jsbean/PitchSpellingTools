@@ -63,6 +63,10 @@ public struct PitchSpellingDyad {
         return [b.spellingDistance, a.spellingDistance].mean!
     }
     
+    public var meanCoarseDistance: Float {
+        return [abs(b.coarse.distance), abs(a.coarse.distance)].mean!
+    }
+    
     /// Amount of steps between two `PitchSpelling` objects.
     public var steps: Int {
         let difference = a.letterName.steps - b.letterName.steps

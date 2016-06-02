@@ -82,12 +82,6 @@ public final class PitchSetSpeller: PitchSpeller {
             // If all nodes have been given a rank, we are ready to make decisions
             if allNodesHaveBeenRanked { break }
             
-            // If both pitches can be spelled objectively,
-            if dyad.canBeSpelledObjectively {
-                rankObjectivelySpellableDyad(dyad)
-                continue
-            }
-            
             // Otherwise, prepare comparison state for Dyad
             let comparisonStage = comparisonStageFactory.makeComparisonStage(for: dyad)
             comparisonStages.append(comparisonStage)

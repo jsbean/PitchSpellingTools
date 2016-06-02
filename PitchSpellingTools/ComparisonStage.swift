@@ -20,6 +20,12 @@ extension ComparisonStage {
     
     var rules: [(PitchSpellingDyad) -> Bool] {
         return [
+            {
+                if ($0.a.fine != .none || $0.b.fine != .none) {
+                    return $0.isCoarseResolutionMatching
+                }
+                return true
+            },
             { $0.isFineCompatible },
             { $0.isStepPreserving },
             { $0.isCoarseResolutionCompatible },

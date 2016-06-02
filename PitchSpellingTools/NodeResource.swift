@@ -12,6 +12,8 @@ internal struct NodeResource {
     
     private var resource: [Pitch: [Node]]
     
+    var nodes: [Node] { return resource.reduce([]) { $0 + $1.1.map { $0 } } }
+    
     /// `true` if all `Nodes` have been ranked. Otherwise, `false`.
     var allNodesHaveBeenRanked: Bool {
         for (_, nodes) in resource {
@@ -37,5 +39,17 @@ internal struct NodeResource {
     
     subscript (pitch: Pitch) -> [Node]? {
         return resource[pitch]
+    }
+    
+    mutating func sortForRank() {
+        for (pitch, nodes) in resource { resource[pitch] = nodes.sort { $0.rank > $1.rank } }
+    }
+}
+
+extension NodeResource: SequenceType {
+    
+    func generate() -> AnyGenerator<(Pitch, [Node])> {
+        var generator = resource.generate()
+        return AnyGenerator { return generator.next() }
     }
 }

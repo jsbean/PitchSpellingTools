@@ -11,11 +11,8 @@ import Pitch
 
 final class PitchHorizontalitySpeller: PitchSpeller {
     
-    enum Error: ErrorType { case Empty }
-    
-    private lazy var nodeResource: NodeResource = {
-        NodeResource(pitches: self.pitches)
-    }()
+    /// Collection of references to `Node` objects for each `Pitch`.
+    private lazy var nodeResource: NodeResource = { NodeResource(pitches: self.pitches) }()
     
     /// Factory that creates `ComparisonStage` objects applicable for this `PitchSet`
     private lazy var comparisonStageFactory: ComparisonStageFactory = {
@@ -34,56 +31,59 @@ final class PitchHorizontalitySpeller: PitchSpeller {
      - warning: Not yet implemented
      */
     func spell() throws -> [SpelledPitch] {
-        guard pitches.count > 0 else { throw Error.Empty }
         
-        if pitches.count == 1 {
+        guard pitches.count > 0 else { return [] }
+        
+        guard pitches.count > 1 else {
+            return try pitches.map { try $0.spelledWithDefaultSpelling() }
+        }
+        
+        if pitches.allMatch({ $0.canBeSpelledObjectively }) {
             return try pitches.map { try $0.spelledWithDefaultSpelling() }
         }
         
         for index in 0 ..< pitches.count - 1 {
             guard let current = currentDyad(atIndex: index) else { break }
             let comparisonStage = createComparisonStage(for: current)
-            comparisonStage.applyRankings(withWeight: 1)
-        }
-        
-        for comparisonStage in comparisonStages {
-            print(comparisonStage)
+            
+            // here, weight is heavier toward end
+            let weight = (Float(index) + 1 / Float(pitches.count)) / 2
+            comparisonStage.applyRankings(withWeight: weight)
         }
 
-//        
-//        // window of unspelled pitches; for now, a single array, maybe abstract if needed
-//        var window: [Pitch] = []
-//        var spelledPitches: [SpelledPitch] = []
-//        var p = 0
-//        while p < pitches.count {
-//            let pitch = pitches[p]
-//            if pitch.canBeSpelledObjectively {
-//                // check window
-//                // use pitchSet speller to spell window?
-//                
-//                // right now
-//                if window.count > 0 {
-//                    let pitchSetSpeller = PitchSetSpeller(PitchSet(window + pitch))
-//                    let spelledPitchArray = (try pitchSetSpeller.spell()).map { $0 }
-//                    
-//                    // purge window
-//                    window = []
-//                }
-//                //spelledPitches.append(try pitch.spelledWithDefaultSpelling())
-//            } else {
-//                window.append(pitch)
-//            }
-//     
-//            p += 1
-//        }
-//        
-//        return spelledPitches
-        return []
+        // Refactor: commit pitch spellings
+        if nodeResource.allNodesHaveBeenRanked {
+            nodeResource.sortForRank()
+            
+            // apply spellings
+            var sortedPitches: [SpelledPitch] = []
+            for (pitch, nodes) in nodeResource {
+                guard let first = nodes.first?.spelling else { continue }
+                sortedPitches.append(SpelledPitch(pitch: pitch, spelling: first))
+            }
+            return sortedPitches
+        }
+
+        // Refactor: commit pitch spellings
+        var spellingByPitch: [Pitch: Node] = [:]
+        for comparisonStage in comparisonStages {
+            switch comparisonStage {
+            case let stage as DeterminateComparisonStage:
+                spellingByPitch[stage.a.pitch] = stage.a
+                spellingByPitch[stage.b.pitch] = stage.b
+            case let stage as SemiAmbiguousComparisonStage:
+                spellingByPitch[stage.other.pitch] = stage.other.highestRanked
+                spellingByPitch[stage.determinate.pitch] = stage.determinate
+            case let stage as FullyAmbiguousComparisonStage:
+                guard let highestRanked = stage.highestRanked else { fatalError() }
+                spellingByPitch[stage.a.pitch] = highestRanked.a
+                spellingByPitch[stage.b.pitch] = highestRanked.b
+            default: break
+            }
+        }
+        return spellingByPitch.map { SpelledPitch(pitch: $0, spelling: $1.spelling) }
     }
     
-    /**
-     
-     */
     private func createComparisonStage(for dyad: Dyad) -> ComparisonStage {
         let comparisonStage = comparisonStageFactory.makeComparisonStage(for: dyad)
         comparisonStages.append(comparisonStage)

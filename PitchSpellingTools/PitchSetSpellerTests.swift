@@ -145,7 +145,7 @@ class PitchSetSpellerTests: XCTestCase {
 //        ]
 //        do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
 //    }
-    
+//    
 //    func testManyPitchesHalfStep() {
 //        
 //        let pitchSet: PitchSet = [

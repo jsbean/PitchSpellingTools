@@ -19,6 +19,8 @@ internal final class Level {
     /// `Node` objects contained herein, each holding a `PitchSpelling`
     internal let nodes: [Node]
     
+    internal var highestRanked: Node? { return nodes.sort { $0.rank > $1.rank }.first }
+    
     /**
      Create a `Level` with an array of `Node` objects, each holding a `PitchSpelling`.
      */

@@ -33,6 +33,8 @@ extension PitchSpelling {
             return self == .natural ? .none : rawValue > 0 ? .up : .down
         }
         
+        internal var distance: Float { return rawValue }
+        
         internal var resolution: Resolution {
             return rawValue % 1 == 0 ? .halfStep : .quarterStep
         }

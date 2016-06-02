@@ -31,6 +31,15 @@ final class Edge {
         self.a = a
         self.b = b
     }
+    
+    func isCompatible(withDirection direction: PitchSpelling.CoarseAdjustment.Direction)
+        -> Bool
+    {
+        
+        return false
+    }
+    
+    
 }
 
 extension Edge: CustomStringConvertible {

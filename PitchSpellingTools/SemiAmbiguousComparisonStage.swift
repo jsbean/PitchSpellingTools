@@ -32,6 +32,8 @@ final class SemiAmbiguousComparisonStage: ComparisonStage {
         return self.other.nodes.map { Edge(self.determinate, $0) }
     }()
     
+    var highestRanked: Node? { return other.highestRanked }
+    
     init(determinate: Node, other: Level) {
         self.determinate = determinate
         self.other = other
