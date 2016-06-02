@@ -69,6 +69,16 @@ public struct Pitch: CustomStringConvertible {
     }
 }
 
+extension Pitch: FloatLiteralConvertible {
+    
+    /**
+     Create a `Pitch` with a `FloatLiteral`. This value is the `NoteNumber` value.
+     */
+    public init(floatLiteral value: Float) {
+        self.init(noteNumber: NoteNumber(value))
+    }
+}
+
 extension Pitch: Comparable { }
 
 public func == (lhs: Pitch, rhs: Pitch) -> Bool {
