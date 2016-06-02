@@ -96,4 +96,12 @@ class PitchHorizontalitySpellerTests: XCTestCase {
             ]
         )
     }
+    
+    func testManyPitchesPerformance() {
+        let pitches: [Pitch] = [60,61.5,63,64,65.25,66,67,69,70.25,75.5,72.5]
+        self.measureBlock {
+            let speller = PitchHorizontalitySpeller(pitches: pitches)
+            let _ = try? speller.spell()
+        }
+    }
 }
