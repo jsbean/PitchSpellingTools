@@ -11,7 +11,9 @@ import Pitch
 /**
  Structure that extends a `Pitch` with a `PitchSpelling`.
  */
-public class SpelledPitch: Pitch {
+public struct SpelledPitch {
+    
+    public let pitch: Pitch
     
     public let spelling: PitchSpelling
     
@@ -21,11 +23,21 @@ public class SpelledPitch: Pitch {
      - TODO: ensure `PitchSpelling` is valid for given `pitch`.
      */
     public init(pitch: Pitch, spelling: PitchSpelling) {
+        self.pitch = pitch
         self.spelling = spelling
-        super.init(pitch: pitch)
+//        super.init(pitch: pitch)
     }
     
-    public override var description: String {
-        return "\(super.description): \(spelling)"
+    public var description: String {
+        return "\(pitch): \(spelling)"
     }
+}
+
+extension SpelledPitch: Hashable {
+    
+    public var hashValue: Int { return "\(pitch)\(spelling)".hashValue }
+}
+
+public func == (lhs: SpelledPitch, rhs: SpelledPitch) -> Bool {
+    return lhs.pitch == rhs.pitch && lhs.spelling == rhs.spelling
 }

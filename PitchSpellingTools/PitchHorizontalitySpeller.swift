@@ -9,7 +9,7 @@
 import ArrayTools
 import Pitch
 
-public final class PitchHorizontalitySpeller: PitchSpeller {
+public struct PitchHorizontalitySpeller: PitchSpeller {
     
     public enum Error: ErrorType {
         case Empty
