@@ -38,12 +38,13 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
         return result
     }()
     
+    // TODO: mention complexity
     var highestRanked: Edge? {
         return edges
-//            .stableSort {
-//                $0.pitchSpellingDyad.meanCoarseDistance <
-//                $1.pitchSpellingDyad.meanCoarseDistance
-//            }
+            .stableSort {
+                $0.pitchSpellingDyad.meanCoarseDistance <
+                $1.pitchSpellingDyad.meanCoarseDistance
+            }
             .stableSort {
                 $0.pitchSpellingDyad.meanSpellingDistance <
                 $1.pitchSpellingDyad.meanSpellingDistance
@@ -58,28 +59,14 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
     }
     
     func applyRankings(withWeight weight: Float) {
-        
         for edge in edges {
             for rule in rules where !rule(edge.pitchSpellingDyad) {
-                print("rule: \(rule)")
                 penalize(edge: edge, withWeight: weight)
             }
         }
-        
-        print("after applying ranking")
-        edges.forEach {
-            print("edge: \($0)")
-        }
-        
-        // TODO: Refactor out
-        // filter out all but the highest ranking -- these were disqualified
-        //let highestRank = edges.sort { $0.rank > $1.rank }.first!.rank
-        //edges = edges.filter { $0.rank == highestRank }
-        
     }
     
     private func penalize(edge edge: Edge, withWeight weight: Float) {
-        print("penalize edge: \(edge); weight: \(weight)")
         edge.rank -= weight
     }
 }
