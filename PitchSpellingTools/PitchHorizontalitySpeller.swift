@@ -31,7 +31,11 @@ final class PitchHorizontalitySpeller: PitchSpeller {
     }
     
     /**
-     - warning: Not yet implemented
+     - throws: `PitchSpelling.Error` if improper spelling is attempted.
+     
+     - returns: Array of `SpelledPitch` values.
+     
+     - TODO: Change return value to be `SpelledPitchSet`.
      */
     func spell() throws -> [SpelledPitch] {
         
@@ -41,29 +45,42 @@ final class PitchHorizontalitySpeller: PitchSpeller {
             return try pitches.map { try $0.spelledWithDefaultSpelling() }
         }
         
+        createComparisonStages()
+        
+        return nodeResource.allNodesHaveBeenRanked
+            ? try commitRankedPitchSpellings()
+            : try commitPitchSpellingsFromComparisonStages()
+    }
+    
+    private func createComparisonStages() {
         for index in 0 ..< pitches.count - 1 {
-            guard let current = currentDyad(atIndex: index) else { break }
-            let comparisonStage = createComparisonStage(for: current)
-            
-            // here, weight is heavier toward end
-            let weight = (Float(index) + 1 / Float(pitches.count)) / 2
-            comparisonStage.applyRankings(withWeight: weight)
+            guard let currentDyad = dyad(atIndex: index) else { break }
+            let comparisonStage = createComparisonStage(for: currentDyad)
+            comparisonStage.applyRankings(withWeight: rankWeight(for: index))
         }
-
-        // Refactor: commit pitch spellings
-        if nodeResource.allNodesHaveBeenRanked {
-            nodeResource.sortForRank()
-            
-            // apply spellings
-            var sortedPitches: [SpelledPitch] = []
-            for (pitch, nodes) in nodeResource {
-                guard let first = nodes.first?.spelling else { continue }
-                sortedPitches.append(SpelledPitch(pitch: pitch, spelling: first))
-            }
-            return sortedPitches
+    }
+    
+    private func createComparisonStage(for dyad: Dyad) -> ComparisonStage {
+        let comparisonStage = comparisonStageFactory.makeComparisonStage(for: dyad)
+        comparisonStages.append(comparisonStage)
+        return comparisonStage
+    }
+    
+    private func rankWeight(for position: Int) -> Float {
+        return (Float(position) + 1 / Float(pitches.count)) / 2
+    }
+    
+    private func commitRankedPitchSpellings() throws -> [SpelledPitch] {
+        var spelledPitches: [SpelledPitch] = []
+        for (pitch, nodes) in nodeResource {
+            guard let first = nodes.first?.spelling else { continue }
+            spelledPitches.append(SpelledPitch(pitch: pitch, spelling: first))
         }
-
-        // Refactor: commit pitch spellings
+        return spelledPitches
+    }
+    
+    private func commitPitchSpellingsFromComparisonStages() throws -> [SpelledPitch] {
+        nodeResource.sortForRank()
         var spellingByPitch: [Pitch: Node] = [:]
         for comparisonStage in comparisonStages {
             switch comparisonStage {
@@ -82,22 +99,10 @@ final class PitchHorizontalitySpeller: PitchSpeller {
         }
         return spellingByPitch.map { SpelledPitch(pitch: $0, spelling: $1.spelling) }
     }
-    
-    private func createComparisonStage(for dyad: Dyad) -> ComparisonStage {
-        let comparisonStage = comparisonStageFactory.makeComparisonStage(for: dyad)
-        comparisonStages.append(comparisonStage)
-        return comparisonStage
-    }
-    
-    private func currentDyad(atIndex index: Int) -> Dyad? {
+
+    private func dyad(atIndex index: Int) -> Dyad? {
         guard let currentPitch = pitches[safe: index] else { return nil }
         guard let nextPitch = pitches[safe: index + 1] else { return nil }
         return Dyad(currentPitch, nextPitch)
-    }
-    
-    private func previousDyad(atIndex index: Int) -> Dyad? {
-        guard let currentPitch = pitches[safe: index] else { return nil }
-        guard let previousPitch = pitches[safe: index - 1] else { return nil }
-        return Dyad(currentPitch, previousPitch)
     }
 }
