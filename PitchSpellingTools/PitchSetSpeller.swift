@@ -17,25 +17,20 @@ public final class PitchSetSpeller: PitchSpeller {
     private var allNodesHaveBeenRanked: Bool {
         return nodeResource.allNodesHaveBeenRanked
     }
-    
-    /// - warning: this is currently assuming we don't want unconventional enharmonics 
-    /// (e.g., (c flat), (b sharp), (d double sharp), etc)
-    private lazy var nodeResource: NodeResource = {
-        NodeResource(pitchSet: self.pitchSet)
-    }()
+
+    private lazy var nodeResource: NodeResource = { NodeResource(pitches: self.pitchSet) }()
     
     private lazy var dyads: [Dyad] = {
         self.pitchSet.dyads.sort { $0.interval.spellingUrgency < $1.interval.spellingUrgency }
     }()
     
-    // `ComparisonStage` objects built
-    private var comparisonStages: [ComparisonStage] = []
-    
-    // TODO: initialize ComparisonStageFactory once, 
-    // - then call for it to make a new ComparisonStage for each dyad
+    /// Factory that creates `ComparisonStage` objects applicable for this `PitchSet`
     private lazy var comparisonStageFactory: ComparisonStageFactory = {
         ComparisonStageFactory(nodeResource: self.nodeResource)
     }()
+    
+    // `ComparisonStage` objects built that can be referenced after initial decision making
+    private var comparisonStages: [ComparisonStage] = []
     
     // `PitchSet` to be spelled
     private let pitchSet: PitchSet

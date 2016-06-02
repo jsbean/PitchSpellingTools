@@ -39,16 +39,26 @@ final class SemiAmbiguousComparisonStage: ComparisonStage {
     }
     
     func applyRankings(withWeight weight: Float) {
-        for edge in edges {
-            for rule in rules where !rule(edge.pitchSpellingDyad) {
-                penalize(node: edge.b, withWeight: weight)
-            }
+        edges.forEach { penalizeIfNecessary(edge: $0, withWeight: weight) }
+    }
+    
+    private func penalizeIfNecessary(edge edge: Edge, withWeight weight: Float) {
+        ensureIsRanked(edge: edge)
+        for rule in rules where !rule(edge.pitchSpellingDyad) {
+            penalize(edge: edge, withWeight: weight)
         }
     }
     
+    private func penalize(edge edge: Edge, withWeight weight: Float) {
+        penalize(node: edge.b, withWeight: weight)
+    }
+    
     private func penalize(node node: Node, withWeight weight: Float) {
-        ensureIsRanked(node: node)
         node.rank! -= weight
+    }
+    
+    private func ensureIsRanked(edge edge: Edge) {
+        [edge.a, edge.b].forEach { ensureIsRanked(node: $0) }
     }
     
     private func ensureIsRanked(node node: Node) {

@@ -52,6 +52,27 @@ class PitchHorizontalitySpellerTests: XCTestCase {
         } catch { XCTFail() }
     }
     
+    func testCG() {
+        let speller = PitchHorizontalitySpeller(
+            pitches: [Pitch(noteNumber: 60), Pitch(noteNumber: 67)]
+        )
+        do {
+            let spelledPitches = try speller.spell()
+            XCTAssertEqual(
+                spelledPitches,
+                [
+                    SpelledPitch(
+                        pitch: Pitch(noteNumber: 60), spelling: PitchSpelling(.c)
+                    ),
+                    SpelledPitch(
+                        pitch: Pitch(noteNumber: 67), spelling: PitchSpelling(.g)
+                    )
+                ]
+            )
+            
+        } catch { XCTFail() }
+    }
+    
     func testCEFlat() {
         let speller = PitchHorizontalitySpeller(
             pitches: [Pitch(noteNumber: 60), Pitch(noteNumber: 63)]

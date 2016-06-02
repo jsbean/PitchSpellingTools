@@ -17,11 +17,18 @@ struct ComparisonStageFactory {
     }
     
     func makeComparisonStage(for dyad: Dyad) -> ComparisonStage {
-        let comparisonStage: ComparisonStage
+        
+        if dyad.canBeSpelledObjectively {
+
+            return DeterminateComparisonStage(
+                node(forObjectivelySpellablePitch: dyad.lower),
+                node(forObjectivelySpellablePitch: dyad.higher)
+            )
+        }
         
         if dyad.isFullyAmbiguouslySpellable {
             
-            comparisonStage = FullyAmbiguousComparisonStage(
+            return FullyAmbiguousComparisonStage(
                 level(for: dyad.lower),
                 level(for: dyad.higher)
             )
@@ -29,17 +36,23 @@ struct ComparisonStageFactory {
         } else {
             
             let (objectivelySpellable, subjective) = dyad.objectivelySpellableAndNot!
-            comparisonStage = SemiAmbiguousComparisonStage(
-                determinate: Node(objectivelySpellablePitch: objectivelySpellable),
+            return SemiAmbiguousComparisonStage(
+                determinate: node(forObjectivelySpellablePitch: objectivelySpellable),
                 other: level(for: subjective)
             )
         }
-        
-        return comparisonStage
     }
 
     private func level(for pitch: Pitch) -> Level {
         guard let nodes = nodeResource[pitch] else { fatalError("Nodes not initialized") }
         return Level(pitch: pitch, nodes: nodes)
+    }
+    
+    private func node(forObjectivelySpellablePitch pitch: Pitch) -> Node {
+        guard let nodes = nodeResource[pitch] where
+            nodes.count == 1,
+            let first = nodes.first
+        else { fatalError("Nodes not initialized") }
+        return first
     }
 }

@@ -9,36 +9,31 @@
 import ArrayTools
 import Pitch
 
-public struct PitchHorizontalitySpeller: PitchSpeller {
+final class PitchHorizontalitySpeller: PitchSpeller {
     
-    public enum Error: ErrorType { case Empty }
+    enum Error: ErrorType { case Empty }
     
-    // - FIXME: DRY -> encapsulate this into NodeResource Factory / .init
-    /// - warning: assuming we don't want unconventional enharmonics
     private lazy var nodeResource: NodeResource = {
-//        var result: [Pitch: [Node]] = [:]
-//        for pitch in self.pitches {
-//            result[pitch] = pitch.spellingsWithoutUnconventionalEnharmonics.map {
-//                Node(pitch: pitch, spelling: $0)
-//            }
-//        }
-//        return result
+        NodeResource(pitches: self.pitches)
     }()
     
+    /// Factory that creates `ComparisonStage` objects applicable for this `PitchSet`
     private lazy var comparisonStageFactory: ComparisonStageFactory = {
         ComparisonStageFactory(nodeResource: self.nodeResource)
     }()
     
+    private var comparisonStages: [ComparisonStage] = []
+    
     let pitches: [Pitch]
     
-    public init(pitches: [Pitch]) {
+    init(pitches: [Pitch]) {
         self.pitches = pitches
     }
     
     /**
      - warning: Not yet implemented
      */
-    public func spell() throws -> [SpelledPitch] {
+    func spell() throws -> [SpelledPitch] {
         guard pitches.count > 0 else { throw Error.Empty }
         
         if pitches.count == 1 {
@@ -46,16 +41,15 @@ public struct PitchHorizontalitySpeller: PitchSpeller {
         }
         
         for index in 0 ..< pitches.count - 1 {
-            
-            let previous = previousDyad(atIndex: index)
-            
-            
-            
-            let next = nextDyad(atIndex: index)
-            
+            guard let current = currentDyad(atIndex: index) else { break }
+            let comparisonStage = createComparisonStage(for: current)
+            comparisonStage.applyRankings(withWeight: 1)
         }
         
-        
+        for comparisonStage in comparisonStages {
+            print(comparisonStage)
+        }
+
 //        
 //        // window of unspelled pitches; for now, a single array, maybe abstract if needed
 //        var window: [Pitch] = []
@@ -87,7 +81,16 @@ public struct PitchHorizontalitySpeller: PitchSpeller {
         return []
     }
     
-    private func nextDyad(atIndex index: Int) -> Dyad? {
+    /**
+     
+     */
+    private func createComparisonStage(for dyad: Dyad) -> ComparisonStage {
+        let comparisonStage = comparisonStageFactory.makeComparisonStage(for: dyad)
+        comparisonStages.append(comparisonStage)
+        return comparisonStage
+    }
+    
+    private func currentDyad(atIndex index: Int) -> Dyad? {
         guard let currentPitch = pitches[safe: index] else { return nil }
         guard let nextPitch = pitches[safe: index + 1] else { return nil }
         return Dyad(currentPitch, nextPitch)
