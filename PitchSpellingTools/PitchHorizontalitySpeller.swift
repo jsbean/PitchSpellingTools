@@ -18,11 +18,14 @@ final class PitchHorizontalitySpeller: PitchSpeller {
     private lazy var comparisonStageFactory: ComparisonStageFactory = {
         ComparisonStageFactory(nodeResource: self.nodeResource)
     }()
-    
+
     private var comparisonStages: [ComparisonStage] = []
     
     let pitches: [Pitch]
-    
+
+    /**
+     Create a `PitchHorizontalitySpeller` with an array of `Pitch` values.
+     */
     init(pitches: [Pitch]) {
         self.pitches = pitches
     }
@@ -34,11 +37,7 @@ final class PitchHorizontalitySpeller: PitchSpeller {
         
         guard pitches.count > 0 else { return [] }
         
-        guard pitches.count > 1 else {
-            return try pitches.map { try $0.spelledWithDefaultSpelling() }
-        }
-        
-        if pitches.allMatch({ $0.canBeSpelledObjectively }) {
+        if pitches.allMatch({ $0.canBeSpelledObjectively }) || pitches.count == 1 {
             return try pitches.map { try $0.spelledWithDefaultSpelling() }
         }
         
