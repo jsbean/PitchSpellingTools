@@ -14,24 +14,10 @@ class PitchSetTests: XCTestCase {
     func testInitWithNothing() {
         let _ = PitchSet()
     }
-    
-    func testInitWithOnePitchVariadic() {
-        let _ = PitchSet(Pitch(noteNumber: 60))
-    }
-    
-    func testInitWithArray() {
-        let _ = PitchSet(pitches: [Pitch(noteNumber: 60), Pitch(noteNumber: 61)])
-    }
-    
-    func testIterate() {
-        let set = PitchSet(pitches: [Pitch(noteNumber: 60), Pitch(noteNumber: 61)])
-        let expected = [Pitch(noteNumber: 60), Pitch(noteNumber: 61)]
-        XCTAssertEqual(Set(set.map { $0 }), Set(expected))
-    }
-    
+
     func testDyads() {
         let set = PitchSet(
-            pitches: [
+            sequence: [
                 Pitch(noteNumber: 60),
                 Pitch(noteNumber: 61),
                 Pitch(noteNumber: 62),

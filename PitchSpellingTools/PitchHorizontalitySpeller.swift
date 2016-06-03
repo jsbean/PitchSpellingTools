@@ -1,5 +1,5 @@
 //
-//  PitchHorizontalitySpeller.swift
+//  PitchSequenceSpeller.swift
 //  PitchSpellingTools
 //
 //  Created by James Bean on 5/31/16.
@@ -9,33 +9,35 @@
 import ArrayTools
 import Pitch
 
-final class PitchHorizontalitySpeller: PitchSpeller {
+final class PitchSequenceSpeller: PitchSpeller {
     
     enum Error: ErrorType {
         case cannotSpellNodes
     }
     
     /// Collection of references to `Node` objects for each `Pitch`.
-    private lazy var nodeResource: NodeResource = { NodeResource(pitches: self.pitches) }()
+    private lazy var nodeResource: NodeResource = {
+        NodeResource(pitches: self.pitchSequence)
+    }()
     
     /// Factory that creates `ComparisonStage` objects applicable for this `PitchSet`
     private lazy var comparisonStageFactory: ComparisonStageFactory = {
         ComparisonStageFactory(nodeResource: self.nodeResource)
     }()
     
-    private var pitchesAreObjectivelySpellableOrMonadic: Bool {
-        return pitches.allMatch({ $0.canBeSpelledObjectively }) || pitches.count == 1
+    private var pitchSequenceAreObjectivelySpellableOrMonadic: Bool {
+        return pitchSequence.allMatch({ $0.canBeSpelledObjectively }) || pitchSequence.isMonadic
     }
 
     private var comparisonStages: [ComparisonStage] = []
     
-    let pitches: [Pitch]
+    let pitchSequence: PitchSequence
 
     /**
-     Create a `PitchHorizontalitySpeller` with an array of `Pitch` values.
+     Create a `PitchSequenceSpeller` with an array of `Pitch` values.
      */
-    init(pitches: [Pitch]) {
-        self.pitches = pitches
+    init(pitchSequence: PitchSequence) {
+        self.pitchSequence = pitchSequence
     }
     
     /**
@@ -47,18 +49,18 @@ final class PitchHorizontalitySpeller: PitchSpeller {
      */
     func spell() throws -> [SpelledPitch] {
         
-        if pitches.isEmpty { return [] }
+        if pitchSequence.isEmpty { return [] }
         
-        return pitchesAreObjectivelySpellableOrMonadic
-            ? try spelledPitchesSpelledWithDefaultSpellings()
-            : try spelledPitchesByCreatingComparisonStages()
+        return pitchSequenceAreObjectivelySpellableOrMonadic
+            ? try spelledpitchSequenceSpelledWithDefaultSpellings()
+            : try spelledpitchSequenceByCreatingComparisonStages()
     }
     
-    private func spelledPitchesSpelledWithDefaultSpellings() throws -> [SpelledPitch] {
-        return try pitches.map { try $0.spelledWithDefaultSpelling() }
+    private func spelledpitchSequenceSpelledWithDefaultSpellings() throws -> [SpelledPitch] {
+        return try pitchSequence.map { try $0.spelledWithDefaultSpelling() }
     }
     
-    private func spelledPitchesByCreatingComparisonStages() throws -> [SpelledPitch] {
+    private func spelledpitchSequenceByCreatingComparisonStages() throws -> [SpelledPitch] {
         createComparisonStages()
         return nodeResource.allNodesHaveBeenRanked
             ? try commitRankedSpellings()
@@ -66,7 +68,7 @@ final class PitchHorizontalitySpeller: PitchSpeller {
     }
     
     private func createComparisonStages() {
-        for index in 0 ..< pitches.count - 1 {
+        for index in 0 ..< pitchSequence.count - 1 {
             guard let currentDyad = dyad(atIndex: index) else { break }
             let comparisonStage = createComparisonStage(for: currentDyad)
             comparisonStage.applyRankings(withWeight: rankWeight(for: index))
@@ -80,10 +82,12 @@ final class PitchHorizontalitySpeller: PitchSpeller {
     }
     
     private func rankWeight(for position: Int) -> Float {
-        return (Float(position) + 1 / Float(pitches.count)) / 2
+        return (Float(position) + 1 / Float(pitchSequence.count)) / 2
     }
     
     private func commitRankedSpellings() throws -> [SpelledPitch] {
+        print("commit ranked spellings")
+        print(nodeResource.nodes)
         guard nodeResource.allNodesHaveBeenRanked else { throw Error.cannotSpellNodes }
         return nodeResource.reduce([]) {
             guard let spelling = $1.1.first?.spelling else { return $0 }
@@ -92,7 +96,10 @@ final class PitchHorizontalitySpeller: PitchSpeller {
     }
     
     // TODO: refactor
+    // Currently, the previous pitch spelling is just overriden by the current
+    // - as opposed to making a rank comparison
     private func commitSpellingsFromComparisonStages() throws -> [SpelledPitch] {
+        print("commit spellings from comparison stages")
         nodeResource.sortForRank()
         var spellingByPitch: [Pitch: Node] = [:]
         for comparisonStage in comparisonStages {
@@ -104,6 +111,7 @@ final class PitchHorizontalitySpeller: PitchSpeller {
                 spellingByPitch[stage.other.pitch] = stage.other.highestRanked
                 spellingByPitch[stage.determinate.pitch] = stage.determinate
             case let stage as FullyAmbiguousComparisonStage:
+                // get the highest ranked edge
                 guard let highestRanked = stage.highestRanked else { fatalError() }
                 spellingByPitch[stage.a.pitch] = highestRanked.a
                 spellingByPitch[stage.b.pitch] = highestRanked.b
@@ -114,8 +122,8 @@ final class PitchHorizontalitySpeller: PitchSpeller {
     }
 
     private func dyad(atIndex index: Int) -> Dyad? {
-        guard let currentPitch = pitches[safe: index] else { return nil }
-        guard let nextPitch = pitches[safe: index + 1] else { return nil }
+        guard let currentPitch = Array(pitchSequence)[safe: index] else { return nil }
+        guard let nextPitch = Array(pitchSequence)[safe: index + 1] else { return nil }
         return Dyad(currentPitch, nextPitch)
     }
 }

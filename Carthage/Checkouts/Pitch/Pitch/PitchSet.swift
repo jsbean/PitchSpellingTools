@@ -9,13 +9,22 @@
 import ArrayTools
 
 /**
- Unordered collection of unique pitches.
+ Unordered collection of unique `Pitch` values.
  */
-public struct PitchSet: SequenceType {
+public struct PitchSet: PitchSequenceType {
     
     private let pitches: Set<Pitch>
     
     // MARK: - Instance Properties
+    
+    /// Iterable sequence of `Pitch` values contained herein.
+    public var sequence: AnySequence<Pitch> { return AnySequence(pitches) }
+    
+    /// - returns: `true` if there are no `Pitch` objects herein. Otherwsie `false`.
+    public var isEmpty: Bool { return Array(sequence).count == 0 }
+    
+    /// - returns: `true` if there is one `Pitch` object herein. Otherwsie `false`.
+    public var isMonadic: Bool { return Array(sequence).count == 1 }
     
     /**
      Set of `PitchClass` representations of `PitchSet`.
@@ -29,16 +38,6 @@ public struct PitchSet: SequenceType {
      */
     public var pitchClassSet: Set<PitchClass> {
         return Set(pitches.lazy.map { $0.pitchClass })
-    }
-    
-    /// - returns: `true` if there are no `Pitch` objects herein. Otherwsie `false`.
-    public var isEmpty: Bool {
-        return Array(pitches).count == 0
-    }
-    
-    /// - returns: `true` if there is one `Pitch` object herein. Otherwsie `false`.
-    public var isMonadic: Bool {
-        return Array(pitches).count == 1
     }
     
     /** 
@@ -56,12 +55,11 @@ public struct PitchSet: SequenceType {
         Pitch(noteNumber: 62)
      ]
      
-     triad.dyads // =>
-     //    [
-     //       Dyad(Pitch(noteNumber: 60), Pitch(noteNumber: 61)),
-     //       Dyad(Pitch(noteNumber: 60), Pitch(noteNumber: 62)),
-     //       Dyad(Pitch(noteNumber: 61), Pitch(noteNumber: 62))
-     //    ]
+     triad.dyads == [
+        Dyad(Pitch(noteNumber: 60), Pitch(noteNumber: 61)),
+        Dyad(Pitch(noteNumber: 60), Pitch(noteNumber: 62)),
+        Dyad(Pitch(noteNumber: 61), Pitch(noteNumber: 62))
+     ]
      ```
      */
     public var dyads: [Dyad] {
@@ -81,30 +79,11 @@ public struct PitchSet: SequenceType {
     
     // MARK: - Initializers
 
-    /// Create a `PitchSet` variadically with 0..n `Pitch` objects.
-    public init(_ pitches: Pitch...) {
-        self.pitches = Set(pitches)
-    }
-    
-    /// Create a `PitchSet` with an `Array` of `Pitch` objects.
-    public init(_ pitches: [Pitch]) {
-        self.pitches = Set(pitches)
-    }
-    
-    /// Create a `PitchSet` with a `Set` of `Pitch` objects.
-    public init(pitches: Set<Pitch>) {
-        self.pitches = pitches
-    }
-    
-    /// Create a `PitchSet` with an `OrderedPitchSet`.
-    public init(orderedPitchSet: OrderedPitchSet) {
-        self.pitches = Set(orderedPitchSet.map { $0} )
-    }
-    
-    /// Generate `Pitches` for iteration.
-    public func generate() -> AnyGenerator<Pitch> {
-        var generator = pitches.generate()
-        return AnyGenerator { return generator.next() }
+    /**
+     Create a `PitchSet` with `SequenceType` containing `Pitch` values.
+     */
+    public init<S: SequenceType where S.Generator.Element == Pitch>(sequence: S) {
+        self.pitches = Set(sequence)
     }
 }
 
@@ -120,7 +99,6 @@ extension PitchSet: ArrayLiteralConvertible {
      ```
      let pitchSet: PitchSet = [Pitch(noteNumber: 60), Pitch(noteNumber: 67)]
      ```
-     
      */
     public init(arrayLiteral pitches: Pitch...) {
         self.pitches = Set(pitches)
