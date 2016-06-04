@@ -11,9 +11,7 @@ import Pitch
 
 final class PitchSequenceSpeller: PitchSpeller {
     
-    enum Error: ErrorType {
-        case cannotSpellNodes
-    }
+    enum Error: ErrorType { case cannotSpellNodes }
     
     /// Collection of references to `Node` objects for each `Pitch`.
     private lazy var nodeResource: NodeResource = {
@@ -25,7 +23,7 @@ final class PitchSequenceSpeller: PitchSpeller {
         ComparisonStageFactory(nodeResource: self.nodeResource)
     }()
     
-    private var pitchSequenceAreObjectivelySpellableOrMonadic: Bool {
+    private var pitchSequenceIsObjectivelySpellableOrMonadic: Bool {
         return pitchSequence.allMatch({ $0.canBeSpelledObjectively }) || pitchSequence.isMonadic
     }
 
@@ -51,16 +49,16 @@ final class PitchSequenceSpeller: PitchSpeller {
         
         if pitchSequence.isEmpty { return [] }
         
-        return pitchSequenceAreObjectivelySpellableOrMonadic
-            ? try spelledpitchSequenceSpelledWithDefaultSpellings()
-            : try spelledpitchSequenceByCreatingComparisonStages()
+        return pitchSequenceIsObjectivelySpellableOrMonadic
+            ? try spelledPitchSequenceSpelledWithDefaultSpellings()
+            : try spelledPitchSequenceByCreatingComparisonStages()
     }
     
-    private func spelledpitchSequenceSpelledWithDefaultSpellings() throws -> [SpelledPitch] {
+    private func spelledPitchSequenceSpelledWithDefaultSpellings() throws -> [SpelledPitch] {
         return try pitchSequence.map { try $0.spelledWithDefaultSpelling() }
     }
     
-    private func spelledpitchSequenceByCreatingComparisonStages() throws -> [SpelledPitch] {
+    private func spelledPitchSequenceByCreatingComparisonStages() throws -> [SpelledPitch] {
         createComparisonStages()
         return nodeResource.allNodesHaveBeenRanked
             ? try commitRankedSpellings()
@@ -72,6 +70,7 @@ final class PitchSequenceSpeller: PitchSpeller {
             guard let currentDyad = dyad(atIndex: index) else { break }
             let comparisonStage = createComparisonStage(for: currentDyad)
             comparisonStage.applyRankings(withWeight: rankWeight(for: index))
+            print(comparisonStage)
         }
     }
     
@@ -89,9 +88,10 @@ final class PitchSequenceSpeller: PitchSpeller {
         print("commit ranked spellings")
         print(nodeResource.nodes)
         guard nodeResource.allNodesHaveBeenRanked else { throw Error.cannotSpellNodes }
-        return nodeResource.reduce([]) {
-            guard let spelling = $1.1.first?.spelling else { return $0 }
-            return $0 + SpelledPitch(pitch: $1.0, spelling: spelling)
+        nodeResource.sortByRank()
+        return nodeResource.reduce([]) { array, nodesByPitch in
+            guard let spelling = nodesByPitch.1.first?.spelling else { return array }
+            return array + SpelledPitch(pitch: nodesByPitch.0, spelling: spelling)
         }
     }
     
@@ -100,9 +100,10 @@ final class PitchSequenceSpeller: PitchSpeller {
     // - as opposed to making a rank comparison
     private func commitSpellingsFromComparisonStages() throws -> [SpelledPitch] {
         print("commit spellings from comparison stages")
-        nodeResource.sortForRank()
+        nodeResource.sortByRank()
         var spellingByPitch: [Pitch: Node] = [:]
         for comparisonStage in comparisonStages {
+            print(comparisonStage)
             switch comparisonStage {
             case let stage as DeterminateComparisonStage:
                 spellingByPitch[stage.a.pitch] = stage.a

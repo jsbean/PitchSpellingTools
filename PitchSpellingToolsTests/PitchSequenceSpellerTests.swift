@@ -103,7 +103,7 @@ class PitchSequenceSpellerTests: XCTestCase {
             Set(try speller.spell()),
             [
                 SpelledPitch(62, PitchSpelling(.d)),
-                SpelledPitch(63, PitchSpelling(.e, .flat)),
+                SpelledPitch(63, PitchSpelling(.d, .sharp)),
                 SpelledPitch(66, PitchSpelling(.f, .sharp)),
                 SpelledPitch(67, PitchSpelling(.g))
             ]

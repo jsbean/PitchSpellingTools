@@ -41,7 +41,7 @@ internal struct NodeResource {
         return resource[pitch]
     }
     
-    mutating func sortForRank() {
+    mutating func sortByRank() {
         for (pitch, nodes) in resource { resource[pitch] = nodes.sort { $0.rank > $1.rank } }
     }
 }
