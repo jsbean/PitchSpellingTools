@@ -10,7 +10,7 @@ import XCTest
 import Pitch
 @testable import PitchSpellingTools
 
-class PitchHorizontalitySpellerTests: XCTestCase {
+class PitchSequenceSpellerTests: XCTestCase {
 
     // empty
     func testEmptyIsEmpty() {
@@ -136,7 +136,17 @@ class PitchHorizontalitySpellerTests: XCTestCase {
         )
     }
     
-    
+    func testDDSharpE() {
+        let speller = PitchSequenceSpeller(pitchSequence: [62,63,64])
+        XCTAssertEqual(
+            Set(try speller.spell()),
+            [
+                SpelledPitch(62, PitchSpelling(.d)),
+                SpelledPitch(63, PitchSpelling(.d, .sharp)),
+                SpelledPitch(64, PitchSpelling(.e))
+            ]
+        )
+    }
     
     func testManypitchSequencePerformance() {
         self.measureBlock {
