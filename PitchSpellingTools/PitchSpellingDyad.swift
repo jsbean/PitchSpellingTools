@@ -51,10 +51,25 @@ public struct PitchSpellingDyad {
      */
     public var isFineMatching: Bool { return b.fine == a.fine }
     
-    // refine for 1/8th tone context for coarse resolution matching
+    /**
+     In the case of 1/8th-tone values, coarse resolution matching is important.
+     
+     For example, (f qtr sharp, a qtr sharp down) is preferable to (f qtr sharp, a nat up)
+    */
     public var isFineCompatible: Bool {
-        if b.fine == .none || a.fine == .none { return true }
-        return isFineMatching
+        return eitherHasFineAdjustment
+            ? isCoarseResolutionMatching
+            : eitherHasNoFineAdjustment
+                ? true
+                : isFineMatching
+    }
+    
+    public var eitherHasNoFineAdjustment: Bool {
+        return b.fine == .none || a.fine == .none
+    }
+    
+    public var eitherHasFineAdjustment: Bool {
+        return a.fine != .none || b.fine != .none
     }
     
     public var hasIntervalFidelity: Bool { return intervalQuality.hasIntervalFidelity }
