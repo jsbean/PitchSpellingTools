@@ -24,12 +24,12 @@
 //    
 //    private let filters: [(Path) -> Bool] = [
 //        { $0.isFineCompatible },
-//        { $0.isStepPreserving },
+//        { $0.hasIntervalFidelity },
 //        { $0.meanCoarseDistance <= 1 },
 //    ]
 //    
 //    internal var stepPreserving: PathCollection {
-//        return PathCollection(paths: paths.filter { $0.isStepPreserving })
+//        return PathCollection(paths: paths.filter { $0.hasIntervalFidelity })
 //    }
 //    
 //    internal var fineCompatible: PathCollection {

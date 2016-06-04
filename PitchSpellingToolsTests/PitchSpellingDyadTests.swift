@@ -84,34 +84,34 @@ class PitchSpellingDyadTests: XCTestCase {
     
     func testCEStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.e))
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testCEFlatStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.e, .flat))
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testCDFlatStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.d, .flat))
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testGSharpBFlatNotStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.g, .sharp), PitchSpelling(.b, .flat))
-        XCTAssertFalse(dyad.isStepPreserving)
+        XCTAssertFalse(dyad.hasIntervalFidelity)
     }
     
     func testCSharpFNotStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c, .sharp), PitchSpelling(.f))
-        XCTAssertFalse(dyad.isStepPreserving)
+        XCTAssertFalse(dyad.hasIntervalFidelity)
     }
     
     func testCQuarterSharpFQuarterSharpStepPreserviing() {
         let dyad = PitchSpellingDyad(
             PitchSpelling(.c, .quarterSharp), PitchSpelling(.f, .quarterSharp)
         )
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testCQuarterSharpFSharpStepPreserving() {
@@ -119,7 +119,7 @@ class PitchSpellingDyadTests: XCTestCase {
             PitchSpelling(.c, .quarterSharp),
             PitchSpelling(.f, .sharp)
         )
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testEFlatBQuarterFlatStepPreserving() {
@@ -127,7 +127,7 @@ class PitchSpellingDyadTests: XCTestCase {
             PitchSpelling(.e, .flat),
             PitchSpelling(.b, .quarterFlat)
         )
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testCQuarterSharpGQuarterFlatNotStepPreserving() {
@@ -135,7 +135,7 @@ class PitchSpellingDyadTests: XCTestCase {
             PitchSpelling(.c, .quarterSharp),
             PitchSpelling(.g, .quarterFlat)
         )
-        XCTAssertFalse(dyad.isStepPreserving)
+        XCTAssertFalse(dyad.hasIntervalFidelity)
     }
     
     func testCSharpGFlatDoubleDiminishedFifth() {
@@ -150,12 +150,12 @@ class PitchSpellingDyadTests: XCTestCase {
         let dyad = PitchSpellingDyad(
             PitchSpelling(.c, .quarterSharp),
             PitchSpelling(.f, .threeQuarterSharp))
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testBFSharpStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.b), PitchSpelling(.f, .sharp))
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testBNaturalFThreeQuarterSharpStepPreserving() {
@@ -163,17 +163,17 @@ class PitchSpellingDyadTests: XCTestCase {
             PitchSpelling(.b, .natural),
             PitchSpelling(.f, .threeQuarterSharp)
         )
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testFBFlatStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.f), PitchSpelling(.b, .flat))
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testBCStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.b), PitchSpelling(.c))
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testBCIntervalQualityMinorSecond() {
@@ -278,37 +278,37 @@ class PitchSpellingDyadTests: XCTestCase {
     
     func testAGFlatNotStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.a), PitchSpelling(.g, .flat))
-        XCTAssertFalse(dyad.isStepPreserving)
+        XCTAssertFalse(dyad.hasIntervalFidelity)
     }
     
     func testAFSharpStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.a), PitchSpelling(.f, .sharp))
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testCFSharpStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.f, .sharp))
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testCGFlatStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.g, .flat))
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testBFlatEStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.b, .flat), PitchSpelling(.e))
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testASharpEStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.a, .sharp), PitchSpelling(.e))
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testGGFlatNotStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.g), PitchSpelling(.g, .flat))
-        XCTAssertFalse(dyad.isStepPreserving)
+        XCTAssertFalse(dyad.hasIntervalFidelity)
     }
     
     func testGAFlatMinorSecond() {
@@ -333,7 +333,7 @@ class PitchSpellingDyadTests: XCTestCase {
     
     func testGFSharpStepPreserving() {
         let dyad = PitchSpellingDyad(PitchSpelling(.g), PitchSpelling(.f, .sharp))
-        XCTAssertTrue(dyad.isStepPreserving)
+        XCTAssertTrue(dyad.hasIntervalFidelity)
     }
     
     func testAGSharpMajorSeventh() {

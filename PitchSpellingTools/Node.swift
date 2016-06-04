@@ -43,10 +43,14 @@ internal final class Node {
     }
 }
 
-extension Node: Equatable { }
+extension Node: Comparable { }
 
 internal func == (lhs: Node, rhs: Node) -> Bool {
     return lhs.spelling == rhs.spelling
+}
+
+internal func < (lhs: Node, rhs: Node) -> Bool {
+    return lhs.rank < rhs.rank
 }
 
 extension Node: CustomStringConvertible {

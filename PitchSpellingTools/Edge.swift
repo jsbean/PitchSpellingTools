@@ -18,28 +18,33 @@ final class Edge {
     }()
     
     // derives edge rank from ranks of nodes, if possible
-    lazy var rank: Float = {
-        switch (self.a.rank, self.b.rank) {
-        case (nil, nil): return 1
-        case let (rank?, nil): return rank
-        case let (nil, rank?): return rank
-        case let (rankA?, rankB?): return [rankA, rankB].mean!
-        }
-    }()
+    var rank: Float
     
     init(_ a: Node, _ b: Node) {
         self.a = a
         self.b = b
-    }
-    
-    func isCompatible(withDirection direction: PitchSpelling.CoarseAdjustment.Direction)
-        -> Bool
-    {
         
-        return false
+        // TODO: refactor
+        var r: Float {
+            switch (a.rank, b.rank) {
+            case (nil, nil): return 1
+            case let (rank?, nil): return rank
+            case let (nil, rank?): return rank
+            case let (rankA?, rankB?): return [rankA, rankB].mean!
+            }
+        }
+        self.rank = r
     }
-    
-    
+}
+
+extension Edge: Comparable { }
+
+func == (lhs: Edge, rhs: Edge) -> Bool {
+    return lhs.a == rhs.a && lhs.b == rhs.b
+}
+
+func < (lhs: Edge, rhs: Edge) -> Bool {
+    return lhs.rank < rhs.rank
 }
 
 extension Edge: CustomStringConvertible {

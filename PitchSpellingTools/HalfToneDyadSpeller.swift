@@ -11,7 +11,7 @@ import Pitch
 internal class HalfToneDyadSpeller: DyadSpeller {
     
     internal var stepPreserving: [PitchSpellingDyad] {
-        return pitchSpellingDyads.filter { $0.isStepPreserving }
+        return pitchSpellingDyads.filter { $0.hasIntervalFidelity }
     }
     
     /**

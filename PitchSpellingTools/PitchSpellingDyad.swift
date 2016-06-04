@@ -56,7 +56,7 @@ public struct PitchSpellingDyad {
         return isFineMatching
     }
     
-    public var isStepPreserving: Bool { return intervalQuality.isStepPreserving }
+    public var hasIntervalFidelity: Bool { return intervalQuality.hasIntervalFidelity }
     
     /// Mean of `distance` values of both `PitchSpelling` objects.
     public var meanSpellingDistance: Float {

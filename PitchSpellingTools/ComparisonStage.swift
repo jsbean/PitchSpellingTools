@@ -27,7 +27,7 @@ extension ComparisonStage {
                 return true
             },
             { $0.isFineCompatible },
-            { $0.isStepPreserving },
+            { $0.hasIntervalFidelity },
             { $0.isCoarseResolutionCompatible },
             { $0.isCoarseDirectionCompatible }
         ]
