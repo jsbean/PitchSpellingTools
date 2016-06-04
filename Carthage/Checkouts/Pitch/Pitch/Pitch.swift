@@ -13,7 +13,7 @@ import ArithmeticTools
  */
 public struct Pitch: CustomStringConvertible {
     
-    // MARK - Type Properties
+    // MARK: - Type Properties
     
     /// Middle C.
     public static let middleC = Pitch(noteNumber: 60.0)
@@ -44,7 +44,6 @@ public struct Pitch: CustomStringConvertible {
     public init(noteNumber: NoteNumber) {
         self.noteNumber = noteNumber
         self.frequency = Frequency(noteNumber)
-        
     }
     
     /**
@@ -59,17 +58,24 @@ public struct Pitch: CustomStringConvertible {
         self.frequency = frequency
         self.noteNumber = NoteNumber(frequency)
     }
+}
+
+extension Pitch: PitchConvertible {
+    
+    // MARK: - PitchConvertible
     
     /**
      Create a `Pitch` with another `Pitch`.
      */
-    public init(pitch: Pitch) {
+    public init(_ pitch: Pitch) {
         self.frequency = pitch.frequency
         self.noteNumber = NoteNumber(pitch.frequency)
     }
 }
 
 extension Pitch: FloatLiteralConvertible {
+    
+    // MARK: - FloatLiteralConvertible
     
     /**
      Create a `Pitch` with a `FloatLiteral`. This value is the `NoteNumber` value.
@@ -81,6 +87,11 @@ extension Pitch: FloatLiteralConvertible {
 
 extension Pitch: IntegerLiteralConvertible {
     
+    // MARK: - IntegerLiteralConvertible
+    
+    /**
+     Create a `Pitch` with an `IntegerLiteral`. This value is the `NoteNumber` value.
+     */
     public init(integerLiteral value: Int) {
         self.init(noteNumber: NoteNumber(Float(value)))
     }
@@ -97,6 +108,9 @@ public func < (lhs: Pitch, rhs: Pitch) -> Bool {
 }
 
 extension Pitch: Hashable {
+    
+    // MARK: - Hashable
 
+    /// Hash value.
     public var hashValue: Int { return noteNumber.hashValue }
 }

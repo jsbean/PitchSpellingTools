@@ -11,8 +11,12 @@ import func ArithmeticTools.ordered
 
 /**
  Collection of two pitches.
+ 
+ - TODO: Make generic
  */
-public struct Dyad: CustomStringConvertible {
+public struct Dyad {
+    
+    // MARK: - Instance properties
     
     /// Lower of two `Pitch` values.
     public let lower: Pitch
@@ -23,6 +27,8 @@ public struct Dyad: CustomStringConvertible {
     /// `Interval` between two `Pitch` values.
     public var interval: Interval { return Interval(dyad: self) }
     
+    // MARK: - Initializers
+    
     /**
      Create a `Dyad` with two `Pitch` values. 
      These pitches need not be ordered; they are ordered upon initialization.
@@ -32,7 +38,13 @@ public struct Dyad: CustomStringConvertible {
         self.lower = lower
         self.higher = higher
     }
+}
+
+extension Dyad: CustomStringConvertible {
     
+    // MARK: - CustomStringConvertible
+    
+    /// Printed description
     public var description: String { return "\(lower), \(higher)" }
 }
 

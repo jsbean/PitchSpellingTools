@@ -13,7 +13,7 @@ class PitchTests: XCTestCase {
     
     func testInitWithPitch() {
         let original = Pitch(noteNumber: 60.0)
-        let new = Pitch(pitch: original)
+        let new = Pitch(original)
         XCTAssertEqual(original, new)
     }
 }

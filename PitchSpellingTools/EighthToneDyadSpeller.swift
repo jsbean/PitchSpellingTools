@@ -1,11 +1,11 @@
+////
+////  EighthToneDyadSpeller.swift
+////  PitchSpellingTools
+////
+////  Created by James Bean on 5/5/16.
+////
+////
 //
-//  EighthToneDyadSpeller.swift
-//  PitchSpellingTools
+//import Pitch
 //
-//  Created by James Bean on 5/5/16.
-//
-//
-
-import Pitch
-
-internal class EighthToneDyadSpeller: DyadSpeller { }
+//internal class EighthToneDyadSpeller: DyadSpeller { }

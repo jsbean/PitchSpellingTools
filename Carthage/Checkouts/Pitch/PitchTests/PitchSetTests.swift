@@ -17,7 +17,7 @@ class PitchSetTests: XCTestCase {
 
     func testDyads() {
         let set = PitchSet(
-            sequence: [
+            [
                 Pitch(noteNumber: 60),
                 Pitch(noteNumber: 61),
                 Pitch(noteNumber: 62),

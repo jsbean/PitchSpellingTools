@@ -51,6 +51,7 @@ public struct PitchSpellingDyad {
      */
     public var isFineMatching: Bool { return b.fine == a.fine }
     
+    // refine for 1/8th tone context for coarse resolution matching
     public var isFineCompatible: Bool {
         if b.fine == .none || a.fine == .none { return true }
         return isFineMatching

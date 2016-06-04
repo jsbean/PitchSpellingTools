@@ -8,6 +8,29 @@
 
 import Foundation
 
+extension SequenceType where Generator.Element: Comparable {
+    
+    func most() -> [Generator.Element] {
+        guard let greatestValue = self.maxElement() else { return [] }
+        return self.filter { $0 == greatestValue }
+    }
+    
+    func least() -> [Generator.Element] {
+        guard let leastValue = self.minElement() else { return [] }
+        return self.filter { $0 == leastValue }
+    }
+    
+//    func filterSorted(
+//        isOrderedBefore: (Generator.Element, Generator.Element) -> Bool
+//    ) -> [Generator.Element]
+//    {
+//        var sorted = self.sort(isOrderedBefore)
+//        
+//        return sorted
+//    }
+}
+
+
 // Modified from: https://airspeedvelocity.net/2016/01/10/writing-a-generic-stable-sort/
 
 extension RangeReplaceableCollectionType where

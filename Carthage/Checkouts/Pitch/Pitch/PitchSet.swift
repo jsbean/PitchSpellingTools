@@ -9,62 +9,45 @@
 import ArrayTools
 
 /**
- Unordered collection of unique `Pitch` values.
+ Unordered set of unique `Pitch` values.
  */
-public struct PitchSet: PitchSequenceType {
+public struct PitchSet: PitchConvertibleSetType {
     
-    private let pitches: Set<Pitch>
+    // MARK: - Associated Types
+    
+    /// `PitchConvertible` type contained herein.
+    public typealias Element = Pitch
     
     // MARK: - Instance Properties
     
-    /// Iterable sequence of `Pitch` values contained herein.
-    public var sequence: AnySequence<Pitch> { return AnySequence(pitches) }
-    
-    /// - returns: `true` if there are no `Pitch` objects herein. Otherwsie `false`.
-    public var isEmpty: Bool { return Array(sequence).count == 0 }
-    
-    /// - returns: `true` if there is one `Pitch` object herein. Otherwsie `false`.
-    public var isMonadic: Bool { return Array(sequence).count == 1 }
+    /// `Set` holding `Pitch` values.
+    public let set: Set<Element>
     
     /**
-     Set of `PitchClass` representations of `PitchSet`.
- 
-     **Example:**
-     
-     ```
-     let pitchSet: PitchSet = [Pitch(noteNumber: 63.5), Pitch(noteNumber: 69.25)]
-     pitchSet.pitchClassSet // => [3.5, 9.25]
-     ```
-     */
-    public var pitchClassSet: Set<PitchClass> {
-        return Set(pitches.lazy.map { $0.pitchClass })
-    }
-    
-    /** 
      All unique dyads that comprise a `PitchSet`.
      
-     In the case that there are less than two `Pitch` objects in a `PitchSet`, 
+     In the case that there are less than two `Pitch` objects in a `PitchSet`,
      the `dyads` property is an empty array.
- 
+     
      **Example:**
      
      ```
      let triad: PitchSet = [
-        Pitch(noteNumber: 60), 
-        Pitch(noteNumber: 61), 
-        Pitch(noteNumber: 62)
+         Pitch(noteNumber: 60),
+         Pitch(noteNumber: 61),
+         Pitch(noteNumber: 62)
      ]
      
      triad.dyads == [
-        Dyad(Pitch(noteNumber: 60), Pitch(noteNumber: 61)),
-        Dyad(Pitch(noteNumber: 60), Pitch(noteNumber: 62)),
-        Dyad(Pitch(noteNumber: 61), Pitch(noteNumber: 62))
+         Dyad(Pitch(noteNumber: 60), Pitch(noteNumber: 61)),
+         Dyad(Pitch(noteNumber: 60), Pitch(noteNumber: 62)),
+         Dyad(Pitch(noteNumber: 61), Pitch(noteNumber: 62))
      ]
      ```
      */
     public var dyads: [Dyad] {
         
-        var pitchesArray = Array(pitches)
+        var pitchesArray = Array(set)
         
         guard pitchesArray.count >= 2 else { return [] }
         
@@ -77,13 +60,28 @@ public struct PitchSet: PitchSequenceType {
         return result
     }
     
-    // MARK: - Initializers
-
     /**
-     Create a `PitchSet` with `SequenceType` containing `Pitch` values.
+     Set of `PitchClass` representations of `PitchSet`.
+     
+     **Example:**
+     
+     ```
+     let pitchSet: PitchSet = [Pitch(noteNumber: 63.5), Pitch(noteNumber: 69.25)]
+     pitchSet.pitchClassSet // => [3.5, 9.25]
+     ```
      */
-    public init<S: SequenceType where S.Generator.Element == Pitch>(sequence: S) {
-        self.pitches = Set(sequence)
+    public var pitchClassSet: PitchClassSet { return PitchClassSet(map { $0.pitchClass }) }
+}
+
+extension PitchSet: AnySequenceType {
+    
+    // MARK: - AnySequenceType
+    
+    /**
+     Create a `PitchSet` with a sequence of `Pitch` values.
+     */
+    public init<S: SequenceType where S.Generator.Element == Element>(_ sequence: S) {
+        self.set = Set(sequence)
     }
 }
 
@@ -92,15 +90,9 @@ extension PitchSet: ArrayLiteralConvertible {
     // MARK: - ArrayLiteralConvertible
     
     /**
-     Create a `PitchSet` with an `ArrayLiteral` of `Pitch` objects.
-    
-     **Example:**
-     
-     ```
-     let pitchSet: PitchSet = [Pitch(noteNumber: 60), Pitch(noteNumber: 67)]
-     ```
+     Create a `PitchClassSequence` with an array literal.
      */
-    public init(arrayLiteral pitches: Pitch...) {
-        self.pitches = Set(pitches)
+    public init(arrayLiteral elements: Element...) {
+        self.set = Set(elements)
     }
 }

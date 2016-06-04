@@ -22,8 +22,6 @@ import Foundation
  
  In the `init` method of the conforming `struct`, set the value of this private `var` with the
  given `sequence.
- 
- In the case of both `Pitch` and `PitchSet`, these are named `storage`.
  */
 public protocol AnySequenceType: SequenceType, ArrayLiteralConvertible {
     
@@ -41,7 +39,7 @@ public protocol AnySequenceType: SequenceType, ArrayLiteralConvertible {
      In the `init` method of the conforming `struct`, set the value of this private `var` with
      the given `sequence.
      */
-    init<S: SequenceType where S.Generator.Element == Element>(sequence: S)
+    init<S: SequenceType where S.Generator.Element == Element>(_ sequence: S)
 }
 
 extension AnySequenceType {

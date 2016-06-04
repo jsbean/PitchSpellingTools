@@ -14,33 +14,12 @@ import ArithmeticTools
  */
 public struct NoteNumber: FloatWrapping {
     
-    public var value: Float
-
-    /**
-     Create a `NoteNumber` with a `FloatLiteralType`.
-     
-     **Example:**
-     
-     ```
-     let nn: NoteNumber = 65.5 // => F quarter sharp above middle C
-     ```
-     */
-    public init(floatLiteral value: Float) {
-        self.value = value
-    }
+    // MARK: - Instance Properties
     
-    /**
-     Create a `NoteNumber` with an `IntegerLiteralType`.
-     
-     **Example:**
-     
-     ```
-     let nn: NoteNumber = 65 => F above middle C
-     ```
-     */
-    public init(integerLiteral value: Int) {
-        self.value = Float(value)
-    }
+    /// Value of this `NoteNumber`.
+    public var value: Float
+    
+    // MARK: - Initializers
     
     /**
      Create a `NoteNumber` with `Frequency` value.
@@ -64,5 +43,41 @@ public struct NoteNumber: FloatWrapping {
      */
     public func quantized(to resolution: Float) -> NoteNumber {
         return NoteNumber(floatLiteral: round(value / resolution) * resolution)
+    }
+}
+
+extension NoteNumber: IntegerLiteralConvertible {
+    
+    // MARK: IntegerLiteralConvertible
+    
+    /**
+     Create a `NoteNumber` with an `IntegerLiteralType`.
+     
+     **Example:**
+     
+     ```
+     let nn: NoteNumber = 65 => F above middle C
+     ```
+     */
+    public init(integerLiteral value: Int) {
+        self.value = Float(value)
+    }
+}
+
+extension NoteNumber: FloatLiteralConvertible {
+    
+    // MARK: FloatLiteralConvertible
+    
+    /**
+     Create a `NoteNumber` with a `FloatLiteralType`.
+     
+     **Example:**
+     
+     ```
+     let nn: NoteNumber = 65.5 // => F quarter sharp above middle C
+     ```
+     */
+    public init(floatLiteral value: Float) {
+        self.value = value
     }
 }
