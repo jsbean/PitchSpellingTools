@@ -60,8 +60,12 @@ public final class PitchSetSpeller: PitchSpeller {
         if pitchSet.isEmpty { return SpelledPitchSet(pitches: []) }
 
         return pitchSetIsObjectivelySpellableOrMonadic
-            ? try pitchSet.spelledWithDefaultSpellings()
+            ? try spelledPitchSetWithDefaultSpellings()
             : spelledPitchSetByCreatingComparisonStages()
+    }
+    
+    private func spelledPitchSetWithDefaultSpellings() throws -> SpelledPitchSet {
+        return try pitchSet.spelledWithDefaultSpellings()
     }
     
     // TODO: Make throw
