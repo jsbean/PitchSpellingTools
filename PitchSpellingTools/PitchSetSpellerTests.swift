@@ -73,7 +73,7 @@ class PitchSetSpellerTests: XCTestCase {
             [60,62.5,69,70],
             areSpelledWith: [
                 PitchSpelling(.c),
-                PitchSpelling(.e, .threeQuarterFlat), // or e three quarter flat ?
+                PitchSpelling(.e, .threeQuarterFlat),
                 PitchSpelling(.a),
                 PitchSpelling(.b, .flat)
             ]
