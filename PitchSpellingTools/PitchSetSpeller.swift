@@ -81,6 +81,7 @@ public final class PitchSetSpeller: PitchSpeller {
             comparisonStage.applyRankings(withWeight: rankWeight(for: position))
         }
         
+        // TODO: refactor into own private method
         // Jump start ambiguous choosing process by asserting most urgent edge ranked
         if nodeResource.noNodesHaveBeenRanked {
             let first = comparisonStages[0] as! FullyAmbiguousComparisonStage
@@ -88,26 +89,24 @@ public final class PitchSetSpeller: PitchSpeller {
             first.highestRanked!.b.rank = 1
         }
         
-        // REFACTOR
+        // TODO: refacotr into own private method
         for c in comparisonStages.indices {
-            // bettername
+            
+            // TODO: come up with better names
             guard let ambiguous = comparisonStages[c] as? FullyAmbiguousComparisonStage
             else { continue }
 
+            // TODO: make this not a reach-around
             let bestRanked = ambiguous.edges.extremeElements(>) { $0.rank }
             let notGoodEnough = bestRanked.extremeElements(<) { $0.meanRank ?? Float.min }
             for edge in notGoodEnough { edge.penalizeNodes(withWeight: rankWeight(for: c)) }
         }
-        
-        comparisonStages.forEach { print($0) }
-        
         return highestRankedPitches()
     }
     
     // Make throws
     private func highestRankedPitches() -> SpelledPitchSet {
-        print(nodeResource)
-        //guard allNodesHaveBeenRanked else { fatalError() }
+        precondition(allNodesHaveBeenRanked)
         nodeResource.sortByRank()
         return SpelledPitchSet(pitches:
             nodeResource.reduce([]) { array, nodesByPitch in

@@ -51,10 +51,6 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
             }
             .stableSort { $0.rank > $1.rank }
             .first
-
-
-//            .stableSort { $0.rank > $1.rank }
-//            .first
     }
     
     init(_ a: Level, _ b: Level) {

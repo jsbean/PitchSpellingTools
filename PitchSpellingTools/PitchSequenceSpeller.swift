@@ -70,7 +70,6 @@ final class PitchSequenceSpeller: PitchSpeller {
             guard let currentDyad = dyad(atIndex: index) else { break }
             let comparisonStage = createComparisonStage(for: currentDyad)
             comparisonStage.applyRankings(withWeight: rankWeight(for: index))
-            print(comparisonStage)
         }
     }
     
@@ -85,8 +84,8 @@ final class PitchSequenceSpeller: PitchSpeller {
     }
     
     private func commitRankedSpellings() throws -> [SpelledPitch] {
-        print("commit ranked spellings")
-        print(nodeResource.nodes)
+        //print("commit ranked spellings")
+        //print(nodeResource.nodes)
         if comparisonStages.allMatch (
             { $0 is DeterminateComparisonStage || $0 is SemiAmbiguousComparisonStage }
         )
@@ -101,11 +100,11 @@ final class PitchSequenceSpeller: PitchSpeller {
         
         // otherwise, take a second pass
         
-        print("have to incorporate fully ambiguous")
+        //print("have to incorporate fully ambiguous")
         for comparisonStage in comparisonStages
             where comparisonStage is FullyAmbiguousComparisonStage
         {
-            print(comparisonStage)
+            //print(comparisonStage)
         }
         
         return []
@@ -115,11 +114,11 @@ final class PitchSequenceSpeller: PitchSpeller {
     // Currently, the previous pitch spelling is just overriden by the current
     // - as opposed to making a rank comparison
     private func commitSpellingsFromComparisonStages() throws -> [SpelledPitch] {
-        print("commit spellings from comparison stages")
+        //print("commit spellings from comparison stages")
         nodeResource.sortByRank()
         var spellingByPitch: [Pitch: Node] = [:]
         for comparisonStage in comparisonStages {
-            print(comparisonStage)
+            //print(comparisonStage)
             switch comparisonStage {
             case let stage as DeterminateComparisonStage:
                 spellingByPitch[stage.a.pitch] = stage.a

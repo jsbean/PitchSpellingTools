@@ -32,7 +32,7 @@ final class Edge {
     }
     
     func penalizeNodes(withWeight weight: Float) {
-        // encapsulate under node surface
+        // TODO: encapsulate under node surface
         [a,b].forEach {
             if $0.rank == nil { $0.rank = 1 }
             $0.rank! -= weight
