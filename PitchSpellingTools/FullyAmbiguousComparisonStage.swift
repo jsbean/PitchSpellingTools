@@ -42,20 +42,28 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
     var highestRanked: Edge? {
         return edges
             .stableSort {
-                $0.pitchSpellingDyad.meanCoarseDistance <
-                $1.pitchSpellingDyad.meanCoarseDistance
-            }
-            .stableSort {
                 $0.pitchSpellingDyad.meanSpellingDistance <
                 $1.pitchSpellingDyad.meanSpellingDistance
             }
+            .stableSort {
+                $0.pitchSpellingDyad.meanCoarseDistance <
+                $1.pitchSpellingDyad.meanCoarseDistance
+            }
             .stableSort { $0.rank > $1.rank }
             .first
+
+
+//            .stableSort { $0.rank > $1.rank }
+//            .first
     }
     
     init(_ a: Level, _ b: Level) {
         self.a = a
         self.b = b
+    }
+    
+    func hasNode(node: Node) -> Bool {
+        return a === node || b === node
     }
     
     func applyRankings(withWeight weight: Float) {
@@ -75,8 +83,8 @@ extension FullyAmbiguousComparisonStage {
     
     var description: String {
         var result = "FullyAmbiguousComparisonStage:\n"
-        result += "- \(a)\n"
-        result += "- \(b)\n"
+        result += "- Level1: \(a)\n"
+        result += "- Level2: \(b)\n"
         result += "Edges: "
         edges.forEach { result += "\n- \($0)" }
         return result

@@ -24,6 +24,15 @@ internal struct NodeResource {
         return true
     }
     
+    var noNodesHaveBeenRanked: Bool {
+        for (_, nodes) in resource {
+            for node in nodes {
+                if node.rank != nil { return false }
+            }
+        }
+        return true
+    }
+    
     // init with an array of Pitches or a PitchSet
     /// - warning: this is currently assuming we don't want unconventional enharmonics
     /// (e.g., (c flat), (b sharp), (d double sharp), etc)

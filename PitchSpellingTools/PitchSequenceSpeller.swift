@@ -87,12 +87,28 @@ final class PitchSequenceSpeller: PitchSpeller {
     private func commitRankedSpellings() throws -> [SpelledPitch] {
         print("commit ranked spellings")
         print(nodeResource.nodes)
-        guard nodeResource.allNodesHaveBeenRanked else { throw Error.cannotSpellNodes }
-        nodeResource.sortByRank()
-        return nodeResource.reduce([]) { array, nodesByPitch in
-            guard let spelling = nodesByPitch.1.first?.spelling else { return array }
-            return array + SpelledPitch(pitch: nodesByPitch.0, spelling: spelling)
+        if comparisonStages.allMatch (
+            { $0 is DeterminateComparisonStage || $0 is SemiAmbiguousComparisonStage }
+        )
+        {
+            guard nodeResource.allNodesHaveBeenRanked else { throw Error.cannotSpellNodes }
+            nodeResource.sortByRank()
+            return nodeResource.reduce([]) { array, nodesByPitch in
+                guard let spelling = nodesByPitch.1.first?.spelling else { return array }
+                return array + SpelledPitch(pitch: nodesByPitch.0, spelling: spelling)
+            }
         }
+        
+        // otherwise, take a second pass
+        
+        print("have to incorporate fully ambiguous")
+        for comparisonStage in comparisonStages
+            where comparisonStage is FullyAmbiguousComparisonStage
+        {
+            print(comparisonStage)
+        }
+        
+        return []
     }
     
     // TODO: refactor

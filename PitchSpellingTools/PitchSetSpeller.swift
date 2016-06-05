@@ -32,6 +32,10 @@ public final class PitchSetSpeller: PitchSpeller {
     // `ComparisonStage` objects built that can be referenced after initial decision making
     private var comparisonStages: [ComparisonStage] = []
     
+    private var pitchSetIsObjectivelySpellableOrMonadic: Bool {
+        return pitchSet.allMatch({ $0.canBeSpelledObjectively }) || pitchSet.isMonadic
+    }
+    
     // `PitchSet` to be spelled
     private let pitchSet: PitchSet
     
@@ -45,8 +49,6 @@ public final class PitchSetSpeller: PitchSpeller {
     // TODO: incorporate external coarse / fine preferences
     
     /**
-     - warning: Not yet fully implemented!
-     
      - throws: `PitchSpelling.Error` if unable to apply `PitchSpelling` objects to the given
      `PitchSet`.
      
@@ -56,27 +58,18 @@ public final class PitchSetSpeller: PitchSpeller {
         
         // Exit early is pitchSet is empty
         if pitchSet.isEmpty { return SpelledPitchSet(pitches: []) }
-        
-        // For now, exit early if pitchSet contains a single pitch
-        if pitchSet.isMonadic {
-            return SpelledPitchSet(
-                pitches: try pitchSet.map { try $0.spelledWithDefaultSpelling() }
-            )
-        }
-        
-        // make this return something at some point
-        compareOptions()
-        
-        // default impl to return
-        return try pitchSet.spelledWithDefaultSpellings()
+
+        return pitchSetIsObjectivelySpellableOrMonadic
+            ? try pitchSet.spelledWithDefaultSpellings()
+            : spelledPitchSetByCreatingComparisonStages()
     }
     
-    // TODO: make enum return value
-    func compareOptions() {
+    // TODO: Make throw
+    func spelledPitchSetByCreatingComparisonStages() -> SpelledPitchSet {
         
         clearComparisonStages()
 
-        // wrap up
+        // TODO: refactor into own private method
         for (position, dyad) in dyads.enumerate() {
             
             // If all nodes have been given a rank, we are ready to make decisions
@@ -87,26 +80,41 @@ public final class PitchSetSpeller: PitchSpeller {
             comparisonStages.append(comparisonStage)
             comparisonStage.applyRankings(withWeight: rankWeight(for: position))
         }
-
-        if allNodesHaveBeenRanked {
-            
-            // TODO: for each node for each pitch, sort by rank, apply PitchSpellings
-            // - done.
-            
-        } else {
-            
-            // TODO: take second pass over comparison stages, weighing them as appropriate
-            // - for comparisonStage in comparisonStages { }
-            // - merge paths
+        
+        // Jump start ambiguous choosing process by asserting most urgent edge ranked
+        if nodeResource.noNodesHaveBeenRanked {
+            let first = comparisonStages[0] as! FullyAmbiguousComparisonStage
+            first.highestRanked!.a.rank = 1
+            first.highestRanked!.b.rank = 1
         }
+        
+        // REFACTOR
+        for c in comparisonStages.indices {
+            // bettername
+            guard let ambiguous = comparisonStages[c] as? FullyAmbiguousComparisonStage
+            else { continue }
+
+            let bestRanked = ambiguous.edges.extremeElements(>) { $0.rank }
+            let notGoodEnough = bestRanked.extremeElements(<) { $0.meanRank ?? Float.min }
+            for edge in notGoodEnough { edge.penalizeNodes(withWeight: rankWeight(for: c)) }
+        }
+        
+        comparisonStages.forEach { print($0) }
+        
+        return highestRankedPitches()
     }
     
-    private func rankObjectivelySpellableDyad(dyad: Dyad) {
-        [dyad.higher, dyad.lower].forEach { rankObjectivelySpellablePitch($0) }
-    }
-    
-    private func rankObjectivelySpellablePitch(pitch: Pitch) {
-        nodeResource[pitch]!.first!.rank = 1
+    // Make throws
+    private func highestRankedPitches() -> SpelledPitchSet {
+        print(nodeResource)
+        //guard allNodesHaveBeenRanked else { fatalError() }
+        nodeResource.sortByRank()
+        return SpelledPitchSet(pitches:
+            nodeResource.reduce([]) { array, nodesByPitch in
+                guard let spelling = nodesByPitch.1.first?.spelling else { return array }
+                return array + SpelledPitch(pitch: nodesByPitch.0, spelling: spelling)
+            }
+        )
     }
     
     // TODO: refine

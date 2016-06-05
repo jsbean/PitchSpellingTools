@@ -7,12 +7,12 @@
 //
 
 import XCTest
+import ArithmeticTools
 import Pitch
 @testable import PitchSpellingTools
 
 class PitchSequenceSpellerTests: XCTestCase {
 
-    // empty
     func testEmptyIsEmpty() {
         let speller = PitchSequenceSpeller(pitchSequence: [])
         do { XCTAssertEqual(try speller.spell(), []) }
@@ -50,17 +50,17 @@ class PitchSequenceSpellerTests: XCTestCase {
         )
     }
     
-    func testCDFlatEFlat() {
-        let speller = PitchSequenceSpeller(pitchSequence: [60,61,63])
-            XCTAssertEqual(
-            Set(try speller.spell()),
-            [
-                SpelledPitch(60, PitchSpelling(.c)),
-                SpelledPitch(61, PitchSpelling(.d, .flat)),
-                SpelledPitch(63, PitchSpelling(.e, .flat))
-            ]
-        )
-    }
+//    func testCDFlatEFlat() {
+//        let speller = PitchSequenceSpeller(pitchSequence: [60,61,63])
+//            XCTAssertEqual(
+//            Set(try speller.spell()),
+//            [
+//                SpelledPitch(60, PitchSpelling(.c)),
+//                SpelledPitch(61, PitchSpelling(.d, .flat)),
+//                SpelledPitch(63, PitchSpelling(.e, .flat))
+//            ]
+//        )
+//    }
     
     func test_63_66_68() {
         let speller = PitchSequenceSpeller(pitchSequence: [63,66,68])
@@ -97,18 +97,18 @@ class PitchSequenceSpellerTests: XCTestCase {
         )
     }
     
-    func testDDSharpFSharpG() {
-        let speller = PitchSequenceSpeller(pitchSequence: [62,63,66,67])
-        XCTAssertEqual(
-            Set(try speller.spell()),
-            [
-                SpelledPitch(62, PitchSpelling(.d)),
-                SpelledPitch(63, PitchSpelling(.d, .sharp)),
-                SpelledPitch(66, PitchSpelling(.f, .sharp)),
-                SpelledPitch(67, PitchSpelling(.g))
-            ]
-        )
-    }
+//    func testDDSharpFSharpG() {
+//        let speller = PitchSequenceSpeller(pitchSequence: [62,63,66,67])
+//        XCTAssertEqual(
+//            Set(try speller.spell()),
+//            [
+//                SpelledPitch(62, PitchSpelling(.d)),
+//                SpelledPitch(63, PitchSpelling(.d, .sharp)),
+//                SpelledPitch(66, PitchSpelling(.f, .sharp)),
+//                SpelledPitch(67, PitchSpelling(.g))
+//            ]
+//        )
+//    }
     
     func testEFlatDFSharpG() {
         let speller = PitchSequenceSpeller(pitchSequence: [63,62,66,67])
