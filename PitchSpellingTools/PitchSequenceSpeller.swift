@@ -50,11 +50,11 @@ final class PitchSequenceSpeller: PitchSpeller {
         if pitchSequence.isEmpty { return [] }
         
         return pitchSequenceIsObjectivelySpellableOrMonadic
-            ? try spelledPitchSequenceSpelledWithDefaultSpellings()
+            ? try spelledPitchSequenceWithDefaultSpellings()
             : try spelledPitchSequenceByCreatingComparisonStages()
     }
     
-    private func spelledPitchSequenceSpelledWithDefaultSpellings() throws -> [SpelledPitch] {
+    private func spelledPitchSequenceWithDefaultSpellings() throws -> [SpelledPitch] {
         return try pitchSequence.map { try $0.spelledWithDefaultSpelling() }
     }
     
