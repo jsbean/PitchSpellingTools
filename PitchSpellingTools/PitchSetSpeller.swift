@@ -61,7 +61,7 @@ public final class PitchSetSpeller: PitchSpeller {
 
         return pitchSetIsObjectivelySpellableOrMonadic
             ? try spelledPitchSetWithDefaultSpellings()
-            : spelledPitchSetByCreatingComparisonStages()
+            : try spelledPitchSetByCreatingComparisonStages()
     }
     
     private func spelledPitchSetWithDefaultSpellings() throws -> SpelledPitchSet {
@@ -69,7 +69,7 @@ public final class PitchSetSpeller: PitchSpeller {
     }
     
     // TODO: Make throw
-    func spelledPitchSetByCreatingComparisonStages() -> SpelledPitchSet {
+    func spelledPitchSetByCreatingComparisonStages() throws -> SpelledPitchSet {
         
         clearComparisonStages()
 
