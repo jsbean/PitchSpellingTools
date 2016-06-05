@@ -153,92 +153,116 @@ class PitchSetSpellerTests: XCTestCase {
         )
     }
     
-    
-    func testManyPitchesHalfStep() {
-        
-        let pitchSet: PitchSet = [
-            Pitch(noteNumber: 60),
-            Pitch(noteNumber: 61),
-            Pitch(noteNumber: 62),
-            Pitch(noteNumber: 63),
-            Pitch(noteNumber: 64),
-            Pitch(noteNumber: 65),
-            Pitch(noteNumber: 66),
-            Pitch(noteNumber: 67),
-            Pitch(noteNumber: 68),
-            Pitch(noteNumber: 69),
-            Pitch(noteNumber: 70),
-            Pitch(noteNumber: 71)
-        ]
-        self.measureBlock {
-            do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
-        }
+    func testDSharpFSharpGSharpABFlat() {
+        self.assertPitches(
+            [63,66,68,69,70],
+            areSpelledWith: [
+                PitchSpelling(.d, .sharp),
+                PitchSpelling(.f, .sharp),
+                PitchSpelling(.g, .sharp),
+                PitchSpelling(.a),
+                PitchSpelling(.b, .flat),
+            ]
+        )
     }
     
-    func testManyPitchesQuarterStep() {
-        let pitchSet: PitchSet = [
-            Pitch(noteNumber: 60),
-            Pitch(noteNumber: 61.5),
-            Pitch(noteNumber: 62.5),
-            Pitch(noteNumber: 63),
-            Pitch(noteNumber: 64.5),
-            Pitch(noteNumber: 65),
-            Pitch(noteNumber: 66.5),
-            Pitch(noteNumber: 67),
-            Pitch(noteNumber: 68.5),
-            Pitch(noteNumber: 69),
-            Pitch(noteNumber: 70.5),
-            Pitch(noteNumber: 71)
-        ]
-        self.measureBlock {
-            do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
-        }
-    }
-    
-    func testManyPitchesEighthStep() {
-        let pitchSet: PitchSet = [
-            Pitch(noteNumber: 60.25),
-            Pitch(noteNumber: 61.5),
-            Pitch(noteNumber: 62.5),
-            Pitch(noteNumber: 63),
-            Pitch(noteNumber: 64.25),
-            Pitch(noteNumber: 65),
-            Pitch(noteNumber: 66.5),
-            Pitch(noteNumber: 67),
-            Pitch(noteNumber: 68.75),
-            Pitch(noteNumber: 69),
-            Pitch(noteNumber: 70.5),
-            Pitch(noteNumber: 71.25)
-        ]
-        self.measureBlock {
-            do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
-        }
-    }
 
-    func testSomePitcheseighthStep() {
-        let pitchSet: PitchSet = [
-            Pitch(noteNumber: 60.25),
-            Pitch(noteNumber: 61.5),
-            Pitch(noteNumber: 62.5),
-            Pitch(noteNumber: 63),
-            Pitch(noteNumber: 64.25),
-        ]
-        self.measureBlock {
-            do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
-        }
-    }
+    // MARK: - Performance Testing
     
-    func testSomePitcheseighthStepWithOneObjectivelySpellable() {
-        let pitchSet: PitchSet = [
-            Pitch(noteNumber: 60),
-            Pitch(noteNumber: 60.25),
-            Pitch(noteNumber: 61.5),
-            Pitch(noteNumber: 62.5),
-            Pitch(noteNumber: 63),
-            Pitch(noteNumber: 64.25)
-        ]
-        self.measureBlock {
-            do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
-        }
-    }
+//    func testManyPitchesHalfStep() {
+//        
+//        let pitchSet: PitchSet = [
+//            Pitch(noteNumber: 60),
+//            Pitch(noteNumber: 61),
+//            Pitch(noteNumber: 62),
+//            Pitch(noteNumber: 63),
+//            Pitch(noteNumber: 64),
+//            Pitch(noteNumber: 65),
+//            Pitch(noteNumber: 66),
+//            Pitch(noteNumber: 67),
+//            Pitch(noteNumber: 68),
+//            Pitch(noteNumber: 69),
+//            Pitch(noteNumber: 70),
+//            Pitch(noteNumber: 71)
+//        ]
+//        self.measureBlock {
+//            do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
+//        }
+//    }
+//    
+//    func testManyPitchesQuarterStep() {
+//        let pitchSet: PitchSet = [
+//            Pitch(noteNumber: 60),
+//            Pitch(noteNumber: 61.5),
+//            Pitch(noteNumber: 62.5),
+//            Pitch(noteNumber: 63),
+//            Pitch(noteNumber: 64.5),
+//            Pitch(noteNumber: 65),
+//            Pitch(noteNumber: 66.5),
+//            Pitch(noteNumber: 67),
+//            Pitch(noteNumber: 68.5),
+//            Pitch(noteNumber: 69),
+//            Pitch(noteNumber: 70.5),
+//            Pitch(noteNumber: 71)
+//        ]
+//        self.measureBlock {
+//            do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
+//        }
+//    }
+//    
+//    func testManyPitchesEighthStep() {
+//        let pitchSet: PitchSet = [
+//            Pitch(noteNumber: 60.25),
+//            Pitch(noteNumber: 61.5),
+//            Pitch(noteNumber: 62.5),
+//            Pitch(noteNumber: 63),
+//            Pitch(noteNumber: 64.25),
+//            Pitch(noteNumber: 65),
+//            Pitch(noteNumber: 66.5),
+//            Pitch(noteNumber: 67),
+//            Pitch(noteNumber: 68.75),
+//            Pitch(noteNumber: 69),
+//            Pitch(noteNumber: 70.5),
+//            Pitch(noteNumber: 71.25)
+//        ]
+//        self.measureBlock {
+//            do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
+//        }
+//    }
+//
+//    func testSomePitcheseighthStep() {
+//        let pitchSet: PitchSet = [
+//            Pitch(noteNumber: 60.25),
+//            Pitch(noteNumber: 61.5),
+//            Pitch(noteNumber: 62.5),
+//            Pitch(noteNumber: 63),
+//            Pitch(noteNumber: 64.25),
+//        ]
+//        self.measureBlock {
+//            do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
+//        }
+//    }
+//    
+//    func testSomePitcheseighthStepWithOneObjectivelySpellable() {
+//        let pitchSet: PitchSet = [
+//            Pitch(noteNumber: 60),
+//            Pitch(noteNumber: 60.25),
+//            Pitch(noteNumber: 61.5),
+//            Pitch(noteNumber: 62.5),
+//            Pitch(noteNumber: 63),
+//            Pitch(noteNumber: 64.25)
+//        ]
+//        self.measureBlock {
+//            do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
+//        }
+//    }
+//
+//    func test48EighthTonePitchesForPerformance() {
+//        let nns = Float(60).stride(to: 72, by: 0.25)
+//        let pitches = nns.map { Pitch(noteNumber: NoteNumber($0)) }
+//        let pitchSet = PitchSet(pitches)
+//        self.measureBlock {
+//            do { let _ = try PitchSetSpeller(pitchSet).spell() } catch { XCTFail() }
+//        }
+//    }
 }

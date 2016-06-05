@@ -10,9 +10,9 @@ import Pitch
 
 internal struct NodeResource {
     
-    private var resource: [Pitch: [Node]]
+    private var resource: [Pitch: [PitchSpellingNode]]
     
-    var nodes: [Node] { return resource.reduce([]) { $0 + $1.1.map { $0 } } }
+    var nodes: [PitchSpellingNode] { return resource.reduce([]) { $0 + $1.1.map { $0 } } }
     
     /// `true` if all `Nodes` have been ranked. Otherwise, `false`.
     var allNodesHaveBeenRanked: Bool {
@@ -40,13 +40,13 @@ internal struct NodeResource {
         self.resource = pitches.reduce([:]) { (dict, pitch) in
             var dict = dict
             dict[pitch] = pitch.spellingsWithoutUnconventionalEnharmonics.map { spelling in
-                Node(pitch: pitch, spelling: spelling)
+                PitchSpellingNode(pitch: pitch, spelling: spelling)
             }
             return dict
         }
     }
     
-    subscript (pitch: Pitch) -> [Node]? {
+    subscript (pitch: Pitch) -> [PitchSpellingNode]? {
         return resource[pitch]
     }
     
@@ -57,7 +57,7 @@ internal struct NodeResource {
 
 extension NodeResource: SequenceType {
     
-    func generate() -> AnyGenerator<(Pitch, [Node])> {
+    func generate() -> AnyGenerator<(Pitch, [PitchSpellingNode])> {
         var generator = resource.generate()
         return AnyGenerator { return generator.next() }
     }

@@ -48,7 +48,7 @@ struct ComparisonStageFactory {
         return Level(pitch: pitch, nodes: nodes)
     }
     
-    private func node(forObjectivelySpellablePitch pitch: Pitch) -> Node {
+    private func node(forObjectivelySpellablePitch pitch: Pitch) -> PitchSpellingNode {
         guard let nodes = nodeResource[pitch] where
             nodes.count == 1,
             let first = nodes.first

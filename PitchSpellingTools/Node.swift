@@ -1,5 +1,5 @@
 //
-//  Node.swift
+//  PitchSpellingNode.swift
 //  PitchSpellingTools
 //
 //  Created by James Bean on 5/24/16.
@@ -9,22 +9,22 @@
 import Pitch
 
 /**
- Node in a `Graph`, holding a `PitchSpelling` object for a `Pitch` within a `PitchSet`.
+ PitchSpellingNode in a `Graph`, holding a `PitchSpelling` object for a `Pitch` within a `PitchSet`.
  
  - note: Consider factoring this out, unless it has a bigger payload than just a `PitchSpelling`
  */
-internal final class Node {
+internal final class PitchSpellingNode {
     
     internal var rank: Float? // start `nil`
     
     // add pitch
     internal let pitch: Pitch
     
-    /// The `PitchSpelling` held by this `Node`.
+    /// The `PitchSpelling` held by this `PitchSpellingNode`.
     internal let spelling: PitchSpelling
     
     /**
-     Create a `Node` with the given `spelling`.
+     Create a `PitchSpellingNode` with the given `spelling`.
      */
     internal init(pitch: Pitch, spelling: PitchSpelling) {
         self.pitch = pitch
@@ -32,7 +32,7 @@ internal final class Node {
     }
     
     /**
-     Create a `Node` with a `Pitch` that can be spelled objectively.
+     Create a `PitchSpellingNode` with a `Pitch` that can be spelled objectively.
      
      - returns: `nil` if the given `pitch` is not spellable objectively.
      */
@@ -43,17 +43,17 @@ internal final class Node {
     }
 }
 
-extension Node: Comparable { }
+extension PitchSpellingNode: Comparable { }
 
-internal func == (lhs: Node, rhs: Node) -> Bool {
+internal func == (lhs: PitchSpellingNode, rhs: PitchSpellingNode) -> Bool {
     return lhs.spelling == rhs.spelling
 }
 
-internal func < (lhs: Node, rhs: Node) -> Bool {
+internal func < (lhs: PitchSpellingNode, rhs: PitchSpellingNode) -> Bool {
     return lhs.rank < rhs.rank
 }
 
-extension Node: CustomStringConvertible {
+extension PitchSpellingNode: CustomStringConvertible {
     
     internal var description: String {
         return "\(spelling); rank: \(rank)"

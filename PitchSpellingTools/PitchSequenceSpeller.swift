@@ -13,7 +13,7 @@ final class PitchSequenceSpeller: PitchSpeller {
     
     enum Error: ErrorType { case cannotSpellNodes }
     
-    /// Collection of references to `Node` objects for each `Pitch`.
+    /// Collection of references to `PitchSpellingNode` objects for each `Pitch`.
     private lazy var nodeResource: NodeResource = {
         NodeResource(pitches: self.pitchSequence)
     }()
@@ -116,7 +116,7 @@ final class PitchSequenceSpeller: PitchSpeller {
     private func commitSpellingsFromComparisonStages() throws -> [SpelledPitch] {
         //print("commit spellings from comparison stages")
         nodeResource.sortByRank()
-        var spellingByPitch: [Pitch: Node] = [:]
+        var spellingByPitch: [Pitch: PitchSpellingNode] = [:]
         for comparisonStage in comparisonStages {
             //print(comparisonStage)
             switch comparisonStage {

@@ -14,12 +14,12 @@
 //internal struct Graph {
 //
 //    private static func makeLevel(withSpellingsForPitch pitch: Pitch) -> Level {
-//        let nodes = pitch.spellings.map { Node(pitch: pitch, spelling: $0) }
+//        let nodes = pitch.spellings.map { PitchSpellingNode(pitch: pitch, spelling: $0) }
 //        return Level(nodes: nodes)
 //    }
 //    
 //    /**
-//     Array of `Level` objects, created lazily. Each `Level` is a collection of `Node` objects,
+//     Array of `Level` objects, created lazily. Each `Level` is a collection of `PitchSpellingNode` objects,
 //     each holding a `PitchSpelling` for the same `Pitch`. 
 //     
 //     `Pitch` objects are ordered by the `IntervalClass.spellingComplexity` 

@@ -39,7 +39,7 @@
 //        return dyads.allMatch { $0.isFineCompatible }
 //    }
 //
-//    internal var last: Node? { return nodes.last }
+//    internal var last: PitchSpellingNode? { return nodes.last }
 //    
 //    private var edges: [PitchSpellingDyad] {
 //        var result: [PitchSpellingDyad] = []
@@ -63,26 +63,26 @@
 //        return result
 //    }
 //    
-//    private var nodes: [Node] = []
+//    private var nodes: [PitchSpellingNode] = []
 //    
 //    /**
-//     Create a `Path` with the given array of `Node` objects.
+//     Create a `Path` with the given array of `PitchSpellingNode` objects.
 //     */
-//    internal init(nodes: [Node]) {
+//    internal init(nodes: [PitchSpellingNode]) {
 //        self.nodes = nodes
 //    }
 //    
 //    /**
 //     - returns: `true` is the given `node` is contained herein. Otherwise, `false`.
 //     */
-//    internal func contains(node: Node) -> Bool {
+//    internal func contains(node: PitchSpellingNode) -> Bool {
 //        return nodes.contains(node)
 //    }
 //    
 //    /**
 //     Add the given `node`.
 //     */
-//    internal mutating func append(node: Node) {
+//    internal mutating func append(node: PitchSpellingNode) {
 //        nodes.append(node)
 //    }
 //}
@@ -104,18 +104,18 @@
 //}
 //
 ///**
-// - returns: `Path` object with the given `Node` appended to the given `Path`.
+// - returns: `Path` object with the given `PitchSpellingNode` appended to the given `Path`.
 // */
-//internal func + (lhs: Path, rhs: Node) -> Path {
+//internal func + (lhs: Path, rhs: PitchSpellingNode) -> Path {
 //    var path = lhs
 //    path.append(rhs)
 //    return path
 //}
 //
 ///**
-// - returns: `Path` object with the given `Node` appended to the given `Path`.
+// - returns: `Path` object with the given `PitchSpellingNode` appended to the given `Path`.
 // */
-//internal func + (lhs: Node, rhs: Path) -> Path {
+//internal func + (lhs: PitchSpellingNode, rhs: Path) -> Path {
 //    var path = rhs
 //    path.append(lhs)
 //    return path

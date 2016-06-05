@@ -10,8 +10,8 @@ import ArithmeticTools
 
 final class Edge {
     
-    let a: Node
-    let b: Node
+    let a: PitchSpellingNode
+    let b: PitchSpellingNode
     
     var meanRank: Float? {
         switch (a.rank, b.rank) {
@@ -26,7 +26,7 @@ final class Edge {
     
     var rank: Float = 1
     
-    init(_ a: Node, _ b: Node) {
+    init(_ a: PitchSpellingNode, _ b: PitchSpellingNode) {
         self.a = a
         self.b = b
     }
@@ -39,7 +39,7 @@ final class Edge {
         }
     }
     
-    func hasNode(node: Node) -> Bool {
+    func hasNode(node: PitchSpellingNode) -> Bool {
         return [a,b].contains(node)
     }
 }

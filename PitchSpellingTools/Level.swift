@@ -16,15 +16,15 @@ internal final class Level {
     /// `Pitch` to which `nodes` belong.
     internal let pitch: Pitch
     
-    /// `Node` objects contained herein, each holding a `PitchSpelling`
-    internal let nodes: [Node]
+    /// `PitchSpellingNode` objects contained herein, each holding a `PitchSpelling`
+    internal let nodes: [PitchSpellingNode]
     
-    internal var highestRanked: Node? { return nodes.sort { $0.rank > $1.rank }.first }
+    internal var highestRanked: PitchSpellingNode? { return nodes.sort { $0.rank > $1.rank }.first }
     
     /**
-     Create a `Level` with an array of `Node` objects, each holding a `PitchSpelling`.
+     Create a `Level` with an array of `PitchSpellingNode` objects, each holding a `PitchSpelling`.
      */
-    internal init(pitch: Pitch, nodes: [Node]) {
+    internal init(pitch: Pitch, nodes: [PitchSpellingNode]) {
         self.pitch = pitch
         self.nodes = nodes
     }

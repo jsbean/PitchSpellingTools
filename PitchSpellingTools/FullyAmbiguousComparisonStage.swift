@@ -58,7 +58,7 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
         self.b = b
     }
     
-    func hasNode(node: Node) -> Bool {
+    func hasNode(node: PitchSpellingNode) -> Bool {
         return a === node || b === node
     }
     

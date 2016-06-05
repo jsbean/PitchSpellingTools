@@ -53,7 +53,7 @@
 //        self.paths = paths
 //    }
 //    
-//    internal init(nodes: [Node]) {
+//    internal init(nodes: [PitchSpellingNode]) {
 //        self.init(paths: nodes.map { Path(nodes: [$0]) })
 //    }
 //    
@@ -68,7 +68,7 @@
 //     Add `Path` objects for each in the given array of `nodes`, branching from the given 
 //        `previousNode`.
 //     */
-//    internal mutating func addPaths(for nodes: [Node], branchingFrom previousNode: Node) {
+//    internal mutating func addPaths(for nodes: [PitchSpellingNode], branchingFrom previousNode: PitchSpellingNode) {
 //        
 //        // get paths branching from previous node
 //        let pathsToExtend = pathsBranching(from: previousNode)
@@ -83,7 +83,7 @@
 //    /**
 //     TODO: clarify responsibility of `Graph` and `PathCollection` here.
 //     */
-//    private mutating func addPaths(for nodes: [Node], extending pathsToExtend: [Path]) {
+//    private mutating func addPaths(for nodes: [PitchSpellingNode], extending pathsToExtend: [Path]) {
 //        for node in nodes {
 //            for path in pathsToExtend {
 //
@@ -94,7 +94,7 @@
 //        }
 //    }
 //
-//    private func pathsBranching(from node: Node) -> [Path] {
+//    private func pathsBranching(from node: PitchSpellingNode) -> [Path] {
 //        let branchingPaths = paths.filter { $0.contains(node) }
 //        return branchingPaths.count > 0 ? branchingPaths : [Path(nodes: [node])]
 //    }

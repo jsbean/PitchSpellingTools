@@ -11,12 +11,12 @@ import Foundation
 // Gives objectively spellable dyad perfect ranking
 final class DeterminateComparisonStage: ComparisonStage {
     
-    let a: Node
-    let b: Node
+    let a: PitchSpellingNode
+    let b: PitchSpellingNode
     
     var edges: [Edge] { return [] }
     
-    init(_ a: Node, _ b: Node) {
+    init(_ a: PitchSpellingNode, _ b: PitchSpellingNode) {
         self.a = a
         self.b = b
         self.applyRankings(withWeight: 1)

@@ -24,17 +24,17 @@ import Foundation
  */
 final class SemiAmbiguousComparisonStage: ComparisonStage {
     
-    let determinate: Node
+    let determinate: PitchSpellingNode
     let other: Level
     
-    // NOTE: `Edge.b` is the unspelled `Node`.
+    // NOTE: `Edge.b` is the unspelled `PitchSpellingNode`.
     lazy var edges: [Edge] = {
         return self.other.nodes.map { Edge(self.determinate, $0) }
     }()
     
-    var highestRanked: Node? { return other.highestRanked }
+    var highestRanked: PitchSpellingNode? { return other.highestRanked }
     
-    init(determinate: Node, other: Level) {
+    init(determinate: PitchSpellingNode, other: Level) {
         self.determinate = determinate
         self.other = other
         determinate.rank = 1
@@ -55,7 +55,7 @@ final class SemiAmbiguousComparisonStage: ComparisonStage {
         penalize(node: edge.b, withWeight: weight)
     }
     
-    private func penalize(node node: Node, withWeight weight: Float) {
+    private func penalize(node node: PitchSpellingNode, withWeight weight: Float) {
         node.rank! -= weight
     }
     
@@ -63,7 +63,7 @@ final class SemiAmbiguousComparisonStage: ComparisonStage {
         [edge.a, edge.b].forEach { ensureIsRanked(node: $0) }
     }
     
-    private func ensureIsRanked(node node: Node) {
+    private func ensureIsRanked(node node: PitchSpellingNode) {
         if node.rank == nil { node.rank = 1 }
     }
 }
@@ -72,7 +72,7 @@ extension SemiAmbiguousComparisonStage {
     
     var description: String {
         var result = "SemiAmbiguousComparisonStage:\n"
-        result += "- Node: \(determinate)\n"
+        result += "- PitchSpellingNode: \(determinate)\n"
         result += "- Level: \(other)\n"
         result += "Edges: "
         edges.forEach { result += "\n- \($0)" }

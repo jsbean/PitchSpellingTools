@@ -25,7 +25,7 @@
 //        self.allowsUnconventionalEnharmonics = allowsUnconventionalEnharmonics
 //    }
 //    
-//    internal func filter(nodes: [Node]) -> [Node] {
+//    internal func filter(nodes: [PitchSpellingNode]) -> [PitchSpellingNode] {
 //        var nodes = nodes
 //        nodes = filterNodes(nodes, forFineDirectionPreference: fineDirectionPreference)
 //        nodes = filterNodes(nodes, forCoarseDirectionPreference: coarseDirectionPreference)
@@ -35,10 +35,10 @@
 //        return nodes
 //    }
 //    
-//    private func filterNodes(nodes: [Node],
+//    private func filterNodes(nodes: [PitchSpellingNode],
 //        forCoarseDirectionPreference coarseDirectionPreference:
 //            PitchSpelling.CoarseAdjustment.Direction
-//    ) -> [Node]
+//    ) -> [PitchSpellingNode]
 //    {
 //        switch coarseDirectionPreference {
 //        case .none: return nodes
@@ -47,9 +47,9 @@
 //        }
 //    }
 //    
-//    private func filterNodes(nodes: [Node],
+//    private func filterNodes(nodes: [PitchSpellingNode],
 //        forFineDirectionPreference fineDirectionPreference: PitchSpelling.FineAdjustment
-//    ) -> [Node]
+//    ) -> [PitchSpellingNode]
 //    {
 //        switch fineDirectionPreference {
 //        case .none: return nodes
@@ -59,9 +59,9 @@
 //    }
 //    
 //    // filters out double sharps, double flats, e sharp, b sharp, f flat, c flat
-//    private func filterNodes(nodes: [Node],
+//    private func filterNodes(nodes: [PitchSpellingNode],
 //        forAllowingUnconventionalEnharmonics allowsUnconventionalEnharmonics: Bool
-//    ) -> [Node]
+//    ) -> [PitchSpellingNode]
 //    {
 //        guard !allowsUnconventionalEnharmonics else { return nodes }
 //        
