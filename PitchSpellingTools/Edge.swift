@@ -1,5 +1,5 @@
 //
-//  Edge.swift
+//  PitchSpellingEdge.swift
 //  PitchSpellingTools
 //
 //  Created by James Bean on 5/24/16.
@@ -8,7 +8,7 @@
 
 import ArithmeticTools
 
-final class Edge {
+final class PitchSpellingEdge {
     
     let a: PitchSpellingNode
     let b: PitchSpellingNode
@@ -44,17 +44,17 @@ final class Edge {
     }
 }
 
-extension Edge: Comparable { }
+extension PitchSpellingEdge: Comparable { }
 
-func == (lhs: Edge, rhs: Edge) -> Bool {
+func == (lhs: PitchSpellingEdge, rhs: PitchSpellingEdge) -> Bool {
     return lhs.a == rhs.a && lhs.b == rhs.b
 }
 
-func < (lhs: Edge, rhs: Edge) -> Bool {
+func < (lhs: PitchSpellingEdge, rhs: PitchSpellingEdge) -> Bool {
     return lhs.rank < rhs.rank
 }
 
-extension Edge: CustomStringConvertible {
+extension PitchSpellingEdge: CustomStringConvertible {
     
     var description: String { return "\(a) -> \(b) rank: \(rank)" }
 }

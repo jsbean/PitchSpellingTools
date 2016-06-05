@@ -14,7 +14,7 @@ final class DeterminateComparisonStage: ComparisonStage {
     let a: PitchSpellingNode
     let b: PitchSpellingNode
     
-    var edges: [Edge] { return [] }
+    var edges: [PitchSpellingEdge] { return [] }
     
     init(_ a: PitchSpellingNode, _ b: PitchSpellingNode) {
         self.a = a

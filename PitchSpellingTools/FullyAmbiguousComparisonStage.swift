@@ -28,18 +28,18 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
     let a: Level
     let b: Level
     
-    lazy var edges: [Edge] = {
-        var result: [Edge] = []
+    lazy var edges: [PitchSpellingEdge] = {
+        var result: [PitchSpellingEdge] = []
         for nodeA in self.a.nodes {
             for nodeB in self.b.nodes {
-                result.append(Edge(nodeA, nodeB))
+                result.append(PitchSpellingEdge(nodeA, nodeB))
             }
         }
         return result
     }()
     
     // TODO: mention complexity
-    var highestRanked: Edge? {
+    var highestRanked: PitchSpellingEdge? {
         return edges
             .stableSort {
                 $0.pitchSpellingDyad.meanSpellingDistance <
@@ -70,7 +70,7 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
         }
     }
     
-    private func penalize(edge edge: Edge, withWeight weight: Float) {
+    private func penalize(edge edge: PitchSpellingEdge, withWeight weight: Float) {
         edge.rank -= weight
     }
 }

@@ -27,9 +27,9 @@ final class SemiAmbiguousComparisonStage: ComparisonStage {
     let determinate: PitchSpellingNode
     let other: Level
     
-    // NOTE: `Edge.b` is the unspelled `PitchSpellingNode`.
-    lazy var edges: [Edge] = {
-        return self.other.nodes.map { Edge(self.determinate, $0) }
+    // NOTE: `PitchSpellingEdge.b` is the unspelled `PitchSpellingNode`.
+    lazy var edges: [PitchSpellingEdge] = {
+        return self.other.nodes.map { PitchSpellingEdge(self.determinate, $0) }
     }()
     
     var highestRanked: PitchSpellingNode? { return other.highestRanked }
@@ -44,14 +44,14 @@ final class SemiAmbiguousComparisonStage: ComparisonStage {
         edges.forEach { penalizeIfNecessary(edge: $0, withWeight: weight) }
     }
     
-    private func penalizeIfNecessary(edge edge: Edge, withWeight weight: Float) {
+    private func penalizeIfNecessary(edge edge: PitchSpellingEdge, withWeight weight: Float) {
         ensureIsRanked(edge: edge)
         for rule in rules where !rule(edge.pitchSpellingDyad) {
             penalize(edge: edge, withWeight: weight)
         }
     }
     
-    private func penalize(edge edge: Edge, withWeight weight: Float) {
+    private func penalize(edge edge: PitchSpellingEdge, withWeight weight: Float) {
         penalize(node: edge.b, withWeight: weight)
     }
     
@@ -59,7 +59,7 @@ final class SemiAmbiguousComparisonStage: ComparisonStage {
         node.rank! -= weight
     }
     
-    private func ensureIsRanked(edge edge: Edge) {
+    private func ensureIsRanked(edge edge: PitchSpellingEdge) {
         [edge.a, edge.b].forEach { ensureIsRanked(node: $0) }
     }
     
