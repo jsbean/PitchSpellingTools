@@ -105,12 +105,12 @@ public final class PitchSetSpeller: PitchSpeller {
             let notGoodEnough = bestRanked.extremeElements(<) { $0.meanRank ?? Float.min }
             for edge in notGoodEnough { edge.penalizeNodes(withWeight: rankWeight(for: c)) }
         }
-        return highestRankedPitches()
+        return try highestRankedPitches()
     }
     
     // Make throws
-    private func highestRankedPitches() -> SpelledPitchSet {
-        precondition(allNodesHaveBeenRanked)
+    private func highestRankedPitches() throws -> SpelledPitchSet {
+        //precondition(allNodesHaveBeenRanked)
         nodeResource.sortByRank()
         return SpelledPitchSet(pitches:
             nodeResource.reduce([]) { array, nodesByPitch in
