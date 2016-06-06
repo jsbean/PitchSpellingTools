@@ -20,8 +20,17 @@ public struct SpelledPitchSet {
     /**
      Create a `SpelledPitchSet` with an array of `SpelledPitch` values.
      */
-    public init(pitches: [SpelledPitch]) {
+    public init<S: SequenceType where S.Generator.Element == SpelledPitch>(_ pitches: S) {
         self.pitches = Set(pitches)
+    }
+    
+    /**
+     Create a `SpelledPitchSet` for a given `PitchSet` value.
+     
+     - throws: `PitchSpelling.Error` if the given `pitchSet` cannot be spelled with current technology.
+     */
+    public init(_ pitchSet: PitchSet) throws {
+        self = try PitchSetSpeller(pitchSet).spell()
     }
 }
 

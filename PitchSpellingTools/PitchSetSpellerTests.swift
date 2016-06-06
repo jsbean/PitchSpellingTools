@@ -10,12 +10,11 @@ import XCTest
 import Pitch
 @testable import PitchSpellingTools
 
-// TODO: Make subclass for all PitchSpeller type tests
 class PitchSetSpellerTests: XCTestCase {
 
     func assertPitches(pitches: [Pitch], areSpelledWith spellings: [PitchSpelling]) {
         let expected = SpelledPitchSet(
-            pitches: zip(pitches, spellings).map { SpelledPitch($0.0, $0.1) }
+            zip(pitches, spellings).map { SpelledPitch($0.0, $0.1) }
         )
         XCTAssertEqual(try PitchSetSpeller(PitchSet(pitches)).spell(), expected)
     }
@@ -23,11 +22,7 @@ class PitchSetSpellerTests: XCTestCase {
     func testMondadCNatural() {
         let pitchSet: PitchSet = [Pitch.middleC]
         let speller = PitchSetSpeller(pitchSet)
-        do {
-            let _ = try speller.spell()
-        } catch {
-            XCTFail()
-        }
+        do { let _ = try speller.spell() } catch { XCTFail() }
     }
     
     func testDyadCG() {

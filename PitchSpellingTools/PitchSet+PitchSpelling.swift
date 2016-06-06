@@ -18,6 +18,6 @@ extension PitchSet {
     
     public func spelledWithDefaultSpellings() throws -> SpelledPitchSet {
         let pitches = try self.map { try $0.spelledWithDefaultSpelling() }
-        return SpelledPitchSet(pitches: pitches)
+        return SpelledPitchSet(pitches)
     }
 }

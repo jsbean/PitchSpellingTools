@@ -66,7 +66,7 @@ public final class PitchSetSpeller: PitchSpeller {
     public func spell() throws -> SpelledPitchSet {
         
         // Exit early is pitchSet is empty
-        if pitchSet.isEmpty { return SpelledPitchSet(pitches: []) }
+        if pitchSet.isEmpty { return SpelledPitchSet([]) }
 
         return pitchSetIsObjectivelySpellableOrMonadic
             ? try spelledPitchSetWithDefaultSpellings()
@@ -123,7 +123,7 @@ public final class PitchSetSpeller: PitchSpeller {
     
     private func highestRankedPitches() throws -> SpelledPitchSet {
         nodeResource.sortByRank()
-        return SpelledPitchSet(pitches:
+        return SpelledPitchSet(
             nodeResource.reduce([]) { array, nodesByPitch in
                 guard let spelling = nodesByPitch.1.first?.spelling else { return array }
                 return array + SpelledPitch(pitch: nodesByPitch.0, spelling: spelling)
