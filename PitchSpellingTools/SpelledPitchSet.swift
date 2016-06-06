@@ -36,6 +36,8 @@ public struct SpelledPitchSet {
 
 extension SpelledPitchSet: SequenceType {
     
+    // MARK: - SequenceType
+    
     /// Generate `Pitches` for iteration.
     public func generate() -> AnyGenerator<SpelledPitch> {
         var generator = pitches.generate()
