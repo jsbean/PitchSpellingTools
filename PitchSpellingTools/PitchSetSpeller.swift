@@ -77,12 +77,13 @@ public final class PitchSetSpeller: PitchSpeller {
     // TODO: Make throw
     private func spelledPitchSetByCreatingComparisonStages() throws -> SpelledPitchSet {
 
+        // Call upon each of the comparison stages to rank each node if possible
         attemptRankingOfNodes()
         
         // Jump start ambiguous choosing process by asserting most urgent edge ranked
-        if nodeResource.noNodesHaveBeenRanked { rankNodesOfHighestPriorityEdge() }
+        rankNodesOfHighestPriorityEdgeIfNecessary()
         
-        // TODO: refact0r into own private method
+        // TODO: refactor into own private method
         for c in comparisonStages.indices {
             
             // TODO: come up with better names
@@ -104,6 +105,10 @@ public final class PitchSetSpeller: PitchSpeller {
                 position, comparisonStage in
                 comparisonStage.applyRankings(withWeight: rankWeight(for: position))
             }
+    }
+    
+    private func rankNodesOfHighestPriorityEdgeIfNecessary() {
+        if nodeResource.noNodesHaveBeenRanked { rankNodesOfHighestPriorityEdge() }
     }
     
     private func rankNodesOfHighestPriorityEdge() {
