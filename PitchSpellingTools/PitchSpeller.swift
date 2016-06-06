@@ -6,13 +6,10 @@
 //  Copyright © 2016 James Bean. All rights reserved.
 //
 
+import ArrayTools
 import Pitch
 
-public protocol PitchSpeller { }
-
-extension PitchSpeller {
+public protocol PitchSpeller {
     
-    internal func spell(pitch: Pitch, with spelling: PitchSpelling) -> SpelledPitch? {
-        return SpelledPitch(pitch: pitch, spelling: spelling)
-    }
+    
 }

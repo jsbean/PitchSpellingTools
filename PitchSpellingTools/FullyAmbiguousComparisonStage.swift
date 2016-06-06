@@ -28,6 +28,7 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
     let a: Level
     let b: Level
     
+    // TODO: move this logic higher up the chain of abstraction
     lazy var edges: [PitchSpellingEdge] = {
         var result: [PitchSpellingEdge] = []
         for nodeA in self.a.nodes {
@@ -37,6 +38,14 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
         }
         return result
     }()
+    
+    var highestRankedEdges: [PitchSpellingEdge] {
+        return edges.extremeElements(>) { $0.rank }
+    }
+    
+    var almostGoodEnoughEdges: [PitchSpellingEdge] {
+        return highestRankedEdges.extremeElements(<) { $0.meanRank ?? Float.min }
+    }
     
     // TODO: mention complexity
     var highestRanked: PitchSpellingEdge? {

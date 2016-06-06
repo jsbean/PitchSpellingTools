@@ -31,6 +31,10 @@ final class PitchSpellingEdge {
         self.b = b
     }
     
+    func applyRankToNodes(rank rank: Float) {
+        [a,b].forEach { $0.rank = rank }
+    }
+    
     func penalizeNodes(withWeight weight: Float) {
         // TODO: encapsulate under node surface
         [a,b].forEach {

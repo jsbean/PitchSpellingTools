@@ -11,7 +11,8 @@ import Pitch
 
 final class PitchSequenceSpeller: PitchSpeller {
     
-    enum Error: ErrorType { case cannotSpellNodes }
+    
+    enum Error: ErrorType { case notAllNodesRanked }
     
     /// Collection of references to `PitchSpellingNode` objects for each `Pitch`.
     private lazy var nodeResource: NodeResource = {
@@ -84,13 +85,11 @@ final class PitchSequenceSpeller: PitchSpeller {
     }
     
     private func commitRankedSpellings() throws -> [SpelledPitch] {
-        //print("commit ranked spellings")
-        //print(nodeResource.nodes)
         if comparisonStages.allMatch (
             { $0 is DeterminateComparisonStage || $0 is SemiAmbiguousComparisonStage }
         )
         {
-            guard nodeResource.allNodesHaveBeenRanked else { throw Error.cannotSpellNodes }
+            guard nodeResource.allNodesHaveBeenRanked else { throw Error.notAllNodesRanked }
             nodeResource.sortByRank()
             return nodeResource.reduce([]) { array, nodesByPitch in
                 guard let spelling = nodesByPitch.1.first?.spelling else { return array }
@@ -98,9 +97,6 @@ final class PitchSequenceSpeller: PitchSpeller {
             }
         }
         
-        // otherwise, take a second pass
-        
-        //print("have to incorporate fully ambiguous")
         for comparisonStage in comparisonStages
             where comparisonStage is FullyAmbiguousComparisonStage
         {
