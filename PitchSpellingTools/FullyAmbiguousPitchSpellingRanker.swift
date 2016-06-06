@@ -10,9 +10,9 @@ import ArithmeticTools
 
 /**
  Compares all of the potential spellings of two `Pitch` objects that cannot be spelled
- objectively, i.e., not `natural` for purpose of ranking.
+ objectively, i.e., not `natural`, for purpose of ranking.
  
- This structure ranks the relationships between potential `PitchSpelling` options, whereas
+ This structure ranks the edges between potential `PitchSpelling` options, whereas
  the `SemiAmbiguousPitchSpellingRanker` ranks individual nodes.
  
      -----
@@ -116,6 +116,9 @@ public final class FullyAmbiguousPitchSpellingRanker: PitchSpellingRanking {
 
 extension FullyAmbiguousPitchSpellingRanker {
     
+    // MARK: - CustomStringConvertible
+    
+    /// Printed description.
     public var description: String {
         var result = "FullyAmbiguousPitchSpellingRanker:\n"
         result += "- Level1: \(a)\n"

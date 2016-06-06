@@ -22,25 +22,34 @@ import Foundation
     | o o | = other
      -----
  */
-final class SemiAmbiguousPitchSpellingRanker: PitchSpellingRanking {
+public final class SemiAmbiguousPitchSpellingRanker: PitchSpellingRanking {
     
-    let determinate: PitchSpellingNode
-    let other: Level
+    let objectivelySpellable: PitchSpellingNode
+    let ambiguouslySpellable: Level
     
     // NOTE: `PitchSpellingEdge.b` is the unspelled `PitchSpellingNode`.
-    lazy var edges: [PitchSpellingEdge] = {
-        return self.other.nodes.map { PitchSpellingEdge(self.determinate, $0) }
+    public lazy var edges: [PitchSpellingEdge] = {
+        return self.ambiguouslySpellable.nodes.map {
+            PitchSpellingEdge(self.objectivelySpellable, $0)
+        }
     }()
     
-    var highestRanked: PitchSpellingNode? { return other.highestRanked }
+    var highestRanked: PitchSpellingNode? { return ambiguouslySpellable.highestRanked }
     
-    init(determinate: PitchSpellingNode, other: Level) {
-        self.determinate = determinate
-        self.other = other
-        determinate.rank = 1
+    
+    // MARK: - Initializers
+    
+    /**
+     Create a `SemiAmbiguousPitchSpellingRanker` with an objectively-spellable 
+     `PitchSpellingNode` and an ambiguously spellable `PitchSpellingLevel` object.
+     */
+    public init(objectivelySpellable: PitchSpellingNode, ambiguouslySpellable: Level) {
+        self.objectivelySpellable = objectivelySpellable
+        self.ambiguouslySpellable = ambiguouslySpellable
+        objectivelySpellable.rank = 1
     }
     
-    func applyRankings(withAmount amount: Float) {
+    public func applyRankings(withAmount amount: Float) {
         edges.forEach { penalizeIfNecessary(edge: $0, withAmount: amount) }
     }
     
@@ -70,10 +79,13 @@ final class SemiAmbiguousPitchSpellingRanker: PitchSpellingRanking {
 
 extension SemiAmbiguousPitchSpellingRanker {
     
-    var description: String {
+    // MARK: - CustomStringConvertible
+    
+    /// Printed description.
+    public var description: String {
         var result = "SemiAmbiguousPitchSpellingRanker:\n"
-        result += "- PitchSpellingNode: \(determinate)\n"
-        result += "- Level: \(other)\n"
+        result += "- Objectively-spellable Node: \(objectivelySpellable)\n"
+        result += "- Ambiguously-spellable Level: \(ambiguouslySpellable)\n"
         result += "Edges: "
         edges.forEach { result += "\n- \($0)" }
         return result

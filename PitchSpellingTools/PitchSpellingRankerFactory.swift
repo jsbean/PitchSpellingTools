@@ -51,8 +51,8 @@ public struct PitchSpellingRankerFactory {
             
             let (objectivelySpellable, subjective) = dyad.objectivelySpellableAndNot!
             return SemiAmbiguousPitchSpellingRanker(
-                determinate: node(forObjectivelySpellablePitch: objectivelySpellable),
-                other: level(for: subjective)
+                objectivelySpellable: node(forObjectivelySpellablePitch: objectivelySpellable),
+                ambiguouslySpellable: level(for: subjective)
             )
         }
     }
