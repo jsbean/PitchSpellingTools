@@ -12,6 +12,28 @@ import Pitch
 @testable import PitchSpellingTools
 
 class PitchSequenceSpellerTests: XCTestCase {
+    
+    func testEmptyIsEmpty() {
+        let seq = PitchConvertibleContainingSequence<PitchSet>([])
+        
+    }
+    
+    func testMonophonicAscending() {
+//        let seq = PitchConvertibleContainingSequence(
+//            [
+//                PitchSet([60]),
+//                PitchSet([61]),
+//                PitchSet([62])
+//            ]
+//        )
+//        
+        let speller = PitchSequenceSpeller(sets: [PitchSet([60]), PitchSet([61]), PitchSet([62])])
+        speller.applyRankings()
+    }
+    
+//    func testMonophonicDescending() {
+//        
+//    }
 
 //    func testEmptyIsEmpty() {
 //        let speller = PitchSequenceSpeller(pitchSequence: [])

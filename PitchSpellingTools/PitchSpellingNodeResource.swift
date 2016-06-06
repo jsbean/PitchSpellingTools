@@ -17,10 +17,13 @@ public struct PitchSpellingNodeResource {
     
     private var resource: [Pitch: [PitchSpellingNode]]
     
+    /// - warning: No documentation
     public var pitches: [Pitch] { return resource.reduce([]) { $0 + [$1.0] } }
     
     /// All `PitchSpellingNode` values contained herein.
-    public var nodes: [PitchSpellingNode] { return resource.reduce([]) { $0 + $1.1.map { $0 } } }
+    public var nodes: [PitchSpellingNode] {
+        return resource.reduce([]) { $0 + $1.1.map { $0 } }
+    }
     
     /**
      `true` if all nodes contained herein have been ranked. Otherwise, `false`.
@@ -71,11 +74,28 @@ public struct PitchSpellingNodeResource {
     }
     
     /**
+     - warning: Not yet implemented!
+     */
+    public init(sequence: [PitchSet]) {
+        fatalError()
+    }
+    
+    /**
      - returns: Array of `PitchSpellingNode` values for the given `pitch`, if present.
      Otherwise, `nil`.
      */
     public subscript (pitch: Pitch) -> [PitchSpellingNode]? {
-        return resource[pitch]
+        get { return resource[pitch] }
+        set { resource[pitch] = newValue }
+    }
+    
+    public subscript (pitchSet: PitchSet) -> PitchSpellingNodeResource? {
+        var result: PitchSpellingNodeResource = [:]
+        for pitch in pitchSet {
+            guard let nodes = self[pitch] else { return nil }
+            result[pitch] = nodes
+        }
+        return result
     }
     
     /**
@@ -85,13 +105,6 @@ public struct PitchSpellingNodeResource {
     public func highestRanked(for pitch: Pitch) -> PitchSpellingNode? {
         return self[pitch]?.sort { $0.rank > $1.rank }.first
     }
-    
-    /**
-     Sorts the nodes for each pitch by their rank in descending order.
-     */
-    public mutating func sortByRank() {
-        for (pitch, nodes) in resource { resource[pitch] = nodes.sort { $0.rank > $1.rank } }
-    }
 }
 
 extension PitchSpellingNodeResource: SequenceType {
@@ -99,5 +112,28 @@ extension PitchSpellingNodeResource: SequenceType {
     public func generate() -> AnyGenerator<(Pitch, [PitchSpellingNode])> {
         var generator = resource.generate()
         return AnyGenerator { return generator.next() }
+    }
+}
+
+extension PitchSpellingNodeResource: DictionaryLiteralConvertible {
+    
+    public typealias Key = Pitch
+    public typealias Value = [PitchSpellingNode]
+    
+    public init(dictionaryLiteral elements: (Key, Value)...) {
+        self.resource = [:]
+        for (key, value) in elements {
+            resource[key] = value
+        }
+    }
+}
+
+extension PitchSpellingNodeResource: CustomStringConvertible {
+    
+    // MARK: - CustomStringConvertible
+    
+    /// Printed description.
+    public var description: String {
+        return resource.description
     }
 }

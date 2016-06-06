@@ -24,9 +24,13 @@ public final class PitchSetSpeller: PitchSpeller {
     }()
     
     /// Wrapper for a dictionary of type `[Pitch: [Node]]`
-    private lazy var nodeResource: PitchSpellingNodeResource = {
-        PitchSpellingNodeResource(pitches: self.pitchSet)
+    internal lazy var nodeResource: PitchSpellingNodeResource = {
+        return PitchSpellingNodeResource(pitches: self.pitchSet)
     }()
+    
+    public var nodes: [PitchSpellingNode] {
+        return nodeResource.nodes
+    }
     
     /// Factory that creates `PitchSpellingRanking` objects applicable for this `PitchSet`.
     private lazy var rankerFactory: PitchSpellingRankerFactory = {
@@ -43,6 +47,8 @@ public final class PitchSetSpeller: PitchSpeller {
         return pitchSet.allMatch { $0.canBeSpelledObjectively } || pitchSet.isMonadic
     }
     
+    private let rank: Float // apply this more global ranking
+    
     // `PitchSet` to be spelled.
     private var pitchSet: PitchSet
     
@@ -51,8 +57,15 @@ public final class PitchSetSpeller: PitchSpeller {
     /**
      Create a `PitchSetSpeller` with a `PitchSet`.
      */
-    public init(_ pitchSet: PitchSet) {
+    public init(
+        _ pitchSet: PitchSet,
+        rank: Float = 1,
+        nodeResource: PitchSpellingNodeResource? = nil
+    )
+    {
         self.pitchSet = pitchSet
+        self.rank = rank
+        if let nodeResource = nodeResource { self.nodeResource = nodeResource }
     }
     
     // MARK: - Instance Methods
@@ -134,5 +147,15 @@ public final class PitchSetSpeller: PitchSpeller {
     private func rankWeight(for position: Int) -> Float {
         guard let dyads = dyads else { return 0 }
         return (Float(dyads.count - position) / Float(dyads.count)) / 2
+    }
+}
+
+extension PitchSetSpeller: CustomStringConvertible {
+    
+    // MARK: - CustomStringConvertible
+    
+    /// Printed description.
+    public var description: String {
+        return "PitchSetSpeller: \(nodeResource.description)"
     }
 }

@@ -11,10 +11,6 @@ import XCTest
 
 class PitchSetTests: XCTestCase {
 
-    func testInitWithNothing() {
-        let _ = PitchSet()
-    }
-
     func testDyads() {
         var set = PitchSet(
             [
@@ -29,5 +25,23 @@ class PitchSetTests: XCTestCase {
     
     func testArrayLiteralConvertible() {
         let _: PitchSet = [Pitch(noteNumber: 60), Pitch(noteNumber: 61)]
+    }
+    
+    func testInitWithPitchSetsEmpty() {
+        let pitchSets: [PitchSet] = []
+        let pitchSet = PitchSet(pitchSets)
+        XCTAssert(pitchSet.isEmpty)
+    }
+    
+    func testInitWithPitchSetsSingle() {
+        let pitchSets = [PitchSet([60])]
+        let pitchSet = PitchSet(pitchSets)
+        XCTAssertEqual(pitchSet, PitchSet([60]))
+    }
+    
+    func testInitWithPitchSetsMultipleOverlapping() {
+        let pitchSets = [PitchSet([60]), PitchSet([60,61]), PitchSet([65])]
+        let pitchSet = PitchSet(pitchSets)
+        XCTAssertEqual(pitchSet, PitchSet([60,61,65]))
     }
 }

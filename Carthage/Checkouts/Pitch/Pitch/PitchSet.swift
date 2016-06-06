@@ -60,6 +60,30 @@ public struct PitchSet: PitchConvertibleSetType {
      ```
      */
     public var pitchClassSet: PitchClassSet { return PitchClassSet(map { $0.pitchClass }) }
+    
+    public init(_ pitchSets: PitchSet...) {
+        self.init(pitchSets)
+    }
+    
+    /**
+     Create a `PitchSet` with a sequence of `PitchSet` values.
+     */
+    public init<S: SequenceType where S.Generator.Element == PitchSet>(_ pitchSets: S) {
+        if let (head, tail) = Array(pitchSets).destructured {
+            self.set = tail.reduce(head.set) { $0.union($1.set) }
+        } else {
+            self.set = []
+        }
+    }
+    
+    /**
+     - TODO: Move up the `PitchConvertibleSetType` protocol hierarchy.
+     
+     - returns: `PitchSet` with the union of this and the given `pitchSet`.
+     */
+    func formUnion(with pitchSet: PitchSet) -> PitchSet {
+        return PitchSet(set.union(pitchSet))
+    }
 }
 
 extension PitchSet: AnySequenceType {
@@ -84,4 +108,10 @@ extension PitchSet: ArrayLiteralConvertible {
     public init(arrayLiteral elements: Element...) {
         self.set = Set(elements)
     }
+}
+
+extension PitchSet: Equatable { }
+
+public func == (lhs: PitchSet, rhs: PitchSet) -> Bool {
+    return lhs.set == rhs.set
 }

@@ -11,5 +11,5 @@ import Pitch
 
 public protocol PitchSpeller {
     
-    
+    var nodes: [PitchSpellingNode] { get }
 }

@@ -9,10 +9,63 @@
 import ArrayTools
 import Pitch
 
-final class PitchSequenceSpeller: PitchSpeller {
+public final class PitchSequenceSpeller: PitchSpeller {
     
+//    let sequence: PitchConvertibleContainingSequence<PitchSet>
+//    
+//    public init(sequence: PitchConvertibleContainingSequence<PitchSet>) {
+//        self.sequence = sequence
+//    }
+
+    // make richer model later
     
+    public var nodes: [PitchSpellingNode] { return [] }
     
+    internal lazy var nodeResource: PitchSpellingNodeResource = {
+        PitchSpellingNodeResource(sequence: [])
+    }()
+    
+    let sets: [PitchSet]
+    
+    init(sets: [PitchSet]) {
+        self.sets = sets
+    }
+    
+    /**
+      - TODO: Returns SpelledPitchSetSequence
+     */
+    func spell() throws -> [SpelledPitchSet] { fatalError() }
+    
+    func applyRankings() {
+        
+        // first, manage nodes
+        // create master node resource
+        
+
+        // create node resource
+        let resource = PitchSpellingNodeResource(pitches: PitchSet(sets))
+         
+        // make throw if resource is nil
+        let individualSpellers = sets.map {
+            PitchSetSpeller($0, nodeResource: resource[$0]!)
+        }
+        individualSpellers.forEach {
+            $0.applyRankings()
+        }
+        
+//        print("resource after initial ranking: \(resource)")
+//        
+//        let joinedAdjacentSpellers = sets.adjacentPairs!.map { (first, second) in
+//            PitchSetSpeller(PitchSet(first.set.union(second)))
+//            
+//        }
+    }
+    
+    // TEMP
+    private func rankWeight(for position: Int) -> Float {
+        return (Float(sets.count - position) / Float(sets.count)) / 2
+    }
+
 //    
 //    enum Error: ErrorType { case notAllNodesRanked }
 //    
