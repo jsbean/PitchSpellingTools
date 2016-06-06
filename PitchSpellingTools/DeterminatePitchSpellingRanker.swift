@@ -19,10 +19,10 @@ public final class DeterminatePitchSpellingRanker: PitchSpellingRanking {
     public init(_ a: PitchSpellingNode, _ b: PitchSpellingNode) {
         self.a = a
         self.b = b
-        self.applyRankings(withWeight: 1)
+        self.applyRankings(withAmount: 1)
     }
     
-    public func applyRankings(withWeight weight: Float) {
+    public func applyRankings(withAmount amount: Float) {
         a.rank = 1
         b.rank = 1
     }

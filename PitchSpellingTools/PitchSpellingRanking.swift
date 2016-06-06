@@ -16,7 +16,7 @@ public protocol PitchSpellingRanking: CustomStringConvertible {
     var edges: [PitchSpellingEdge] { get }
     var rules: [(PitchSpellingDyad) -> Bool] { get }
     
-    func applyRankings(withWeight weight: Float)
+    func applyRankings(withAmount amount: Float)
 }
 
 extension PitchSpellingRanking {

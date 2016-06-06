@@ -37,6 +37,10 @@ public final class FullyAmbiguousPitchSpellingRanker: PitchSpellingRanking {
      */
     public let b: Level
     
+    /**
+     All `PitchSpellingEdge` objects between each `PitchSpellingNode`
+     in each `PitchSpellingEdge`
+    */
     public lazy var edges: [PitchSpellingEdge] = {
         var result: [PitchSpellingEdge] = []
         for nodeA in self.a.nodes {
@@ -47,17 +51,23 @@ public final class FullyAmbiguousPitchSpellingRanker: PitchSpellingRanking {
         return result
     }()
     
-    
+    /// All of the `PitchSpellingEdge` objects with the highest rank.
     public var highestRankedEdges: [PitchSpellingEdge] {
         return edges.extremeElements(>) { $0.rank }
     }
     
-    // TODO: update name
+    /**
+     All of the `PitchSpellingEdge` objects that are highest ranked, 
+     yet contain the lowest (or not-yet) ranked `PitchSpellingNode` objects.
+    */
     public var almostGoodEnoughEdges: [PitchSpellingEdge] {
         return highestRankedEdges.extremeElements(<) { $0.meanRankOfNodes ?? Float.min }
     }
     
-    // TODO: mention complexity
+    /**
+     The highest ranked `PitchSpellingEdge`, if there is at least one edge present.
+     Otherwise, `nil`.
+     */
     var highestRanked: PitchSpellingEdge? {
         return edges
             .stableSort {
@@ -72,25 +82,35 @@ public final class FullyAmbiguousPitchSpellingRanker: PitchSpellingRanking {
             .first
     }
     
+    // MARK: - Initializers
+    
+    /**
+     Create a `FullyAmbiguousPitchSpellingRanker` with two `PitchSpellingLevel` objects.
+     */
     public init(_ a: Level, _ b: Level) {
         self.a = a
         self.b = b
     }
     
-    public func hasNode(node: PitchSpellingNode) -> Bool {
-        return a === node || b === node
-    }
+    // MARK: - Instance Methods
     
-    public func applyRankings(withWeight weight: Float) {
+    /**
+     Apply the rankings to all of the `PitchSpellingEdge` objects contained herein with the 
+     given `amount`. 
+     
+     For each rule in `rules` broken by a given edge, that edge is enalized by the given 
+     `amount`.
+     */
+    public func applyRankings(withAmount amount: Float) {
         for edge in edges {
             for rule in rules where !rule(edge.pitchSpellingDyad) {
-                penalize(edge: edge, withWeight: weight)
+                penalize(edge: edge, byAmount: amount)
             }
         }
     }
     
-    private func penalize(edge edge: PitchSpellingEdge, withWeight weight: Float) {
-        edge.rank -= weight
+    private func penalize(edge edge: PitchSpellingEdge, byAmount amount: Float) {
+        edge.rank -= amount
     }
 }
 

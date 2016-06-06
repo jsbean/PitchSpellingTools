@@ -8,14 +8,28 @@
 
 import Pitch
 
+/**
+ Factory structure that creates the proper `PitchSpellingRanking`-conforming object from the
+ given `NodeResource` for each `Dyad`.
+ */
 public struct PitchSpellingRankerFactory {
     
     private let nodeResource: NodeResource
     
+    // MARK: - Initializers
+    
+    /**
+     Create a `PitchSpellingRankerFactory` with a `NodeResource`.
+     */
     public init(nodeResource: NodeResource) {
         self.nodeResource = nodeResource
     }
     
+    // MARK: - Instance Methods
+    
+    /**
+     - returns: `PitchSpellingRanking`-conforming object suitable for the given `dyad`.
+     */
     public func makeRanker(for dyad: Dyad) -> PitchSpellingRanking {
         
         if dyad.canBeSpelledObjectively {

@@ -40,23 +40,23 @@ final class SemiAmbiguousPitchSpellingRanker: PitchSpellingRanking {
         determinate.rank = 1
     }
     
-    func applyRankings(withWeight weight: Float) {
-        edges.forEach { penalizeIfNecessary(edge: $0, withWeight: weight) }
+    func applyRankings(withAmount amount: Float) {
+        edges.forEach { penalizeIfNecessary(edge: $0, withAmount: amount) }
     }
     
-    private func penalizeIfNecessary(edge edge: PitchSpellingEdge, withWeight weight: Float) {
+    private func penalizeIfNecessary(edge edge: PitchSpellingEdge, withAmount amount: Float) {
         ensureIsRanked(edge: edge)
         for rule in rules where !rule(edge.pitchSpellingDyad) {
-            penalize(edge: edge, withWeight: weight)
+            penalize(edge: edge, byAmount: amount)
         }
     }
     
-    private func penalize(edge edge: PitchSpellingEdge, withWeight weight: Float) {
-        penalize(node: edge.b, withWeight: weight)
+    private func penalize(edge edge: PitchSpellingEdge, byAmount amount: Float) {
+        penalize(node: edge.b, byAmount: amount)
     }
     
-    private func penalize(node node: PitchSpellingNode, withWeight weight: Float) {
-        node.rank! -= weight
+    private func penalize(node node: PitchSpellingNode, byAmount amount: Float) {
+        node.rank! -= amount
     }
     
     private func ensureIsRanked(edge edge: PitchSpellingEdge) {

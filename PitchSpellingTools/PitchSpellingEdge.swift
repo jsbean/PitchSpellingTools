@@ -35,8 +35,8 @@ public final class PitchSpellingEdge {
         [a,b].forEach { $0.apply(rank) }
     }
     
-    public func penalizeNodes(withWeight weight: Float) {
-        [a,b].forEach { $0.penalize(by: weight) }
+    public func penalizeNodes(amount amount: Float) {
+        [a,b].forEach { $0.penalize(by: amount) }
     }
     
     func hasNode(node: PitchSpellingNode) -> Bool {

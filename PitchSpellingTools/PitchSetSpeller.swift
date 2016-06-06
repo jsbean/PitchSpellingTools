@@ -98,7 +98,7 @@ public final class PitchSetSpeller: PitchSpeller {
     
     private func attemptRankingOfNodes() {
         rankers?.enumerate().forEach { position, ranker in
-            ranker.applyRankings(withWeight: rankWeight(for: position))
+            ranker.applyRankings(withAmount: rankWeight(for: position))
         }
     }
     
@@ -118,7 +118,7 @@ public final class PitchSetSpeller: PitchSpeller {
             in rankers.enumerate()
         {
             fullyAmbiguous.almostGoodEnoughEdges.forEach {
-                $0.penalizeNodes(withWeight: rankWeight(for: index))
+                $0.penalizeNodes(amount: rankWeight(for: index))
             }
         }
     }
