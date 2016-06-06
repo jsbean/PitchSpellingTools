@@ -10,18 +10,18 @@ import Pitch
 
 /**
  Factory structure that creates the proper `PitchSpellingRanking`-conforming object from the
- given `NodeResource` for each `Dyad`.
+ given `PitchSpellingNodeResource` for each `Dyad`.
  */
 public struct PitchSpellingRankerFactory {
     
-    private let nodeResource: NodeResource
+    private let nodeResource: PitchSpellingNodeResource
     
     // MARK: - Initializers
     
     /**
-     Create a `PitchSpellingRankerFactory` with a `NodeResource`.
+     Create a `PitchSpellingRankerFactory` with a `PitchSpellingNodeResource`.
      */
-    public init(nodeResource: NodeResource) {
+    public init(nodeResource: PitchSpellingNodeResource) {
         self.nodeResource = nodeResource
     }
     

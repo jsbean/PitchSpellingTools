@@ -23,7 +23,7 @@ public struct PitchSpellingDyad {
         return IntervalQuality.kind(forPitchSpellingDyad: self)
     }
     
-    /// `true` if has `intervalQuality` is objectively valid.
+    /// `true` if has `intervalQuality` is objectively valid. Otherwise `false`.
     public var hasValidIntervalQuality: Bool { return intervalQuality.hasValidIntervalQuality }
     
     /**

@@ -17,8 +17,8 @@ final class PitchSequenceSpeller: PitchSpeller {
 //    enum Error: ErrorType { case notAllNodesRanked }
 //    
 //    /// Collection of references to `PitchSpellingNode` objects for each `Pitch`.
-//    private lazy var nodeResource: NodeResource = {
-//        NodeResource(pitches: self.pitchSequence)
+//    private lazy var nodeResource: PitchSpellingNodeResource = {
+//        PitchSpellingNodeResource(pitches: self.pitchSequence)
 //    }()
 //    
 //    /// Factory that creates `PitchSpellingRanking` objects applicable for this `PitchSet`

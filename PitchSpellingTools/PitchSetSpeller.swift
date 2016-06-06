@@ -24,8 +24,8 @@ public final class PitchSetSpeller: PitchSpeller {
     }()
     
     /// Wrapper for a dictionary of type `[Pitch: [Node]]`
-    private lazy var nodeResource: NodeResource = {
-        NodeResource(pitches: self.pitchSet)
+    private lazy var nodeResource: PitchSpellingNodeResource = {
+        PitchSpellingNodeResource(pitches: self.pitchSet)
     }()
     
     /// Factory that creates `PitchSpellingRanking` objects applicable for this `PitchSet`.
@@ -43,7 +43,7 @@ public final class PitchSetSpeller: PitchSpeller {
         return pitchSet.allMatch { $0.canBeSpelledObjectively } || pitchSet.isMonadic
     }
     
-    // `PitchSet` to be spelled
+    // `PitchSet` to be spelled.
     private var pitchSet: PitchSet
     
     // MARK: - Initializers
@@ -73,7 +73,9 @@ public final class PitchSetSpeller: PitchSpeller {
             : try spelledPitchSetByCreatingRankers()
     }
     
-    // rank the nodes herein, but don't make any decisions
+    /**
+     Compare possible spelling options, and apply rankings upon these options.
+     */
     public func applyRankings() {
         
         // Call upon each of the comparison stages to rank each node, if possible
@@ -124,11 +126,13 @@ public final class PitchSetSpeller: PitchSpeller {
     }
     
     private func highestRankedPitches() throws -> SpelledPitchSet {
-        nodeResource.sortByRank()
+        
         return SpelledPitchSet(
-            nodeResource.reduce([]) { array, nodesByPitch in
-                guard let spelling = nodesByPitch.1.first?.spelling else { return array }
-                return array + SpelledPitch(pitch: nodesByPitch.0, spelling: spelling)
+            try nodeResource.pitches.map { pitch in
+                guard let spelling = nodeResource.highestRanked(for: pitch)?.spelling else {
+                    throw PitchSpelling.Error.noSpellingForPitch(pitch)
+                }
+                return SpelledPitch(pitch, spelling)
             }
         )
     }

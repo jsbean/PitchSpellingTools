@@ -19,7 +19,14 @@ public final class Level {
     /// `PitchSpellingNode` objects contained herein, each holding a `PitchSpelling`
     internal let nodes: [PitchSpellingNode]
     
-    public var highestRanked: PitchSpellingNode? { return nodes.sort { $0.rank > $1.rank }.first }
+    // MARK: - Instance Properties
+    
+    /// The currently highest ranked `PitchSpellingNode` contained herein.
+    public var highestRanked: PitchSpellingNode? {
+        return nodes.sort { $0.rank > $1.rank }.first
+    }
+    
+    // MARK: - Initializers
     
     /**
      Create a `Level` with an array of `PitchSpellingNode` objects, each holding a `PitchSpelling`.
@@ -32,7 +39,8 @@ public final class Level {
 
 extension Level: CustomStringConvertible {
     
-    public var description: String {
-        return "\(pitch): \(nodes)"
-    }
+    // MARK: - CustomStringConvertible
+    
+    /// Printed description.
+    public var description: String { return "\(pitch): \(nodes)" }
 }
