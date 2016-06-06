@@ -9,13 +9,19 @@
 import Pitch
 
 /**
- Structure that extends a `Pitch` with a `PitchSpelling`.
+ Structure that wraps a `Pitch` with a `PitchSpelling`.
  */
 public struct SpelledPitch {
     
+    // MARK: - Instance Properties
+    
+    /// `Pitch`.
     public let pitch: Pitch
     
+    /// `PitchSpelling`.
     public let spelling: PitchSpelling
+    
+    // MARK: - Initializers
     
     /**
      Create a `SpelledPitch` with a given `pitch` and `spelling`.
@@ -27,11 +33,20 @@ public struct SpelledPitch {
         self.spelling = spelling
     }
     
+    /**
+     Create a `SpelledPitch` with a given `pitch` and `spelling`, without argument labels.
+     */
     public init(_ pitch: Pitch, _ spelling: PitchSpelling) {
         self.pitch = pitch
         self.spelling = spelling
     }
+}
+
+extension SpelledPitch: CustomStringConvertible {
     
+    // MARK: - CustomStringConvertible
+    
+    /// Printed description.
     public var description: String {
         return "\(pitch): \(spelling)"
     }
@@ -39,6 +54,9 @@ public struct SpelledPitch {
 
 extension SpelledPitch: Hashable {
     
+    // MARK: - Hashable
+    
+    /// Hash value.
     public var hashValue: Int { return "\(pitch)\(spelling)".hashValue }
 }
 
