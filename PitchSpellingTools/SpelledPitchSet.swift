@@ -8,13 +8,24 @@
 
 import Pitch
 
-public struct SpelledPitchSet: SequenceType {
+/**
+ Unordered set of unique `SpelledPitch` values.
+ */
+public struct SpelledPitchSet {
     
     private let pitches: Set<SpelledPitch>
     
+    // MARK: - Initializers
+    
+    /**
+     Create a `SpelledPitchSet` with an array of `SpelledPitch` values.
+     */
     public init(pitches: [SpelledPitch]) {
         self.pitches = Set(pitches)
     }
+}
+
+extension SpelledPitchSet: SequenceType {
     
     /// Generate `Pitches` for iteration.
     public func generate() -> AnyGenerator<SpelledPitch> {
@@ -22,8 +33,6 @@ public struct SpelledPitchSet: SequenceType {
         return AnyGenerator { return generator.next() }
     }
 }
-
-
 
 extension SpelledPitchSet: Equatable { }
 
