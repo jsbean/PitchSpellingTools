@@ -7,6 +7,7 @@
 //
 
 import ArithmeticTools
+import ArrayTools
 
 /**
  Compares all of the potential spellings of two `Pitch` objects that cannot be spelled
