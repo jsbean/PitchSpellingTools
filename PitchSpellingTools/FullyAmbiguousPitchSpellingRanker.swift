@@ -15,6 +15,7 @@ import ArithmeticTools
  This structure ranks the edges between potential `PitchSpelling` options, whereas
  the `SemiAmbiguousPitchSpellingRanker` ranks individual nodes.
  
+ ```
      -----
     | o o | = a
      -----
@@ -22,6 +23,7 @@ import ArithmeticTools
      -----
     | o o | = b
      -----
+ ```
  */
 public final class FullyAmbiguousPitchSpellingRanker: PitchSpellingRanking {
     

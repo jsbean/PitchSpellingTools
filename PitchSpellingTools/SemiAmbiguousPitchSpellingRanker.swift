@@ -16,11 +16,13 @@ import Foundation
  This structure ranks the individual potential `PitchSpelling` objects for the ambiguously
  spellable `Pitch`.
  
+ ```
        o    = objectively spellable
       / \   = edges
      -----
     | o o | = ambiguously spellable
      -----
+ ```
  */
 public final class SemiAmbiguousPitchSpellingRanker: PitchSpellingRanking {
     
