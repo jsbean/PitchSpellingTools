@@ -1,5 +1,5 @@
 //
-//  ComparisonStageFactory.swift
+//  PitchSpellingRankerFactory.swift
 //  PitchSpellingTools
 //
 //  Created by James Bean on 6/2/16.
@@ -8,19 +8,19 @@
 
 import Pitch
 
-struct ComparisonStageFactory {
+public struct PitchSpellingRankerFactory {
     
     private let nodeResource: NodeResource
     
-    init(nodeResource: NodeResource) {
+    public init(nodeResource: NodeResource) {
         self.nodeResource = nodeResource
     }
     
-    func makeComparisonStage(for dyad: Dyad) -> ComparisonStage {
+    public func makeRanker(for dyad: Dyad) -> PitchSpellingRanking {
         
         if dyad.canBeSpelledObjectively {
 
-            return DeterminateComparisonStage(
+            return DeterminatePitchSpellingRanker(
                 node(forObjectivelySpellablePitch: dyad.lower),
                 node(forObjectivelySpellablePitch: dyad.higher)
             )
@@ -28,7 +28,7 @@ struct ComparisonStageFactory {
         
         if dyad.isFullyAmbiguouslySpellable {
             
-            return FullyAmbiguousComparisonStage(
+            return FullyAmbiguousPitchSpellingRanker(
                 level(for: dyad.lower),
                 level(for: dyad.higher)
             )
@@ -36,7 +36,7 @@ struct ComparisonStageFactory {
         } else {
             
             let (objectivelySpellable, subjective) = dyad.objectivelySpellableAndNot!
-            return SemiAmbiguousComparisonStage(
+            return SemiAmbiguousPitchSpellingRanker(
                 determinate: node(forObjectivelySpellablePitch: objectivelySpellable),
                 other: level(for: subjective)
             )

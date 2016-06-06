@@ -14,16 +14,16 @@ extension PitchSequence {
      - TODO: return SpelledPitchSequence structure
      - warning: Not yet implemented!
      */
-    internal func spelled(
-        withCoarseDirection coarseDirection: PitchSpelling.CoarseAdjustment.Direction
-    ) -> [SpelledPitch]
-    {
-        return self.map { pitch in
-            let spelling = pitch.spellingsWithoutUnconventionalEnharmonics.filter { spelling in
-                spelling.isCompatible(withCoarseDirection: coarseDirection)
-            }.first!
-            return SpelledPitch(pitch: pitch, spelling: spelling)
-        }
-    }
+//    internal func spelled(
+//        withCoarseDirection coarseDirection: PitchSpelling.CoarseAdjustment.Direction
+//    ) -> [SpelledPitch]
+//    {
+//        return self.map { pitch in
+//            let spelling = pitch.spellingsWithoutUnconventionalEnharmonics.filter { spelling in
+//                spelling.isCompatible(withCoarseDirection: coarseDirection)
+//            }.first!
+//            return SpelledPitch(pitch: pitch, spelling: spelling)
+//        }
+//    }
 }
 

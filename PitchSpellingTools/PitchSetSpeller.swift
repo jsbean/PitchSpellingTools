@@ -25,17 +25,17 @@ public final class PitchSetSpeller: PitchSpeller {
     
     /// Wrapper for a dictionary of type `[Pitch: [Node]]`
     private lazy var nodeResource: NodeResource = {
-        NodeResource(pitches: self.pitchSet) }(
-    )
-    
-    /// Factory that creates `ComparisonStage` objects applicable for this `PitchSet`.
-    private lazy var comparisonStageFactory: ComparisonStageFactory = {
-        ComparisonStageFactory(nodeResource: self.nodeResource)
+        NodeResource(pitches: self.pitchSet)
     }()
     
-    /// `ComparisonStage` objects generated for each `PitchSpellingDyad` contained herein.
-    private lazy var comparisonStages: [ComparisonStage]? = {
-        self.dyads?.map { self.comparisonStageFactory.makeComparisonStage(for: $0) }
+    /// Factory that creates `PitchSpellingRanking` objects applicable for this `PitchSet`.
+    private lazy var rankerFactory: PitchSpellingRankerFactory = {
+        PitchSpellingRankerFactory(nodeResource: self.nodeResource)
+    }()
+    
+    /// `PitchSpellingRanking` objects generated for each `PitchSpellingDyad` contained herein.
+    private lazy var rankers: [PitchSpellingRanking]? = {
+        self.dyads?.map { self.rankerFactory.makeRanker(for: $0) }
     }()
     
     /// If the `PitchSet` herein can be objectively spelled or has only one `Pitch` value.
@@ -70,7 +70,7 @@ public final class PitchSetSpeller: PitchSpeller {
 
         return pitchSetIsObjectivelySpellableOrMonadic
             ? try spelledPitchSetWithDefaultSpellings()
-            : try spelledPitchSetByCreatingComparisonStages()
+            : try spelledPitchSetByCreatingRankers()
     }
     
     // rank the nodes herein, but don't make any decisions
@@ -91,14 +91,14 @@ public final class PitchSetSpeller: PitchSpeller {
         return try pitchSet.spelledWithDefaultSpellings()
     }
     
-    private func spelledPitchSetByCreatingComparisonStages() throws -> SpelledPitchSet {
+    private func spelledPitchSetByCreatingRankers() throws -> SpelledPitchSet {
         applyRankings()
         return try highestRankedPitches()
     }
     
     private func attemptRankingOfNodes() {
-        comparisonStages?.enumerate().forEach { position, comparisonStage in
-            comparisonStage.applyRankings(withWeight: rankWeight(for: position))
+        rankers?.enumerate().forEach { position, ranker in
+            ranker.applyRankings(withWeight: rankWeight(for: position))
         }
     }
     
@@ -107,15 +107,15 @@ public final class PitchSetSpeller: PitchSpeller {
     }
     
     private func rankNodesOfHighestPriorityEdge() {
-        guard let first = comparisonStages?[0] as? FullyAmbiguousComparisonStage else { return }
+        guard let first = rankers?[0] as? FullyAmbiguousPitchSpellingRanker else { return }
         first.highestRanked?.applyRankToNodes(rank: 1)
     }
     
     private func penalizeAlmostGoodEnoughEdges() {
-        guard let comparisonStages = comparisonStages else { return }
+        guard let rankers = rankers else { return }
         for case
-            let (index, fullyAmbiguous as FullyAmbiguousComparisonStage)
-            in comparisonStages.enumerate()
+            let (index, fullyAmbiguous as FullyAmbiguousPitchSpellingRanker)
+            in rankers.enumerate()
         {
             fullyAmbiguous.almostGoodEnoughEdges.forEach {
                 $0.penalizeNodes(withWeight: rankWeight(for: index))

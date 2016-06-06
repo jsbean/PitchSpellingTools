@@ -11,7 +11,7 @@ import Pitch
 /**
  Collection of `PitchSpelling` objects for a single `Pitch` in a `PitchSet`.
  */
-internal final class Level {
+public final class Level {
     
     /// `Pitch` to which `nodes` belong.
     internal let pitch: Pitch
@@ -19,12 +19,12 @@ internal final class Level {
     /// `PitchSpellingNode` objects contained herein, each holding a `PitchSpelling`
     internal let nodes: [PitchSpellingNode]
     
-    internal var highestRanked: PitchSpellingNode? { return nodes.sort { $0.rank > $1.rank }.first }
+    public var highestRanked: PitchSpellingNode? { return nodes.sort { $0.rank > $1.rank }.first }
     
     /**
      Create a `Level` with an array of `PitchSpellingNode` objects, each holding a `PitchSpelling`.
      */
-    internal init(pitch: Pitch, nodes: [PitchSpellingNode]) {
+    public init(pitch: Pitch, nodes: [PitchSpellingNode]) {
         self.pitch = pitch
         self.nodes = nodes
     }
@@ -32,7 +32,7 @@ internal final class Level {
 
 extension Level: CustomStringConvertible {
     
-    internal var description: String {
+    public var description: String {
         return "\(pitch): \(nodes)"
     }
 }

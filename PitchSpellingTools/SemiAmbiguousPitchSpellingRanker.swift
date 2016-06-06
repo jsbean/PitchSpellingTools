@@ -1,5 +1,5 @@
 //
-//  SemiAmbiguousComparisonStage.swift
+//  SemiAmbiguousPitchSpellingRanker.swift
 //  PitchSpellingTools
 //
 //  Created by James Bean on 5/27/16.
@@ -22,7 +22,7 @@ import Foundation
     | o o | = other
      -----
  */
-final class SemiAmbiguousComparisonStage: ComparisonStage {
+final class SemiAmbiguousPitchSpellingRanker: PitchSpellingRanking {
     
     let determinate: PitchSpellingNode
     let other: Level
@@ -68,10 +68,10 @@ final class SemiAmbiguousComparisonStage: ComparisonStage {
     }
 }
 
-extension SemiAmbiguousComparisonStage {
+extension SemiAmbiguousPitchSpellingRanker {
     
     var description: String {
-        var result = "SemiAmbiguousComparisonStage:\n"
+        var result = "SemiAmbiguousPitchSpellingRanker:\n"
         result += "- PitchSpellingNode: \(determinate)\n"
         result += "- Level: \(other)\n"
         result += "Edges: "

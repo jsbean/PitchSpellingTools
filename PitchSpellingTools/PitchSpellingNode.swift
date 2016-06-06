@@ -13,20 +13,19 @@ import Pitch
  
  - note: Consider factoring this out, unless it has a bigger payload than just a `PitchSpelling`
  */
-internal final class PitchSpellingNode {
+public final class PitchSpellingNode {
     
-    internal var rank: Float? // start `nil`
-    
-    // add pitch
-    internal let pitch: Pitch
+    public var rank: Float? = nil
+
+    public let pitch: Pitch
     
     /// The `PitchSpelling` held by this `PitchSpellingNode`.
-    internal let spelling: PitchSpelling
+    public let spelling: PitchSpelling
     
     /**
      Create a `PitchSpellingNode` with the given `spelling`.
      */
-    internal init(pitch: Pitch, spelling: PitchSpelling) {
+    public init(pitch: Pitch, spelling: PitchSpelling) {
         self.pitch = pitch
         self.spelling = spelling
     }
@@ -41,21 +40,30 @@ internal final class PitchSpellingNode {
         self.pitch = pitch
         self.spelling = pitch.defaultSpelling!
     }
+    
+    public func apply(rank: Float) {
+        self.rank = rank
+    }
+    
+    public func penalize(by amount: Float) {
+        if rank == nil { rank = 1 }
+        rank! -= amount
+    }
 }
 
 extension PitchSpellingNode: Comparable { }
 
-internal func == (lhs: PitchSpellingNode, rhs: PitchSpellingNode) -> Bool {
+public func == (lhs: PitchSpellingNode, rhs: PitchSpellingNode) -> Bool {
     return lhs.spelling == rhs.spelling
 }
 
-internal func < (lhs: PitchSpellingNode, rhs: PitchSpellingNode) -> Bool {
+public func < (lhs: PitchSpellingNode, rhs: PitchSpellingNode) -> Bool {
     return lhs.rank < rhs.rank
 }
 
 extension PitchSpellingNode: CustomStringConvertible {
     
-    internal var description: String {
+    public var description: String {
         return "\(spelling); rank: \(rank)"
     }
 }

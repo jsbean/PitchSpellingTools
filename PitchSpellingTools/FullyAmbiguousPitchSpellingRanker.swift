@@ -1,5 +1,5 @@
 //
-//  FullyAmbiguousComparisonStage.swift
+//  FullyAmbiguousPitchSpellingRanker.swift
 //  PitchSpellingTools
 //
 //  Created by James Bean on 5/27/16.
@@ -13,7 +13,7 @@ import ArithmeticTools
  objectively, i.e., not `natural` for purpose of ranking.
  
  This structure ranks the relationships between potential `PitchSpelling` options, whereas
- the `SemiAmbiguousComparisonStage` ranks individual nodes.
+ the `SemiAmbiguousPitchSpellingRanker` ranks individual nodes.
  
      -----
     | o o | = a
@@ -23,13 +23,21 @@ import ArithmeticTools
     | o o | = b
      -----
  */
-final class FullyAmbiguousComparisonStage: ComparisonStage {
+public final class FullyAmbiguousPitchSpellingRanker: PitchSpellingRanking {
     
-    let a: Level
-    let b: Level
+    /**
+     One `PitchSpellingLevel` containing all possible `PitchSpellingNode` values available
+     for a given `Pitch`.
+     */
+    public let a: Level
     
-    // TODO: move this logic higher up the chain of abstraction
-    lazy var edges: [PitchSpellingEdge] = {
+    /**
+     The other `PitchSpellingLevel` containing all possible `PitchSpellingNode` values
+     available for a given `Pitch`.
+     */
+    public let b: Level
+    
+    public lazy var edges: [PitchSpellingEdge] = {
         var result: [PitchSpellingEdge] = []
         for nodeA in self.a.nodes {
             for nodeB in self.b.nodes {
@@ -39,12 +47,14 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
         return result
     }()
     
-    var highestRankedEdges: [PitchSpellingEdge] {
+    
+    public var highestRankedEdges: [PitchSpellingEdge] {
         return edges.extremeElements(>) { $0.rank }
     }
     
-    var almostGoodEnoughEdges: [PitchSpellingEdge] {
-        return highestRankedEdges.extremeElements(<) { $0.meanRank ?? Float.min }
+    // TODO: update name
+    public var almostGoodEnoughEdges: [PitchSpellingEdge] {
+        return highestRankedEdges.extremeElements(<) { $0.meanRankOfNodes ?? Float.min }
     }
     
     // TODO: mention complexity
@@ -62,16 +72,16 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
             .first
     }
     
-    init(_ a: Level, _ b: Level) {
+    public init(_ a: Level, _ b: Level) {
         self.a = a
         self.b = b
     }
     
-    func hasNode(node: PitchSpellingNode) -> Bool {
+    public func hasNode(node: PitchSpellingNode) -> Bool {
         return a === node || b === node
     }
     
-    func applyRankings(withWeight weight: Float) {
+    public func applyRankings(withWeight weight: Float) {
         for edge in edges {
             for rule in rules where !rule(edge.pitchSpellingDyad) {
                 penalize(edge: edge, withWeight: weight)
@@ -84,10 +94,10 @@ final class FullyAmbiguousComparisonStage: ComparisonStage {
     }
 }
 
-extension FullyAmbiguousComparisonStage {
+extension FullyAmbiguousPitchSpellingRanker {
     
-    var description: String {
-        var result = "FullyAmbiguousComparisonStage:\n"
+    public var description: String {
+        var result = "FullyAmbiguousPitchSpellingRanker:\n"
         result += "- Level1: \(a)\n"
         result += "- Level2: \(b)\n"
         result += "Edges: "

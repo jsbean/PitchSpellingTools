@@ -8,7 +8,7 @@
 
 import Pitch
 
-internal struct NodeResource {
+public struct NodeResource {
     
     private var resource: [Pitch: [PitchSpellingNode]]
     
@@ -36,7 +36,7 @@ internal struct NodeResource {
     // init with an array of Pitches or a PitchSet
     /// - warning: this is currently assuming we don't want unconventional enharmonics
     /// (e.g., (c flat), (b sharp), (d double sharp), etc)
-    init<S: SequenceType where S.Generator.Element == Pitch>(pitches: S) {
+    public init<S: SequenceType where S.Generator.Element == Pitch>(pitches: S) {
         self.resource = pitches.reduce([:]) { (dict, pitch) in
             var dict = dict
             dict[pitch] = pitch.spellingsWithoutUnconventionalEnharmonics.map { spelling in
@@ -57,7 +57,7 @@ internal struct NodeResource {
 
 extension NodeResource: SequenceType {
     
-    func generate() -> AnyGenerator<(Pitch, [PitchSpellingNode])> {
+    public func generate() -> AnyGenerator<(Pitch, [PitchSpellingNode])> {
         var generator = resource.generate()
         return AnyGenerator { return generator.next() }
     }
