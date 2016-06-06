@@ -27,6 +27,9 @@ public struct PitchSpelling {
          */
         case invalidSpelling(Pitch, PitchSpelling)
         
+        /**
+         If there is no `PitchSpelling` found for the given `Pitch`.
+         */
         case noSpellingForPitch(Pitch)
     }
     
