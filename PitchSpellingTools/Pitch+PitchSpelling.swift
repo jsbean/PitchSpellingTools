@@ -30,7 +30,7 @@ extension Pitch {
         return PitchSpellings.spellings(forPitchClass: pitchClass) ?? []
     }
     
-    // TODO: Encapsulate this logic within `PitchSpellings` `struct`.
+    /// - TODO: Encapsulate this logic within `PitchSpellings` `struct`.
     public var spellingsWithoutUnconventionalEnharmonics: [PitchSpelling] {
         var spellings = self.spellings
         
