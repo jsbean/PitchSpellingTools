@@ -11,7 +11,7 @@
 //internal class HalfToneDyadSpeller: DyadSpeller {
 //    
 //    internal var stepPreserving: [PitchSpellingDyad] {
-//        return pitchSpellingDyads.filter { $0.hasIntervalFidelity }
+//        return pitchSpellingDyads.filter { $0.hasValidIntervalQuality }
 //    }
 //    
 //    /**

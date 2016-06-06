@@ -72,7 +72,7 @@ public struct PitchSpellingDyad {
         return a.fine != .none || b.fine != .none
     }
     
-    public var hasIntervalFidelity: Bool { return intervalQuality.hasIntervalFidelity }
+    public var hasValidIntervalQuality: Bool { return intervalQuality.hasValidIntervalQuality }
     
     /// Mean of `distance` values of both `PitchSpelling` objects.
     public var meanSpellingDistance: Float {

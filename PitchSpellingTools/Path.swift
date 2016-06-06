@@ -19,7 +19,7 @@
 //    internal var meanStepPreserving: Float {
 //        let dyads = self.dyads
 //        var amountStepPreserving: Float = 0
-//        for dyad in dyads { if dyad.hasIntervalFidelity { amountStepPreserving += 1.0 } }
+//        for dyad in dyads { if dyad.hasValidIntervalQuality { amountStepPreserving += 1.0 } }
 //        return amountStepPreserving / Float(dyads.count)
 //    }
 //    
@@ -27,8 +27,8 @@
 //        return nodes.map { abs($0.spelling.coarse.rawValue) }.mean
 //    }
 //    
-//    internal var hasIntervalFidelity: Bool {
-//        return dyads.allMatch { $0.hasIntervalFidelity }
+//    internal var hasValidIntervalQuality: Bool {
+//        return dyads.allMatch { $0.hasValidIntervalQuality }
 //    }
 //    
 //    internal var isCoarseResolutionCompatible: Bool {

@@ -19,7 +19,7 @@ class IntervalQualityTests: XCTestCase {
     
     func testAugmentedFourthStepPreserving() {
         let A4 = IntervalQuality.fourth.augmented
-        XCTAssertTrue(A4.hasIntervalFidelity)
+        XCTAssertTrue(A4.hasValidIntervalQuality)
     }
     
     func testDiminishedFifthStepPreserving() {

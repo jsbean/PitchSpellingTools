@@ -6,8 +6,6 @@
 //
 //
 
-import Foundation
-
 /**
  All interval qualities with a half-step resolution.
  Flat resource which is wrapped hierarchically by `IntervalQuality`.
@@ -60,7 +58,6 @@ public enum IntervalQualityKind: String {
     case augmentedSeventh = "A7"
     case doubleAugmentedSeventh = "AA7"
     
-    // TODO: Refactor to do this by reducing from each subfamily
     internal static var stepPreserving: [IntervalQualityKind] = [
         .perfectUnison,
         .minorSecond,
@@ -77,7 +74,8 @@ public enum IntervalQualityKind: String {
         .majorSeventh
     ]
     
-    public var hasIntervalFidelity: Bool {
+    
+    public var hasValidIntervalQuality: Bool {
         return IntervalQualityKind.stepPreserving.contains(self)
     }
 }
