@@ -10,6 +10,8 @@ import Pitch
 
 extension Pitch {
     
+    // MARK: - Instance Properties
+    
     /**
      `true` for `n	atural` spellable `Pitches`. Otherwise `false`.
      
@@ -82,6 +84,8 @@ extension Pitch {
         return 0.0
     }
     
+    // MARK: - Instance Methods
+    
     /**
      - returns: `SpelledPitch` with the given `PitchSpelling`,
      if the given `PitchSpelling` is valid for the `PitchClass` of the given `pitch`.
@@ -98,6 +102,11 @@ extension Pitch {
         return SpelledPitch(pitch: self, spelling: spelling)
     }
     
+    /**
+     - throws: `PitchSpelling.Error` if no default spelling exists for this `Pitch`.
+     
+     - returns: `SpelledPitch` with the default spelling for this `Pitch`, if possible.
+     */
     public func spelledWithDefaultSpelling() throws -> SpelledPitch {
         guard let defaultSpelling = defaultSpelling else {
             throw PitchSpelling.Error.noSpellingForPitch(self)
