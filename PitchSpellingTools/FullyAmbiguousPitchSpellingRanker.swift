@@ -28,6 +28,8 @@ import ArrayTools
  */
 public final class FullyAmbiguousPitchSpellingRanker: PitchSpellingRanking {
     
+    // MARK: - Instance Properties
+    
     private let a: Level
     private let b: Level
     

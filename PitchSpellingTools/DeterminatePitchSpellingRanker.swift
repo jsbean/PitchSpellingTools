@@ -11,6 +11,8 @@ import Foundation
 /// PitchSpellingRanker for two objectively spellable `PitchSpellingNode` objects.
 public final class DeterminatePitchSpellingRanker: PitchSpellingRanking {
     
+    // MARK: - Instance Properties
+    
     let a: PitchSpellingNode
     let b: PitchSpellingNode
     
