@@ -17,7 +17,7 @@ public final class PitchSetSpeller: PitchSpeller {
     /// All `Dyad` values of the `pitchSet` contained herein, sorted for spelling priority.
     public lazy var dyads: [Dyad] = {
         self.pitchSet.dyads.sort {
-            $0.interval.spellingUrgency < $1.interval.spellingUrgency
+            $0.interval.spellingPriority < $1.interval.spellingPriority
         }
     }()
     
@@ -82,7 +82,8 @@ public final class PitchSetSpeller: PitchSpeller {
         // Jump start ambiguous choosing process by asserting most urgent edge ranked
         rankNodesOfHighestPriorityEdgeIfNecessary()
 
-        // This serves to separate
+        // Penalize the nodes of the edges that are valid out-of-context, yet are sub-optimal
+        // for this context
         penalizeAlmostGoodEnoughEdges()
         
         return try highestRankedPitches()
@@ -127,7 +128,7 @@ public final class PitchSetSpeller: PitchSpeller {
         )
     }
     
-    // TODO: refine
+    // TODO: Refine
     private func rankWeight(for position: Int) -> Float {
         return (Float(dyads.count - position) / Float(dyads.count)) / 2
     }

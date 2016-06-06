@@ -13,7 +13,7 @@ extension PitchSet {
     public var sortedBySpellingUrgency: [Pitch] {
         return self
             .map { $0 }.lazy
-            .sort { $0.pitchClass.spellingUrgency < $1.pitchClass.spellingUrgency }
+            .sort { $0.pitchClass.spellingPriority < $1.pitchClass.spellingPriority }
     }
     
     public func spelledWithDefaultSpellings() throws -> SpelledPitchSet {

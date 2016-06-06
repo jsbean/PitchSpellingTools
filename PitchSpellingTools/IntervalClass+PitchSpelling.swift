@@ -10,10 +10,12 @@ import Pitch
 
 extension IntervalClass {
     
-    // TODO: change `Complexity` naming to spelling priority
-    public typealias SpellingUrgency = Int
+    /// MARK: - Associated Types
     
-    private static let intervalClassOrderedBySpellingUrgency: [IntervalClass] = [
+    /// Priority for a given `IntervalClass` to be spelled. Lower value is higher priority.
+    public typealias SpellingPriority = Int
+    
+    private static let intervalClassOrderedBySpellingPriority: [IntervalClass] = [
         
         // minor second, major seventh
         01.00, 11.00,
@@ -64,7 +66,8 @@ extension IntervalClass {
         03.50, 08.50,
     ]
     
-    public var spellingUrgency: SpellingUrgency? {
-        return IntervalClass.intervalClassOrderedBySpellingUrgency.indexOf(self)
+    /// Priority for this `IntervalClass` to be spelled. Lower value is higher priority.
+    public var spellingPriority: SpellingPriority? {
+        return IntervalClass.intervalClassOrderedBySpellingPriority.indexOf(self)
     }
 }
