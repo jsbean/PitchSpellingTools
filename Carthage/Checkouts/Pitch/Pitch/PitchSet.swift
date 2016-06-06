@@ -45,20 +45,9 @@ public struct PitchSet: PitchConvertibleSetType {
      ]
      ```
      */
-    public var dyads: [Dyad] {
-        
-        var pitchesArray = Array(set)
-        
-        guard pitchesArray.count >= 2 else { return [] }
-        
-        var result: [Dyad] = []
-        for a in 0 ..< pitchesArray.count - 1 {
-            for b in a + 1 ..< pitchesArray.count {
-                result.append(Dyad(pitchesArray[a], pitchesArray[b]))
-            }
-        }
-        return result
-    }
+    public lazy var dyads: [Dyad]? = {
+        Array(self.set).subsets(withCardinality: 2)?.map { Dyad($0[0], $0[1]) }
+    }()
     
     /**
      Set of `PitchClass` representations of `PitchSet`.

@@ -16,8 +16,17 @@ public func combinations<T, U>(array1: [T], _ array2: [U]) -> [(T, U)] {
 extension Array {
     
     /**
+     - returns: All adjacent pairs of elements, if count > 1. Otherwise `nil`.
+     */
+    public var adjacentPairs: [(Element, Element)]? {
+        guard count > 1 else { return nil }
+        return (0 ..< count - 1).map { (self[$0], self[$0 + 1]) }
+    }
+    
+    /**
      - returns: All combinations of with a given cardinality 
-     (how many elements chosen per combination).
+     (how many elements chosen per combination) if self is not empty or count < k.
+     Otherwise, `nil`.
      */
     public func subsets(withCardinality k: UInt) -> [[Element]]? {
         

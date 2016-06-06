@@ -12,6 +12,7 @@ let pitchWithNoteNumber = Pitch(noteNumber: 60) // middle c
 let pitchWithFrequency = Pitch(frequency: 440) // a below middle c
 ```
 In either case, you can retrieve the MIDI NoteNumber or frequency:
+
 ```Swift
 let nn = pitchWithFrequency.noteNumber
 let freq = pitchWithNoteNumber.frequency

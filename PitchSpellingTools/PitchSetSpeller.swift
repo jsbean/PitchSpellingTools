@@ -17,8 +17,8 @@ public final class PitchSetSpeller: PitchSpeller {
     // MARK: - Instance Properties
     
     /// All `Dyad` values of the `pitchSet` contained herein, sorted for spelling priority.
-    public lazy var dyads: [Dyad] = {
-        self.pitchSet.dyads.sort {
+    public lazy var dyads: [Dyad]? = {
+        self.pitchSet.dyads?.sort {
             $0.interval.spellingPriority < $1.interval.spellingPriority
         }
     }()
@@ -34,8 +34,8 @@ public final class PitchSetSpeller: PitchSpeller {
     }()
     
     /// `ComparisonStage` objects generated for each `PitchSpellingDyad` contained herein.
-    private lazy var comparisonStages: [ComparisonStage] = {
-        self.dyads.map { self.comparisonStageFactory.makeComparisonStage(for: $0) }
+    private lazy var comparisonStages: [ComparisonStage]? = {
+        self.dyads?.map { self.comparisonStageFactory.makeComparisonStage(for: $0) }
     }()
     
     /// If the `PitchSet` herein can be objectively spelled or has only one `Pitch` value.
@@ -44,7 +44,7 @@ public final class PitchSetSpeller: PitchSpeller {
     }
     
     // `PitchSet` to be spelled
-    private let pitchSet: PitchSet
+    private var pitchSet: PitchSet
     
     // MARK: - Initializers
     
@@ -73,32 +73,33 @@ public final class PitchSetSpeller: PitchSpeller {
             : try spelledPitchSetByCreatingComparisonStages()
     }
     
-    private func spelledPitchSetWithDefaultSpellings() throws -> SpelledPitchSet {
-        return try pitchSet.spelledWithDefaultSpellings()
-    }
-    
-    private func spelledPitchSetByCreatingComparisonStages() throws -> SpelledPitchSet {
-
+    // rank the nodes herein, but don't make any decisions
+    public func applyRankings() {
+        
         // Call upon each of the comparison stages to rank each node, if possible
         attemptRankingOfNodes()
         
         // Jump start ambiguous choosing process by asserting most urgent edge ranked
         rankNodesOfHighestPriorityEdgeIfNecessary()
-
-        // Penalize the nodes of the edges that are valid out-of-context, 
+        
+        // Penalize the nodes of the edges that are valid out-of-context,
         // yet are sub-optimal for this context
         penalizeAlmostGoodEnoughEdges()
-        
+    }
+    
+    private func spelledPitchSetWithDefaultSpellings() throws -> SpelledPitchSet {
+        return try pitchSet.spelledWithDefaultSpellings()
+    }
+    
+    private func spelledPitchSetByCreatingComparisonStages() throws -> SpelledPitchSet {
+        applyRankings()
         return try highestRankedPitches()
     }
     
     private func attemptRankingOfNodes() {
-        comparisonStages
-            .enumerate()
-            .forEach {
-                position, comparisonStage in
-                comparisonStage.applyRankings(withWeight: rankWeight(for: position))
-            }
+        comparisonStages?.enumerate().forEach { position, comparisonStage in
+            comparisonStage.applyRankings(withWeight: rankWeight(for: position))
+        }
     }
     
     private func rankNodesOfHighestPriorityEdgeIfNecessary() {
@@ -106,11 +107,12 @@ public final class PitchSetSpeller: PitchSpeller {
     }
     
     private func rankNodesOfHighestPriorityEdge() {
-        guard let first = comparisonStages[0] as? FullyAmbiguousComparisonStage else { return }
+        guard let first = comparisonStages?[0] as? FullyAmbiguousComparisonStage else { return }
         first.highestRanked?.applyRankToNodes(rank: 1)
     }
     
     private func penalizeAlmostGoodEnoughEdges() {
+        guard let comparisonStages = comparisonStages else { return }
         for case
             let (index, fullyAmbiguous as FullyAmbiguousComparisonStage)
             in comparisonStages.enumerate()
@@ -133,6 +135,7 @@ public final class PitchSetSpeller: PitchSpeller {
     
     // TODO: Refine
     private func rankWeight(for position: Int) -> Float {
+        guard let dyads = dyads else { return 0 }
         return (Float(dyads.count - position) / Float(dyads.count)) / 2
     }
 }

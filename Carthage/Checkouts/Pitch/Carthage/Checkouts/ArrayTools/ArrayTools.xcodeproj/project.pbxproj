@@ -186,6 +186,7 @@
 				078141E01C7CBDC6004B68D3 /* Error.swift */,
 				078141ED1C7CBDFB004B68D3 /* ListProcessing.swift */,
 				0792613F1CDBAA2F004949D1 /* Combinations+Permutations.swift */,
+				07F966621D05A869001C8D94 /* New Group */,
 				078141DE1C7CBDC6004B68D3 /* ElementsAtIndices.swift */,
 				078141DF1C7CBDC6004B68D3 /* Equatable.swift */,
 				078881821D00A4AE00A3ADD4 /* Comparable.swift */,
@@ -230,6 +231,13 @@
 				078141B01C7CBCE5004B68D3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		07F966621D05A869001C8D94 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

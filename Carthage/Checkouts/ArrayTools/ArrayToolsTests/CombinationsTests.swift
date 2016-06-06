@@ -44,4 +44,12 @@ class CombinationsTests: XCTestCase {
             array.subsets(withCardinality: 2)!
         )
     }
+    
+    func testAdjacentPairsNil() {
+        XCTAssertNil([1].adjacentPairs)
+    }
+    
+    func testAdjacentPairs() {
+        XCTAssertEqual([1,2,3,4].adjacentPairs!.count, 3)
+    }
 }
