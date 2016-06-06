@@ -14,6 +14,8 @@ import Pitch
  */
 public final class PitchSetSpeller: PitchSpeller {
     
+    // MARK: - Instance Properties
+    
     /// All `Dyad` values of the `pitchSet` contained herein, sorted for spelling priority.
     public lazy var dyads: [Dyad] = {
         self.pitchSet.dyads.sort {
@@ -44,6 +46,8 @@ public final class PitchSetSpeller: PitchSpeller {
     // `PitchSet` to be spelled
     private let pitchSet: PitchSet
     
+    // MARK: - Initializers
+    
     /**
      Create a `PitchSetSpeller` with a `PitchSet`.
      */
@@ -51,7 +55,7 @@ public final class PitchSetSpeller: PitchSpeller {
         self.pitchSet = pitchSet
     }
     
-    // TODO: incorporate external coarse / fine preferences
+    // MARK: - Instance Methods
     
     /**
      - throws: `PitchSpelling.Error` if unable to apply `PitchSpelling` objects to the given
@@ -73,7 +77,6 @@ public final class PitchSetSpeller: PitchSpeller {
         return try pitchSet.spelledWithDefaultSpellings()
     }
     
-    // TODO: Make throw
     private func spelledPitchSetByCreatingComparisonStages() throws -> SpelledPitchSet {
 
         // Call upon each of the comparison stages to rank each node, if possible
@@ -82,8 +85,8 @@ public final class PitchSetSpeller: PitchSpeller {
         // Jump start ambiguous choosing process by asserting most urgent edge ranked
         rankNodesOfHighestPriorityEdgeIfNecessary()
 
-        // Penalize the nodes of the edges that are valid out-of-context, yet are sub-optimal
-        // for this context
+        // Penalize the nodes of the edges that are valid out-of-context, 
+        // yet are sub-optimal for this context
         penalizeAlmostGoodEnoughEdges()
         
         return try highestRankedPitches()
