@@ -16,16 +16,16 @@ import Foundation
  This structure ranks the individual potential `PitchSpelling` objects for the ambiguously
  spellable `Pitch`.
  
-       o    = determinate
+       o    = objectively spellable
       / \   = edges
      -----
-    | o o | = other
+    | o o | = ambiguously spellable
      -----
  */
 public final class SemiAmbiguousPitchSpellingRanker: PitchSpellingRanking {
     
-    let objectivelySpellable: PitchSpellingNode
-    let ambiguouslySpellable: Level
+    private let objectivelySpellable: PitchSpellingNode
+    private let ambiguouslySpellable: Level
     
     // NOTE: `PitchSpellingEdge.b` is the unspelled `PitchSpellingNode`.
     public lazy var edges: [PitchSpellingEdge] = {
@@ -34,8 +34,9 @@ public final class SemiAmbiguousPitchSpellingRanker: PitchSpellingRanking {
         }
     }()
     
-    var highestRanked: PitchSpellingNode? { return ambiguouslySpellable.highestRanked }
     
+    /// Highest ranked `PitchSpellingNode` if available. Otherwise, `nil`.
+    var highestRanked: PitchSpellingNode? { return ambiguouslySpellable.highestRanked }
     
     // MARK: - Initializers
     
@@ -49,6 +50,13 @@ public final class SemiAmbiguousPitchSpellingRanker: PitchSpellingRanking {
         objectivelySpellable.rank = 1
     }
     
+    /**
+     Apply the rankings to all of the `PitchSpellingEdge` objects contained herein with the
+     given `amount`.
+     
+     For each rule in `rules` broken by a given edge, that edge is penalized by the given
+     `amount`.
+     */
     public func applyRankings(withAmount amount: Float) {
         edges.forEach { penalizeIfNecessary(edge: $0, withAmount: amount) }
     }

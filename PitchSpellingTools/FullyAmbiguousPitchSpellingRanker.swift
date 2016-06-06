@@ -25,17 +25,8 @@ import ArithmeticTools
  */
 public final class FullyAmbiguousPitchSpellingRanker: PitchSpellingRanking {
     
-    /**
-     One `PitchSpellingLevel` containing all possible `PitchSpellingNode` values available
-     for a given `Pitch`.
-     */
-    public let a: Level
-    
-    /**
-     The other `PitchSpellingLevel` containing all possible `PitchSpellingNode` values
-     available for a given `Pitch`.
-     */
-    public let b: Level
+    private let a: Level
+    private let b: Level
     
     /**
      All `PitchSpellingEdge` objects between each `PitchSpellingNode`
@@ -98,7 +89,7 @@ public final class FullyAmbiguousPitchSpellingRanker: PitchSpellingRanking {
      Apply the rankings to all of the `PitchSpellingEdge` objects contained herein with the 
      given `amount`. 
      
-     For each rule in `rules` broken by a given edge, that edge is enalized by the given 
+     For each rule in `rules` broken by a given edge, that edge is penalized by the given
      `amount`.
      */
     public func applyRankings(withAmount amount: Float) {
