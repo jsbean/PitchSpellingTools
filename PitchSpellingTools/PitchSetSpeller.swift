@@ -77,15 +77,8 @@ public final class PitchSetSpeller: PitchSpeller {
      Compare possible spelling options, and apply rankings upon these options.
      */
     public func applyRankings() {
-        
-        // Call upon each of the comparison stages to rank each node, if possible
         attemptRankingOfNodes()
-        
-        // Jump start ambiguous choosing process by asserting most urgent edge ranked
         rankNodesOfHighestPriorityEdgeIfNecessary()
-        
-        // Penalize the nodes of the edges that are valid out-of-context,
-        // yet are sub-optimal for this context
         penalizeAlmostGoodEnoughEdges()
     }
     
