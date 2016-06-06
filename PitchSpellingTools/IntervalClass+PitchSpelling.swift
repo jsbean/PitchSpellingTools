@@ -10,7 +10,7 @@ import Pitch
 
 extension IntervalClass {
     
-    /// MARK: - Associated Types
+    // MARK: - Associated Types
     
     /// Priority for a given `IntervalClass` to be spelled. Lower value is higher priority.
     public typealias SpellingPriority = Int
