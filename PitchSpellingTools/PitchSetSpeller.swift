@@ -14,6 +14,9 @@ import Pitch
  */
 public final class PitchSetSpeller: PitchSpeller {
     
+    // MARK: - Associated Types
+    
+    /// The type output provided
     public typealias Result = SpelledPitchSet
     
     // MARK: - Instance Properties
@@ -30,6 +33,7 @@ public final class PitchSetSpeller: PitchSpeller {
         return PitchSpellingNodeResource(pitches: self.pitchSet)
     }()
     
+    /// All `PitchSpellingNodes` contained herein.
     public var nodes: [PitchSpellingNode] {
         return nodeResource.nodes
     }
@@ -49,6 +53,8 @@ public final class PitchSetSpeller: PitchSpeller {
         return pitchSet.allMatch { $0.canBeSpelledObjectively } || pitchSet.isMonadic
     }
     
+    /// The influence that this `PitchSetSpeller` has when ranking `PitchSpellingNodes`.
+    /// - note: For use when used by `PitchSequenceSpeller`.
     private let rank: Float // apply this more global ranking
     
     // `PitchSet` to be spelled.
@@ -57,14 +63,30 @@ public final class PitchSetSpeller: PitchSpeller {
     // MARK: - Initializers
     
     /**
-     - warning: Incomplete documentation!
      Create a `PitchSetSpeller` with a `PitchSet`.
+     
+     - note: With this intialization method, all of the `PitchSpellingNode` objects are
+        generated specifically for this `PitchSetSpeller`.
+     
+        If a wider context is needed (e.g., when spelling sequences of `PitchSet` values), 
+        use `init(pitchSet:nodeResource:rank)`.
      */
     public init(_ pitchSet: PitchSet) {
         self.pitchSet = pitchSet
         self.rank = 1
     }
     
+    /**
+     Create a `PitchSetSpeller with a `PitchSet`.
+     
+     - parameter pitchSet:     `PitchSet` value to be spelled.
+     - parameter nodeResource: `NodeResource` containing all `PitchSpellingNode` objects 
+        applicable to this `PitchSetSpeller`
+     - parameter rank:         Multiplier
+     
+     - TODO: Consider changing name of rank 
+     (because it means something slightly different than the other `rank` variables).
+     */
     public init(
         pitchSet: PitchSet,
         nodeResource: PitchSpellingNodeResource,
@@ -103,15 +125,11 @@ public final class PitchSetSpeller: PitchSpeller {
         penalizeAlmostGoodEnoughEdges()
     }
     
-    private func spelledPitchSetWithDefaultSpellings() throws -> SpelledPitchSet {
-        return try pitchSet.spelledWithDefaultSpellings()
-    }
-    
-    private func spelledPitchSetByCreatingRankers() throws -> SpelledPitchSet {
-        applyRankings()
-        return try highestRankedPitches()
-    }
-    
+    /**
+     - throws: `PitchSpelling.Error` if any `Pitch` cannot be spelled with current technology.
+     
+     - returns: `SpelledPitchSet` representation of the `PitchSet` value given at `init`.
+     */
     public func highestRankedPitches() throws -> SpelledPitchSet {
         
         return SpelledPitchSet(
@@ -122,6 +140,15 @@ public final class PitchSetSpeller: PitchSpeller {
                 return SpelledPitch(pitch, spelling)
             }
         )
+    }
+    
+    private func spelledPitchSetWithDefaultSpellings() throws -> SpelledPitchSet {
+        return try pitchSet.spelledWithDefaultSpellings()
+    }
+    
+    private func spelledPitchSetByCreatingRankers() throws -> SpelledPitchSet {
+        applyRankings()
+        return try highestRankedPitches()
     }
     
     private func attemptRankingOfNodes() {
