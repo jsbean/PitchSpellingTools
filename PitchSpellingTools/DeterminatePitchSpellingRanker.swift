@@ -16,9 +16,6 @@ public final class DeterminatePitchSpellingRanker: PitchSpellingRanking {
     let a: PitchSpellingNode
     let b: PitchSpellingNode
     
-    /// - warning: There are no edges here.
-    public var edges: [PitchSpellingEdge] { fatalError("There are no edges here") }
-    
     // MARK: - Initializers
     
     /**

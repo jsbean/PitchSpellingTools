@@ -13,8 +13,9 @@ import Foundation
  */
 public protocol PitchSpellingRanking: CustomStringConvertible {
     
-    var edges: [PitchSpellingEdge] { get }
-    
+    /**
+     Apply rankings with the given `amount` to the ranked element contained herein.
+     */
     func applyRankings(withAmount amount: Float)
 }
 
