@@ -13,22 +13,24 @@ import Pitch
 
 class PitchSequenceSpellerTests: XCTestCase {
     
-    func testEmptyIsEmpty() {
-        let seq = PitchConvertibleContainingSequence<PitchSet>([])
-        
+    func testMonophonicAscending() {
+        let speller = PitchSequenceSpeller(sets: [[60], [61], [62]])
+        speller.applyRankings()
+        // TODO: add assertions
     }
     
-    func testMonophonicAscending() {
-//        let seq = PitchConvertibleContainingSequence(
-//            [
-//                PitchSet([60]),
-//                PitchSet([61]),
-//                PitchSet([62])
-//            ]
-//        )
-//        
-        let speller = PitchSequenceSpeller(sets: [PitchSet([60]), PitchSet([61]), PitchSet([62])])
+    func testDyadPair() {
+        let sets: [PitchSet] = [[62,63],[66,68]]
+        let speller = PitchSequenceSpeller(sets: sets)
         speller.applyRankings()
+        // TODO: add assertions
+    }
+    
+    func testDyads() {
+        let sets: [PitchSet] = [[60,62],[63,65],[61,70]]
+        let speller = PitchSequenceSpeller(sets: sets)
+        speller.applyRankings()
+        // TODO: add assertions
     }
     
 //    func testMonophonicDescending() {

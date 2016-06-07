@@ -81,7 +81,7 @@ public struct PitchSet: PitchConvertibleSetType {
      
      - returns: `PitchSet` with the union of this and the given `pitchSet`.
      */
-    func formUnion(with pitchSet: PitchSet) -> PitchSet {
+    public func formUnion(with pitchSet: PitchSet) -> PitchSet {
         return PitchSet(set.union(pitchSet))
     }
 }

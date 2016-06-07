@@ -14,6 +14,8 @@ import Pitch
  */
 public final class PitchSetSpeller: PitchSpeller {
     
+    public typealias Result = SpelledPitchSet
+    
     // MARK: - Instance Properties
     
     /// All `Dyad` values of the `pitchSet` contained herein, sorted for spelling priority.
@@ -24,7 +26,7 @@ public final class PitchSetSpeller: PitchSpeller {
     }()
     
     /// Wrapper for a dictionary of type `[Pitch: [Node]]`
-    internal lazy var nodeResource: PitchSpellingNodeResource = {
+    public lazy var nodeResource: PitchSpellingNodeResource = {
         return PitchSpellingNodeResource(pitches: self.pitchSet)
     }()
     
@@ -55,6 +57,7 @@ public final class PitchSetSpeller: PitchSpeller {
     // MARK: - Initializers
     
     /**
+     - warning: Incomplete documentation!
      Create a `PitchSetSpeller` with a `PitchSet`.
      */
     public init(
@@ -104,6 +107,18 @@ public final class PitchSetSpeller: PitchSpeller {
         return try highestRankedPitches()
     }
     
+    public func highestRankedPitches() throws -> SpelledPitchSet {
+        
+        return SpelledPitchSet(
+            try nodeResource.pitches.map { pitch in
+                guard let spelling = nodeResource.highestRanked(for: pitch)?.spelling else {
+                    throw PitchSpelling.Error.noSpellingForPitch(pitch)
+                }
+                return SpelledPitch(pitch, spelling)
+            }
+        )
+    }
+    
     private func attemptRankingOfNodes() {
         rankers?.enumerate().forEach { position, ranker in
             ranker.applyRankings(withAmount: rankWeight(for: position))
@@ -121,8 +136,7 @@ public final class PitchSetSpeller: PitchSpeller {
     
     private func penalizeAlmostGoodEnoughEdges() {
         guard let rankers = rankers else { return }
-        for case
-            let (index, fullyAmbiguous as FullyAmbiguousPitchSpellingRanker)
+        for case let (index, fullyAmbiguous as FullyAmbiguousPitchSpellingRanker)
             in rankers.enumerate()
         {
             fullyAmbiguous.almostGoodEnoughEdges.forEach {
@@ -131,22 +145,11 @@ public final class PitchSetSpeller: PitchSpeller {
         }
     }
     
-    private func highestRankedPitches() throws -> SpelledPitchSet {
-        
-        return SpelledPitchSet(
-            try nodeResource.pitches.map { pitch in
-                guard let spelling = nodeResource.highestRanked(for: pitch)?.spelling else {
-                    throw PitchSpelling.Error.noSpellingForPitch(pitch)
-                }
-                return SpelledPitch(pitch, spelling)
-            }
-        )
-    }
-    
+    // Clarify inheriting rank
     // TODO: Refine
     private func rankWeight(for position: Int) -> Float {
         guard let dyads = dyads else { return 0 }
-        return (Float(dyads.count - position) / Float(dyads.count)) / 2
+        return rank * (Float(dyads.count - position) / Float(dyads.count)) / 2
     }
 }
 

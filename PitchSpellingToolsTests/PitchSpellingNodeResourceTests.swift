@@ -15,7 +15,7 @@ class PitchSpellingNodeResourceTests: XCTestCase {
     func testAddressEqualAfterCopy() {
         let resourceA = PitchSpellingNodeResource(pitches: [60])
         let resourceB = resourceA
-        XCTAssertEqual(unsafeAddressOf(resourceA[60]!), unsafeAddressOf(resourceB[60]!))
+        XCTAssert(resourceA[60]!.first! === resourceB[60]!.first!)
     }
     
     func testAddressEqualAfterSubscriptPitchSetSubset() {
@@ -24,7 +24,7 @@ class PitchSpellingNodeResourceTests: XCTestCase {
         let subset: PitchSet = [62, 65]
         let resourceB = resourceA[subset]!
         subset.forEach {
-            XCTAssertEqual(unsafeAddressOf(resourceA[$0]!), unsafeAddressOf(resourceB[$0]!))
+            XCTAssert(resourceA[$0]!.first! === resourceB[$0]!.first!)
         }
     }
 }
