@@ -16,7 +16,13 @@ class PitchSequenceSpellerTests: XCTestCase {
     func testMonophonicAscending() {
         let speller = PitchSequenceSpeller(sets: [[60], [61], [62]])
         speller.applyRankings()
+        
         // TODO: add assertions
+    }
+    
+    func testMonophoningDescending() {
+        let speller = PitchSequenceSpeller(sets: [[62], [61], [60]])
+        speller.applyRankings()
     }
     
     func testDyadPair() {
@@ -32,166 +38,95 @@ class PitchSequenceSpellerTests: XCTestCase {
         speller.applyRankings()
         // TODO: add assertions
     }
-    
-//    func testMonophonicDescending() {
-//        
-//    }
-
-//    func testEmptyIsEmpty() {
-//        let speller = PitchSequenceSpeller(pitchSequence: [])
-//        do { XCTAssertEqual(try speller.spell(), []) }
-//    }
 //    
-//    func testMiddleC() {
-//        let speller = PitchSequenceSpeller(pitchSequence: [60])
-//        XCTAssertEqual(try speller.spell(), [SpelledPitch(60, PitchSpelling(.c))])
-//    }
-//    
-//
-//    func testAFlat() {
-//        let speller = PitchSequenceSpeller(pitchSequence: [68])
-//        XCTAssertEqual(try speller.spell(), [SpelledPitch(68, PitchSpelling(.a, .flat))])
-//    }
-//    
-//    func testCG() {
-//        let speller = PitchSequenceSpeller(pitchSequence: [60,67])
-//        XCTAssertEqual(
-//            try speller.spell(),
-//            [
-//                SpelledPitch(60, PitchSpelling(.c)), SpelledPitch(67, PitchSpelling(.g))
-//            ]
-//        )
-//    }
-//    
-//    func testCEFlat() {
-//        let speller = PitchSequenceSpeller(pitchSequence: [60,63])
-//            XCTAssertEqual(
-//            try speller.spell(),
-//            [
-//                SpelledPitch(60, PitchSpelling(.c)),
-//                SpelledPitch(63, PitchSpelling(.e, .flat))
-//            ]
-//        )
-//    }
-    
-//    func testCDFlatEFlat() {
-//        let speller = PitchSequenceSpeller(pitchSequence: [60,61,63])
-//            XCTAssertEqual(
-//            Set(try speller.spell()),
-//            [
-//                SpelledPitch(60, PitchSpelling(.c)),
-//                SpelledPitch(61, PitchSpelling(.d, .flat)),
-//                SpelledPitch(63, PitchSpelling(.e, .flat))
-//            ]
-//        )
-//    }
-    
-//    func test_63_66_68() {
-//        let speller = PitchSequenceSpeller(pitchSequence: [63,66,68])
-//        XCTAssertEqual(
-//            Set(try speller.spell()),
-//            [
-//                SpelledPitch(63, PitchSpelling(.d, .sharp)),
-//                SpelledPitch(66, PitchSpelling(.f, .sharp)),
-//                SpelledPitch(68, PitchSpelling(.g, .sharp))
-//            ]
-//        )
-//    }
-//    
-//    func test__65_5__69_25() {
-//        let speller = PitchSequenceSpeller(pitchSequence: [65.5, 69.25])
-//            XCTAssertEqual(
-//            Set(try speller.spell()),
-//            [
-//                SpelledPitch(65.50, PitchSpelling(.f, .quarterSharp)),
-//                SpelledPitch(69.25, PitchSpelling(.a, .quarterSharp, .down))
-//            ]
-//        )
-//    }
-//    
-//    func test_60_61_62() {
-//        let speller = PitchSequenceSpeller(pitchSequence: [60,61,62])
-//        XCTAssertEqual(
-//            Set(try speller.spell()),
-//            [
-//                SpelledPitch(60, PitchSpelling(.c)),
-//                SpelledPitch(61, PitchSpelling(.c, .sharp)),
-//                SpelledPitch(62, PitchSpelling(.d))
-//            ]
-//        )
-//    }
-    
-//    func testDDSharpFSharpG() {
-//        let speller = PitchSequenceSpeller(pitchSequence: [62,63,66,67])
-//        XCTAssertEqual(
-//            Set(try speller.spell()),
-//            [
-//                SpelledPitch(62, PitchSpelling(.d)),
-//                SpelledPitch(63, PitchSpelling(.d, .sharp)),
-//                SpelledPitch(66, PitchSpelling(.f, .sharp)),
-//                SpelledPitch(67, PitchSpelling(.g))
-//            ]
-//        )
-//    }
-    
-//    func testEFlatDFSharpG() {
-//        let speller = PitchSequenceSpeller(pitchSequence: [63,62,66,67])
-//        XCTAssertEqual(
-//            Set(try speller.spell()),
-//            [
-//                SpelledPitch(62, PitchSpelling(.d)),
-//                SpelledPitch(63, PitchSpelling(.e, .flat)),
-//                SpelledPitch(66, PitchSpelling(.f, .sharp)),
-//                SpelledPitch(67, PitchSpelling(.g))
-//            ]
-//        )
-//    }
-//    
-//    func testEFlatDGFSharp() {
-//        let speller = PitchSequenceSpeller(pitchSequence: [63,62,67,66])
-//        XCTAssertEqual(
-//            Set(try speller.spell()),
-//            [
-//                SpelledPitch(62, PitchSpelling(.d)),
-//                SpelledPitch(63, PitchSpelling(.e, .flat)),
-//                SpelledPitch(66, PitchSpelling(.f, .sharp)),
-//                SpelledPitch(67, PitchSpelling(.g))
-//            ]
-//        )
-//    }
-//    
-//    func testDDSharpE() {
-//        let speller = PitchSequenceSpeller(pitchSequence: [62,63,64])
-//        XCTAssertEqual(
-//            Set(try speller.spell()),
-//            [
-//                SpelledPitch(62, PitchSpelling(.d)),
-//                SpelledPitch(63, PitchSpelling(.d, .sharp)),
-//                SpelledPitch(64, PitchSpelling(.e))
-//            ]
-//        )
-//    }
-//    
-//    func testManypitchSequencePerformance() {
+//    func testLongMonophonicSequenceHalfStep() {
+//        let sequence: [PitchSet] = (0 ..< 1000).map { _ in
+//            let pitch = Pitch(floatLiteral: Float(Int.random(min: 60, max: 72)))
+//            return PitchSet([pitch])
+//        }
 //        self.measureBlock {
-//            let speller = PitchSequenceSpeller(
-//                pitchSequence: [60,61.5,63,64,65.25,66,67,69,70.25,75.5,72.5]
-//            )
-//            let _ = try? speller.spell()
+//            let speller = PitchSequenceSpeller(sets: sequence)
+//            let _ = try! speller.spell()
+//            //spelledPitchSets.forEach { print($0) }
 //        }
 //    }
 //    
-//    func testLongSequence() {
-//        let speller = PitchSequenceSpeller(
-//            pitchSequence: [63,62,67,66,68,69,70,71,63,64,62,59,60]
-//        )
-//        do {
-//            let spelledpitchSequence = try speller.spell()
-//            spelledpitchSequence.forEach {
-//                print($0)
+//    func testLongMonophonicSequenceQuarterStep() {
+//        let sequence: [PitchSet] = (0 ..< 1000).map { _ in
+//            let pitch = Pitch(floatLiteral: Float.random(min: 60, max: 72, resolution: 2))
+//            return PitchSet([pitch])
+//        }
+//        self.measureBlock {
+//            let speller = PitchSequenceSpeller(sets: sequence)
+//            let _ = try! speller.spell()
+//            //spelledPitchSets.forEach { print($0) }
+//        }
+//    }
+//    
+//    func testLongDyadicSequenceHalfStep() {
+//        let sequence: [PitchSet] = (0 ..< 1000).map { _ in
+//            let pitches = (0 ..< 2).map { _ in
+//                Pitch(floatLiteral: Float(Int.random(min: 60, max: 72)))
 //            }
-//        } catch {
-//            
+//            return PitchSet(pitches)
+//        }
+//        self.measureBlock {
+//            let speller = PitchSequenceSpeller(sets: sequence)
+//            speller.applyRankings()
+//        }
+//    }
+//    
+//    func testLongDyadicSequenceQuarterStep() {
+//        let sequence: [PitchSet] = (0 ..< 1000).map { _ in
+//            let pitches = (0 ..< 2).map { _ in
+//                Pitch(floatLiteral: Float.random(min: 60, max: 72, resolution: 2))
+//            }
+//            return PitchSet(pitches)
+//        }
+//        self.measureBlock {
+//            let speller = PitchSequenceSpeller(sets: sequence)
+//            speller.applyRankings()
+//        }
+//    }
+//    
+//    func testLongDyadicSequenceEighthStep() {
+//        let sequence: [PitchSet] = (0 ..< 1000).map { _ in
+//            let pitches = (0 ..< 2).map { _ in
+//                Pitch(floatLiteral: Float.random(min: 60, max: 72, resolution: 4))
+//            }
+//            return PitchSet(pitches)
+//        }
+//        self.measureBlock {
+//            let speller = PitchSequenceSpeller(sets: sequence)
+//            let _ = try! speller.spell()
+//        }
+//    }
+//    
+//    func testLongTradicSequenceHalfStep() {
+//        let sequence: [PitchSet] = (0 ..< 1000).map { _ in
+//            let pitches = (0 ..< 3).map { _ in
+//                Pitch(floatLiteral: Float.random(min: 60, max: 72, resolution: 1))
+//            }
+//            return PitchSet(pitches)
+//        }
+//        self.measureBlock {
+//            let speller = PitchSequenceSpeller(sets: sequence)
+//            let _ = try! speller.spell()
+//            //spelledPitchSets.forEach { print($0) }
+//        }
+//    }
+//    
+//    func testLongTradicSequenceEighthStep() {
+//        let sequence: [PitchSet] = (0 ..< 1000).map { _ in
+//            let pitches = (0 ..< 3).map { _ in
+//                Pitch(floatLiteral: Float.random(min: 60, max: 72, resolution: 4))
+//            }
+//            return PitchSet(pitches)
+//        }
+//        self.measureBlock {
+//            let speller = PitchSequenceSpeller(sets: sequence)
+//            let _ = try! speller.spell()
+//            //spelledPitchSets.forEach { print($0) }
 //        }
 //    }
 }

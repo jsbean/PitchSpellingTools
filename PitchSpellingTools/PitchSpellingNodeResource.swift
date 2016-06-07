@@ -89,6 +89,11 @@ public struct PitchSpellingNodeResource {
         set { resource[pitch] = newValue }
     }
     
+    /**
+     - returns: `PitchSpellingNodeResource` containing only containing the records for the
+     `Pitch` values in the given `pitchSet`, if these `Pitch` values are keys herein.
+     Otherwise, `nil`.
+     */
     public subscript (pitchSet: PitchSet) -> PitchSpellingNodeResource? {
         var result: PitchSpellingNodeResource = [:]
         for pitch in pitchSet {

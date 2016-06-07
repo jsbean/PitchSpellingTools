@@ -11,6 +11,7 @@ import Pitch
 
 /// - TODO: Change this to `PitchSubSequenceSpeller`
 /// - TODO: Implement PitchSequenceSpeller to aggregate the results of `PitchSubSequenceSpeller`
+/// - TODO: Implement segmentation
 public final class PitchSequenceSpeller: PitchSpeller {
     
     // Change this to a dedicated `SequenceType` at some point.
@@ -22,6 +23,23 @@ public final class PitchSequenceSpeller: PitchSpeller {
     
     public lazy var nodeResource: PitchSpellingNodeResource = {
         PitchSpellingNodeResource(pitches: PitchSet(self.sets))
+    }()
+    
+    private lazy var individualSpellers: [PitchSetSpeller] = {
+        self.sets.map { PitchSetSpeller(pitchSet: $0, nodeResource: self.nodeResource[$0]!) }
+    }()
+    
+    private lazy var joinedSpellers: [PitchSetSpeller] = {
+        self.sets.adjacentPairs!
+            .enumerate()
+            .map { index, pair in
+                let newSet = pair.0.formUnion(with: pair.1)
+                return PitchSetSpeller(
+                    pitchSet: newSet,
+                    nodeResource: self.nodeResource[newSet]!,
+                    rank: self.rankWeight(for: index)
+                )
+            }
     }()
     
     let sets: [PitchSet]
@@ -36,52 +54,19 @@ public final class PitchSequenceSpeller: PitchSpeller {
     
     /** 
      - TODO: Return `SpelledPitchSetSequence`
-     
+     - warning: Not yet implemented!
      */
     public func spell() throws -> [SpelledPitchSet] {
-        
-        
-        fatalError()
+        applyRankings()
+        return try individualSpellers.map { return try $0.highestRankedPitches() }
     }
-    
-    /**
-     - TODO: Apply teleological ranking (second pair has more influence than first)
-     */
+
     public func applyRankings() {
-        
-        // Create universal node resource
-        
-         
-        // TODO: refactor into private method
-        let individualSpellers = sets.map { PitchSetSpeller($0, nodeResource: nodeResource[$0]!) }
-        
-        // TODO: refactor into private method
-        let joinedSpellers = sets.adjacentPairs!.map { (first, second) in
-            PitchSetSpeller(first.formUnion(with: second))
-        }
-        
-        // Do local work
-        individualSpellers.forEach { $0.applyRankings() }
-        
-        // Work out
         joinedSpellers.forEach { $0.applyRankings() }
-        
-        // Work further out
-        // TODO
-        
-        // commit back on a local scale
-        individualSpellers.forEach {
-            let spelledPitchSet = try! $0.highestRankedPitches()
-            print("spelledPitchSet: \(spelledPitchSet)")
-        }
-        
-        // TODO: apply teleological ranking (increase weight towards end of subsequence)
-        
-        print("resource after initial ranking: \(nodeResource)")
     }
     
-    // TEMP
+    // Here, rank is weighted towards the end of a sequence
     private func rankWeight(for position: Int) -> Float {
-        return (Float(sets.count - position) / Float(sets.count)) / 2
+        return (Float(position + 1) / Float(sets.count)) / 2
     }
 }

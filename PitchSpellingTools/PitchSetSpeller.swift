@@ -60,15 +60,20 @@ public final class PitchSetSpeller: PitchSpeller {
      - warning: Incomplete documentation!
      Create a `PitchSetSpeller` with a `PitchSet`.
      */
+    public init(_ pitchSet: PitchSet) {
+        self.pitchSet = pitchSet
+        self.rank = 1
+    }
+    
     public init(
-        _ pitchSet: PitchSet,
-        rank: Float = 1,
-        nodeResource: PitchSpellingNodeResource? = nil
+        pitchSet: PitchSet,
+        nodeResource: PitchSpellingNodeResource,
+        rank: Float = 1
     )
     {
         self.pitchSet = pitchSet
         self.rank = rank
-        if let nodeResource = nodeResource { self.nodeResource = nodeResource }
+        self.nodeResource = nodeResource
     }
     
     // MARK: - Instance Methods
