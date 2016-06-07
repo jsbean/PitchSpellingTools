@@ -25,7 +25,7 @@ public final class PitchSetSpeller: PitchSpeller {
         }
     }()
     
-    /// Wrapper for a dictionary of type `[Pitch: [Node]]`
+    /// Wrapper for a dictionary of type `[Pitch: [PitchSpellingNode]]`
     public lazy var nodeResource: PitchSpellingNodeResource = {
         return PitchSpellingNodeResource(pitches: self.pitchSet)
     }()
