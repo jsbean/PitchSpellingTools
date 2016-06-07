@@ -29,7 +29,7 @@ let pitchSet: PitchSet = [
 
 The case above is interesting, as its optimum spelling contains both sharps and flats. 
 
-### Nodes, Levels, Edges, ComparisonStages, Rankings
+### Nodes, Levels, Edges, Rankings
 
 In order to keep track of spelling preferences when there is no clear answer, certain data structures have been created:
 
@@ -38,7 +38,7 @@ In order to keep track of spelling preferences when there is no clear answer, ce
 | [`Node`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Node.swift) |  Wraps a single `PitchSpelling` and its `Pitch`, with a `rank` |
 | [`Edge`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Edge.swift) | Combination of `Node` values from a `Dyad`, with a `rank` |
 | [`Level`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Level.swift) | Collection of all `Node` objects for a given `Pitch` |
-| [`ComparisonStage`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/ComparisonStage.swift)  | Compares potential `PitchSpelling` options for a given `Dyad`, owns `Edge` values |
+| [`Ranker`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/PitchSpellingRanking.swift)  | Compares potential `PitchSpelling` options for a given `Dyad`, owns `Edge` values |
 
 
 #### Ranking Potential Spellings
@@ -51,7 +51,7 @@ When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `
 
 > `Pitch(noteNumber: 60)` can only be spelled as `c natural`, unless we are allowing `b sharps` and `d doubleFlats`
 
-#### Comparison Stages
+#### Rankers
 
 There are three cases possible when attempting to spell a `Dyad`:
 
@@ -61,19 +61,19 @@ There are three cases possible when attempting to spell a `Dyad`:
 
 For case 1 above, no action is needed other than confirming that the objectively spellable `Node` values hold a `rank` of `1.0`.
 
-##### SemiAmbiguousComparisonStage
+##### SemiAmbiguousPitchSpellingRanker
 
-For case 2 above, the `SemiAmbiguousComparisonStage` takes an objectively spellable `Node`, and the `Level` for a non-objectively spellable `Pitch`. 
+For case 2 above, the `SemiAmbiguousPitchSpellingRanker` takes an objectively spellable `Node`, and the `Level` for a non-objectively spellable `Pitch`. 
 
-The `SemiAmbiguousComparisonStage` iterates over each possible `PitchSpelling` in the `Level` of non-objectively spellable `Pitch`, penalizing the `PitchSpelling` values that break any of a variety of rules.
+The `SemiAmbiguousPitchSpellingRanker` iterates over each possible `PitchSpelling` in the `Level` of non-objectively spellable `Pitch`, penalizing the `PitchSpelling` values that break any of a variety of rules.
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/semi_ambiguous.jpg" height="240">
 
-##### FullyAmbiguousComparisonStage
+##### FullyAmbiguousPitchSpellingRanker
 
-For case 3 above, the `FullyAmbiguousComparisonStage` takes two `Level` values for each `Pitch` in the `Dyad`.
+For case 3 above, the `FullyAmbiguousPitchSpellingRanker` takes two `Level` values for each `Pitch` in the `Dyad`.
 
-The `FullyAmbiguousComparisonStage` iterates over each possible `PitchSpellingDyad` combination between the two `Level` values of the non-objectively spellable `Pitch` values, penalizing the `Edge` containing `PitchSpellingDyad` values that break any of a variety of rules.
+The `FullyAmbiguousPitchSpellingRanker` iterates over each possible `PitchSpellingDyad` combination between the two `Level` values of the non-objectively spellable `Pitch` values, penalizing the `Edge` containing `PitchSpellingDyad` values that break any of a variety of rules.
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/fully_ambiguous.jpg" height="240">
 
@@ -83,7 +83,7 @@ The `FullyAmbiguousComparisonStage` iterates over each possible `PitchSpellingDy
 
 ### Prepare `Dyad` values
 
-First, all `Dyad` values for the given `PitchSet` are ordered by `spelling urgency` (looking for a better term...) of their `IntervalClass`. By attempting to spell `Dyad` values with certain `IntervalClass` values first, the most salient relationships are prioritized, and are therefore preserved in their graphical representation.
+First, all `Dyad` values for the given `PitchSet` are ordered by `spelling priority` of their `IntervalClass`. By attempting to spell `Dyad` values with certain `IntervalClass` values first, the most salient relationships are prioritized, and are therefore preserved in their graphical representation.
 
 For our purposes, half-steps are spelled before perfect intervals, which are spelled before imperfect intervals, which are spelled before tritone intervals. To see the details of the ordering, look [here](https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/PitchSpellingTools/IntervalClass%2BPitchSpelling.swift). 
 
@@ -101,7 +101,7 @@ Each iteration, we do two general things:
 
 - A. Check if all of the `Node` values have been given a `rank`. 
   - If so, we can `break` the iteration, and make a decision based on the `rank` values of each `Node`.
-- B. Create an appropriate `ComparisonStage`
+- B. Create an appropriate `Ranker`
   - Examine each `Dyad`, penalizing the offensive `Edge` values as necessary.
 
 >The weight of penalties for rule-breaking decrease as the iteration goes on (needs to be refined): 
@@ -121,7 +121,7 @@ In the original example, the dyads sorted are:
 ##### 1. `(62, 63)`
 - **A:** Check if all of the `Node` values have been ranked. At this point, no `Node` values have been ranked, so we must keep going.
 
-- **B:** Here, `62` can only be spelled as `d natural`. Therefore we can create a `SemiAmgbiguousComparisonStage`.
+- **B:** Here, `62` can only be spelled as `d natural`. Therefore we can create a `SemiAmgbiguousPitchSpellingRanker`.
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/62_63.jpg" height="240">
 
@@ -134,9 +134,9 @@ The comparison stage penalizes the `D` / `D#` `PitchSpellingDyad` as it does not
 
 - **A:** Check if all of the `Node` values have been ranked. At this point, the `Node` values belonging to `Pitch(noteNumber: 62)`, `Pitch(noteNumber: 63)`, and `Pitch(noteNumber: 67)` have been ranked, but not yet `Pitch(noteNumber: 66)`.
 
-- **B:** We can create a `SemiAmgbiguousComparisonStage` as `67` will be spelled as a `g natural`.
+- **B:** We can create a `SemiAmgbiguousPitchSpellingRanker` as `67` will be spelled as a `g natural`.
 
-<img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/66_67.jpg" height="240">
+<img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/Documentation/img/66_67.jpg" height="240">
 
 <a name = "62-67"></a>
 ##### 3. `(62, 67)`
