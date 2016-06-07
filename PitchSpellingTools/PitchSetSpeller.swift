@@ -55,7 +55,8 @@ public final class PitchSetSpeller: PitchSpeller {
     
     /// The influence that this `PitchSetSpeller` has when ranking `PitchSpellingNodes`.
     /// - note: For use when used by `PitchSequenceSpeller`.
-    private let rank: Float // apply this more global ranking
+    /// - note: Consider changing the name of this, as it means something different ...
+    private let rank: Float
     
     // `PitchSet` to be spelled.
     private var pitchSet: PitchSet
