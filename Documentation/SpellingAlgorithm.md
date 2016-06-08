@@ -191,6 +191,15 @@ Return the the set composed of the spellings of the highest ranked `PitchSpellin
 
 ---
 
+# PitchSequenceSpeller
+
+> Work-in-progress
+
+## Goal
+Find the optimum way to spell a sequence of vertical `PitchSet` values.
+
+---
+
 ## Rules not yet considered
 - Spelling preferences guided by ascending / descending linear structures
 
