@@ -3,7 +3,7 @@
 ## Background
 `Pitch` values can often be represented multiple ways on a musical staff. 
 
-For example, the `Pitch` with a `MIDI` note number of `61`, or a frequency of `277.18 Hz`, is one half-step above `middle c`. This pitch can be represented either as a `c sharp` or a `d flat`, with either representation being more appropriate for different contexts.
+For example, the `Pitch` with a `MIDI` note number of `61`, or a frequency of `277.18 Hz`, is one half-step above `middle c`. This pitch can be represented either as a `c sharp` or a `d flat`, each representation being more appropriate for different contexts.
 
 Consider a context in which an `a natural` is present.
 
