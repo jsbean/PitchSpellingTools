@@ -12,7 +12,7 @@ Consider a context in which an `a natural` is present.
 | `a natural` | `c sharp` | `major third` | **desired** |
 | `a natural` | `d flat`  | `diminished fourth` | **undesired**      |
 
-`IntervalQuality` values of `diminished` and `augmented` are discouraged, except for the case of the `tritone`, for which `augmented fourth` and `diminished fifth` values are necessary.
+`diminished` and `augmented` `IntervalQuality` values are discouraged, except for the case of the `tritone`, for which `augmented fourth` and `diminished fifth` values are necessary.
 
 ## Structures
 
