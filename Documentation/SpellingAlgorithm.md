@@ -93,27 +93,27 @@ When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `
 
 ### Rankers
 
-There are three cases possible when attempting to spell a `Dyad`:
+There are **three cases** possible when attempting to spell a `Dyad`:
 
 1. Both pitches can be spelled objectively: `(60, 67)`
 2. One pitch can be spelled objectively: `(62, 63), (66, 67)`
 3. Neither pitch can be spelled objectively: `(63, 66)`
 
-#### DeterminatePitchSpellingRanker
+#### Case 1: DeterminatePitchSpellingRanker
 
-**Case 1:** both `PitchSpellingNode` values are given an optimum `rank` of `1.0`.
+Both `PitchSpellingNode` values are given an optimum `rank` of `1.0`.
 
-#### SemiAmbiguousPitchSpellingRanker
+#### Case 2: SemiAmbiguousPitchSpellingRanker
 
-**Case 2:** the `SemiAmbiguousPitchSpellingRanker` ranks each possible `PitchSpellingNode` for a given ambiguously spellable `PitchSpellingStack`, given the context of an objectively spellable `PitchSpellingNode`.
+The `SemiAmbiguousPitchSpellingRanker` ranks each possible `PitchSpellingNode` for a given ambiguously spellable `PitchSpellingStack`, given the context of an objectively spellable `PitchSpellingNode`.
 
 Each `PitchSpellingNode` from the ambiguously spellable `PitchSpellingStack` is penalized for breaking a given set of rules when contextualized by the objectively spellable `PitchSpellingNode`.
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/semi_ambiguous.jpg" height="240">
 
-#### FullyAmbiguousPitchSpellingRanker
+#### Case 3: FullyAmbiguousPitchSpellingRanker
 
-**Case 3:** the `FullyAmbiguousPitchSpellingRanker` ranks each possible `PitchSpellingEdge` between each possible `PitchSpellingNode` from each ambiguously spellable `PitchSpellingStack`.
+The `FullyAmbiguousPitchSpellingRanker` ranks each possible `PitchSpellingEdge` between each possible `PitchSpellingNode` from each ambiguously spellable `PitchSpellingStack`.
 
 Each `PitchSpellingEdge` is penalized if it breakings any of a given set of rules within its own context.
 
