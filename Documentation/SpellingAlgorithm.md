@@ -9,7 +9,7 @@ For example, the `Pitch` with a `MIDI` note number of `61`, or a frequency of `2
 
 #### Interval Optimization
 
-Applying to pitches of all resolution, `IntervalQuality` values of various types are preferred to others:
+Applying to `Pitch` values of all resolution, `IntervalQuality` values of various types are preferred to others:
 
 | `IntervalQuality` | Preference |
 | --- | --- |
@@ -47,11 +47,11 @@ There are a few additional preferrences when spelling eight-step resolution `Pit
 
 #### Fine Compatibility
 
-In cases of eighth-step resolution pitches, it is preferred that the `fine.direction` (`up`, `down`) is compatible.
+In cases of eighth-step resolution `Pitch` values, it is preferred that the `fine.direction` (`up`, `down`) is compatible.
 
 #### Coarse resolution compatibility
 
-In the case of eighth-step resolution pitches which may be spelled with a quarter-step body (`a quarterSharp down`), it is preferred that the `coarse.resolution` (`quarterSharp`, `sharp`, `quarterFlat`, `flat`) is compatible.
+In the case of eighth-step resolution `Pitch` values, which may be spelled with a quarter-step body (`a quarterSharp down`), it is preferred that the `coarse.resolution` (`quarterSharp`, `sharp`, `quarterFlat`, `flat`) is compatible.
 
 ---
 
@@ -111,9 +111,9 @@ When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `
 
 There are **three cases** possible when attempting to spell a `Dyad`:
 
-1. Both pitches can be spelled objectively: `(60, 67)`
-2. One pitch can be spelled objectively: `(62, 63), (66, 67)`
-3. Neither pitch can be spelled objectively: `(63, 66)`
+1. Both `Pitch` values can be spelled objectively: `(60, 67)`
+2. One `Pitch` value can be spelled objectively: `(62, 63), (66, 67)`
+3. Neither `Pitch` value can be spelled objectively: `(63, 66)`
 
 #### Case 1: DeterminatePitchSpellingRanker
 
@@ -140,7 +140,7 @@ Each `PitchSpellingEdge` is penalized if it breakings any of a given set of rule
 # PitchSetSpeller
 
 ## Goal
-Find the optimum way to spell the pitches of a `PitchSet`.
+Find the optimum way to spell the `Pitch` values comprising a `PitchSet`.
 
 For our purposes, this algorithm is to handle cases of `Pitch` values with a resolution of up to an eighth-tone (48 divisions of the octave).
 
@@ -179,7 +179,7 @@ For each `Dyad` in the given `PitchSet`:
 For each `PitchSpellingRanking` structure:
 - Apply rankings.
 
-> In the case that there are no objectively spellable pitches in the given `PitchSet`, no `PitchSpellingNode` objects are ranked. Instead, the `PitchSpellingEdge` objects are ranked.
+> In the case that there are no objectively spellable `Pitch` values in the given `PitchSet`, no `PitchSpellingNode` objects are ranked. Instead, the `PitchSpellingEdge` objects are ranked.
 
 #### 4. Check if all `PitchSpellingNode` objects have been ranked
 
