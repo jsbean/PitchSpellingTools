@@ -36,10 +36,6 @@ Here, there are more than one acceptable options. In different contexts, each pa
 
 A `PitchSet` is considered here an unordered, unique, unspelled collection of `Pitch` values. There is no inherent assumption that this `PitchSet` is a vertical, horizontal, or diagonal collection. 
 
-### PitchSetSequence
-
-Ordered, not-necessarily unique sequence of one or more unspelled vertical `PitchSet` values (chords).
-
 ### Dyads
 
 By nature, a `PitchSet` is composed of _<sub>n</sub>C<sub>2</sub>_ `Dyad` values (pairs of `Pitch` values). 
@@ -57,6 +53,11 @@ let pitchSet: PitchSet = [
 ```
 
 The case above is interesting, as its optimum spelling contains both sharps and flats. 
+
+### PitchSetSequence
+
+Ordered, not-necessarily unique sequence of one or more unspelled vertical `PitchSet` values (chords).
+
 
 ### Nodes, Edges, Stacks, Rankings
 
