@@ -151,8 +151,10 @@ For each `Dyad` in the given `PitchSet`:
   - `SemiAmbiguous`
   - `FullyAmbiguous`
 
-#### 2. Apply `PitchSpellingNode` rankings, if possible
-Instruct each `PitchSpellingRanking` structure to apply its rankings.
+#### 2. Apply `PitchSpellingNode` rankings
+
+For each `PitchSpellingRanking` structure:
+- Apply rankings.
 
 > In the case that there are no objectively spellable pitches in the given `PitchSet`, no `PitchSpellingNode` objects are ranked. Instead, the `PitchSpellingEdge` objects are ranked.
 
