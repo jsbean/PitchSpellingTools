@@ -6,7 +6,7 @@
 For example, the `Pitch` with a `MIDI` note number of `61`, or a frequency of `277.18 Hz`, is one half-step above `middle c`. This pitch can be represented either as a `c sharp` or a `d flat`, each representation being more appropriate for different contexts.
 
 ### Interval Optimization
-`IntervalQuality` values of various types are preferred to others:i
+`IntervalQuality` values of various types are preferred to others:
 
 | `IntervalQuality` | Preference |
 | --- | --- |
@@ -38,6 +38,14 @@ However, consider a context in which the other `Pitch` also has multiple spellin
 
 > There are more than one acceptable options. In different contexts, each pair of `PitchSpelling` representations is more appropriate than the other.
 
+
+### Fine Compatibility
+
+In cases of eighth-step resolution pitches, it is preferred that the `fine.direction` (`up`, `down`) is compatible.
+
+#### Coarse resolution compatibility
+
+Further, in the case of eighth-step resolution pitches which may be spelled with a quarter-step body (`a quarterSharp down`), it is preferred that the `coarse.resolution` (`quarterSharp`, `sharp`, `quarterFlat`, `flat`) is compatible.
 ## Structures
 
 ### PitchSet
@@ -158,6 +166,15 @@ For each `PitchSpellingRanking` structure:
 
 > In the case that there are no objectively spellable pitches in the given `PitchSet`, no `PitchSpellingNode` objects are ranked. Instead, the `PitchSpellingEdge` objects are ranked.
 
+>The weight of penalties for rule-breaking decrease as the iteration goes on (needs to be refined): 
+>```Swift
+>((dyads.count - position) / dyads.count) / 2
+>```
+
+<img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/Documentation/img/62_63.jpg" height="240">
+
+<img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/Documentation/img/62_63.jpg" height="240">
+
 #### 3. Check if all `PitchSpellingNode` objects have been ranked
 
 - `true`: 
@@ -166,59 +183,6 @@ For each `PitchSpellingRanking` structure:
   - Apply the ranks of the `PitchSpellingEdge` objects to the appropriate `PitchSpellingNode` objects
 
 `return` the set of the spelling of the highest ranked `PitchSpellingNode` for each `Pitch`
-
-
-In cases where one `Pitch` is objectively spellable, we can do a single pass over all (or often times less than all) of the `Dyad` values. At first, all `PitchSpellingNode` values are given a `nil` `rank` value.
-
-Each iteration, we do two general things:
-
-- A. Check if all of the `PitchSpellingNode` values have been given a `rank`. 
-  - If so, we can `break` the iteration, and make a decision based on the `rank` values of each `PitchSpellingNode`.
-- B. Create an appropriate `Ranker`
-  - Examine each `Dyad`, penalizing the offensive `Edge` values as necessary.
-
->The weight of penalties for rule-breaking decrease as the iteration goes on (needs to be refined): 
->```Swift
->((dyads.count - position) / dyads.count) / 2
->```
-
-In the original example, the dyads sorted are: 
-- 1. [`(62, 63)`](#62-63)
-- 2. [`(66, 67)`](#66-67)
-- 3. [`(62, 67)`](#62-67)
-- 4. _`(62, 66)`_
-- 5. _`(63, 67)`_
-- 6. _`(63, 66)`_
-
-<a name = "62-63"></a>
-#### 1. `(62, 63)`
-- **A:** Check if all of the `PitchSpellingNode` values have been ranked. At this point, no `Node` values have been ranked, so we must keep going.
-
-- **B:** Here, `62` can only be spelled as `d natural`. Therefore we can create a `SemiAmgbiguousPitchSpellingRanker`.
-
-<img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/62_63.jpg" height="240">
-
-The comparison stage penalizes the `D` / `D#` `PitchSpellingDyad` as it does not preserve step count. 
-
-> Because it is the first to be checked, the penalty is very high.
-
-<a name = "66-67"></a>
-#### 2. `(66, 67)`
-
-- **A:** Check if all of the `PitchSpellingNode` values have been ranked. At this point, the `PitchSpellingNode` values belonging to `Pitch(noteNumber: 62)`, `Pitch(noteNumber: 63)`, and `Pitch(noteNumber: 67)` have been ranked, but not yet `Pitch(noteNumber: 66)`.
-
-- **B:** We can create a `SemiAmgbiguousPitchSpellingRanker` as `67` will be spelled as a `g natural`.
-
-<img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/Documentation/img/66_67.jpg" height="240">
-
-<a name = "62-67"></a>
-#### 3. `(62, 67)`
-
-- **A:** Check if all of the `PitchSpellingNode` values have been ranked. At this point, all `PitchSpellingNode` values have been ranked. We are now able to compare.
-
-- _**B:**_ _(not called)_
-
----
 
 ## Rules not yet considered
 - Spelling preferences guided by ascending / descending linear structures
