@@ -87,7 +87,7 @@ In order to keep track of spelling preferences when there is no clear answer, ce
 
 ### Ranking Potential Spellings and Potential Spelling Pairs
 
-`PitchSpellingNode` and `PitchSpellingEdge` objects may be ranked. 
+Both `PitchSpellingNode` and `PitchSpellingEdge` objects may be ranked. 
 
 When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `Pitch` values therein are objectively spellable), the `rank` value of `PitchSpellingEdge` values are consulted to determine an otherwise ambiguous context.
 
