@@ -6,7 +6,7 @@
 For example, the `Pitch` with a `MIDI` note number of `61`, or a frequency of `277.18 Hz`, is one half-step above `middle c`. This pitch can be represented either as a `c sharp` or a `d flat`, each representation being more appropriate for different contexts.
 
 ### Interval Optimization
-`IntervalQuality` values of various types are preferred to others:
+`IntervalQuality` values of various types are preferred to others:i
 
 | `IntervalQuality` | Preference |
 | --- | --- |
@@ -25,7 +25,7 @@ Consider the possibilities for representing a context in which an `a natural` is
 | `a natural` | `c sharp` | `major third` | **desired** |
 | `a natural` | `d flat`  | `diminished fourth` | **undesired** |
 
-In this case, there is  a clear preference, because the `Pitch` of `MIDI` note number `57` can only be spelled as an `a natural` (granted that we are disallowing `double flat` and `double sharp` `PitchSpelling` values).
+> There is  a clear preference, because the `Pitch` of `MIDI` note number `57` can only be spelled as an `a natural` (granted that we are disallowing `double flat` and `double sharp` `PitchSpelling` values).
 
 However, consider a context in which the other `Pitch` also has multiple spelling representations, such as the `Pitch` of `MIDI`note number `56`:
 
@@ -36,7 +36,7 @@ However, consider a context in which the other `Pitch` also has multiple spellin
 | `a flat` | `c sharp` | `augmented third`  | **undesired** |
 | `a flat` | `d flat` | `perfect fourth` | **desired**  |
 
-Here, there are more than one acceptable options. In different contexts, each pair of `PitchSpelling` representations is more appropriate than the other.
+> There are more than one acceptable options. In different contexts, each pair of `PitchSpelling` representations is more appropriate than the other.
 
 ## Structures
 
