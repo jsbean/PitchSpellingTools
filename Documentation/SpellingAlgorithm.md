@@ -49,8 +49,11 @@ A `PitchSet` is considered here an unordered, unique, unspelled collection of `P
 By nature, a `PitchSet` is composed of _<sub>n</sub>C<sub>2</sub>_ `Dyad` values (pairs of `Pitch` values). 
 
 **Example:**
+
+Consider a pitch set with midi note number values `[62, 63, 66, 67]`:
+
 ```Swift
-// Consider a pitch set with midi note number values [62, 63, 66, 67]
+
 let pitchSet: PitchSet = [
   Pitch(noteNumber: 62),
   Pitch(noteNumber: 63), 
@@ -58,7 +61,9 @@ let pitchSet: PitchSet = [
   Pitch(noteNumber: 67)
 ]
 ```
+
 In this case, there are 6 dyads:
+
 ```Swift
 [(62, 63), (62, 66), (62, 67), (63, 66), (63, 67), (66, 67)]
 ```
@@ -127,9 +132,9 @@ First, all `Dyad` values for the given `PitchSet` are ordered by `spelling prior
 For our purposes, half-steps are spelled before perfect intervals, which are spelled before imperfect intervals, which are spelled before tritone intervals. To see the details of the ordering, look [here](https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/PitchSpellingTools/IntervalClass%2BPitchSpelling.swift). 
 
 **Example:**
+For the case above, the dyads are now ordered as such:
 ```Swift
-// For the case above, the dyads are now ordered as such:
-// => [(62, 63), (66, 67), (62, 67), (62, 66), (63, 67), (63, 66)]
+[(62, 63), (66, 67), (62, 67), (62, 66), (63, 67), (63, 66)]
 ```
 
 ## Iterate over `Dyad` values
