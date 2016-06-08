@@ -43,7 +43,7 @@ However, consider a context in which the other `Pitch` also has multiple spellin
 
 ### Eighth-step resolution 
 
-There are a few additional preferrences when spelling eighth-step resolution `Pitch` values.
+There are a few additional preferences when spelling eighth-step resolution `Pitch` values.
 
 #### Fine Compatibility
 
