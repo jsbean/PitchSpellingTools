@@ -198,6 +198,7 @@ Return the the set composed of the spellings of the highest ranked `PitchSpellin
 ## Goal
 Find the optimum way to spell a sequence of vertical `PitchSet` values.
 
+> **TODO:** Determine rules for segmentation
 ---
 
 ## Rules not yet considered
