@@ -85,7 +85,7 @@ In order to keep track of spelling preferences when there is no clear answer, ce
 | [`Ranker`](https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/PitchSpellingTools/PitchSpellingRanking.swift)  | Ranks all possible `PitchSpellingNode` or `PitchSpellingEdge` options for a given `Dyad` |
 
 
-### Ranking Potential Spellings
+### Ranking Potential Spellings and Potential Spelling Pairs
 
 `PitchSpellingNode` and `PitchSpellingEdge` objects may be ranked. 
 
