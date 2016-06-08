@@ -7,7 +7,7 @@ Find the optimum way to spell the pitches of a `PitchSet`.
 
 A `PitchSet` is considered here an unordered, unique, unspelled collection of `Pitch` values. There is no inherent assumption that this `PitchSet` is a vertical, horizontal, or diagonal collection. 
 
-For our purposes, this algorithm is to handle cases of `Pitch` values with a resolution of up to an eighth-tone.
+For our purposes, this algorithm is to handle cases of `Pitch` values with a resolution of up to an eighth-tone (48 divisions of the octave).
 
 #### Dyads
 
@@ -35,10 +35,10 @@ In order to keep track of spelling preferences when there is no clear answer, ce
 
 | Structure | Note        |
 |-----------|-------------|
-| [`Node`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Node.swift) |  Wraps a single `PitchSpelling` and its `Pitch`, with a `rank` |
-| [`Edge`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Edge.swift) | Combination of `Node` values from a `Dyad`, with a `rank` |
-| [`Level`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/Level.swift) | Collection of all `Node` objects for a given `Pitch` |
-| [`Ranker`](https://github.com/dn-m/PitchSpellingTools/blob/1de9c94c05b7c23e5ff60dccff8d070ba5d48a36/PitchSpellingTools/PitchSpellingRanking.swift)  | Compares potential `PitchSpelling` options for a given `Dyad`, owns `Edge` values |
+| [`PitchSpellingNode`](https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/PitchSpellingTools/PitchSpellingNode.swift) |  Wraps a single `PitchSpelling` and its `Pitch`, with a `rank` |
+| [`PitchSpellingEdge`](https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/PitchSpellingTools/PitchSpellingEdge.swift) | Combination of `PitchSpellingNode` values from a `Dyad`, with a `rank` |
+| [`PitchSpellingStack`](https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/PitchSpellingTools/PitchSpellingStack.swift) | Collection of all `PitchSpellingNode` objects for a given `Pitch` |
+| [`Ranker`](https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/PitchSpellingTools/PitchSpellingRanking.swift)  | Compares potential `PitchSpelling` options for a given `Dyad`, owns `Edge` values |
 
 
 #### Ranking Potential Spellings
