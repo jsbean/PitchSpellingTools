@@ -36,7 +36,7 @@ In order to keep track of spelling preferences when there is no clear answer, ce
 | Structure | Note        |
 |-----------|-------------|
 | [`PitchSpellingNode`](https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/PitchSpellingTools/PitchSpellingNode.swift) |  Wraps a single `PitchSpelling` and its `Pitch`, with a `rank` |
-| [`PitchSpellingEdge`](https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/PitchSpellingTools/PitchSpellingEdge.swift) | Combination of `PitchSpellingNode` values from a `Dyad`, with a `rank` |
+| [`PitchSpellingEdge`](https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/PitchSpellingTools/PitchSpellingEdge.swift) | Combination of two `PitchSpellingNode` values from a `Dyad`, with a `rank` |
 | [`PitchSpellingStack`](https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/PitchSpellingTools/PitchSpellingStack.swift) | Collection of all `PitchSpellingNode` objects for a given `Pitch` |
 | [`Ranker`](https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/PitchSpellingTools/PitchSpellingRanking.swift)  | Compares potential `PitchSpelling` options for a given `Dyad`, owns `PitchSpellingEdge` values |
 
