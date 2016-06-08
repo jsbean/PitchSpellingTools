@@ -181,7 +181,7 @@ For each `PitchSpellingRanking` structure:
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/Documentation/img/62_63.jpg" height="240">
 
-<img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/Documentation/img/62_63.jpg" height="240">
+<img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/Documentation/img/66_67.jpg" height="240">
 
 #### 3. Check if all `PitchSpellingNode` objects have been ranked
 
