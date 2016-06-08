@@ -8,12 +8,23 @@ For example, the `Pitch` with a `MIDI` note number of `61`, or a frequency of `2
 ### Interval Optimization
 In general, `IntervalQuality` values of type `diminished` or `augmented` are less preferred to those of type `minor`, `perfect`, or `major`. In the case of the `tritone`, `augmented fourth` and `diminished fifth` `IntervalQuality` values are necessary, and therefore acceptable.
 
-Consider a context in which an `a natural` is present along with the aforementioned pitch of `MIDI` note number `61`.
+Consider a context in which an `a natural` is present along with the aforementioned `Pitch` of `MIDI` note number `61`:
 
-| First | Second | `IntervalQuality` |  Preference   |
+| Pitch A | Pitch B | `IntervalQuality` |  Preference   |
 | ----- | ------ | ----------------- | --- |
 | `a natural` | `c sharp` | `major third` | **desired** |
 | `a natural` | `d flat`  | `diminished fourth` | **undesired** |
+
+In this case, there is  a clear preference, because the `Pitch` of `MIDI` note number `57` can only be spelled as an `a natural` (granted that we are disallowing `double flat` and `double sharp` `PitchSpelling` values).
+
+However, consider a context in which the other `Pitch` also has multiple spelling representations, such as the `Pitch` of `MIDI`note number `56`:
+
+| Pitch A | Pitch B | `IntervalQuality` |  Preference   |
+| ----- | ------ | ----------------- | --- |
+| `g sharp` | `c sharp` | `perfect fourth` | **desired** |
+| `g sharp` | `d flat` | `diminished fifth` | **undesired** |
+| `a flat` | `c sharp` | `augmented third`  | **undesired** |
+| `a flat` | `d flat` | `perfect fourth` | **desired**  |
 
 ## Structures
 
