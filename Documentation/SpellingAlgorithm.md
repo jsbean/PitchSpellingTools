@@ -5,14 +5,12 @@ For example, the `Pitch` with a `MIDI` note number of `61`, or a frequency of `2
 
 Consider a context in which an `a natural` is present.
 
-| First | Second | `IntervalQuality` |
-| ----- | ------ | ----------------- |
-| `a natural` | `c sharp` | `major third` |
-| `a natural` | `d flat`  | `diminished fourth` | 
+| First | Second | `IntervalQuality` |  Preference   |
+| ----- | ------ | ----------------- | --- |
+| `a natural` | `c sharp` | `major third` | **desired** |
+| `a natural` | `d flat`  | `diminished fourth` | **undesired**      |
 
 `IntervalQuality` values of `diminished` and `augmented` are discouraged, except for the case of the `tritone`, for which `augmented fourth` and `diminished fifth` values are necessary.
-
-In this example, the `PitchSpellingDyad` composed of a `d flat` and an `a natural` has an `IntervalQuality` of `diminished fourth`, which is undesired, whereas the `major third` afforded by the `c sharp` is desired.
 
 Find the optimum way to spell the pitches of a `PitchSet`.
 
