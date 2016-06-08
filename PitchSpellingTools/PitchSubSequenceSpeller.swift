@@ -30,16 +30,16 @@ public final class PitchSubSequenceSpeller: PitchSpeller {
     }()
     
     private lazy var joinedSpellers: [PitchSetSpeller] = {
-        self.sets.adjacentPairs!
-            .enumerate()
-            .map { index, pair in
-                let newSet = pair.0.formUnion(with: pair.1)
-                return PitchSetSpeller(
-                    pitchSet: newSet,
-                    nodeResource: self.nodeResource[newSet]!,
-                    rank: self.rankWeight(for: index)
-                )
-            }
+        guard let adjacentPairs = self.sets.adjacentPairs else { return [] }
+        return adjacentPairs.enumerate().map {
+            index, pair in
+            let newSet = pair.0.formUnion(with: pair.1)
+            return PitchSetSpeller(
+                pitchSet: newSet,
+                nodeResource: self.nodeResource[newSet]!,
+                rank: self.rankWeight(for: index)
+            )
+        }
     }()
     
     private let sets: [PitchSet]
@@ -56,13 +56,17 @@ public final class PitchSubSequenceSpeller: PitchSpeller {
      - TODO: Return `SpelledPitchSetSequence`
      - warning: Not yet implemented!
      */
-    public func spell() throws -> [SpelledPitchSet] {
+    public func spell() throws -> Result {
         applyRankings()
-        return try individualSpellers.map { return try $0.highestRankedPitches() }
+        return try highestRankedPitches()
     }
 
     public func applyRankings() {
         joinedSpellers.forEach { $0.applyRankings() }
+    }
+    
+    private func highestRankedPitches() throws -> Result {
+        return try individualSpellers.map { return try $0.highestRankedPitches() }
     }
     
     // Here, rank is weighted towards the end of a sequence

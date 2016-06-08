@@ -10,20 +10,48 @@ import Pitch
 
 public final class PitchSequenceSpeller {
     
-    // cut up sequences
+    public typealias Result = [SpelledPitchSet]
+    
+    // Create `Node` resource
+    
+    // cut up sequences in the pattern:
+    // [ (zero or more) non-objectively-spellable, (zero or one) objectively-spellable ]
+    // [ (zero or one) objectively-spellable, (zero or more) non-objectively-spellable ]
+    
     public lazy var subSequences: [[PitchSet]] = {
         var result: [[PitchSet]] = []
+        var last: [PitchSet]?
         for set in self.sets {
+            var current = last ?? []
             if set.canBeSpelledObjectively {
-                
+                current.append(set)
+                result.append(current)
+                last = nil
+            } else {
+                current.append(set)
+                last = current
             }
         }
+        if let last = last { result.append(last) }
         return result
+    }()
+    
+    private lazy var spellers: [PitchSubSequenceSpeller] = {
+        self.subSequences.map { PitchSubSequenceSpeller(sets: $0) }
     }()
     
     private let sets: [PitchSet]
     
     public init(sets: [PitchSet]) {
         self.sets = sets
+    }
+    
+    public func applyRankings() {
+        spellers.forEach { $0.applyRankings() }
+    }
+    
+    public func spell() throws -> Result {
+        applyRankings()
+        return try spellers.flatMap { try $0.spell() }
     }
 }

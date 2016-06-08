@@ -76,3 +76,8 @@ extension PitchClassSequence: ArrayLiteralConvertible {
         self.array = elements
     }
 }
+
+public func == (lhs: PitchClassSequence, rhs: PitchClassSequence) -> Bool {
+    return lhs.sequence == rhs.sequence
+}
+

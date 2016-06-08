@@ -107,7 +107,7 @@ public final class PitchSetSpeller: PitchSpeller {
      
      - returns: `SpelledPitchSet` containing spelled versions of the given `PitchSet`.
      */
-    public func spell() throws -> SpelledPitchSet {
+    public func spell() throws -> Result {
         
         // Exit early is pitchSet is empty
         if pitchSet.isEmpty { return SpelledPitchSet([]) }

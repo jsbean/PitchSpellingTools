@@ -54,3 +54,10 @@ extension AnySequenceType {
         return AnyGenerator { return generator.next() }
     }
 }
+
+/**
+ - returns: `true` if all elements in both sequnces are equivalent. Otherwise, `false`.
+ */
+public func == <T: AnySequenceType where T.Element: Equatable>(lhs: T, rhs: T) -> Bool {
+    return lhs.sequence == rhs.sequence
+}

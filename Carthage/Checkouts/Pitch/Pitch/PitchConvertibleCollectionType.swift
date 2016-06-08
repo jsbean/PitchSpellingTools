@@ -63,10 +63,6 @@ extension PitchConvertibleCollectionType {
     public subscript(index: Int) -> Element { return array[index] }
 }
 
-public func == <T: PitchConvertibleCollectionType> (lhs: T, rhs: T) -> Bool {
-    return lhs.array == rhs.array
-}
-
 extension PitchConvertibleCollectionType {
     
     // MARK: - CustomStringConvertible
@@ -75,4 +71,8 @@ extension PitchConvertibleCollectionType {
     public var description: String {
         return "〈\(map{ "\($0)" }.joinWithSeparator(","))〉"
     }
+}
+
+public func == <T: PitchConvertibleCollectionType> (lhs: T, rhs: T) -> Bool {
+    return lhs.sequence == rhs.sequence
 }

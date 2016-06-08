@@ -16,7 +16,7 @@ public protocol PitchConvertibleContaining: AnySequenceType {
     // MARK: - Associated Types
     
     /// The `PitchConvertible` type element contained herein.
-    associatedtype Element = PitchConvertible
+    associatedtype Element: PitchConvertible
     
     // MARK: - Instance Properties
     
