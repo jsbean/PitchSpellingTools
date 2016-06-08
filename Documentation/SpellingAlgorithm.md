@@ -174,7 +174,7 @@ For each `Dyad` in the given `PitchSet`:
   - `SemiAmbiguous`
   - `FullyAmbiguous`
 
-#### 3. Apply `PitchSpellingNode` rankings
+#### 3. Apply rankings to `PitchSpellingNode` objects
 
 For each `PitchSpellingRanking` structure:
 - Apply rankings to `PitchSpellingNode` objects contained therein (`Determinate` / `SemiAmbiguous`) or `PitchSpellingEdge` (`FullyAmbiguous`).
