@@ -144,9 +144,11 @@ Find the optimum way to spell the pitches of a `PitchSet`.
 
 For our purposes, this algorithm is to handle cases of `Pitch` values with a resolution of up to an eighth-tone (48 divisions of the octave).
 
-## Prepare `Dyad` values
+## Process
 
-First, all `Dyad` values for the given `PitchSet` are ordered by `spelling priority` of their `IntervalClass`.
+#### 1. Prepare `Dyad` values
+
+Sort `Dyad` values for the given `PitchSet` are by `spelling priority`.
 
 > By attempting to spell `Dyad` values with certain `IntervalClass` values first, the most salient relationships are prioritized, and are therefore preserved in their graphical representation.
 
@@ -158,16 +160,14 @@ For the case above, the dyads are now ordered as such:
 [(62, 63), (66, 67), (62, 67), (62, 66), (63, 67), (63, 66)]
 ```
 
-## Iterate over `Dyad` values
-
-#### 1. Create `PitchSpellingRanking` structure for each `Dyad`
+#### 2. Create `PitchSpellingRanking` structure for each `Dyad`
 For each `Dyad` in the given `PitchSet`: 
 - Create the appropriate `PitchSpellingRanking` structure:
   - `Determinate`
   - `SemiAmbiguous`
   - `FullyAmbiguous`
 
-#### 2. Apply `PitchSpellingNode` rankings
+#### 3. Apply `PitchSpellingNode` rankings
 
 For each `PitchSpellingRanking` structure:
 - Apply rankings.
@@ -183,7 +183,7 @@ For each `PitchSpellingRanking` structure:
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/Documentation/img/66_67.jpg" height="240">
 
-#### 3. Check if all `PitchSpellingNode` objects have been ranked
+#### 4. Check if all `PitchSpellingNode` objects have been ranked
 
 - `true`: 
   - `return` the set of the spelling of the highest ranked `PitchSpellingNode` for each `Pitch`
