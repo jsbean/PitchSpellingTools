@@ -35,6 +35,8 @@ public final class PitchSpellingStack {
         self.pitch = pitch
         self.nodes = nodes
     }
+    
+    // TODO: init with pitch and nodeResource
 }
 
 extension PitchSpellingStack: CustomStringConvertible {
