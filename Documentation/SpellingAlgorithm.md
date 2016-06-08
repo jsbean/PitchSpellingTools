@@ -29,7 +29,7 @@ let pitchSet: PitchSet = [
 
 The case above is interesting, as its optimum spelling contains both sharps and flats. 
 
-### Nodes, Levels, Edges, Rankings
+### Nodes, Edges, Stacks, Rankings
 
 In order to keep track of spelling preferences when there is no clear answer, certain data structures have been created:
 
