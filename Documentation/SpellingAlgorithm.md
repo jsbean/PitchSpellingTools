@@ -101,11 +101,11 @@ There are three cases possible when attempting to spell a `Dyad`:
 
 #### DeterminatePitchSpellingRanker
 
-For case **1** above, both `PitchSpellingNode` values are given an optimum `rank` of `1.0`.
+**Case 1:**, both `PitchSpellingNode` values are given an optimum `rank` of `1.0`.
 
 #### SemiAmbiguousPitchSpellingRanker
 
-For case **2** above, the `SemiAmbiguousPitchSpellingRanker` ranks each possible `PitchSpellingNode` for a given ambiguously spellable `PitchSpellingStack`, given the context of an objectively spellable `PitchSpellingNode`.
+**Case 2:**, the `SemiAmbiguousPitchSpellingRanker` ranks each possible `PitchSpellingNode` for a given ambiguously spellable `PitchSpellingStack`, given the context of an objectively spellable `PitchSpellingNode`.
 
 Each `PitchSpellingNode` from the ambiguously spellable `PitchSpellingStack` is penalized for breaking a given set of rules when contextualized by the objectively spellable `PitchSpellingNode`.
 
@@ -113,7 +113,7 @@ Each `PitchSpellingNode` from the ambiguously spellable `PitchSpellingStack` is 
 
 #### FullyAmbiguousPitchSpellingRanker
 
-For case **3** above, the `FullyAmbiguousPitchSpellingRanker` ranks each possible `PitchSpellingEdge` between each possible `PitchSpellingNode` from each ambiguously spellable `PitchSpellingStack`.
+**Case 3:** the `FullyAmbiguousPitchSpellingRanker` ranks each possible `PitchSpellingEdge` between each possible `PitchSpellingNode` from each ambiguously spellable `PitchSpellingStack`.
 
 Each `PitchSpellingEdge` is penalized if it breakings any of a given set of rules within its own context.
 
@@ -123,7 +123,8 @@ Each `PitchSpellingEdge` is penalized if it breakings any of a given set of rule
 
 # PitchSetSpeller
 
-**Goal:** Find the optimum way to spell the pitches of a `PitchSet`.
+## Goal
+Find the optimum way to spell the pitches of a `PitchSet`.
 
 For our purposes, this algorithm is to handle cases of `Pitch` values with a resolution of up to an eighth-tone (48 divisions of the octave).
 
@@ -140,6 +141,21 @@ For the case above, the dyads are now ordered as such:
 ```
 
 ## Iterate over `Dyad` values
+
+#### 1. Create `PitchSpellingRanking` structure for each `Dyad`
+For each `Dyad` in the given `PitchSet`, create an appropriate `PitchSpellingRanking` structure (`Determinate`, `SemiAmbiguous`, `FullyAmbiguous`).
+
+#### 2. Apply `PitchSpellingNode` rankings, if possible
+Instruct each `PitchSpellingRanking` structure to apply its rankings.
+
+> In the case that there are no objectively spellable pitches in the given `PitchSet`, no `PitchSpellingNode` objects are ranked. Instead, the `PitchSpellingEdge` objects are ranked.
+
+#### 3. Check if all `PitchSpellingNode` objects have been ranked
+
+- `if true`: `return` the set of the spelling of the highest ranked `PitchSpellingNode` for each `Pitch`
+- `else`: apply the ranks of the `PitchSpellingEdge` objects to the appropriate `PitchSpellingNode` objects
+- `return` the set of the spelling of the highest ranked `PitchSpellingNode` for each `Pitch`
+
 
 In cases where one `Pitch` is objectively spellable, we can do a single pass over all (or often times less than all) of the `Dyad` values. At first, all `PitchSpellingNode` values are given a `nil` `rank` value.
 
