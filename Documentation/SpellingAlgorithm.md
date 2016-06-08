@@ -185,7 +185,7 @@ For each `PitchSpellingRanking` structure:
 Penalize the `PitchSpellingNode` objects that are found in poorest-rated `PitchSpellingEdge` objects.
 
 #### 5. `return`
-Return the the set composed of the spelling of the highest ranked `PitchSpellingNode` for each `Pitch`.
+Return the the set composed of the spellings of the highest ranked `PitchSpellingNode` for each `Pitch`.
 
 ---
 
