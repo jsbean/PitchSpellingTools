@@ -60,7 +60,7 @@ In order to keep track of spelling preferences when there is no clear answer, ce
 
 Ranking values are `Float` values in the range `0.0...1.0`, and both `PitchSpellingNode` and `PitchSpellingEdge` objects may be ranked. 
 
-In cases where at least one `Pitch` value in the given `PitchSet` is can only be spelled one way, a conclusive set of `PitchSpelling` values can be determined by comparing the `rank` values of each `Node`. 
+In cases where at least one `Pitch` value in the given `PitchSet` is can only be spelled one way, a conclusive set of `PitchSpelling` values can be determined by comparing the `rank` values of each `PitchSpellingNode`. 
 
 When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `Pitch` values therein are objectively spellable), the `rank` value of `Edge` values can be used to influence a decision for an otherwise ambiguous context.
 
@@ -74,7 +74,7 @@ There are three cases possible when attempting to spell a `Dyad`:
 2. One pitch can be spelled objectively (e.g., `(62, 63), (66, 67)`)
 3. Neither pitch can be spelled objectively (e.g., `(63, 66)`)
 
-For case 1 above, no action is needed other than confirming that the objectively spellable `Node` values hold a `rank` of `1.0`.
+For case 1 above, no action is needed other than confirming that the objectively spellable `PitchSpellingNode` values hold a `rank` of `1.0`.
 
 ##### SemiAmbiguousPitchSpellingRanker
 
@@ -110,12 +110,12 @@ For our purposes, half-steps are spelled before perfect intervals, which are spe
 
 ### Iterate over `Dyad` values
 
-In cases where one `Pitch` is objectively spellable, we can do a single pass over all (or often times less than all) of the `Dyad` values. At first, all `Node` values are given a `nil` `rank` value.
+In cases where one `Pitch` is objectively spellable, we can do a single pass over all (or often times less than all) of the `Dyad` values. At first, all `PitchSpellingNode` values are given a `nil` `rank` value.
 
 Each iteration, we do two general things:
 
-- A. Check if all of the `Node` values have been given a `rank`. 
-  - If so, we can `break` the iteration, and make a decision based on the `rank` values of each `Node`.
+- A. Check if all of the `PitchSpellingNode` values have been given a `rank`. 
+  - If so, we can `break` the iteration, and make a decision based on the `rank` values of each `PitchSpellingNode`.
 - B. Create an appropriate `Ranker`
   - Examine each `Dyad`, penalizing the offensive `Edge` values as necessary.
 
@@ -134,7 +134,7 @@ In the original example, the dyads sorted are:
 
 <a name = "62-63"></a>
 ##### 1. `(62, 63)`
-- **A:** Check if all of the `Node` values have been ranked. At this point, no `Node` values have been ranked, so we must keep going.
+- **A:** Check if all of the `PitchSpellingNode` values have been ranked. At this point, no `Node` values have been ranked, so we must keep going.
 
 - **B:** Here, `62` can only be spelled as `d natural`. Therefore we can create a `SemiAmgbiguousPitchSpellingRanker`.
 
@@ -147,7 +147,7 @@ The comparison stage penalizes the `D` / `D#` `PitchSpellingDyad` as it does not
 <a name = "66-67"></a>
 ##### 2. `(66, 67)`
 
-- **A:** Check if all of the `Node` values have been ranked. At this point, the `Node` values belonging to `Pitch(noteNumber: 62)`, `Pitch(noteNumber: 63)`, and `Pitch(noteNumber: 67)` have been ranked, but not yet `Pitch(noteNumber: 66)`.
+- **A:** Check if all of the `PitchSpellingNode` values have been ranked. At this point, the `PitchSpellingNode` values belonging to `Pitch(noteNumber: 62)`, `Pitch(noteNumber: 63)`, and `Pitch(noteNumber: 67)` have been ranked, but not yet `Pitch(noteNumber: 66)`.
 
 - **B:** We can create a `SemiAmgbiguousPitchSpellingRanker` as `67` will be spelled as a `g natural`.
 
@@ -156,7 +156,7 @@ The comparison stage penalizes the `D` / `D#` `PitchSpellingDyad` as it does not
 <a name = "62-67"></a>
 ##### 3. `(62, 67)`
 
-- **A:** Check if all of the `Node` values have been ranked. At this point, all `Node` values have been ranked. We are now able to compare.
+- **A:** Check if all of the `PitchSpellingNode` values have been ranked. At this point, all `PitchSpellingNode` values have been ranked. We are now able to compare.
 
 - _**B:**_ _(not called)_
 
