@@ -36,5 +36,4 @@ class PitchSet_PitchSpellingTests: XCTestCase {
         let pitchSet: PitchSet = [63,66,68]
         XCTAssertFalse(pitchSet.canBeSpelledObjectively)
     }
-    
 }
