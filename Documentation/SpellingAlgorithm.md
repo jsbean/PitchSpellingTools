@@ -10,7 +10,7 @@ In general, `IntervalQuality` values of type `diminished` or `augmented` are les
 
 Consider the possibilities for representing a context in which an `a natural` is present along with the aforementioned `Pitch` of `MIDI` note number `61`:
 
-| Pitch A | Pitch B | `IntervalQuality` |  Preference   |
+| Pitch (57) | Pitch (61) | `IntervalQuality` |  Preference   |
 | ----- | ------ | ----------------- | --- |
 | `a natural` | `c sharp` | `major third` | **desired** |
 | `a natural` | `d flat`  | `diminished fourth` | **undesired** |
@@ -19,7 +19,7 @@ In this case, there is  a clear preference, because the `Pitch` of `MIDI` note n
 
 However, consider a context in which the other `Pitch` also has multiple spelling representations, such as the `Pitch` of `MIDI`note number `56`:
 
-| Pitch A | Pitch B | `IntervalQuality` |  Preference   |
+| Pitch (56) | Pitch (61) | `IntervalQuality` |  Preference   |
 | ----- | ------ | ----------------- | --- |
 | `g sharp` | `c sharp` | `perfect fourth` | **desired** |
 | `g sharp` | `d flat` | `diminished fifth` | **undesired** |
