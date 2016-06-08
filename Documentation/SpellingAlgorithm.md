@@ -8,7 +8,7 @@ For example, the `Pitch` with a `MIDI` note number of `61`, or a frequency of `2
 ### Interval Optimization
 In general, `IntervalQuality` values of type `diminished` or `augmented` are less preferred to those of type `minor`, `perfect`, or `major`. In the case of the `tritone`, `augmented fourth` and `diminished fifth` `IntervalQuality` values are necessary, and therefore acceptable.
 
-Consider a context in which an `a natural` is present along with the aforementioned `Pitch` of `MIDI` note number `61`:
+Consider the possibilities for representing a context in which an `a natural` is present along with the aforementioned `Pitch` of `MIDI` note number `61`:
 
 | Pitch A | Pitch B | `IntervalQuality` |  Preference   |
 | ----- | ------ | ----------------- | --- |
@@ -25,6 +25,8 @@ However, consider a context in which the other `Pitch` also has multiple spellin
 | `g sharp` | `d flat` | `diminished fifth` | **undesired** |
 | `a flat` | `c sharp` | `augmented third`  | **undesired** |
 | `a flat` | `d flat` | `perfect fourth` | **desired**  |
+
+Here, there are more than one acceptable options. In different contexts, each pair of `PitchSpelling` representations is more appropriate than the other.
 
 ## Structures
 
