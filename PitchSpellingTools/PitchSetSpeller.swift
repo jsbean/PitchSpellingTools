@@ -54,7 +54,7 @@ public final class PitchSetSpeller: PitchSpeller {
     }
     
     /// The influence that this `PitchSetSpeller` has when ranking `PitchSpellingNodes`.
-    /// - note: For use when used by `PitchSequenceSpeller`.
+    /// - note: For use when used by `PitchSubSequenceSpeller`.
     /// - note: Consider changing the name of this, as it means something different ...
     private let rank: Float
     

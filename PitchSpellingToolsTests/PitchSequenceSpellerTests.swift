@@ -14,29 +14,41 @@ import Pitch
 class PitchSequenceSpellerTests: XCTestCase {
     
     func testMonophonicAscending() {
-        let speller = PitchSequenceSpeller(sets: [[60], [61], [62]])
+        let speller = PitchSubSequenceSpeller(sets: [[60], [61], [62]])
         speller.applyRankings()
         
         // TODO: add assertions
     }
     
     func testMonophoningDescending() {
-        let speller = PitchSequenceSpeller(sets: [[62], [61], [60]])
+        let speller = PitchSubSequenceSpeller(sets: [[62], [61], [60]])
         speller.applyRankings()
     }
     
     func testDyadPair() {
         let sets: [PitchSet] = [[62,63],[66,68]]
-        let speller = PitchSequenceSpeller(sets: sets)
+        let speller = PitchSubSequenceSpeller(sets: sets)
         speller.applyRankings()
         // TODO: add assertions
     }
     
     func testDyads() {
         let sets: [PitchSet] = [[60,62],[63,65],[61,70]]
-        let speller = PitchSequenceSpeller(sets: sets)
+        let speller = PitchSubSequenceSpeller(sets: sets)
         speller.applyRankings()
         // TODO: add assertions
+    }
+    
+    func testFSharpGSharpA() {
+        let sets: [PitchSet] = [[66],[68],[69]]
+        let speller = PitchSubSequenceSpeller(sets: sets)
+        print(try! speller.spell())
+    }
+    
+    func testABFlatCDFlat() {
+        let sets: [PitchSet] = [[69],[70],[72],[73]]
+        let speller = PitchSubSequenceSpeller(sets: sets)
+        print(try! speller.spell())
     }
 //    
 //    func testLongMonophonicSequenceHalfStep() {
@@ -45,7 +57,7 @@ class PitchSequenceSpellerTests: XCTestCase {
 //            return PitchSet([pitch])
 //        }
 //        self.measureBlock {
-//            let speller = PitchSequenceSpeller(sets: sequence)
+//            let speller = PitchSubSequenceSpeller(sets: sequence)
 //            let _ = try! speller.spell()
 //            //spelledPitchSets.forEach { print($0) }
 //        }
@@ -57,7 +69,7 @@ class PitchSequenceSpellerTests: XCTestCase {
 //            return PitchSet([pitch])
 //        }
 //        self.measureBlock {
-//            let speller = PitchSequenceSpeller(sets: sequence)
+//            let speller = PitchSubSequenceSpeller(sets: sequence)
 //            let _ = try! speller.spell()
 //            //spelledPitchSets.forEach { print($0) }
 //        }
@@ -71,7 +83,7 @@ class PitchSequenceSpellerTests: XCTestCase {
 //            return PitchSet(pitches)
 //        }
 //        self.measureBlock {
-//            let speller = PitchSequenceSpeller(sets: sequence)
+//            let speller = PitchSubSequenceSpeller(sets: sequence)
 //            speller.applyRankings()
 //        }
 //    }
@@ -84,7 +96,7 @@ class PitchSequenceSpellerTests: XCTestCase {
 //            return PitchSet(pitches)
 //        }
 //        self.measureBlock {
-//            let speller = PitchSequenceSpeller(sets: sequence)
+//            let speller = PitchSubSequenceSpeller(sets: sequence)
 //            speller.applyRankings()
 //        }
 //    }
@@ -97,7 +109,7 @@ class PitchSequenceSpellerTests: XCTestCase {
 //            return PitchSet(pitches)
 //        }
 //        self.measureBlock {
-//            let speller = PitchSequenceSpeller(sets: sequence)
+//            let speller = PitchSubSequenceSpeller(sets: sequence)
 //            let _ = try! speller.spell()
 //        }
 //    }
@@ -110,7 +122,7 @@ class PitchSequenceSpellerTests: XCTestCase {
 //            return PitchSet(pitches)
 //        }
 //        self.measureBlock {
-//            let speller = PitchSequenceSpeller(sets: sequence)
+//            let speller = PitchSubSequenceSpeller(sets: sequence)
 //            let _ = try! speller.spell()
 //            //spelledPitchSets.forEach { print($0) }
 //        }
@@ -124,7 +136,7 @@ class PitchSequenceSpellerTests: XCTestCase {
 //            return PitchSet(pitches)
 //        }
 //        self.measureBlock {
-//            let speller = PitchSequenceSpeller(sets: sequence)
+//            let speller = PitchSubSequenceSpeller(sets: sequence)
 //            let _ = try! speller.spell()
 //            //spelledPitchSets.forEach { print($0) }
 //        }

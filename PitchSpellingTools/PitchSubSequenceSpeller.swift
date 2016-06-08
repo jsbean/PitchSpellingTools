@@ -1,5 +1,5 @@
 //
-//  PitchSequenceSpeller.swift
+//  PitchSubSequenceSpeller.swift
 //  PitchSpellingTools
 //
 //  Created by James Bean on 5/31/16.
@@ -10,9 +10,9 @@ import ArrayTools
 import Pitch
 
 /// - TODO: Change this to `PitchSubSequenceSpeller`
-/// - TODO: Implement PitchSequenceSpeller to aggregate the results of `PitchSubSequenceSpeller`
+/// - TODO: Implement PitchSubSequenceSpeller to aggregate the results of `PitchSubSequenceSpeller`
 /// - TODO: Implement segmentation
-public final class PitchSequenceSpeller: PitchSpeller {
+public final class PitchSubSequenceSpeller: PitchSpeller {
     
     // Change this to a dedicated `SequenceType` at some point.
     public typealias Result = [SpelledPitchSet]
