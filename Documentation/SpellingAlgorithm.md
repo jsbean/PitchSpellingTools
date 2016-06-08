@@ -1,4 +1,6 @@
-# Background
+# PitchSpelling
+
+## Background
 `Pitch` values can often be represented multiple ways on a musical staff. 
 
 For example, the `Pitch` with a `MIDI` note number of `61`, or a frequency of `277.18 Hz`, is one half-step above `middle c`. This pitch can be represented either as a `c sharp` or a `d flat`, each representation being more appropriate for different contexts.
@@ -12,13 +14,15 @@ Consider a context in which an `a natural` is present.
 
 `IntervalQuality` values of `diminished` and `augmented` are discouraged, except for the case of the `tritone`, for which `augmented fourth` and `diminished fifth` values are necessary.
 
-# Structures
+## Structures
 
-## PitchSet
+### PitchSet
 
 A `PitchSet` is considered here an unordered, unique, unspelled collection of `Pitch` values. There is no inherent assumption that this `PitchSet` is a vertical, horizontal, or diagonal collection. 
 
-For our purposes, this algorithm is to handle cases of `Pitch` values with a resolution of up to an eighth-tone (48 divisions of the octave).
+### PitchSetSequence
+
+Ordered, not-necessarily unique sequence of one or more unspelled vertical `PitchSet` values (chords).
 
 ### Dyads
 
@@ -40,7 +44,7 @@ let pitchSet: PitchSet = [
 
 The case above is interesting, as its optimum spelling contains both sharps and flats. 
 
-## Nodes, Edges, Stacks, Rankings
+### Nodes, Edges, Stacks, Rankings
 
 In order to keep track of spelling preferences when there is no clear answer, certain data structures have been created:
 
@@ -93,6 +97,8 @@ The `FullyAmbiguousPitchSpellingRanker` iterates over each possible `PitchSpelli
 # PitchSetSpeller
 
 **Goal:** Find the optimum way to spell the pitches of a `PitchSet`.
+
+For our purposes, this algorithm is to handle cases of `Pitch` values with a resolution of up to an eighth-tone (48 divisions of the octave).
 
 ## Prepare `Dyad` values
 
