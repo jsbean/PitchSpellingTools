@@ -181,14 +181,11 @@ For each `PitchSpellingRanking` structure:
 
 > In the case that there are no objectively spellable `Pitch` values in the given `PitchSet`, no `PitchSpellingNode` objects are ranked. Instead, the `PitchSpellingEdge` objects are ranked.
 
-#### 4. Check if all `PitchSpellingNode` objects have been ranked
+#### 4. Apply rankings of `PitchSpellingEdge` objects to `PitchSpellingNode` objects
+Penalize the `PitchSpellingNode` objects that are found in poorest-rated `PitchSpellingEdge` objects.
 
-- `true`: 
-  - `return` the set of the spelling of the highest ranked `PitchSpellingNode` for each `Pitch`
-- `else`: 
-  - Apply the ranks of the `PitchSpellingEdge` objects to the appropriate `PitchSpellingNode` objects
-
-`return` the set of the spelling of the highest ranked `PitchSpellingNode` for each `Pitch`
+#### 5. `return`
+Return the the set composed of the spelling of the highest ranked `PitchSpellingNode` for each `Pitch`.
 
 ---
 
