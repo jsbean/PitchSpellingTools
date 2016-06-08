@@ -117,7 +117,7 @@ There are **three cases** possible when attempting to spell a `Dyad`:
 
 #### Case 1: DeterminatePitchSpellingRanker
 
-Both `PitchSpellingNode` values are given an optimum `rank` of `1.0`.
+The `DeterminatePitchSpellingRanker` applies an optimum `rank` of `1.0` to both `PitchSpellingNode` values.
 
 #### Case 2: SemiAmbiguousPitchSpellingRanker
 
