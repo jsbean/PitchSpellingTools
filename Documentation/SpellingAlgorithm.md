@@ -103,17 +103,17 @@ For case 1 above, no action is needed other than confirming that the objectively
 
 #### SemiAmbiguousPitchSpellingRanker
 
-For case 2 above, the `SemiAmbiguousPitchSpellingRanker` takes an objectively spellable `Node`, and the `PitchSpellingStage` for a non-objectively spellable `Pitch`. 
+For case 2 above, the `SemiAmbiguousPitchSpellingRanker` takes an objectively spellable `Node`, and the `PitchSpellingStack` for a non-objectively spellable `Pitch`. 
 
-The `SemiAmbiguousPitchSpellingRanker` iterates over each possible `PitchSpelling` in the `PitchSpellingStage` of non-objectively spellable `Pitch`, penalizing the `PitchSpelling` values that break any of a variety of rules.
+The `SemiAmbiguousPitchSpellingRanker` iterates over each possible `PitchSpelling` in the `PitchSpellingStack` of non-objectively spellable `Pitch`, penalizing the `PitchSpelling` values that break any of a variety of rules.
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/semi_ambiguous.jpg" height="240">
 
 #### FullyAmbiguousPitchSpellingRanker
 
-For case 3 above, the `FullyAmbiguousPitchSpellingRanker` takes two `PitchSpellingStage` values for each `Pitch` in the `Dyad`.
+For case 3 above, the `FullyAmbiguousPitchSpellingRanker` takes two `PitchSpellingStack` values for each `Pitch` in the `Dyad`.
 
-The `FullyAmbiguousPitchSpellingRanker` iterates over each possible `PitchSpellingDyad` combination between the two `PitchSpellingStage` values of the non-objectively spellable `Pitch` values, penalizing the `Edge` containing `PitchSpellingDyad` values that break any of a variety of rules.
+The `FullyAmbiguousPitchSpellingRanker` iterates over each possible `PitchSpellingDyad` combination between the two `PitchSpellingStack` values of the non-objectively spellable `Pitch` values, penalizing the `Edge` containing `PitchSpellingDyad` values that break any of a variety of rules.
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/fully_ambiguous.jpg" height="240">
 
