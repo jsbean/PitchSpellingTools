@@ -177,7 +177,7 @@ For each `Dyad` in the given `PitchSet`:
 #### 3. Apply `PitchSpellingNode` rankings
 
 For each `PitchSpellingRanking` structure:
-- Apply rankings.
+- Apply rankings to `PitchSpellingNode` objects contained therein (`Determinate` / `SemiAmbiguous`) or `PitchSpellingEdge` (`FullyAmbiguous`).
 
 > In the case that there are no objectively spellable `Pitch` values in the given `PitchSet`, no `PitchSpellingNode` objects are ranked. Instead, the `PitchSpellingEdge` objects are ranked.
 
