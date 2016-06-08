@@ -130,9 +130,11 @@ For our purposes, this algorithm is to handle cases of `Pitch` values with a res
 
 ## Prepare `Dyad` values
 
-First, all `Dyad` values for the given `PitchSet` are ordered by `spelling priority` of their `IntervalClass`. By attempting to spell `Dyad` values with certain `IntervalClass` values first, the most salient relationships are prioritized, and are therefore preserved in their graphical representation.
+First, all `Dyad` values for the given `PitchSet` are ordered by `spelling priority` of their `IntervalClass`.
 
-For our purposes, half-steps are spelled before perfect intervals, which are spelled before imperfect intervals, which are spelled before tritone intervals. To see the details of the ordering, look [here](https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/PitchSpellingTools/IntervalClass%2BPitchSpelling.swift). 
+> By attempting to spell `Dyad` values with certain `IntervalClass` values first, the most salient relationships are prioritized, and are therefore preserved in their graphical representation.
+
+> To see the details of the ordering, look [here](https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/PitchSpellingTools/IntervalClass%2BPitchSpelling.swift). 
 
 **Example:**
 For the case above, the dyads are now ordered as such:
