@@ -192,6 +192,8 @@ For each `PitchSpellingRanking` structure:
 
 `return` the set of the spelling of the highest ranked `PitchSpellingNode` for each `Pitch`
 
+---
+
 ## Rules not yet considered
 - Spelling preferences guided by ascending / descending linear structures
 
