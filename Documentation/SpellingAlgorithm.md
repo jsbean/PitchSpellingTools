@@ -41,7 +41,7 @@ However, consider a context in which the other `Pitch` also has multiple spellin
 
 > There are more than one acceptable options. In different contexts, each pair of `PitchSpelling` representations is more appropriate than the other.
 
-### Eighth-step resolution 
+### Eighth-step Resolution 
 
 There are a few additional preferences when spelling eighth-step resolution `Pitch` values.
 
@@ -49,7 +49,7 @@ There are a few additional preferences when spelling eighth-step resolution `Pit
 
 In cases of eighth-step resolution `Pitch` values, it is preferred that the `fine.direction` (`up`, `down`) is compatible.
 
-#### Coarse resolution compatibility
+#### Coarse Resolution Compatibility
 
 In the case of eighth-step resolution `Pitch` values, which may be spelled with a quarter-step body (`a quarterSharp down`), it is preferred that the `coarse.resolution` (`quarterSharp`, `sharp`, `quarterFlat`, `flat`) is compatible.
 
