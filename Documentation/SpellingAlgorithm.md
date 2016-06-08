@@ -95,9 +95,9 @@ When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `
 
 There are three cases possible when attempting to spell a `Dyad`:
 
-1. Both pitches can be spelled objectively (e.g., `(60, 67)`)
-2. One pitch can be spelled objectively (e.g., `(62, 63), (66, 67)`)
-3. Neither pitch can be spelled objectively (e.g., `(63, 66)`)
+1. Both pitches can be spelled objectively: `(60, 67)`
+2. One pitch can be spelled objectively: `(62, 63), (66, 67)`
+3. Neither pitch can be spelled objectively: `(63, 66)`
 
 For case 1 above, no action is needed other than confirming that the objectively spellable `PitchSpellingNode` values hold a `rank` of `1.0`.
 
