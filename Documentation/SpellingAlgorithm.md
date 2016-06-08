@@ -1,6 +1,4 @@
-
-
-## Background
+# Background
 `Pitch` values can often be represented multiple ways on a musical staff. 
 
 For example, the `Pitch` with a `MIDI` note number of `61`, or a frequency of `277.18 Hz`, is one half-step above `middle c`. This pitch can be represented either as a `c sharp` or a `d flat`, each representation being more appropriate for different contexts.
@@ -14,17 +12,15 @@ Consider a context in which an `a natural` is present.
 
 `IntervalQuality` values of `diminished` and `augmented` are discouraged, except for the case of the `tritone`, for which `augmented fourth` and `diminished fifth` values are necessary.
 
-## PitchSet Spelling Algorithm
+# Structures
 
-Find the optimum way to spell the pitches of a `PitchSet`.
-
-### PitchSet
+## PitchSet
 
 A `PitchSet` is considered here an unordered, unique, unspelled collection of `Pitch` values. There is no inherent assumption that this `PitchSet` is a vertical, horizontal, or diagonal collection. 
 
 For our purposes, this algorithm is to handle cases of `Pitch` values with a resolution of up to an eighth-tone (48 divisions of the octave).
 
-#### Dyads
+### Dyads
 
 By nature, a `PitchSet` is composed of _<sub>n</sub>C<sub>2</sub>_ `Dyad` values (pairs of `Pitch` values). 
 
@@ -44,7 +40,7 @@ let pitchSet: PitchSet = [
 
 The case above is interesting, as its optimum spelling contains both sharps and flats. 
 
-### Nodes, Edges, Stacks, Rankings
+## Nodes, Edges, Stacks, Rankings
 
 In order to keep track of spelling preferences when there is no clear answer, certain data structures have been created:
 
@@ -56,7 +52,7 @@ In order to keep track of spelling preferences when there is no clear answer, ce
 | [`Ranker`](https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/PitchSpellingTools/PitchSpellingRanking.swift)  | Ranks all possible `PitchSpellingNode` or `PitchSpellingEdge` options for a given `Dyad` |
 
 
-#### Ranking Potential Spellings
+### Ranking Potential Spellings
 
 Ranking values are `Float` values in the range `0.0...1.0`, and both `PitchSpellingNode` and `PitchSpellingEdge` objects may be ranked. 
 
@@ -66,7 +62,7 @@ When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `
 
 > `Pitch(noteNumber: 60)` can only be spelled as `c natural`, unless we are allowing `b sharps` and `d doubleFlats`
 
-#### Rankers
+### Rankers
 
 There are three cases possible when attempting to spell a `Dyad`:
 
@@ -76,7 +72,7 @@ There are three cases possible when attempting to spell a `Dyad`:
 
 For case 1 above, no action is needed other than confirming that the objectively spellable `PitchSpellingNode` values hold a `rank` of `1.0`.
 
-##### SemiAmbiguousPitchSpellingRanker
+#### SemiAmbiguousPitchSpellingRanker
 
 For case 2 above, the `SemiAmbiguousPitchSpellingRanker` takes an objectively spellable `Node`, and the `Level` for a non-objectively spellable `Pitch`. 
 
@@ -84,7 +80,7 @@ The `SemiAmbiguousPitchSpellingRanker` iterates over each possible `PitchSpellin
 
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-comparisonstage/Documentation/img/semi_ambiguous.jpg" height="240">
 
-##### FullyAmbiguousPitchSpellingRanker
+#### FullyAmbiguousPitchSpellingRanker
 
 For case 3 above, the `FullyAmbiguousPitchSpellingRanker` takes two `Level` values for each `Pitch` in the `Dyad`.
 
@@ -94,9 +90,11 @@ The `FullyAmbiguousPitchSpellingRanker` iterates over each possible `PitchSpelli
 
 ---
 
-## Process
+# PitchSetSpeller
 
-### Prepare `Dyad` values
+**Goal:** Find the optimum way to spell the pitches of a `PitchSet`.
+
+## Prepare `Dyad` values
 
 First, all `Dyad` values for the given `PitchSet` are ordered by `spelling priority` of their `IntervalClass`. By attempting to spell `Dyad` values with certain `IntervalClass` values first, the most salient relationships are prioritized, and are therefore preserved in their graphical representation.
 
@@ -108,7 +106,7 @@ For our purposes, half-steps are spelled before perfect intervals, which are spe
 // => [(62, 63), (66, 67), (62, 67), (62, 66), (63, 67), (63, 66)]
 ```
 
-### Iterate over `Dyad` values
+## Iterate over `Dyad` values
 
 In cases where one `Pitch` is objectively spellable, we can do a single pass over all (or often times less than all) of the `Dyad` values. At first, all `PitchSpellingNode` values are given a `nil` `rank` value.
 
@@ -133,7 +131,7 @@ In the original example, the dyads sorted are:
 - 6. _`(63, 66)`_
 
 <a name = "62-63"></a>
-##### 1. `(62, 63)`
+#### 1. `(62, 63)`
 - **A:** Check if all of the `PitchSpellingNode` values have been ranked. At this point, no `Node` values have been ranked, so we must keep going.
 
 - **B:** Here, `62` can only be spelled as `d natural`. Therefore we can create a `SemiAmgbiguousPitchSpellingRanker`.
@@ -145,7 +143,7 @@ The comparison stage penalizes the `D` / `D#` `PitchSpellingDyad` as it does not
 > Because it is the first to be checked, the penalty is very high.
 
 <a name = "66-67"></a>
-##### 2. `(66, 67)`
+#### 2. `(66, 67)`
 
 - **A:** Check if all of the `PitchSpellingNode` values have been ranked. At this point, the `PitchSpellingNode` values belonging to `Pitch(noteNumber: 62)`, `Pitch(noteNumber: 63)`, and `Pitch(noteNumber: 67)` have been ranked, but not yet `Pitch(noteNumber: 66)`.
 
@@ -154,7 +152,7 @@ The comparison stage penalizes the `D` / `D#` `PitchSpellingDyad` as it does not
 <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/Documentation/img/66_67.jpg" height="240">
 
 <a name = "62-67"></a>
-##### 3. `(62, 67)`
+#### 3. `(62, 67)`
 
 - **A:** Check if all of the `PitchSpellingNode` values have been ranked. At this point, all `PitchSpellingNode` values have been ranked. We are now able to compare.
 
@@ -162,10 +160,10 @@ The comparison stage penalizes the `D` / `D#` `PitchSpellingDyad` as it does not
 
 ---
 
-### Rules not yet considered
+## Rules not yet considered
 - Spelling preferences guided by ascending / descending linear structures
 
-### Reading
+## Reading
 
 - "Automatic Pitch Spelling: From Numbers to Sharps and Flats", Cambouropoulos [[PDF](http://users.auth.gr/emilios/papers/fortaleza2001.pdf)]
 - "Pitch Spelling Algorithms", Meredith [[PDF](http://www.titanmusic.com/papers/public/ps13-escom-paper.pdf)]
