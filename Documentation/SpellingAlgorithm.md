@@ -74,11 +74,9 @@ In order to keep track of spelling preferences when there is no clear answer, ce
 
 Ranking values are `Float` values in the range `0.0...1.0`, and both `PitchSpellingNode` and `PitchSpellingEdge` objects may be ranked. 
 
-In cases where at least one `Pitch` value in the given `PitchSet` is can only be spelled one way, a conclusive set of `PitchSpelling` values can be determined by comparing the `rank` values of each `PitchSpellingNode`. 
+In cases where at least one `Pitch` value in the given `PitchSet` is can only be spelled one way, a conclusive set of `PitchSpelling` values can be determined by comparing the `rank` values of each `PitchSpellingNode`, without incorporating the ranking of `PitchSpellingEdge` values. 
 
-When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `Pitch` values therein are objectively spellable), the `rank` value of `Edge` values can be used to influence a decision for an otherwise ambiguous context.
-
-> `Pitch(noteNumber: 60)` can only be spelled as `c natural`, unless we are allowing `b sharps` and `d doubleFlats`
+When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `Pitch` values therein are objectively spellable), the `rank` value of `Edge` values are consulted to determine an otherwise ambiguous context.
 
 ### Rankers
 
