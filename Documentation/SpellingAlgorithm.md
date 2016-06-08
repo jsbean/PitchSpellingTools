@@ -44,8 +44,6 @@ Ordered, not-necessarily unique sequence of one or more unspelled vertical `Pitc
 
 By nature, a `PitchSet` is composed of _<sub>n</sub>C<sub>2</sub>_ `Dyad` values (pairs of `Pitch` values). 
 
-In this algorithm, optimum spellings for each `Dyad` comprising the given `PitchSet` are sought. This process continues until all `PitchSpelling` options for all `Pitch` values have been examined, and can therefore be compared by `rank`.
-
 **Example:**
 ```Swift
 // Consider a pitch set with midi note number values [62, 63, 66, 67]
@@ -74,11 +72,9 @@ In order to keep track of spelling preferences when there is no clear answer, ce
 
 ### Ranking Potential Spellings
 
-Ranking values are `Float` values in the range `0.0...1.0`, and both `PitchSpellingNode` and `PitchSpellingEdge` objects may be ranked. 
+`PitchSpellingNode` and `PitchSpellingEdge` objects may be ranked. 
 
-In cases where at least one `Pitch` value in the given `PitchSet` is can only be spelled one way, a conclusive set of `PitchSpelling` values can be determined by comparing the `rank` values of each `PitchSpellingNode`, without incorporating the ranking of `PitchSpellingEdge` values. 
-
-When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `Pitch` values therein are objectively spellable), the `rank` value of `Edge` values are consulted to determine an otherwise ambiguous context.
+When no conclusive spelling can be found for a given `PitchSet` (i.e., when no `Pitch` values therein are objectively spellable), the `rank` value of `PitchSpellingEdge` values are consulted to determine an otherwise ambiguous context.
 
 ### Rankers
 
