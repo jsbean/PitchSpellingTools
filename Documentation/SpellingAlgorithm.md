@@ -145,7 +145,11 @@ For the case above, the dyads are now ordered as such:
 ## Iterate over `Dyad` values
 
 #### 1. Create `PitchSpellingRanking` structure for each `Dyad`
-For each `Dyad` in the given `PitchSet`, create an appropriate `PitchSpellingRanking` structure (`Determinate`, `SemiAmbiguous`, `FullyAmbiguous`).
+For each `Dyad` in the given `PitchSet`: 
+- Create the appropriate `PitchSpellingRanking` structure:
+  - `Determinate`
+  - `SemiAmbiguous`
+  - `FullyAmbiguous`
 
 #### 2. Apply `PitchSpellingNode` rankings, if possible
 Instruct each `PitchSpellingRanking` structure to apply its rankings.
