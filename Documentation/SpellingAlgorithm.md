@@ -101,11 +101,11 @@ There are three cases possible when attempting to spell a `Dyad`:
 
 #### DeterminatePitchSpellingRanker
 
-**Case 1:**, both `PitchSpellingNode` values are given an optimum `rank` of `1.0`.
+**Case 1:** both `PitchSpellingNode` values are given an optimum `rank` of `1.0`.
 
 #### SemiAmbiguousPitchSpellingRanker
 
-**Case 2:**, the `SemiAmbiguousPitchSpellingRanker` ranks each possible `PitchSpellingNode` for a given ambiguously spellable `PitchSpellingStack`, given the context of an objectively spellable `PitchSpellingNode`.
+**Case 2:** the `SemiAmbiguousPitchSpellingRanker` ranks each possible `PitchSpellingNode` for a given ambiguously spellable `PitchSpellingStack`, given the context of an objectively spellable `PitchSpellingNode`.
 
 Each `PitchSpellingNode` from the ambiguously spellable `PitchSpellingStack` is penalized for breaking a given set of rules when contextualized by the objectively spellable `PitchSpellingNode`.
 
