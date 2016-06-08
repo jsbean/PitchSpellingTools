@@ -62,7 +62,7 @@ let pitchSet: PitchSet = [
 ]
 ```
 
-In this case, there are 6 dyads:
+In this case, there are 6 `Dyad` values:
 
 ```Swift
 [(62, 63), (62, 66), (62, 67), (63, 66), (63, 67), (66, 67)]
