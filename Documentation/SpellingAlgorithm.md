@@ -64,7 +64,7 @@ By nature, a `PitchSet` is composed of _<sub>n</sub>C<sub>2</sub>_ `Dyad` values
 
 **Example:**
 
-Consider a pitch set with midi note number values `[62, 63, 66, 67]`:
+Consider a pitch set with `MIDI` note number values `[62, 63, 66, 67]`:
 
 ```Swift
 
