@@ -12,7 +12,7 @@ For example, the `Pitch` with a `MIDI` note number of `61`, or a frequency of `2
 Applying to `Pitch` values of all resolution, `IntervalQuality` values of various types are preferred to others:
 
 | `IntervalQuality` | Preference |
-| --- | --- |
+| --- | --- |e
 | `diminished` | **undesired** |
 | `minor` | **desired**  | 
 | `perfect` | **desired**  |
@@ -142,7 +142,7 @@ Each `PitchSpellingEdge` is penalized if it breakings any of a given set of rule
 ## Goal
 Find the optimum way to spell the `Pitch` values comprising a `PitchSet`.
 
-For our purposes, this algorithm is to handle cases of `Pitch` values with a resolution of up to an eighth-tone (48 divisions of the octave).
+For our purposes, this algorithm is to handle cases of `Pitch` values with a resolution of up to an eighth-step (48 divisions of the octave).
 
 ## Process
 
