@@ -10,14 +10,13 @@ import Pitch
 
 extension PitchSet {
     
-    public var sortedBySpellingUrgency: [Pitch] {
-        return self
-            .map { $0 }.lazy
-            .sort { $0.pitchClass.spellingPriority < $1.pitchClass.spellingPriority }
+    public var canBeSpelledObjectively: Bool {
+        if isEmpty { return true }
+        for pitch in self { if pitch.canBeSpelledObjectively { return true } }
+        return false
     }
     
     public func spelledWithDefaultSpellings() throws -> SpelledPitchSet {
-        let pitches = try self.map { try $0.spelledWithDefaultSpelling() }
-        return SpelledPitchSet(pitches)
+        return try SpelledPitchSet(self.map { try $0.spelledWithDefaultSpelling() })
     }
 }
