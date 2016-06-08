@@ -160,9 +160,12 @@ For each `PitchSpellingRanking` structure:
 
 #### 3. Check if all `PitchSpellingNode` objects have been ranked
 
-- `if true`: `return` the set of the spelling of the highest ranked `PitchSpellingNode` for each `Pitch`
-- `else`: apply the ranks of the `PitchSpellingEdge` objects to the appropriate `PitchSpellingNode` objects
-- `return` the set of the spelling of the highest ranked `PitchSpellingNode` for each `Pitch`
+- `true`: 
+  - `return` the set of the spelling of the highest ranked `PitchSpellingNode` for each `Pitch`
+- `else`: 
+  - Apply the ranks of the `PitchSpellingEdge` objects to the appropriate `PitchSpellingNode` objects
+
+`return` the set of the spelling of the highest ranked `PitchSpellingNode` for each `Pitch`
 
 
 In cases where one `Pitch` is objectively spellable, we can do a single pass over all (or often times less than all) of the `Dyad` values. At first, all `PitchSpellingNode` values are given a `nil` `rank` value.
