@@ -156,9 +156,16 @@ Sort `Dyad` values for the given `PitchSet` are by `spelling priority`.
 
 **Example:**
 For the case above, the dyads are now ordered as such:
+
 ```Swift
 [(62, 63), (66, 67), (62, 67), (62, 66), (63, 67), (63, 66)]
 ```
+
+The order of applying rules is important, as the weight of the penalties applied to each `Dyad` decreases throughout the iterative process.
+
+> <img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/Documentation/img/62_63.jpg" height="240">
+
+For example, the penalty applied to the `d sharp` `PitchSpellingNode` in the above graphic is more severe than those applied to the `PitchSpellingNode` objects for the `Dyad` values ranked afterward.
 
 #### 2. Create `PitchSpellingRanking` structure for each `Dyad`
 For each `Dyad` in the given `PitchSet`: 
@@ -173,15 +180,6 @@ For each `PitchSpellingRanking` structure:
 - Apply rankings.
 
 > In the case that there are no objectively spellable pitches in the given `PitchSet`, no `PitchSpellingNode` objects are ranked. Instead, the `PitchSpellingEdge` objects are ranked.
-
->The weight of penalties for rule-breaking decrease as the iteration goes on (needs to be refined): 
->```Swift
->((dyads.count - position) / dyads.count) / 2
->```
-
-<img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/Documentation/img/62_63.jpg" height="240">
-
-<img src="https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/Documentation/img/66_67.jpg" height="240">
 
 #### 4. Check if all `PitchSpellingNode` objects have been ranked
 
