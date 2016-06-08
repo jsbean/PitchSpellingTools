@@ -5,6 +5,9 @@
 
 For example, the `Pitch` with a `MIDI` note number of `61`, or a frequency of `277.18 Hz`, is one half-step above `middle c`. This pitch can be represented either as a `c sharp` or a `d flat`, each representation being more appropriate for different contexts.
 
+### Interval Optimization
+In general, `IntervalQuality` values of type `diminished` and `augmented`. Only for the case of the `tritone`, `augmented fourth` and `diminished fifth` `IntervalQuality` values are necessary.
+
 Consider a context in which an `a natural` is present.
 
 | First | Second | `IntervalQuality` |  Preference   |
@@ -12,7 +15,7 @@ Consider a context in which an `a natural` is present.
 | `a natural` | `c sharp` | `major third` | **desired** |
 | `a natural` | `d flat`  | `diminished fourth` | **undesired**      |
 
-`diminished` and `augmented` `IntervalQuality` values are discouraged, except for the case of the `tritone`, for which `augmented fourth` and `diminished fifth` values are necessary.
+
 
 ## Structures
 
