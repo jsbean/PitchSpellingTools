@@ -60,7 +60,7 @@
 //    /**
 //     Add `Path` objects to the given `nextLevel` branching from the given `previouslLevel`.
 //     */
-//    internal mutating func addPaths(to nextLevel: Level, branchingFrom previousLevel: Level) {
+//    internal mutating func addPaths(to nextLevel: PitchSpellingStack, branchingFrom previousLevel: PitchSpellingStack) {
 //        previousLevel.nodes.forEach { addPaths(for: nextLevel.nodes, branchingFrom: $0) }
 //    }
 //

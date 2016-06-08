@@ -27,7 +27,7 @@ import Foundation
 public final class SemiAmbiguousPitchSpellingRanker: PitchSpellingRanking {
     
     private let objectivelySpellable: PitchSpellingNode
-    private let ambiguouslySpellable: Level
+    private let ambiguouslySpellable: PitchSpellingStack
     
     // NOTE: `PitchSpellingEdge.b` is the unspelled `PitchSpellingNode`.
     public lazy var edges: [PitchSpellingEdge] = {
@@ -46,7 +46,7 @@ public final class SemiAmbiguousPitchSpellingRanker: PitchSpellingRanking {
      Create a `SemiAmbiguousPitchSpellingRanker` with an objectively-spellable 
      `PitchSpellingNode` and an ambiguously spellable `PitchSpellingLevel` object.
      */
-    public init(objectivelySpellable: PitchSpellingNode, ambiguouslySpellable: Level) {
+    public init(objectivelySpellable: PitchSpellingNode, ambiguouslySpellable: PitchSpellingStack) {
         self.objectivelySpellable = objectivelySpellable
         self.ambiguouslySpellable = ambiguouslySpellable
         objectivelySpellable.rank = 1
@@ -95,7 +95,7 @@ extension SemiAmbiguousPitchSpellingRanker {
     public var description: String {
         var result = "SemiAmbiguousPitchSpellingRanker:\n"
         result += "- Objectively-spellable Node: \(objectivelySpellable)\n"
-        result += "- Ambiguously-spellable Level: \(ambiguouslySpellable)\n"
+        result += "- Ambiguously-spellable PitchSpellingStack: \(ambiguouslySpellable)\n"
         result += "Edges: "
         edges.forEach { result += "\n- \($0)" }
         return result

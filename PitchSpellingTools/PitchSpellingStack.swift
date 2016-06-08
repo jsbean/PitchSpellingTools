@@ -1,5 +1,5 @@
 //
-//  Level.swift
+//  PitchSpellingStack.swift
 //  PitchSpellingTools
 //
 //  Created by James Bean on 5/24/16.
@@ -11,7 +11,7 @@ import Pitch
 /**
  Collection of `PitchSpelling` objects for a single `Pitch` in a `PitchSet`.
  */
-public final class Level {
+public final class PitchSpellingStack {
     
     /// `Pitch` to which `nodes` belong.
     internal let pitch: Pitch
@@ -29,7 +29,7 @@ public final class Level {
     // MARK: - Initializers
     
     /**
-     Create a `Level` with an array of `PitchSpellingNode` objects, each holding a `PitchSpelling`.
+     Create a `PitchSpellingStack` with an array of `PitchSpellingNode` objects, each holding a `PitchSpelling`.
      */
     public init(pitch: Pitch, nodes: [PitchSpellingNode]) {
         self.pitch = pitch
@@ -37,7 +37,7 @@ public final class Level {
     }
 }
 
-extension Level: CustomStringConvertible {
+extension PitchSpellingStack: CustomStringConvertible {
     
     // MARK: - CustomStringConvertible
     

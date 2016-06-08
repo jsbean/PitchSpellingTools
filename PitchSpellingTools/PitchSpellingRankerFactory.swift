@@ -57,9 +57,9 @@ public struct PitchSpellingRankerFactory {
         }
     }
 
-    private func level(for pitch: Pitch) -> Level {
+    private func level(for pitch: Pitch) -> PitchSpellingStack {
         guard let nodes = nodeResource[pitch] else { fatalError("Nodes not initialized") }
-        return Level(pitch: pitch, nodes: nodes)
+        return PitchSpellingStack(pitch: pitch, nodes: nodes)
     }
     
     private func node(forObjectivelySpellablePitch pitch: Pitch) -> PitchSpellingNode {

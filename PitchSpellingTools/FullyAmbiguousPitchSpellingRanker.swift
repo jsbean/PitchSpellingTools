@@ -30,8 +30,8 @@ public final class FullyAmbiguousPitchSpellingRanker: PitchSpellingRanking {
     
     // MARK: - Instance Properties
     
-    private let a: Level
-    private let b: Level
+    private let a: PitchSpellingStack
+    private let b: PitchSpellingStack
     
     /**
      All `PitchSpellingEdge` objects between each `PitchSpellingNode`
@@ -83,7 +83,7 @@ public final class FullyAmbiguousPitchSpellingRanker: PitchSpellingRanking {
     /**
      Create a `FullyAmbiguousPitchSpellingRanker` with two `PitchSpellingLevel` objects.
      */
-    public init(_ a: Level, _ b: Level) {
+    public init(_ a: PitchSpellingStack, _ b: PitchSpellingStack) {
         self.a = a
         self.b = b
     }

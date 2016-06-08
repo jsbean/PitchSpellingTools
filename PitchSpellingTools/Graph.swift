@@ -13,19 +13,19 @@
 // */
 //internal struct Graph {
 //
-//    private static func makeLevel(withSpellingsForPitch pitch: Pitch) -> Level {
+//    private static func makeLevel(withSpellingsForPitch pitch: Pitch) -> PitchSpellingStack {
 //        let nodes = pitch.spellings.map { PitchSpellingNode(pitch: pitch, spelling: $0) }
-//        return Level(nodes: nodes)
+//        return PitchSpellingStack(nodes: nodes)
 //    }
 //    
 //    /**
-//     Array of `Level` objects, created lazily. Each `Level` is a collection of `PitchSpellingNode` objects,
+//     Array of `PitchSpellingStack` objects, created lazily. Each `PitchSpellingStack` is a collection of `PitchSpellingNode` objects,
 //     each holding a `PitchSpelling` for the same `Pitch`. 
 //     
 //     `Pitch` objects are ordered by the `IntervalClass.spellingComplexity` 
 //     of the `IntervalClass` between them and `PitchClass` `0`.
 //    */
-//    internal var levels: [Level] = []
+//    internal var levels: [PitchSpellingStack] = []
 //    
 //    internal lazy var paths: PathCollection = {
 //        self.paths()
@@ -81,7 +81,7 @@
 //        return makePathCollection()
 //    }
 //    
-//    private func makeAllLevels() -> [Level] {
+//    private func makeAllLevels() -> [PitchSpellingStack] {
 //        return pitchSet.sortedBySpellingUrgency.lazy.map {
 //            Graph.makeLevel(withSpellingsForPitch: $0)
 //        }
