@@ -12,7 +12,7 @@ Consider a context in which an `a natural` is present.
 
 `IntervalQuality` values of `diminished` and `augmented` are discouraged, except for the case of the `tritone`, for which `augmented fourth` and `diminished fifth` values are necessary.
 
-In this example, the `PitchSpellingDyad` composed of `d flat` paired with an `a natural` has an `IntervalQuality` of `diminished fourth`, which is undesired, whereas the `major third` afforded by the `c sharp` is desired.
+In this example, the `PitchSpellingDyad` composed of a `d flat` and an `a natural` has an `IntervalQuality` of `diminished fourth`, which is undesired, whereas the `major third` afforded by the `c sharp` is desired.
 
 Find the optimum way to spell the pitches of a `PitchSet`.
 
