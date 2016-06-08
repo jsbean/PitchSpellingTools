@@ -52,6 +52,9 @@ In cases of eighth-step resolution pitches, it is preferred that the `fine.direc
 #### Coarse resolution compatibility
 
 In the case of eighth-step resolution pitches which may be spelled with a quarter-step body (`a quarterSharp down`), it is preferred that the `coarse.resolution` (`quarterSharp`, `sharp`, `quarterFlat`, `flat`) is compatible.
+
+---
+
 ## Structures
 
 ### PitchSet
@@ -64,7 +67,7 @@ By nature, a `PitchSet` is composed of _<sub>n</sub>C<sub>2</sub>_ `Dyad` values
 
 **Example:**
 
-Consider a pitch set with midi note number values `[62, 63, 66, 67]`:
+Consider a pitch set with `MIDI` note number values `[62, 63, 66, 67]`:
 
 ```Swift
 
@@ -98,7 +101,6 @@ In order to keep track of spelling preferences when there is no clear answer, ce
 | [`PitchSpellingStack`](https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/PitchSpellingTools/PitchSpellingStack.swift) | Collection of all `PitchSpellingNode` objects for a given `Pitch` |
 | [`Ranker`](https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/PitchSpellingTools/PitchSpellingRanking.swift)  | Ranks all possible `PitchSpellingNode` or `PitchSpellingEdge` options for a given `Dyad` |
 
-
 ### Ranking Potential Spellings and Potential Spelling Pairs
 
 Both `PitchSpellingNode` and `PitchSpellingEdge` objects may be ranked. 
@@ -115,7 +117,7 @@ There are **three cases** possible when attempting to spell a `Dyad`:
 
 #### Case 1: DeterminatePitchSpellingRanker
 
-Both `PitchSpellingNode` values are given an optimum `rank` of `1.0`.
+The `DeterminatePitchSpellingRanker` applies an optimum `rank` of `1.0` to both `PitchSpellingNode` values.
 
 #### Case 2: SemiAmbiguousPitchSpellingRanker
 
@@ -189,6 +191,8 @@ For each `PitchSpellingRanking` structure:
   - Apply the ranks of the `PitchSpellingEdge` objects to the appropriate `PitchSpellingNode` objects
 
 `return` the set of the spelling of the highest ranked `PitchSpellingNode` for each `Pitch`
+
+---
 
 ## Rules not yet considered
 - Spelling preferences guided by ascending / descending linear structures
