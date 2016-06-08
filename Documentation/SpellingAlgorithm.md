@@ -148,7 +148,7 @@ For our purposes, this algorithm is to handle cases of `Pitch` values with a res
 
 #### 1. Prepare `Dyad` values
 
-Sort `Dyad` values for the given `PitchSet` are by `spelling priority`.
+Sort `Dyad` values for the given `PitchSet` by `spelling priority` of its `IntervalClass`.
 
 > By attempting to spell `Dyad` values with certain `IntervalClass` values first, the most salient relationships are prioritized, and are therefore preserved in their graphical representation.
 
