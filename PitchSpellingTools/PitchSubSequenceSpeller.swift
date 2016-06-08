@@ -42,7 +42,7 @@ public final class PitchSubSequenceSpeller: PitchSpeller {
             }
     }()
     
-    let sets: [PitchSet]
+    private let sets: [PitchSet]
     
     /**
      - TODO: Make richer SequenceType support

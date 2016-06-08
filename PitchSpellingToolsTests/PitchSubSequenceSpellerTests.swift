@@ -1,5 +1,5 @@
 //
-//  PitchHorizontalitySpellerTests.swift
+//  PitchSubSequenceSpellerTests.swift
 //  PitchSpellingTools
 //
 //  Created by James Bean on 5/31/16.
@@ -11,7 +11,7 @@ import ArithmeticTools
 import Pitch
 @testable import PitchSpellingTools
 
-class PitchSequenceSpellerTests: XCTestCase {
+class PitchSubSequenceSpellerTests: XCTestCase {
     
     func testMonophonicAscending() {
         let speller = PitchSubSequenceSpeller(sets: [[60], [61], [62]])
