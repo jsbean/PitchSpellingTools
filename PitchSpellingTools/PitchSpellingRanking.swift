@@ -25,8 +25,8 @@ extension PitchSpellingRanking {
         return [
             { $0.hasValidIntervalQuality },
             { $0.isFineCompatible },
-            { $0.isCoarseResolutionCompatible },
-            { $0.isCoarseDirectionCompatible }
+            //{ $0.isCoarseResolutionCompatible },
+            //{ $0.isCoarseDirectionCompatible }
         ]
     }
 }

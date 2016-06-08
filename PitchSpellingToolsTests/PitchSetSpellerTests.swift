@@ -162,8 +162,8 @@ class PitchSetSpellerTests: XCTestCase {
     }
     
 
-    // MARK: - Performance Testing
-    
+//    // MARK: - Performance Testing
+//    
 //    func testManyPitchesHalfStep() {
 //        
 //        let pitchSet: PitchSet = [
@@ -225,7 +225,7 @@ class PitchSetSpellerTests: XCTestCase {
 //        }
 //    }
 //
-//    func testSomePitcheseighthStep() {
+//    func testSomePitchesEighthStep() {
 //        let pitchSet: PitchSet = [
 //            Pitch(noteNumber: 60.25),
 //            Pitch(noteNumber: 61.5),
