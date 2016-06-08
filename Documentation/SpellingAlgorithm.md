@@ -57,10 +57,11 @@ let pitchSet: PitchSet = [
   Pitch(noteNumber: 66), 
   Pitch(noteNumber: 67)
 ]
-// In this case, there are 6 dyads => [(62, 63), (62, 66), (62, 67), (63, 66), (63, 67), (66, 67)]
 ```
-
-The case above is interesting, as its optimum spelling contains both sharps and flats. 
+In this case, there are 6 dyads:
+```Swift
+[(62, 63), (62, 66), (62, 67), (63, 66), (63, 67), (66, 67)]
+```
 
 ### PitchSetSequence
 
