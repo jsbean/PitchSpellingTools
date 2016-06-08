@@ -5,9 +5,9 @@
 
 For example, the `Pitch` with a `MIDI` note number of `61`, or a frequency of `277.18 Hz`, is one half-step above `middle c`. This pitch can be represented either as a `c sharp` or a `d flat`, each representation being more appropriate for different contexts.
 
-### Spelling preferrences
+## Spelling preferrences
 
-#### Interval Optimization
+### Interval Optimization
 
 Applying to `Pitch` values of all resolution, `IntervalQuality` values of various types are preferred to others:
 
@@ -41,15 +41,15 @@ However, consider a context in which the other `Pitch` also has multiple spellin
 
 > There are more than one acceptable options. In different contexts, each pair of `PitchSpelling` representations is more appropriate than the other.
 
-### Eighth-step Resolution 
+## Eighth-step Resolution 
 
 There are a few additional preferences when spelling eighth-step resolution `Pitch` values.
 
-#### Fine Compatibility
+### Fine Compatibility
 
 In cases of eighth-step resolution `Pitch` values, it is preferred that the `fine.direction` (`up`, `down`) is compatible.
 
-#### Coarse Resolution Compatibility
+### Coarse Resolution Compatibility
 
 In the case of eighth-step resolution `Pitch` values, which may be spelled with a quarter-step body (`a quarterSharp down`), it is preferred that the `coarse.resolution` (`quarterSharp`, `sharp`, `quarterFlat`, `flat`) is compatible.
 
