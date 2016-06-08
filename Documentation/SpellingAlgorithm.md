@@ -52,6 +52,9 @@ In cases of eighth-step resolution pitches, it is preferred that the `fine.direc
 #### Coarse resolution compatibility
 
 In the case of eighth-step resolution pitches which may be spelled with a quarter-step body (`a quarterSharp down`), it is preferred that the `coarse.resolution` (`quarterSharp`, `sharp`, `quarterFlat`, `flat`) is compatible.
+
+---
+
 ## Structures
 
 ### PitchSet
@@ -97,7 +100,6 @@ In order to keep track of spelling preferences when there is no clear answer, ce
 | [`PitchSpellingEdge`](https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/PitchSpellingTools/PitchSpellingEdge.swift) | Combination of a single pair of `PitchSpellingNode` values from a `Dyad`, with a `rank` |
 | [`PitchSpellingStack`](https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/PitchSpellingTools/PitchSpellingStack.swift) | Collection of all `PitchSpellingNode` objects for a given `Pitch` |
 | [`Ranker`](https://github.com/dn-m/PitchSpellingTools/blob/bean-horizontal/PitchSpellingTools/PitchSpellingRanking.swift)  | Ranks all possible `PitchSpellingNode` or `PitchSpellingEdge` options for a given `Dyad` |
-
 
 ### Ranking Potential Spellings and Potential Spelling Pairs
 
