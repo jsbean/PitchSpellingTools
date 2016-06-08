@@ -1,4 +1,19 @@
 # Eighth-tone PitchSet Spelling Algorithm
+`Pitch` values can often be represented multiple ways on a musical staff. 
+
+For example, the `Pitch` with a `MIDI` note number of `61`, or a frequency of `277.18 Hz`, is one half-step above `middle c`. This pitch can be represented either as a `c sharp` or a `d flat`, with either representation being more appropriate for different contexts.
+
+Consider a context in which an `a natural` is present.
+
+| First | Second | `IntervalQuality` |
+| ----- | ------ | ----------------- |
+| `a natural` | `c sharp` | `major third` |
+| `a natural` | `d flat`  | `diminished fourth` | 
+
+`IntervalQuality` values of `diminished` and `augmented` are discouraged, except for the case of the `tritone`, for which `augmented fourth` and `diminished fifth` values are necessary.
+
+In this example, the `PitchSpellingDyad` composed of `d flat` paired with an `a natural` has an `IntervalQuality` of `diminished fourth`, which is undesired, whereas the `major third` afforded by the `c sharp` is desired.
+
 Find the optimum way to spell the pitches of a `PitchSet`.
 
 ## Structures
