@@ -370,13 +370,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		070156111CF4AAFF00C256E9 /* PitchSpellingGraph */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = PitchSpellingGraph;
-			sourceTree = "<group>";
-		};
 		078175111CD8F70600AAB396 /* PitchSpelling */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,7 +449,6 @@
 			isa = PBXGroup;
 			children = (
 				A3B90C1E0151F49FEB7FC3DF /* Supporting Files */,
-				070156111CF4AAFF00C256E9 /* PitchSpellingGraph */,
 				078175111CD8F70600AAB396 /* PitchSpelling */,
 				07A8C8131CF787F200CFD69B /* PitchSpellingStack.swift */,
 				07A8C8111CF787F200CFD69B /* PitchSpellingEdge.swift */,

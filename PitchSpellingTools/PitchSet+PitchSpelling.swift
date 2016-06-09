@@ -11,9 +11,7 @@ import Pitch
 extension PitchSet {
     
     public var canBeSpelledObjectively: Bool {
-        if isEmpty { return true }
-        for pitch in self { if pitch.canBeSpelledObjectively { return true } }
-        return false
+        return self.allMatch { $0.canBeSpelledObjectively }
     }
     
     public func spelledWithDefaultSpellings() throws -> SpelledPitchSet {

@@ -27,11 +27,6 @@ class PitchSet_PitchSpellingTests: XCTestCase {
         XCTAssertFalse(pitchSet.canBeSpelledObjectively)
     }
     
-    func testCanBeSpelledObjectivelyTriadTrue() {
-        let pitchSet: PitchSet = [70,71,73]
-        XCTAssert(pitchSet.canBeSpelledObjectively)
-    }
-    
     func testCanBeSpelledObjectivelyTriadFalse() {
         let pitchSet: PitchSet = [63,66,68]
         XCTAssertFalse(pitchSet.canBeSpelledObjectively)
