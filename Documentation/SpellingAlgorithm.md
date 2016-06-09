@@ -41,7 +41,7 @@ However, consider a context in which the other `Pitch` also has multiple spellin
 | `a flat` | `c sharp` | `augmented third`  | **undesired** |
 | `a flat` | `d flat` | `perfect fourth` | **desired**  |
 
-> There are more than one acceptable options. In different contexts, each pair of `PitchSpelling` representations is more appropriate than the other.
+> This a case where there are multiple desired options.
 
 ## Eighth-step Resolution 
 
