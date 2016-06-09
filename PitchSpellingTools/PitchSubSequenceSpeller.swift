@@ -22,15 +22,15 @@ public final class PitchSubSequenceSpeller: PitchSpeller {
     }
     
     public lazy var nodeResource: PitchSpellingNodeResource = {
-        PitchSpellingNodeResource(pitches: PitchSet(self.sets))
+        PitchSpellingNodeResource(pitches: PitchSet(self.sequence))
     }()
     
     private lazy var individualSpellers: [PitchSetSpeller] = {
-        self.sets.map { PitchSetSpeller(pitchSet: $0, nodeResource: self.nodeResource[$0]!) }
+        self.sequence.map { PitchSetSpeller(pitchSet: $0, nodeResource: self.nodeResource[$0]!) }
     }()
     
     private lazy var joinedSpellers: [PitchSetSpeller] = {
-        guard let adjacentPairs = self.sets.adjacentPairs else { return [] }
+        guard let adjacentPairs = self.sequence.adjacentPairs else { return [] }
         return adjacentPairs.enumerate().map {
             index, pair in
             let newSet = pair.0.formUnion(with: pair.1)
@@ -42,14 +42,14 @@ public final class PitchSubSequenceSpeller: PitchSpeller {
         }
     }()
     
-    private let sets: [PitchSet]
+    private let sequence: PitchSetSequence
     
     /**
      - TODO: Make richer SequenceType support
      - warning: Incomplete documentation
      */
-    public init(sets: [PitchSet]) {
-        self.sets = sets
+    public init(_ sequence: PitchSetSequence) {
+        self.sequence = sequence
     }
     
     /** 

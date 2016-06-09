@@ -13,7 +13,7 @@ public final class PitchSequenceSpeller {
     
     public typealias Result = [SpelledPitchSet]
     
-    public lazy var subSequences: [[PitchSet]] = {
+    public lazy var subSequences: [PitchSetSequence] = {
         var result: [[PitchSet]] = []
         var last: [PitchSet]?
         
@@ -45,16 +45,15 @@ public final class PitchSequenceSpeller {
                 last = nil
                 s += 1 // advance past
             default:
-                print("just add it to the collection")
                 last = subSegment
             }
             s += 1
         }
-        return result
+        return result.map { PitchSetSequence($0) }
     }()
     
     private lazy var spellers: [PitchSubSequenceSpeller] = {
-        self.subSequences.map { PitchSubSequenceSpeller(sets: $0) }
+        self.subSequences.map { PitchSubSequenceSpeller($0) }
     }()
     
     private let sets: [PitchSet]

@@ -11,6 +11,8 @@
 		070192FB1C94EA3200266260 /* ArithmeticTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07CC26A91C94E8620099C21C /* ArithmeticTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		070EA95A1D01C364000EAEFB /* PitchSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070EA9591D01C364000EAEFB /* PitchSequence.swift */; };
 		070EA95B1D01C364000EAEFB /* PitchSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070EA9591D01C364000EAEFB /* PitchSequence.swift */; };
+		0752E24F1D09D7820059EADF /* PitchSetSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0752E24E1D09D7820059EADF /* PitchSetSequence.swift */; };
+		0752E2501D09D7820059EADF /* PitchSetSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0752E24E1D09D7820059EADF /* PitchSetSequence.swift */; };
 		075DBB621C9B9D3A00E2D3FD /* PitchSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075DBB611C9B9D3A00E2D3FD /* PitchSet.swift */; };
 		075DBB631C9B9D3A00E2D3FD /* PitchSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075DBB611C9B9D3A00E2D3FD /* PitchSet.swift */; };
 		07638DE51CDED426005F98DB /* PitchClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07638DE41CDED426005F98DB /* PitchClassTests.swift */; };
@@ -119,6 +121,7 @@
 
 /* Begin PBXFileReference section */
 		070EA9591D01C364000EAEFB /* PitchSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchSequence.swift; sourceTree = "<group>"; };
+		0752E24E1D09D7820059EADF /* PitchSetSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchSetSequence.swift; sourceTree = "<group>"; };
 		075DBB611C9B9D3A00E2D3FD /* PitchSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchSet.swift; sourceTree = "<group>"; };
 		07638DE41CDED426005F98DB /* PitchClassTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchClassTests.swift; sourceTree = "<group>"; };
 		07638DE71CDED8E9005F98DB /* NoteNumberTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteNumberTests.swift; sourceTree = "<group>"; };
@@ -222,6 +225,7 @@
 				07D7ABF91D022B5B0046DB8C /* PitchClassDyad.swift */,
 				07AD1D3E1C95D2B8003225B2 /* Dyad.swift */,
 				075DBB611C9B9D3A00E2D3FD /* PitchSet.swift */,
+				0752E24E1D09D7820059EADF /* PitchSetSequence.swift */,
 				070EA9591D01C364000EAEFB /* PitchSequence.swift */,
 			);
 			name = Collections;
@@ -563,6 +567,7 @@
 			files = (
 				07AD1D3F1C95D2B8003225B2 /* Dyad.swift in Sources */,
 				07AD1D4B1C95DE71003225B2 /* IntervalClass.swift in Sources */,
+				0752E24F1D09D7820059EADF /* PitchSetSequence.swift in Sources */,
 				07A4A8061D01D9B100ED5EA9 /* PitchConvertible.swift in Sources */,
 				075DBB621C9B9D3A00E2D3FD /* PitchSet.swift in Sources */,
 				07D7ABFA1D022B5B0046DB8C /* PitchClassDyad.swift in Sources */,
@@ -602,6 +607,7 @@
 			files = (
 				07AD1D401C95D2B8003225B2 /* Dyad.swift in Sources */,
 				07AD1D4C1C95DE71003225B2 /* IntervalClass.swift in Sources */,
+				0752E2501D09D7820059EADF /* PitchSetSequence.swift in Sources */,
 				07A4A8071D01D9B100ED5EA9 /* PitchConvertible.swift in Sources */,
 				075DBB631C9B9D3A00E2D3FD /* PitchSet.swift in Sources */,
 				07D7ABFB1D022B5B0046DB8C /* PitchClassDyad.swift in Sources */,

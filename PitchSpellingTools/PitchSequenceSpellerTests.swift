@@ -50,16 +50,26 @@ class PitchSequenceSpellerTests: XCTestCase {
         try! speller.spell().forEach { print($0) }
     }
     
+    func testDyadSequenceMixed() {
+        let sets: [PitchSet] = [[60],[61,65],[64],[66,68],[70]]
+        let expected: [[PitchSet]] = [[[60],[61,65],[64]],[[66,68],[70]]]
+        let speller = PitchSequenceSpeller(sets: sets)
+        zip(speller.subSequences, expected).forEach { XCTAssertEqual($0, $1) }
+    }
+    
+    func testDyadFullyAmbiguous() {
+        let sets: [PitchSet] = [[61,63],[68],[66,70],[68]]
+        let expected: [[PitchSet]] = [[[61,63],[68],[66,70],[68]]]
+        let speller = PitchSequenceSpeller(sets: sets)
+        zip(speller.subSequences, expected).forEach { XCTAssertEqual($0, $1) }
+    }
+    
     func testManyNoteSequenceMonophonic() {
         let sets: [PitchSet] = (0 ..< 100).map { _ in
             [Pitch(noteNumber: NoteNumber(Float.random(min: 60, max: 72, resolution: 1)))]
         }
         let speller = PitchSequenceSpeller(sets: sets)
         try! speller.spell().forEach { print($0) }
-    }
-    
-    func testManyDyadSequence() {
-        
     }
     
 //    func testPerformanceSubSequencesMonophonicHalfStep() {

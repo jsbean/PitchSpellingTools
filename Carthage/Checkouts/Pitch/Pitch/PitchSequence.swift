@@ -34,7 +34,7 @@ extension PitchSequence: AnySequenceType {
     /**
      Create a `PitchSet` with `SequenceType` containing `Pitch` values.
      */
-    public init<S: SequenceType where S.Generator.Element == Pitch>(_ sequence: S) {
+    public init<S: SequenceType where S.Generator.Element == Element>(_ sequence: S) {
         self.array = Array(sequence)
     }
 }
