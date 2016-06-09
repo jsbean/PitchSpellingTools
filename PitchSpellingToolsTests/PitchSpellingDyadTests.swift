@@ -370,5 +370,20 @@ class PitchSpellingDyadTests: XCTestCase {
         let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.d))
         XCTAssertEqual(dyad.intervalQuality, IntervalQuality.second.major)
     }
+    
+    func testIsFineCompatibleNoFineAdjustmentTrue() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.g), PitchSpelling(.a))
+        XCTAssertTrue(dyad.isFineCompatible)
+    }
+    
+    func testIsFineCompatibleSameLetterNameFalse() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.g), PitchSpelling(.g, .natural, .down))
+        XCTAssertFalse(dyad.isFineCompatible)
+    }
+    
+    func testOneNaturalTheOtherQuarterTone() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.g), PitchSpelling(.a, .quarterSharp, .up))
+        XCTAssert(dyad.isFineCompatible)
+    }
 }
 

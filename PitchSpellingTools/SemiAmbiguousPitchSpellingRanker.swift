@@ -65,8 +65,10 @@ public final class SemiAmbiguousPitchSpellingRanker: PitchSpellingRanking {
     
     private func penalizeIfNecessary(edge edge: PitchSpellingEdge, withAmount amount: Float) {
         ensureIsRanked(edge: edge)
-        for rule in rules where !rule(edge.pitchSpellingDyad) {
-            penalize(edge: edge, byAmount: amount)
+        for (r, rule) in rules.enumerate() where !rule(edge.pitchSpellingDyad) {
+            let adjustment = Float(rules.count - r) / Float(rules.count)
+            let adjustedAmount = adjustment * amount
+            penalize(edge: edge, byAmount: adjustedAmount)
         }
     }
     

@@ -59,7 +59,6 @@ public enum IntervalQualityKind: String {
     case doubleAugmentedSeventh = "AA7"
     
     internal static var stepPreserving: [IntervalQualityKind] = [
-        .perfectUnison,
         .minorSecond,
         .majorSecond,
         .minorThird,
@@ -73,7 +72,6 @@ public enum IntervalQualityKind: String {
         .minorSeventh,
         .majorSeventh
     ]
-    
     
     public var hasValidIntervalQuality: Bool {
         return IntervalQualityKind.stepPreserving.contains(self)

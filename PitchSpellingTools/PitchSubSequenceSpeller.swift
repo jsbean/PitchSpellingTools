@@ -62,7 +62,8 @@ public final class PitchSubSequenceSpeller: PitchSpeller {
     }
 
     public func applyRankings() {
-        joinedSpellers.forEach { $0.applyRankings() }
+        individualSpellers.forEach { $0.applyRankings() }
+        //joinedSpellers.forEach { $0.applyRankings() }
     }
     
     private func highestRankedPitches() throws -> Result {

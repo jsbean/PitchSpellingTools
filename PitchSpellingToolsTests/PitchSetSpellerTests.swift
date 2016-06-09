@@ -161,6 +161,16 @@ class PitchSetSpellerTests: XCTestCase {
         )
     }
     
+    func testGFThreeQuarterSharpUp() {
+        self.assertPitches(
+            [67,66.75],
+            areSpelledWith: [
+                PitchSpelling(.g),
+                PitchSpelling(.f, .threeQuarterSharp, .up)
+            ]
+        )
+    }
+    
 
 //    // MARK: - Performance Testing
 //    

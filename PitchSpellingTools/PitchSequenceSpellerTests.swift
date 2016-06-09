@@ -81,47 +81,30 @@ class PitchSequenceSpellerTests: XCTestCase {
         try! speller.spell().forEach { print($0) }
     }
     
-//    func testPerformanceSubSequencesMonophonicHalfStep() {
-//        let sets: [PitchSet] = (0 ..< 10000).map { _ in
-//            [Pitch(noteNumber: NoteNumber(Float.random(min: 60, max: 72, resolution: 1)))]
-//        }
-//        let speller = PitchSequenceSpeller(sets: sets)
-//        self.measureBlock { let _ = speller.subSequences }
-//    }
-//    
-//    func testPerformanceSubSequencesMonophonicQuarterStep() {
-//        let sets: [PitchSet] = (0 ..< 10000).map { _ in
-//            [Pitch(noteNumber: NoteNumber(Float.random(min: 60, max: 72, resolution: 2)))]
-//        }
-//        let speller = PitchSequenceSpeller(sets: sets)
-//        self.measureBlock { let _ = speller.subSequences }
-//    }
-//    
-//    func testPerformanceSubSequencesMonophonicEighthStep() {
-//        let sets: [PitchSet] = (0 ..< 10000).map { _ in
-//            [Pitch(noteNumber: NoteNumber(Float.random(min: 60, max: 72, resolution: 4)))]
-//        }
-//        let speller = PitchSequenceSpeller(sets: sets)
-//        self.measureBlock { let _ = speller.subSequences }
-//    }
-//    
-//    func testPerformanceTriadHalfStep() {
-//        let sets: [PitchSet] = (0 ..< 10000).map { _ in
+    func testManyVariableSizeSequence() {
+        let sets: [PitchSet] = (0 ..< 50).map { _ in
+            let amountPitches = Int.random(min: 1, max: 3)
+            return PitchSet((0 ..< amountPitches).map { _ in
+                Pitch(noteNumber: NoteNumber(Float.random(min: 60, max: 72, resolution: 4)))
+            })
+        }
+        let speller = PitchSequenceSpeller(sets: sets)
+        try! speller.spell().forEach {
+            print($0.map { $0.spelling })
+        }
+    }
+    
+    // MARK: - Performance Tests
+//
+//    func testManyTriadsEighthTone() {
+//        let sets: [PitchSet] = (0 ..< 1000).map { _ in
 //            PitchSet((0 ..< 3).map { _ in
 //                Pitch(noteNumber: NoteNumber(Float.random(min: 60, max: 72, resolution: 1)))
 //            })
 //        }
 //        let speller = PitchSequenceSpeller(sets: sets)
-//        self.measureBlock { let _ = speller.subSequences }
-//    }
-//    
-//    func testPerformanceManyEighthStep() {
-//        let sets: [PitchSet] = (0 ..< 10000).map { _ in
-//            PitchSet((0 ..< 12).map { _ in
-//                Pitch(noteNumber: NoteNumber(Float.random(min: 60, max: 72, resolution: 4)))
-//                })
+//        self.measureBlock {
+//            try! speller.spell()
 //        }
-//        let speller = PitchSequenceSpeller(sets: sets)
-//        self.measureBlock { let _ = speller.subSequences }
 //    }
 }

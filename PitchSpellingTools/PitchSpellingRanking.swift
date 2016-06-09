@@ -21,12 +21,11 @@ public protocol PitchSpellingRanking: CustomStringConvertible {
 
 extension PitchSpellingRanking {
     
+    // severity goes up furhter in the list
     public var rules: [(PitchSpellingDyad) -> Bool] {
         return [
             { $0.hasValidIntervalQuality },
             { $0.isFineCompatible },
-            //{ $0.isCoarseResolutionCompatible },
-            //{ $0.isCoarseDirectionCompatible }
         ]
     }
 }

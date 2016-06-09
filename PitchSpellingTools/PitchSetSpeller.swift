@@ -149,6 +149,7 @@ public final class PitchSetSpeller: PitchSpeller {
     
     private func spelledPitchSetByCreatingRankers() throws -> SpelledPitchSet {
         applyRankings()
+        print(nodes)
         return try highestRankedPitches()
     }
     

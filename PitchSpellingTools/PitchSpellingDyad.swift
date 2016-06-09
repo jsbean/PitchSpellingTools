@@ -70,6 +70,10 @@ public struct PitchSpellingDyad {
         return eitherIsNatural || isCoarseResolutionMatching
     }
     
+    public var isLetterNameMatching: Bool {
+        return a.letterName == b.letterName
+    }
+    
     /**
      `true if `fine` values of `PitchSpelling` objects are equivalent. Otherwise `false`.
      */
@@ -79,11 +83,9 @@ public struct PitchSpellingDyad {
      - warning: No documentation
     */
     public var isFineCompatible: Bool {
-        return eitherHasFineAdjustment
-            ? isCoarseResolutionMatching
-            : eitherHasNoFineAdjustment
-                ? true
-                : isFineMatching
+        guard eitherHasFineAdjustment else { return true }
+        if eitherIsNatural || isCoarseMatching { return !isLetterNameMatching }
+        return isFineMatching
     }
     
     /// Mean of `spellingDistance` values of both `PitchSpelling` objects.
@@ -102,7 +104,9 @@ public struct PitchSpellingDyad {
         return abs(Int.mod(difference, 7))
     }
 
-    private var eitherIsNatural: Bool { return b.coarse == .natural || a.coarse == .natural }
+    private var eitherIsNatural: Bool {
+        return b.coarse == .natural || a.coarse == .natural
+    }
     
     private var eitherHasNoFineAdjustment: Bool {
         return b.fine == .none || a.fine == .none
