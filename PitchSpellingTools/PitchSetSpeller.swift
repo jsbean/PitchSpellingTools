@@ -50,7 +50,7 @@ public final class PitchSetSpeller: PitchSpeller {
     
     /// If the `PitchSet` herein can be objectively spelled or has only one `Pitch` value.
     private var pitchSetIsObjectivelySpellableOrMonadic: Bool {
-        return pitchSet.allMatch { $0.canBeSpelledObjectively } || pitchSet.isMonadic
+        return pitchSet.allSatisfy { $0.canBeSpelledObjectively } || pitchSet.isMonadic
     }
     
     /// The influence that this `PitchSetSpeller` has when ranking `PitchSpellingNodes`.

@@ -23,11 +23,12 @@ public final class PitchSequenceSpeller {
         var last: [PitchSet]?
         for set in self.sets {
             var current = last ?? []
-            if set.canBeSpelledObjectively {
+            switch set.spellability {
+            case .objective:
                 current.append(set)
                 result.append(current)
                 last = nil
-            } else {
+            default:
                 current.append(set)
                 last = current
             }

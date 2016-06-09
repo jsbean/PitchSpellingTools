@@ -32,23 +32,18 @@ public struct PitchSpellingRankerFactory {
      */
     public func makeRanker(for dyad: Dyad) -> PitchSpellingRanking {
         
-        if dyad.canBeSpelledObjectively {
-
+        switch dyad.spellability {
+        case .objective:
             return DeterminatePitchSpellingRanker(
                 node(forObjectivelySpellablePitch: dyad.lower),
                 node(forObjectivelySpellablePitch: dyad.higher)
             )
-        }
-        
-        if dyad.isFullyAmbiguouslySpellable {
-            
+        case .fullyAmbiguous:
             return FullyAmbiguousPitchSpellingRanker(
                 level(for: dyad.lower),
                 level(for: dyad.higher)
             )
-            
-        } else {
-            
+        case .semiAmbiguous:
             let (objectivelySpellable, subjective) = dyad.objectivelySpellableAndNot!
             return SemiAmbiguousPitchSpellingRanker(
                 objectivelySpellable: node(forObjectivelySpellablePitch: objectivelySpellable),

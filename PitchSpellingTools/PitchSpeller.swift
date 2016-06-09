@@ -36,8 +36,3 @@ public protocol PitchSpeller {
      */
     func spell() throws -> Result
 }
-
-extension PitchSpeller {
-
-    
-}
