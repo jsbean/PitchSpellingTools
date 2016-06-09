@@ -201,7 +201,10 @@ Find the optimum way to spell a sequence of vertical `PitchSet` values.
 > **TODO:** Determine rules for segmentation
 
 ### Thoughts on sub-segmentation
-Use finite state machine to well-define possible transitions from `PitchSet` values with `spellability` values of `.objective`, `.semiAmbiguous`, `fullyAmbiguous`.
+Use finite state machine to well-define possible transitions from `PitchSet` values with `spellability` values:
+- `.objective`
+- `.semiAmbiguous`
+- `fullyAmbiguous`.
 
 |                | objective | semiAmbiguous   | fullyAmbiguous |
 | -------------- | --------- | --------------  | -------------- |
