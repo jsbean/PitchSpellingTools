@@ -27,7 +27,6 @@ extension Dyad {
         return [higher.resolution, lower.resolution].minElement()!
     }
 
-    // First stage of refactor
     public var spellability: Spellability {
         if lower.canBeSpelledObjectively && higher.canBeSpelledObjectively {
             return .objective
