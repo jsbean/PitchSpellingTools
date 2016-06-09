@@ -26,6 +26,10 @@ extension Pitch {
         }
         return false
     }
+    
+//    public var spellability: Spellability {
+//        if let 
+//    }
  
     /// All `PitchSpelling` structures available for this `Pitch`.
     public var spellings: [PitchSpelling] {

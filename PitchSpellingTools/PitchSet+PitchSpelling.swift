@@ -9,9 +9,15 @@
 import Pitch
 
 extension PitchSet {
-    
+//
+//    public var spellability: Spellability {
+//        if allMatch({ $0.spellability == .objective }) {
+//            
+//        }
+//    }
+//    
     public var canBeSpelledObjectively: Bool {
-        return self.allMatch { $0.canBeSpelledObjectively }
+        return self.allSatisfy { $0.canBeSpelledObjectively }
     }
     
     public func spelledWithDefaultSpellings() throws -> SpelledPitchSet {
