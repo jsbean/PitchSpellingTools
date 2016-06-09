@@ -25,7 +25,7 @@ extension PitchSpellingRanking {
     public var rules: [(PitchSpellingDyad) -> Bool] {
         return [
             { $0.hasValidIntervalQuality },
-            { $0.isFineCompatible },
+            { $0.isFineCompatible }
         ]
     }
 }
