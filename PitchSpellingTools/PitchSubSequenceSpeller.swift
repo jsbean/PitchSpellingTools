@@ -64,6 +64,15 @@ public final class PitchSubSequenceSpeller: PitchSpeller {
     public func applyRankings() {
         individualSpellers.forEach { $0.applyRankings() }
         //joinedSpellers.forEach { $0.applyRankings() }
+        
+        // make joined set for the whole team
+        let wholeSet = PitchSet(sequence)
+        let wholeSetSpeller = PitchSetSpeller(
+            pitchSet: wholeSet,
+            nodeResource: self.nodeResource[wholeSet]!,
+            rank: 1
+        )
+        wholeSetSpeller.applyRankings()
     }
     
     private func highestRankedPitches() throws -> Result {
