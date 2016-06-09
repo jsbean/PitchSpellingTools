@@ -91,11 +91,6 @@ In this case, there are 6 `Dyad` values:
 [(62, 63), (62, 66), (62, 67), (63, 66), (63, 67), (66, 67)]
 ```
 
-### PitchSetSequence
-
-Ordered, not-necessarily unique sequence of one or more unspelled vertical `PitchSet` values (i.e., chords).
-
-
 ### Nodes, Edges, Stacks, Rankings
 
 In order to keep track of spelling preferences when there is no clear answer, certain data structures have been created:
