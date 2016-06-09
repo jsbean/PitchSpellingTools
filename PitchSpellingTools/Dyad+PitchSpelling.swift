@@ -31,10 +31,10 @@ extension Dyad {
     public var spellability: Spellability {
         if lower.canBeSpelledObjectively && higher.canBeSpelledObjectively {
             return .objective
-        } else if isSemiAmbiguouslySpellable {
-            return .semiAmbiguous
-        } else {
+        } else if !lower.canBeSpelledObjectively && !higher.canBeSpelledObjectively {
             return .fullyAmbiguous
+        } else {
+            return .semiAmbiguous
         }
     }
     
