@@ -385,5 +385,13 @@ class PitchSpellingDyadTests: XCTestCase {
         let dyad = PitchSpellingDyad(PitchSpelling(.g), PitchSpelling(.a, .quarterSharp, .up))
         XCTAssert(dyad.isFineCompatible)
     }
+    
+    func testTwoQuarterSharpWithDifferentFine() {
+        let dyad = PitchSpellingDyad(
+            PitchSpelling(.g, .quarterSharp, .up),
+            PitchSpelling(.a, .quarterSharp, .down)
+        )
+        XCTAssertFalse(dyad.isFineCompatible)
+    }
 }
 

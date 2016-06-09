@@ -84,7 +84,9 @@ public struct PitchSpellingDyad {
     */
     public var isFineCompatible: Bool {
         guard eitherHasFineAdjustment else { return true }
-        if eitherIsNatural || isCoarseMatching { return !isLetterNameMatching }
+        if eitherHasNoFineAdjustment && (eitherIsNatural || isCoarseMatching) {
+            return !isLetterNameMatching
+        }
         return isFineMatching
     }
     
