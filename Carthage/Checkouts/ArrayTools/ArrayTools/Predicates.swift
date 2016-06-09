@@ -47,12 +47,19 @@ extension SequenceType {
     }
 
     /**
-     - returns: `true` if all `Generator.Element` values in `self` fulfill given `predicate`.
-     Otherwise, `false`.
+     - returns: `true` if all elements satisfy the given `predicate`. Otherwise, `false`.
      */
-    public func allMatch(@noescape predicate: Generator.Element -> Bool) -> Bool {
+    public func allSatisfy(@noescape predicate: Generator.Element -> Bool) -> Bool {
         for element in self { if !predicate(element) { return false } }
         return true
+    }
+    
+    /**
+     - returns: `true` if any elements satisfy the given `predicate`. Otherwise, `false`.
+     */
+    public func anySatisfy(@noescape predicate: Generator.Element -> Bool) -> Bool {
+        for element in self { if predicate(element) { return true } }
+        return false
     }
 }
 

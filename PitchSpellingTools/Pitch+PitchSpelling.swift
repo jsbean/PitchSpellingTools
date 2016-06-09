@@ -21,10 +21,7 @@ extension Pitch {
      ```
      */
     public var canBeSpelledObjectively: Bool {
-        for spelling in spellings {
-            if spelling.coarse == .natural && spelling.fine == .none { return true }
-        }
-        return false
+        return spellings.anySatisfy({ $0.coarse == .natural && $0.fine == .none })
     }
  
     /// All `PitchSpelling` structures available for this `Pitch`.
