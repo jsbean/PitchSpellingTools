@@ -8,6 +8,7 @@
 
 import Pitch
 
+/// - warning: Incomplement documentation
 extension Dyad {
     
     public enum Error: ErrorType {
@@ -38,14 +39,8 @@ extension Dyad {
     }
     
     public var defaultSpellingDyad: PitchSpellingDyad? {
-        
-        guard let lowerSpelling = lower.defaultSpelling,
-            higherSpelling = higher.defaultSpelling
-        else {
-            return nil
-        }
-        
-        return PitchSpellingDyad(lowerSpelling, higherSpelling)
+        guard let a = lower.defaultSpelling, b = higher.defaultSpelling else { return nil }
+        return PitchSpellingDyad(a,b)
     }
     
     public var objectivelySpellableAndNot: (Pitch, Pitch)? {
