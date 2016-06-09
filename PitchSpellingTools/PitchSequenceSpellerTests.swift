@@ -23,7 +23,7 @@ class PitchSequenceSpellerTests: XCTestCase {
     
     func testSubSequencesDyadFirstObjective() {
         let sets: [PitchSet] = [[60],[61]]
-        let expected: [[PitchSet]] = [[[60]],[[61]]]
+        let expected: [[PitchSet]] = [[[60],[61]]]
         let speller = PitchSequenceSpeller(sets: sets)
         for (subSeq, expected) in zip(speller.subSequences, expected) {
             XCTAssertEqual(subSeq, expected)
@@ -39,7 +39,7 @@ class PitchSequenceSpellerTests: XCTestCase {
     
     func testThreeSequences() {
         let sets: [PitchSet] = [[60],[61],[63],[64],[66],[68],[69]]
-        let expected: [[PitchSet]] = [[[60]],[[61],[63],[64]],[[66],[68],[69]]]
+        let expected: [[PitchSet]] = [[[60],[61],[63],[64]],[[66],[68],[69]]]
         let speller = PitchSequenceSpeller(sets: sets)
         zip(speller.subSequences, expected).forEach { XCTAssertEqual($0, $1) }
     }

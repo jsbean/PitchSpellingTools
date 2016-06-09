@@ -46,11 +46,10 @@ public struct PitchSpelling {
     
     // MARK: - Initializers
     
-    /**
+    /*:
      Create a `PitchSpelling` (with argument labels).
-     
+
      **Example:**
-     
      ```
      let cNatural = PitchSpelling(letterName: .c)
      let aFlat = PitchSpelling(letterName: .a, coarse: .flat)

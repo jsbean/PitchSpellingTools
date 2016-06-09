@@ -6,34 +6,50 @@
 //
 //
 
+import ArrayTools
 import Pitch
 
 public final class PitchSequenceSpeller {
     
     public typealias Result = [SpelledPitchSet]
     
-    // Create `Node` resource
-    
-    // cut up sequences in the pattern:
-    // [ (zero or more) non-objectively-spellable, (zero or one) objectively-spellable ]
-    // [ (zero or one) objectively-spellable, (zero or more) non-objectively-spellable ]
-    
     public lazy var subSequences: [[PitchSet]] = {
         var result: [[PitchSet]] = []
         var last: [PitchSet]?
-        for set in self.sets {
-            var current = last ?? []
-            switch set.spellability {
-            case .objective:
-                current.append(set)
-                result.append(current)
-                last = nil
-            default:
-                current.append(set)
-                last = current
+        
+        var s = self.sets.startIndex
+        while s < self.sets.endIndex {
+
+            let currentSet = self.sets[s]
+            
+            // If first
+            guard let previousSet = self.sets[safe: s - 1] else {
+                last = [currentSet]
+                s += 1
+                continue
             }
+            
+            var subSegment = last ?? []
+            subSegment.append(currentSet)
+            
+            // If last
+            guard let nextSet = self.sets[safe: s + 1] else {
+                result.append(subSegment)
+                break
+            }
+            
+            switch (currentSet.spellability, nextSet.spellability) {
+            case (_, .objective):
+                subSegment.append(nextSet)
+                result.append(subSegment)
+                last = nil
+                s += 1 // advance past
+            default:
+                print("just add it to the collection")
+                last = subSegment
+            }
+            s += 1
         }
-        if let last = last { result.append(last) }
         return result
     }()
     
