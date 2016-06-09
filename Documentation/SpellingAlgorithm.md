@@ -204,7 +204,7 @@ Find the optimum way to spell a sequence of vertical `PitchSet` values.
 Use finite state machine to well-define possible transitions from `PitchSet` values with `spellability` values:
 - `.objective`
 - `.semiAmbiguous`
-- `fullyAmbiguous`.
+- `.fullyAmbiguous`.
 
 |                | objective | semiAmbiguous   | fullyAmbiguous |
 | -------------- | --------- | --------------  | -------------- |
