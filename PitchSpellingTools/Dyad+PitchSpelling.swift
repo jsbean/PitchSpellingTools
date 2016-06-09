@@ -27,6 +27,18 @@ extension Dyad {
         return [higher.resolution, lower.resolution].minElement()!
     }
 
+    // First stage of refactor
+    public var spellability: Spellability {
+        if canBeSpelledObjectively {
+            return .objective
+        } else if isSemiAmbiguouslySpellable {
+            return .semiAmbiguous
+        } else {
+            return .fullyAmbiguous
+        }
+    }
+    
+    // REPLACE with Spellability enum
     public var canBeSpelledObjectively: Bool {
         return lower.canBeSpelledObjectively && higher.canBeSpelledObjectively
     }
