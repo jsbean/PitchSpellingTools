@@ -36,7 +36,6 @@ public final class SemiAmbiguousPitchSpellingRanker: PitchSpellingRanking {
         }
     }()
     
-    
     /// Highest ranked `PitchSpellingNode` if available. Otherwise, `nil`.
     var highestRanked: PitchSpellingNode? { return ambiguouslySpellable.highestRanked }
     
