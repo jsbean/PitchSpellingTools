@@ -29,7 +29,7 @@ extension Dyad {
 
     // First stage of refactor
     public var spellability: Spellability {
-        if canBeSpelledObjectively {
+        if lower.canBeSpelledObjectively && higher.canBeSpelledObjectively {
             return .objective
         } else if isSemiAmbiguouslySpellable {
             return .semiAmbiguous
