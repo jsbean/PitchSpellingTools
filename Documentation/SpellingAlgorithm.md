@@ -208,7 +208,7 @@ Use finite state machine to well-define possible transitions from `PitchSet` val
 
 |                | objective | semiAmbiguous   | fullyAmbiguous |
 | -------------- | --------- | --------------  | -------------- |
-| objective      | commit    | lookahead +=    | add to current |
+| objective      | commit    | add to current  | add to current |
 | semiAmbiguous  | commit    | add to current  | add to current |
 | fullyAmbiguous | commit    | add to current  | add to current |
 
