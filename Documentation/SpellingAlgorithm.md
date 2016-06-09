@@ -23,6 +23,8 @@
 
 > In the case of the `tritone`, `augmented fourth` and `diminished fifth` `IntervalQuality` values are necessary, and therefore acceptable.
 
+#### A few examples
+
 Consider the possibilities for representing a context in which an `a natural` is present along with the aforementioned `Pitch` of `MIDI` note number `61`:
 
 | Pitch (nn: 57) | Pitch (nn: 61) | `IntervalQuality` |  Preference   |
@@ -43,9 +45,11 @@ However, consider a context in which the other `Pitch` also has multiple spellin
 
 > Not that there are multiple desired options.
 
-## Eighth-step Resolution 
+## High Resolution Pitch Spelling 
 
-There are a few additional preferences when spelling eighth-step resolution `Pitch` values.
+Currently, pitch spelling mechanisms are optimized for tonal music. In this case, one only considers 12 divisions of the octave. However, it is not uncommon for contemporary music to employ pitch material with more than 12 divisions of the octave.
+
+There are a few additional preferences when spelling higher-resolution `Pitch` values.
 
 ### Fine Compatibility
 
@@ -89,7 +93,7 @@ In this case, there are 6 `Dyad` values:
 
 ### PitchSetSequence
 
-Ordered, not-necessarily unique sequence of one or more unspelled vertical `PitchSet` values (chords).
+Ordered, not-necessarily unique sequence of one or more unspelled vertical `PitchSet` values (i.e., chords).
 
 
 ### Nodes, Edges, Stacks, Rankings
