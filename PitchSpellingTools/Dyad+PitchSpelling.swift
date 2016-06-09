@@ -38,22 +38,6 @@ extension Dyad {
         }
     }
     
-    // REPLACE with Spellability enum
-    public var canBeSpelledObjectively: Bool {
-        return lower.canBeSpelledObjectively && higher.canBeSpelledObjectively
-    }
-    
-    public var isFullyAmbiguouslySpellable: Bool {
-        return !lower.canBeSpelledObjectively && !higher.canBeSpelledObjectively
-    }
-    
-    public var isSemiAmbiguouslySpellable: Bool {
-        return (
-            (lower.canBeSpelledObjectively && !higher.canBeSpelledObjectively) ||
-            (!lower.canBeSpelledObjectively && higher.canBeSpelledObjectively)
-        )
-    }
-    
     public var defaultSpellingDyad: PitchSpellingDyad? {
         
         guard let lowerSpelling = lower.defaultSpelling,
@@ -66,7 +50,7 @@ extension Dyad {
     }
     
     public var objectivelySpellableAndNot: (Pitch, Pitch)? {
-        guard isSemiAmbiguouslySpellable else { return nil }
+        guard spellability == .semiAmbiguous else { return nil }
         return lower.canBeSpelledObjectively && !higher.canBeSpelledObjectively
             ? (lower, higher)
             : (higher, lower)
