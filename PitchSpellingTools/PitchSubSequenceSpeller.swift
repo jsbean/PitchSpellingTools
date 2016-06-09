@@ -71,6 +71,6 @@ public final class PitchSubSequenceSpeller: PitchSpeller {
     
     // Here, rank is weighted towards the end of a sequence
     private func rankWeight(for position: Int) -> Float {
-        return (Float(position + 1) / Float(sets.count)) / 2
+        return (Float(position + 1) / Float(sequence.count)) / 2
     }
 }

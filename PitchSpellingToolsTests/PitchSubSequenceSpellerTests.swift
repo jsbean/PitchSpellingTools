@@ -14,40 +14,40 @@ import Pitch
 class PitchSubSequenceSpellerTests: XCTestCase {
     
     func testMonophonicAscending() {
-        let speller = PitchSubSequenceSpeller(sets: [[60], [61], [62]])
+        let speller = PitchSubSequenceSpeller([[60], [61], [62]])
         speller.applyRankings()
         
         // TODO: add assertions
     }
     
     func testMonophoningDescending() {
-        let speller = PitchSubSequenceSpeller(sets: [[62], [61], [60]])
+        let speller = PitchSubSequenceSpeller([[62], [61], [60]])
         speller.applyRankings()
     }
     
     func testDyadPair() {
-        let sets: [PitchSet] = [[62,63],[66,68]]
-        let speller = PitchSubSequenceSpeller(sets: sets)
+        let sets: PitchSetSequence = [[62,63],[66,68]]
+        let speller = PitchSubSequenceSpeller(sets)
         speller.applyRankings()
         // TODO: add assertions
     }
     
     func testDyads() {
-        let sets: [PitchSet] = [[60,62],[63,65],[61,70]]
-        let speller = PitchSubSequenceSpeller(sets: sets)
+        let sets: PitchSetSequence = [[60,62],[63,65],[61,70]]
+        let speller = PitchSubSequenceSpeller(sets)
         speller.applyRankings()
         // TODO: add assertions
     }
     
     func testFSharpGSharpA() {
-        let sets: [PitchSet] = [[66],[68],[69]]
-        let speller = PitchSubSequenceSpeller(sets: sets)
+        let sets: PitchSetSequence = [[66],[68],[69]]
+        let speller = PitchSubSequenceSpeller(sets)
         print(try! speller.spell())
     }
     
     func testABFlatCDFlat() {
-        let sets: [PitchSet] = [[69],[70],[72],[73]]
-        let speller = PitchSubSequenceSpeller(sets: sets)
+        let sets: PitchSetSequence = [[69],[70],[72],[73]]
+        let speller = PitchSubSequenceSpeller(sets)
         print(try! speller.spell())
     }
 //    

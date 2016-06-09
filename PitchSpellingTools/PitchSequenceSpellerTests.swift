@@ -12,36 +12,41 @@ import Pitch
 
 class PitchSequenceSpellerTests: XCTestCase {
 
+
     func testSubSequencesSingle() {
         let sets: [PitchSet] = [[60]]
         let speller = PitchSequenceSpeller(sets: sets)
-        let expected: [[PitchSet]] = [[[60]]]
+        let expected: [PitchSetSequence] = [[[60]]]
         for (subSeq, expected) in zip(speller.subSequences, expected) {
-            XCTAssertEqual(subSeq, expected)
+            XCTAssert(subSeq == expected)
         }
     }
     
     func testSubSequencesDyadFirstObjective() {
         let sets: [PitchSet] = [[60],[61]]
-        let expected: [[PitchSet]] = [[[60],[61]]]
+        let expected: [PitchSetSequence] = [[[60],[61]]]
         let speller = PitchSequenceSpeller(sets: sets)
         for (subSeq, expected) in zip(speller.subSequences, expected) {
-            XCTAssertEqual(subSeq, expected)
+            XCTAssert(subSeq == expected)
         }
     }
     
     func testSubSequencesDyadSecondObjective() {
         let sets: [PitchSet] = [[61],[60]]
-        let expected: [[PitchSet]] = [[[61],[60]]]
+        let expected: [PitchSetSequence] = [[[61],[60]]]
         let speller = PitchSequenceSpeller(sets: sets)
-        zip(speller.subSequences, expected).forEach { XCTAssertEqual($0, $1) }
+        for (subSeq, expected) in zip(speller.subSequences, expected) {
+            XCTAssert(subSeq == expected)
+        }
     }
     
     func testThreeSequences() {
         let sets: [PitchSet] = [[60],[61],[63],[64],[66],[68],[69]]
-        let expected: [[PitchSet]] = [[[60],[61],[63],[64]],[[66],[68],[69]]]
+        let expected: [PitchSetSequence] = [[[60],[61],[63],[64]],[[66],[68],[69]]]
         let speller = PitchSequenceSpeller(sets: sets)
-        zip(speller.subSequences, expected).forEach { XCTAssertEqual($0, $1) }
+        for (subSeq, expected) in zip(speller.subSequences, expected) {
+            XCTAssert(subSeq == expected)
+        }
     }
     
     func test12NoteSequenceMonophonic() {
@@ -52,16 +57,20 @@ class PitchSequenceSpellerTests: XCTestCase {
     
     func testDyadSequenceMixed() {
         let sets: [PitchSet] = [[60],[61,65],[64],[66,68],[70]]
-        let expected: [[PitchSet]] = [[[60],[61,65],[64]],[[66,68],[70]]]
+        let expected: [PitchSetSequence] = [[[60],[61,65],[64]],[[66,68],[70]]]
         let speller = PitchSequenceSpeller(sets: sets)
-        zip(speller.subSequences, expected).forEach { XCTAssertEqual($0, $1) }
+        for (subSeq, expected) in zip(speller.subSequences, expected) {
+            XCTAssert(subSeq == expected)
+        }
     }
     
     func testDyadFullyAmbiguous() {
         let sets: [PitchSet] = [[61,63],[68],[66,70],[68]]
-        let expected: [[PitchSet]] = [[[61,63],[68],[66,70],[68]]]
+        let expected: [PitchSetSequence] = [[[61,63],[68],[66,70],[68]]]
         let speller = PitchSequenceSpeller(sets: sets)
-        zip(speller.subSequences, expected).forEach { XCTAssertEqual($0, $1) }
+        for (subSeq, expected) in zip(speller.subSequences, expected) {
+            XCTAssert(subSeq == expected)
+        }
     }
     
     func testManyNoteSequenceMonophonic() {
