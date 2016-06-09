@@ -12,23 +12,28 @@ import Pitch
 
 class PitchSet_PitchSpellingTests: XCTestCase {
 
-    func testCanBeSpelledObjectivelyEmptyTrue() {
+    func testSpellabilityEmptyObjective() {
         let pitchSet: PitchSet = []
-        XCTAssert(pitchSet.canBeSpelledObjectively)
+        XCTAssert(pitchSet.spellability == .objective)
     }
     
-    func testCanBeSpelledObjectivelySingleTrue() {
+    func testSpellabilitySingleObjective() {
         let pitchSet: PitchSet = [69]
-        XCTAssert(pitchSet.canBeSpelledObjectively)
+        XCTAssert(pitchSet.spellability == .objective)
     }
     
-    func testCanBeSpelledObjectivelySingleFalse() {
+    func testSpellabilitySingleFullyAmbiguous() {
         let pitchSet: PitchSet = [70]
-        XCTAssertFalse(pitchSet.canBeSpelledObjectively)
+        XCTAssert(pitchSet.spellability == .fullyAmbiguous)
     }
     
-    func testCanBeSpelledObjectivelyTriadFalse() {
+    func testSpellabilityTriadSemiAmbiguous() {
+        let pitchSet: PitchSet = [63,66,69]
+        XCTAssert(pitchSet.spellability == .semiAmbiguous)
+    }
+    
+    func testSpellabilityTriadFullyAmbiguous() {
         let pitchSet: PitchSet = [63,66,68]
-        XCTAssertFalse(pitchSet.canBeSpelledObjectively)
+        XCTAssert(pitchSet.spellability == .fullyAmbiguous)
     }
 }
