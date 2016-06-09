@@ -223,4 +223,4 @@ Use finite state machine to well-define possible transitions from `PitchSet` val
 - "Pitch Spelling Algorithms", Meredith [[PDF](http://www.titanmusic.com/papers/public/ps13-escom-paper.pdf)]
 - "Comparing Pitch Spelling Algorithms", Meredith, Wiggins [[PDF](http://ismir2005.ismir.net/proceedings/1004.pdf)]
 - "PST: Pitch Spelling Technology", Chew, Chen [[PDF](http://infolab.usc.edu/imsc/research/project/pst/pst_nsf8.pdf)]
-- State Machines in Swift [pt 1](http://www.figure.ink/blog/2015/1/31/swift-state-machines-part-1), [pt 2](http://www.figure.ink/blog/2015/2/1/swift-state-machines-part-2), [pt 3](http://www.figure.ink/blog/2015/2/8/swift-state-machines-part-3-follow-up)
+- State Machines in Swift [pt 1](http://www.figure.ink/blog/2015/1/31/swift-state-machines-part-1), [pt 2](http://www.figure.ink/blog/2015/2/1/swift-state-machines-part-2), [pt 3](http://www.figure.ink/blog/2015/2/8/swift-state-machines-part-3-follow-up), [pt 4](http://www.figure.ink/blog/2015/2/9/swift-state-machines-part-4-redirect)
