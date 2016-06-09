@@ -30,7 +30,7 @@ Consider the possibilities for representing a context in which an `a natural` is
 | `a natural` | `c sharp` | `major third` | **desired** |
 | `a natural` | `d flat`  | `diminished fourth` | **undesired** |
 
-> There is  a clear preference, because the `Pitch` of `MIDI` note number `57` can only be spelled as an `a natural` (granted that we are disallowing `double flat` and `double sharp` `PitchSpelling` values).
+> There is a clear preference, because the `Pitch` of `MIDI` note number `57` can only be spelled as an `a natural` (granted that we are disallowing `double flat` and `double sharp` `PitchSpelling` values).
 
 However, consider a context in which the other `Pitch` also has multiple spelling representations, such as the `Pitch` of `MIDI`note number `56`:
 
@@ -41,7 +41,7 @@ However, consider a context in which the other `Pitch` also has multiple spellin
 | `a flat` | `c sharp` | `augmented third`  | **undesired** |
 | `a flat` | `d flat` | `perfect fourth` | **desired**  |
 
-> This a case where there are multiple desired options.
+> Not that there are multiple desired options.
 
 ## Eighth-step Resolution 
 
