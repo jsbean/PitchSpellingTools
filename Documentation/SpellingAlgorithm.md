@@ -11,10 +11,10 @@
 
 ### Interval Optimization
 
-Applying to `Pitch` values of all resolution, `IntervalQuality` values of various types are preferred to others:
+`IntervalQuality` between two `PitchSpelling` values is the primary determinate of preference. 
 
 | `IntervalQuality` | Preference |
-| --- | --- |e
+| --- | --- |
 | `diminished` | **undesired** |
 | `minor` | **desired**  | 
 | `perfect` | **desired**  |
