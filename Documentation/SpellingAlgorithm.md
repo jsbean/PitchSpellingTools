@@ -3,16 +3,18 @@
 ## Background
 `Pitch` values can often be represented multiple ways on a musical staff. 
 
-For example, the `Pitch` with a `MIDI` note number of `61`, or a frequency of `277.18 Hz`, is one half-step above `middle c`. This pitch can be represented either as a `c sharp` or a `d flat`, each representation being more appropriate for different contexts.
+> A `Pitch` with a `MIDI` note number of `61` (frequency of `277.18 Hz`) is one half-step above `middle c`. 
+> 
+> This pitch can be represented either as a `c sharp` or a `d flat`. Each representation is more appropriate for different contexts.
 
 ## Spelling preferrences
 
 ### Interval Optimization
 
-Applying to `Pitch` values of all resolution, `IntervalQuality` values of various types are preferred to others:
+`IntervalQuality` between two `PitchSpelling` values is the primary determinate of preference. 
 
 | `IntervalQuality` | Preference |
-| --- | --- |e
+| --- | --- |
 | `diminished` | **undesired** |
 | `minor` | **desired**  | 
 | `perfect` | **desired**  |
@@ -21,6 +23,8 @@ Applying to `Pitch` values of all resolution, `IntervalQuality` values of variou
 
 > In the case of the `tritone`, `augmented fourth` and `diminished fifth` `IntervalQuality` values are necessary, and therefore acceptable.
 
+#### A few examples
+
 Consider the possibilities for representing a context in which an `a natural` is present along with the aforementioned `Pitch` of `MIDI` note number `61`:
 
 | Pitch (nn: 57) | Pitch (nn: 61) | `IntervalQuality` |  Preference   |
@@ -28,7 +32,7 @@ Consider the possibilities for representing a context in which an `a natural` is
 | `a natural` | `c sharp` | `major third` | **desired** |
 | `a natural` | `d flat`  | `diminished fourth` | **undesired** |
 
-> There is  a clear preference, because the `Pitch` of `MIDI` note number `57` can only be spelled as an `a natural` (granted that we are disallowing `double flat` and `double sharp` `PitchSpelling` values).
+> There is a clear preference, because the `Pitch` of `MIDI` note number `57` can only be spelled as an `a natural` (granted that we are disallowing `double flat` and `double sharp` `PitchSpelling` values).
 
 However, consider a context in which the other `Pitch` also has multiple spelling representations, such as the `Pitch` of `MIDI`note number `56`:
 
@@ -39,11 +43,13 @@ However, consider a context in which the other `Pitch` also has multiple spellin
 | `a flat` | `c sharp` | `augmented third`  | **undesired** |
 | `a flat` | `d flat` | `perfect fourth` | **desired**  |
 
-> There are more than one acceptable options. In different contexts, each pair of `PitchSpelling` representations is more appropriate than the other.
+> Not that there are multiple desired options.
 
-## Eighth-step Resolution 
+## High Resolution Pitch Spelling 
 
-There are a few additional preferences when spelling eighth-step resolution `Pitch` values.
+Currently, pitch spelling mechanisms are optimized for tonal music. In this case, one only considers 12 divisions of the octave. However, it is not uncommon for contemporary music to employ pitch material with more than 12 divisions of the octave.
+
+There are a few additional preferences when spelling higher-resolution `Pitch` values.
 
 ### Fine Compatibility
 
@@ -84,11 +90,6 @@ In this case, there are 6 `Dyad` values:
 ```Swift
 [(62, 63), (62, 66), (62, 67), (63, 66), (63, 67), (66, 67)]
 ```
-
-### PitchSetSequence
-
-Ordered, not-necessarily unique sequence of one or more unspelled vertical `PitchSet` values (chords).
-
 
 ### Nodes, Edges, Stacks, Rankings
 
