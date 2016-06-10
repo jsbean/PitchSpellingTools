@@ -132,7 +132,7 @@ public final class PitchSetSpeller: PitchSpeller {
      - returns: `SpelledPitchSet` representation of the `PitchSet` value given at `init`.
      */
     public func highestRankedPitches() throws -> SpelledPitchSet {
-        
+        print(nodes)
         return SpelledPitchSet(
             try nodeResource.pitches.map { pitch in
                 guard let spelling = nodeResource.highestRanked(for: pitch)?.spelling else {
@@ -149,7 +149,6 @@ public final class PitchSetSpeller: PitchSpeller {
     
     private func spelledPitchSetByCreatingRankers() throws -> SpelledPitchSet {
         applyRankings()
-        print(nodes)
         return try highestRankedPitches()
     }
     

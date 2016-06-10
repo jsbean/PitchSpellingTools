@@ -55,6 +55,8 @@ public final class FullyAmbiguousPitchSpellingRanker: PitchSpellingRanking {
     /**
      All of the `PitchSpellingEdge` objects that are highest ranked, 
      yet contain the lowest (or not-yet) ranked `PitchSpellingNode` objects.
+     
+     - warning: This is very problematic.
     */
     public var almostGoodEnoughEdges: [PitchSpellingEdge] {
         return highestRankedEdges.extremeElements(<) { $0.meanRankOfNodes ?? Float.min }
@@ -98,11 +100,34 @@ public final class FullyAmbiguousPitchSpellingRanker: PitchSpellingRanking {
      `amount`.
      */
     public func applyRankings(withAmount amount: Float) {
+        
+        // test: mega penalize all edges with fine incompatibility
         for edge in edges {
-            for rule in rules where !rule(edge.pitchSpellingDyad) {
-                penalize(edge: edge, byAmount: amount)
+            if !edge.pitchSpellingDyad.isFineCompatible {
+                penalize(edge: edge, byAmount: 2)
+                
+            }
+            
+            if !edge.pitchSpellingDyad.hasValidIntervalQuality {
+                penalize(edge: edge, byAmount: 1)
             }
         }
+        
+//        for edge in edges {
+//            for (r, rule) in rules.enumerate() where !rule(edge.pitchSpellingDyad) {
+//                
+//                let adjustment = Float(rules.count - r) / Float(rules.count)
+//                let adjustedAmount = adjustment * amount
+////                print("amount: \(amount); adjustment: \(adjustment); adjustedAmount: \(adjustedAmount)")
+//                penalize(edge: edge, byAmount: adjustedAmount)
+//            }
+//        }
+        print("all edges:")
+        edges.forEach { print($0) }
+        print("highest ranked edges: ")
+        highestRankedEdges.forEach { print($0) }
+        print("almost good enough edges: ")
+        almostGoodEnoughEdges.forEach { print($0) }
     }
     
     private func penalize(edge edge: PitchSpellingEdge, byAmount amount: Float) {

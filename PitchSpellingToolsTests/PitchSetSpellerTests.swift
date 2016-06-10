@@ -171,12 +171,42 @@ class PitchSetSpellerTests: XCTestCase {
         )
     }
     
-    func testManyEighthToneSetsEnsureSingleFineDirection() {
-        (0 ..< 1000).map { _ in
-            let pitchSet = (0 ..< Int.random(min: 2, max: 6)).map { _ in
-                
+    
+    func testManyEighthToneDyadsEnsureSingleFineDirection() {
+        (0 ..< 1000).forEach { _ in
+            let pitchSet = PitchSet((0 ..< 2).map { _ in Pitch.random(resolution: 4) })
+            do {
+                let spelledPitchSet = try PitchSetSpeller(pitchSet).spell()
+                assertZeroOrOneFineDirection(in: spelledPitchSet)
+            } catch {
+                XCTFail()
             }
         }
+    }
+    
+    func testManyEighthToneSetsEnsureSingleFineDirection() {
+        (0 ..< 1000).forEach { _ in
+            let pitchSet = PitchSet((0 ..< Int.random(min: 2, max: 6)).map { _ in
+                Pitch.random(resolution: 4)
+            })
+            do {
+                let spelledPitchSet = try PitchSetSpeller(pitchSet).spell()
+                assertZeroOrOneFineDirection(in: spelledPitchSet)
+            } catch {
+                XCTFail()
+            }
+        }
+    }
+    
+    func assertZeroOrOneFineDirection(in spelledPitchSet: SpelledPitchSet) {
+        print(spelledPitchSet)
+        XCTAssert(
+            spelledPitchSet
+                .map { $0.spelling.fine }
+                .filter { $0 != .none }
+                .unique
+                .count <= 1
+        )
     }
     
 
