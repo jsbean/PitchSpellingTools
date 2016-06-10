@@ -171,6 +171,14 @@ class PitchSetSpellerTests: XCTestCase {
         )
     }
     
+    func testManyEighthToneSetsEnsureSingleFineDirection() {
+        (0 ..< 1000).map { _ in
+            let pitchSet = (0 ..< Int.random(min: 2, max: 6)).map { _ in
+                
+            }
+        }
+    }
+    
 
 //    // MARK: - Performance Testing
 //    

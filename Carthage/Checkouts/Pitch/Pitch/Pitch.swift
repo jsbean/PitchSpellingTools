@@ -11,16 +11,24 @@ import ArithmeticTools
 /**
  The quality of a sound governed by the rate of vibrations producing it.
  */
-public struct Pitch: CustomStringConvertible {
+public struct Pitch {
     
     // MARK: - Type Properties
     
     /// Middle C.
     public static let middleC = Pitch(noteNumber: 60.0)
     
-    // MARK: - Instance Properties
+    // MARK: - Type Methods
     
-    public var description: String { return "\(noteNumber)" }
+    /**
+     - returns: NoteNumber with a random `NoteNumber` value between 60 and 72, with the given
+     `resolution`.
+     */
+    public static func random(resolution resolution: Float = 1) -> Pitch {
+        return Pitch(noteNumber: NoteNumber.random(resolution: resolution))
+    }
+    
+    // MARK: - Instance Properties
     
     /// `NoteNumber` representation of `Pitch`.
     public let noteNumber: NoteNumber
@@ -113,4 +121,13 @@ extension Pitch: Hashable {
 
     /// Hash value.
     public var hashValue: Int { return noteNumber.hashValue }
+}
+
+extension Pitch: CustomStringConvertible {
+ 
+    // MARK: - CustomStringConvertible
+    
+    /// Printed description.
+    public var description: String { return "\(noteNumber)" }
+    
 }

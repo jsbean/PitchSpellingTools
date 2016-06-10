@@ -14,6 +14,15 @@ import ArithmeticTools
  */
 public struct NoteNumber: FloatWrapping {
     
+    // MARK: - Type Methods
+    
+    /**
+     - returns: NoteNumber with a random value between 60 and 72, with the given `resolution`.
+     */
+    public static func random(resolution resolution: Float = 1) -> NoteNumber {
+        return NoteNumber(Float.random(min: 60, max: 72, resolution: resolution))
+    }
+    
     // MARK: - Instance Properties
     
     /// Value of this `NoteNumber`.
