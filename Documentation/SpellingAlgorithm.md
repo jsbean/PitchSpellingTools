@@ -43,7 +43,7 @@ However, consider a context in which the other `Pitch` also has multiple spellin
 | `a flat` | `c sharp` | `augmented third`  | **undesired** |
 | `a flat` | `d flat` | `perfect fourth` | **desired**  |
 
-> Not that there are multiple desired options.
+> Note that there are multiple desired options.
 
 ## High Resolution Pitch Spelling 
 
