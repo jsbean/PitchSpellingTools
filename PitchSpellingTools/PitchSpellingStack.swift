@@ -9,7 +9,7 @@
 import Pitch
 
 /**
- Collection of `PitchSpelling` objects for a single `Pitch` in a `PitchSet`.
+ Collection of `PitchSpellingNode` objects for a single `Pitch`.
  */
 public final class PitchSpellingStack {
     
