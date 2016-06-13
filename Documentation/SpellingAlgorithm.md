@@ -202,6 +202,17 @@ Find the optimum way to spell a sequence of vertical `PitchSet` values.
 > **TODO:** Determine rules for segmentation
 
 ### Thoughts on sub-segmentation
+
+- F = FullyAmbiguouslySpellablePitchSet (0 pitches in PitchSet objectively spellable)
+- S = SemiAmbiguouslySpellablePitchSet ((1 ..< count - 1) pitches in PitchSet objectively spellable)
+- O = ObjectivelySpellablePitchSet (all pitches in PitchSet objectively spellable)
+```
+[F F S S F S O F S S F S O O S F O F F S F F]
+
+[F F S S F S O]           [O S F O]
+            [O F S S F S O]     [O F F S F F]
+```
+
 Use finite state machine to well-define possible transitions from `PitchSet` values with `spellability` values:
 - `.objective`
 - `.semiAmbiguous`
