@@ -6,22 +6,33 @@
 //  Copyright © 2016 James Bean. All rights reserved.
 //
 
+import ArrayTools
 import Pitch
 
-// TODO: make class ?
+/**
+ Interface for structures that attempt to spell pitches.
+ */
 public protocol PitchSpeller {
     
-}
-
-extension PitchSpeller {
+    /// The product of an attempted spelling
+    associatedtype Result
     
-    internal func spell(pitch: Pitch, with spelling: PitchSpelling) -> SpelledPitch? {
-        return SpelledPitch(pitch: pitch, spelling: spelling)
-    }
-//    
-//    internal func leastDistant(from pitchSpellings: [PitchSpelling]) -> PitchSpelling? {
-//        return pitchSpellings
-//            .sort { $0.distance < $1.distance }
-//            .first
-//    }
+    /// Collection of `PitchSpellingNode` objects organized by `Pitch` values.
+    var nodeResource: PitchSpellingNodeResource { get }
+    
+    /**
+     All `PitchSpellingNode` objects contained in the `nodeResource`
+     - Note: consider removing this from this protocol, as it is really an internal 
+     helper interface
+    */
+    var nodes: [PitchSpellingNode] { get }
+    
+    /**
+     Commit the spellings
+     
+     - throws: `PitchSpelling.Error` if no `PitchSpelling` options are available.
+     
+     - returns: Spelled version of the input.
+     */
+    func spell() throws -> Result
 }

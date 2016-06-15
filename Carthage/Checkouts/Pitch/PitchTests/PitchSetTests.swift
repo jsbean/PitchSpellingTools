@@ -11,37 +11,37 @@ import XCTest
 
 class PitchSetTests: XCTestCase {
 
-    func testInitWithNothing() {
-        let _ = PitchSet()
-    }
-    
-    func testInitWithOnePitchVariadic() {
-        let _ = PitchSet(Pitch(noteNumber: 60))
-    }
-    
-    func testInitWithArray() {
-        let _ = PitchSet(pitches: [Pitch(noteNumber: 60), Pitch(noteNumber: 61)])
-    }
-    
-    func testIterate() {
-        let set = PitchSet(pitches: [Pitch(noteNumber: 60), Pitch(noteNumber: 61)])
-        let expected = [Pitch(noteNumber: 60), Pitch(noteNumber: 61)]
-        XCTAssertEqual(Set(set.map { $0 }), Set(expected))
-    }
-    
     func testDyads() {
-        let set = PitchSet(
-            pitches: [
+        var set = PitchSet(
+            [
                 Pitch(noteNumber: 60),
                 Pitch(noteNumber: 61),
                 Pitch(noteNumber: 62),
                 Pitch(noteNumber: 63)
             ]
         )
-        XCTAssertEqual(set.dyads.count, 6)
+        XCTAssertEqual(set.dyads!.count, 6)
     }
     
     func testArrayLiteralConvertible() {
         let _: PitchSet = [Pitch(noteNumber: 60), Pitch(noteNumber: 61)]
+    }
+    
+    func testInitWithPitchSetsEmpty() {
+        let pitchSets: [PitchSet] = []
+        let pitchSet = PitchSet(pitchSets)
+        XCTAssert(pitchSet.isEmpty)
+    }
+    
+    func testInitWithPitchSetsSingle() {
+        let pitchSets = [PitchSet([60])]
+        let pitchSet = PitchSet(pitchSets)
+        XCTAssertEqual(pitchSet, PitchSet([60]))
+    }
+    
+    func testInitWithPitchSetsMultipleOverlapping() {
+        let pitchSets = [PitchSet([60]), PitchSet([60,61]), PitchSet([65])]
+        let pitchSet = PitchSet(pitchSets)
+        XCTAssertEqual(pitchSet, PitchSet([60,61,65]))
     }
 }

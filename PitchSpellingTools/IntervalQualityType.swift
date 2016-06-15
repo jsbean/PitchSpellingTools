@@ -23,9 +23,6 @@ internal protocol IntervalQualityType: EnumTree {
     /// DoubleAugmented.
     static var doubleAugmented: IntervalQuality.EnumKind { get }
     
-    /// Array of `IntervalQualityType` values that preserve `step`.
-    static var stepPreserving: [IntervalQuality.EnumKind] { get }
-    
     static func intervalQuality(fromDirectionDifference difference: Float) -> EnumKind
     
     static func directionDifference(fromPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)

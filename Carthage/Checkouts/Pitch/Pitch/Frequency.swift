@@ -12,20 +12,30 @@ import ArithmeticTools
 /// Periodic vibration in Hertz.
 public struct Frequency: FloatWrapping {
 
+    // MARK: - Instance Properties
+    
+    /// Value of this `Frequency` in Hertz.
     public var value: Float
     
+    // MARK: - Initializers
+    
     /**
-     Create a `Frequency` with a `FloatLiteralType`.
+     Create a `Frequency` with a `NoteNumber` value.
      
-     **Example**:
+     **Example:**
      
      ```
-     let freq: Frequency = 440.0 // => A below middle c
+     let freq = Frequency(57.0) // => A below middle c
      ```
      */
-    public init(floatLiteral value: Float) {
-        self.value = value
+    public init(_ noteNumber: NoteNumber) {
+        self.value = 440.0 * pow(2.0, (noteNumber.value - 69.0) / 12.0)
     }
+}
+
+extension Frequency: IntegerLiteralConvertible {
+    
+    // MARK: - IntegerLiteralConvertible
     
     /**
      Create a `Frequency` with an `IntegerLiteralType`.
@@ -39,17 +49,22 @@ public struct Frequency: FloatWrapping {
     public init(integerLiteral value: Int) {
         self.value = Float(value)
     }
+}
+
+extension Frequency: FloatLiteralConvertible {
+    
+    // MARK: - FloatLiteralConvertible
     
     /**
-     Create a `Frequency` with a `NoteNumber` value.
+     Create a `Frequency` with a `FloatLiteralType`.
      
-     **Example:**
+     **Example**:
      
      ```
-     let freq = Frequency(57.0) // => A below middle c
+     let freq: Frequency = 440.0 // => A below middle c
      ```
      */
-    public init(_ noteNumber: NoteNumber) {
-        self.value = 440.0 * pow(2.0, (noteNumber.value - 69.0) / 12.0)
+    public init(floatLiteral value: Float) {
+        self.value = value
     }
 }

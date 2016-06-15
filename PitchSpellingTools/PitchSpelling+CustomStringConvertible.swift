@@ -11,9 +11,11 @@ import Foundation
 extension PitchSpelling: CustomStringConvertible {
     
     public var description: String {
-        var result = "\(letterName)"
+        var result = "("
+        result += "\(letterName)"
         if coarse != .natural { result += " \(coarse)" }
         if fine != .none { result += " \(fine)" }
+        result += ")"
         return result
     }
 }

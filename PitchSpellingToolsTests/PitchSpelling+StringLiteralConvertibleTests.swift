@@ -11,13 +11,4 @@ import XCTest
 
 class PitchSpelling_StringLiteralConvertibleTests: XCTestCase {
     
-    func testCNatural() {
-        let ps: PitchSpelling = "c"
-        XCTAssertEqual(ps, PitchSpelling(.c))
-    }
-    
-    func testBNatural() {
-        let ps: PitchSpelling = "b"
-        XCTAssertEqual(ps, PitchSpelling(.b))
-    }
 }

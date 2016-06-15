@@ -9,14 +9,28 @@
 import Pitch
 
 extension PitchSet {
+
+    // MARK: PitchSpelling
     
-    public var sortedBySpellingUrgency: [Pitch] {
-        return self
-            .map { $0 }.lazy
-            .sort { $0.pitchClass.spellingUrgency < $1.pitchClass.spellingUrgency }
+    /// The degree to which a `PitchSet` can be spelled.
+    public var spellability: Spellability {
+        if isEmpty || self.allSatisfy({ $0.canBeSpelledObjectively }) {
+            return .objective
+        } else if anySatisfy({ $0.canBeSpelledObjectively }) {
+            return .semiAmbiguous
+        } else {
+            return .fullyAmbiguous
+        }
     }
     
+    /**
+     - throws: `PitchSpelling.Error` if any `Pitch` values herein cannot be spelled with
+     current technology.
+     
+     - returns: `SpelledPitchSet` containing `SpelledPitch` values for each `Pitch` value
+     contained herein.
+     */
     public func spelledWithDefaultSpellings() throws -> SpelledPitchSet {
-        return SpelledPitchSet(pitches: try self.map { try $0.spelledWithDefaultSpelling() } )
+        return try SpelledPitchSet(self.map { try $0.spelledWithDefaultSpelling() })
     }
 }

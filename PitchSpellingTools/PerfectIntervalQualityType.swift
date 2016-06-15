@@ -25,15 +25,17 @@ extension PerfectIntervalQualityType {
     /// The perfect interval quality type that preserves step.
     //static var stepPreserving: [IntervalQuality.EnumKind] { return [perfect] }
     
+    // FIXME: -3, 3 coming up is the signal that something is not right
     static func intervalQuality(fromDirectionDifference difference: Float)
         -> IntervalQuality.EnumKind
     {
+        
         switch difference {
         case -2, -3: return doubleDiminished
         case -1: return diminished
         case +0: return perfect
         case +1: return augmented
-        case +2: return doubleAugmented
+        case +2, 3: return doubleAugmented
         default:
             fatalError("Such an interval couldn't possibly exist: \(difference), yet")
         }

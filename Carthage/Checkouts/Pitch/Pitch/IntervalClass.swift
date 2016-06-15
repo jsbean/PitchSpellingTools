@@ -10,25 +10,47 @@ import ArithmeticTools
 
 /** 
  Modulo 12 representation of an `Interval` value.
- 
- - TODO: Refactor to `PitchSpellingTools`.
  */
 public struct IntervalClass: FloatWrapping {
     
-    public typealias FloatLiteralType = Float
+    // MARK: - Instance Properties
     
+    /// Value of this `IntervalClass`.
     public var value: Float
     
-    public init(floatLiteral value: Float) {
-        self.value = value
-    }
+    /// - warning: Not yet implemented!
+    public var vector: Float { fatalError() }
     
+    // MARK: - Initializers
+    
+    /**
+     Create an `IntervalClass` with an `Interval`.
+     */
+    public init(_ interval: Interval) {
+        self.value = interval.value % 12.0
+    }
+}
+
+extension IntervalClass: IntegerLiteralConvertible {
+    
+    // MARK: - IntegerLiteralConvertible
+    
+    /**
+     Create an `IntervalClass` with an `IntegerLiteral`.
+     */
     public init(integerLiteral value: Int) {
         self.value = Float(value)
     }
+}
+
+extension IntervalClass: FloatLiteralConvertible {
     
-    /// Create an `IntervalClass` with an `Interval`.
-    public init(_ interval: Interval) {
-        self.value = interval.value % 12.0
+    // MARK: - FloatLiteralConvertible
+    
+    /**
+     Create an `IntervalClass` with a `FloatLiteral`.
+     */
+    public init(floatLiteral value: Float) {
+        self.value = value
     }
 }

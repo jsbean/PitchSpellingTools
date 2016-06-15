@@ -161,3 +161,13 @@ extension Array where Element: Equatable {
         insert(element, atIndex: index)
     }
 }
+
+/**
+ - returns: `true` if all elements in both sequnces are equivalent. Otherwise, `false`.
+ */
+public func == <T: SequenceType where T.Generator.Element: Equatable>(lhs: T, rhs: T) -> Bool {
+    for pair in zip(lhs,rhs).lazy {
+        if pair.0 != pair.1 { return false }
+    }
+    return true
+}

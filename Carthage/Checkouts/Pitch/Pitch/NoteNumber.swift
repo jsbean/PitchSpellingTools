@@ -14,33 +14,21 @@ import ArithmeticTools
  */
 public struct NoteNumber: FloatWrapping {
     
-    public var value: Float
-
-    /**
-     Create a `NoteNumber` with a `FloatLiteralType`.
-     
-     **Example:**
-     
-     ```
-     let nn: NoteNumber = 65.5 // => F quarter sharp above middle C
-     ```
-     */
-    public init(floatLiteral value: Float) {
-        self.value = value
-    }
+    // MARK: - Type Methods
     
     /**
-     Create a `NoteNumber` with an `IntegerLiteralType`.
-     
-     **Example:**
-     
-     ```
-     let nn: NoteNumber = 65 => F above middle C
-     ```
+     - returns: NoteNumber with a random value between 60 and 72, with the given `resolution`.
      */
-    public init(integerLiteral value: Int) {
-        self.value = Float(value)
+    public static func random(resolution resolution: Float = 1) -> NoteNumber {
+        return NoteNumber(Float.random(min: 60, max: 72, resolution: resolution))
     }
+    
+    // MARK: - Instance Properties
+    
+    /// Value of this `NoteNumber`.
+    public var value: Float
+    
+    // MARK: - Initializers
     
     /**
      Create a `NoteNumber` with `Frequency` value.
@@ -64,5 +52,41 @@ public struct NoteNumber: FloatWrapping {
      */
     public func quantized(to resolution: Float) -> NoteNumber {
         return NoteNumber(floatLiteral: round(value / resolution) * resolution)
+    }
+}
+
+extension NoteNumber: IntegerLiteralConvertible {
+    
+    // MARK: IntegerLiteralConvertible
+    
+    /**
+     Create a `NoteNumber` with an `IntegerLiteralType`.
+     
+     **Example:**
+     
+     ```
+     let nn: NoteNumber = 65 => F above middle C
+     ```
+     */
+    public init(integerLiteral value: Int) {
+        self.value = Float(value)
+    }
+}
+
+extension NoteNumber: FloatLiteralConvertible {
+    
+    // MARK: FloatLiteralConvertible
+    
+    /**
+     Create a `NoteNumber` with a `FloatLiteralType`.
+     
+     **Example:**
+     
+     ```
+     let nn: NoteNumber = 65.5 // => F quarter sharp above middle C
+     ```
+     */
+    public init(floatLiteral value: Float) {
+        self.value = value
     }
 }

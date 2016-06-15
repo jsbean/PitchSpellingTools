@@ -14,107 +14,184 @@ import Pitch
  */
 public final class PitchSetSpeller: PitchSpeller {
     
-    private var allNodesHaveBeenRanked: Bool {
-        for (_, nodes) in nodesByPitch {
-            for node in nodes {
-                if node.rank == nil { return false }
-            }
-        }
-        return true
-    }
+    // MARK: - Associated Types
     
-    private var nodesByPitch: [Pitch: [Node]] {
-        var result: [Pitch: [Node]] = [:]
-        for pitch in pitchSet {
-            result[pitch] = pitch.spellingsWithoutUnconventionalEnharmonics.map {
-                Node(pitch: pitch, spelling: $0)
-            }
-        }
-        return result
-    }
+    /// The type output provided
+    public typealias Result = SpelledPitchSet
     
-    private lazy var dyads: [Dyad] = {
-        self.pitchSet.dyads.sort { $0.interval.spellingUrgency < $1.interval.spellingUrgency }
+    // MARK: - Instance Properties
+    
+    /// All `Dyad` values of the `pitchSet` contained herein, sorted for spelling priority.
+    public lazy var dyads: [Dyad]? = {
+        self.pitchSet.dyads?.sort {
+            $0.interval.spellingPriority < $1.interval.spellingPriority
+        }
     }()
     
-    private var comparisonStages: [ComparisonStage] = []
+    /// Wrapper for a dictionary of type `[Pitch: [PitchSpellingNode]]`
+    public lazy var nodeResource: PitchSpellingNodeResource = {
+        return PitchSpellingNodeResource(pitches: self.pitchSet)
+    }()
     
-    private let pitchSet: PitchSet
+    /// All `PitchSpellingNodes` contained herein.
+    public var nodes: [PitchSpellingNode] {
+        return nodeResource.nodes
+    }
+    
+    /// Factory that creates `PitchSpellingRanking` objects applicable for this `PitchSet`.
+    private lazy var rankerFactory: PitchSpellingRankerFactory = {
+        PitchSpellingRankerFactory(nodeResource: self.nodeResource)
+    }()
+    
+    /// `PitchSpellingRanking` objects generated for each `PitchSpellingDyad` contained herein.
+    private lazy var rankers: [PitchSpellingRanking]? = {
+        self.dyads?.map { self.rankerFactory.makeRanker(for: $0) }
+    }()
+    
+    /// If the `PitchSet` herein can be objectively spelled or has only one `Pitch` value.
+    private var pitchSetIsObjectivelySpellableOrMonadic: Bool {
+        return pitchSet.allSatisfy { $0.canBeSpelledObjectively } || pitchSet.isMonadic
+    }
+    
+    /// The influence that this `PitchSetSpeller` has when ranking `PitchSpellingNodes`.
+    /// - note: For use when used by `PitchSubSequenceSpeller`.
+    /// - note: Consider changing the name of this, as it means something different ...
+    private let rank: Float
+    
+    // `PitchSet` to be spelled.
+    private var pitchSet: PitchSet
+    
+    // MARK: - Initializers
     
     /**
      Create a `PitchSetSpeller` with a `PitchSet`.
+     
+     - note: With this intialization method, all of the `PitchSpellingNode` objects are
+        generated specifically for this `PitchSetSpeller`.
+     
+        If a wider context is needed (e.g., when spelling sequences of `PitchSet` values), 
+        use `init(pitchSet:nodeResource:rank)`.
      */
     public init(_ pitchSet: PitchSet) {
         self.pitchSet = pitchSet
+        self.rank = 1
     }
     
-    func compareOptions() {
+    /**
+     Create a `PitchSetSpeller with a `PitchSet`.
+     
+     - parameter pitchSet:     `PitchSet` value to be spelled.
+     - parameter nodeResource: `NodeResource` containing all `PitchSpellingNode` objects 
+        applicable to this `PitchSetSpeller`
+     - parameter rank:         Multiplier
+     
+     - TODO: Consider changing name of rank 
+     (because it means something slightly different than the other `rank` variables).
+     */
+    public init(
+        pitchSet: PitchSet,
+        nodeResource: PitchSpellingNodeResource,
+        rank: Float = 1
+    )
+    {
+        self.pitchSet = pitchSet
+        self.rank = rank
+        self.nodeResource = nodeResource
+    }
+    
+    // MARK: - Instance Methods
+    
+    /**
+     - throws: `PitchSpelling.Error` if unable to apply `PitchSpelling` objects to the given
+     `PitchSet`.
+     
+     - returns: `SpelledPitchSet` containing spelled versions of the given `PitchSet`.
+     */
+    public func spell() throws -> Result {
         
-        print("spell:")
-        
-        // manage monad
-        let pitchArray = Array(pitchSet)
-        if pitchArray.count == 1 {
-            
-        }
-        
-        
-        for (position, dyad) in dyads.enumerate() {
-            
-            print("dyad: \(dyad)")
-            if allNodesHaveBeenRanked { break }
-            
-            // bail if both can be spelled objectively
-            if dyad.canBeSpelledObjectively {
-                rankObjectivelySpellableDyad(dyad)
-                continue
+        // Exit early is pitchSet is empty
+        if pitchSet.isEmpty { return SpelledPitchSet([]) }
+
+        return pitchSetIsObjectivelySpellableOrMonadic
+            ? try spelledPitchSetWithDefaultSpellings()
+            : try spelledPitchSetByCreatingRankers()
+    }
+    
+    /**
+     Compare possible spelling options, and apply rankings upon these options.
+     */
+    public func applyRankings() {
+        attemptRankingOfNodes()
+        rankNodesOfHighestPriorityEdgeIfNecessary()
+        penalizeAlmostGoodEnoughEdges()
+    }
+    
+    /**
+     - throws: `PitchSpelling.Error` if any `Pitch` cannot be spelled with current technology.
+     
+     - returns: `SpelledPitchSet` representation of the `PitchSet` value given at `init`.
+     */
+    public func highestRankedPitches() throws -> SpelledPitchSet {
+        print(nodes)
+        return SpelledPitchSet(
+            try nodeResource.pitches.map { pitch in
+                guard let spelling = nodeResource.highestRanked(for: pitch)?.spelling else {
+                    throw PitchSpelling.Error.noSpellingForPitch(pitch)
+                }
+                return SpelledPitch(pitch, spelling)
             }
-            
-            let comparisonStage = makeComparisonStage(for: dyad)
-            comparisonStages.append(comparisonStage)
-            
-            let weight = Float(dyads.count - position) / Float(dyads.count)
-            comparisonStage.rate(withWeight: weight)
-        }
+        )
     }
     
-    // make better name
-    func spell() throws -> SpelledPitchSet {
-        
+    private func spelledPitchSetWithDefaultSpellings() throws -> SpelledPitchSet {
         return try pitchSet.spelledWithDefaultSpellings()
     }
     
-    private func rankObjectivelySpellableDyad(dyad: Dyad) {
-        [dyad.higher, dyad.lower].forEach { rankObjectivelySpellablePitch($0) }
+    private func spelledPitchSetByCreatingRankers() throws -> SpelledPitchSet {
+        applyRankings()
+        return try highestRankedPitches()
     }
     
-    private func rankObjectivelySpellablePitch(pitch: Pitch) {
-        nodesByPitch[pitch]?.first?.rank = 1
+    private func attemptRankingOfNodes() {
+        rankers?.enumerate().forEach { position, ranker in
+            ranker.applyRankings(withAmount: rankWeight(for: position))
+        }
     }
     
-    // TODO: refactor
-    private func makeComparisonStage(for dyad: Dyad) -> ComparisonStage {
-        
-        let comparisonStage: ComparisonStage
-
-        if dyad.isfullyAmbiguouslySpellable {
-            comparisonStage = FullyAmbiguousComparisonStage(
-                Level(nodes: nodesByPitch[dyad.lower]!),
-                Level(nodes: nodesByPitch[dyad.higher]!)
-            )
-        } else {
-            if dyad.higher.canBeSpelledObjectively {
-                comparisonStage = SemiAmbiguousComparisonStage(
-                    determinate: nodesByPitch[dyad.higher]!.first!,
-                    other: Level(nodes: nodesByPitch[dyad.lower]!)
-                )
-            } else {
-                comparisonStage = SemiAmbiguousComparisonStage(
-                    determinate: nodesByPitch[dyad.lower]!.first!,
-                    other: Level(nodes: nodesByPitch[dyad.higher]!)
-                )
+    private func rankNodesOfHighestPriorityEdgeIfNecessary() {
+        if nodeResource.noNodesHaveBeenRanked { rankNodesOfHighestPriorityEdge() }
+    }
+    
+    private func rankNodesOfHighestPriorityEdge() {
+        guard let first = rankers?[0] as? FullyAmbiguousPitchSpellingRanker else { return }
+        first.highestRanked?.applyRankToNodes(rank: 1)
+    }
+    
+    private func penalizeAlmostGoodEnoughEdges() {
+        guard let rankers = rankers else { return }
+        for case let (index, fullyAmbiguous as FullyAmbiguousPitchSpellingRanker)
+            in rankers.enumerate()
+        {
+            fullyAmbiguous.almostGoodEnoughEdges.forEach {
+                $0.penalizeNodes(amount: rankWeight(for: index))
             }
         }
-        return comparisonStage
+    }
+    
+    // Clarify inheriting rank
+    // TODO: Refine
+    private func rankWeight(for position: Int) -> Float {
+        guard let dyads = dyads else { return 0 }
+        return rank * (Float(dyads.count - position) / Float(dyads.count)) / 2
+    }
+}
+
+extension PitchSetSpeller: CustomStringConvertible {
+    
+    // MARK: - CustomStringConvertible
+    
+    /// Printed description.
+    public var description: String {
+        return "PitchSetSpeller: \(nodeResource.description)"
     }
 }

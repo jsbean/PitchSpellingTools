@@ -27,6 +27,9 @@ public struct PitchSpelling {
          */
         case invalidSpelling(Pitch, PitchSpelling)
         
+        /**
+         If there is no `PitchSpelling` found for the given `Pitch`.
+         */
         case noSpellingForPitch(Pitch)
     }
     
@@ -43,11 +46,10 @@ public struct PitchSpelling {
     
     // MARK: - Initializers
     
-    /**
+    /*:
      Create a `PitchSpelling` (with argument labels).
-     
+
      **Example:**
-     
      ```
      let cNatural = PitchSpelling(letterName: .c)
      let aFlat = PitchSpelling(letterName: .a, coarse: .flat)

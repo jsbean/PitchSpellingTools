@@ -33,6 +33,8 @@ extension PitchSpelling {
             return self == .natural ? .none : rawValue > 0 ? .up : .down
         }
         
+        internal var distance: Float { return abs(rawValue) }
+        
         internal var resolution: Resolution {
             return rawValue % 1 == 0 ? .halfStep : .quarterStep
         }
@@ -72,4 +74,18 @@ extension PitchSpelling {
         /// DoubleFlat.
         case doubleFlat = -2.0
     }
+    
+    internal func isCompatible(withCoarseDirection direction: CoarseAdjustment.Direction)
+        -> Bool
+    {
+        switch direction {
+        case .none: return true
+        case .up:
+            return isFineAdjustedNatural ? false : (direction == .none || direction == .up)
+        case .down:
+            return isFineAdjustedNatural ? false : (direction == .none || direction == .down)
+        }
+    }
+
+    internal var isFineAdjustedNatural: Bool { return coarse == .natural && fine != .none }
 }

@@ -26,7 +26,7 @@ internal struct PitchSpellings {
         ],
         
         00.50: [
-            PitchSpelling(.c, .quarterSharp, .none),
+            PitchSpelling(.c, .quarterSharp),
             PitchSpelling(.d, .threeQuarterFlat)
         ],
         

@@ -10,7 +10,7 @@ import Pitch
 
 extension PitchClass {
     
-    public var spellingUrgency: Int? {
-        return IntervalClass(self.value).spellingUrgency
+    public var spellingPriority: Int? {
+        return IntervalClass(self.value).spellingPriority
     }
 }

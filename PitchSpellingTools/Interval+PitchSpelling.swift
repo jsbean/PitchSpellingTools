@@ -13,7 +13,8 @@ extension Interval {
     /// `IntervalClass` representation of `Interval`.
     public var intervalClass: IntervalClass { return IntervalClass(self) }
     
-    public var spellingUrgency: IntervalClass.SpellingUrgency? {
-        return intervalClass.spellingUrgency
+    /// Priority for this `Interval` to be spelled. Lower value is higher priority.
+    public var spellingPriority: IntervalClass.SpellingPriority? {
+        return intervalClass.spellingPriority
     }
 }

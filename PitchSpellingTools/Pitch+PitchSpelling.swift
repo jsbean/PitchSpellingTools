@@ -10,6 +10,8 @@ import Pitch
 
 extension Pitch {
     
+    // MARK: - Instance Properties
+    
     /**
      `true` for `n	atural` spellable `Pitches`. Otherwise `false`.
      
@@ -19,10 +21,7 @@ extension Pitch {
      ```
      */
     public var canBeSpelledObjectively: Bool {
-        for spelling in spellings {
-            if spelling.coarse == .natural && spelling.fine == .none { return true }
-        }
-        return false
+        return spellings.anySatisfy({ $0.coarse == .natural && $0.fine == .none })
     }
  
     /// All `PitchSpelling` structures available for this `Pitch`.
@@ -30,7 +29,7 @@ extension Pitch {
         return PitchSpellings.spellings(forPitchClass: pitchClass) ?? []
     }
     
-    // TODO: Encapsulate this logic within `PitchSpellings` `struct`.
+    /// - TODO: Encapsulate this logic within `PitchSpellings` `struct`.
     public var spellingsWithoutUnconventionalEnharmonics: [PitchSpelling] {
         var spellings = self.spellings
         
@@ -82,6 +81,8 @@ extension Pitch {
         return 0.0
     }
     
+    // MARK: - Instance Methods
+    
     /**
      - returns: `SpelledPitch` with the given `PitchSpelling`,
      if the given `PitchSpelling` is valid for the `PitchClass` of the given `pitch`.
@@ -98,6 +99,11 @@ extension Pitch {
         return SpelledPitch(pitch: self, spelling: spelling)
     }
     
+    /**
+     - throws: `PitchSpelling.Error` if no default spelling exists for this `Pitch`.
+     
+     - returns: `SpelledPitch` with the default spelling for this `Pitch`, if possible.
+     */
     public func spelledWithDefaultSpelling() throws -> SpelledPitch {
         guard let defaultSpelling = defaultSpelling else {
             throw PitchSpelling.Error.noSpellingForPitch(self)
