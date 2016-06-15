@@ -13,13 +13,25 @@ Use [Carthage](https://github.com/Carthage/Carthage) to keep these dependencies 
 
 ### Clone
 
-To work on this framework on its own, simply clone this repo, and call upon Carthage to manage the dependencies herein.
+To work on this framework on its own:
 
-```Bash
-git clone https://github.com/dn-m/PitchSpellingTools
-cd PitchSpellingTools
-carthage update
-```
+1. **Clone this repo:**
+>```Bash
+>git clone https://github.com/dn-m/PitchSpellingTools
+>```
+
+2. **Call upon Carthage to manage the dependencies herein:**
+>```Bash
+>cd PitchSpellingTools
+>carthage update
+>```
+
+3. **Open the Xcodeproj:**
+>```Bash
+>open PitchSpellingTools.xcodeproj
+>```
+
+4. **Run the tests** by hitting `⌘ + u`.
 
 <a name="integration"></a>
 ### Integrate
