@@ -18,11 +18,11 @@ To work on this framework on its own:
 1. **Clone this repo:**
 >```Bash
 >git clone https://github.com/dn-m/PitchSpellingTools
+>cd PitchSpellingTools
 >```
 
 2. **Call upon Carthage to manage the dependencies herein:**
 >```Bash
->cd PitchSpellingTools
 >carthage update
 >```
 
