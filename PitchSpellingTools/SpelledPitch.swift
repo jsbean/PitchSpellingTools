@@ -6,6 +6,7 @@
 //
 //
 
+import Foundation
 import Pitch
 
 /**
@@ -20,6 +21,26 @@ public struct SpelledPitch {
     
     /// `PitchSpelling`.
     public let spelling: PitchSpelling
+    
+    public var octave: Int {
+        
+        let unadjusted = Int(floor(pitch.noteNumber.value / 12.0))
+        
+        func mustAdjustForC() -> Bool {
+            guard spelling.letterName == .c else { return false }
+            if spelling.coarse.direction == .down { return true }
+            return spelling.coarse == .natural && spelling.fine == .down
+        }
+        
+        func mustAdjustForB() -> Bool {
+            guard spelling.letterName == .b else { return false }
+            return spelling.coarse == .sharp && spelling.fine.rawValue >= 0
+        }
+        
+        if mustAdjustForC() { return unadjusted + 1 }
+        if mustAdjustForB() { return unadjusted - 1 }
+        return unadjusted
+    }
     
     // MARK: - Initializers
     

@@ -27,6 +27,8 @@
 		0744DC421CFDDDB400DDDAD2 /* PitchSubSequenceSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0744DC401CFDDDB400DDDAD2 /* PitchSubSequenceSpeller.swift */; };
 		0744DC441CFDE1DA00DDDAD2 /* PitchSubSequenceSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0744DC431CFDE1DA00DDDAD2 /* PitchSubSequenceSpellerTests.swift */; };
 		0744DC451CFDE1DA00DDDAD2 /* PitchSubSequenceSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0744DC431CFDE1DA00DDDAD2 /* PitchSubSequenceSpellerTests.swift */; };
+		074702EE1D117C8400993CB8 /* SpelledPitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074702ED1D117C8400993CB8 /* SpelledPitchTests.swift */; };
+		074702EF1D117C8400993CB8 /* SpelledPitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074702ED1D117C8400993CB8 /* SpelledPitchTests.swift */; };
 		074B2C091D06279200F937F7 /* PitchSpellingNodeResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B2C081D06279200F937F7 /* PitchSpellingNodeResourceTests.swift */; };
 		074B2C0A1D06279200F937F7 /* PitchSpellingNodeResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B2C081D06279200F937F7 /* PitchSpellingNodeResourceTests.swift */; };
 		074CC8971D09953600955A21 /* Spellability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074CC8961D09953600955A21 /* Spellability.swift */; };
@@ -218,6 +220,7 @@
 		072AD9741D03888500AF9142 /* PitchSequence+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSequence+PitchSpelling.swift"; path = "PitchSpellingTools/PitchSequence+PitchSpelling.swift"; sourceTree = "<group>"; };
 		0744DC401CFDDDB400DDDAD2 /* PitchSubSequenceSpeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSubSequenceSpeller.swift; path = PitchSpellingTools/PitchSubSequenceSpeller.swift; sourceTree = "<group>"; };
 		0744DC431CFDE1DA00DDDAD2 /* PitchSubSequenceSpellerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSubSequenceSpellerTests.swift; path = PitchSpellingToolsTests/PitchSubSequenceSpellerTests.swift; sourceTree = "<group>"; };
+		074702ED1D117C8400993CB8 /* SpelledPitchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpelledPitchTests.swift; path = PitchSpellingToolsTests/SpelledPitchTests.swift; sourceTree = "<group>"; };
 		074B2C081D06279200F937F7 /* PitchSpellingNodeResourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSpellingNodeResourceTests.swift; path = PitchSpellingToolsTests/PitchSpellingNodeResourceTests.swift; sourceTree = "<group>"; };
 		074CC8961D09953600955A21 /* Spellability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Spellability.swift; path = PitchSpellingTools/Spellability.swift; sourceTree = "<group>"; };
 		0752A53D1CD69BD0007C25AB /* IntervalQuality.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntervalQuality.swift; path = PitchSpellingTools/IntervalQuality.swift; sourceTree = "<group>"; };
@@ -501,6 +504,7 @@
 				A7A244A4632AB4D02346A637 /* Supporting Files */,
 				0752A55C1CD69C4D007C25AB /* IntervalQualityTests.swift */,
 				07A8C8051CF73A6600CFD69B /* IntervalClass+PitchSpellingTests.swift */,
+				074702ED1D117C8400993CB8 /* SpelledPitchTests.swift */,
 				07BB2F761CDBCABE00DC4D7A /* DyadTests.swift */,
 				0752A55D1CD69C4D007C25AB /* PitchSpellingTests.swift */,
 				07BE3C161CE1504A0000A1AF /* Pitch+PitchSpellingTests.swift */,
@@ -764,6 +768,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				074702EE1D117C8400993CB8 /* SpelledPitchTests.swift in Sources */,
 				07254E9B1CEB919500DF10B8 /* PitchSpelling+StringLiteralConvertibleTests.swift in Sources */,
 				074B2C091D06279200F937F7 /* PitchSpellingNodeResourceTests.swift in Sources */,
 				0752A5601CD69C4D007C25AB /* PitchSpellingTests.swift in Sources */,
@@ -784,6 +789,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				074702EF1D117C8400993CB8 /* SpelledPitchTests.swift in Sources */,
 				07254E9C1CEB919500DF10B8 /* PitchSpelling+StringLiteralConvertibleTests.swift in Sources */,
 				074B2C0A1D06279200F937F7 /* PitchSpellingNodeResourceTests.swift in Sources */,
 				0752A5611CD69C4D007C25AB /* PitchSpellingTests.swift in Sources */,

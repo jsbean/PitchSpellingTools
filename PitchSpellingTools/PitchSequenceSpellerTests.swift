@@ -73,26 +73,26 @@ class PitchSequenceSpellerTests: XCTestCase {
         }
     }
     
-    func testManyNoteSequenceMonophonic() {
-        let sets: [PitchSet] = (0 ..< 100).map { _ in
-            [Pitch(noteNumber: NoteNumber(Float.random(min: 60, max: 72, resolution: 1)))]
-        }
-        let speller = PitchSequenceSpeller(sets: sets)
-        try! speller.spell().forEach { print($0) }
-    }
-    
-    func testManyVariableSizeSequence() {
-        let sets: [PitchSet] = (0 ..< 50).map { _ in
-            let amountPitches = Int.random(min: 1, max: 3)
-            return PitchSet((0 ..< amountPitches).map { _ in
-                Pitch(noteNumber: NoteNumber(Float.random(min: 60, max: 72, resolution: 4)))
-            })
-        }
-        let speller = PitchSequenceSpeller(sets: sets)
-        try! speller.spell().forEach {
-            print($0.map { $0.spelling })
-        }
-    }
+//    func testManyNoteSequenceMonophonic() {
+//        let sets: [PitchSet] = (0 ..< 100).map { _ in
+//            [Pitch(noteNumber: NoteNumber(Float.random(min: 60, max: 72, resolution: 1)))]
+//        }
+//        let speller = PitchSequenceSpeller(sets: sets)
+//        try! speller.spell().forEach { print($0) }
+//    }
+//    
+//    func testManyVariableSizeSequence() {
+//        let sets: [PitchSet] = (0 ..< 50).map { _ in
+//            let amountPitches = Int.random(min: 1, max: 3)
+//            return PitchSet((0 ..< amountPitches).map { _ in
+//                Pitch(noteNumber: NoteNumber(Float.random(min: 60, max: 72, resolution: 4)))
+//            })
+//        }
+//        let speller = PitchSequenceSpeller(sets: sets)
+//        try! speller.spell().forEach {
+//            print($0.map { $0.spelling })
+//        }
+//    }
     
     // MARK: - Performance Tests
 //
