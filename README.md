@@ -3,6 +3,8 @@
 
 Structures that enable the spelling of pitches. Compatible with macOS and iOS.
 
+See the [documentation](http://dn-m.github.io/PitchSpellingTools/).
+
 ***
 
 ## Usage
