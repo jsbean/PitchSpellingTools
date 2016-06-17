@@ -163,6 +163,7 @@
 //    }
 //    
 //    private func rankNodesOfHighestPriorityEdge() {
+//        // change to safe `.first`
 //        guard let first = rankers?[0] as? FullyAmbiguousPitchSpellingRanker else { return }
 //        first.highestRanked?.applyRankToNodes(rank: 1)
 //    }
