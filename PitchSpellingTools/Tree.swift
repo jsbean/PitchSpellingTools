@@ -27,7 +27,7 @@ public final class Tree {
     func spell() throws -> SpelledPitchSet? {
         
         // start with root
-        // tell nodes to do their recursing 
+        // tell nodes to do their recursing
         
         return nil
     }

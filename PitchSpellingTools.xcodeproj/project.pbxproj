@@ -112,6 +112,8 @@
 		07CE344C1D145F9200ADCCF7 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CE344A1D145F9200ADCCF7 /* Node.swift */; };
 		07CE344E1D14606900ADCCF7 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CE344D1D14606900ADCCF7 /* Tree.swift */; };
 		07CE344F1D14606900ADCCF7 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CE344D1D14606900ADCCF7 /* Tree.swift */; };
+		07CE34511D14661300ADCCF7 /* NodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CE34501D14661300ADCCF7 /* NodeTests.swift */; };
+		07CE34521D14661300ADCCF7 /* NodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CE34501D14661300ADCCF7 /* NodeTests.swift */; };
 		07D7F9E31D07746E00CCE5F0 /* PitchSetSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D7F9E21D07746E00CCE5F0 /* PitchSetSpellerTests.swift */; };
 		07D7F9E41D07746E00CCE5F0 /* PitchSetSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D7F9E21D07746E00CCE5F0 /* PitchSetSpellerTests.swift */; };
 		07E2E1411CDAC32400FDF3E8 /* SpelledPitch+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E2E1401CDAC32400FDF3E8 /* SpelledPitch+CustomStringConvertible.swift */; };
@@ -246,6 +248,7 @@
 		07BE3C161CE1504A0000A1AF /* Pitch+PitchSpellingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pitch+PitchSpellingTests.swift"; path = "PitchSpellingToolsTests/Pitch+PitchSpellingTests.swift"; sourceTree = "<group>"; };
 		07CE344A1D145F9200ADCCF7 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = PitchSpellingTools/Node.swift; sourceTree = "<group>"; };
 		07CE344D1D14606900ADCCF7 /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tree.swift; path = PitchSpellingTools/Tree.swift; sourceTree = "<group>"; };
+		07CE34501D14661300ADCCF7 /* NodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeTests.swift; path = PitchSpellingToolsTests/NodeTests.swift; sourceTree = "<group>"; };
 		07D7F9E21D07746E00CCE5F0 /* PitchSetSpellerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSetSpellerTests.swift; path = PitchSpellingToolsTests/PitchSetSpellerTests.swift; sourceTree = "<group>"; };
 		07E2E1401CDAC32400FDF3E8 /* SpelledPitch+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SpelledPitch+CustomStringConvertible.swift"; path = "PitchSpellingTools/SpelledPitch+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		07EFF3191D05D8A9009B1C48 /* PitchSetDyadSpeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSetDyadSpeller.swift; path = PitchSpellingTools/PitchSetDyadSpeller.swift; sourceTree = "<group>"; };
@@ -462,6 +465,7 @@
 			children = (
 				A7A244A4632AB4D02346A637 /* Supporting Files */,
 				0752A55C1CD69C4D007C25AB /* IntervalQualityTests.swift */,
+				07CE34501D14661300ADCCF7 /* NodeTests.swift */,
 				07A8C8051CF73A6600CFD69B /* IntervalClass+PitchSpellingTests.swift */,
 				074702ED1D117C8400993CB8 /* SpelledPitchTests.swift */,
 				07BB2F761CDBCABE00DC4D7A /* DyadTests.swift */,
@@ -733,6 +737,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				074702EE1D117C8400993CB8 /* SpelledPitchTests.swift in Sources */,
+				07CE34511D14661300ADCCF7 /* NodeTests.swift in Sources */,
 				07254E9B1CEB919500DF10B8 /* PitchSpelling+StringLiteralConvertibleTests.swift in Sources */,
 				074B2C091D06279200F937F7 /* PitchSpellingNodeResourceTests.swift in Sources */,
 				0752A5601CD69C4D007C25AB /* PitchSpellingTests.swift in Sources */,
@@ -754,6 +759,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				074702EF1D117C8400993CB8 /* SpelledPitchTests.swift in Sources */,
+				07CE34521D14661300ADCCF7 /* NodeTests.swift in Sources */,
 				07254E9C1CEB919500DF10B8 /* PitchSpelling+StringLiteralConvertibleTests.swift in Sources */,
 				074B2C0A1D06279200F937F7 /* PitchSpellingNodeResourceTests.swift in Sources */,
 				0752A5611CD69C4D007C25AB /* PitchSpellingTests.swift in Sources */,
