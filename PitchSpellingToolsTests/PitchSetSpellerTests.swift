@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import ArrayTools
 import Pitch
 @testable import PitchSpellingTools
 
@@ -208,7 +209,7 @@ class PitchSetSpellerTests: XCTestCase {
 //                .count <= 1
 //        )
 //    }
-    
+//    
 
 //    // MARK: - Performance Testing
 //    
