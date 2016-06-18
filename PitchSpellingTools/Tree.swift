@@ -6,6 +6,7 @@
 //
 //
 
+import ArrayTools
 import TreeTools
 import Pitch
 
@@ -24,11 +25,59 @@ public final class Tree {
         self.pitchSet = pitchSet
     }
     
-    func spell() throws -> SpelledPitchSet? {
+    public func spell() throws -> SpelledPitchSet {
+
+        guard let dyads = dyads else { return SpelledPitchSet([]) }
+        guard let (head, tail) = dyads.destructured else { return SpelledPitchSet([]) }
+
+        let subPaths = createDyadSubPaths(for: head)
+        for subPath in subPaths {
+            for child in subPath.children {
+                child._traverse(toSpell: tail, all: dyads)
+            }
+        }
         
-        // start with root
-        // tell nodes to do their recursing
+        let options = subPaths
+            .flatMap {
+                $0.leaves.map {
+                    Set($0.pathToRoot.map { $0.spelling })
+                }
+            }
+            .sort {
+                $0.map { $0.spellingDistance }.mean! < $1.map { $0.spellingDistance }.mean!
+            }
+
+        return SpelledPitchSet([])
+    }
+    
+    func createDyadSubPaths(for dyad: Dyad) -> [Node] {
         
-        return nil
+        var result: [Node] = []
+        for lower in dyad.lower.spellings {
+            let node = Node(pitch: dyad.lower, spelling: lower)
+            for higher in dyad.higher.spellings {
+                let pitchSpellingDyad = PitchSpellingDyad(lower, higher)
+                if pitchSpellingDyad.hasValidIntervalQuality && pitchSpellingDyad.isFineCompatible {
+                    //print("PASSED TEST")
+                    let child = Node(pitch: dyad.higher, spelling: higher)
+                    node.addChild(child)
+                } else {
+                    //print("FAILED TEST")
+                }
+            }
+            if node.isContainer {
+                result.append(node)
+            }
+        }
+        //print("create dyad sub paths for dyad: \(dyad): \(result)")
+        return result
+    }
+    
+    private func prepareUnspelledPitches(fromPitchSet pitchSet: PitchSet) -> [Pitch] {
+        var pitchSet = pitchSet
+        return pitchSet.dyads!
+            .sort { $0.interval.spellingPriority < $1.interval.spellingPriority }
+            .flatMap { [$0.lower, $0.higher] }
+            .unique
     }
 }

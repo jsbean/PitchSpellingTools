@@ -25,6 +25,8 @@ public enum NodeError: ErrorType {
  Interface for nodes in tree structures. 
  
  Provides default implementations for many tree structure operations.
+ 
+ > Useful for `final class` types.
  */
 public protocol NodeType: class {
     
@@ -139,6 +141,7 @@ public extension NodeType {
      */
     func addChild(node: Self) {
         children.append(node)
+        node.parent = self
     }
 
     /**
