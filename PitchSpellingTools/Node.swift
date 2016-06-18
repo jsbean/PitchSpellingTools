@@ -23,118 +23,74 @@ public final class Node: NodeType {
         self.spelling = spelling
     }
     
-    func _traverse(toSpell unspelled: [Dyad], all: [Dyad]) {
-        guard let (head, tail) = unspelled.destructured else { return }
+    func traverse(toSpell unspelled: [Dyad], all: [Dyad]) {
         
-        let subPaths = createDyadSubPaths(for: head)
-        subPaths.forEach { addChild($0) }
+        // no more pitches to spell (worst case scenario)
+        guard let (head, tail) = unspelled.destructured else { return }
 
+        // generate subtrees for next dyad
+        let subTrees = makeTrees(
+            for: head,
+            satisfying: [
+                { $0.hasValidIntervalQuality },
+                { $0.isFineCompatible }
+            ],
+            avoidingSpellingConflictWith: pathToRoot
+        )
+        
+        // attach child nodes
+        subTrees.forEach { addChild($0) }
+
+        // if all pitches present // get out of here, we are done!
         guard root.height + 1 < all.count else { return }
 
-        subPaths.forEach {
+        // traverse the children of these nodes (skip generation)
+        subTrees.forEach {
             for child in $0.children {
-                child._traverse(toSpell: tail, all: all)
+                child.traverse(toSpell: tail, all: all)
             }
         }
     }
     
-    func createDyadSubPaths(for dyad: Dyad) -> [Node] {
-        var result: [Node] = []
-
-        
-        
-        for lower in dyad.lower.spellings {
-            
-            // refactor
-            var spellingParity = true
-            for previousNode in pathToRoot {
-                if previousNode.pitch == dyad.lower && previousNode.spelling != lower {
-                    spellingParity = false
-                }
-            }
-            guard spellingParity else { continue }
-            
-            let node = Node(pitch: dyad.lower, spelling: lower)
-            for higher in dyad.higher.spellings {
-                
-                // refactor
-                var spellingParity = true
-                for previousNode in pathToRoot {
-                    if previousNode.pitch == dyad.higher && previousNode.spelling != higher {
-                        spellingParity = false
-                    }
-                }
-                
-                guard spellingParity else { continue }
-
-                let pitchSpellingDyad = PitchSpellingDyad(lower, higher)
-                if pitchSpellingDyad.hasValidIntervalQuality {
-                    //print("PASSED TEST")
-                    let child = Node(pitch: dyad.higher, spelling: higher)
-                    node.addChild(child)
-                } else {
-                    //print("FAILED TEST")
-                }
-            }
-            if node.isContainer {
-                result.append(node)
+    /**
+     - returns: `true` if the given `nodes` share a `pitch` value, but are spelled differently.
+     Otherwise, `false`.
+     */
+    public func hasSpellingConflicts(with nodes: [Node]) -> Bool {
+        for node in nodes {
+            if self.pitch == node.pitch && self.spelling != node.spelling {
+                return true
             }
         }
-        return result
+        return false
     }
-    
-    // construct tree
-    func traverse(toSpell unspelled: [Pitch]) {
-        
-        //print("traverse: \(self), toSpell: \(unspelled)")
-        
-        // TODO:
-        
-        // If there is
-        guard let (head, tail) = unspelled.destructured else {
-            //print("SUCCESS: \(self.pathToRoot)")
-            return
-        }
-        
-        for spellingToCompare in head.spellings {
-            let dyad = PitchSpellingDyad(spelling, spellingToCompare)
-            
-            //print("PitchSpellingDyad: \(dyad)")
-            
-            // check all rules!
-            if dyad.hasValidIntervalQuality && dyad.isFineCompatible {
-                //print("TEST PASSED")
-                let node = addNode(forPitch: head, andSpelling: spellingToCompare)
-                node.traverse(toSpell: tail)
-            } else {
-                //print("TEST FAILED")
-            }
-        }
-    }
-    
-    func spell(pitchSet: PitchSet) -> SpelledPitchSet {
-        
-        if pitchSet.isEmpty { return SpelledPitchSet([]) }
+}
 
-        let unspelled = prepareUnspelledPitches(fromPitchSet: pitchSet)
-        traverse(toSpell: unspelled)
-        
-        return SpelledPitchSet([])
+func makeTrees(
+    for dyad: Dyad,
+    satisfying rules: [(PitchSpellingDyad) -> Bool] = [],
+    avoidingSpellingConflictWith nodes: [Node] = []
+) -> [Node]
+{
+    var result: [Node] = []
+    for lowerSpelling in dyad.lower.spellings {
+        let lowerNode = Node(pitch: dyad.lower, spelling: lowerSpelling)
+        guard !lowerNode.hasSpellingConflicts(with: nodes) else { continue }
+        for higherSpelling in dyad.higher.spellings {
+            let higherNode = Node(pitch: dyad.higher, spelling: higherSpelling)
+            guard !higherNode.hasSpellingConflicts(with: nodes) else { continue }
+            let pitchSpellingDyad = PitchSpellingDyad(lowerSpelling, higherSpelling)
+            guard value(pitchSpellingDyad, satisfiesAll: rules) else { continue }
+            lowerNode.addChild(higherNode)
+        }
+        result.append(lowerNode)
     }
-    
-    private func prepareUnspelledPitches(fromPitchSet pitchSet: PitchSet) -> [Pitch] {
-        var pitchSet = pitchSet
-        return pitchSet.dyads!
-            .sort { $0.interval.spellingPriority < $1.interval.spellingPriority }
-            .flatMap { [$0.lower, $0.higher] }
-            .unique
-    }
+    return result
+}
 
-    public func addNode(forPitch pitch: Pitch, andSpelling spelling: PitchSpelling) -> Node {
-        let node = Node(pitch: pitch, spelling: spelling)
-        addChild(node)
-        return node
-    }
+func value<T>(value: T, satisfiesAll rules: [(T) -> Bool]) -> Bool {
+    for rule in rules where !rule(value) { return false }
+    return true
 }
 
 extension Node: Hashable {

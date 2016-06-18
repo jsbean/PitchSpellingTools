@@ -34,6 +34,8 @@ class NodeTests: XCTestCase {
         try! tree.spell()
     }
     
+    
+    
     func testEighthTones() {
         self.measureBlock {
             let pitchSet: PitchSet = [60.25, 69.75]
