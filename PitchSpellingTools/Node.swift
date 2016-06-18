@@ -70,8 +70,8 @@ public final class Node: NodeType {
 
         // traverse the children of these nodes (skip generation)
         subTrees.forEach {
-            for child in $0.children {
-                child.traverse(toSpell: tail, all: all)
+            $0.children.forEach {
+                $0.traverse(toSpell: tail, all: all)
             }
         }
     }

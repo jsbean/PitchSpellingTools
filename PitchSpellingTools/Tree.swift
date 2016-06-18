@@ -12,6 +12,11 @@ import Pitch
 
 public final class Tree {
     
+    public enum Error: ErrorType {
+        case noOptions
+        case incorrectAmount
+    }
+    
     private var pitchSet: PitchSet
     
     /// All `Dyad` values of the `pitchSet` contained herein, sorted for spelling priority.
@@ -44,25 +49,17 @@ public final class Tree {
             }
         }
 
-        let options = trees
-            .flatMap {
-                $0.leaves.map {
-                    Set($0.pathToRoot.map { $0.spelling })
-                }
-            }
-            .sort {
-                $0.map { $0.spellingDistance }.mean! < $1.map { $0.spellingDistance }.mean!
-            }
+        let options = trees.flatMap { $0.leaves.map { Set($0.pathToRoot) } }
+        guard options.count > 0 else { throw Error.noOptions }
         
-        print("options: \(options)")
-        
-        for option in options {
-            for spelling in option {
-                print("spelling: \(spelling); distance: \(spelling.spellingDistance)")
-            }
-            print("option: \(option); distance: \(option.map { $0.spellingDistance }.mean!)")
+        let sorted = options.sort {
+            $0.map { $0.spelling.spellingDistance }.mean! <
+            $1.map { $0.spelling.spellingDistance }.mean!
         }
+        
+        let bestOption = sorted.first!
+        let path = Path(nodes: bestOption)
 
-        return SpelledPitchSet([])
+        return path.applySpellings()
     }
 }

@@ -116,6 +116,8 @@
 		07CE34521D14661300ADCCF7 /* NodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CE34501D14661300ADCCF7 /* NodeTests.swift */; };
 		07D7F9E31D07746E00CCE5F0 /* PitchSetSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D7F9E21D07746E00CCE5F0 /* PitchSetSpellerTests.swift */; };
 		07D7F9E41D07746E00CCE5F0 /* PitchSetSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D7F9E21D07746E00CCE5F0 /* PitchSetSpellerTests.swift */; };
+		07D954EC1D158E2D00AAF8DF /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D954EB1D158E2D00AAF8DF /* Path.swift */; };
+		07D954ED1D158E2D00AAF8DF /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D954EB1D158E2D00AAF8DF /* Path.swift */; };
 		07E2E1411CDAC32400FDF3E8 /* SpelledPitch+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E2E1401CDAC32400FDF3E8 /* SpelledPitch+CustomStringConvertible.swift */; };
 		07E2E1421CDAC32400FDF3E8 /* SpelledPitch+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E2E1401CDAC32400FDF3E8 /* SpelledPitch+CustomStringConvertible.swift */; };
 		07EFF31A1D05D8A9009B1C48 /* PitchSetDyadSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFF3191D05D8A9009B1C48 /* PitchSetDyadSpeller.swift */; };
@@ -250,6 +252,7 @@
 		07CE344D1D14606900ADCCF7 /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tree.swift; path = PitchSpellingTools/Tree.swift; sourceTree = "<group>"; };
 		07CE34501D14661300ADCCF7 /* NodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeTests.swift; path = PitchSpellingToolsTests/NodeTests.swift; sourceTree = "<group>"; };
 		07D7F9E21D07746E00CCE5F0 /* PitchSetSpellerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSetSpellerTests.swift; path = PitchSpellingToolsTests/PitchSetSpellerTests.swift; sourceTree = "<group>"; };
+		07D954EB1D158E2D00AAF8DF /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Path.swift; path = PitchSpellingTools/Path.swift; sourceTree = "<group>"; };
 		07E2E1401CDAC32400FDF3E8 /* SpelledPitch+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SpelledPitch+CustomStringConvertible.swift"; path = "PitchSpellingTools/SpelledPitch+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		07EFF3191D05D8A9009B1C48 /* PitchSetDyadSpeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSetDyadSpeller.swift; path = PitchSpellingTools/PitchSetDyadSpeller.swift; sourceTree = "<group>"; };
 		07F6F1431CD7E3410026E89D /* PitchSpellingsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSpellingsTests.swift; path = PitchSpellingToolsTests/PitchSpellingsTests.swift; sourceTree = "<group>"; };
@@ -354,6 +357,7 @@
 		07CE34491D145EF600ADCCF7 /* Tree */ = {
 			isa = PBXGroup;
 			children = (
+				07D954EB1D158E2D00AAF8DF /* Path.swift */,
 				07CE344A1D145F9200ADCCF7 /* Node.swift */,
 				07CE344D1D14606900ADCCF7 /* Tree.swift */,
 			);
@@ -694,6 +698,7 @@
 				074CC8971D09953600955A21 /* Spellability.swift in Sources */,
 				0796E1241CE402B50084667B /* IntervalQualityKind.swift in Sources */,
 				07A8C81D1CF787F200CFD69B /* PitchSpellingNode.swift in Sources */,
+				07D954EC1D158E2D00AAF8DF /* Path.swift in Sources */,
 				07A8C80C1CF77A9C00CFD69B /* PitchClass+PitchSpelling.swift in Sources */,
 				078DAE0D1CF90F350095AFC9 /* SpelledPitchSet.swift in Sources */,
 				07A8C80F1CF77C4D00CFD69B /* PitchSet+PitchSpelling.swift in Sources */,
@@ -791,6 +796,7 @@
 				074CC8981D09953600955A21 /* Spellability.swift in Sources */,
 				0796E1251CE402B50084667B /* IntervalQualityKind.swift in Sources */,
 				07A8C81E1CF787F200CFD69B /* PitchSpellingNode.swift in Sources */,
+				07D954ED1D158E2D00AAF8DF /* Path.swift in Sources */,
 				07A8C80D1CF77A9C00CFD69B /* PitchClass+PitchSpelling.swift in Sources */,
 				078DAE0E1CF90F350095AFC9 /* SpelledPitchSet.swift in Sources */,
 				07A8C8101CF77C4D00CFD69B /* PitchSet+PitchSpelling.swift in Sources */,
