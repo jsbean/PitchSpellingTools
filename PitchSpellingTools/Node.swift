@@ -18,6 +18,30 @@ public final class Node: NodeType {
     public let pitch: Pitch
     public let spelling: PitchSpelling
     
+    public static func makeTrees(
+        for dyad: Dyad,
+        satisfying rules: [(PitchSpellingDyad) -> Bool] = [],
+        avoidingSpellingConflictsWith nodes: [Node] = []
+    ) -> [Node]
+    {
+        var result: [Node] = []
+        for lowerSpelling in dyad.lower.spellings {
+            let lowerNode = Node(pitch: dyad.lower, spelling: lowerSpelling)
+            guard !lowerNode.hasFineConflict(with: nodes) else { continue }
+            guard !lowerNode.hasSpellingConflicts(with: nodes) else { continue }
+            for higherSpelling in dyad.higher.spellings {
+                let higherNode = Node(pitch: dyad.higher, spelling: higherSpelling)
+                guard !higherNode.hasFineConflict(with: nodes) else { continue }
+                guard !higherNode.hasSpellingConflicts(with: nodes) else { continue }
+                let pitchSpellingDyad = PitchSpellingDyad(lowerSpelling, higherSpelling)
+                guard value(pitchSpellingDyad, satisfiesAll: rules) else { continue }
+                lowerNode.addChild(higherNode)
+            }
+            if lowerNode.isContainer { result.append(lowerNode) }
+        }
+        return result
+    }
+    
     public init(pitch: Pitch, spelling: PitchSpelling) {
         self.pitch = pitch
         self.spelling = spelling
@@ -29,13 +53,13 @@ public final class Node: NodeType {
         guard let (head, tail) = unspelled.destructured else { return }
 
         // generate subtrees for next dyad
-        let subTrees = makeTrees(
+        let subTrees = Node.makeTrees(
             for: head,
             satisfying: [
                 { $0.hasValidIntervalQuality },
                 { $0.isFineCompatible }
             ],
-            avoidingSpellingConflictWith: pathToRoot
+            avoidingSpellingConflictsWith: pathToRoot
         )
         
         // attach child nodes
@@ -64,29 +88,19 @@ public final class Node: NodeType {
         }
         return false
     }
+    
+    public func hasFineConflict(with nodes: [Node]) -> Bool {
+        for node in nodes {
+            let pitchSpellingDyad = PitchSpellingDyad(self.spelling, node.spelling)
+            if !pitchSpellingDyad.isFineCompatible {
+                return true
+            }
+        }
+        return false
+    }
 }
 
-func makeTrees(
-    for dyad: Dyad,
-    satisfying rules: [(PitchSpellingDyad) -> Bool] = [],
-    avoidingSpellingConflictWith nodes: [Node] = []
-) -> [Node]
-{
-    var result: [Node] = []
-    for lowerSpelling in dyad.lower.spellings {
-        let lowerNode = Node(pitch: dyad.lower, spelling: lowerSpelling)
-        guard !lowerNode.hasSpellingConflicts(with: nodes) else { continue }
-        for higherSpelling in dyad.higher.spellings {
-            let higherNode = Node(pitch: dyad.higher, spelling: higherSpelling)
-            guard !higherNode.hasSpellingConflicts(with: nodes) else { continue }
-            let pitchSpellingDyad = PitchSpellingDyad(lowerSpelling, higherSpelling)
-            guard value(pitchSpellingDyad, satisfiesAll: rules) else { continue }
-            lowerNode.addChild(higherNode)
-        }
-        result.append(lowerNode)
-    }
-    return result
-}
+
 
 func value<T>(value: T, satisfiesAll rules: [(T) -> Bool]) -> Bool {
     for rule in rules where !rule(value) { return false }

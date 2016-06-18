@@ -30,7 +30,7 @@ public final class Tree {
         guard let dyads = dyads else { return SpelledPitchSet([]) }
         guard let (head, tail) = dyads.destructured else { return SpelledPitchSet([]) }
 
-        let trees = makeTrees(
+        let trees = Node.makeTrees(
             for: head,
             satisfying: [
                 { $0.hasValidIntervalQuality },
@@ -55,6 +55,10 @@ public final class Tree {
             }
         
         print("options: \(options)")
+        
+        for option in options {
+            print("option: \(option); distance: \(option.map { $0.spellingDistance }.mean!)")
+        }
 
         return SpelledPitchSet([])
     }
