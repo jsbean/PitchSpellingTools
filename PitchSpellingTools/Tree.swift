@@ -57,6 +57,9 @@ public final class Tree {
         print("options: \(options)")
         
         for option in options {
+            for spelling in option {
+                print("spelling: \(spelling); distance: \(spelling.spellingDistance)")
+            }
             print("option: \(option); distance: \(option.map { $0.spellingDistance }.mean!)")
         }
 

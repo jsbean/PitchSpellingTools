@@ -35,12 +35,12 @@ extension PitchSpelling {
      */
     public func quantized(to resolution: Resolution) -> PitchSpelling {
         switch resolution {
-        case .eighthStep:
-            return self
         case .quarterStep:
             return PitchSpelling(letterName: letterName, coarse: coarse, fine: .none)
-        case .halfStep:
+        case .halfStep where coarse.resolution == .quarterStep:
             return PitchSpelling(letterName, coarse.quantizedToHalfStep, .none)
+        default:
+            return self
         }
     }
 }

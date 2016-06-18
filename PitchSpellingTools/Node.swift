@@ -64,7 +64,7 @@ public final class Node: NodeType {
         
         // attach child nodes
         subTrees.forEach { addChild($0) }
-
+        
         // if all pitches present // get out of here, we are done!
         guard root.height + 1 < all.count else { return }
 
@@ -82,6 +82,7 @@ public final class Node: NodeType {
      */
     public func hasSpellingConflicts(with nodes: [Node]) -> Bool {
         for node in nodes {
+            
             if self.pitch == node.pitch && self.spelling != node.spelling {
                 return true
             }
