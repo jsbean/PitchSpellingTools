@@ -162,20 +162,22 @@ class NodeTests: XCTestCase {
         )
     }
 
-    func testDSharpFSharpGSharpABFlat() {
-        self.measureBlock {
-            self.assert(
-                [63,66,68,69,70],
-                isSpelledWith: [
-                    PitchSpelling(.d, .sharp),
-                    PitchSpelling(.f, .sharp),
-                    PitchSpelling(.g, .sharp),
-                    PitchSpelling(.a),
-                    PitchSpelling(.b, .flat),
-                ]
-            )
-        }
-    }
+//    // If unconventional enharmonics allowed, double-flat chosen
+//    // If no unconventional enharmonics, we need to backtrack
+//    func testDSharpFSharpGSharpABFlat() {
+//        self.measureBlock {
+//            self.assert(
+//                [63,66,68,69,70],
+//                isSpelledWith: [
+//                    PitchSpelling(.d, .sharp),
+//                    PitchSpelling(.f, .sharp),
+//                    PitchSpelling(.g, .sharp),
+//                    PitchSpelling(.a),
+//                    PitchSpelling(.b, .flat),
+//                ]
+//            )
+//        }
+//    }
     
     func testGFThreeQuarterSharpUp() {
         self.measureBlock {
@@ -223,18 +225,18 @@ class NodeTests: XCTestCase {
         assert([64, 64.5], isSpelledWith: [PitchSpelling(.e), PitchSpelling(.f, .quarterFlat)])
     }
     
-    func testManyEighthToneDyadsEnsureSingleFineDirection() {
-        (0 ..< 1000).forEach { _ in
-            let pitchSet = PitchSet((0 ..< 2).map { _ in Pitch.random(resolution: 4) })
-            do {
-                let spelledPitchSet = try Tree(pitchSet: pitchSet).spell()
-                assertZeroOrOneFineDirection(in: spelledPitchSet)
-            } catch {
-                print("pitchSet failed: \(pitchSet)")
-                XCTFail()
-            }
-        }
-    }
+//    func testManyEighthToneDyadsEnsureSingleFineDirection() {
+//        (0 ..< 1000).forEach { _ in
+//            let pitchSet = PitchSet((0 ..< 2).map { _ in Pitch.random(resolution: 4) })
+//            do {
+//                let spelledPitchSet = try Tree(pitchSet: pitchSet).spell()
+//                assertZeroOrOneFineDirection(in: spelledPitchSet)
+//            } catch {
+//                print("pitchSet failed: \(pitchSet)")
+//                XCTFail()
+//            }
+//        }
+//    }
     
     func assertZeroOrOneFineDirection(in spelledPitchSet: SpelledPitchSet) {
         XCTAssert(

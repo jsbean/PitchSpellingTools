@@ -18,27 +18,46 @@ public final class Node: NodeType {
     public let pitch: Pitch
     public let spelling: PitchSpelling
     
+    /**
+     - TODO: add option for spellings with or without unconventional enharmonics.
+     - TODO: add satisfying local rules / global rules (spelling conflict, fine conflicts)
+     - TODO: return tree that is unique compared to the given context
+     */
     public static func makeTrees(
         for dyad: Dyad,
         satisfying rules: [(PitchSpellingDyad) -> Bool] = [],
-        avoidingSpellingConflictsWith nodes: [Node] = []
+        avoidingSpellingConflictsWith nodes: [Node] = [],
+        allowingUnconventionalEnharmonics allowsUnconventionalEnharmonics: Bool = true
     ) -> [Node]
     {
         var result: [Node] = []
-        for lowerSpelling in dyad.lower.spellingsWithoutUnconventionalEnharmonics {
+        
+        func spellingResource(for pitch: Pitch) -> [PitchSpelling] {
+            return allowsUnconventionalEnharmonics
+                ? pitch.spellings
+                : pitch.spellingsWithoutUnconventionalEnharmonics
+        }
+
+        for lowerSpelling in spellingResource(for: dyad.lower) {
             
+            // Create node for lower pitch
             let lowerNode = Node(pitch: dyad.lower, spelling: lowerSpelling)
+            
+            // Check global constraints
             guard !lowerNode.hasFineConflict(with: nodes) else { continue }
             guard !lowerNode.hasSpellingConflicts(with: nodes) else { continue }
-            print("lowerNode: \(lowerNode)")
-            for higherSpelling in dyad.higher.spellingsWithoutUnconventionalEnharmonics {
-                print("higherSpelling: \(higherSpelling)")
+            
+            for higherSpelling in spellingResource(for: dyad.higher) {
+                
                 let higherNode = Node(pitch: dyad.higher, spelling: higherSpelling)
+                
+                // Check global constraints
                 guard !higherNode.hasFineConflict(with: nodes) else { continue }
                 guard !higherNode.hasSpellingConflicts(with: nodes) else { continue }
+                
+                // Check local constraints
                 let pitchSpellingDyad = PitchSpellingDyad(lowerSpelling, higherSpelling)
                 guard value(pitchSpellingDyad, satisfiesAll: rules) else { continue }
-                print("higherNode: \(higherNode)")
                 lowerNode.addChild(higherNode)
             }
             if lowerNode.isContainer { result.append(lowerNode) }
@@ -115,7 +134,6 @@ public final class Node: NodeType {
 
 func value<T>(value: T, satisfiesAll rules: [(T) -> Bool]) -> Bool {
     for rule in rules where !rule(value) {
-        print("rule broken: \(value)")
         return false
     }
     return true
