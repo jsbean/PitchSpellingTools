@@ -25,16 +25,20 @@ public final class Node: NodeType {
     ) -> [Node]
     {
         var result: [Node] = []
-        for lowerSpelling in dyad.lower.spellings {
+        for lowerSpelling in dyad.lower.spellingsWithoutUnconventionalEnharmonics {
+            
             let lowerNode = Node(pitch: dyad.lower, spelling: lowerSpelling)
             guard !lowerNode.hasFineConflict(with: nodes) else { continue }
             guard !lowerNode.hasSpellingConflicts(with: nodes) else { continue }
-            for higherSpelling in dyad.higher.spellings {
+            print("lowerNode: \(lowerNode)")
+            for higherSpelling in dyad.higher.spellingsWithoutUnconventionalEnharmonics {
+                print("higherSpelling: \(higherSpelling)")
                 let higherNode = Node(pitch: dyad.higher, spelling: higherSpelling)
                 guard !higherNode.hasFineConflict(with: nodes) else { continue }
                 guard !higherNode.hasSpellingConflicts(with: nodes) else { continue }
                 let pitchSpellingDyad = PitchSpellingDyad(lowerSpelling, higherSpelling)
                 guard value(pitchSpellingDyad, satisfiesAll: rules) else { continue }
+                print("higherNode: \(higherNode)")
                 lowerNode.addChild(higherNode)
             }
             if lowerNode.isContainer { result.append(lowerNode) }
@@ -66,7 +70,10 @@ public final class Node: NodeType {
         subTrees.forEach { addChild($0) }
         
         // if all pitches present // get out of here, we are done!
-        guard root.height + 1 < all.count else { return }
+        guard root.height + 1 < all.count * 2 else {
+            //print("rootheight: \(root.height + 1); dyads.count: \(all.count)")
+            return
+        }
 
         // traverse the children of these nodes (skip generation)
         subTrees.forEach {
@@ -82,7 +89,6 @@ public final class Node: NodeType {
      */
     public func hasSpellingConflicts(with nodes: [Node]) -> Bool {
         for node in nodes {
-            
             if self.pitch == node.pitch && self.spelling != node.spelling {
                 return true
             }
@@ -90,6 +96,10 @@ public final class Node: NodeType {
         return false
     }
     
+    /**
+     - returns: `true` if there is any conflict of fine adjustment between this node and any
+     contained in the given `nodes`. Otherwise, `false`.
+     */
     public func hasFineConflict(with nodes: [Node]) -> Bool {
         for node in nodes {
             let pitchSpellingDyad = PitchSpellingDyad(self.spelling, node.spelling)
@@ -104,7 +114,10 @@ public final class Node: NodeType {
 
 
 func value<T>(value: T, satisfiesAll rules: [(T) -> Bool]) -> Bool {
-    for rule in rules where !rule(value) { return false }
+    for rule in rules where !rule(value) {
+        print("rule broken: \(value)")
+        return false
+    }
     return true
 }
 

@@ -48,9 +48,16 @@ public final class Tree {
                 child.traverse(toSpell: tail, all: dyads)
             }
         }
-
-        let options = trees.flatMap { $0.leaves.map { Set($0.pathToRoot) } }
+        
+        print(trees)
+        let options = trees
+            .flatMap { $0.leaves.map { Set($0.pathToRoot) } }
+            .filter { $0.count == Array(pitchSet).count }
         guard options.count > 0 else { throw Error.noOptions }
+        
+//        for option in options {
+//            print("option: \(option.map { $0.spelling })")
+//        }
         
         let sorted = options.sort {
             $0.map { $0.spelling.spellingDistance }.mean! <

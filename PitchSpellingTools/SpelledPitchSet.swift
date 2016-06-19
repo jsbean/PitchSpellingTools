@@ -34,6 +34,15 @@ public struct SpelledPitchSet {
 //    }
 }
 
+extension SpelledPitchSet: ArrayLiteralConvertible {
+    
+    public typealias Element = SpelledPitch
+    
+    public init(arrayLiteral elements: Element...) {
+        self.pitches = Set(elements)
+    }
+}
+
 extension SpelledPitchSet: SequenceType {
     
     // MARK: - SequenceType

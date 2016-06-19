@@ -13,6 +13,182 @@ import Pitch
 import PitchSpellingTools
 
 class NodeTests: XCTestCase {
+    
+    
+    func assert(pitches: [Pitch], isSpelledWith pitchSpellings: [PitchSpelling]) {
+        let pitchSet = PitchSet(pitches)
+        let spelledPitchSet = SpelledPitchSet(
+            zip(pitches, pitchSpellings).map { SpelledPitch($0.0, $0.1) }
+        )
+        XCTAssertEqual(try Tree(pitchSet: pitchSet).spell(), spelledPitchSet)
+    }
+    
+//    func assert(pitches: [Pitch], isSpelledWith spellings: [PitchSpelling]) {
+////        let pitches = Set(pitches)
+////        let spellings = Set(spellings)
+//        let expected = SpelledPitchSet(
+//            zip(pitches, spellings).map { SpelledPitch($0.0, $0.1) }
+//        )
+//        XCTAssertEqual(try Tree(pitchSet: PitchSet(pitches)).spell(), expected)
+//    }
+    
+//    func testMondadCNatural() {
+//        let pitchSet: PitchSet = [Pitch.middleC]
+//        let speller = PitchSetSpeller(pitchSet)
+//        do { let _ = try speller.spell() } catch { XCTFail() }
+//    }
+
+    func testDyadCG() {
+        self.measureBlock {
+            self.assert([60,67], isSpelledWith: [PitchSpelling(.c), PitchSpelling(.g)])
+        }
+    }
+
+    func testDyadCSharpGSharp() {
+        assert([61,68], isSpelledWith: [PitchSpelling(.c, .sharp), PitchSpelling(.g, .sharp)])
+    }
+
+    func testDyadCDFlat() {
+        assert([60,61], isSpelledWith: [PitchSpelling(.c), PitchSpelling(.d, .flat)])
+    }
+
+    func testDyad_C_G_FSharp() {
+        assert(
+            [60,66,67],
+            isSpelledWith: [PitchSpelling(.c), PitchSpelling(.f, .sharp), PitchSpelling(.g)]
+        )
+    }
+
+    func testDyad_A_CSharp_FSharp() {
+        assert(
+            [61,66,69],
+            isSpelledWith: [
+                PitchSpelling(.c, .sharp), PitchSpelling(.f, .sharp), PitchSpelling(.a)
+            ]
+        )
+    }
+
+//    func testDyad_69_70_71() {
+//        assert(
+//            [69,70,71],
+//            isSpelledWith: [PitchSpelling(.a), PitchSpelling(.b, .flat), PitchSpelling(.b)]
+//        )
+//    }
+
+    func testDyad_60__62_5__69__70() {
+        self.measureBlock {
+            self.assert(
+                [60,62.5,69,70],
+                isSpelledWith: [
+                    PitchSpelling(.c),
+                    PitchSpelling(.e, .threeQuarterFlat),
+                    PitchSpelling(.a),
+                    PitchSpelling(.b, .flat)
+                ]
+            )
+        }
+    }
+
+    func testCEFlatGAFlatB() {
+        assert(
+            [60,63,67,68,71],
+            isSpelledWith: [
+                PitchSpelling(.c),
+                PitchSpelling(.e, .flat),
+                PitchSpelling(.g),
+                PitchSpelling(.a, .flat),
+                PitchSpelling(.b)
+            ]
+        )
+    }
+
+    func test_60__63_5__65__68() {
+        assert(
+            [60,63.5,65,68],
+            isSpelledWith: [
+                PitchSpelling(.c),
+                PitchSpelling(.e, .quarterFlat),
+                PitchSpelling(.f),
+                PitchSpelling(.a, .flat)
+            ]
+        )
+    }
+
+    func test_61__63_5__65_5() {
+        assert(
+            [61,63.5,65.5],
+            isSpelledWith: [
+                PitchSpelling(.c, .sharp),
+                PitchSpelling(.d, .threeQuarterSharp),
+                PitchSpelling(.f, .quarterSharp)
+            ]
+        )
+    }
+
+    func test_61_63_66() {
+        assert(
+            [61,63,66],
+            isSpelledWith: [
+                PitchSpelling(.c, .sharp),
+                PitchSpelling(.d, .sharp),
+                PitchSpelling(.f, .sharp)
+            ]
+        )
+    }
+
+    func testFBEFlatGSharpA() {
+        assert(
+            [65,71,68,69],
+            isSpelledWith: [
+                PitchSpelling(.f),
+                PitchSpelling(.b),
+                PitchSpelling(.g, .sharp),
+                PitchSpelling(.a)
+            ]
+        )
+    }
+
+    func testCDFlatEFlatGFlatAFlatBFlat() {
+        self.assert(
+            [60,61,63,66,68,70],
+            isSpelledWith: [
+                PitchSpelling(.c),
+                PitchSpelling(.d, .flat),
+                PitchSpelling(.e, .flat),
+                PitchSpelling(.g, .flat),
+                PitchSpelling(.a, .flat),
+                PitchSpelling(.b, .flat)
+            ]
+        )
+    }
+
+    func testDSharpFSharpGSharpABFlat() {
+        self.measureBlock {
+            self.assert(
+                [63,66,68,69,70],
+                isSpelledWith: [
+                    PitchSpelling(.d, .sharp),
+                    PitchSpelling(.f, .sharp),
+                    PitchSpelling(.g, .sharp),
+                    PitchSpelling(.a),
+                    PitchSpelling(.b, .flat),
+                ]
+            )
+        }
+    }
+    
+    func testGFThreeQuarterSharpUp() {
+        self.measureBlock {
+            self.assert(
+                [67,66.75],
+                isSpelledWith: [
+                    PitchSpelling(.g),
+                    PitchSpelling(.f, .threeQuarterSharp, .up)
+                ]
+            )
+        }
+        
+    }
 
     func testUniquePitchesSortedFromDyads() {
         var pitchSet: PitchSet = [60,65,66,68]
@@ -43,18 +219,45 @@ class NodeTests: XCTestCase {
         }
     }
     
-    func testManyEighthTones() {
-        let pitchSet: PitchSet = PitchSet((0 ..< 40).map { _ in Pitch.random(resolution: 4) })
-        self.measureBlock {
-            let tree = Tree(pitchSet: pitchSet)
+    func testEFQuarterFlat() {
+        assert([64, 64.5], isSpelledWith: [PitchSpelling(.e), PitchSpelling(.f, .quarterFlat)])
+    }
+    
+    func testManyEighthToneDyadsEnsureSingleFineDirection() {
+        (0 ..< 1000).forEach { _ in
+            let pitchSet = PitchSet((0 ..< 2).map { _ in Pitch.random(resolution: 4) })
             do {
-                try tree.spell()
+                let spelledPitchSet = try Tree(pitchSet: pitchSet).spell()
+                assertZeroOrOneFineDirection(in: spelledPitchSet)
             } catch {
-                print(error)
+                print("pitchSet failed: \(pitchSet)")
+                XCTFail()
             }
-            
         }
     }
+    
+    func assertZeroOrOneFineDirection(in spelledPitchSet: SpelledPitchSet) {
+        XCTAssert(
+            spelledPitchSet
+                .map { $0.spelling.fine }
+                .filter { $0 != .none }
+                .unique
+                .count <= 1
+        )
+    }
+    
+//    func testManyEighthTones() {
+//        let pitchSet: PitchSet = PitchSet((0 ..< 40).map { _ in Pitch.random(resolution: 4) })
+//        self.measureBlock {
+//            let tree = Tree(pitchSet: pitchSet)
+//            do {
+//                try tree.spell()
+//            } catch {
+//                print(error)
+//            }
+//            
+//        }
+//    }
     
 //    func test48EighthStepPitches() {
 //        let pitchSet = PitchSet(
