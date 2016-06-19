@@ -100,21 +100,20 @@ public class IntervalQuality: EnumTree {
         {
             var difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
             
-            print("direction difference: \(difference)")
-            
             // correct A / B Flat ; D / E Flat issues
             if pitchSpellingDyad.b.letterName == .a { difference += 1 }
             if pitchSpellingDyad.b.letterName == .d { difference += 1 }
-            if pitchSpellingDyad.b.letterName == .e && pitchSpellingDyad.b.coarse == .quarterSharp {
-                difference += 1
-            }
-            if pitchSpellingDyad.b.letterName == .b && pitchSpellingDyad.b.coarse == .quarterSharp {
-                difference += 1
-            }
-            if pitchSpellingDyad.a.letterName == .f && pitchSpellingDyad.a.coarse == .quarterFlat {
-                difference += 1
-            }
-            if pitchSpellingDyad.a.letterName == .c && pitchSpellingDyad.a.coarse == .quarterFlat {
+            
+            // correct e/b quarterstep intervals to be valid
+            if (
+                [.e, .b].contains(pitchSpellingDyad.b.letterName) &&
+                pitchSpellingDyad.b.coarse == .quarterSharp
+            ) ||
+            (
+                [.f, .c].contains(pitchSpellingDyad.a.letterName) &&
+                pitchSpellingDyad.a.coarse == .quarterFlat
+            )
+            {
                 difference += 1
             }
             
@@ -288,16 +287,16 @@ public class IntervalQuality: EnumTree {
             // correct G / FSharp issue
             if pitchSpellingDyad.b.letterName == .g { difference -= 1 }
             
-            if pitchSpellingDyad.a.letterName == .e && pitchSpellingDyad.a.coarse == .quarterSharp {
-                difference -= 1
-            }
-            if pitchSpellingDyad.a.letterName == .b && pitchSpellingDyad.a.coarse == .quarterSharp {
-                difference -= 1
-            }
-            if pitchSpellingDyad.b.letterName == .f && pitchSpellingDyad.b.coarse == .quarterFlat {
-                difference -= 1
-            }
-            if pitchSpellingDyad.b.letterName == .c && pitchSpellingDyad.b.coarse == .quarterFlat {
+            // correct e/b quarterstep intervals to be valid
+            if (
+                [.e, .b].contains(pitchSpellingDyad.a.letterName) &&
+                pitchSpellingDyad.a.coarse == .quarterSharp
+            ) ||
+            (
+                [.f, .c].contains(pitchSpellingDyad.b.letterName) &&
+                pitchSpellingDyad.b.coarse == .quarterFlat
+            )
+            {
                 difference -= 1
             }
             
