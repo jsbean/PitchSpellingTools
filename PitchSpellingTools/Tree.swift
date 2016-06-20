@@ -35,31 +35,33 @@ public final class Tree {
         guard let dyads = dyads else { return SpelledPitchSet([]) }
         guard let (head, tail) = dyads.destructured else { return SpelledPitchSet([]) }
 
+        // jump start process
         let trees = Node.makeTrees(
             for: head,
             satisfying: [
                 { $0.hasValidIntervalQuality },
                 { $0.isFineCompatible }
-            ]
+            ],
+            allowingBackTrack: true
         )
         
+        // traverse to generate trees
         for tree in trees {
             for child in tree.children {
-                child.traverse(toSpell: tail, all: dyads)
+                child.traverse(toSpell: tail, from: pitchSet)
             }
         }
+
+        let options = trees.flatMap { $0.leaves.map { Set($0.pathToRoot) } }
+        let validSizedOptions = options.filter { $0.count == Array(pitchSet).count }
+        guard validSizedOptions.count > 0 else {
+            print("no valid sized options for: \(pitchSet)")
+            print("other options: \(options)")
+            throw Error.noOptions
+        }
         
-        print(trees)
-        let options = trees
-            .flatMap { $0.leaves.map { Set($0.pathToRoot) } }
-            .filter { $0.count == Array(pitchSet).count }
-        guard options.count > 0 else { throw Error.noOptions }
-        
-//        for option in options {
-//            print("option: \(option.map { $0.spelling })")
-//        }
-        
-        let sorted = options.sort {
+        print("valid sized options: \(validSizedOptions)")
+        let sorted = validSizedOptions.sort {
             $0.map { $0.spelling.spellingDistance }.mean! <
             $1.map { $0.spelling.spellingDistance }.mean!
         }

@@ -26,18 +26,20 @@ public final class Node: NodeType {
     public static func makeTrees(
         for dyad: Dyad,
         satisfying rules: [(PitchSpellingDyad) -> Bool] = [],
-        avoidingSpellingConflictsWith nodes: [Node] = [],
-        allowingUnconventionalEnharmonics allowsUnconventionalEnharmonics: Bool = true
+        extendingPath nodes: [Node] = [],
+        allowingUnconventionalEnharmonics allowsUnconventionalEnharmonics: Bool = true,
+        allowingBackTrack allowsBackTrack: Bool = false
     ) -> [Node]
     {
-        var result: [Node] = []
         
         func spellingResource(for pitch: Pitch) -> [PitchSpelling] {
             return allowsUnconventionalEnharmonics
                 ? pitch.spellings
                 : pitch.spellingsWithoutUnconventionalEnharmonics
         }
-
+    
+        var result: [Node] = []
+        
         for lowerSpelling in spellingResource(for: dyad.lower) {
             
             // Create node for lower pitch
@@ -47,20 +49,38 @@ public final class Node: NodeType {
             guard !lowerNode.hasFineConflict(with: nodes) else { continue }
             guard !lowerNode.hasSpellingConflicts(with: nodes) else { continue }
             
+            //print("-- node: \(node)")
+            
             for higherSpelling in spellingResource(for: dyad.higher) {
                 
                 let higherNode = Node(pitch: dyad.higher, spelling: higherSpelling)
                 
-                // Check global constraints
+                // guard higherNode satisfies global constraints
                 guard !higherNode.hasFineConflict(with: nodes) else { continue }
                 guard !higherNode.hasSpellingConflicts(with: nodes) else { continue }
                 
                 // Check local constraints
                 let pitchSpellingDyad = PitchSpellingDyad(lowerSpelling, higherSpelling)
+                
+                // guard dyad satisfied local constraints (currently rules)
                 guard value(pitchSpellingDyad, satisfiesAll: rules) else { continue }
+
                 lowerNode.addChild(higherNode)
             }
-            if lowerNode.isContainer { result.append(lowerNode) }
+
+            if lowerNode.isContainer {
+                result.append(lowerNode)
+            }
+        }
+        
+        if result.count == 0 && allowsBackTrack {
+            result =  Node.makeTrees(
+                for: dyad,
+                satisfying: [
+//                    { $0.isFineMatching }
+                ],
+                extendingPath: nodes
+            )
         }
         return result
     }
@@ -70,7 +90,7 @@ public final class Node: NodeType {
         self.spelling = spelling
     }
     
-    func traverse(toSpell unspelled: [Dyad], all: [Dyad]) {
+    func traverse(toSpell unspelled: [Dyad], from pitchSet: PitchSet) {
         
         // no more pitches to spell (worst case scenario)
         guard let (head, tail) = unspelled.destructured else { return }
@@ -82,22 +102,16 @@ public final class Node: NodeType {
                 { $0.hasValidIntervalQuality },
                 { $0.isFineCompatible }
             ],
-            avoidingSpellingConflictsWith: pathToRoot
+            extendingPath: pathToRoot
         )
         
         // attach child nodes
         subTrees.forEach { addChild($0) }
-        
-        // if all pitches present // get out of here, we are done!
-        guard root.height + 1 < all.count * 2 else {
-            //print("rootheight: \(root.height + 1); dyads.count: \(all.count)")
-            return
-        }
 
         // traverse the children of these nodes (skip generation)
         subTrees.forEach {
             $0.children.forEach {
-                $0.traverse(toSpell: tail, all: all)
+                $0.traverse(toSpell: tail, from: pitchSet)
             }
         }
     }
@@ -130,12 +144,8 @@ public final class Node: NodeType {
     }
 }
 
-
-
 func value<T>(value: T, satisfiesAll rules: [(T) -> Bool]) -> Bool {
-    for rule in rules where !rule(value) {
-        return false
-    }
+    for rule in rules where !rule(value) { return false }
     return true
 }
 
@@ -149,13 +159,17 @@ public func == (lhs: Node, rhs: Node) -> Bool {
 
 extension Node: CustomStringConvertible {
     
-    public var description: String {
+    public var serialized: String {
         var result = "\n"
         for _ in 0..<depth { result += "\t" }
         result += "\(pitch.noteNumber.value): \(spelling)"
         for child in children {
-            result += "\(child)"
+            result += "\(child.serialized)"
         }
         return result
+    }
+    
+    public var description: String {
+        return "NODE: \(pitch); \(spelling); children: \(children.count)"
     }
 }

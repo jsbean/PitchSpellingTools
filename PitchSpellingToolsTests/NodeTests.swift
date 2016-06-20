@@ -38,6 +38,7 @@ class NodeTests: XCTestCase {
 //        do { let _ = try speller.spell() } catch { XCTFail() }
 //    }
 
+
     func testDyadCG() {
         self.measureBlock {
             self.assert([60,67], isSpelledWith: [PitchSpelling(.c), PitchSpelling(.g)])
@@ -161,6 +162,16 @@ class NodeTests: XCTestCase {
             ]
         )
     }
+    
+    func testDDownEQuarterSharpDown() {
+        self.assert(
+            [61.75, 64.25],
+            isSpelledWith: [
+                PitchSpelling(.d, .quarterFlat, .up),
+                PitchSpelling(.e, .natural, .up)
+            ]
+        )
+    }
 
 //    // If unconventional enharmonics allowed, double-flat chosen
 //    // If no unconventional enharmonics, we need to backtrack
@@ -189,7 +200,6 @@ class NodeTests: XCTestCase {
                 ]
             )
         }
-        
     }
 
     func testUniquePitchesSortedFromDyads() {
@@ -204,20 +214,20 @@ class NodeTests: XCTestCase {
     func testTreeGeneration() {
         let pitchSet: PitchSet = [62,63,66,67]
         let tree = Tree(pitchSet: pitchSet)
-        print(try! tree.spell())
+        print(try? tree.spell())
     }
     
     func testBiggerSet() {
         let pitchSet: PitchSet = [60,61,66,68,70]
         let tree = Tree(pitchSet: pitchSet)
-        print(try! tree.spell())
+        print(try? tree.spell())
     }
 
     func testEighthTones() {
         self.measureBlock {
             let pitchSet: PitchSet = [60.25, 69.75]
             let tree = Tree(pitchSet: pitchSet)
-            print(try! tree.spell())
+            print(try? tree.spell())
         }
     }
     
@@ -225,26 +235,28 @@ class NodeTests: XCTestCase {
         assert([64, 64.5], isSpelledWith: [PitchSpelling(.e), PitchSpelling(.f, .quarterFlat)])
     }
     
-//    func testManyEighthToneDyadsEnsureSingleFineDirection() {
-//        (0 ..< 1000).forEach { _ in
-//            let pitchSet = PitchSet((0 ..< 2).map { _ in Pitch.random(resolution: 4) })
-//            do {
-//                let spelledPitchSet = try Tree(pitchSet: pitchSet).spell()
-//                assertZeroOrOneFineDirection(in: spelledPitchSet)
-//            } catch {
-//                print("pitchSet failed: \(pitchSet)")
-//                XCTFail()
-//            }
-//        }
-//    }
+    func testManyEighthToneDyadsEnsureSingleFineDirection() {
+        (0 ..< 1000).forEach { _ in
+            let pitchSet = PitchSet((0 ..< 2).map { _ in Pitch.random(resolution: 4) })
+            do {
+                let spelledPitchSet = try Tree(pitchSet: pitchSet).spell()
+                assertZeroOrOneFineDirection(in: spelledPitchSet)
+            } catch {
+                XCTFail()
+            }
+        }
+    }
     
     func assertZeroOrOneFineDirection(in spelledPitchSet: SpelledPitchSet) {
+        
         XCTAssert(
             spelledPitchSet
                 .map { $0.spelling.fine }
                 .filter { $0 != .none }
                 .unique
                 .count <= 1
+            ,
+            "\(spelledPitchSet)"
         )
     }
     
