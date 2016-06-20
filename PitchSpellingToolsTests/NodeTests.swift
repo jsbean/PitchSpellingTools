@@ -14,13 +14,19 @@ import PitchSpellingTools
 
 class NodeTests: XCTestCase {
     
-    
-    func assert(pitches: [Pitch], isSpelledWith pitchSpellings: [PitchSpelling]) {
+    func assert(
+        pitches: [Pitch],
+        isSpelledWith pitchSpellings: [PitchSpelling],
+        allowingUnconventionalEnharmonics: Bool = true
+    )
+    {
         let pitchSet = PitchSet(pitches)
         let spelledPitchSet = SpelledPitchSet(
             zip(pitches, pitchSpellings).map { SpelledPitch($0.0, $0.1) }
         )
-        XCTAssertEqual(try Tree(pitchSet: pitchSet).spell(), spelledPitchSet)
+        XCTAssertEqual(
+            try Tree(pitchSet: pitchSet).spell(), spelledPitchSet
+        )
     }
     
 //    func assert(pitches: [Pitch], isSpelledWith spellings: [PitchSpelling]) {
@@ -60,11 +66,29 @@ class NodeTests: XCTestCase {
         )
     }
 
-    func testDyad_A_CSharp_FSharp() {
+    func testTriad_A_CSharp_FSharp() {
         assert(
             [61,66,69],
             isSpelledWith: [
                 PitchSpelling(.c, .sharp), PitchSpelling(.f, .sharp), PitchSpelling(.a)
+            ]
+        )
+    }
+    
+    func testTriadBFlatCD() {
+        assert(
+            [58,60,62],
+            isSpelledWith: [
+                PitchSpelling(.b, .flat), PitchSpelling(.c), PitchSpelling(.d)
+            ]
+        )
+    }
+    
+    func testTriadABFlatE() {
+        assert(
+            [57,58,64],
+            isSpelledWith: [
+                PitchSpelling(.a), PitchSpelling(.b, .flat), PitchSpelling(.e)
             ]
         )
     }
@@ -150,45 +174,49 @@ class NodeTests: XCTestCase {
     }
 
     func testCDFlatEFlatGFlatAFlatBFlat() {
+        self.measureBlock {
+            self.assert(
+                [60,61,63,66,68,70],
+                isSpelledWith: [
+                    PitchSpelling(.c),
+                    PitchSpelling(.d, .flat),
+                    PitchSpelling(.e, .flat),
+                    PitchSpelling(.g, .flat),
+                    PitchSpelling(.a, .flat),
+                    PitchSpelling(.b, .flat)
+                ]
+            )
+        }
+    }
+    
+    
+    func testDDownEQuarterSharpDown() {
         self.assert(
-            [60,61,63,66,68,70],
+            [61.75, 64.25],
             isSpelledWith: [
-                PitchSpelling(.c),
-                PitchSpelling(.d, .flat),
-                PitchSpelling(.e, .flat),
-                PitchSpelling(.g, .flat),
-                PitchSpelling(.a, .flat),
-                PitchSpelling(.b, .flat)
+                PitchSpelling(.d, .quarterFlat, .up),
+                PitchSpelling(.e, .natural, .up)
             ]
         )
     }
-//    
-//    func testDDownEQuarterSharpDown() {
-//        self.assert(
-//            [61.75, 64.25],
-//            isSpelledWith: [
-//                PitchSpelling(.d, .quarterFlat, .up),
-//                PitchSpelling(.e, .natural, .up)
-//            ]
-//        )
-//    }
 
-//    // If unconventional enharmonics allowed, double-flat chosen
-//    // If no unconventional enharmonics, we need to backtrack
-//    func testDSharpFSharpGSharpABFlat() {
-//        self.measureBlock {
-//            self.assert(
-//                [63,66,68,69,70],
-//                isSpelledWith: [
-//                    PitchSpelling(.d, .sharp),
-//                    PitchSpelling(.f, .sharp),
-//                    PitchSpelling(.g, .sharp),
-//                    PitchSpelling(.a),
-//                    PitchSpelling(.b, .flat),
-//                ]
-//            )
-//        }
-//    }
+    // Test disallowing unconventional enharmonics and rolling back
+    // If unconventional enharmonics allowed, double-flat chosen
+    // If no unconventional enharmonics, we need to backtrack
+    func testDSharpFSharpGSharpABFlat() {
+        self.measureBlock {
+            self.assert(
+                [63,66,68,69,70],
+                isSpelledWith: [
+                    PitchSpelling(.d, .sharp),
+                    PitchSpelling(.f, .sharp),
+                    PitchSpelling(.g, .sharp),
+                    PitchSpelling(.a),
+                    PitchSpelling(.b, .flat),
+                ]
+            )
+        }
+    }
     
     func testGFThreeQuarterSharpUp() {
         self.measureBlock {
@@ -246,19 +274,19 @@ class NodeTests: XCTestCase {
 //            }
 //        }
 //    }
-//    
-//    func assertZeroOrOneFineDirection(in spelledPitchSet: SpelledPitchSet) {
-//        
-//        XCTAssert(
-//            spelledPitchSet
-//                .map { $0.spelling.fine }
-//                .filter { $0 != .none }
-//                .unique
-//                .count <= 1
-//            ,
-//            "\(spelledPitchSet)"
-//        )
-//    }
+    
+    func assertZeroOrOneFineDirection(in spelledPitchSet: SpelledPitchSet) {
+        
+        XCTAssert(
+            spelledPitchSet
+                .map { $0.spelling.fine }
+                .filter { $0 != .none }
+                .unique
+                .count <= 1
+            ,
+            "\(spelledPitchSet)"
+        )
+    }
     
 //    func testManyEighthTones() {
 //        let pitchSet: PitchSet = PitchSet((0 ..< 40).map { _ in Pitch.random(resolution: 4) })

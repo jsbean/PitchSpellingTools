@@ -11,16 +11,16 @@ import Pitch
 
 public struct Path {
     
-    public enum PitchesRepresentationInPath {
+    public enum PitchRepresentationInPath {
         case neither
         case single(represented: Pitch, unrepresented: Pitch)
         case both
     }
     
-    private let nodes: Set<Node>
+    private let nodes: [Node]
     
-    public init<S: SequenceType where S.Generator.Element == Node>(_ nodes: S) {
-        self.nodes = Set(nodes)
+    public init(_ nodes: [Node]) {
+        self.nodes = nodes
     }
     
     public func node(with pitch: Pitch) -> Node? {
@@ -37,8 +37,8 @@ public struct Path {
     public func spelling(for pitch: Pitch) -> PitchSpelling? {
         return node(with: pitch)?.spelling
     }
-    
-    public func pitchesRepresented(from dyad: Dyad) -> PitchesRepresentationInPath {
+
+    public func pitchesRepresented(from dyad: Dyad) -> PitchRepresentationInPath {
         switch (hasNode(with: dyad.higher), hasNode(with: dyad.lower)) {
         case (true, true): return .both
         case (false, true): return .single(represented: dyad.lower, unrepresented: dyad.higher)
@@ -47,7 +47,14 @@ public struct Path {
         }
     }
     
-    public func nodesSatisfyAll(
+    public func isFineCompatible(with spelling: PitchSpelling) -> Bool {
+        for dyad in nodes.map({ PitchSpellingDyad(spelling, $0.spelling) }) {
+            if !dyad.isFineCompatible { return false }
+        }
+        return true
+    }
+    
+    public func satisfiesAll(
         constraints: [(PitchSpellingDyad) -> Bool],
         for spelling: PitchSpelling
     ) -> Bool
@@ -66,6 +73,13 @@ public struct Path {
                 SpelledPitch(pitch: $0.pitch, spelling: $0.spelling)
             }
         )
+    }
+}
+
+extension Path: ArrayLiteralConvertible {
+    
+    public init(arrayLiteral elements: Node...) {
+        self.nodes = elements
     }
 }
 

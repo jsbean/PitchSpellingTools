@@ -79,6 +79,11 @@ public struct PitchSpellingDyad {
      */
     public var isFineMatching: Bool { return b.fine == a.fine }
     
+    public var isFineCompatibleLoose: Bool {
+        guard eitherHasNoFineAdjustment else { return true }
+        return isFineMatching
+    }
+    
     /**
      - warning: No documentation
     */

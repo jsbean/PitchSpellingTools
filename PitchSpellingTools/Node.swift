@@ -19,14 +19,17 @@ public final class Node: NodeType {
     public let spelling: PitchSpelling
     
     /**
+     - TODO: refactor this into own struct
+     - TODO: change local constraints to dyadIntrinsicConstraints ?
      - TODO: add option for spellings with or without unconventional enharmonics.
      - TODO: add satisfying local rules / global rules (spelling conflict, fine conflicts)
      - TODO: return tree that is unique compared to the given context
      */
     public static func makeTrees(
         for dyad: Dyad,
-        satisfying rules: [(PitchSpellingDyad) -> Bool] = [],
-        extendingPath nodes: [Node] = [],
+        globalConstraints: [(PitchSpellingDyad) -> Bool] = [],
+        localConstraints: [(PitchSpellingDyad) -> Bool] = [],
+        extendingPath path: Path = [],
         allowingUnconventionalEnharmonics allowsUnconventionalEnharmonics: Bool = true,
         allowingBackTrack allowsBackTrack: Bool = false
     ) -> [Node]
@@ -37,8 +40,13 @@ public final class Node: NodeType {
                 ? pitch.spellings
                 : pitch.spellingsWithoutUnconventionalEnharmonics
         }
-
         
+        func globallyVerifiedSpellings(for pitch: Pitch, in path: Path) -> [PitchSpelling] {
+            return spellingResource(for: pitch).filter { spelling in
+                path.satisfiesAll(globalConstraints, for: spelling)
+            }
+        }
+
         // if a pitch has been represented, the spelling must be the same
         // global rules must be met
         // local rules _should_ be met
@@ -48,94 +56,58 @@ public final class Node: NodeType {
         
         var result: [Node] = []
 
-        
-        let path = Path(nodes)
-        
-        print("extending path: \(nodes.map { $0.spelling })")
-        
         switch path.pitchesRepresented(from: dyad) {
+            
         case .neither:
             
-            print("neither represented")
+            /// Iterate over every spelling of the **lower** pitch of the dyad that we are
+            /// currently attempting to spell that satisfies all of the global constraints
+            /// in the path that we are attempting to extend.
+            for lowerSpelling in globallyVerifiedSpellings(for: dyad.lower, in: path) {
+                
+                /// Do the same for the **higher** pitch
+                for higherSpelling in globallyVerifiedSpellings(for: dyad.higher, in: path) {
+                    
+                    /// Create a pitch spelling dyad for each globally verified spellings
+                    /// for the purpose of checking it against all of the local constraints
+                    let localDyad = PitchSpellingDyad(lowerSpelling, higherSpelling)
+                    
+                    /// Only if the local dyad satifies all of the local constraints, we then
+                    /// add a branch for the two spellings we have found
+                    if value(localDyad, satisfiesAll: localConstraints) {
+                        let lowerNode = Node(pitch: dyad.lower, spelling: lowerSpelling)
+                        let higherNode = Node(pitch: dyad.higher, spelling: higherSpelling)
+                        lowerNode.addChild(higherNode)
+                        result.append(lowerNode)
+                    }
+                }
+            }
+        
+        case .single(let represented, let unrepresented):
             
-            break
+            /// Get the spelling that already occurs in the path we are extending
+            guard let spelling = path.spelling(for: represented) else { break }
+            
+            /// Get all of the spellings for the pitch that does not occur in the path we
+            /// are attempting to extend
+            let globallyVerified = globallyVerifiedSpellings(for: unrepresented, in: path)
+            
+            /// Filter out the spellings for the pitch that does not occur in the path we
+            /// are attempting to extend that satisfy all of the local constraints
+            let locallyVerified = globallyVerified
+                .map { PitchSpellingDyad(spelling, $0) }
+                .filter { value($0, satisfiesAll: localConstraints) }
+                .map { Node(pitch: unrepresented, spelling: $0.a) }
+            
+            /// Add each of the locally and globally verified nodes
+            result.appendContentsOf(locallyVerified)
             
         case .both:
             
+            // skip if both pitches have been decided for this path!
             break
-            
-        case .single(let represented, let unrepresented):
-            
-            print("single: represented: \(represented), not represented: \(unrepresented)")
-            
-            // just add the unrepresented possibilities that are valid
-            
-            guard let spelling = path.spelling(for: represented) else { break }
-            
-            // ensure global constraints satisfied
-            
-            // wrap: ensure pitch spelling
-            let globallyVerified = unrepresented.spellings.reduce([]) { accum, newSpelling in
-                return path.nodesSatisfyAll([{ $0.isFineCompatible }], for: newSpelling)
-                    ? accum + newSpelling
-                    : accum
-            }
-            
-            let locallyVerified = globallyVerified
-                .map { PitchSpellingDyad(spelling, $0) }
-                .filter { value($0, satisfiesAll: rules) }
-                .map {
-                    Node(pitch: unrepresented, spelling: $0.b) // TODO: change to `.a`
-                }
-            
-            //result.appendContentsOf(locallyVerified)
-            
-            print("globally verified: \(globallyVerified)")
-            print("locally verified: \(locallyVerified)")
         }
         
-        
-        for lowerSpelling in spellingResource(for: dyad.lower) {
-            
-            // Create node for lower pitch
-            let lowerNode = Node(pitch: dyad.lower, spelling: lowerSpelling)
-            
-            // Check global constraints
-            guard !lowerNode.hasFineConflict(with: nodes) else { continue }
-            guard !lowerNode.hasSpellingConflicts(with: nodes) else { continue }
-            
-            for higherSpelling in spellingResource(for: dyad.higher) {
-                
-                let higherNode = Node(pitch: dyad.higher, spelling: higherSpelling)
-                
-                // guard higherNode satisfies global constraints
-                guard !higherNode.hasFineConflict(with: nodes) else { continue }
-                guard !higherNode.hasSpellingConflicts(with: nodes) else { continue }
-                
-                // Check local constraints
-                let pitchSpellingDyad = PitchSpellingDyad(lowerSpelling, higherSpelling)
-                
-                // guard dyad satisfied local constraints (currently rules)
-                guard value(pitchSpellingDyad, satisfiesAll: rules) else { continue }
-
-                lowerNode.addChild(higherNode)
-            }
-
-            if lowerNode.isContainer {
-                result.append(lowerNode)
-            }
-        }
-        
-        // devise way to roll-back strictness
-        if result.count == 0 && allowsBackTrack {
-            result =  Node.makeTrees(
-                for: dyad,
-                satisfying: [
-//                    { $0.isFineMatching }
-                ],
-                extendingPath: nodes
-            )
-        }
         return result
     }
     
@@ -152,52 +124,22 @@ public final class Node: NodeType {
         // generate subtrees for next dyad
         let subTrees = Node.makeTrees(
             for: head,
-            satisfying: [
+            localConstraints: [
                 { $0.hasValidIntervalQuality },
                 { $0.isFineCompatible }
             ],
-            extendingPath: pathToRoot
+            globalConstraints: [
+                { $0.isFineCompatible }
+            ],
+            extendingPath: Path(pathToRoot)
         )
         
-        // attach child nodes
         subTrees.forEach { addChild($0) }
-
-        // traverse the children of these nodes (skip generation)
-        subTrees.forEach {
-            $0.children.forEach {
-                $0.traverse(toSpell: tail, from: pitchSet)
-            }
-        }
-    }
-    
-    /**
-     - returns: `true` if the given `nodes` share a `pitch` value, but are spelled differently.
-     Otherwise, `false`.
-     */
-    public func hasSpellingConflicts(with nodes: [Node]) -> Bool {
-        for node in nodes {
-            if self.pitch == node.pitch && self.spelling != node.spelling {
-                return true
-            }
-        }
-        return false
-    }
-    
-    /**
-     - returns: `true` if there is any conflict of fine adjustment between this node and any
-     contained in the given `nodes`. Otherwise, `false`.
-     */
-    public func hasFineConflict(with nodes: [Node]) -> Bool {
-        for node in nodes {
-            let pitchSpellingDyad = PitchSpellingDyad(self.spelling, node.spelling)
-            if !pitchSpellingDyad.isFineCompatible {
-                return true
-            }
-        }
-        return false
+        leaves.forEach { $0.traverse(toSpell: tail, from: pitchSet) }
     }
 }
 
+// TODO: refactor as an extension of some sort ? on an Any ?!
 func value<T>(value: T, satisfiesAll rules: [(T) -> Bool]) -> Bool {
     for rule in rules where !rule(value) { return false }
     return true

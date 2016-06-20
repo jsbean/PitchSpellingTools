@@ -30,38 +30,52 @@ public final class Tree {
         self.pitchSet = pitchSet
     }
     
-    public func spell() throws -> SpelledPitchSet {
+    public func spell(allowingUnconventionalEnharmonics: Bool = true)
+        throws -> SpelledPitchSet
+    {
 
         guard let dyads = dyads else { return SpelledPitchSet([]) }
         guard let (head, tail) = dyads.destructured else { return SpelledPitchSet([]) }
 
         // jump start process
-        let trees = Node.makeTrees(
+        var trees = Node.makeTrees(
             for: head,
-            satisfying: [
+            localConstraints: [
                 { $0.hasValidIntervalQuality },
+                { $0.isFineCompatible }
+            ],
+            globalConstraints: [
                 { $0.isFineCompatible }
             ],
             allowingBackTrack: true
         )
         
+        // start rolling back local constraints
+        if trees.count == 0 {
+            trees = Node.makeTrees(
+                for: head,
+                localConstraints: [
+                    { $0.isFineCompatible }
+                ]
+            )
+        }
+        print("trees.count: \(trees.count)")
+        
         // traverse to generate trees
         for tree in trees {
-            for child in tree.children {
-                child.traverse(toSpell: tail, from: pitchSet)
+            for leaf in tree.leaves {
+                leaf.traverse(toSpell: tail, from: pitchSet)
             }
         }
 
-        let options = trees.flatMap { $0.leaves.map { Set($0.pathToRoot) } }
-        let validSizedOptions = options.filter { $0.count == Array(pitchSet).count }
-        guard validSizedOptions.count > 0 else {
-            print("no valid sized options for: \(pitchSet)")
-            print("other options: \(options)")
-            throw Error.noOptions
-        }
+        // just get the longest ones
+        let options = trees
+            .flatMap { $0.leaves.map { $0.pathToRoot } }
+            .filter { $0.count == Array(pitchSet).count }
         
-        print("valid sized options: \(validSizedOptions)")
-        let sorted = validSizedOptions.sort {
+        guard options.count > 0 else { throw Error.noOptions }
+        
+        let sorted = options.sort {
             $0.map { $0.spelling.spellingDistance }.mean! <
             $1.map { $0.spelling.spellingDistance }.mean!
         }
