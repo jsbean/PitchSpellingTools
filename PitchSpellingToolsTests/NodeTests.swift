@@ -208,12 +208,13 @@ class NodeTests: XCTestCase {
             self.assert(
                 [63,66,68,69,70],
                 isSpelledWith: [
-                    PitchSpelling(.d, .sharp),
+                    PitchSpelling(.e, .flat),
                     PitchSpelling(.f, .sharp),
                     PitchSpelling(.g, .sharp),
                     PitchSpelling(.a),
                     PitchSpelling(.b, .flat),
-                ]
+                ],
+                allowingUnconventionalEnharmonics: false
             )
         }
     }
