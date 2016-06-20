@@ -100,7 +100,7 @@ public final class Node: NodeType {
             
         case .both:
             
-            // skip if both pitches have been decided for this path!
+            // skip if both pitches are already represented in the path we are extending
             break
         }
         

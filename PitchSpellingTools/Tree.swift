@@ -36,17 +36,21 @@ public final class Tree {
 
         guard let dyads = dyads else { return SpelledPitchSet([]) }
         guard let (head, tail) = dyads.destructured else { return SpelledPitchSet([]) }
+        
+        let localConstraints: [(PitchSpellingDyad) -> Bool] = [
+            { $0.hasValidIntervalQuality },
+            { $0.isFineCompatible }
+        ]
+        
+        let globalConstraints: [(PitchSpellingDyad) -> Bool] = [
+            { $0.isFineCompatible }
+        ]
 
         // jump start process
         var trees = Node.makeTrees(
             for: head,
-            localConstraints: [
-                { $0.hasValidIntervalQuality },
-                { $0.isFineCompatible }
-            ],
-            globalConstraints: [
-                { $0.isFineCompatible }
-            ],
+            localConstraints: localConstraints,
+            globalConstraints: globalConstraints,
             allowingUnconventionalEnharmonics: allowsUnconventionalEnharmonics
         )
         
@@ -70,7 +74,7 @@ public final class Tree {
         
         print("trees.count: \(trees.count); dyad: \(head)")
         
-        // traverse to generate trees
+        // TODO: wrap in method traverse to generate trees
         for tree in trees {
             for leaf in tree.leaves {
                 leaf.traverse(
