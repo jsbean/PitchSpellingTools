@@ -323,22 +323,22 @@ class NodeTests: XCTestCase {
             ]
         )
     }
-//    
-//    func testMixedEighthToneChord() {
-//        self.assert(
-//            [63.5, 67, 68.25, 69.75],
-//            isSpelledWith: [
-//                // e qfl
-//                // g
-//                // a flat +
-//                // b three q flat +
-//                PitchSpelling(.e, .quarterFlat),
-//                PitchSpelling(.g),
-//                PitchSpelling(.a, .flat, .up),
-//                PitchSpelling(.b, .threeQuarterFlat, .up)
-//            ]
-//        )
-//    }
+    
+    func testMixedEighthToneChord() {
+        self.assert(
+            [63.5, 67, 68.25, 69.75],
+            isSpelledWith: [
+                // e qfl
+                // g
+                // a flat +
+                // b three q flat +
+                PitchSpelling(.e, .quarterFlat),
+                PitchSpelling(.g),
+                PitchSpelling(.a, .flat, .up),
+                PitchSpelling(.b, .threeQuarterFlat, .up)
+            ]
+        )
+    }
     
 //    func testManyEighthToneChordsEnsureSingleFineDirection() {
 //        (0 ..< 1000).forEach { _ in

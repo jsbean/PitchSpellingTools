@@ -37,42 +37,27 @@ public final class Tree {
         guard let dyads = dyads else { return SpelledPitchSet([]) }
         guard let (head, tail) = dyads.destructured else { return SpelledPitchSet([]) }
         
-        let localConstraints: [(PitchSpellingDyad) -> Bool] = [
-            { $0.hasValidIntervalQuality },
-            { $0.isFineCompatible }
-        ]
-        
         let globalConstraints: [(PitchSpellingDyad) -> Bool] = [
             { $0.isFineCompatible }
         ]
+        
+        var localConstraints: [(PitchSpellingDyad) -> Bool] = [
+            { $0.isFineCompatible },
+            { $0.hasValidIntervalQuality }
+        ]
 
-        // jump start process
-        var trees = Node.makeTrees(
-            for: head,
-            localConstraints: localConstraints,
-            globalConstraints: globalConstraints,
-            allowingUnconventionalEnharmonics: allowsUnconventionalEnharmonics
-        )
-        
-        // while trees.count == 0 { }
-        
-        // start rolling back local constraints
-        if trees.count == 0 {
-            print("retry 1")
+        // TODO: refactor:
+        var trees: [Node] = []
+        repeat {
             trees = Node.makeTrees(
                 for: head,
-                localConstraints: [
-                    { $0.isFineCompatible }
-                ]
+                localConstraints: localConstraints,
+                globalConstraints: globalConstraints,
+                allowingUnconventionalEnharmonics: allowsUnconventionalEnharmonics
             )
-        }
-        
-        if trees.count == 0 {
-            print("retry 2")
-            trees = Node.makeTrees(for: head)
-        }
-        
-        print("trees.count: \(trees.count); dyad: \(head)")
+            if localConstraints.count > 0 { _ = localConstraints.removeLast() }
+        } while trees.count == 0
+
         
         // TODO: wrap in method traverse to generate trees
         for tree in trees {
