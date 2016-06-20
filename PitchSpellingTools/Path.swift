@@ -31,7 +31,12 @@ public struct Path {
     }
     
     public func pitchesRepresented(from dyad: Dyad) -> PitchesRepresentationInPath {
-        return .neither
+        switch (hasNode(with: dyad.higher), hasNode(with: dyad.lower)) {
+        case (true, true): return .both
+        case (false, true): return .single(represented: dyad.lower, unrepresented: dyad.higher)
+        case (true, false): return .single(represented: dyad.higher, unrepresented: dyad.lower)
+        case (false, false): return .neither
+        }
     }
     
     public func satisfies(constraints: [(PitchSpellingDyad) -> Bool]) -> Bool {
