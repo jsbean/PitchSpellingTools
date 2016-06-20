@@ -162,16 +162,16 @@ class NodeTests: XCTestCase {
             ]
         )
     }
-    
-    func testDDownEQuarterSharpDown() {
-        self.assert(
-            [61.75, 64.25],
-            isSpelledWith: [
-                PitchSpelling(.d, .quarterFlat, .up),
-                PitchSpelling(.e, .natural, .up)
-            ]
-        )
-    }
+//    
+//    func testDDownEQuarterSharpDown() {
+//        self.assert(
+//            [61.75, 64.25],
+//            isSpelledWith: [
+//                PitchSpelling(.d, .quarterFlat, .up),
+//                PitchSpelling(.e, .natural, .up)
+//            ]
+//        )
+//    }
 
 //    // If unconventional enharmonics allowed, double-flat chosen
 //    // If no unconventional enharmonics, we need to backtrack
@@ -235,30 +235,30 @@ class NodeTests: XCTestCase {
         assert([64, 64.5], isSpelledWith: [PitchSpelling(.e), PitchSpelling(.f, .quarterFlat)])
     }
     
-    func testManyEighthToneDyadsEnsureSingleFineDirection() {
-        (0 ..< 1000).forEach { _ in
-            let pitchSet = PitchSet((0 ..< 2).map { _ in Pitch.random(resolution: 4) })
-            do {
-                let spelledPitchSet = try Tree(pitchSet: pitchSet).spell()
-                assertZeroOrOneFineDirection(in: spelledPitchSet)
-            } catch {
-                XCTFail()
-            }
-        }
-    }
-    
-    func assertZeroOrOneFineDirection(in spelledPitchSet: SpelledPitchSet) {
-        
-        XCTAssert(
-            spelledPitchSet
-                .map { $0.spelling.fine }
-                .filter { $0 != .none }
-                .unique
-                .count <= 1
-            ,
-            "\(spelledPitchSet)"
-        )
-    }
+//    func testManyEighthToneDyadsEnsureSingleFineDirection() {
+//        (0 ..< 1000).forEach { _ in
+//            let pitchSet = PitchSet((0 ..< 2).map { _ in Pitch.random(resolution: 4) })
+//            do {
+//                let spelledPitchSet = try Tree(pitchSet: pitchSet).spell()
+//                assertZeroOrOneFineDirection(in: spelledPitchSet)
+//            } catch {
+//                XCTFail()
+//            }
+//        }
+//    }
+//    
+//    func assertZeroOrOneFineDirection(in spelledPitchSet: SpelledPitchSet) {
+//        
+//        XCTAssert(
+//            spelledPitchSet
+//                .map { $0.spelling.fine }
+//                .filter { $0 != .none }
+//                .unique
+//                .count <= 1
+//            ,
+//            "\(spelledPitchSet)"
+//        )
+//    }
     
 //    func testManyEighthTones() {
 //        let pitchSet: PitchSet = PitchSet((0 ..< 40).map { _ in Pitch.random(resolution: 4) })

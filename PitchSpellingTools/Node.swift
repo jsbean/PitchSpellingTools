@@ -26,7 +26,7 @@ public final class Node: NodeType {
     public static func makeTrees(
         for dyad: Dyad,
         satisfying rules: [(PitchSpellingDyad) -> Bool] = [],
-        extendingPath path: [Node] = [],
+        extendingPath nodes: [Node] = [],
         allowingUnconventionalEnharmonics allowsUnconventionalEnharmonics: Bool = true,
         allowingBackTrack allowsBackTrack: Bool = false
     ) -> [Node]
@@ -37,10 +37,62 @@ public final class Node: NodeType {
                 ? pitch.spellings
                 : pitch.spellingsWithoutUnconventionalEnharmonics
         }
-    
+
+        
+        // if a pitch has been represented, the spelling must be the same
+        // global rules must be met
+        // local rules _should_ be met
+        // -- start strict
+        // -- then roll back progressively for local rules only
+        // -- starting at the leaves
+        
         var result: [Node] = []
 
-        // make Path here for now, then work out up the chain
+        
+        let path = Path(nodes)
+        
+        print("extending path: \(nodes.map { $0.spelling })")
+        
+        switch path.pitchesRepresented(from: dyad) {
+        case .neither:
+            
+            print("neither represented")
+            
+            break
+            
+        case .both:
+            
+            break
+            
+        case .single(let represented, let unrepresented):
+            
+            print("single: represented: \(represented), not represented: \(unrepresented)")
+            
+            // just add the unrepresented possibilities that are valid
+            
+            guard let spelling = path.spelling(for: represented) else { break }
+            
+            // ensure global constraints satisfied
+            
+            // wrap: ensure pitch spelling
+            let globallyVerified = unrepresented.spellings.reduce([]) { accum, newSpelling in
+                return path.nodesSatisfyAll([{ $0.isFineCompatible }], for: newSpelling)
+                    ? accum + newSpelling
+                    : accum
+            }
+            
+            let locallyVerified = globallyVerified
+                .map { PitchSpellingDyad(spelling, $0) }
+                .filter { value($0, satisfiesAll: rules) }
+                .map {
+                    Node(pitch: unrepresented, spelling: $0.b) // TODO: change to `.a`
+                }
+            
+            //result.appendContentsOf(locallyVerified)
+            
+            print("globally verified: \(globallyVerified)")
+            print("locally verified: \(locallyVerified)")
+        }
         
         
         for lowerSpelling in spellingResource(for: dyad.lower) {
@@ -49,18 +101,16 @@ public final class Node: NodeType {
             let lowerNode = Node(pitch: dyad.lower, spelling: lowerSpelling)
             
             // Check global constraints
-            guard !lowerNode.hasFineConflict(with: path) else { continue }
-            guard !lowerNode.hasSpellingConflicts(with: path) else { continue }
-            
-            //print("-- node: \(node)")
+            guard !lowerNode.hasFineConflict(with: nodes) else { continue }
+            guard !lowerNode.hasSpellingConflicts(with: nodes) else { continue }
             
             for higherSpelling in spellingResource(for: dyad.higher) {
                 
                 let higherNode = Node(pitch: dyad.higher, spelling: higherSpelling)
                 
                 // guard higherNode satisfies global constraints
-                guard !higherNode.hasFineConflict(with: path) else { continue }
-                guard !higherNode.hasSpellingConflicts(with: path) else { continue }
+                guard !higherNode.hasFineConflict(with: nodes) else { continue }
+                guard !higherNode.hasSpellingConflicts(with: nodes) else { continue }
                 
                 // Check local constraints
                 let pitchSpellingDyad = PitchSpellingDyad(lowerSpelling, higherSpelling)
@@ -76,13 +126,14 @@ public final class Node: NodeType {
             }
         }
         
+        // devise way to roll-back strictness
         if result.count == 0 && allowsBackTrack {
             result =  Node.makeTrees(
                 for: dyad,
                 satisfying: [
 //                    { $0.isFineMatching }
                 ],
-                extendingPath: path
+                extendingPath: nodes
             )
         }
         return result

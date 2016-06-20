@@ -67,8 +67,7 @@ public final class Tree {
         }
         
         let bestOption = sorted.first!
-        let path = Path(nodes: bestOption)
-
+        let path = Path(bestOption)
         return path.applySpellings()
     }
 }

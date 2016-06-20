@@ -9,25 +9,33 @@
 import ArrayTools
 import Pitch
 
-public enum PitchesRepresentationInPath {
-    case neither
-    case single(represented: Pitch, unrepresented: Pitch)
-    case both
-}
-
 public struct Path {
+    
+    public enum PitchesRepresentationInPath {
+        case neither
+        case single(represented: Pitch, unrepresented: Pitch)
+        case both
+    }
     
     private let nodes: Set<Node>
     
-    public init<S: SequenceType where S.Generator.Element == Node>(nodes: S) {
+    public init<S: SequenceType where S.Generator.Element == Node>(_ nodes: S) {
         self.nodes = Set(nodes)
     }
     
-    public func hasNode(with pitch: Pitch) -> Bool {
+    public func node(with pitch: Pitch) -> Node? {
         for node in nodes {
-            if node.pitch == pitch { return true }
+            if node.pitch == pitch { return node }
         }
-        return false
+        return nil
+    }
+    
+    public func hasNode(with pitch: Pitch) -> Bool {
+        return node(with: pitch) != nil
+    }
+    
+    public func spelling(for pitch: Pitch) -> PitchSpelling? {
+        return node(with: pitch)?.spelling
     }
     
     public func pitchesRepresented(from dyad: Dyad) -> PitchesRepresentationInPath {
@@ -39,8 +47,17 @@ public struct Path {
         }
     }
     
-    public func satisfies(constraints: [(PitchSpellingDyad) -> Bool]) -> Bool {
-        return false
+    public func nodesSatisfyAll(
+        constraints: [(PitchSpellingDyad) -> Bool],
+        for spelling: PitchSpelling
+    ) -> Bool
+    {
+        for dyad in nodes.map({ PitchSpellingDyad(spelling, $0.spelling) }) {
+            for constraint in constraints {
+                if !constraint(dyad) { return false }
+            }
+        }
+        return true
     }
     
     public func applySpellings() -> SpelledPitchSet {
@@ -49,5 +66,12 @@ public struct Path {
                 SpelledPitch(pitch: $0.pitch, spelling: $0.spelling)
             }
         )
+    }
+}
+
+extension Path: CustomStringConvertible {
+    
+    public var description: String {
+        return "\(nodes.map { $0 })"
     }
 }
