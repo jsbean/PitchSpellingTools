@@ -254,9 +254,13 @@ class NodeTests: XCTestCase {
 
     func testEighthTones() {
         self.measureBlock {
-            let pitchSet: PitchSet = [60.25, 69.75]
-            let tree = Tree(pitchSet: pitchSet)
-            print(try? tree.spell())
+            self.assert(
+                [60.25, 69.75],
+                isSpelledWith: [
+                    PitchSpelling(.c, .natural, .up),
+                    PitchSpelling(.b, .threeQuarterFlat, .up)
+                ]
+            )
         }
     }
     
@@ -264,13 +268,87 @@ class NodeTests: XCTestCase {
         assert([64, 64.5], isSpelledWith: [PitchSpelling(.e), PitchSpelling(.f, .quarterFlat)])
     }
     
-//    func testManyEighthToneDyadsEnsureSingleFineDirection() {
+    func testManyEighthToneDyadsEnsureSingleFineDirection() {
+        (0 ..< 1000).forEach { _ in
+            let pitchSet = PitchSet((0 ..< 2).map { _ in Pitch.random(resolution: 4) })
+            do {
+                let spelledPitchSet = try Tree(pitchSet: pitchSet).spell()
+                assertZeroOrOneFineDirection(in: spelledPitchSet)
+            } catch {
+                XCTFail()
+            }
+        }
+    }
+    
+    func testMixedQuarterToneTriad() {
+        self.assert(
+            [60.5, 66.5, 69],
+            isSpelledWith: [
+                PitchSpelling(.c, .quarterSharp),
+                PitchSpelling(.f, .threeQuarterSharp),
+                PitchSpelling(.a)
+            ]
+        )
+    }
+    
+    // TODO: consider sorting first for coarse.distance, then spelling distance
+    func testAllQuarterToneTriad() {
+        self.assert(
+            [60.5, 66.5, 70.5],
+            isSpelledWith: [
+                PitchSpelling(.c, .quarterSharp),
+                PitchSpelling(.f, .threeQuarterSharp),
+                PitchSpelling(.a, .threeQuarterSharp)
+            ]
+        )
+    }
+    
+    func testEighthToneQuarterToneMixedDyad() {
+        self.assert(
+            [64.5, 65.75],
+            isSpelledWith: [
+                PitchSpelling(.e, .quarterSharp),
+                PitchSpelling(.f, .quarterSharp, .up)
+            ]
+        )
+    }
+    
+    func testEighthToneTriad() {
+        self.assert(
+            [63.25, 66.75, 68.75],
+            isSpelledWith: [
+                PitchSpelling(.e, .quarterFlat, .down),
+                PitchSpelling(.g, .natural, .down),
+                PitchSpelling(.a, .natural, .down)
+            ]
+        )
+    }
+//    
+//    func testMixedEighthToneChord() {
+//        self.assert(
+//            [63.5, 67, 68.25, 69.75],
+//            isSpelledWith: [
+//                // e qfl
+//                // g
+//                // a flat +
+//                // b three q flat +
+//                PitchSpelling(.e, .quarterFlat),
+//                PitchSpelling(.g),
+//                PitchSpelling(.a, .flat, .up),
+//                PitchSpelling(.b, .threeQuarterFlat, .up)
+//            ]
+//        )
+//    }
+    
+//    func testManyEighthToneChordsEnsureSingleFineDirection() {
 //        (0 ..< 1000).forEach { _ in
-//            let pitchSet = PitchSet((0 ..< 2).map { _ in Pitch.random(resolution: 4) })
+//            let amount = Int.random(min: 2, max: 10)
+//            let pitchSet = PitchSet((0 ..< amount).map { _ in Pitch.random(resolution: 4) })
 //            do {
 //                let spelledPitchSet = try Tree(pitchSet: pitchSet).spell()
 //                assertZeroOrOneFineDirection(in: spelledPitchSet)
 //            } catch {
+//                print("failed: \(pitchSet)")
 //                XCTFail()
 //            }
 //        }

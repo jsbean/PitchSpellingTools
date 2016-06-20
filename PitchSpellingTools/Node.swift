@@ -27,8 +27,7 @@ public final class Node: NodeType {
         globalConstraints: [(PitchSpellingDyad) -> Bool] = [],
         localConstraints: [(PitchSpellingDyad) -> Bool] = [],
         extendingPath path: Path = [],
-        allowingUnconventionalEnharmonics allowsUnconventionalEnharmonics: Bool = true,
-        allowingBackTrack allowsBackTrack: Bool = false
+        allowingUnconventionalEnharmonics allowsUnconventionalEnharmonics: Bool = true
     ) -> [Node]
     {
         
@@ -97,7 +96,7 @@ public final class Node: NodeType {
                 .map { Node(pitch: unrepresented, spelling: $0.a) }
             
             /// Add each of the locally and globally verified nodes
-            result.appendContentsOf(locallyVerified)
+            result = locallyVerified
             
         case .both:
             
@@ -113,7 +112,13 @@ public final class Node: NodeType {
         self.spelling = spelling
     }
     
-    func traverse(toSpell unspelled: [Dyad], from pitchSet: PitchSet) {
+    func traverse(
+        toSpell unspelled: [Dyad],
+        from pitchSet: PitchSet,
+        localConstraints: [(PitchSpellingDyad) -> Bool] = [],
+        globalConstraints: [(PitchSpellingDyad) -> Bool] = []
+    )
+    {
         
         // no more pitches to spell (worst case scenario)
         guard let (head, tail) = unspelled.destructured else { return }
@@ -121,18 +126,20 @@ public final class Node: NodeType {
         // generate subtrees for next dyad
         let subTrees = Node.makeTrees(
             for: head,
-            localConstraints: [
-                { $0.hasValidIntervalQuality },
-                { $0.isFineCompatible }
-            ],
-            globalConstraints: [
-                { $0.isFineCompatible }
-            ],
+            localConstraints: localConstraints,
+            globalConstraints: globalConstraints,
             extendingPath: Path(pathToRoot)
         )
         
         subTrees.forEach { addChild($0) }
-        leaves.forEach { $0.traverse(toSpell: tail, from: pitchSet) }
+        leaves.forEach {
+            $0.traverse(
+                toSpell: tail,
+                from: pitchSet,
+                localConstraints: localConstraints,
+                globalConstraints: globalConstraints
+            )
+        }
     }
 }
 

@@ -14,7 +14,6 @@ public final class Tree {
     
     public enum Error: ErrorType {
         case noOptions
-        case incorrectAmount
     }
     
     private var pitchSet: PitchSet
@@ -30,8 +29,9 @@ public final class Tree {
         self.pitchSet = pitchSet
     }
     
-    public func spell(allowingUnconventionalEnharmonics: Bool = true)
-        throws -> SpelledPitchSet
+    public func spell(
+        allowingUnconventionalEnharmonics allowsUnconventionalEnharmonics: Bool = true
+    ) throws -> SpelledPitchSet
     {
 
         guard let dyads = dyads else { return SpelledPitchSet([]) }
@@ -47,11 +47,14 @@ public final class Tree {
             globalConstraints: [
                 { $0.isFineCompatible }
             ],
-            allowingBackTrack: true
+            allowingUnconventionalEnharmonics: allowsUnconventionalEnharmonics
         )
+        
+        // while trees.count == 0 { }
         
         // start rolling back local constraints
         if trees.count == 0 {
+            print("retry 1")
             trees = Node.makeTrees(
                 for: head,
                 localConstraints: [
@@ -59,12 +62,25 @@ public final class Tree {
                 ]
             )
         }
-        print("trees.count: \(trees.count)")
+        
+        if trees.count == 0 {
+            print("retry 2")
+            trees = Node.makeTrees(for: head)
+        }
+        
+        print("trees.count: \(trees.count); dyad: \(head)")
         
         // traverse to generate trees
         for tree in trees {
             for leaf in tree.leaves {
-                leaf.traverse(toSpell: tail, from: pitchSet)
+                leaf.traverse(
+                    toSpell: tail,
+                    from: pitchSet,
+                    localConstraints: [
+                        { $0.hasValidIntervalQuality },
+                        { $0.isFineCompatible }
+                    ]
+                )
             }
         }
 
