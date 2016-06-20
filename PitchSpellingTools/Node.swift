@@ -21,9 +21,6 @@ public final class Node: NodeType {
     /**
      - TODO: refactor this into own struct
      - TODO: change local constraints to dyadIntrinsicConstraints ?
-     - TODO: add option for spellings with or without unconventional enharmonics.
-     - TODO: add satisfying local rules / global rules (spelling conflict, fine conflicts)
-     - TODO: return tree that is unique compared to the given context
      */
     public static func makeTrees(
         for dyad: Dyad,
