@@ -24,6 +24,9 @@ public struct Path {
     }
     
     public func hasNode(with pitch: Pitch) -> Bool {
+        for node in nodes {
+            if node.pitch == pitch { return true }
+        }
         return false
     }
     
