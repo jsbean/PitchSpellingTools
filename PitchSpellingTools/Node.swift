@@ -26,7 +26,7 @@ public final class Node: NodeType {
     public static func makeTrees(
         for dyad: Dyad,
         satisfying rules: [(PitchSpellingDyad) -> Bool] = [],
-        extendingPath nodes: [Node] = [],
+        extendingPath path: [Node] = [],
         allowingUnconventionalEnharmonics allowsUnconventionalEnharmonics: Bool = true,
         allowingBackTrack allowsBackTrack: Bool = false
     ) -> [Node]
@@ -39,6 +39,9 @@ public final class Node: NodeType {
         }
     
         var result: [Node] = []
+
+        // make Path here for now, then work out up the chain
+        
         
         for lowerSpelling in spellingResource(for: dyad.lower) {
             
@@ -46,8 +49,8 @@ public final class Node: NodeType {
             let lowerNode = Node(pitch: dyad.lower, spelling: lowerSpelling)
             
             // Check global constraints
-            guard !lowerNode.hasFineConflict(with: nodes) else { continue }
-            guard !lowerNode.hasSpellingConflicts(with: nodes) else { continue }
+            guard !lowerNode.hasFineConflict(with: path) else { continue }
+            guard !lowerNode.hasSpellingConflicts(with: path) else { continue }
             
             //print("-- node: \(node)")
             
@@ -56,8 +59,8 @@ public final class Node: NodeType {
                 let higherNode = Node(pitch: dyad.higher, spelling: higherSpelling)
                 
                 // guard higherNode satisfies global constraints
-                guard !higherNode.hasFineConflict(with: nodes) else { continue }
-                guard !higherNode.hasSpellingConflicts(with: nodes) else { continue }
+                guard !higherNode.hasFineConflict(with: path) else { continue }
+                guard !higherNode.hasSpellingConflicts(with: path) else { continue }
                 
                 // Check local constraints
                 let pitchSpellingDyad = PitchSpellingDyad(lowerSpelling, higherSpelling)
@@ -79,7 +82,7 @@ public final class Node: NodeType {
                 satisfying: [
 //                    { $0.isFineMatching }
                 ],
-                extendingPath: nodes
+                extendingPath: path
             )
         }
         return result
