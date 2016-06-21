@@ -7,54 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07091E6D1C8633E0003D1B3B /* DirectionTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07091E6C1C8633E0003D1B3B /* DirectionTools.framework */; };
-		07091E6F1C8633F3003D1B3B /* DirectionTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07091E6E1C8633F3003D1B3B /* DirectionTools.framework */; };
 		070F5CA31C9B2FFD00A3DF4A /* EnumTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 070F5CA21C9B2FFD00A3DF4A /* EnumTools.framework */; };
 		070F5CA51C9B300D00A3DF4A /* EnumTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 070F5CA41C9B300D00A3DF4A /* EnumTools.framework */; };
-		071D19BC1C9472D200543F77 /* Node+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D19BB1C9472D200543F77 /* Node+Error.swift */; };
-		071D19BD1C9472D200543F77 /* Node+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D19BB1C9472D200543F77 /* Node+Error.swift */; };
-		071D19BE1C947F4200543F77 /* CopyTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07A767721C88AF6200B3B1EF /* CopyTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		071D19BF1C947F4200543F77 /* DirectionTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07091E6C1C8633E0003D1B3B /* DirectionTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		071D19C01C947F4200543F77 /* ArrayTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07E00A731C85F39F008478C7 /* ArrayTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		071D19C11C947F4C00543F77 /* CopyTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07A767741C88AF7200B3B1EF /* CopyTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		071D19C21C947F4C00543F77 /* DirectionTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07091E6E1C8633F3003D1B3B /* DirectionTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		071D19C31C947F4C00543F77 /* ArrayTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07E00A751C85F3AC008478C7 /* ArrayTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0742A22D1C88D260002050D6 /* NodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0742A22C1C88D260002050D6 /* NodeTests.swift */; };
 		0742A22E1C88D260002050D6 /* NodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0742A22C1C88D260002050D6 /* NodeTests.swift */; };
 		0787D2511D0B55FC00A3550F /* NodeTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0787D2501D0B55FC00A3550F /* NodeTypeTests.swift */; };
 		0787D2521D0B55FC00A3550F /* NodeTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0787D2501D0B55FC00A3550F /* NodeTypeTests.swift */; };
-		07A767731C88AF6200B3B1EF /* CopyTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A767721C88AF6200B3B1EF /* CopyTools.framework */; };
-		07A767751C88AF7200B3B1EF /* CopyTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A767741C88AF7200B3B1EF /* CopyTools.framework */; };
 		07B230BF1C861208008A7A2F /* TreeTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E00A341C85ECF7008478C7 /* TreeTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07E00A351C85ECF7008478C7 /* TreeTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E00A341C85ECF7008478C7 /* TreeTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07E00A3C1C85ECF7008478C7 /* TreeTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E00A311C85ECF7008478C7 /* TreeTools.framework */; };
 		07E00A5A1C85ED09008478C7 /* TreeTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E00A501C85ED09008478C7 /* TreeTools.framework */; };
 		07E00A6A1C85ED6D008478C7 /* TreeTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07E00A311C85ECF7008478C7 /* TreeTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07E00A6C1C85ED74008478C7 /* TreeTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07E00A501C85ED09008478C7 /* TreeTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		07E00A6E1C85F0CD008478C7 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E00A6D1C85F0CD008478C7 /* Node.swift */; };
-		07E00A6F1C85F0CD008478C7 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E00A6D1C85F0CD008478C7 /* Node.swift */; };
 		07E00A741C85F39F008478C7 /* ArrayTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E00A731C85F39F008478C7 /* ArrayTools.framework */; };
 		07E00A761C85F3AC008478C7 /* ArrayTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E00A751C85F3AC008478C7 /* ArrayTools.framework */; };
 		07EC99321D0B1E8B002414A4 /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EC99311D0B1E8B002414A4 /* NodeType.swift */; };
 		07EC99331D0B1E8B002414A4 /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EC99311D0B1E8B002414A4 /* NodeType.swift */; };
-		07EFCB431C932B6D00D37FEB /* Node+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB421C932B6D00D37FEB /* Node+CustomStringConvertible.swift */; };
-		07EFCB441C932B6D00D37FEB /* Node+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB421C932B6D00D37FEB /* Node+CustomStringConvertible.swift */; };
-		07EFCB461C932B8C00D37FEB /* Node+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB451C932B8C00D37FEB /* Node+Position.swift */; };
-		07EFCB471C932B8C00D37FEB /* Node+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB451C932B8C00D37FEB /* Node+Position.swift */; };
-		07EFCB491C932BC000D37FEB /* Node+Siblings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB481C932BC000D37FEB /* Node+Siblings.swift */; };
-		07EFCB4A1C932BC000D37FEB /* Node+Siblings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB481C932BC000D37FEB /* Node+Siblings.swift */; };
-		07EFCB4C1C932EBD00D37FEB /* Node+Leaves.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB4B1C932EBD00D37FEB /* Node+Leaves.swift */; };
-		07EFCB4D1C932EBD00D37FEB /* Node+Leaves.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB4B1C932EBD00D37FEB /* Node+Leaves.swift */; };
-		07EFCB4F1C93318B00D37FEB /* Node+Children.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB4E1C93318B00D37FEB /* Node+Children.swift */; };
-		07EFCB501C93318B00D37FEB /* Node+Children.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB4E1C93318B00D37FEB /* Node+Children.swift */; };
-		07EFCB521C93329A00D37FEB /* Node+Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB511C93329A00D37FEB /* Node+Height.swift */; };
-		07EFCB531C93329A00D37FEB /* Node+Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB511C93329A00D37FEB /* Node+Height.swift */; };
-		07EFCB551C93381A00D37FEB /* Node+Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB541C93381A00D37FEB /* Node+Depth.swift */; };
-		07EFCB561C93381A00D37FEB /* Node+Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB541C93381A00D37FEB /* Node+Depth.swift */; };
-		07EFCB581C9339D500D37FEB /* Node+Ancestors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB571C9339D500D37FEB /* Node+Ancestors.swift */; };
-		07EFCB591C9339D500D37FEB /* Node+Ancestors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB571C9339D500D37FEB /* Node+Ancestors.swift */; };
-		07EFCB5B1C933C8300D37FEB /* Node+Descendents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB5A1C933C8300D37FEB /* Node+Descendents.swift */; };
-		07EFCB5C1C933C8300D37FEB /* Node+Descendents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFCB5A1C933C8300D37FEB /* Node+Descendents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,8 +51,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				071D19BE1C947F4200543F77 /* CopyTools.framework in CopyFiles */,
-				071D19BF1C947F4200543F77 /* DirectionTools.framework in CopyFiles */,
 				071D19C01C947F4200543F77 /* ArrayTools.framework in CopyFiles */,
 				07E00A6A1C85ED6D008478C7 /* TreeTools.framework in CopyFiles */,
 			);
@@ -94,8 +62,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				071D19C11C947F4C00543F77 /* CopyTools.framework in CopyFiles */,
-				071D19C21C947F4C00543F77 /* DirectionTools.framework in CopyFiles */,
 				071D19C31C947F4C00543F77 /* ArrayTools.framework in CopyFiles */,
 				07E00A6C1C85ED74008478C7 /* TreeTools.framework in CopyFiles */,
 			);
@@ -108,9 +74,8 @@
 		07091E6E1C8633F3003D1B3B /* DirectionTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DirectionTools.framework; path = Carthage/Build/Mac/DirectionTools.framework; sourceTree = "<group>"; };
 		070F5CA21C9B2FFD00A3DF4A /* EnumTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumTools.framework; path = Carthage/Build/iOS/EnumTools.framework; sourceTree = "<group>"; };
 		070F5CA41C9B300D00A3DF4A /* EnumTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumTools.framework; path = Carthage/Build/Mac/EnumTools.framework; sourceTree = "<group>"; };
-		071D19BB1C9472D200543F77 /* Node+Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+Error.swift"; sourceTree = "<group>"; };
 		0742A22C1C88D260002050D6 /* NodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeTests.swift; sourceTree = "<group>"; };
-		0787D2501D0B55FC00A3550F /* NodeTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeTypeTests.swift; path = TreeToolsTests/NodeTypeTests.swift; sourceTree = "<group>"; };
+		0787D2501D0B55FC00A3550F /* NodeTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeTypeTests.swift; sourceTree = "<group>"; };
 		07A767721C88AF6200B3B1EF /* CopyTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CopyTools.framework; path = Carthage/Build/iOS/CopyTools.framework; sourceTree = "<group>"; };
 		07A767741C88AF7200B3B1EF /* CopyTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CopyTools.framework; path = Carthage/Build/Mac/CopyTools.framework; sourceTree = "<group>"; };
 		07E00A311C85ECF7008478C7 /* TreeTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TreeTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,19 +85,9 @@
 		07E00A421C85ECF7008478C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07E00A501C85ED09008478C7 /* TreeTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TreeTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07E00A591C85ED09008478C7 /* TreeToolsMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreeToolsMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		07E00A6D1C85F0CD008478C7 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		07E00A731C85F39F008478C7 /* ArrayTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArrayTools.framework; path = Carthage/Build/iOS/ArrayTools.framework; sourceTree = "<group>"; };
 		07E00A751C85F3AC008478C7 /* ArrayTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArrayTools.framework; path = Carthage/Build/Mac/ArrayTools.framework; sourceTree = "<group>"; };
 		07EC99311D0B1E8B002414A4 /* NodeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
-		07EFCB421C932B6D00D37FEB /* Node+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+CustomStringConvertible.swift"; sourceTree = "<group>"; };
-		07EFCB451C932B8C00D37FEB /* Node+Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+Position.swift"; sourceTree = "<group>"; };
-		07EFCB481C932BC000D37FEB /* Node+Siblings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+Siblings.swift"; sourceTree = "<group>"; };
-		07EFCB4B1C932EBD00D37FEB /* Node+Leaves.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+Leaves.swift"; sourceTree = "<group>"; };
-		07EFCB4E1C93318B00D37FEB /* Node+Children.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+Children.swift"; sourceTree = "<group>"; };
-		07EFCB511C93329A00D37FEB /* Node+Height.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+Height.swift"; sourceTree = "<group>"; };
-		07EFCB541C93381A00D37FEB /* Node+Depth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+Depth.swift"; sourceTree = "<group>"; };
-		07EFCB571C9339D500D37FEB /* Node+Ancestors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+Ancestors.swift"; sourceTree = "<group>"; };
-		07EFCB5A1C933C8300D37FEB /* Node+Descendents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+Descendents.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,8 +96,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				070F5CA31C9B2FFD00A3DF4A /* EnumTools.framework in Frameworks */,
-				07A767731C88AF6200B3B1EF /* CopyTools.framework in Frameworks */,
-				07091E6D1C8633E0003D1B3B /* DirectionTools.framework in Frameworks */,
 				07E00A741C85F39F008478C7 /* ArrayTools.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,8 +113,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				070F5CA51C9B300D00A3DF4A /* EnumTools.framework in Frameworks */,
-				07A767751C88AF7200B3B1EF /* CopyTools.framework in Frameworks */,
-				07091E6F1C8633F3003D1B3B /* DirectionTools.framework in Frameworks */,
 				07E00A761C85F3AC008478C7 /* ArrayTools.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -180,7 +131,6 @@
 		07E00A271C85ECF7008478C7 = {
 			isa = PBXGroup;
 			children = (
-				0787D2501D0B55FC00A3550F /* NodeTypeTests.swift */,
 				07E00A341C85ECF7008478C7 /* TreeTools.h */,
 				07E00A331C85ECF7008478C7 /* TreeTools */,
 				07E00A3F1C85ECF7008478C7 /* TreeToolsTests */,
@@ -204,17 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				07EC99311D0B1E8B002414A4 /* NodeType.swift */,
-				07E00A6D1C85F0CD008478C7 /* Node.swift */,
-				071D19BB1C9472D200543F77 /* Node+Error.swift */,
-				07EFCB451C932B8C00D37FEB /* Node+Position.swift */,
-				07EFCB421C932B6D00D37FEB /* Node+CustomStringConvertible.swift */,
-				07EFCB4E1C93318B00D37FEB /* Node+Children.swift */,
-				07EFCB481C932BC000D37FEB /* Node+Siblings.swift */,
-				07EFCB4B1C932EBD00D37FEB /* Node+Leaves.swift */,
-				07EFCB571C9339D500D37FEB /* Node+Ancestors.swift */,
-				07EFCB5A1C933C8300D37FEB /* Node+Descendents.swift */,
-				07EFCB511C93329A00D37FEB /* Node+Height.swift */,
-				07EFCB541C93381A00D37FEB /* Node+Depth.swift */,
 				07E00A681C85ED54008478C7 /* Supporting Files */,
 			);
 			path = TreeTools;
@@ -225,6 +164,7 @@
 			children = (
 				07E00A671C85ED4C008478C7 /* Supporting Files */,
 				0742A22C1C88D260002050D6 /* NodeTests.swift */,
+				0787D2501D0B55FC00A3550F /* NodeTypeTests.swift */,
 			);
 			path = TreeToolsTests;
 			sourceTree = "<group>";
@@ -456,9 +396,7 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/DirectionTools.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ArrayTools.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CopyTools.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/EnumTools.framework",
 			);
 			outputPaths = (
@@ -473,9 +411,7 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/DirectionTools.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/ArrayTools.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/CopyTools.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/EnumTools.framework",
 			);
 			outputPaths = (
@@ -491,18 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07EFCB461C932B8C00D37FEB /* Node+Position.swift in Sources */,
-				07EFCB491C932BC000D37FEB /* Node+Siblings.swift in Sources */,
-				07EFCB5B1C933C8300D37FEB /* Node+Descendents.swift in Sources */,
-				07EFCB551C93381A00D37FEB /* Node+Depth.swift in Sources */,
-				07E00A6E1C85F0CD008478C7 /* Node.swift in Sources */,
-				071D19BC1C9472D200543F77 /* Node+Error.swift in Sources */,
-				07EFCB431C932B6D00D37FEB /* Node+CustomStringConvertible.swift in Sources */,
-				07EFCB581C9339D500D37FEB /* Node+Ancestors.swift in Sources */,
-				07EFCB4C1C932EBD00D37FEB /* Node+Leaves.swift in Sources */,
 				07EC99321D0B1E8B002414A4 /* NodeType.swift in Sources */,
-				07EFCB521C93329A00D37FEB /* Node+Height.swift in Sources */,
-				07EFCB4F1C93318B00D37FEB /* Node+Children.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,18 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07EFCB471C932B8C00D37FEB /* Node+Position.swift in Sources */,
-				07EFCB4A1C932BC000D37FEB /* Node+Siblings.swift in Sources */,
-				07EFCB5C1C933C8300D37FEB /* Node+Descendents.swift in Sources */,
-				07EFCB561C93381A00D37FEB /* Node+Depth.swift in Sources */,
-				07E00A6F1C85F0CD008478C7 /* Node.swift in Sources */,
-				071D19BD1C9472D200543F77 /* Node+Error.swift in Sources */,
-				07EFCB441C932B6D00D37FEB /* Node+CustomStringConvertible.swift in Sources */,
-				07EFCB591C9339D500D37FEB /* Node+Ancestors.swift in Sources */,
-				07EFCB4D1C932EBD00D37FEB /* Node+Leaves.swift in Sources */,
 				07EC99331D0B1E8B002414A4 /* NodeType.swift in Sources */,
-				07EFCB531C93329A00D37FEB /* Node+Height.swift in Sources */,
-				07EFCB501C93318B00D37FEB /* Node+Children.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -130,16 +130,13 @@
 		07F6F1511CD8006D0026E89D /* Pitch+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F6F14F1CD8006D0026E89D /* Pitch+PitchSpelling.swift */; };
 		07FF36431CEBFCDA003D4BE6 /* PitchSetSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FF36421CEBFCDA003D4BE6 /* PitchSetSpeller.swift */; };
 		07FF36441CEBFCDA003D4BE6 /* PitchSetSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FF36421CEBFCDA003D4BE6 /* PitchSetSpeller.swift */; };
-		0F1EAC61D8CFE8947D8C4C48 /* DirectionTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3402A7A298AFDF7CA09ACB20 /* DirectionTools.framework */; };
 		177C0973693BE0058B4224D9 /* StringTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBADE1493A87739080278AF8 /* StringTools.framework */; };
 		2208A4EDA04827FB5F19B11B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44141B2466444D10A8B435D1 /* Foundation.framework */; };
 		24E2E1C3D799BC8BEA8BCAE2 /* PitchSpellingTools.h in Headers */ = {isa = PBXBuildFile; fileRef = BB5DF52543AD28E83639D16F /* PitchSpellingTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		29E977AFBA7B09AA75F1AB98 /* DirectionTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98935D2FB69D7445A822090E /* DirectionTools.framework */; };
 		2DCF03881182D3F28B3F2803 /* ArithmeticTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7A7DA6EC4B80888330D2A6 /* ArithmeticTools.framework */; };
 		2E812B63A34F9FD220F9FA45 /* StringTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EA038E77C7C2D9A69AC43B /* StringTools.framework */; };
 		2F879611200C1A78E7A8B171 /* EnumTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0022E48CA0EC2A7B5383DE85 /* EnumTools.framework */; };
 		4B15E61D23C5281210FA206B /* Pitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F41474DACCE46C4C88CB53E /* Pitch.framework */; };
-		4EDF9E241A01503342618033 /* CopyTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A65D5EE8BBCACDB19BD04F /* CopyTools.framework */; };
 		5E4D2E0BFF04E5B96201928B /* PitchSpellingTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BD58300207287434468DA0C2 /* PitchSpellingTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		743878166DA55B98E60D3480 /* Pitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A26E40AF655F886549CE156 /* Pitch.framework */; };
 		837D2AB8D7476289C08CB860 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44141B2466444D10A8B435D1 /* Foundation.framework */; };
@@ -147,7 +144,6 @@
 		A0600F870899A3901E4A6AE7 /* TreeTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B0291DAFE09428CB9F5E5D /* TreeTools.framework */; };
 		BA3BD6DE808371F6AF2BC572 /* EnumTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA0744A2DD6B6D03868057A /* EnumTools.framework */; };
 		C2549511CC0A4B08D13F0621 /* ArrayTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCD3E5DDA68A1AD01067655F /* ArrayTools.framework */; };
-		C2751A89DAC0A4D362EC3FE9 /* CopyTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768BA24B59DF659D08F4126C /* CopyTools.framework */; };
 		DD7034F40473465C1C7A4D05 /* PitchSpellingTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 386F611A3E933BF16FB69878 /* PitchSpellingTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		EC989BC2CFF77977368AB0D9 /* ArithmeticTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B890C409A5E95E75332C698A /* ArithmeticTools.framework */; };
 		FC48C95831C74DDA12E4DBF3 /* TreeTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A61DB423A4EAD91170A1716 /* TreeTools.framework */; };
@@ -292,8 +288,6 @@
 			files = (
 				2DCF03881182D3F28B3F2803 /* ArithmeticTools.framework in Frameworks */,
 				84D8CCDF66522A0BD718CE22 /* ArrayTools.framework in Frameworks */,
-				C2751A89DAC0A4D362EC3FE9 /* CopyTools.framework in Frameworks */,
-				0F1EAC61D8CFE8947D8C4C48 /* DirectionTools.framework in Frameworks */,
 				BA3BD6DE808371F6AF2BC572 /* EnumTools.framework in Frameworks */,
 				4B15E61D23C5281210FA206B /* Pitch.framework in Frameworks */,
 				2E812B63A34F9FD220F9FA45 /* StringTools.framework in Frameworks */,
@@ -308,8 +302,6 @@
 				2208A4EDA04827FB5F19B11B /* Foundation.framework in Frameworks */,
 				EC989BC2CFF77977368AB0D9 /* ArithmeticTools.framework in Frameworks */,
 				C2549511CC0A4B08D13F0621 /* ArrayTools.framework in Frameworks */,
-				4EDF9E241A01503342618033 /* CopyTools.framework in Frameworks */,
-				29E977AFBA7B09AA75F1AB98 /* DirectionTools.framework in Frameworks */,
 				2F879611200C1A78E7A8B171 /* EnumTools.framework in Frameworks */,
 				743878166DA55B98E60D3480 /* Pitch.framework in Frameworks */,
 				177C0973693BE0058B4224D9 /* StringTools.framework in Frameworks */,
@@ -640,11 +632,8 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/Mac/ArithmeticTools.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/ArrayTools.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/CopyTools.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/DirectionTools.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/EnumTools.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/Pitch.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/PitchSpellingTools.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/StringTools.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/TreeTools.framework",
 			);
@@ -662,11 +651,8 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/ArithmeticTools.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ArrayTools.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CopyTools.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/DirectionTools.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/EnumTools.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Pitch.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/PitchSpellingTools.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/StringTools.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/TreeTools.framework",
 			);
