@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import CopyTools
 import ArrayTools
-import DirectionTools
+//import DirectionTools
 
 ///**
 // Element in a tree structure. May contain 0...n children Nodes, and optionally a parent Node.

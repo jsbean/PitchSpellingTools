@@ -6,7 +6,6 @@
 //  Copyright © 2016 James Bean. All rights reserved.
 //
 
-import CopyTools
 import ArrayTools
 
 public enum NodeError: ErrorType {

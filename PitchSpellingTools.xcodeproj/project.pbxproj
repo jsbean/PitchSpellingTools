@@ -16,8 +16,6 @@
 		071890EF1CD9614800C5CD17 /* PitchSpelling+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071890ED1CD9614800C5CD17 /* PitchSpelling+CustomStringConvertible.swift */; };
 		071890F11CD9618600C5CD17 /* PitchSpellingDyad+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071890F01CD9618600C5CD17 /* PitchSpellingDyad+CustomStringConvertible.swift */; };
 		071890F21CD9618600C5CD17 /* PitchSpellingDyad+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071890F01CD9618600C5CD17 /* PitchSpellingDyad+CustomStringConvertible.swift */; };
-		07254E981CEB904A00DF10B8 /* PitchSpelling+StringLiteralConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07254E971CEB904A00DF10B8 /* PitchSpelling+StringLiteralConvertible.swift */; };
-		07254E991CEB904A00DF10B8 /* PitchSpelling+StringLiteralConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07254E971CEB904A00DF10B8 /* PitchSpelling+StringLiteralConvertible.swift */; };
 		07254E9B1CEB919500DF10B8 /* PitchSpelling+StringLiteralConvertibleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07254E9A1CEB919500DF10B8 /* PitchSpelling+StringLiteralConvertibleTests.swift */; };
 		07254E9C1CEB919500DF10B8 /* PitchSpelling+StringLiteralConvertibleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07254E9A1CEB919500DF10B8 /* PitchSpelling+StringLiteralConvertibleTests.swift */; };
 		072AD9751D03888500AF9142 /* PitchSequence+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072AD9741D03888500AF9142 /* PitchSequence+PitchSpelling.swift */; };
@@ -202,7 +200,6 @@
 		071890E71CD95BD600C5CD17 /* Dyad+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Dyad+PitchSpelling.swift"; path = "PitchSpellingTools/Dyad+PitchSpelling.swift"; sourceTree = "<group>"; };
 		071890ED1CD9614800C5CD17 /* PitchSpelling+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+CustomStringConvertible.swift"; path = "PitchSpellingTools/PitchSpelling+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		071890F01CD9618600C5CD17 /* PitchSpellingDyad+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpellingDyad+CustomStringConvertible.swift"; path = "PitchSpellingTools/PitchSpellingDyad+CustomStringConvertible.swift"; sourceTree = "<group>"; };
-		07254E971CEB904A00DF10B8 /* PitchSpelling+StringLiteralConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+StringLiteralConvertible.swift"; path = "PitchSpellingTools/PitchSpelling+StringLiteralConvertible.swift"; sourceTree = "<group>"; };
 		07254E9A1CEB919500DF10B8 /* PitchSpelling+StringLiteralConvertibleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+StringLiteralConvertibleTests.swift"; path = "PitchSpellingToolsTests/PitchSpelling+StringLiteralConvertibleTests.swift"; sourceTree = "<group>"; };
 		072AD9741D03888500AF9142 /* PitchSequence+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSequence+PitchSpelling.swift"; path = "PitchSpellingTools/PitchSequence+PitchSpelling.swift"; sourceTree = "<group>"; };
 		0744DC401CFDDDB400DDDAD2 /* PitchSubSequenceSpeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSubSequenceSpeller.swift; path = PitchSpellingTools/PitchSubSequenceSpeller.swift; sourceTree = "<group>"; };
@@ -348,7 +345,6 @@
 				078175081CD8F64500AAB396 /* PitchSpelling+Resolution.swift */,
 				0781750E1CD8F69700AAB396 /* PitchSpelling+SpellingDistance.swift */,
 				071890ED1CD9614800C5CD17 /* PitchSpelling+CustomStringConvertible.swift */,
-				07254E971CEB904A00DF10B8 /* PitchSpelling+StringLiteralConvertible.swift */,
 				076BAFE71CD6B51D005594C6 /* PitchSpellings.swift */,
 			);
 			name = PitchSpelling;
@@ -724,7 +720,6 @@
 				078175031CD8F5BD00AAB396 /* PitchSpelling+LetterName.swift in Sources */,
 				07A8C8171CF787F200CFD69B /* PitchSpellingEdge.swift in Sources */,
 				0752A54E1CD69BD0007C25AB /* PitchSpeller.swift in Sources */,
-				07254E981CEB904A00DF10B8 /* PitchSpelling+StringLiteralConvertible.swift in Sources */,
 				0781750F1CD8F69700AAB396 /* PitchSpelling+SpellingDistance.swift in Sources */,
 				079DABC51CEE34B50019649D /* IntervalClass+PitchSpelling.swift in Sources */,
 				078881801D009DE600A3ADD4 /* DeterminatePitchSpellingRanker.swift in Sources */,
@@ -822,7 +817,6 @@
 				078175041CD8F5BD00AAB396 /* PitchSpelling+LetterName.swift in Sources */,
 				07A8C8181CF787F200CFD69B /* PitchSpellingEdge.swift in Sources */,
 				0752A54F1CD69BD0007C25AB /* PitchSpeller.swift in Sources */,
-				07254E991CEB904A00DF10B8 /* PitchSpelling+StringLiteralConvertible.swift in Sources */,
 				078175101CD8F69700AAB396 /* PitchSpelling+SpellingDistance.swift in Sources */,
 				079DABC61CEE34B50019649D /* IntervalClass+PitchSpelling.swift in Sources */,
 				078881811D009DE600A3ADD4 /* DeterminatePitchSpellingRanker.swift in Sources */,
@@ -1006,7 +1000,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = PitchSpellingTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bean.PitchSpellingTools;
@@ -1035,7 +1029,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = PitchSpellingTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bean.PitchSpellingTools;
