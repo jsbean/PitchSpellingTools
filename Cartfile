@@ -1,2 +1,2 @@
-github "dn-m/TreeTools"
-github "dn-m/Pitch"
+github "dn-m/TreeTools" "no-contains-swift-code"
+github "dn-m/Pitch" "no-contains-swift-code"
