@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07098BA71D20121F001E9DD6 /* SortedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07098BA61D20121F001E9DD6 /* SortedArray.swift */; };
+		07098BA81D20121F001E9DD6 /* SortedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07098BA61D20121F001E9DD6 /* SortedArray.swift */; };
+		07098BAA1D201503001E9DD6 /* SortedArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07098BA91D201503001E9DD6 /* SortedArrayTests.swift */; };
+		07098BAB1D201503001E9DD6 /* SortedArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07098BA91D201503001E9DD6 /* SortedArrayTests.swift */; };
 		071DD4131CF894C10054695D /* Predicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071DD4121CF894C10054695D /* Predicates.swift */; };
 		071DD4141CF894C10054695D /* Predicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071DD4121CF894C10054695D /* Predicates.swift */; };
 		071DD4161CF895250054695D /* PredicatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071DD4151CF895250054695D /* PredicatesTests.swift */; };
@@ -98,6 +102,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		07098BA61D20121F001E9DD6 /* SortedArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedArray.swift; sourceTree = "<group>"; };
+		07098BA91D201503001E9DD6 /* SortedArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedArrayTests.swift; sourceTree = "<group>"; };
 		071DD4121CF894C10054695D /* Predicates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Predicates.swift; sourceTree = "<group>"; };
 		071DD4151CF895250054695D /* PredicatesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredicatesTests.swift; sourceTree = "<group>"; };
 		07514DB01D01BC37009A72BE /* AnySequenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnySequenceType.swift; sourceTree = "<group>"; };
@@ -162,6 +168,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07098BA51D201209001E9DD6 /* Structures */ = {
+			isa = PBXGroup;
+			children = (
+				07994F871C7EA0A700296896 /* Stack.swift */,
+				07098BA61D20121F001E9DD6 /* SortedArray.swift */,
+			);
+			name = Structures;
+			sourceTree = "<group>";
+		};
 		078141951C7CBCE4004B68D3 = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +201,7 @@
 		078141A11C7CBCE4004B68D3 /* ArrayTools */ = {
 			isa = PBXGroup;
 			children = (
+				07098BA51D201209001E9DD6 /* Structures */,
 				078141E01C7CBDC6004B68D3 /* Error.swift */,
 				078141ED1C7CBDFB004B68D3 /* ListProcessing.swift */,
 				0792613F1CDBAA2F004949D1 /* Combinations+Permutations.swift */,
@@ -198,7 +214,6 @@
 				078141E11C7CBDC6004B68D3 /* RemoveElements.swift */,
 				078141E21C7CBDC6004B68D3 /* ReplaceElements.swift */,
 				07514DB01D01BC37009A72BE /* AnySequenceType.swift */,
-				07994F871C7EA0A700296896 /* Stack.swift */,
 				0783ECEB1CA59E8000E7F287 /* Supporting Files */,
 			);
 			path = ArrayTools;
@@ -215,6 +230,7 @@
 				07994F8A1C7EA10F00296896 /* StackTests.swift */,
 				0757D4BE1CD1B401003D2C8C /* EquatableTests.swift */,
 				078881851D00A70600A3ADD4 /* StableSortTests.swift */,
+				07098BA91D201503001E9DD6 /* SortedArrayTests.swift */,
 				0783ECEC1CA59E9600E7F287 /* Supporting Files */,
 			);
 			path = ArrayToolsTests;
@@ -412,6 +428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07098BA71D20121F001E9DD6 /* SortedArray.swift in Sources */,
 				078141E51C7CBDC6004B68D3 /* Equatable.swift in Sources */,
 				078881831D00A4AE00A3ADD4 /* Comparable.swift in Sources */,
 				07E00A711C85F12E008478C7 /* AnyObject.swift in Sources */,
@@ -437,6 +454,7 @@
 				07994EA31C7E379900296896 /* RemoveElementsTests.swift in Sources */,
 				07994EA11C7E379900296896 /* ElementsAtIndicesTests.swift in Sources */,
 				0757D4BF1CD1B401003D2C8C /* EquatableTests.swift in Sources */,
+				07098BAA1D201503001E9DD6 /* SortedArrayTests.swift in Sources */,
 				079261431CDBAA42004949D1 /* CombinationsTests.swift in Sources */,
 				078881861D00A70600A3ADD4 /* StableSortTests.swift in Sources */,
 				071DD4161CF895250054695D /* PredicatesTests.swift in Sources */,
@@ -447,6 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07098BA81D20121F001E9DD6 /* SortedArray.swift in Sources */,
 				078141E61C7CBDC6004B68D3 /* Equatable.swift in Sources */,
 				078881841D00A4AE00A3ADD4 /* Comparable.swift in Sources */,
 				07E00A721C85F12E008478C7 /* AnyObject.swift in Sources */,
@@ -472,6 +491,7 @@
 				07994EA41C7E379900296896 /* RemoveElementsTests.swift in Sources */,
 				07994EA21C7E379900296896 /* ElementsAtIndicesTests.swift in Sources */,
 				0757D4C01CD1B401003D2C8C /* EquatableTests.swift in Sources */,
+				07098BAB1D201503001E9DD6 /* SortedArrayTests.swift in Sources */,
 				079261441CDBAA42004949D1 /* CombinationsTests.swift in Sources */,
 				078881871D00A70600A3ADD4 /* StableSortTests.swift in Sources */,
 				071DD4171CF895250054695D /* PredicatesTests.swift in Sources */,
@@ -591,7 +611,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = ArrayTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -611,7 +631,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = ArrayTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
