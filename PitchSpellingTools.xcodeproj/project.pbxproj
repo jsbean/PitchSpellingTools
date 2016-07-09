@@ -10,6 +10,7 @@
 		0372ED17FA15BEB7912966C9 /* PitchSpellingTools.h in Headers */ = {isa = PBXBuildFile; fileRef = BB5DF52543AD28E83639D16F /* PitchSpellingTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		070732F61D00609600E9F13C /* PitchSpellingRankerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070732F51D00609600E9F13C /* PitchSpellingRankerFactory.swift */; };
 		070732F71D00609600E9F13C /* PitchSpellingRankerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070732F51D00609600E9F13C /* PitchSpellingRankerFactory.swift */; };
+		070C45581D30F1D0000BD1B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 070C45571D30F1D0000BD1B4 /* Foundation.framework */; };
 		071890E81CD95BD600C5CD17 /* Dyad+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071890E71CD95BD600C5CD17 /* Dyad+PitchSpelling.swift */; };
 		071890E91CD95BD600C5CD17 /* Dyad+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071890E71CD95BD600C5CD17 /* Dyad+PitchSpelling.swift */; };
 		071890EE1CD9614800C5CD17 /* PitchSpelling+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071890ED1CD9614800C5CD17 /* PitchSpelling+CustomStringConvertible.swift */; };
@@ -193,6 +194,7 @@
 		0022E48CA0EC2A7B5383DE85 /* EnumTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumTools.framework; path = Carthage/Build/iOS/EnumTools.framework; sourceTree = "<group>"; };
 		070732F51D00609600E9F13C /* PitchSpellingRankerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSpellingRankerFactory.swift; path = PitchSpellingTools/PitchSpellingRankerFactory.swift; sourceTree = "<group>"; };
 		0708F5C5B7E4230E47876574 /* PitchSpellingToolsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitchSpellingToolsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		070C45571D30F1D0000BD1B4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		071890E71CD95BD600C5CD17 /* Dyad+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Dyad+PitchSpelling.swift"; path = "PitchSpellingTools/Dyad+PitchSpelling.swift"; sourceTree = "<group>"; };
 		071890ED1CD9614800C5CD17 /* PitchSpelling+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+CustomStringConvertible.swift"; path = "PitchSpellingTools/PitchSpelling+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		071890F01CD9618600C5CD17 /* PitchSpellingDyad+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpellingDyad+CustomStringConvertible.swift"; path = "PitchSpellingTools/PitchSpellingDyad+CustomStringConvertible.swift"; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				070C45581D30F1D0000BD1B4 /* Foundation.framework in Frameworks */,
 				2DCF03881182D3F28B3F2803 /* ArithmeticTools.framework in Frameworks */,
 				84D8CCDF66522A0BD718CE22 /* ArrayTools.framework in Frameworks */,
 				BA3BD6DE808371F6AF2BC572 /* EnumTools.framework in Frameworks */,
@@ -478,6 +481,7 @@
 		F8F4C2B57BD996305CB5E635 /* OS X */ = {
 			isa = PBXGroup;
 			children = (
+				070C45571D30F1D0000BD1B4 /* Foundation.framework */,
 				7C7A7DA6EC4B80888330D2A6 /* ArithmeticTools.framework */,
 				4C05D2B100CF6D34DBBC1FCA /* ArrayTools.framework */,
 				FCA0744A2DD6B6D03868057A /* EnumTools.framework */,
@@ -980,7 +984,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = PitchSpellingTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bean.PitchSpellingTools;
@@ -1009,7 +1013,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = PitchSpellingTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bean.PitchSpellingTools;
