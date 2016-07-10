@@ -210,7 +210,6 @@
 		074B33F21D3117630042104B /* PitchSpellingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSpellingTests.swift; path = PitchSpellingToolsTests/PitchSpellingTests.swift; sourceTree = "<group>"; };
 		074B33F31D3117630042104B /* PitchSubSequenceSpellerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSubSequenceSpellerTests.swift; path = PitchSpellingToolsTests/PitchSubSequenceSpellerTests.swift; sourceTree = "<group>"; };
 		074B33F41D3117630042104B /* SpelledPitchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpelledPitchTests.swift; path = PitchSpellingToolsTests/SpelledPitchTests.swift; sourceTree = "<group>"; };
-		0789314C1D3115EF00AC77E9 /* PitchSpellingTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PitchSpellingTools.h; sourceTree = "<group>"; };
 		15496228BCC09F160A08B8B2 /* Pitch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pitch.framework; path = Carthage/Build/iOS/Pitch.framework; sourceTree = "<group>"; };
 		1659EF3BBB8FDD0D4636D0BA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = PitchSpellingToolsTests/Info.plist; sourceTree = "<group>"; };
 		177D6AAC8933BFFE5B5449B6 /* PitchSpellingToolsMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitchSpellingToolsMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -416,7 +415,6 @@
 				074B33741D31166C0042104B /* SpelledPitch+CustomStringConvertible.swift */,
 				074B33751D31166C0042104B /* SpelledPitchSet.swift */,
 				074B33761D31166C0042104B /* Tree.swift */,
-				0789314C1D3115EF00AC77E9 /* PitchSpellingTools.h */,
 				5AC7629A70681FE7C28105E8 /* Supporting Files */,
 			);
 			name = PitchSpellingTools;

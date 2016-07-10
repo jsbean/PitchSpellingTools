@@ -70,14 +70,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		07091E6C1C8633E0003D1B3B /* DirectionTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DirectionTools.framework; path = Carthage/Build/iOS/DirectionTools.framework; sourceTree = "<group>"; };
-		07091E6E1C8633F3003D1B3B /* DirectionTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DirectionTools.framework; path = Carthage/Build/Mac/DirectionTools.framework; sourceTree = "<group>"; };
 		070F5CA21C9B2FFD00A3DF4A /* EnumTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumTools.framework; path = Carthage/Build/iOS/EnumTools.framework; sourceTree = "<group>"; };
 		070F5CA41C9B300D00A3DF4A /* EnumTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumTools.framework; path = Carthage/Build/Mac/EnumTools.framework; sourceTree = "<group>"; };
 		0742A22C1C88D260002050D6 /* NodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeTests.swift; sourceTree = "<group>"; };
 		0787D2501D0B55FC00A3550F /* NodeTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeTypeTests.swift; sourceTree = "<group>"; };
-		07A767721C88AF6200B3B1EF /* CopyTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CopyTools.framework; path = Carthage/Build/iOS/CopyTools.framework; sourceTree = "<group>"; };
-		07A767741C88AF7200B3B1EF /* CopyTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CopyTools.framework; path = Carthage/Build/Mac/CopyTools.framework; sourceTree = "<group>"; };
 		07E00A311C85ECF7008478C7 /* TreeTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TreeTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07E00A341C85ECF7008478C7 /* TreeTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TreeTools.h; path = TreeTools/TreeTools.h; sourceTree = "<group>"; };
 		07E00A361C85ECF7008478C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -198,8 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				070F5CA21C9B2FFD00A3DF4A /* EnumTools.framework */,
-				07A767721C88AF6200B3B1EF /* CopyTools.framework */,
-				07091E6C1C8633E0003D1B3B /* DirectionTools.framework */,
 				07E00A731C85F39F008478C7 /* ArrayTools.framework */,
 			);
 			name = iOS;
@@ -209,8 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				070F5CA41C9B300D00A3DF4A /* EnumTools.framework */,
-				07A767741C88AF7200B3B1EF /* CopyTools.framework */,
-				07091E6E1C8633F3003D1B3B /* DirectionTools.framework */,
 				07E00A751C85F3AC008478C7 /* ArrayTools.framework */,
 			);
 			name = Mac;
@@ -246,7 +238,6 @@
 				07E00A2D1C85ECF7008478C7 /* Frameworks */,
 				07E00A2E1C85ECF7008478C7 /* Headers */,
 				07E00A2F1C85ECF7008478C7 /* Resources */,
-				07091E701C8635B2003D1B3B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -265,6 +256,7 @@
 				07E00A381C85ECF7008478C7 /* Frameworks */,
 				07E00A391C85ECF7008478C7 /* Resources */,
 				07E00A691C85ED66008478C7 /* CopyFiles */,
+				075EA8EE1D327B47007963C0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -284,7 +276,6 @@
 				07E00A4C1C85ED09008478C7 /* Frameworks */,
 				07E00A4D1C85ED09008478C7 /* Headers */,
 				07E00A4E1C85ED09008478C7 /* Resources */,
-				07091E711C8635EB003D1B3B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -303,6 +294,7 @@
 				07E00A561C85ED09008478C7 /* Frameworks */,
 				07E00A571C85ED09008478C7 /* Resources */,
 				07E00A6B1C85ED71008478C7 /* CopyFiles */,
+				075EA8EF1D327B69007963C0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -390,7 +382,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		07091E701C8635B2003D1B3B /* ShellScript */ = {
+		075EA8EE1D327B47007963C0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -405,7 +397,7 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
-		07091E711C8635EB003D1B3B /* ShellScript */ = {
+		075EA8EF1D327B69007963C0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
