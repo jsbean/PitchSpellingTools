@@ -451,7 +451,6 @@
 				8182446D7E4446B8B097DABF /* Sources */,
 				DCD815CF8685C0E1A6701DCF /* Frameworks */,
 				5EFEA4FEB2D9FCD28ED79BFF /* Headers */,
-				CA8D6A2D8F01257F62EF94FB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -469,6 +468,7 @@
 				00EE0BB1DEBA395AB1206C3A /* Sources */,
 				27FD50E45F0CA7EF3A598012 /* Frameworks */,
 				70E17B90421801C9C2380A04 /* CopyFiles */,
+				075EA8F81D327FAD007963C0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -487,6 +487,7 @@
 				CEBE5BD850F7C13417EA6C89 /* Sources */,
 				F0503C1CE6C7F941C9C84C5F /* Frameworks */,
 				376B30FD3BC4045849B8604E /* CopyFiles */,
+				075EA8F71D327F2B007963C0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -505,7 +506,6 @@
 				586EFF7A3E2B7D8FD8228148 /* Sources */,
 				29C1B38AD94B5DD4427FF804 /* Frameworks */,
 				AAFA56206AFF7C3367334FB9 /* Headers */,
-				E310E9DC1C856E6613623E79 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -546,7 +546,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		CA8D6A2D8F01257F62EF94FB /* ShellScript */ = {
+		075EA8F71D327F2B007963C0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -565,7 +565,7 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
-		E310E9DC1C856E6613623E79 /* ShellScript */ = {
+		075EA8F81D327FAD007963C0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
