@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4FD8BE1BC4CCE3DA06105883"
+               BlueprintIdentifier = "5C07E653F9B914520E4B3C13"
                BuildableName = "PitchSpellingTools.framework"
                BlueprintName = "PitchSpellingTools"
                ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CD3FC48C3048C00FB6D96A2F"
+               BlueprintIdentifier = "A1E0B73866639A4FDDF8F7FE"
                BuildableName = "PitchSpellingToolsTests.xctest"
                BlueprintName = "PitchSpellingToolsTests"
                ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
@@ -40,13 +40,14 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CD3FC48C3048C00FB6D96A2F"
+               BlueprintIdentifier = "A1E0B73866639A4FDDF8F7FE"
                BuildableName = "PitchSpellingToolsTests.xctest"
                BlueprintName = "PitchSpellingToolsTests"
                ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
@@ -69,7 +70,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4FD8BE1BC4CCE3DA06105883"
+            BlueprintIdentifier = "5C07E653F9B914520E4B3C13"
             BuildableName = "PitchSpellingTools.framework"
             BlueprintName = "PitchSpellingTools"
             ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
@@ -81,23 +82,9 @@
    <ProfileAction
       buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      savedToolIdentifier = "/Applications/Xcode.app/Contents/Applications/Instruments.app/Contents/Resources/templates/Time Profiler.tracetemplate"
+      savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      debugDocumentVersioning = "YES"
-      launchAutomaticallySubstyle = "2">
-      <PathRunnable
-         runnableDebuggingMode = "0"
-         FilePath = "/Users/BEAN/Library/Developer/Xcode/DerivedData/PitchSpellingTools-fccwihrlzzbkxucuzpcpdihqddzg/Build/Products/PitchSpellingTools">
-      </PathRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4FD8BE1BC4CCE3DA06105883"
-            BuildableName = "PitchSpellingTools.framework"
-            BlueprintName = "PitchSpellingTools"
-            ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
+      debugDocumentVersioning = "YES">
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

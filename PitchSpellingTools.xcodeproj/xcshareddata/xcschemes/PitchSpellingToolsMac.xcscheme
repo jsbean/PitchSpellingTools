@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5E462488CF412A26EB045FE3"
+               BlueprintIdentifier = "AB078245BAE609A201115C6F"
                BuildableName = "PitchSpellingTools.framework"
                BlueprintName = "PitchSpellingToolsMac"
                ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "612B9C42799A1CB1CCFBBC4D"
+               BlueprintIdentifier = "5F56C094E5DD5F0EBCF2298E"
                BuildableName = "PitchSpellingToolsMacTests.xctest"
                BlueprintName = "PitchSpellingToolsMacTests"
                ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
@@ -40,13 +40,14 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "612B9C42799A1CB1CCFBBC4D"
+               BlueprintIdentifier = "5F56C094E5DD5F0EBCF2298E"
                BuildableName = "PitchSpellingToolsMacTests.xctest"
                BlueprintName = "PitchSpellingToolsMacTests"
                ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
@@ -69,7 +70,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5E462488CF412A26EB045FE3"
+            BlueprintIdentifier = "AB078245BAE609A201115C6F"
             BuildableName = "PitchSpellingTools.framework"
             BlueprintName = "PitchSpellingToolsMac"
             ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
