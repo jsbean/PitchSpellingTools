@@ -100,6 +100,18 @@
 		074B340E1D3117630042104B /* PitchSubSequenceSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33F31D3117630042104B /* PitchSubSequenceSpellerTests.swift */; };
 		074B340F1D3117630042104B /* SpelledPitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33F41D3117630042104B /* SpelledPitchTests.swift */; };
 		074B34101D3117630042104B /* SpelledPitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33F41D3117630042104B /* SpelledPitchTests.swift */; };
+		07E5F6D11D3E908E0028C63F /* ArithmeticTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B69F3BDCCE788437DF5875F /* ArithmeticTools.framework */; };
+		07E5F6D21D3E908E0028C63F /* ArrayTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91796D76C4CDCD11DF08DFD9 /* ArrayTools.framework */; };
+		07E5F6D31D3E908E0028C63F /* EnumTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB74E2D7DC71FFB059C5E18 /* EnumTools.framework */; };
+		07E5F6D41D3E908E0028C63F /* Pitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15496228BCC09F160A08B8B2 /* Pitch.framework */; };
+		07E5F6D51D3E908E0028C63F /* StringTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B794D284759F2B0BA4AB36 /* StringTools.framework */; };
+		07E5F6D61D3E908E0028C63F /* TreeTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07CC9F2ACFBE241C939BC56 /* TreeTools.framework */; };
+		07E5F6D71D3E90BA0028C63F /* ArithmeticTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBAEFAC5A4C9077CDE9C8FA /* ArithmeticTools.framework */; };
+		07E5F6D81D3E90BA0028C63F /* ArrayTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A049B14C3A1782EF845704 /* ArrayTools.framework */; };
+		07E5F6D91D3E90BA0028C63F /* EnumTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0246148C69B040DF1A3BF09C /* EnumTools.framework */; };
+		07E5F6DA1D3E90BA0028C63F /* Pitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E0E65A496DA72FECFDB794A /* Pitch.framework */; };
+		07E5F6DB1D3E90BA0028C63F /* StringTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6364B75825D481AFE1A3B225 /* StringTools.framework */; };
+		07E5F6DC1D3E90BA0028C63F /* TreeTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81AC9740F207E12BDE3BCEA5 /* TreeTools.framework */; };
 		0C749E83EB577100BEC2AB2E /* ArithmeticTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B69F3BDCCE788437DF5875F /* ArithmeticTools.framework */; };
 		12C65063451DAFE24C4A31A1 /* EnumTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB74E2D7DC71FFB059C5E18 /* EnumTools.framework */; };
 		1D827449BAAE7D3AB19311D5 /* StringTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6364B75825D481AFE1A3B225 /* StringTools.framework */; };
@@ -240,6 +252,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				070490FBDF037CEA86C3A3DD /* Cocoa.framework in Frameworks */,
+				07E5F6D71D3E90BA0028C63F /* ArithmeticTools.framework in Frameworks */,
+				07E5F6D81D3E90BA0028C63F /* ArrayTools.framework in Frameworks */,
+				07E5F6D91D3E90BA0028C63F /* EnumTools.framework in Frameworks */,
+				07E5F6DA1D3E90BA0028C63F /* Pitch.framework in Frameworks */,
+				07E5F6DB1D3E90BA0028C63F /* StringTools.framework in Frameworks */,
+				07E5F6DC1D3E90BA0028C63F /* TreeTools.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +294,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				909A067232F12497366CA005 /* Foundation.framework in Frameworks */,
+				07E5F6D11D3E908E0028C63F /* ArithmeticTools.framework in Frameworks */,
+				07E5F6D21D3E908E0028C63F /* ArrayTools.framework in Frameworks */,
+				07E5F6D31D3E908E0028C63F /* EnumTools.framework in Frameworks */,
+				07E5F6D41D3E908E0028C63F /* Pitch.framework in Frameworks */,
+				07E5F6D51D3E908E0028C63F /* StringTools.framework in Frameworks */,
+				07E5F6D61D3E908E0028C63F /* TreeTools.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -768,6 +792,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingToolsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -818,6 +846,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingToolsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -931,6 +963,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingToolsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -980,6 +1016,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingToolsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

@@ -1,6 +1,6 @@
 github "dn-m/ArrayTools" "74bd96fd1b90f07e5be232d9354f7150b6946cfa"
 github "dn-m/EnumTools" "55270d4159bee0b25ac520c8dd1b2b58d4a099a9"
 github "dn-m/StringTools" "866e9877134554e86dbde5fca0a120557d8f793a"
-github "dn-m/ArithmeticTools" "bd5731164b14176c6ea287592a4c8f30186f5344"
+github "dn-m/ArithmeticTools" "0a512794ee5608e880d05daaae71c2f0da39f9e9"
 github "dn-m/TreeTools" "e9aa665794c422f503dbcdf7fe1bb1925fd8b378"
 github "dn-m/Pitch" "01206cd43acfa442040895da1d92d4f83548f1d8"

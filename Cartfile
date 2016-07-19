@@ -1,2 +1,2 @@
-github "dn-m/TreeTools" "no-nested-frameworks"
-github "dn-m/Pitch" "no-nested-frameworks"
+github "dn-m/TreeTools" "HEAD"
+github "dn-m/Pitch" "HEAD"
