@@ -228,8 +228,6 @@
 		4B69F3BDCCE788437DF5875F /* ArithmeticTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArithmeticTools.framework; path = Carthage/Build/iOS/ArithmeticTools.framework; sourceTree = "<group>"; };
 		4DBAEFAC5A4C9077CDE9C8FA /* ArithmeticTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArithmeticTools.framework; path = Carthage/Build/Mac/ArithmeticTools.framework; sourceTree = "<group>"; };
 		4E0E65A496DA72FECFDB794A /* Pitch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pitch.framework; path = Carthage/Build/Mac/Pitch.framework; sourceTree = "<group>"; };
-		6364B75825D481AFE1A3B225 /* StringTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StringTools.framework; path = Carthage/Build/Mac/StringTools.framework; sourceTree = "<group>"; };
-		67B794D284759F2B0BA4AB36 /* StringTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StringTools.framework; path = Carthage/Build/iOS/StringTools.framework; sourceTree = "<group>"; };
 		6AB74E2D7DC71FFB059C5E18 /* EnumTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumTools.framework; path = Carthage/Build/iOS/EnumTools.framework; sourceTree = "<group>"; };
 		81AC9740F207E12BDE3BCEA5 /* TreeTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TreeTools.framework; path = Carthage/Build/Mac/TreeTools.framework; sourceTree = "<group>"; };
 		8C0495E35B158A8243480648 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
@@ -376,7 +374,6 @@
 				91796D76C4CDCD11DF08DFD9 /* ArrayTools.framework */,
 				6AB74E2D7DC71FFB059C5E18 /* EnumTools.framework */,
 				15496228BCC09F160A08B8B2 /* Pitch.framework */,
-				67B794D284759F2B0BA4AB36 /* StringTools.framework */,
 				B07CC9F2ACFBE241C939BC56 /* TreeTools.framework */,
 			);
 			name = iOS;
@@ -390,7 +387,6 @@
 				47A049B14C3A1782EF845704 /* ArrayTools.framework */,
 				0246148C69B040DF1A3BF09C /* EnumTools.framework */,
 				4E0E65A496DA72FECFDB794A /* Pitch.framework */,
-				6364B75825D481AFE1A3B225 /* StringTools.framework */,
 				81AC9740F207E12BDE3BCEA5 /* TreeTools.framework */,
 			);
 			name = "OS X";

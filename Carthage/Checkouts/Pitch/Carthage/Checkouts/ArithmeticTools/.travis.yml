@@ -1,7 +1,0 @@
-language: objective-c
-osx_image: xcode7.3
-xcode_project: ArithmeticTools.xcodeproj
-xcode_scheme: ArithmeticToolsMac
-xcode_sdk: macosx10.11
-
-before_install: carthage update
