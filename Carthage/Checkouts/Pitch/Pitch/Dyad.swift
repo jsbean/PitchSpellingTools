@@ -13,6 +13,7 @@ import func ArithmeticTools.ordered
  Collection of two `Pitch` values.
  
  - TODO: Make generic
+ - TODO: Conform to `CollectionType`
  */
 public struct Dyad {
     
