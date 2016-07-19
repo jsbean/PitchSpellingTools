@@ -78,11 +78,18 @@ public struct PitchSpellingDyad {
      `true if `fine` values of `PitchSpelling` objects are equivalent. Otherwise `false`.
      */
     public var isFineMatching: Bool { return b.fine == a.fine }
-
+    
+    public var isFineCompatibleLoose: Bool {
+        guard eitherHasNoFineAdjustment else { return true }
+        return isFineMatching
+    }
+    
     /**
      - warning: No documentation
     */
     public var isFineCompatible: Bool {
+        
+        // manage close seconds
         guard eitherHasFineAdjustment else { return true }
         if eitherHasNoFineAdjustment && (eitherIsNatural || isCoarseMatching) {
             return !isLetterNameMatching

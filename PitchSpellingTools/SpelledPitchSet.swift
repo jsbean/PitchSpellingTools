@@ -24,13 +24,22 @@ public struct SpelledPitchSet {
         self.pitches = Set(pitches)
     }
     
-    /**
-     Create a `SpelledPitchSet` for a given `PitchSet` value.
-     
-     - throws: `PitchSpelling.Error` if the given `pitchSet` cannot be spelled with current technology.
-     */
-    public init(_ pitchSet: PitchSet) throws {
-        self = try PitchSetSpeller(pitchSet).spell()
+//    /**
+//     Create a `SpelledPitchSet` for a given `PitchSet` value.
+//     
+//     - throws: `PitchSpelling.Error` if the given `pitchSet` cannot be spelled with current technology.
+//     */
+//    public init(_ pitchSet: PitchSet) throws {
+//        self = try PitchSetSpeller(pitchSet).spell()
+//    }
+}
+
+extension SpelledPitchSet: ArrayLiteralConvertible {
+    
+    public typealias Element = SpelledPitch
+    
+    public init(arrayLiteral elements: Element...) {
+        self.pitches = Set(elements)
     }
 }
 

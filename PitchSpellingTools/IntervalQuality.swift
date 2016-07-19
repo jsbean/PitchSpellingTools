@@ -104,6 +104,19 @@ public class IntervalQuality: EnumTree {
             if pitchSpellingDyad.b.letterName == .a { difference += 1 }
             if pitchSpellingDyad.b.letterName == .d { difference += 1 }
             
+            // correct e/b quarterstep intervals to be valid
+            if (
+                [.e, .b].contains(pitchSpellingDyad.b.letterName) &&
+                pitchSpellingDyad.b.coarse == .quarterSharp
+            ) ||
+            (
+                [.f, .c].contains(pitchSpellingDyad.a.letterName) &&
+                pitchSpellingDyad.a.coarse == .quarterFlat
+            )
+            {
+                difference += 1
+            }
+            
             return intervalQuality(fromDirectionDifference: difference)
         }
     }
@@ -271,8 +284,21 @@ public class IntervalQuality: EnumTree {
         {
             var difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
             
-            // correct G / Fharp issue
+            // correct G / FSharp issue
             if pitchSpellingDyad.b.letterName == .g { difference -= 1 }
+            
+            // correct e/b quarterstep intervals to be valid
+            if (
+                [.e, .b].contains(pitchSpellingDyad.a.letterName) &&
+                pitchSpellingDyad.a.coarse == .quarterSharp
+            ) ||
+            (
+                [.f, .c].contains(pitchSpellingDyad.b.letterName) &&
+                pitchSpellingDyad.b.coarse == .quarterFlat
+            )
+            {
+                difference -= 1
+            }
             
             return intervalQuality(fromDirectionDifference: difference)
         }

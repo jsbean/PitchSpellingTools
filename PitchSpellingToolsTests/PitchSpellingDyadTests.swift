@@ -393,5 +393,35 @@ class PitchSpellingDyadTests: XCTestCase {
         )
         XCTAssertFalse(dyad.isFineCompatible)
     }
+    
+    func testCBQuarterSharpValidIntervalQuality() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.c), PitchSpelling(.b, .quarterSharp))
+        XCTAssert(dyad.hasValidIntervalQuality)
+    }
+    
+    func testCQuarterFlatBValidIntervalQuality() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.c, .quarterFlat), PitchSpelling(.b))
+        XCTAssert(dyad.hasValidIntervalQuality)
+    }
+
+    func testBCQuarterFlatValidIntervalQuality() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.b), PitchSpelling(.c, .quarterFlat))
+        XCTAssert(dyad.hasValidIntervalQuality)
+    }
+    
+    func testEFQuarterFlatValidIntervalQuality() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.e), PitchSpelling(.f, .quarterFlat))
+        XCTAssert(dyad.hasValidIntervalQuality)
+    }
+    
+    func testEQuarterSharpFValidIntervalQuality() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.e, .quarterSharp), PitchSpelling(.f))
+        XCTAssert(dyad.hasValidIntervalQuality)
+    }
+    
+    func testBQuarterSharpCValidIntervalQuality() {
+        let dyad = PitchSpellingDyad(PitchSpelling(.b, .quarterSharp), PitchSpelling(.c))
+        XCTAssert(dyad.hasValidIntervalQuality)
+    }
 }
 
