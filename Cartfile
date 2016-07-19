@@ -1,2 +1,2 @@
-github "dn-m/TreeTools"
-github "dn-m/Pitch"
+github "dn-m/TreeTools" "HEAD"
+github "dn-m/Pitch" "HEAD"

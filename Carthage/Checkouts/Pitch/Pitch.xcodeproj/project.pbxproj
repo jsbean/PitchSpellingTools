@@ -366,7 +366,6 @@
 				07CC265B1C94E0850099C21C /* Frameworks */,
 				07CC265C1C94E0850099C21C /* Headers */,
 				07CC265D1C94E0850099C21C /* Resources */,
-				37EC79CB8A78C17D4C1F8C61 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -385,6 +384,7 @@
 				07CC26661C94E0850099C21C /* Frameworks */,
 				07CC26671C94E0850099C21C /* Resources */,
 				07CC269B1C94E4BC0099C21C /* CopyFiles */,
+				075EA8F41D327D25007963C0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -404,8 +404,6 @@
 				07CC267C1C94E0A00099C21C /* Frameworks */,
 				07CC267D1C94E0A00099C21C /* Headers */,
 				07CC267E1C94E0A00099C21C /* Resources */,
-				07CC26B91C94E8FA0099C21C /* ShellScript */,
-				6633A6744FCE4874A1ABEFF8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -424,6 +422,7 @@
 				07CC26861C94E0A00099C21C /* Frameworks */,
 				07CC26871C94E0A00099C21C /* Resources */,
 				07CC269D1C94E4C40099C21C /* CopyFiles */,
+				075EA8F31D327CF5007963C0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -511,38 +510,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		07CC26B91C94E8FA0099C21C /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/ArrayTools.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/ArithmeticTools.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		37EC79CB8A78C17D4C1F8C61 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/ArithmeticTools.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ArrayTools.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/EnumTools.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		6633A6744FCE4874A1ABEFF8 /* ShellScript */ = {
+		075EA8F31D327CF5007963C0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -551,6 +519,22 @@
 				"$(SRCROOT)/Carthage/Build/Mac/ArithmeticTools.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/ArrayTools.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/EnumTools.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		075EA8F41D327D25007963C0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ArithmeticTools.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ArrayTools.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/EnumTools.framework",
 			);
 			outputPaths = (
 			);
@@ -754,6 +738,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = Pitch/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -774,6 +759,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = Pitch/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

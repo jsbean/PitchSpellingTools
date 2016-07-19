@@ -55,6 +55,7 @@
 		078142BC1C7CF494004B68D3 /* SequenceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142B21C7CF494004B68D3 /* SequenceTypeTests.swift */; };
 		079D1FC11C9657C100A272B9 /* ArrayTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079D1FC01C9657C100A272B9 /* ArrayTools.framework */; };
 		079D1FC31C9657CF00A272B9 /* ArrayTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079D1FC21C9657CF00A272B9 /* ArrayTools.framework */; };
+		07D3322F1D325FE1009B0A33 /* ArrayTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079D1FC01C9657C100A272B9 /* ArrayTools.framework */; };
 		07F5382F1CE3AEAC001294CC /* Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F5382E1CE3AEAC001294CC /* Comparison.swift */; };
 		07F538301CE3AEAC001294CC /* Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F5382E1CE3AEAC001294CC /* Comparison.swift */; };
 		07F538321CE3AEC6001294CC /* ComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F538311CE3AEC6001294CC /* ComparisonTests.swift */; };
@@ -81,7 +82,7 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		078142891C7CED30004B68D3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
@@ -148,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D3322F1D325FE1009B0A33 /* ArrayTools.framework in Frameworks */,
 				0781425D1C7CECD5004B68D3 /* ArithmeticTools.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,7 +312,6 @@
 				0781424E1C7CECD5004B68D3 /* Frameworks */,
 				0781424F1C7CECD5004B68D3 /* Headers */,
 				078142501C7CECD5004B68D3 /* Resources */,
-				078142941C7CF0ED004B68D3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -329,6 +330,7 @@
 				078142591C7CECD5004B68D3 /* Frameworks */,
 				0781425A1C7CECD5004B68D3 /* Resources */,
 				078142891C7CED30004B68D3 /* CopyFiles */,
+				07D8FCEB1D32791B00F98854 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -348,7 +350,6 @@
 				0781426D1C7CECE0004B68D3 /* Frameworks */,
 				0781426E1C7CECE0004B68D3 /* Headers */,
 				0781426F1C7CECE0004B68D3 /* Resources */,
-				078142951C7CF118004B68D3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -367,6 +368,7 @@
 				078142771C7CECE0004B68D3 /* Frameworks */,
 				078142781C7CECE0004B68D3 /* Resources */,
 				0781428B1C7CED38004B68D3 /* CopyFiles */,
+				07D8FCEC1D32799F00F98854 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -454,7 +456,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		078142941C7CF0ED004B68D3 /* ShellScript */ = {
+		07D8FCEB1D32791B00F98854 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -468,7 +470,7 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
-		078142951C7CF118004B68D3 /* ShellScript */ = {
+		07D8FCEC1D32799F00F98854 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -670,7 +672,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -694,7 +697,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -714,6 +718,10 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ArithmeticToolsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bean.ArithmeticToolsTests;
@@ -727,6 +735,10 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ArithmeticToolsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bean.ArithmeticToolsTests;
@@ -744,7 +756,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -772,7 +784,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
