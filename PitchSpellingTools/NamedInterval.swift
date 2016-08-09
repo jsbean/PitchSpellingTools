@@ -168,7 +168,7 @@ public struct NamedInterval {
         // MARK: - Instance methods
         
         /**
-         - returns: `true` if this `Quality` is valid for a given `Ordinal`. Otheriwse, `false`.
+         - returns: `true` if this `Quality` is valid for a given `Ordinal`. Otherwise, `false`.
         
          > One cannot have a major fifth, etc.
          */
