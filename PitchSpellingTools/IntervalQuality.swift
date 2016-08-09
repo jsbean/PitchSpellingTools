@@ -43,10 +43,19 @@ public class IntervalQuality: EnumTree {
         11.0: [.majorSeventh, .diminishedUnison],
     ]
     
+    public class var inverse: EnumFamily.Type {
+        return ordinal(withAmountOfSteps: 7 - steps)
+    }
+    
+    // Override in each subclass
+    public class var steps: Int { fatalError() }
+    
     // MARK: - Interval Families
     
     /// Unison interval family.
     public class unison: EnumFamily, PerfectIntervalQualityType {
+        
+        public override class var steps: Int { return 0 }
         
         /// Double Diminished Unison interval.
         public static let doubleDiminished: EnumKind = .doubleDiminishedUnison
@@ -63,17 +72,19 @@ public class IntervalQuality: EnumTree {
         /// Double Augmented Unison interval.
         public static let doubleAugmented: EnumKind = .doubleAugmentedUnison
         
-        public override class func kind(
-            forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
-        ) -> EnumKind
-        {
-            let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
-            return intervalQuality(fromDirectionDifference: difference)
+        public override class func _kind(intervalClass intervalClass: Float) -> EnumKind {
+            return kind(normalizedIntervalClass: intervalClass)
         }
     }
     
     /// Second interval family.
     public class second: EnumFamily, ImperfectIntervalQualityType {
+        
+        public override class func _kind(intervalClass intervalClass: Float) -> EnumKind {
+            return kind(normalizedIntervalClass: intervalClass)
+        }
+        
+        public override class var steps: Int { return 1 }
         
         /// Double Diminished Second interval.
         public static let doubleDiminished: EnumKind = .doubleDiminishedSecond
@@ -93,36 +104,16 @@ public class IntervalQuality: EnumTree {
         public static let doubleAugmented: EnumKind = .doubleAugmentedSecond
         
         public override class var members: [EnumKind] { return imperfectMembers }
-        
-        public override class func kind(
-            forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
-        ) -> EnumKind
-        {
-            var difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
-            
-            // correct A / B Flat ; D / E Flat issues
-            if pitchSpellingDyad.b.letterName == .a { difference += 1 }
-            if pitchSpellingDyad.b.letterName == .d { difference += 1 }
-            
-            // correct e/b quarterstep intervals to be valid
-            if (
-                [.e, .b].contains(pitchSpellingDyad.b.letterName) &&
-                pitchSpellingDyad.b.coarse == .quarterSharp
-            ) ||
-            (
-                [.f, .c].contains(pitchSpellingDyad.a.letterName) &&
-                pitchSpellingDyad.a.coarse == .quarterFlat
-            )
-            {
-                difference += 1
-            }
-            
-            return intervalQuality(fromDirectionDifference: difference)
-        }
     }
     
     /// Third interval family.
     public class third: EnumFamily, ImperfectIntervalQualityType {
+        
+        public override class func _kind(intervalClass intervalClass: Float) -> EnumKind {
+            return kind(normalizedIntervalClass: intervalClass)
+        }
+        
+        public override class var steps: Int { return 2 }
         
         /// Double Diminished Third interval.
         public static let doubleDiminished: EnumKind = .doubleDiminishedThird
@@ -144,18 +135,16 @@ public class IntervalQuality: EnumTree {
         
         /// Imperfect interval quality type members
         public override class var members: [EnumKind] { return imperfectMembers }
-        
-        public override class func kind(
-            forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
-        ) -> EnumKind
-        {
-            let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
-            return intervalQuality(fromDirectionDifference: difference)
-        }
     }
     
     /// Fourth interval family.
     public class fourth: EnumFamily, PerfectIntervalQualityType {
+        
+        public override class func _kind(intervalClass intervalClass: Float) -> EnumKind {
+            return kind(normalizedIntervalClass: intervalClass)
+        }
+        
+        public override class var steps: Int { return 3 }
         
         /// Double Diminished Fourth interval.
         public static let doubleDiminished: EnumKind = .doubleDiminishedFourth
@@ -174,25 +163,16 @@ public class IntervalQuality: EnumTree {
         
         /// Perfect interval quality type members.
         public override class var members: [EnumKind] { return perfectMembers }
-        
-        public override class func kind(
-            forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
-        ) -> EnumKind
-        {
-            let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
-            return intervalQuality(fromDirectionDifference: difference)
-        }
-        
-        static func adjustDifference(difference: Float,
-            forLowerPitchSpelling pitchSpelling: PitchSpelling
-        ) -> Float
-        {
-            return pitchSpelling.letterName == .f ? difference + 1 : difference
-        }
     }
     
     /// Fifth interval family.
     public class fifth: EnumFamily, PerfectIntervalQualityType {
+        
+        public override class func _kind(intervalClass intervalClass: Float) -> EnumKind {
+            return kind(normalizedIntervalClass: intervalClass)
+        }
+        
+        public override class var steps: Int { return 4 }
         
         /// Double Diminished Fifth interval.
         public static let doubleDiminished: EnumKind = .doubleDiminishedFifth
@@ -211,18 +191,16 @@ public class IntervalQuality: EnumTree {
         
         /// Perfect interval quality type members.
         public override class var members: [EnumKind] { return perfectMembers }
-    
-        public override class func kind(
-            forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
-        ) -> EnumKind
-        {
-            let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
-            return intervalQuality(fromDirectionDifference: difference)
-        }
     }
     
     /// Sixth interval family.
     public class sixth: EnumFamily, ImperfectIntervalQualityType {
+        
+        public override class func _kind(intervalClass intervalClass: Float) -> EnumKind {
+            return kind(normalizedIntervalClass: intervalClass)
+        }
+        
+        public override class var steps: Int { return 5 }
         
         /// Double Diminished Sixth interval.
         public static let doubleDiminished: EnumKind = .doubleDiminishedSixth
@@ -244,18 +222,16 @@ public class IntervalQuality: EnumTree {
         
         /// Imperfect interval quality type members.
         public override class var members: [EnumKind] { return imperfectMembers }
-        
-        public override class func kind(
-            forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
-        ) -> EnumKind
-        {
-            let difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
-            return intervalQuality(fromDirectionDifference: difference)
-        }
     }
     
     /// Seventh interval family.
     public class seventh: EnumFamily, ImperfectIntervalQualityType {
+        
+        public override class func _kind(intervalClass intervalClass: Float) -> EnumKind {
+            return kind(normalizedIntervalClass: intervalClass)
+        }
+        
+        public override class var steps: Int { return 6 }
         
         /// Double Diminished Seventh interval.
         public static let doubleDiminished: EnumKind = .doubleDiminishedSeventh
@@ -277,31 +253,6 @@ public class IntervalQuality: EnumTree {
         
         /// Imperfect interval quality type members.
         public override class var members: [EnumKind] { return imperfectMembers }
-        
-        public override class func kind(
-            forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad
-        ) -> EnumKind
-        {
-            var difference = directionDifference(fromPitchSpellingDyad: pitchSpellingDyad)
-            
-            // correct G / FSharp issue
-            if pitchSpellingDyad.b.letterName == .g { difference -= 1 }
-            
-            // correct e/b quarterstep intervals to be valid
-            if (
-                [.e, .b].contains(pitchSpellingDyad.a.letterName) &&
-                pitchSpellingDyad.a.coarse == .quarterSharp
-            ) ||
-            (
-                [.f, .c].contains(pitchSpellingDyad.b.letterName) &&
-                pitchSpellingDyad.b.coarse == .quarterFlat
-            )
-            {
-                difference -= 1
-            }
-            
-            return intervalQuality(fromDirectionDifference: difference)
-        }
     }
     
     /// - warning: Default implementation: `[]`. Must override.
@@ -329,15 +280,13 @@ public class IntervalQuality: EnumTree {
             seventh.self
         ]
     }
-    
-    public class func kind(forPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
-        -> EnumKind
-    {
-        let family = intervalFamily(withAmountOfSteps: pitchSpellingDyad.steps)
-        return family.kind(forPitchSpellingDyad: pitchSpellingDyad)
+
+    public class func _kind(intervalClass intervalClass: Float) -> EnumKind {
+        fatalError("must be called from subclass!")
     }
     
-    private static func intervalFamily(withAmountOfSteps steps: Int) -> EnumFamily.Type {
+    // TODO: consider renaming to IntervalDegree
+    public static func ordinal(withAmountOfSteps steps: Int) -> EnumFamily.Type {
         switch abs(steps) % 7 {
         case 0: return unison.self
         case 1: return second.self
@@ -350,10 +299,10 @@ public class IntervalQuality: EnumTree {
         }
     }
     
+    // TODO: change to intervalQuality
     private func intervalQualityKinds(withIntervalClass intervalClass: IntervalClass)
         -> [IntervalQualityKind]
     {
         return intervalQualityKinds(withIntervalClass: intervalClass) ?? []
     }
 }
-

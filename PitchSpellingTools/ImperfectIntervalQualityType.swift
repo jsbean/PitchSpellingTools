@@ -16,6 +16,8 @@ internal protocol ImperfectIntervalQualityType: IntervalQualityType {
     
     /// Minor interval quality type.
     static var minor: IntervalQuality.EnumKind { get }
+    
+    static func kind(normalizedIntervalClass intervalClass: Float) -> IntervalQuality.EnumKind
 }
 
 extension ImperfectIntervalQualityType {
@@ -28,8 +30,23 @@ extension ImperfectIntervalQualityType {
     /// The imperfect interval quality types that preserve step.
     static var stepPreserving: [IntervalQuality.EnumKind] { return [minor, major] }
 
+    // TODO: flesh out
+    static func kind(normalizedIntervalClass intervalClass: Float) -> IntervalQuality.EnumKind {
+        switch intervalClass {
+        case +0.5: return major
+        case -0.5: return minor
+        case +1: return augmented
+        case -1: return diminished
+        case _ where intervalClass > +1: return doubleAugmented
+        case _ where intervalClass < -1: return doubleDiminished
+        default: fatalError("bad number")
+        }
+    }
+    
     /**
      Ensures that interval qualities are correct for all intervals
+     
+     - TODO: Remove when possible
      */
     static func adjustDifference(difference: Float,
         forLowerPitchSpelling pitchSpelling: PitchSpelling
@@ -40,6 +57,7 @@ extension ImperfectIntervalQualityType {
             : difference
     }
     
+    // TODO: Remove when possible
     static func intervalQuality(fromDirectionDifference difference: Float)
         -> IntervalQuality.EnumKind
     {

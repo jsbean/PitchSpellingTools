@@ -18,13 +18,13 @@ public struct PitchSpellingDyad {
 
     // MARK: - Instance Properties
     
-    /// `IntervalQuality` between `PitchSpelling` objects.
-    public var intervalQuality: IntervalQualityKind {
-        return IntervalQuality.kind(forPitchSpellingDyad: self)
-    }
+//    /// `IntervalQuality` between `PitchSpelling` objects.
+//    public var intervalQuality: IntervalQualityKind {
+//        return IntervalQuality.kind(forPitchSpellingDyad: self)
+//    }
     
-    /// `true` if has `intervalQuality` is objectively valid. Otherwise `false`.
-    public var hasValidIntervalQuality: Bool { return intervalQuality.hasValidIntervalQuality }
+//    /// `true` if has `intervalQuality` is objectively valid. Otherwise `false`.
+//    public var hasValidIntervalQuality: Bool { return intervalQuality.hasValidIntervalQuality }
     
     /**
     `true` if `coarse` values of both `PitchSpelling` objects are equivalent.

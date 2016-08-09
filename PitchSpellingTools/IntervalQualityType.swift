@@ -23,32 +23,36 @@ internal protocol IntervalQualityType: EnumTree {
     /// DoubleAugmented.
     static var doubleAugmented: IntervalQuality.EnumKind { get }
     
+    static func kind(normalizedIntervalClass intervalClass: Float) -> IntervalQuality.EnumKind
+    
     static func intervalQuality(fromDirectionDifference difference: Float) -> EnumKind
     
-    static func directionDifference(fromPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
-        -> Float
-    
-    
-    static func adjustDifference(difference: Float,
-        forLowerPitchSpelling pitchSpelling: PitchSpelling
-    ) -> Float
+//    // TODO: Remove when possible
+//    static func directionDifference(fromPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
+//        -> Float
+//    
+//    // TODO: Remove when possible
+//    static func adjustDifference(difference: Float,
+//        forLowerPitchSpelling pitchSpelling: PitchSpelling
+//    ) -> Float
 }
 
 extension IntervalQualityType {
     
-    static func adjustDifference(difference: Float,
-        forLowerPitchSpelling pitchSpelling: PitchSpelling
-    ) -> Float
-    {
-        return difference
-    }
-    
-    static func directionDifference(fromPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
-        -> Float
-    {
-        let lowerDirection = pitchSpellingDyad.b.coarse.direction.rawValue
-        let higherDirection = pitchSpellingDyad.a.coarse.direction.rawValue
-        let difference = (higherDirection - lowerDirection)
-        return adjustDifference(difference, forLowerPitchSpelling: pitchSpellingDyad.b)
-    }
+//    // TODO: remove when possible
+//    static func adjustDifference(difference: Float,
+//        forLowerPitchSpelling pitchSpelling: PitchSpelling
+//    ) -> Float
+//    {
+//        return difference
+//    }
+//    
+//    static func directionDifference(fromPitchSpellingDyad pitchSpellingDyad: PitchSpellingDyad)
+//        -> Float
+//    {
+//        let lowerDirection = pitchSpellingDyad.b.coarse.direction.rawValue
+//        let higherDirection = pitchSpellingDyad.a.coarse.direction.rawValue
+//        let difference = (higherDirection - lowerDirection)
+//        return adjustDifference(difference, forLowerPitchSpelling: pitchSpellingDyad.b)
+//    }
 }
