@@ -151,7 +151,6 @@ public struct NamedInterval {
          Otherwise, `nil`.
          */
         public subscript (degree: Degree) -> Quality? {
-            
             switch self {
             case Quality.diminished, Quality.augmented:
                 return Quality(rawValue: rawValue, degree: degree)
