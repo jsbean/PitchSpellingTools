@@ -29,13 +29,13 @@ public struct SpelledPitch {
         
         var mustAdjustForC: Bool {
             guard spelling.letterName == .c else { return false }
-            if spelling.coarse.direction == .down { return true }
-            return spelling.coarse == .natural && spelling.fine == .down
+            if spelling.quarterStep.direction == .down { return true }
+            return spelling.quarterStep == .natural && spelling.eighthStep == .down
         }
         
         var mustAdjustForB: Bool {
             guard spelling.letterName == .b else { return false }
-            return spelling.coarse == .sharp && spelling.fine.rawValue >= 0
+            return spelling.quarterStep == .sharp && spelling.eighthStep.rawValue >= 0
         }
         
         return mustAdjustForC ? unadjusted + 1 : mustAdjustForB ? unadjusted - 1 : unadjusted

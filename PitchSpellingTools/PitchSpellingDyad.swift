@@ -21,15 +21,15 @@ public struct PitchSpellingDyad {
     // MARK: - Instance Properties
     
     /**
-    `true` if `coarse` values of both `PitchSpelling` objects are equivalent.
+    `true` if `quarterStep` values of both `PitchSpelling` objects are equivalent.
      Otherwise `false`.
      */
     public var isCoarseMatching: Bool {
-        return b.coarse == a.coarse
+        return b.quarterStep == a.quarterStep
     }
     
     /**
-     `true` if `coarse.direction` value of either `PitchSpelling` is `natural` or if
+     `true` if `quarterStep.direction` value of either `PitchSpelling` is `natural` or if
      `isCoarseCoarseCompatible`. Otherwise `false`.
      */
     public var isCoarseCompatible: Bool {
@@ -37,15 +37,15 @@ public struct PitchSpellingDyad {
     }
     
     /**
-    `true` if `coarse.direction` values of both `PitchSpelling` values are equivalent.
+    `true` if `quarterStep.direction` values of both `PitchSpelling` values are equivalent.
      Otherwise `false`.
      */
     public var isCoarseDirectionMatching: Bool {
-        return b.coarse.direction == a.coarse.direction
+        return b.quarterStep.direction == a.quarterStep.direction
     }
     
     /**
-     `true` if `coarse.direction` value of either `PitchSpelling` is `natural` or if
+     `true` if `quarterStep.direction` value of either `PitchSpelling` is `natural` or if
      `isCoarseDirectionMatching`. Otherwise `false`.
      */
     public var isCoarseDirectionCompatible: Bool {
@@ -53,15 +53,15 @@ public struct PitchSpellingDyad {
     }
     
     /**
-     `true` if `coarse.resolution` values of both `PitchSpelling` values are equivalent.
+     `true` if `quarterStep.resolution` values of both `PitchSpelling` values are equivalent.
      Otherwise `false`.
     */
     public var isCoarseResolutionMatching: Bool {
-        return b.coarse.resolution == a.coarse.resolution
+        return b.quarterStep.resolution == a.quarterStep.resolution
     }
     
     /**
-     `true` if `coarse.direction` value of either `PitchSpelling` is `natural` or if
+     `true` if `quarterStep.direction` value of either `PitchSpelling` is `natural` or if
      `isCoarseResolutionMatching`. Otherwise `false`.
      */
     public var isCoarseResolutionCompatible: Bool {
@@ -77,9 +77,9 @@ public struct PitchSpellingDyad {
     }
     
     /**
-     `true if `fine` values of `PitchSpelling` objects are equivalent. Otherwise `false`.
+     `true if `eighthStep` values of `PitchSpelling` objects are equivalent. Otherwise `false`.
      */
-    public var isFineMatching: Bool { return b.fine == a.fine }
+    public var isFineMatching: Bool { return b.eighthStep == a.eighthStep }
     
     /**
      - warning: Undocumented!
@@ -87,8 +87,8 @@ public struct PitchSpellingDyad {
     public var isFineCompatible: Bool {
         
         // manage close seconds
-        guard eitherHasFineAdjustment else { return true }
-        if eitherHasNoFineAdjustment && (eitherIsNatural || isCoarseMatching) {
+        guard eitherHasEighthStepModifier else { return true }
+        if eitherHasNoEighthStepModifier && (eitherIsNatural || isCoarseMatching) {
             return !isLetterNameMatching
         }
         return isFineMatching
@@ -99,9 +99,9 @@ public struct PitchSpellingDyad {
         return [b.spellingDistance, a.spellingDistance].mean!
     }
     
-    /// Mean of `coarse.distance` values of both `PitchSpelling objects.
+    /// Mean of `quarterStep.distance` values of both `PitchSpelling objects.
     public var meanCoarseDistance: Float {
-        return [b.coarse.distance, a.coarse.distance].mean!
+        return [b.quarterStep.distance, a.quarterStep.distance].mean!
     }
     
     /// Amount of steps between two `PitchSpelling` objects.
@@ -111,15 +111,15 @@ public struct PitchSpellingDyad {
     }
 
     private var eitherIsNatural: Bool {
-        return b.coarse == .natural || a.coarse == .natural
+        return b.quarterStep == .natural || a.quarterStep == .natural
     }
     
-    private var eitherHasNoFineAdjustment: Bool {
-        return b.fine == .none || a.fine == .none
+    private var eitherHasNoEighthStepModifier: Bool {
+        return b.eighthStep == .none || a.eighthStep == .none
     }
     
-    private var eitherHasFineAdjustment: Bool {
-        return a.fine != .none || b.fine != .none
+    private var eitherHasEighthStepModifier: Bool {
+        return a.eighthStep != .none || b.eighthStep != .none
     }
 
     // MARK: - Initializers

@@ -13,8 +13,8 @@ extension PitchSpelling: CustomStringConvertible {
     public var description: String {
         var result = "("
         result += "\(letterName)"
-        if coarse != .natural { result += " \(coarse)" }
-        if fine != .none { result += " \(fine)" }
+        if quarterStep != .natural { result += " \(quarterStep)" }
+        if eighthStep != .none { result += " \(eighthStep)" }
         result += ")"
         return result
     }

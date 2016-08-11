@@ -1,5 +1,5 @@
 //
-//  PitchSpelling+CoarseAdjustment.swift
+//  PitchSpelling+QuarterStepModifier.swift
 //  PitchSpellingTools
 //
 //  Created by James Bean on 5/3/16.
@@ -16,7 +16,7 @@ extension PitchSpelling {
      Coarse resolution component of a `PitchSpelling`.
      Analogous to the body of an accidental.
      */
-    public enum CoarseAdjustment: Float, Comparable {
+    public enum QuarterStepModifier: Float, Comparable {
         
         internal enum Direction: Float, Comparable {
             case none = 0
@@ -39,7 +39,7 @@ extension PitchSpelling {
             return rawValue % 1 == 0 ? .halfStep : .quarterStep
         }
         
-        internal var quantizedToHalfStep: CoarseAdjustment {
+        internal var quantizedToHalfStep: QuarterStepModifier {
             switch direction {
             case .none: return .natural
             case .up: return .sharp
@@ -75,7 +75,7 @@ extension PitchSpelling {
         case doubleFlat = -2.0
     }
     
-    internal func isCompatible(withCoarseDirection direction: CoarseAdjustment.Direction)
+    internal func isCompatible(withCoarseDirection direction: QuarterStepModifier.Direction)
         -> Bool
     {
         switch direction {
@@ -87,5 +87,5 @@ extension PitchSpelling {
         }
     }
 
-    internal var isFineAdjustedNatural: Bool { return coarse == .natural && fine != .none }
+    internal var isFineAdjustedNatural: Bool { return quarterStep == .natural && eighthStep != .none }
 }

@@ -39,10 +39,10 @@ public struct PitchSpelling {
     public let letterName: LetterName
     
     /// Fine resolution of a `PitchSpelling`.
-    public let fine: FineAdjustment
+    public let eighthStep: EighthStepModifier
     
     /// Coarse resolution of a `PitchSpelling`.
-    public let coarse: CoarseAdjustment
+    public let quarterStep: QuarterStepModifier
     
     // MARK: - Initializers
     
@@ -52,21 +52,21 @@ public struct PitchSpelling {
      **Example:**
      ```
      let cNatural = PitchSpelling(letterName: .c)
-     let aFlat = PitchSpelling(letterName: .a, coarse: .flat)
-     let gQuarterSharp = PitchSpelling(letterName: .g, coarse: .quarterSharp)
-     let dQuarterFlatDown = PitchSpelling(letterName: .d, coarse: .quarterFlat, fine: .down)
-     let bDoubleSharp = PitchSpelling(letterName: .b, coarse: .doubleSharp)
+     let aFlat = PitchSpelling(letterName: .a, quarterStep: .flat)
+     let gQuarterSharp = PitchSpelling(letterName: .g, quarterStep: .quarterSharp)
+     let dQuarterFlatDown = PitchSpelling(letterName: .d, quarterStep: .quarterFlat, eighthStep: .down)
+     let bDoubleSharp = PitchSpelling(letterName: .b, quarterStep: .doubleSharp)
      ```
      */
     public init(
         letterName: LetterName,
-        coarse: CoarseAdjustment = .natural,
-        fine: FineAdjustment = .none
+        quarterStep: QuarterStepModifier = .natural,
+        eighthStep: EighthStepModifier = .none
     )
     {
         self.letterName = letterName
-        self.coarse = coarse
-        self.fine = fine
+        self.quarterStep = quarterStep
+        self.eighthStep = eighthStep
     }
     
     /**
@@ -84,13 +84,13 @@ public struct PitchSpelling {
      */
     public init(
         _ letterName: LetterName,
-        _ coarse: CoarseAdjustment = .natural,
-        _ fine: FineAdjustment = .none
+        _ quarterStep: QuarterStepModifier = .natural,
+        _ eighthStep: EighthStepModifier = .none
     )
     {
         self.letterName = letterName
-        self.coarse = coarse
-        self.fine = fine
+        self.quarterStep = quarterStep
+        self.eighthStep = eighthStep
     }
 
     // MARK: - Instance Methods
@@ -106,7 +106,7 @@ public struct PitchSpelling {
 
 extension PitchSpelling: Hashable {
     
-    public var hashValue: Int { return "\(letterName),\(coarse),\(fine)".hashValue }
+    public var hashValue: Int { return "\(letterName),\(quarterStep),\(eighthStep)".hashValue }
 }
 
 public func == (lhs: PitchSpelling, rhs: PitchSpelling) -> Bool {

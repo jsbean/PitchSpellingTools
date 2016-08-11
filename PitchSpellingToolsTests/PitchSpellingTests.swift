@@ -14,7 +14,7 @@ class PitchSpellingTests: XCTestCase {
 
     func testInitJustLetterName() {
         let ps = PitchSpelling(letterName: .f)
-        XCTAssert(ps.coarse == .natural)
-        XCTAssert(ps.fine == .none)
+        XCTAssert(ps.quarterStep == .natural)
+        XCTAssert(ps.eighthStep == .none)
     }
 }

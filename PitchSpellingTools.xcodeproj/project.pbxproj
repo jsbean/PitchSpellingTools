@@ -22,12 +22,12 @@
 		074B33901D31166C0042104B /* PitchClass+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33631D31166C0042104B /* PitchClass+PitchSpelling.swift */; };
 		074B33931D31166C0042104B /* PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33651D31166C0042104B /* PitchSpelling.swift */; };
 		074B33941D31166C0042104B /* PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33651D31166C0042104B /* PitchSpelling.swift */; };
-		074B33951D31166C0042104B /* PitchSpelling+CoarseAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33661D31166C0042104B /* PitchSpelling+CoarseAdjustment.swift */; };
-		074B33961D31166C0042104B /* PitchSpelling+CoarseAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33661D31166C0042104B /* PitchSpelling+CoarseAdjustment.swift */; };
+		074B33951D31166C0042104B /* PitchSpelling+QuarterStepModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33661D31166C0042104B /* PitchSpelling+QuarterStepModifier.swift */; };
+		074B33961D31166C0042104B /* PitchSpelling+QuarterStepModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33661D31166C0042104B /* PitchSpelling+QuarterStepModifier.swift */; };
 		074B33971D31166C0042104B /* PitchSpelling+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33671D31166C0042104B /* PitchSpelling+CustomStringConvertible.swift */; };
 		074B33981D31166C0042104B /* PitchSpelling+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33671D31166C0042104B /* PitchSpelling+CustomStringConvertible.swift */; };
-		074B33991D31166C0042104B /* PitchSpelling+FineAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33681D31166C0042104B /* PitchSpelling+FineAdjustment.swift */; };
-		074B339A1D31166C0042104B /* PitchSpelling+FineAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33681D31166C0042104B /* PitchSpelling+FineAdjustment.swift */; };
+		074B33991D31166C0042104B /* PitchSpelling+EighthStepModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33681D31166C0042104B /* PitchSpelling+EighthStepModifier.swift */; };
+		074B339A1D31166C0042104B /* PitchSpelling+EighthStepModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33681D31166C0042104B /* PitchSpelling+EighthStepModifier.swift */; };
 		074B339B1D31166C0042104B /* PitchSpelling+LetterName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33691D31166C0042104B /* PitchSpelling+LetterName.swift */; };
 		074B339C1D31166C0042104B /* PitchSpelling+LetterName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33691D31166C0042104B /* PitchSpelling+LetterName.swift */; };
 		074B339D1D31166C0042104B /* PitchSpelling+Resolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B336A1D31166C0042104B /* PitchSpelling+Resolution.swift */; };
@@ -142,9 +142,9 @@
 		074B33621D31166C0042104B /* Pitch+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pitch+PitchSpelling.swift"; path = "PitchSpellingTools/Pitch+PitchSpelling.swift"; sourceTree = "<group>"; };
 		074B33631D31166C0042104B /* PitchClass+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchClass+PitchSpelling.swift"; path = "PitchSpellingTools/PitchClass+PitchSpelling.swift"; sourceTree = "<group>"; };
 		074B33651D31166C0042104B /* PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSpelling.swift; path = PitchSpellingTools/PitchSpelling.swift; sourceTree = "<group>"; };
-		074B33661D31166C0042104B /* PitchSpelling+CoarseAdjustment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+CoarseAdjustment.swift"; path = "PitchSpellingTools/PitchSpelling+CoarseAdjustment.swift"; sourceTree = "<group>"; };
+		074B33661D31166C0042104B /* PitchSpelling+QuarterStepModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+QuarterStepModifier.swift"; path = "PitchSpellingTools/PitchSpelling+QuarterStepModifier.swift"; sourceTree = "<group>"; };
 		074B33671D31166C0042104B /* PitchSpelling+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+CustomStringConvertible.swift"; path = "PitchSpellingTools/PitchSpelling+CustomStringConvertible.swift"; sourceTree = "<group>"; };
-		074B33681D31166C0042104B /* PitchSpelling+FineAdjustment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+FineAdjustment.swift"; path = "PitchSpellingTools/PitchSpelling+FineAdjustment.swift"; sourceTree = "<group>"; };
+		074B33681D31166C0042104B /* PitchSpelling+EighthStepModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+EighthStepModifier.swift"; path = "PitchSpellingTools/PitchSpelling+EighthStepModifier.swift"; sourceTree = "<group>"; };
 		074B33691D31166C0042104B /* PitchSpelling+LetterName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+LetterName.swift"; path = "PitchSpellingTools/PitchSpelling+LetterName.swift"; sourceTree = "<group>"; };
 		074B336A1D31166C0042104B /* PitchSpelling+Resolution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+Resolution.swift"; path = "PitchSpellingTools/PitchSpelling+Resolution.swift"; sourceTree = "<group>"; };
 		074B336B1D31166C0042104B /* PitchSpelling+SpellingDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+SpellingDistance.swift"; path = "PitchSpellingTools/PitchSpelling+SpellingDistance.swift"; sourceTree = "<group>"; };
@@ -247,8 +247,8 @@
 			children = (
 				074B33651D31166C0042104B /* PitchSpelling.swift */,
 				074B33691D31166C0042104B /* PitchSpelling+LetterName.swift */,
-				074B33661D31166C0042104B /* PitchSpelling+CoarseAdjustment.swift */,
-				074B33681D31166C0042104B /* PitchSpelling+FineAdjustment.swift */,
+				074B33661D31166C0042104B /* PitchSpelling+QuarterStepModifier.swift */,
+				074B33681D31166C0042104B /* PitchSpelling+EighthStepModifier.swift */,
 				074B336A1D31166C0042104B /* PitchSpelling+Resolution.swift */,
 				074B336B1D31166C0042104B /* PitchSpelling+SpellingDistance.swift */,
 				079B19DB1D5CD59F007D506B /* PitchSpelling+Comparable.swift */,
@@ -560,10 +560,10 @@
 				074B337C1D31166C0042104B /* Interval+PitchSpelling.swift in Sources */,
 				074B339E1D31166C0042104B /* PitchSpelling+Resolution.swift in Sources */,
 				074B33901D31166C0042104B /* PitchClass+PitchSpelling.swift in Sources */,
-				074B339A1D31166C0042104B /* PitchSpelling+FineAdjustment.swift in Sources */,
+				074B339A1D31166C0042104B /* PitchSpelling+EighthStepModifier.swift in Sources */,
 				074B33861D31166C0042104B /* LineOfFifths.swift in Sources */,
 				074B33A81D31166C0042104B /* PitchSpellings.swift in Sources */,
-				074B33961D31166C0042104B /* PitchSpelling+CoarseAdjustment.swift in Sources */,
+				074B33961D31166C0042104B /* PitchSpelling+QuarterStepModifier.swift in Sources */,
 				074B33981D31166C0042104B /* PitchSpelling+CustomStringConvertible.swift in Sources */,
 				07D4E3B01D5A3FB8007F2D3A /* NamedInterval.swift in Sources */,
 				074B33941D31166C0042104B /* PitchSpelling.swift in Sources */,
@@ -587,10 +587,10 @@
 				074B337B1D31166C0042104B /* Interval+PitchSpelling.swift in Sources */,
 				074B339D1D31166C0042104B /* PitchSpelling+Resolution.swift in Sources */,
 				074B338F1D31166C0042104B /* PitchClass+PitchSpelling.swift in Sources */,
-				074B33991D31166C0042104B /* PitchSpelling+FineAdjustment.swift in Sources */,
+				074B33991D31166C0042104B /* PitchSpelling+EighthStepModifier.swift in Sources */,
 				074B33851D31166C0042104B /* LineOfFifths.swift in Sources */,
 				074B33A71D31166C0042104B /* PitchSpellings.swift in Sources */,
-				074B33951D31166C0042104B /* PitchSpelling+CoarseAdjustment.swift in Sources */,
+				074B33951D31166C0042104B /* PitchSpelling+QuarterStepModifier.swift in Sources */,
 				074B33971D31166C0042104B /* PitchSpelling+CustomStringConvertible.swift in Sources */,
 				07D4E3AF1D5A3FB8007F2D3A /* NamedInterval.swift in Sources */,
 				074B33931D31166C0042104B /* PitchSpelling.swift in Sources */,

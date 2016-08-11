@@ -1,5 +1,5 @@
 //
-//  PitchSpelling+FineAdjustment.swift
+//  PitchSpelling+EighthStepModifier.swift
 //  PitchSpellingTools
 //
 //  Created by James Bean on 5/3/16.
@@ -19,7 +19,7 @@ extension PitchSpelling {
      - note: In 48-EDO, represents 1/8th-tone adjustment.
      May be useful for other cases (e.g., -14c adjustment for 5th partial, etc.).
      */
-    public enum FineAdjustment: Float {
+    public enum EighthStepModifier: Float {
         
         /// None.
         case none = 0

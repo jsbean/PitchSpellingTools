@@ -21,7 +21,7 @@ extension Pitch {
      ```
      */
     public var canBeSpelledObjectively: Bool {
-        return spellings.anySatisfy({ $0.coarse == .natural && $0.fine == .none })
+        return spellings.anySatisfy({ $0.quarterStep == .natural && $0.eighthStep == .none })
     }
  
     /// All `PitchSpelling` structures available for this `Pitch`.
@@ -35,27 +35,27 @@ extension Pitch {
         
         // c flat
         spellings = spellings.filter {
-            !($0.letterName == .c && $0.coarse == .flat)
+            !($0.letterName == .c && $0.quarterStep == .flat)
         }
         
         // f flat
         spellings = spellings.filter {
-            !($0.letterName == .f && $0.coarse == .flat)
+            !($0.letterName == .f && $0.quarterStep == .flat)
         }
         
         // e sharp
         spellings = spellings.filter {
-            !($0.letterName == .e && $0.coarse == .sharp)
+            !($0.letterName == .e && $0.quarterStep == .sharp)
         }
         
         // b sharp
         spellings = spellings.filter {
-            !($0.letterName == .b && $0.coarse == .sharp)
+            !($0.letterName == .b && $0.quarterStep == .sharp)
         }
         
         // double flats and sharps
         spellings = spellings.filter {
-            !($0.coarse == .doubleSharp || $0.coarse == .doubleFlat)
+            !($0.quarterStep == .doubleSharp || $0.quarterStep == .doubleFlat)
         }
         
         return spellings
