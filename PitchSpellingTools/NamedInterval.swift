@@ -23,7 +23,11 @@ import Pitch
  */
 public struct NamedInterval {
     
-    /// Ordinal of `NamedInterval`.
+    /**
+     Ordinal of `NamedInterval`.
+     
+     - TODO: Add documentation!
+    */
     public enum Ordinal: Int {
 
         /// Unison ordinal.
@@ -86,6 +90,8 @@ public struct NamedInterval {
     
     /**
      `Quality` of a `NamedInterval`.
+     
+     - TODO: Add documentation!
      */
     public struct Quality: OptionSetType, CustomStringConvertible {
         
@@ -210,7 +216,9 @@ public struct NamedInterval {
      - returns: `Quality` for the given `normalizedIntervalClass` value, and the given 
      `ordinal` value.
      
-     - TODO: Find more elegant way to do this. This implementation & api exists only  
+     - TODO: Find more elegant way to do this. This implementation & api exists only
+     - TODO: Factor out duplication in multiply diminished / augmented cases
+     - TODO: Handle bad values properly. Currently things can blow up in extreme cases. Test.
      */
     public static func quality(for normalizedIntervalClass: Float, ordinal: Ordinal)
         -> Quality
@@ -299,6 +307,9 @@ public struct NamedInterval {
 
 extension NamedInterval: CustomStringConvertible {
     
+    // MARK: - CustomStringConvertible
+    
+    /// Printed description.
     public var description: String {
         return "\(quality) \(ordinal)"
     }
