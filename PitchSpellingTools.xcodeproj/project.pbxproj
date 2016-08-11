@@ -246,13 +246,13 @@
 			isa = PBXGroup;
 			children = (
 				074B33651D31166C0042104B /* PitchSpelling.swift */,
-				079B19DB1D5CD59F007D506B /* PitchSpelling+Comparable.swift */,
-				074B33661D31166C0042104B /* PitchSpelling+CoarseAdjustment.swift */,
-				074B33671D31166C0042104B /* PitchSpelling+CustomStringConvertible.swift */,
-				074B33681D31166C0042104B /* PitchSpelling+FineAdjustment.swift */,
 				074B33691D31166C0042104B /* PitchSpelling+LetterName.swift */,
+				074B33661D31166C0042104B /* PitchSpelling+CoarseAdjustment.swift */,
+				074B33681D31166C0042104B /* PitchSpelling+FineAdjustment.swift */,
 				074B336A1D31166C0042104B /* PitchSpelling+Resolution.swift */,
 				074B336B1D31166C0042104B /* PitchSpelling+SpellingDistance.swift */,
+				079B19DB1D5CD59F007D506B /* PitchSpelling+Comparable.swift */,
+				074B33671D31166C0042104B /* PitchSpelling+CustomStringConvertible.swift */,
 				074B336F1D31166C0042104B /* PitchSpellings.swift */,
 			);
 			name = PitchSpelling;

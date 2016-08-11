@@ -17,6 +17,8 @@ extension PitchSpelling {
      */
     public enum LetterName: String {
         
+        // MARK: - Cases
+        
         /// A, la.
         case a
         
@@ -38,6 +40,12 @@ extension PitchSpelling {
         /// G, sol.
         case g
         
+        // MARK: - Initializers
+        
+        /**
+         Create a `LetterName` with a given `string` value. Uppercase and lowercase values are
+         accepted here.
+         */
         public init?(string: String) {
             if let letterName = LetterName.init(rawValue: string) { self = letterName; return }
             var letterName: LetterName? {
