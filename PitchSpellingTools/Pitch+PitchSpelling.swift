@@ -92,7 +92,7 @@ extension Pitch {
      */
     public func spelled(with spelling: PitchSpelling) throws -> SpelledPitch {
         
-        guard spelling.isValid(forPitch: self) else {
+        guard spelling.isValid(for: self) else {
             throw PitchSpelling.Error.invalidSpelling(self, spelling)
         }
         

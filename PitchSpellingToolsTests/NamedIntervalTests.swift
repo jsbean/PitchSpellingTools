@@ -42,4 +42,13 @@ class NamedIntervalTests: XCTestCase {
         let doubleDiminishedFourth = NamedInterval(.double, .diminished, .fourth)!
         XCTAssertEqual(doubleAugmentedFifth.inverse, doubleDiminishedFourth)
     }
+    
+    func testQualityDegreeNil() {
+        XCTAssertNil(NamedInterval.Quality.major[.double])
+        XCTAssertNil(NamedInterval.Quality.minor[.triple])
+    }
+    
+    func testQualitySingleNotNil() {
+        XCTAssertNotNil(NamedInterval.Quality.major[.single])
+    }
 }

@@ -10,7 +10,11 @@ import Pitch
 
 extension Interval {
     
-    /// `IntervalClass` representation of `Interval`.
+    /** 
+     `IntervalClass` representation of `Interval`.
+     
+     - TODO: Move to up `Pitch` framework
+    */
     public var intervalClass: IntervalClass { return IntervalClass(self) }
     
     /// Priority for this `Interval` to be spelled. Lower value is higher priority.

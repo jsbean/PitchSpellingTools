@@ -10,6 +10,9 @@ import Foundation
 
 extension PitchSpelling {
     
+    /**
+     Resolution of a `PitchSpelling`.
+     */
     public enum Resolution: Float {
         
         // chromatic

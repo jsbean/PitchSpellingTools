@@ -10,6 +10,8 @@ import ArithmeticTools
 
 /**
  Pair of two `PitchSpelling` objects.
+ 
+ - TODO: Consider transfering concerns to `SpelledDyad`.
  */
 public struct PitchSpellingDyad {
 
@@ -18,25 +20,21 @@ public struct PitchSpellingDyad {
 
     // MARK: - Instance Properties
     
-//    /// `IntervalQuality` between `PitchSpelling` objects.
-//    public var intervalQuality: IntervalQualityKind {
-//        return IntervalQuality.kind(forPitchSpellingDyad: self)
-//    }
-    
-//    /// `true` if has `intervalQuality` is objectively valid. Otherwise `false`.
-//    public var hasValidIntervalQuality: Bool { return intervalQuality.hasValidIntervalQuality }
-    
     /**
     `true` if `coarse` values of both `PitchSpelling` objects are equivalent.
      Otherwise `false`.
      */
-    public var isCoarseMatching: Bool { return b.coarse == a.coarse }
+    public var isCoarseMatching: Bool {
+        return b.coarse == a.coarse
+    }
     
     /**
      `true` if `coarse.direction` value of either `PitchSpelling` is `natural` or if
      `isCoarseCoarseCompatible`. Otherwise `false`.
      */
-    public var isCoarseCompatible: Bool { return eitherIsNatural || isCoarseMatching }
+    public var isCoarseCompatible: Bool {
+        return eitherIsNatural || isCoarseMatching
+    }
     
     /**
     `true` if `coarse.direction` values of both `PitchSpelling` values are equivalent.
@@ -70,6 +68,10 @@ public struct PitchSpellingDyad {
         return eitherIsNatural || isCoarseResolutionMatching
     }
     
+    /**
+     `true` if the `letterName` values of both `PitchSpelling` values are equivalent. 
+     Otherwise, `false.
+     */
     public var isLetterNameMatching: Bool {
         return a.letterName == b.letterName
     }
@@ -79,13 +81,8 @@ public struct PitchSpellingDyad {
      */
     public var isFineMatching: Bool { return b.fine == a.fine }
     
-    public var isFineCompatibleLoose: Bool {
-        guard eitherHasNoFineAdjustment else { return true }
-        return isFineMatching
-    }
-    
     /**
-     - warning: No documentation
+     - warning: Undocumented!
     */
     public var isFineCompatible: Bool {
         
@@ -148,4 +145,14 @@ extension PitchSpellingDyad: Equatable { }
 
 public func == (lhs: PitchSpellingDyad, rhs: PitchSpellingDyad) -> Bool {
     return lhs.b == rhs.b && lhs.a == rhs.a
+}
+
+extension PitchSpellingDyad: CustomStringConvertible {
+    
+    // MARK: - CustomStringConvertible
+    
+    /// Printed description.
+    public var description: String {
+        return "(\(a) , \(b))"
+    }
 }

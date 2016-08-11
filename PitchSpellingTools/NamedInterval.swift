@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Pitch
 
 /**
  NamedInterval.
@@ -25,12 +26,25 @@ public struct NamedInterval {
     /// Ordinal of `NamedInterval`.
     public enum Ordinal: Int {
 
+        /// Unison ordinal.
         case unison = 0
+        
+        /// Second ordinal.
         case second = 1
+        
+        /// Third ordinal.
         case third = 2
+        
+        /// Fourth ordinal.
         case fourth = 3
+        
+        /// Fifth ordinal.
         case fifth = 4
+        
+        /// Sixth ordinal.
         case sixth = 5
+        
+        /// Seventh ordinal.
         case seventh = 6
 
         /**
@@ -73,7 +87,7 @@ public struct NamedInterval {
     /**
      `Quality` of a `NamedInterval`.
      */
-    public struct Quality: OptionSetType {
+    public struct Quality: OptionSetType, CustomStringConvertible {
         
         /**
          `Degree` of a `Quality` (e.g., `double augmented second`).
@@ -151,18 +165,12 @@ public struct NamedInterval {
          Otherwise, `nil`.
          */
         public subscript (degree: Degree) -> Quality? {
-            switch self {
-            case Quality.diminished, Quality.augmented:
+            switch (degree, self) {
+            case (.single, _), (_, Quality.diminished), (_, Quality.augmented):
                 return Quality(rawValue: rawValue, degree: degree)
             default:
                 return nil
             }
-        }
-        
-        
-        public subscript (degree: Int) -> Quality? {
-            guard let degree = Degree(rawValue: degree) else { return nil }
-            return self[degree]
         }
         
         // MARK: - Instance methods
@@ -174,11 +182,78 @@ public struct NamedInterval {
          */
         public func isValid(for ordinal: Ordinal) -> Bool {
             switch ordinal.family {
-            case .perfect where !Quality.perfectSet.contains(self): return false
-            case .imperfect where !Quality.imperfectSet.contains(self): return false
-            default: return true
+            case .perfect where Quality.perfectSet.contains(self): return true
+            case .imperfect where Quality.imperfectSet.contains(self): return true
+            default: return false
             }
         }
+        
+        // MARK: - CustomStringConvertible
+        
+        /// Printed description.
+        public var description: String {
+            var quality: String {
+                switch self {
+                case Quality.diminished: return "diminished"
+                case Quality.minor: return "minor"
+                case Quality.perfect: return "perfect"
+                case Quality.major: return "major"
+                case Quality.augmented: return "augmented"
+                default: fatalError()
+                }
+            }
+            return degree == .single ? quality : "\(degree) \(quality)"
+        }
+    }
+    
+    /**
+     - returns: `Quality` for the given `normalizedIntervalClass` value, and the given 
+     `ordinal` value.
+     
+     - TODO: Find more elegant way to do this. This implementation & api exists only  
+     */
+    public static func quality(for normalizedIntervalClass: Float, ordinal: Ordinal)
+        -> Quality
+    {
+        let diminished: Float = ordinal.family == .perfect ? -1 : -1.5
+        let augmented: Float = ordinal.family == .perfect ? 1 : 1.5
+
+        switch normalizedIntervalClass {
+        case _ where normalizedIntervalClass < diminished:
+            let degreeValue = Int(abs(normalizedIntervalClass - diminished - 1))
+            let degree = Quality.Degree(rawValue: degreeValue)!
+            return Quality.diminished[degree]!
+        case diminished: return Quality.diminished
+        case -0.5: return Quality.minor
+        case +0.0: return Quality.perfect
+        case +0.5: return Quality.major
+        case augmented: return Quality.augmented
+        case _ where normalizedIntervalClass > augmented:
+            let degreeValue = Int(abs(normalizedIntervalClass - augmented + 1))
+            let degree = Quality.Degree(rawValue: degreeValue)!
+            return Quality.augmented[degree]!
+        default: fatalError()
+        }
+    }
+    
+    // MARK: - Type Methods
+    
+    public static func namedIntervals(for intervalClass: IntervalClass) -> [NamedInterval]? {
+        let componentsByIntervalClass: [IntervalClass: [(Quality, Ordinal)]] = [
+            00.0: [(.perfect, .unison), (.augmented, .seventh)], // diminished second?
+            01.0: [(.minor, .second), (.augmented, .unison)],
+            02.0: [(.major, .second), (.diminished, .third)],
+            03.0: [(.minor, .third), (.augmented, .second)],
+            04.0: [(.major, .third), (.diminished, .fourth)],
+            05.0: [(.perfect, .fourth), (.augmented, .third)],
+            06.0: [(.diminished, .fifth), (.augmented, .fourth)],
+            07.0: [(.perfect, .fifth), (.diminished, .sixth)],
+            08.0: [(.minor, .sixth), (.augmented, .fifth)],
+            09.0: [(.major, .sixth), (.diminished, .seventh)],
+            10.0: [(.minor, .seventh), (.augmented, .sixth)],
+            11.0: [(.major, .seventh), (.diminished, .unison)],
+        ]
+        return componentsByIntervalClass[intervalClass]?.flatMap(NamedInterval.init)
     }
     
     // MARK: - Instance Properties
@@ -206,9 +281,7 @@ public struct NamedInterval {
      - TODO: Add examples to documentation.
      */
     public init?(_ quality: Quality, _ ordinal: Ordinal) {
-
         guard quality.isValid(for: ordinal) else { return nil }
-        
         self.quality = quality
         self.ordinal = ordinal
     }
@@ -224,11 +297,22 @@ public struct NamedInterval {
     }
 }
 
+extension NamedInterval: CustomStringConvertible {
+    
+    public var description: String {
+        return "\(quality) \(ordinal)"
+    }
+}
+
 extension NamedInterval: Equatable { }
 
 /**
  - returns: `true` if `ordinal` and `quality` values are equivalent. Otherwise, `false`.
  */
 public func == (lhs: NamedInterval, rhs: NamedInterval) -> Bool {
-    return lhs.ordinal == rhs.ordinal && rhs.quality == rhs.quality
+    return (
+        lhs.ordinal == rhs.ordinal &&
+        lhs.quality == rhs.quality &&
+        lhs.quality.degree == rhs.quality.degree
+    )
 }

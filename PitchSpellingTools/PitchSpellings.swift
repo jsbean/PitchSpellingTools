@@ -11,6 +11,7 @@ import Pitch
 
 internal struct PitchSpellings {
     
+    /// - FIXME: Ensure this is exhaustive and correct!
     private static let spellingsByPitchClass: [PitchClass: [PitchSpelling]] = [
         
         00.00: [
