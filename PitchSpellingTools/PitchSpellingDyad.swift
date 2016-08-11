@@ -25,7 +25,7 @@ public struct PitchSpellingDyad {
      Otherwise `false`.
      */
     public var isCoarseMatching: Bool {
-        return b.quarterStep == a.quarterStep
+        return a.quarterStep == b.quarterStep
     }
     
     /**
@@ -41,7 +41,7 @@ public struct PitchSpellingDyad {
      Otherwise `false`.
      */
     public var isCoarseDirectionMatching: Bool {
-        return b.quarterStep.direction == a.quarterStep.direction
+        return a.quarterStep.direction == b.quarterStep.direction
     }
     
     /**
@@ -57,7 +57,7 @@ public struct PitchSpellingDyad {
      Otherwise `false`.
     */
     public var isCoarseResolutionMatching: Bool {
-        return b.quarterStep.resolution == a.quarterStep.resolution
+        return a.quarterStep.resolution == b.quarterStep.resolution
     }
     
     /**
@@ -79,7 +79,7 @@ public struct PitchSpellingDyad {
     /**
      `true if `eighthStep` values of `PitchSpelling` objects are equivalent. Otherwise `false`.
      */
-    public var isFineMatching: Bool { return b.eighthStep == a.eighthStep }
+    public var isFineMatching: Bool { return a.eighthStep == b.eighthStep }
     
     /**
      - warning: Undocumented!
@@ -96,26 +96,26 @@ public struct PitchSpellingDyad {
     
     /// Mean of `spellingDistance` values of both `PitchSpelling` objects.
     public var meanSpellingDistance: Float {
-        return [b.spellingDistance, a.spellingDistance].mean!
+        return [a.spellingDistance, b.spellingDistance].mean!
     }
     
     /// Mean of `quarterStep.distance` values of both `PitchSpelling objects.
     public var meanCoarseDistance: Float {
-        return [b.quarterStep.distance, a.quarterStep.distance].mean!
+        return [a.quarterStep.distance, b.quarterStep.distance].mean!
     }
     
     /// Amount of steps between two `PitchSpelling` objects.
     internal var steps: Int {
-        let difference = a.letterName.steps - b.letterName.steps
+        let difference = b.letterName.steps - a.letterName.steps
         return abs(Int.mod(difference, 7))
     }
 
     private var eitherIsNatural: Bool {
-        return b.quarterStep == .natural || a.quarterStep == .natural
+        return a.quarterStep == .natural || b.quarterStep == .natural
     }
     
     private var eitherHasNoEighthStepModifier: Bool {
-        return b.eighthStep == .none || a.eighthStep == .none
+        return a.eighthStep == .none || b.eighthStep == .none
     }
     
     private var eitherHasEighthStepModifier: Bool {
@@ -127,9 +127,9 @@ public struct PitchSpellingDyad {
     /**
      Create a `PitchSpellingDyad` with two `PitchSpelling` objects.
      */
-    public init(_ b: PitchSpelling, _ a: PitchSpelling) {
-        self.b = b
+    public init(_ a: PitchSpelling, _ b: PitchSpelling) {
         self.a = a
+        self.b = b
     }
 }
 
