@@ -245,6 +245,7 @@
 		079B19DE1D5CDA69007D506B /* PitchSpelling */ = {
 			isa = PBXGroup;
 			children = (
+				074B33651D31166C0042104B /* PitchSpelling.swift */,
 				079B19DB1D5CD59F007D506B /* PitchSpelling+Comparable.swift */,
 				074B33661D31166C0042104B /* PitchSpelling+CoarseAdjustment.swift */,
 				074B33671D31166C0042104B /* PitchSpelling+CustomStringConvertible.swift */,
@@ -357,7 +358,6 @@
 				074B335E1D31166C0042104B /* LineOfFifths.swift */,
 				074B33621D31166C0042104B /* Pitch+PitchSpelling.swift */,
 				074B33631D31166C0042104B /* PitchClass+PitchSpelling.swift */,
-				074B33651D31166C0042104B /* PitchSpelling.swift */,
 				074B336C1D31166C0042104B /* PitchSpellingDyad.swift */,
 				074B336F1D31166C0042104B /* PitchSpellings.swift */,
 				074B33731D31166C0042104B /* SpelledPitch.swift */,
