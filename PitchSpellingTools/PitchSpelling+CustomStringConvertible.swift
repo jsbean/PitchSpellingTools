@@ -10,6 +10,9 @@ import Foundation
 
 extension PitchSpelling: CustomStringConvertible {
     
+    // MARK: - CustomStringConvertible
+    
+    /// Printed description.
     public var description: String {
         var result = "("
         result += "\(letterName)"
