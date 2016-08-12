@@ -107,10 +107,20 @@ public struct PitchSpelling {
 
 extension PitchSpelling: Hashable {
     
+    // MARK: - Hashable
+    
+    /// Hash value of `PitchSpelling`.
     public var hashValue: Int { return "\(letterName),\(quarterStep),\(eighthStep)".hashValue }
 }
 
+// MARK: - Equatable
+
 public func == (lhs: PitchSpelling, rhs: PitchSpelling) -> Bool {
-    return lhs.hashValue == rhs.hashValue
+    return (
+        lhs.letterName == rhs.letterName &&
+        lhs.quarterStep == rhs.quarterStep &&
+        lhs.eighthStep == rhs.eighthStep
+    )
+    
 }
 
