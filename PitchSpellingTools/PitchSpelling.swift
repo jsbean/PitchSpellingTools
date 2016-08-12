@@ -115,6 +115,10 @@ extension PitchSpelling: Hashable {
 
 // MARK: - Equatable
 
+/**
+ - returns: `true` if `letterName`, `quarterStep`, and `eighthStep` values for both 
+ `PitchSpelling` values are equivalent. Otherwise, `false`.
+ */
 public func == (lhs: PitchSpelling, rhs: PitchSpelling) -> Bool {
     return (
         lhs.letterName == rhs.letterName &&
