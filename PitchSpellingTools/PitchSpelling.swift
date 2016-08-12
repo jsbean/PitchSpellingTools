@@ -50,6 +50,7 @@ public struct PitchSpelling {
      Create a `PitchSpelling` (with argument labels).
 
      **Example:**
+     
      ```
      let cNatural = PitchSpelling(letterName: .c)
      let aFlat = PitchSpelling(letterName: .a, quarterStep: .flat)
