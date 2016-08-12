@@ -47,7 +47,11 @@ extension PitchSpelling {
          accepted here.
          */
         public init?(string: String) {
-            if let letterName = LetterName.init(rawValue: string) { self = letterName; return }
+            
+            if let letterName = LetterName.init(rawValue: string) {
+                self = letterName; return
+            }
+            
             var letterName: LetterName? {
                 switch string {
                 case "A": return .a
@@ -60,8 +64,12 @@ extension PitchSpelling {
                 default: return nil
                 }
             }
-            if let letterName = letterName { self = letterName }
-            else { return nil }
+            
+            if let letterName = letterName {
+                self = letterName
+            } else {
+                return nil
+            }
         }
 
         /// Amount of steps from c

@@ -39,7 +39,7 @@ extension PitchSpelling {
     public func quantized(to resolution: Resolution) -> PitchSpelling {
         switch resolution {
         case .quarterStep:
-            return PitchSpelling(letterName: letterName, quarterStep: quarterStep, eighthStep: .none)
+            return PitchSpelling(letterName, quarterStep, .none)
         case .halfStep where quarterStep.resolution == .quarterStep:
             return PitchSpelling(letterName, quarterStep.quantizedToHalfStep, .none)
         default:

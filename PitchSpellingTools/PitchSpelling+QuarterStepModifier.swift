@@ -87,5 +87,7 @@ extension PitchSpelling {
         }
     }
 
-    internal var isFineAdjustedNatural: Bool { return quarterStep == .natural && eighthStep != .none }
+    internal var isFineAdjustedNatural: Bool {
+        return quarterStep == .natural && eighthStep != .none
+    }
 }
