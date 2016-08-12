@@ -125,6 +125,5 @@ public func == (lhs: PitchSpelling, rhs: PitchSpelling) -> Bool {
         lhs.quarterStep == rhs.quarterStep &&
         lhs.eighthStep == rhs.eighthStep
     )
-    
 }
 
