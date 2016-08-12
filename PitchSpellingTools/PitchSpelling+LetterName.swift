@@ -48,8 +48,9 @@ extension PitchSpelling {
          */
         public init?(string: String) {
             
-            if let letterName = LetterName.init(rawValue: string) {
-                self = letterName; return
+            if let letterName = LetterName(rawValue: string) {
+                self = letterName
+                return
             }
             
             var letterName: LetterName? {
