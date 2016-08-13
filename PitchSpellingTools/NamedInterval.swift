@@ -303,20 +303,22 @@ public struct NamedInterval {
         guard let quality = quality[degree] else { return nil }
         self.init(quality, ordinal)
     }
-    
-    public init?(steps: Int, intervalClass: Float) {
-        guard let ordinal = NamedInterval.Ordinal(rawValue: steps) else { return nil }
-        let quality = NamedInterval.quality(for: intervalClass, ordinal: ordinal)
-        let interval = NamedInterval(quality, ordinal)!
-        self = interval
-    }
-    
+
+    /**
+     Create a `NamedInterval` with two `SpelledPitch` values.
+     */
     public init(_ a: SpelledPitch, _ b: SpelledPitch) {
         let letterNameSteps = steps(a,b)
         let idealInterval = idealIntervalClass(steps: letterNameSteps)
         let intervalClass = normalizedIntervalClass(interval(a,b) - idealInterval)
         let finalIntervalClass = adjustedIntervalClass(intervalClass, given: letterNameSteps)
         self.init(steps: letterNameSteps, intervalClass: finalIntervalClass)!
+    }
+    
+    private init?(steps: Int, intervalClass: Float) {
+        guard let ordinal = NamedInterval.Ordinal(rawValue: steps) else { return nil }
+        let quality = NamedInterval.quality(for: intervalClass, ordinal: ordinal)
+        self.init(quality, ordinal)
     }
 }
 
@@ -338,9 +340,6 @@ private func normalizedIntervalClass(normalizedInterval: Float)
     return Float.mod(normalizedInterval + 6.0, 12.0) - 6.0
 }
 
-/**
- -  TODO: Soldify naming / concept
- */
 private func idealIntervalClass(steps steps: Int) -> Float {
     var idealInterval: Float {
         switch steps {
@@ -353,8 +352,6 @@ private func idealIntervalClass(steps steps: Int) -> Float {
     }
     return idealInterval
 }
-
-
 
 extension NamedInterval: CustomStringConvertible {
     

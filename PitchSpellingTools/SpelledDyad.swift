@@ -36,6 +36,15 @@ public struct SpelledDyad {
     /**
      `NamedInterval` of a `SpelledDyad`.
      
+     **Example:**
+     
+     ```
+     let c = SpelledPitch(60, PitchSpelling(.c))
+     let eflat = SpelledPitch(63, PitchSpelling(.e, .flat))
+     let dyad = SpelledDyad(c,eflat)
+     // dyad.namedInterval == LetterName(.minor, .third)
+     ```
+     
      - TOOD: Add examples to documentation.
     */
     public var namedInterval: NamedInterval {
