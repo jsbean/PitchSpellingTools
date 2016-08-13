@@ -16,16 +16,16 @@ public struct SpelledDyad {
     
     // MARK: - Instance Properties
     
-    /// Higher of the two `Pitch` values.
+    /// Higher of the two `SpelledPitch` values.
     public let higher: SpelledPitch
     
-    /// Lower of the two `Pitch` values.
+    /// Lower of the two `SpelledPitch` values.
     public let lower: SpelledPitch
     
     // MARK: - Initializers
     
     /**
-     Create a `SpelledDyad` with two `Pitch` values.
+     Create a `SpelledDyad` with two `SpelledPitch` values.
      */
     public init(_ lower: SpelledPitch, _ higher: SpelledPitch) {
         let (lower, higher, _) = swapped(lower, higher) { lower > higher }
