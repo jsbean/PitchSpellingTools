@@ -311,8 +311,50 @@ public struct NamedInterval {
         self = interval
     }
     
-    // TODO: public init(spelledDyad: SpelledDyad)
+    public init(_ a: SpelledPitch, _ b: SpelledPitch) {
+        let letterNameSteps = steps(a,b)
+        let idealInterval = idealIntervalClass(steps: letterNameSteps)
+        let intervalClass = normalizedIntervalClass(interval(a,b) - idealInterval)
+        let finalIntervalClass = adjustedIntervalClass(intervalClass, given: letterNameSteps)
+        self.init(steps: letterNameSteps, intervalClass: finalIntervalClass)!
+    }
 }
+
+private func steps(a: SpelledPitch, _ b: SpelledPitch) -> Int {
+    return Int.mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7)
+}
+
+private func interval(a: SpelledPitch, _ b: SpelledPitch) -> Float {
+    return b.pitch.noteNumber.value - a.pitch.noteNumber.value
+}
+
+private func adjustedIntervalClass(intervalClass: Float, given steps: Int) -> Float {
+    return steps == 0 ? abs(intervalClass) : intervalClass
+}
+
+private func normalizedIntervalClass(normalizedInterval: Float)
+    -> Float
+{
+    return Float.mod(normalizedInterval + 6.0, 12.0) - 6.0
+}
+
+/**
+ -  TODO: Soldify naming / concept
+ */
+private func idealIntervalClass(steps steps: Int) -> Float {
+    var idealInterval: Float {
+        switch steps {
+        case 0: return 0
+        case 1: return 1.5
+        case 2: return 3.5
+        case 3: return 5
+        default: fatalError()
+        }
+    }
+    return idealInterval
+}
+
+
 
 extension NamedInterval: CustomStringConvertible {
     

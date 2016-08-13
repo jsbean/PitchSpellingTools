@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ArithmeticTools
 
 /**
  Dyad of `SpelledPitch` values.
@@ -36,50 +37,21 @@ public struct SpelledDyad {
      `NamedInterval` of a `SpelledDyad`.
      
      - TOOD: Add examples to documentation.
-     - TODO: Wrap up subprocesses into own private methods
     */
     public var namedInterval: NamedInterval {
-        
-        let (a, b, needsInversion) = swappedIfNecessary(lower, higher)
-        let steps = Int.mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7)
-        let idealInterval = neutralIntervalClass(from: steps)
-        
-        let normalizedIntervalClass = (
-            b.pitch.noteNumber.value - a.pitch.noteNumber.value - idealInterval
-        )
-        
-        // wrap in method
-        var intervalClass = Float.mod(normalizedIntervalClass + 6.0, 12.0) - 6.0
-        
-        // manage unison
-        if steps == 0 { intervalClass = abs(intervalClass) }
-
-        let namedInterval = NamedInterval(steps: steps, intervalClass: intervalClass)!
-        return needsInversion ? namedInterval.inverse : namedInterval
-    }
-    
-    /**
-     -  TODO: Soldify naming / concept
-     */
-    private func neutralIntervalClass(from steps: Int) -> Float {
-        switch steps {
-        case 0: return 0
-        case 1: return 1.5
-        case 2: return 3.5
-        case 3: return 5
-        default: fatalError()
-        }
+        let (a, b, needsInversion) = swappedIfNecessary(self.lower, self.higher)
+        let interval = NamedInterval(a,b)
+        return needsInversion ? interval.inverse : interval
     }
 }
+
 
 private func swappedIfNecessary(a: SpelledPitch, _ b: SpelledPitch)
     -> (SpelledPitch, SpelledPitch, Bool)
 {
     return swapped(a,b) {
-        return (
-            Int.mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7) >
-            Int.mod(a.spelling.letterName.steps - b.spelling.letterName.steps, 7)
-        )
+        Int.mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7) >
+        Int.mod(a.spelling.letterName.steps - b.spelling.letterName.steps, 7)
     }
 }
 
