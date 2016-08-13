@@ -16,7 +16,7 @@ import Pitch
  
  ```
  let perfectUnison = NamedInterval(.perfect, .unison)!
- let augmentedFifth = NamedInterval(.augmented, .fifth
+ let augmentedFifth = NamedInterval(.augmented, .fifth)
  let doubleAugmentedSeventh = NamedInterval(.double, .augmented, .seventh)!
  let _ = NamedInterval(.major, .fourth) // nil
  ```
