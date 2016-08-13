@@ -45,7 +45,7 @@ public struct SpelledDyad {
      // dyad.namedInterval == LetterName(.minor, .third)
      ```
      
-     - TOOD: Add examples to documentation.
+     - TODO: Add examples to documentation.
     */
     public var namedInterval: NamedInterval {
         let (a, b, needsInversion) = swappedIfNecessary(self.lower, self.higher)
