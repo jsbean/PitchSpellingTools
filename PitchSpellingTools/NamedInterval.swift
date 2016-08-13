@@ -240,7 +240,7 @@ public struct NamedInterval {
             let degreeValue = Int(abs(normalizedIntervalClass - augmented + 1))
             let degree = Quality.Degree(rawValue: degreeValue)!
             return Quality.augmented[degree]!
-        default: fatalError()
+        default: fatalError() // all cases considered
         }
     }
     
@@ -302,6 +302,13 @@ public struct NamedInterval {
     public init?(_ degree: Quality.Degree, _ quality: Quality, _ ordinal: Ordinal) {
         guard let quality = quality[degree] else { return nil }
         self.init(quality, ordinal)
+    }
+    
+    public init?(steps: Int, intervalClass: Float) {
+        guard let ordinal = NamedInterval.Ordinal(rawValue: steps) else { return nil }
+        let quality = NamedInterval.quality(for: intervalClass, ordinal: ordinal)
+        let interval = NamedInterval(quality, ordinal)!
+        self = interval
     }
 }
 

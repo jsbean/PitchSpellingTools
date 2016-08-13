@@ -53,10 +53,8 @@ public struct SpelledDyad {
         
         // manage unison
         if steps == 0 { intervalClass = abs(intervalClass) }
-        
-        let ordinal = NamedInterval.Ordinal(rawValue: steps)!
-        let intervalQuality = NamedInterval.quality(for: intervalClass, ordinal: ordinal)
-        let namedInterval = NamedInterval(intervalQuality, ordinal)!
+
+        let namedInterval = NamedInterval(steps: steps, intervalClass: intervalClass)!
         return needsInversion ? namedInterval.inverse : namedInterval
     }
     
