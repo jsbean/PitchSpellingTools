@@ -27,7 +27,7 @@ public struct SpelledDyad {
      Create a `SpelledDyad` with two `Pitch` values.
      */
     public init(_ lower: SpelledPitch, _ higher: SpelledPitch) {
-        let (lower, higher, _) = swap(lower, higher) { lower > higher }
+        let (lower, higher, _) = swapped(lower, higher) { lower > higher }
         self.lower = lower
         self.higher = higher
     }
@@ -40,7 +40,7 @@ public struct SpelledDyad {
     */
     public var namedInterval: NamedInterval {
         
-        let (a, b, needsInversion) = swapIfNecessary(lower, higher)
+        let (a, b, needsInversion) = swappedIfNecessary(lower, higher)
         let steps = Int.mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7)
         let idealInterval = neutralIntervalClass(from: steps)
         
@@ -74,10 +74,10 @@ public struct SpelledDyad {
     }
 }
 
-private func swapIfNecessary(a: SpelledPitch, _ b: SpelledPitch)
+private func swappedIfNecessary(a: SpelledPitch, _ b: SpelledPitch)
     -> (SpelledPitch, SpelledPitch, Bool)
 {
-    return swap(a,b) {
+    return swapped(a,b) {
         return (
             Int.mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7) >
             Int.mod(a.spelling.letterName.steps - b.spelling.letterName.steps, 7)
@@ -92,6 +92,6 @@ private func swapIfNecessary(a: SpelledPitch, _ b: SpelledPitch)
  
  - TODO: Move this into a more general library.
  */
-public func swap<A>(a: A, _ b: A, if constraint: () -> Bool) -> (A, A, Bool) {
+public func swapped<A>(a: A, _ b: A, if constraint: () -> Bool) -> (A, A, Bool) {
     return constraint() ? (b, a, true) : (a, b, false)
 }

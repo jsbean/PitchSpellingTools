@@ -27,10 +27,12 @@ class SpelledDyadTests: XCTestCase {
         XCTAssertEqual(spelledDyad.namedInterval, namedInterval)
     }
     
+    let cflat = SpelledPitch(59, PitchSpelling(.c, .flat))
     let c = SpelledPitch(60, PitchSpelling(.c))
     let ddoubleflat = SpelledPitch(60, PitchSpelling(.d, .doubleFlat))
     let dflat = SpelledPitch(61, PitchSpelling(.d, .flat))
     let csharp = SpelledPitch(61, PitchSpelling(.c, .sharp))
+    let cdoublesharp = SpelledPitch(62, PitchSpelling(.c, .doubleSharp))
     let dsharp = SpelledPitch(63, PitchSpelling(.d, .sharp))
     let f = SpelledPitch(65, PitchSpelling(.f))
     let fsharp = SpelledPitch(66, PitchSpelling(.f, .sharp))
@@ -114,6 +116,13 @@ class SpelledDyadTests: XCTestCase {
         assertNamedInterval(
             for: SpelledDyad(bflat, gdoublesharp),
             equals: NamedInterval(.double, .augmented, .sixth)
+        )
+    }
+    
+    func testTripleDiminishedUnison() {
+        assertNamedInterval(
+            for: SpelledDyad(cdoublesharp, cflat),
+            equals: NamedInterval(.triple, .augmented, .unison)
         )
     }
 }
