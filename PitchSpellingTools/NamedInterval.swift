@@ -310,6 +310,8 @@ public struct NamedInterval {
         let interval = NamedInterval(quality, ordinal)!
         self = interval
     }
+    
+    // TODO: public init(spelledDyad: SpelledDyad)
 }
 
 extension NamedInterval: CustomStringConvertible {

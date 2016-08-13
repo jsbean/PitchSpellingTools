@@ -86,7 +86,8 @@ private func swappedIfNecessary(a: SpelledPitch, _ b: SpelledPitch)
 /**
  Reorders the values `a` and `b` if the given `constraint` returns `true`.
  
- - returns: 3-tuple of the two values and a `bool` indicated if the values were swapped.
+ - returns: 3-tuple of the two values and a `Bool` indicating whether or not the values were
+ swapped.
  
  - TODO: Move this into a more general library.
  */
