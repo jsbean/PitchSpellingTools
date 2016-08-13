@@ -22,17 +22,6 @@ public struct SpelledDyad {
     /// Lower of the two `SpelledPitch` values.
     public let lower: SpelledPitch
     
-    // MARK: - Initializers
-    
-    /**
-     Create a `SpelledDyad` with two `SpelledPitch` values.
-     */
-    public init(_ lower: SpelledPitch, _ higher: SpelledPitch) {
-        let (lower, higher, _) = swapped(lower, higher) { lower > higher }
-        self.lower = lower
-        self.higher = higher
-    }
-    
     /**
      `NamedInterval` of a `SpelledDyad`.
      
@@ -46,11 +35,22 @@ public struct SpelledDyad {
      ```
      
      - TODO: Add examples to documentation.
-    */
+     */
     public var namedInterval: NamedInterval {
         let (a, b, needsInversion) = swappedIfNecessary(self.lower, self.higher)
         let interval = NamedInterval(a,b)
         return needsInversion ? interval.inverse : interval
+    }
+    
+    // MARK: - Initializers
+    
+    /**
+     Create a `SpelledDyad` with two `SpelledPitch` values.
+     */
+    public init(_ lower: SpelledPitch, _ higher: SpelledPitch) {
+        let (lower, higher, _) = swapped(lower, higher) { lower > higher }
+        self.lower = lower
+        self.higher = higher
     }
 }
 
