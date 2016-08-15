@@ -262,6 +262,7 @@ public struct NamedInterval {
      Inverse of a `NamedInterval`.
      
      - TODO: Add examples to documentation.
+     - TODO: Make table of inverse relationship pairs.
     */
     public var inverse: NamedInterval {
         return NamedInterval(quality.inverse, ordinal.inverse)!
