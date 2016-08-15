@@ -22,6 +22,12 @@ import Pitch
  ```
  
  - TODO: Create names for quarter-step and eighth-step modified intervals
+ 
+ - TODO: Consider creating better names for `family` / `Family`. Traditionally, `class` is
+    used; however, `class` is a reserved keyword in Swift.
+ 
+ - TODO: Use actual specialized `Interval` and `IntervlClass` value types, as opposed to
+    throwing anonymous `Float` values around.
  */
 public struct NamedInterval {
     
@@ -137,6 +143,8 @@ public struct NamedInterval {
         /**
          Inverse of a `Quality`
          (e.g., `.major.inverse == .minor`, `.perfect.inverse == .perfect`, etc).
+         
+         - TODO: Make table of inverse `Quality` pairs.
         */
         public var inverse: Quality {
             return Quality(rawValue: -1 * rawValue, degree: degree)
@@ -151,19 +159,19 @@ public struct NamedInterval {
         // MARK: - Initializers
         
         /**
-         Create a `NamedInterval.Quality` with a degree.
-         */
-        public init(rawValue: Int, degree: Degree) {
-            self.rawValue = rawValue
-            self.degree = degree
-        }
-        
-        /**
          Create a `NamedInterval.Quality`.
          */
         public init(rawValue: Int) {
             self.rawValue = rawValue
             self.degree = .single
+        }
+        
+        /**
+         Create a `NamedInterval.Quality` with a degree.
+         */
+        private init(rawValue: Int, degree: Degree) {
+            self.rawValue = rawValue
+            self.degree = degree
         }
         
         // MARK: - Subscripts
@@ -187,6 +195,8 @@ public struct NamedInterval {
          - returns: `true` if this `Quality` is valid for a given `Ordinal`. Otherwise, `false`.
         
          > One cannot have a major fifth, etc.
+         
+         - TODO: Flesh out documentation.
          */
         public func isValid(for ordinal: Ordinal) -> Bool {
             switch ordinal.family {
