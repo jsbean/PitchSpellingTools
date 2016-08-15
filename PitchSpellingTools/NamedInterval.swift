@@ -351,7 +351,9 @@ private func normalizedIntervalClass(normalizedInterval: Float)
     return Float.mod(normalizedInterval + 6.0, 12.0) - 6.0
 }
 
-
+/**
+ - returns: The ideal interval class for the given `steps`.
+ */
 private func idealIntervalClass(steps steps: Int) -> Float {
     var idealInterval: Float {
         switch steps {
