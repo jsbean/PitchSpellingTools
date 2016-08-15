@@ -377,6 +377,8 @@ extension NamedInterval: CustomStringConvertible {
     }
 }
 
+// MARK: - Equatable
+
 extension NamedInterval: Equatable { }
 
 /**
