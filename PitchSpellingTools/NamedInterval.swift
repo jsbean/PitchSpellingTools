@@ -217,7 +217,7 @@ public struct NamedInterval {
                 case Quality.perfect: return "perfect"
                 case Quality.major: return "major"
                 case Quality.augmented: return "augmented"
-                default: fatalError()
+                default: fatalError() // don't match `perfectSet` and `imperfectSet`
                 }
             }
             return degree == .single ? quality : "\(degree) \(quality)"
@@ -323,10 +323,13 @@ public struct NamedInterval {
         let letterNameSteps = steps(a,b)
         let ideal = idealIntervalClass(steps: letterNameSteps)
         let normalized = normalizedIntervalClass(interval(a,b) - ideal)
-        let intervalClass = adjustedIntervalClass(normalized, given: letterNameSteps)
+        let intervalClass = adjustedIntervalClass(normalized, steps: letterNameSteps)
         self.init(steps: letterNameSteps, intervalClass: intervalClass)!
     }
     
+    /**
+     Helper initializer
+     */
     private init?(steps: Int, intervalClass: Float) {
         guard let ordinal = NamedInterval.Ordinal(rawValue: steps) else { return nil }
         let quality = NamedInterval.quality(for: intervalClass, ordinal: ordinal)
@@ -351,11 +354,15 @@ private func interval(a: SpelledPitch, _ b: SpelledPitch) -> Float {
  - returns: The given `intervalClass`, enforcing positive values if there is a `unison`
  relationship.
  */
-private func adjustedIntervalClass(intervalClass: Float, given steps: Int) -> Float {
+private func adjustedIntervalClass(intervalClass: Float, steps: Int) -> Float {
     return steps == 0 ? abs(intervalClass) : intervalClass
 }
 
-
+/**
+ - returns: The given `normalizedInterval`, in `IntervalClass` form (mod 12),
+ 
+ - TODO: Return `IntervalClass` instead of `Float`.
+ */
 private func normalizedIntervalClass(normalizedInterval: Float)
     -> Float
 {
