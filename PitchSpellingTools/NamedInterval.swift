@@ -237,7 +237,7 @@ public struct NamedInterval {
     {
         let diminished: Float = ordinal.family == .perfect ? -1 : -1.5
         let augmented: Float = ordinal.family == .perfect ? 1 : 1.5
-
+        
         switch normalizedIntervalClass {
         case _ where normalizedIntervalClass < diminished:
             let degreeValue = Int(abs(normalizedIntervalClass - diminished - 1))
@@ -252,30 +252,10 @@ public struct NamedInterval {
             let degreeValue = Int(abs(normalizedIntervalClass - augmented + 1))
             let degree = Quality.Degree(rawValue: degreeValue)!
             return Quality.augmented[degree]!
-        default: fatalError() // all cases considered
+        default: fatalError() // impossible
         }
     }
-    
-    // MARK: - Type Methods
-    
-    public static func namedIntervals(for intervalClass: IntervalClass) -> [NamedInterval]? {
-        let componentsByIntervalClass: [IntervalClass: [(Quality, Ordinal)]] = [
-            00.0: [(.perfect, .unison), (.augmented, .seventh)], // diminished second?
-            01.0: [(.minor, .second), (.augmented, .unison)],
-            02.0: [(.major, .second), (.diminished, .third)],
-            03.0: [(.minor, .third), (.augmented, .second)],
-            04.0: [(.major, .third), (.diminished, .fourth)],
-            05.0: [(.perfect, .fourth), (.augmented, .third)],
-            06.0: [(.diminished, .fifth), (.augmented, .fourth)],
-            07.0: [(.perfect, .fifth), (.diminished, .sixth)],
-            08.0: [(.minor, .sixth), (.augmented, .fifth)],
-            09.0: [(.major, .sixth), (.diminished, .seventh)],
-            10.0: [(.minor, .seventh), (.augmented, .sixth)],
-            11.0: [(.major, .seventh), (.diminished, .unison)],
-        ]
-        return componentsByIntervalClass[intervalClass]?.flatMap(NamedInterval.init)
-    }
-    
+
     // MARK: - Instance Properties
     
     /**
@@ -368,6 +348,7 @@ private func normalizedIntervalClass(normalizedInterval: Float)
 {
     return Float.mod(normalizedInterval + 6.0, 12.0) - 6.0
 }
+
 
 private func idealIntervalClass(steps steps: Int) -> Float {
     var idealInterval: Float {
