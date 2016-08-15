@@ -321,10 +321,10 @@ public struct NamedInterval {
      */
     public init(_ a: SpelledPitch, _ b: SpelledPitch) {
         let letterNameSteps = steps(a,b)
-        let idealInterval = idealIntervalClass(steps: letterNameSteps)
-        let intervalClass = normalizedIntervalClass(interval(a,b) - idealInterval)
-        let finalIntervalClass = adjustedIntervalClass(intervalClass, given: letterNameSteps)
-        self.init(steps: letterNameSteps, intervalClass: finalIntervalClass)!
+        let ideal = idealIntervalClass(steps: letterNameSteps)
+        let normalized = normalizedIntervalClass(interval(a,b) - ideal)
+        let intervalClass = adjustedIntervalClass(normalized, given: letterNameSteps)
+        self.init(steps: letterNameSteps, intervalClass: intervalClass)!
     }
     
     private init?(steps: Int, intervalClass: Float) {
@@ -334,17 +334,27 @@ public struct NamedInterval {
     }
 }
 
+/// - returns: Delta between letter name steps of two `SpelledPitch` values.
 private func steps(a: SpelledPitch, _ b: SpelledPitch) -> Int {
     return Int.mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7)
 }
-
+/**
+ - returns: Delta between pitch noteNumber values
+ 
+ - TODO: Return `Interval` rather than `Float`.
+ */
 private func interval(a: SpelledPitch, _ b: SpelledPitch) -> Float {
     return b.pitch.noteNumber.value - a.pitch.noteNumber.value
 }
 
+/**
+ - returns: The given `intervalClass`, enforcing positive values if there is a `unison`
+ relationship.
+ */
 private func adjustedIntervalClass(intervalClass: Float, given steps: Int) -> Float {
     return steps == 0 ? abs(intervalClass) : intervalClass
 }
+
 
 private func normalizedIntervalClass(normalizedInterval: Float)
     -> Float
