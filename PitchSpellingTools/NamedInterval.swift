@@ -309,7 +309,8 @@ public struct NamedInterval {
     }
     
     /**
-     Helper initializer
+     Helper initializer that gathers the ordinal and quality from the given `steps` and 
+        `intervalClass`.
      */
     private init?(steps: Int, intervalClass: Float) {
         guard let ordinal = NamedInterval.Ordinal(rawValue: steps) else { return nil }
