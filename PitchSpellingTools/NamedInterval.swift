@@ -20,6 +20,8 @@ import Pitch
  let doubleAugmentedSeventh = NamedInterval(.double, .augmented, .seventh)!
  let _ = NamedInterval(.major, .fourth) // nil
  ```
+ 
+ - TODO: Create names for quarter-step and eighth-step modified intervals
  */
 public struct NamedInterval {
     
