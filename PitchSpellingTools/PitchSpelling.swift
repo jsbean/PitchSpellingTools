@@ -46,7 +46,7 @@ public struct PitchSpelling {
     
     // MARK: - Initializers
     
-    /*:
+    /**
      Create a `PitchSpelling` (with argument labels).
 
      **Example:**
