@@ -74,6 +74,8 @@
 		07E5F6D91D3E90BA0028C63F /* EnumTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0246148C69B040DF1A3BF09C /* EnumTools.framework */; };
 		07E5F6DA1D3E90BA0028C63F /* Pitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E0E65A496DA72FECFDB794A /* Pitch.framework */; };
 		07E5F6DC1D3E90BA0028C63F /* TreeTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81AC9740F207E12BDE3BCEA5 /* TreeTools.framework */; };
+		07ED70131D68A43400C9C000 /* SpelledPitchClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ED70121D68A43400C9C000 /* SpelledPitchClass.swift */; };
+		07ED70141D68A43400C9C000 /* SpelledPitchClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ED70121D68A43400C9C000 /* SpelledPitchClass.swift */; };
 		0C749E83EB577100BEC2AB2E /* ArithmeticTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B69F3BDCCE788437DF5875F /* ArithmeticTools.framework */; };
 		12C65063451DAFE24C4A31A1 /* EnumTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB74E2D7DC71FFB059C5E18 /* EnumTools.framework */; };
 		1D9FE0C24DC2F4F3752789C2 /* PitchSpellingTools.h in Headers */ = {isa = PBXBuildFile; fileRef = A36E29DA636B31830E8C6121 /* PitchSpellingTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -164,6 +166,7 @@
 		079B19DB1D5CD59F007D506B /* PitchSpelling+Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchSpelling+Comparable.swift"; path = "PitchSpellingTools/PitchSpelling+Comparable.swift"; sourceTree = "<group>"; };
 		07D4E3AE1D5A3FB8007F2D3A /* NamedInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NamedInterval.swift; path = PitchSpellingTools/NamedInterval.swift; sourceTree = "<group>"; };
 		07D4E3B11D5A5447007F2D3A /* NamedIntervalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NamedIntervalTests.swift; path = PitchSpellingToolsTests/NamedIntervalTests.swift; sourceTree = "<group>"; };
+		07ED70121D68A43400C9C000 /* SpelledPitchClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpelledPitchClass.swift; path = PitchSpellingTools/SpelledPitchClass.swift; sourceTree = "<group>"; };
 		15496228BCC09F160A08B8B2 /* Pitch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pitch.framework; path = Carthage/Build/iOS/Pitch.framework; sourceTree = "<group>"; };
 		1659EF3BBB8FDD0D4636D0BA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = PitchSpellingToolsTests/Info.plist; sourceTree = "<group>"; };
 		177D6AAC8933BFFE5B5449B6 /* PitchSpellingToolsMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitchSpellingToolsMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -359,6 +362,7 @@
 				074B33621D31166C0042104B /* Pitch+PitchSpelling.swift */,
 				074B336C1D31166C0042104B /* PitchSpellingDyad.swift */,
 				074B33731D31166C0042104B /* SpelledPitch.swift */,
+				07ED70121D68A43400C9C000 /* SpelledPitchClass.swift */,
 				074B33721D31166C0042104B /* SpelledDyad.swift */,
 				074B33751D31166C0042104B /* SpelledPitchSet.swift */,
 				074B335E1D31166C0042104B /* LineOfFifths.swift */,
@@ -551,6 +555,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				074B33B01D31166C0042104B /* SpelledPitch.swift in Sources */,
+				07ED70141D68A43400C9C000 /* SpelledPitchClass.swift in Sources */,
 				074B33AE1D31166C0042104B /* SpelledDyad.swift in Sources */,
 				074B337E1D31166C0042104B /* IntervalClass+PitchSpelling.swift in Sources */,
 				074B33A01D31166C0042104B /* PitchSpelling+SpellingDistance.swift in Sources */,
@@ -578,6 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				074B33AF1D31166C0042104B /* SpelledPitch.swift in Sources */,
+				07ED70131D68A43400C9C000 /* SpelledPitchClass.swift in Sources */,
 				074B33AD1D31166C0042104B /* SpelledDyad.swift in Sources */,
 				074B337D1D31166C0042104B /* IntervalClass+PitchSpelling.swift in Sources */,
 				074B339F1D31166C0042104B /* PitchSpelling+SpellingDistance.swift in Sources */,
