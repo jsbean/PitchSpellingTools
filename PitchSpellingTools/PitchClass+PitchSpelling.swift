@@ -10,6 +10,7 @@ import Pitch
 
 extension PitchClass {
     
+    /// All `PitchSpelling` structures available for this `PitchClass`.
     public var spellings: [PitchSpelling] {
         return PitchSpellings.spellings(forPitchClass: self) ?? []
     }

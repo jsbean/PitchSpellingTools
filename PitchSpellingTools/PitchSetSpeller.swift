@@ -59,7 +59,7 @@ let quarterStepEighthStepCombination: NodeRule = { node, costMultiplier in /* TO
 let unison: EdgeRule = { edge, costMultiplier in /* TODO */ }
 let augmentedOrDiminished: EdgeRule = { edge, costMultiplier in /* TODO */ }
 let crossover: EdgeRule = { edge, costMultiplier in /* TODO */ }
-let flatSharpMixture: EdgeRule = { edge, costMultiplier in /* TODO */ }
+let flatSharpIncompatibility: EdgeRule = { edge, costMultiplier in /* TODO */ }
 
 // Graph rules
 let eighthStepDirectionIncompatibility: GraphRule = { graph, costMultiplier in /* TODO */ }
@@ -80,7 +80,7 @@ public struct PitchClassSetSpeller {
         unison,
         augmentedOrDiminished,
         crossover,
-        flatSharpMixture
+        flatSharpIncompatibility
     ]
     
     static let graphRules: [GraphRule] = [
@@ -115,6 +115,8 @@ public struct PitchClassSetSpeller {
             }
             
             let spellings = currentPitch.spellings
+            
+            
             
             traverseToSpell(tail, graph: graph, accumCost: accumCost, nodeEdgeCost: nodeEdgeCost)
             
