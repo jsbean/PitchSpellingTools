@@ -26,7 +26,7 @@ extension Pitch {
  
     /// All `PitchSpelling` structures available for this `Pitch`.
     public var spellings: [PitchSpelling] {
-        return PitchSpellings.spellings(forPitchClass: pitchClass) ?? []
+        return pitchClass.spellings
     }
     
     /// - TODO: Encapsulate this logic within `PitchSpellings` `struct`.
