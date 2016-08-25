@@ -110,7 +110,9 @@ extension PitchSpelling: Hashable {
     // MARK: - Hashable
     
     /// Hash value of `PitchSpelling`.
-    public var hashValue: Int { return "\(letterName),\(quarterStep),\(eighthStep)".hashValue }
+    public var hashValue: Int {
+        return "\(letterName),\(quarterStep),\(eighthStep)".hashValue
+    }
 }
 
 // MARK: - Equatable

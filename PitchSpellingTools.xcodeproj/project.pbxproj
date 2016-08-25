@@ -10,6 +10,8 @@
 		070490FBDF037CEA86C3A3DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0495E35B158A8243480648 /* Cocoa.framework */; };
 		071C21C71D6E55C4008A6A4B /* PitchSetSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C21C61D6E55C4008A6A4B /* PitchSetSpeller.swift */; };
 		071C21C81D6E55C4008A6A4B /* PitchSetSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C21C61D6E55C4008A6A4B /* PitchSetSpeller.swift */; };
+		072526A01D6FB244001EBF2A /* PitchClassSetSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0725269F1D6FB244001EBF2A /* PitchClassSetSpellerTests.swift */; };
+		072526A11D6FB244001EBF2A /* PitchClassSetSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0725269F1D6FB244001EBF2A /* PitchClassSetSpellerTests.swift */; };
 		074B33771D31166C0042104B /* Dyad+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33571D31166C0042104B /* Dyad+PitchSpelling.swift */; };
 		074B33781D31166C0042104B /* Dyad+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33571D31166C0042104B /* Dyad+PitchSpelling.swift */; };
 		074B337B1D31166C0042104B /* Interval+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33591D31166C0042104B /* Interval+PitchSpelling.swift */; };
@@ -142,6 +144,7 @@
 /* Begin PBXFileReference section */
 		0246148C69B040DF1A3BF09C /* EnumTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumTools.framework; path = Carthage/Build/Mac/EnumTools.framework; sourceTree = "<group>"; };
 		071C21C61D6E55C4008A6A4B /* PitchSetSpeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSetSpeller.swift; path = PitchSpellingTools/PitchSetSpeller.swift; sourceTree = "<group>"; };
+		0725269F1D6FB244001EBF2A /* PitchClassSetSpellerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchClassSetSpellerTests.swift; path = PitchSpellingToolsTests/PitchClassSetSpellerTests.swift; sourceTree = "<group>"; };
 		074B33571D31166C0042104B /* Dyad+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Dyad+PitchSpelling.swift"; path = "PitchSpellingTools/Dyad+PitchSpelling.swift"; sourceTree = "<group>"; };
 		074B33591D31166C0042104B /* Interval+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Interval+PitchSpelling.swift"; path = "PitchSpellingTools/Interval+PitchSpelling.swift"; sourceTree = "<group>"; };
 		074B335A1D31166C0042104B /* IntervalClass+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "IntervalClass+PitchSpelling.swift"; path = "PitchSpellingTools/IntervalClass+PitchSpelling.swift"; sourceTree = "<group>"; };
@@ -279,6 +282,7 @@
 				074B33F41D3117630042104B /* SpelledPitchTests.swift */,
 				07D4E3B11D5A5447007F2D3A /* NamedIntervalTests.swift */,
 				83CAB4535B2BA0A5E4A10ABD /* Supporting Files */,
+				0725269F1D6FB244001EBF2A /* PitchClassSetSpellerTests.swift */,
 			);
 			name = PitchSpellingToolsTests;
 			sourceTree = "<group>";
@@ -547,6 +551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072526A11D6FB244001EBF2A /* PitchClassSetSpellerTests.swift in Sources */,
 				074B33FC1D3117630042104B /* Pitch+PitchSpellingTests.swift in Sources */,
 				074B33F61D3117630042104B /* IntervalClass+PitchSpellingTests.swift in Sources */,
 				074B33E61D3117510042104B /* DyadTests.swift in Sources */,
@@ -622,6 +627,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072526A01D6FB244001EBF2A /* PitchClassSetSpellerTests.swift in Sources */,
 				074B33FB1D3117630042104B /* Pitch+PitchSpellingTests.swift in Sources */,
 				074B33F51D3117630042104B /* IntervalClass+PitchSpellingTests.swift in Sources */,
 				074B33E51D3117510042104B /* DyadTests.swift in Sources */,
