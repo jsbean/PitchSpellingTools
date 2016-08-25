@@ -9,6 +9,8 @@
 import ArrayTools
 import Pitch
 
+/// - warning: This is a stub class.
+/// - TODO: Inherit from real version in `GraphStructures`.
 public class Node {
     let spelledPitch: SpelledPitch
     init(spelledPitch: SpelledPitch) {
@@ -16,6 +18,8 @@ public class Node {
     }
 }
 
+/// - warning: This is a stub class.
+/// - TODO: Inherit from real version in `GraphStructures`.
 public class Edge {
     let nodes: (Node, Node)
     init(nodes: (Node, Node)) {
@@ -23,30 +27,24 @@ public class Edge {
     }
 }
 
+/// - warning: This is a stub class.
+/// - TODO: Inherit from real version in `GraphStructures`.
 public class Graph {
     var edges: [Edge] = []
     var nodes: [Node] = []
     init() { }
 }
 
+/**
+ - TODO: Nest this within `PitchClassSetSpeller`.
+ */
 enum RuleScope {
     case node, edge, graph
 }
 
-//protocol SpellingRule {
-//    associatedtype Input
-//    static var costMultiplier: Float { get }
-//    static func apply(input: Input) -> ()
-//}
-
-//// node rules
-//protocol NodeRule {
-//    func apply(node: Node) -> ()
-//}
-
-// nest these within PitchClassSetSpeller
-// swift 3: SpellingRule<Input> = Input -> ()
-// consider SpellingRule<Input> = (Input, Float) -> ()
+/// - TODO: Nest these within `PitchClassSetSpeller`
+/// - TODO: In Swift 3.0, Generic Typealiases are allowed.
+/// - Use SpellingRule<Int> = Input, Float -> ()
 typealias NodeRule = (Node, Float) -> ()
 typealias EdgeRule = (Edge, Float) -> ()
 typealias GraphRule = (Graph, Float) -> ()
@@ -59,11 +57,8 @@ let quarterStepEighthStepCombination: NodeRule = { node, costMultiplier in /* TO
 
 // Edge rules
 let unison: EdgeRule = { edge, costMultiplier in /* TODO */ }
-
 let augmentedOrDiminished: EdgeRule = { edge, costMultiplier in /* TODO */ }
-
 let crossover: EdgeRule = { edge, costMultiplier in /* TODO */ }
-
 let flatSharpMixture: EdgeRule = { edge, costMultiplier in /* TODO */ }
 
 // Graph rules
