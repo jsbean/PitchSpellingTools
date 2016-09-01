@@ -2,6 +2,6 @@ language: objective-c
 osx_image: xcode8
 xcode_project: PitchSpellingTools.xcodeproj
 xcode_scheme: PitchSpellingToolsMac
-xcode_sdk: macosx10.11
+xcode_sdk: macosx
 before_script:
   - carthage bootstrap
