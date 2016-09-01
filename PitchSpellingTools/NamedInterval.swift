@@ -302,7 +302,6 @@ public struct NamedInterval {
      */
     public init(_ a: SpelledPitch, _ b: SpelledPitch) {
         let letterNameSteps = steps(a,b)
-        print("lettername steps: \(letterNameSteps)")
         let ideal = idealIntervalClass(steps: letterNameSteps)
         let normalized = normalizedIntervalClass(interval(a,b) - ideal)
         let intervalClass = adjustedIntervalClass(normalized, steps: letterNameSteps)
@@ -353,9 +352,7 @@ private func adjustedIntervalClass(_ intervalClass: Float, steps: Int) -> Float 
  
  - TODO: Return `IntervalClass` instead of `Float`.
  */
-private func normalizedIntervalClass(_ normalizedInterval: Float)
-    -> Float
-{
+private func normalizedIntervalClass(_ normalizedInterval: Float)  -> Float {
     return Float.mod(normalizedInterval + 6.0, 12.0) - 6.0
 }
 
