@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		070490FBDF037CEA86C3A3DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0495E35B158A8243480648 /* Cocoa.framework */; };
-		071C21C71D6E55C4008A6A4B /* PitchSetSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C21C61D6E55C4008A6A4B /* PitchSetSpeller.swift */; };
-		071C21C81D6E55C4008A6A4B /* PitchSetSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C21C61D6E55C4008A6A4B /* PitchSetSpeller.swift */; };
+		071C21C71D6E55C4008A6A4B /* PitchClassSetSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C21C61D6E55C4008A6A4B /* PitchClassSetSpeller.swift */; };
+		071C21C81D6E55C4008A6A4B /* PitchClassSetSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C21C61D6E55C4008A6A4B /* PitchClassSetSpeller.swift */; };
 		072526A01D6FB244001EBF2A /* PitchClassSetSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0725269F1D6FB244001EBF2A /* PitchClassSetSpellerTests.swift */; };
 		072526A11D6FB244001EBF2A /* PitchClassSetSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0725269F1D6FB244001EBF2A /* PitchClassSetSpellerTests.swift */; };
 		074B33771D31166C0042104B /* Dyad+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33571D31166C0042104B /* Dyad+PitchSpelling.swift */; };
@@ -68,6 +68,16 @@
 		07D4E3B01D5A3FB8007F2D3A /* NamedInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4E3AE1D5A3FB8007F2D3A /* NamedInterval.swift */; };
 		07D4E3B21D5A5447007F2D3A /* NamedIntervalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4E3B11D5A5447007F2D3A /* NamedIntervalTests.swift */; };
 		07D4E3B31D5A5447007F2D3A /* NamedIntervalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4E3B11D5A5447007F2D3A /* NamedIntervalTests.swift */; };
+		07D6E8301D78CF99005711BE /* ArithmeticTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4DBAEFAC5A4C9077CDE9C8FA /* ArithmeticTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07D6E8311D78CF99005711BE /* ArrayTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 47A049B14C3A1782EF845704 /* ArrayTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07D6E8321D78CF99005711BE /* EnumTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0246148C69B040DF1A3BF09C /* EnumTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07D6E8331D78CF99005711BE /* Pitch.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4E0E65A496DA72FECFDB794A /* Pitch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07D6E8341D78CF99005711BE /* TreeTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 81AC9740F207E12BDE3BCEA5 /* TreeTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07D6E8351D78D299005711BE /* ArithmeticTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4B69F3BDCCE788437DF5875F /* ArithmeticTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07D6E8361D78D299005711BE /* ArrayTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91796D76C4CDCD11DF08DFD9 /* ArrayTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07D6E8371D78D299005711BE /* EnumTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6AB74E2D7DC71FFB059C5E18 /* EnumTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07D6E8381D78D299005711BE /* Pitch.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 15496228BCC09F160A08B8B2 /* Pitch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07D6E8391D78D299005711BE /* TreeTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B07CC9F2ACFBE241C939BC56 /* TreeTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07DCEB6C1D6F55170028B53D /* SpelledPitchClassSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DCEB6B1D6F55170028B53D /* SpelledPitchClassSet.swift */; };
 		07DCEB6D1D6F55170028B53D /* SpelledPitchClassSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DCEB6B1D6F55170028B53D /* SpelledPitchClassSet.swift */; };
 		07E5F6D11D3E908E0028C63F /* ArithmeticTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B69F3BDCCE788437DF5875F /* ArithmeticTools.framework */; };
@@ -123,27 +133,37 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 7;
+			dstSubfolderSpec = 10;
 			files = (
 				7E9C8B75421254533C2678CB /* PitchSpellingTools.framework in CopyFiles */,
+				07D6E8351D78D299005711BE /* ArithmeticTools.framework in CopyFiles */,
+				07D6E8361D78D299005711BE /* ArrayTools.framework in CopyFiles */,
+				07D6E8371D78D299005711BE /* EnumTools.framework in CopyFiles */,
+				07D6E8381D78D299005711BE /* Pitch.framework in CopyFiles */,
+				07D6E8391D78D299005711BE /* TreeTools.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		70E17B90421801C9C2380A04 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			dstPath = "";
-			dstSubfolderSpec = 7;
+			dstSubfolderSpec = 10;
 			files = (
 				EC3E5C9F61C1F45732FCD177 /* PitchSpellingTools.framework in CopyFiles */,
+				07D6E8301D78CF99005711BE /* ArithmeticTools.framework in CopyFiles */,
+				07D6E8311D78CF99005711BE /* ArrayTools.framework in CopyFiles */,
+				07D6E8321D78CF99005711BE /* EnumTools.framework in CopyFiles */,
+				07D6E8331D78CF99005711BE /* Pitch.framework in CopyFiles */,
+				07D6E8341D78CF99005711BE /* TreeTools.framework in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0246148C69B040DF1A3BF09C /* EnumTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumTools.framework; path = Carthage/Build/Mac/EnumTools.framework; sourceTree = "<group>"; };
-		071C21C61D6E55C4008A6A4B /* PitchSetSpeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchSetSpeller.swift; path = PitchSpellingTools/PitchSetSpeller.swift; sourceTree = "<group>"; };
+		071C21C61D6E55C4008A6A4B /* PitchClassSetSpeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchClassSetSpeller.swift; path = PitchSpellingTools/PitchClassSetSpeller.swift; sourceTree = "<group>"; };
 		0725269F1D6FB244001EBF2A /* PitchClassSetSpellerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchClassSetSpellerTests.swift; path = PitchSpellingToolsTests/PitchClassSetSpellerTests.swift; sourceTree = "<group>"; };
 		074B33571D31166C0042104B /* Dyad+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Dyad+PitchSpelling.swift"; path = "PitchSpellingTools/Dyad+PitchSpelling.swift"; sourceTree = "<group>"; };
 		074B33591D31166C0042104B /* Interval+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Interval+PitchSpelling.swift"; path = "PitchSpellingTools/Interval+PitchSpelling.swift"; sourceTree = "<group>"; };
@@ -281,8 +301,8 @@
 				074B33F21D3117630042104B /* PitchSpellingTests.swift */,
 				074B33F41D3117630042104B /* SpelledPitchTests.swift */,
 				07D4E3B11D5A5447007F2D3A /* NamedIntervalTests.swift */,
-				83CAB4535B2BA0A5E4A10ABD /* Supporting Files */,
 				0725269F1D6FB244001EBF2A /* PitchClassSetSpellerTests.swift */,
+				83CAB4535B2BA0A5E4A10ABD /* Supporting Files */,
 			);
 			name = PitchSpellingToolsTests;
 			sourceTree = "<group>";
@@ -365,7 +385,7 @@
 			children = (
 				079B19DE1D5CDA69007D506B /* PitchSpelling */,
 				07D4E3AE1D5A3FB8007F2D3A /* NamedInterval.swift */,
-				071C21C61D6E55C4008A6A4B /* PitchSetSpeller.swift */,
+				071C21C61D6E55C4008A6A4B /* PitchClassSetSpeller.swift */,
 				074B33591D31166C0042104B /* Interval+PitchSpelling.swift */,
 				074B335A1D31166C0042104B /* IntervalClass+PitchSpelling.swift */,
 				074B33631D31166C0042104B /* PitchClass+PitchSpelling.swift */,
@@ -576,7 +596,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				074B33B01D31166C0042104B /* SpelledPitch.swift in Sources */,
-				071C21C81D6E55C4008A6A4B /* PitchSetSpeller.swift in Sources */,
+				071C21C81D6E55C4008A6A4B /* PitchClassSetSpeller.swift in Sources */,
 				07ED70141D68A43400C9C000 /* SpelledPitchClass.swift in Sources */,
 				074B33AE1D31166C0042104B /* SpelledDyad.swift in Sources */,
 				074B337E1D31166C0042104B /* IntervalClass+PitchSpelling.swift in Sources */,
@@ -606,7 +626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				074B33AF1D31166C0042104B /* SpelledPitch.swift in Sources */,
-				071C21C71D6E55C4008A6A4B /* PitchSetSpeller.swift in Sources */,
+				071C21C71D6E55C4008A6A4B /* PitchClassSetSpeller.swift in Sources */,
 				07ED70131D68A43400C9C000 /* SpelledPitchClass.swift in Sources */,
 				074B33AD1D31166C0042104B /* SpelledDyad.swift in Sources */,
 				074B337D1D31166C0042104B /* IntervalClass+PitchSpelling.swift in Sources */,
@@ -713,6 +733,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -748,7 +769,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bean.PitchSpellingTools;
@@ -769,6 +790,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -776,7 +798,7 @@
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingToolsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -894,6 +916,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -901,7 +924,7 @@
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingToolsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -930,7 +953,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bean.PitchSpellingTools;
@@ -949,6 +972,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

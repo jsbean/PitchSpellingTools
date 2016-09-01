@@ -116,6 +116,14 @@ let graphRules: [(Graph) -> Float] = [
     eighthStepDirectionIncompatibility(1.0)
 ]
 
+func cost<A>(_ a: A, _ rules: [(A) -> Float]) -> Float {
+    return rules.reduce(0) { accum, rule in accum + rule(a) }
+}
+
+func cost(_ a: Node, _ graph: Graph, _ rules: [(Edge) -> Float]) -> Float {
+    return graph.reduce(0) { accum, b in accum + cost((a,b), rules) }
+}
+
 public struct PitchClassSetSpeller {
 
     fileprivate let costThreshold: Float
@@ -131,14 +139,6 @@ public struct PitchClassSetSpeller {
     
     public func spell() -> SpelledPitchClassSet {
  
-        func cost<A>(_ a: A, _ rules: [(A) -> Float]) -> Float {
-            return rules.reduce(0) { accum, rule in accum + rule(a) }
-        }
-
-        func cost(_ a: Node, _ graph: Graph, _ rules: [(Edge) -> Float]) -> Float {
-            return graph.reduce(0) { accum, b in accum + cost((a,b), rules) }
-        }
-
         struct SpellingContext {
             let spelling: PitchSpelling
             let totalCost: Cost
@@ -160,6 +160,8 @@ public struct PitchClassSetSpeller {
             
             // spellingContext could be made with a flatMap on `pitchClass.spellings`?
             for spelling in pitchClass.spellings {
+                
+                print("spelling: \(spelling) ------------------------------------------------")
                 
                 var spellingCost: Float = accumCost
                 
