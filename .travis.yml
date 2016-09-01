@@ -5,3 +5,7 @@ xcode_scheme: PitchSpellingToolsMac
 xcode_sdk: macosx
 before_script:
   - carthage bootstrap
+
+before_install:
+  - brew update
+  - brew outdated xctool || brew upgrade xctool
