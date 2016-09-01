@@ -25,9 +25,9 @@ extension PitchSpelling {
         case none = 0
         
         /// Up.
-        case up = 1
+        case up = 0.25
         
         /// Down.
-        case down = -1
+        case down = -0.25
     }
 }

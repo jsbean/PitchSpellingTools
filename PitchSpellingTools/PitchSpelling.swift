@@ -44,6 +44,11 @@ public struct PitchSpelling {
     /// Coarse resolution of a `PitchSpelling`.
     public let quarterStep: QuarterStepModifier
     
+    /// `PitchClass` represented by this `PitchSpelling` value.
+    public var pitchClass: Float {
+        return letterName.pitchClass + quarterStep.rawValue + eighthStep.rawValue
+    }
+    
     // MARK: - Initializers
     
     /**

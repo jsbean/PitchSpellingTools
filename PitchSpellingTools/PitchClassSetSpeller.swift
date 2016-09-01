@@ -9,42 +9,27 @@
 import ArrayTools
 import Pitch
 
-/**
- - TODO: Nest this within `PitchClassSetSpeller`.
- */
-enum RuleScope {
-    case node, edge, graph
-}
-
-public typealias Cost = Float
-
 typealias Node = PitchSpelling
 typealias Edge = (PitchSpelling, PitchSpelling)
 typealias Graph = [PitchSpelling]
 
-/// - TODO: Nest these within `PitchClassSetSpeller`
-/// - TODO: In Swift 3.0, Generic Typealiases are allowed.
-/// - Use SpellingRule<Input> = (costMultipler: Float) -> (Input) -> ()
-typealias NodeRule = (_ costMultiplier: Float) -> (Node) -> Cost
-typealias EdgeRule = (_ costMultiplier: Float) -> (Edge) -> Cost
-typealias GraphRule = (_ costMultiplier: Float) -> (Graph) -> Cost
+typealias Rule<Input> = (Float) -> (Input) -> Float
 
 // Node rules
-let doubleSharpOrDoubleFlat: NodeRule = { costMultiplier in
-    return { node in
-        if abs(node.quarterStep.rawValue) < 1 { return 1.0 }
-        return 0
-    }
+let doubleSharpOrDoubleFlat: Rule<Node> = { costMultiplier in
+    print("double sharp or double flat")
+    return { node in abs(node.quarterStep.rawValue) < 1 ? 1 : 0 }
 }
 
-//let threeQuarterSharpOrThreeQuarterFlat: NodeRule = { costMultiplier in
+//let threeQuarterSharpOrThreeQuarterFlat: Rule<Node> = { costMultiplier in
 //    return { node in
 //        /* TODO */
 //        return 0
 //    }
 //}
 
-let badEnharmonic: NodeRule = { costMultiplier in
+let badEnharmonic: Rule<Node> = { costMultiplier in
+    print("bad harmonic")
     return { node in
         switch (node.letterName, node.quarterStep) {
         case (.b, .sharp), (.e, .sharp), (.c, .flat), (.f, .flat): return 1 * costMultiplier
@@ -53,7 +38,8 @@ let badEnharmonic: NodeRule = { costMultiplier in
     }
 }
 
-let quarterStepEighthStepCombination: NodeRule = { costMultiplier in
+let quarterStepEighthStepCombination: Rule<Node> = { costMultiplier in
+    print("quarter step / eighth step")
     return { node in
         /* TODO */
         return 0
@@ -61,28 +47,26 @@ let quarterStepEighthStepCombination: NodeRule = { costMultiplier in
 }
 
 // Edge rules
-let unison: EdgeRule = { costMultitplier in
+let unison: Rule<Edge> = { costMultitplier in
+    print("unison")
+    return { (a,b) in a.letterName == b.letterName ? 0 : 1 }
+}
+
+let augmentedOrDiminished: Rule<Edge> = { costMultiplier in
+    print("augmented or diminished")
+    return { edge in
+        return 0
+    }
+}
+
+let crossover: Rule<Edge> = { costMultiplier in
     return { edge in
         /* TODO */
         return 0
     }
 }
 
-let augmentedOrDiminished: EdgeRule = { costMultiplier in
-    return { edge in
-        /* TODO */
-        return 0
-    }
-}
-
-let crossover: EdgeRule = { costMultiplier in
-    return { edge in
-        /* TODO */
-        return 0
-    }
-}
-
-let flatSharpIncompatibility: EdgeRule = { costMultiplier in
+let flatSharpIncompatibility: Rule<Edge> = { costMultiplier in
     return { edge in
         /* TODO */
         return 0
@@ -90,7 +74,7 @@ let flatSharpIncompatibility: EdgeRule = { costMultiplier in
 }
 
 // Graph rules
-let eighthStepDirectionIncompatibility: GraphRule = { costMultiplier in
+let eighthStepDirectionIncompatibility: Rule<Graph> = { costMultiplier in
     return { graph in
         /* TODO */
         return 0
@@ -117,7 +101,12 @@ let graphRules: [(Graph) -> Float] = [
 ]
 
 func cost<A>(_ a: A, _ rules: [(A) -> Float]) -> Float {
-    return rules.reduce(0) { accum, rule in accum + rule(a) }
+    return rules.reduce(0) {
+        accum, rule in
+        let cost = rule(a)
+        print("input: \(a); cost: \(cost)")
+        return accum + cost
+    }
 }
 
 func cost(_ a: Node, _ graph: Graph, _ rules: [(Edge) -> Float]) -> Float {
@@ -132,17 +121,19 @@ public struct PitchClassSetSpeller {
     fileprivate let pitchClassSet: PitchClassSet
     
     // make an optional init for rules
-    public init(_ pitchClassSet: PitchClassSet, costThreshold: Cost = 100) {
+    public init(_ pitchClassSet: PitchClassSet, costThreshold: Float = 100) {
         self.pitchClassSet = pitchClassSet
         self.costThreshold = costThreshold
     }
     
     public func spell() -> SpelledPitchClassSet {
  
+        print("spelling \(pitchClassSet); not to exceed: \(costThreshold)")
+        
         struct SpellingContext {
             let spelling: PitchSpelling
-            let totalCost: Cost
-            let nodeEdgeCost: Cost
+            let totalCost: Float
+            let nodeEdgeCost: Float
         }
         
         var spellingContexts: [SpellingContext] = []
@@ -150,13 +141,15 @@ public struct PitchClassSetSpeller {
         func traverseToSpell(
             _ pitchClasses: [PitchClass],
             graph: [PitchSpelling],
-            accumCost: Cost,
-            nodeEdgeCost: Cost
+            accumCost: Float,
+            nodeEdgeCost: Float
         ) -> SpelledPitchClassSet
         {
             guard let (pitchClass, remaining) = pitchClasses.destructured else {
                 return SpelledPitchClassSet()
             }
+            
+            print("pitch class: \(pitchClass)")
             
             // spellingContext could be made with a flatMap on `pitchClass.spellings`?
             for spelling in pitchClass.spellings {
@@ -172,20 +165,26 @@ public struct PitchClassSetSpeller {
                 
                 // node
                 let nodeCost = cost(spelling, nodeRules)
+                print("node cost: \(nodeCost)")
                 spellingCost += nodeCost
                 
                 guard spellingCost < costThreshold else { fatalError() } // todo
                 
                 // edge
                 let edgeCost = cost(spelling, graph, edgeRules)
+                print("edge cost: \(edgeCost)")
                 spellingCost += edgeCost
                 
-                guard spellingCost < costThreshold else { fatalError() } // todo
+                guard spellingCost < costThreshold else {
+                    print("spelling cost has passed threshold!")
+                    fatalError()
+                }
                 
                 // temporary graph
                 var tempGraph = graph
                 tempGraph.append(spelling)
                 let graphCost = cost(tempGraph, graphRules)
+                print("graph cost: \(graphCost)")
                 spellingCost += graphCost
                 
                 guard spellingCost < costThreshold else { fatalError() } // todo
@@ -202,11 +201,11 @@ public struct PitchClassSetSpeller {
             
             guard !spellingContexts.isEmpty else { fatalError() } // todo
             
-            for spellingContext in spellingContexts.sorted(by: { $0.totalCost < $1.totalCost }) {
-                if spellingContext.totalCost < costThreshold {
-                    let nodeEdgeCost = spellingContext.nodeEdgeCost + nodeEdgeCost
+            for context in spellingContexts.sorted(by: { $0.totalCost < $1.totalCost }) {
+                if context.totalCost < costThreshold {
+                    let nodeEdgeCost = context.nodeEdgeCost + nodeEdgeCost
                     var graph = graph
-                    graph.append(spellingContext.spelling)
+                    graph.append(context.spelling)
                     return traverseToSpell(
                         remaining,
                         graph: graph,
