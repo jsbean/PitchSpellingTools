@@ -1,0 +1,9 @@
+language: objective-c
+osx_image: xcode8
+xcode_project: ArrayTools.xcodeproj
+xcode_scheme: ArrayToolsMac
+xcode_sdk: macosx
+
+before_install:
+  - brew update
+  - brew outdated xctool || brew upgrade xctool

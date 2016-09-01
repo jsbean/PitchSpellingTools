@@ -55,7 +55,7 @@ public struct SpelledDyad {
 }
 
 
-private func swappedIfNecessary(a: SpelledPitch, _ b: SpelledPitch)
+private func swappedIfNecessary(_ a: SpelledPitch, _ b: SpelledPitch)
     -> (SpelledPitch, SpelledPitch, Bool)
 {
     return swapped(a,b) {
@@ -72,6 +72,6 @@ private func swappedIfNecessary(a: SpelledPitch, _ b: SpelledPitch)
  
  - TODO: Move this into a more general library.
  */
-public func swapped<A>(a: A, _ b: A, if constraint: () -> Bool) -> (A, A, Bool) {
+public func swapped<A>(_ a: A, _ b: A, if constraint: () -> Bool) -> (A, A, Bool) {
     return constraint() ? (b, a, true) : (a, b, false)
 }

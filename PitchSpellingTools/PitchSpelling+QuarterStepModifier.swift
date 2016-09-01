@@ -36,7 +36,7 @@ extension PitchSpelling {
         internal var distance: Float { return abs(rawValue) }
         
         internal var resolution: Resolution {
-            return rawValue % 1 == 0 ? .halfStep : .quarterStep
+            return rawValue.truncatingRemainder(dividingBy: 1) == 0 ? .halfStep : .quarterStep
         }
         
         internal var quantizedToHalfStep: QuarterStepModifier {

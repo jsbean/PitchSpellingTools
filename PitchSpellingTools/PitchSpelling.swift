@@ -20,7 +20,7 @@ public struct PitchSpelling {
     /**
      Errors possible when attempting to spell a `Pitch`.
      */
-    public enum Error: ErrorType {
+    public enum SpellingError: Error {
         
         /**
          If the given `PitchSpelling` is not applicable to the given `Pitch`.

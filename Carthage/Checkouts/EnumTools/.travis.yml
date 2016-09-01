@@ -1,0 +1,5 @@
+language: objective-c
+osx_image: xcode7.3
+xcode_project: EnumTools.xcodeproj
+xcode_scheme: EnumToolsMac
+xcode_sdk: macosx10.11

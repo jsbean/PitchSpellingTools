@@ -22,6 +22,6 @@ extension Dyad {
     
     /// Finest resolution of the `Pitch` values contained herein.
     public var finestResolution: Float {
-        return [higher.resolution, lower.resolution].minElement()!
+        return [higher.resolution, lower.resolution].min()!
     }
 }

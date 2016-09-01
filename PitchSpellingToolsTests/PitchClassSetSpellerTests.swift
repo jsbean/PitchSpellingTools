@@ -15,6 +15,6 @@ class PitchClassSetSpellerTests: XCTestCase {
     func testInit() {
         let pitchClassSet: PitchClassSet = [0,2,4]
         let speller = PitchClassSetSpeller(pitchClassSet)
-        speller.spell()
+        let _ = speller.spell()
     }
 }

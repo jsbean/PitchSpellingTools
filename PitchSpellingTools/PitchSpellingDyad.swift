@@ -110,15 +110,15 @@ public struct PitchSpellingDyad {
         return abs(Int.mod(difference, 7))
     }
 
-    private var eitherIsNatural: Bool {
+    fileprivate var eitherIsNatural: Bool {
         return a.quarterStep == .natural || b.quarterStep == .natural
     }
     
-    private var eitherHasNoEighthStepModifier: Bool {
+    fileprivate var eitherHasNoEighthStepModifier: Bool {
         return a.eighthStep == .none || b.eighthStep == .none
     }
     
-    private var eitherHasEighthStepModifier: Bool {
+    fileprivate var eitherHasEighthStepModifier: Bool {
         return a.eighthStep != .none || b.eighthStep != .none
     }
 

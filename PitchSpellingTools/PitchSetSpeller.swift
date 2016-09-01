@@ -25,9 +25,9 @@ typealias Graph = [PitchSpelling]
 /// - TODO: Nest these within `PitchClassSetSpeller`
 /// - TODO: In Swift 3.0, Generic Typealiases are allowed.
 /// - Use SpellingRule<Input> = (costMultipler: Float) -> (Input) -> ()
-typealias NodeRule = (costMultiplier: Float) -> (Node) -> Cost
-typealias EdgeRule = (costMultiplier: Float) -> (Edge) -> Cost
-typealias GraphRule = (costMultiplier: Float) -> (Graph) -> Cost
+typealias NodeRule = (_ costMultiplier: Float) -> (Node) -> Cost
+typealias EdgeRule = (_ costMultiplier: Float) -> (Edge) -> Cost
+typealias GraphRule = (_ costMultiplier: Float) -> (Graph) -> Cost
 
 // Node rules
 let doubleSharpOrDoubleFlat: NodeRule = { costMultiplier in
@@ -98,30 +98,30 @@ let eighthStepDirectionIncompatibility: GraphRule = { costMultiplier in
 }
 
 // TODO: initialize PitchClassSetSpeller with rules and costMultipliers
-let nodeRules: [Node -> Float] = [
-    doubleSharpOrDoubleFlat(costMultiplier: 1.0),
-    badEnharmonic(costMultiplier: 1.0),
-    quarterStepEighthStepCombination(costMultiplier: 1.0)
+let nodeRules: [(Node) -> Float] = [
+    doubleSharpOrDoubleFlat(1.0),
+    badEnharmonic(1.0),
+    quarterStepEighthStepCombination(1.0)
     //threeQuarterSharpOrThreeQuarterFlat(costMultiplier: 1.0),
 ]
 
-let edgeRules: [Edge -> Float] = [
-    unison(costMultiplier: 1.0),
-    augmentedOrDiminished(costMultiplier: 1.0),
-    crossover(costMultiplier: 1.0),
-    flatSharpIncompatibility(costMultiplier: 1.0)
+let edgeRules: [(Edge) -> Float] = [
+    unison(1.0),
+    augmentedOrDiminished(1.0),
+    crossover(1.0),
+    flatSharpIncompatibility(1.0)
 ]
 
-let graphRules: [Graph -> Float] = [
-    eighthStepDirectionIncompatibility(costMultiplier: 1.0)
+let graphRules: [(Graph) -> Float] = [
+    eighthStepDirectionIncompatibility(1.0)
 ]
 
 public struct PitchClassSetSpeller {
 
-    private let costThreshold: Float
-    private var bestGraphs: [Graph] = []
+    fileprivate let costThreshold: Float
+    fileprivate var bestGraphs: [Graph] = []
     
-    private let pitchClassSet: PitchClassSet
+    fileprivate let pitchClassSet: PitchClassSet
     
     // make an optional init for rules
     public init(_ pitchClassSet: PitchClassSet, costThreshold: Cost = 100) {
@@ -131,11 +131,11 @@ public struct PitchClassSetSpeller {
     
     public func spell() -> SpelledPitchClassSet {
  
-        func cost<A>(a: A, _ rules: [A -> Float]) -> Float {
+        func cost<A>(_ a: A, _ rules: [(A) -> Float]) -> Float {
             return rules.reduce(0) { accum, rule in accum + rule(a) }
         }
 
-        func edgeCost(a: Node, _ graph: Graph, _ rules: [Edge -> Float]) -> Float {
+        func cost(_ a: Node, _ graph: Graph, _ rules: [(Edge) -> Float]) -> Float {
             return graph.reduce(0) { accum, b in accum + cost((a,b), rules) }
         }
 
@@ -148,7 +148,7 @@ public struct PitchClassSetSpeller {
         var spellingContexts: [SpellingContext] = []
         
         func traverseToSpell(
-            pitchClasses: [PitchClass],
+            _ pitchClasses: [PitchClass],
             graph: [PitchSpelling],
             accumCost: Cost,
             nodeEdgeCost: Cost
@@ -175,7 +175,7 @@ public struct PitchClassSetSpeller {
                 guard spellingCost < costThreshold else { fatalError() } // todo
                 
                 // edge
-                let edgeCost = edgeCost(spelling, graph, edgeRules)
+                let edgeCost = cost(spelling, graph, edgeRules)
                 spellingCost += edgeCost
                 
                 guard spellingCost < costThreshold else { fatalError() } // todo
@@ -200,7 +200,7 @@ public struct PitchClassSetSpeller {
             
             guard !spellingContexts.isEmpty else { fatalError() } // todo
             
-            for spellingContext in spellingContexts.sort({ $0.totalCost < $1.totalCost }) {
+            for spellingContext in spellingContexts.sorted(by: { $0.totalCost < $1.totalCost }) {
                 if spellingContext.totalCost < costThreshold {
                     let nodeEdgeCost = spellingContext.nodeEdgeCost + nodeEdgeCost
                     var graph = graph

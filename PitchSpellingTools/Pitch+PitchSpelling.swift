@@ -75,9 +75,9 @@ extension Pitch {
      - TODO: make `throw` in the case of a strange resolution (e.g., 60.81356)
      */
     public var resolution: Float {
-        if noteNumber.value % 1.0 == 0.0 { return 1.0 }
-        else if noteNumber.value % 0.5 == 0.0 { return 0.5 }
-        else if noteNumber.value % 0.25 == 0.0 { return 0.25 }
+        if noteNumber.value.truncatingRemainder(dividingBy: 1.0) == 0.0 { return 1.0 }
+        else if noteNumber.value.truncatingRemainder(dividingBy: 0.5) == 0.0 { return 0.5 }
+        else if noteNumber.value.truncatingRemainder(dividingBy: 0.25) == 0.0 { return 0.25 }
         return 0.0
     }
     
@@ -93,7 +93,7 @@ extension Pitch {
     public func spelled(with spelling: PitchSpelling) throws -> SpelledPitch {
         
         guard spelling.isValid(for: self) else {
-            throw PitchSpelling.Error.invalidSpelling(self, spelling)
+            throw PitchSpelling.SpellingError.invalidSpelling(self, spelling)
         }
         
         return SpelledPitch(pitch: self, spelling: spelling)
@@ -106,7 +106,7 @@ extension Pitch {
      */
     public func spelledWithDefaultSpelling() throws -> SpelledPitch {
         guard let defaultSpelling = defaultSpelling else {
-            throw PitchSpelling.Error.noSpellingForPitch(self)
+            throw PitchSpelling.SpellingError.noSpellingForPitch(self)
         }
         
         return try spelled(with: defaultSpelling)

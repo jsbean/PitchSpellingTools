@@ -10,14 +10,14 @@ import Pitch
 
 public struct SpelledPitchClassSet {
     
-    private let pitches: Set<SpelledPitchClass>
+    fileprivate let pitches: Set<SpelledPitchClass>
     
-    public init<S: SequenceType where S.Generator.Element == SpelledPitchClass>(_ pitches: S) {
+    public init<S: Sequence>(_ pitches: S) where S.Iterator.Element == SpelledPitchClass {
         self.pitches = Set(pitches)
     }
 }
 
-extension SpelledPitchClassSet: ArrayLiteralConvertible {
+extension SpelledPitchClassSet: ExpressibleByArrayLiteral {
     
     public typealias Element = SpelledPitchClass
     
@@ -26,11 +26,11 @@ extension SpelledPitchClassSet: ArrayLiteralConvertible {
     }
 }
 
-extension SpelledPitchClassSet: SequenceType {
+extension SpelledPitchClassSet: Sequence {
     
-    public func generate() -> AnyGenerator<SpelledPitchClass> {
-        var generator = pitches.generate()
-        return AnyGenerator { return generator.next() }
+    public func makeIterator() -> AnyIterator<SpelledPitchClass> {
+        var generator = pitches.makeIterator()
+        return AnyIterator { return generator.next() }
     }
 }
 
