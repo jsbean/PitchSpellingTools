@@ -6,7 +6,7 @@
 //
 //
 
-import Foundation
+import ArithmeticTools
 import Pitch
 
 /**
@@ -302,10 +302,18 @@ public struct NamedInterval {
      */
     public init(_ a: SpelledPitch, _ b: SpelledPitch) {
         let letterNameSteps = steps(a,b)
+        print("lettername steps: \(letterNameSteps)")
         let ideal = idealIntervalClass(steps: letterNameSteps)
         let normalized = normalizedIntervalClass(interval(a,b) - ideal)
         let intervalClass = adjustedIntervalClass(normalized, steps: letterNameSteps)
         self.init(steps: letterNameSteps, intervalClass: intervalClass)!
+    }
+    
+    /// - warning: Not yet documented!
+    public init(_ a: PitchSpelling, _ b: PitchSpelling) {
+        let a = SpelledPitch(Pitch(noteNumber: NoteNumber(a.pitchClass)), a)
+        let b = SpelledPitch(Pitch(noteNumber: NoteNumber(b.pitchClass)), b)
+        self.init(a,b)
     }
     
     /**
@@ -320,7 +328,7 @@ public struct NamedInterval {
 }
 
 /// - returns: Delta between letter name steps of two `SpelledPitch` values.
-private func steps(_ a: SpelledPitch, _ b: SpelledPitch) -> Int {
+fileprivate func steps(_ a: SpelledPitch, _ b: SpelledPitch) -> Int {
     return Int.mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7)
 }
 /**
@@ -328,7 +336,7 @@ private func steps(_ a: SpelledPitch, _ b: SpelledPitch) -> Int {
  
  - TODO: Return `Interval` rather than `Float`.
  */
-private func interval(_ a: SpelledPitch, _ b: SpelledPitch) -> Float {
+fileprivate func interval(_ a: SpelledPitch, _ b: SpelledPitch) -> Float {
     return b.pitch.noteNumber.value - a.pitch.noteNumber.value
 }
 
@@ -355,6 +363,7 @@ private func normalizedIntervalClass(_ normalizedInterval: Float)
  - returns: The ideal interval class for the given `steps`.
  */
 private func idealIntervalClass(steps: Int) -> Float {
+    let steps = Int.mod(steps, 4) // remove fifths, sixths, sevenths
     var idealInterval: Float {
         switch steps {
         case 0: return 0

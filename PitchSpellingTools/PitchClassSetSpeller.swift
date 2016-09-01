@@ -54,8 +54,11 @@ let unison: Rule<Edge> = { costMultitplier in
 
 let augmentedOrDiminished: Rule<Edge> = { costMultiplier in
     print("augmented or diminished")
-    return { edge in
-        return 0
+    return { (a,b) in
+        switch NamedInterval(a,b).quality {
+        case NamedInterval.Quality.augmented, NamedInterval.Quality.diminished: return 1
+        default: return 0
+        }
     }
 }
 
