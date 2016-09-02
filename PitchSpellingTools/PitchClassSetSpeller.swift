@@ -16,22 +16,18 @@ typealias Graph = [PitchSpelling]
 typealias Rule<Input> = (Float) -> (Input) -> Float
 
 // Node rules
+
 let doubleSharpOrDoubleFlat: Rule<Node> = { costMultiplier in
-    print("double sharp or double flat")
-    return { node in abs(node.quarterStep.rawValue) < 1 ? 1 : 0 }
+    return { spelling in abs(spelling.quarterStep.rawValue) == 2 ? 1 : 0 }
 }
 
-//let threeQuarterSharpOrThreeQuarterFlat: Rule<Node> = { costMultiplier in
-//    return { node in
-//        /* TODO */
-//        return 0
-//    }
-//}
+let threeQuarterSharpOrThreeQuarterFlat: Rule<Node> = { costMultiplier in
+    return { spelling in abs(spelling.quarterStep.rawValue) == 1.5 ? 1 : 0 }
+}
 
 let badEnharmonic: Rule<Node> = { costMultiplier in
-    print("bad harmonic")
-    return { node in
-        switch (node.letterName, node.quarterStep) {
+    return { spelling in
+        switch (spelling.letterName, spelling.quarterStep) {
         case (.b, .sharp), (.e, .sharp), (.c, .flat), (.f, .flat): return 1 * costMultiplier
         default: return 0
         }
@@ -39,21 +35,20 @@ let badEnharmonic: Rule<Node> = { costMultiplier in
 }
 
 let quarterStepEighthStepCombination: Rule<Node> = { costMultiplier in
-    print("quarter step / eighth step")
-    return { node in
-        /* TODO */
-        return 0
+    return { spelling in
+        switch (spelling.quarterStep.resolution, abs(spelling.eighthStep.rawValue)) {
+        case (.quarterStep, 0.25): return 1
+        default: return 0
+        }
     }
 }
 
 // Edge rules
-let unison: Rule<Edge> = { costMultitplier in
-    print("unison")
+let unison: Rule<Edge> = { costMultiplier in
     return { (a,b) in a.letterName == b.letterName ? 0 : 1 }
 }
 
 let augmentedOrDiminished: Rule<Edge> = { costMultiplier in
-    print("augmented or diminished")
     return { (a,b) in
         switch NamedInterval(a,b).quality {
         case NamedInterval.Quality.augmented, NamedInterval.Quality.diminished: return 1
@@ -70,9 +65,8 @@ let crossover: Rule<Edge> = { costMultiplier in
 }
 
 let flatSharpIncompatibility: Rule<Edge> = { costMultiplier in
-    return { edge in
-        /* TODO */
-        return 0
+    return { (a,b) in
+        return a.quarterStep.direction.rawValue * b.quarterStep.direction.rawValue == -1 ? 1 : 0
     }
 }
 
@@ -103,6 +97,7 @@ let graphRules: [(Graph) -> Float] = [
     eighthStepDirectionIncompatibility(1.0)
 ]
 
+// todo: consider adding an option `printer` for debugging
 func cost<A>(_ a: A, _ rules: [(A) -> Float]) -> Float {
     return rules.reduce(0) {
         accum, rule in
