@@ -141,10 +141,9 @@ func cost(_ a: Node, _ graph: Graph, _ rules: [(Edge) -> Float]) -> Float {
 
 public struct PitchClassSetSpeller {
 
-    fileprivate let costThreshold: Float
-    fileprivate var bestGraphs: [Graph] = []
-    
-    fileprivate let pitchClassSet: PitchClassSet
+    private let costThreshold: Float
+    private var bestGraphs: [Graph] = []
+    private let pitchClassSet: PitchClassSet
     
     // make an optional init for rules
     public init(_ pitchClassSet: PitchClassSet, costThreshold: Float = 100) {
@@ -153,8 +152,6 @@ public struct PitchClassSetSpeller {
     }
     
     public func spell() -> SpelledPitchClassSet {
- 
-        print("spelling \(pitchClassSet); not to exceed: \(costThreshold)")
         
         struct SpellingContext {
             let spelling: PitchSpelling
@@ -166,7 +163,7 @@ public struct PitchClassSetSpeller {
         
         func traverseToSpell(
             _ pitchClasses: [PitchClass],
-            graph: [PitchSpelling],
+            graph: Graph,
             accumCost: Float,
             nodeEdgeCost: Float
         ) -> SpelledPitchClassSet
@@ -175,12 +172,7 @@ public struct PitchClassSetSpeller {
                 return SpelledPitchClassSet()
             }
             
-            print("pitch class: \(pitchClass)")
-            
-            // spellingContext could be made with a flatMap on `pitchClass.spellings`?
             for spelling in pitchClass.spellings {
-                
-                print("spelling: \(spelling) ------------------------------------------------")
                 
                 var spellingCost: Float = accumCost
                 
@@ -191,18 +183,15 @@ public struct PitchClassSetSpeller {
                 
                 // node
                 let nodeCost = cost(spelling, nodeRules)
-                print("node cost: \(nodeCost)")
                 spellingCost += nodeCost
                 
                 guard spellingCost < costThreshold else { fatalError() } // todo
                 
                 // edge
                 let edgeCost = cost(spelling, graph, edgeRules)
-                print("edge cost: \(edgeCost)")
                 spellingCost += edgeCost
                 
                 guard spellingCost < costThreshold else {
-                    print("spelling cost has passed threshold!")
                     fatalError()
                 }
                 
@@ -210,7 +199,6 @@ public struct PitchClassSetSpeller {
                 var tempGraph = graph
                 tempGraph.append(spelling)
                 let graphCost = cost(tempGraph, graphRules)
-                print("graph cost: \(graphCost)")
                 spellingCost += graphCost
                 
                 guard spellingCost < costThreshold else { fatalError() } // todo

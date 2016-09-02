@@ -12,12 +12,6 @@ import Pitch
 
 class PitchClassSetSpellerTests: XCTestCase {
 
-    func testInit() {
-        let pitchClassSet: PitchClassSet = [0,2,4]
-        let speller = PitchClassSetSpeller(pitchClassSet)
-        let _ = speller.spell()
-    }
-    
     // MARK: - Node Rule tests
     
     func testDoubleSharpOrDoubleFlatPenalized() {
@@ -121,9 +115,7 @@ class PitchClassSetSpellerTests: XCTestCase {
             PitchSpelling(.d, .flat, .down)
         ]
         
-        [a,b,c].forEach {
-            XCTAssertEqual(eighthStepDirectionIncompatibility(1)($0), 1)
-        }
+        [a,b,c].forEach { XCTAssertEqual(eighthStepDirectionIncompatibility(1)($0), 1) }
     }
     
     func testEighthStepDirectionIncompatibilityNotPenalized() {
@@ -132,8 +124,14 @@ class PitchClassSetSpellerTests: XCTestCase {
         let c = [PitchSpelling(.a, .natural, .up), PitchSpelling(.f, .natural, .up)]
         let d = [PitchSpelling(.d, .natural, .down), PitchSpelling(.f, .quarterFlat, .down)]
         let e = [PitchSpelling(.d, .sharp), PitchSpelling(.f, .quarterFlat, .down)]
-        [a,b,c,d,e].forEach {
-            XCTAssertEqual(eighthStepDirectionIncompatibility(1)($0), 0)
-        }
+        [a,b,c,d,e].forEach { XCTAssertEqual(eighthStepDirectionIncompatibility(1)($0), 0) }
+    }
+    
+    // MARK: - Speller tests
+    
+    func testInit() {
+        let pitchClassSet: PitchClassSet = [0,2,4]
+        let speller = PitchClassSetSpeller(pitchClassSet)
+        let _ = speller.spell()
     }
 }
