@@ -91,15 +91,26 @@ let flatSharpIncompatibility: Rule<Edge> = { costMultiplier in
     }
 }
 
-// Graph rules
+// MARK: - Graph-level rules
+
 let eighthStepDirectionIncompatibility: Rule<Graph> = { costMultiplier in
     return { graph in
-        /* TODO */
+        for ai in graph.indices {
+            let a = graph[ai]
+            for bi in ai + 1 ..< graph.endIndex {
+                let b = graph[bi]
+                switch (a.eighthStep.rawValue, b.eighthStep.rawValue) {
+                case (0, _), (_, 0), (-0.25, -0.25), (0.25, 0.25): break
+                default: return 1
+                }
+            }
+        }
         return 0
     }
 }
 
-// TODO: initialize PitchClassSetSpeller with rules and costMultipliers
+// MARK: - Rule collections
+
 let nodeRules: [(Node) -> Float] = [
     doubleSharpOrDoubleFlat(1),
     badEnharmonic(1),
@@ -118,7 +129,8 @@ let graphRules: [(Graph) -> Float] = [
     eighthStepDirectionIncompatibility(1.0)
 ]
 
-// todo: consider adding an option `printer` for debugging
+// MARK: - Cost functions
+
 func cost<A>(_ a: A, _ rules: [(A) -> Float]) -> Float {
     return rules.reduce(0) {
         accum, rule in
