@@ -57,4 +57,54 @@ class PitchClassSetSpellerTests: XCTestCase {
             XCTAssertEqual(quarterStepEighthStepCombination(1.0)($0), 0)
         }
     }
+    
+    // MARK: - Edge Rule tests
+    
+    func testUnisonPenalized() {
+        let a = (PitchSpelling(.c, .sharp), PitchSpelling(.c, .sharp, .down))
+        let b = (PitchSpelling(.a, .quarterFlat), PitchSpelling(.a, .natural))
+        [a,b].forEach { XCTAssertEqual(unison(1)($0), 1) }
+    }
+    
+    func testUnisonNotPenalized() {
+        let a = (PitchSpelling(.c, .sharp), PitchSpelling(.f, .sharp, .down))
+        let b = (PitchSpelling(.a, .quarterFlat), PitchSpelling(.f))
+        [a,b].forEach { XCTAssertEqual(unison(1)($0), 0) }
+    }
+    
+    func testAugmentedOrDiminishedPenalized() {
+        let a = (PitchSpelling(.c, .sharp), PitchSpelling(.f))
+        let b = (PitchSpelling(.a, .flat), PitchSpelling(.b))
+        [a,b].forEach { XCTAssertEqual(augmentedOrDiminished(1)($0), 1) }
+    }
+    
+    func testAugmentedOrDiminishedNotPenalized() {
+        let a = (PitchSpelling(.c, .sharp), PitchSpelling(.f, .sharp))
+        let b = (PitchSpelling(.a, .flat), PitchSpelling(.c))
+        [a,b].forEach { XCTAssertEqual(augmentedOrDiminished(1)($0), 0) }
+    }
+    
+    func testCrossoverPenalized() {
+        let a = (PitchSpelling(.c, .doubleSharp), PitchSpelling(.d))
+        let b = (PitchSpelling(.f, .quarterSharp), PitchSpelling(.g, .doubleFlat))
+        [a,b].forEach { XCTAssertEqual(crossover(1)($0), 1) }
+    }
+    
+    func testCrossoverNotPenalized() {
+        let a = (PitchSpelling(.b), PitchSpelling(.c))
+        let b = (PitchSpelling(.a), PitchSpelling(.f, .sharp))
+        [a,b].forEach { XCTAssertEqual(crossover(1)($0), 0) }
+    }
+    
+    func testFlatSharpIncompatibilityPenalized() {
+        let a = (PitchSpelling(.c, .sharp), PitchSpelling(.e, .flat))
+        let b = (PitchSpelling(.f, .quarterSharp), PitchSpelling(.g, .doubleFlat))
+        [a,b].forEach { XCTAssertEqual(flatSharpIncompatibility(1)($0), 1) }
+    }
+    
+    func testFlatSharpIncompatibilityNotPenalized() {
+        let a = (PitchSpelling(.c), PitchSpelling(.d, .sharp))
+        let b = (PitchSpelling(.f, .quarterSharp), PitchSpelling(.g, .sharp))
+        [a,b].forEach { XCTAssertEqual(flatSharpIncompatibility(1)($0), 0) }
+    }
 }

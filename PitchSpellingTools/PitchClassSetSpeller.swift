@@ -9,13 +9,29 @@
 import ArrayTools
 import Pitch
 
+// MARK: - Typealiases
+
+/// Single `PitchSpelling` value.
 typealias Node = PitchSpelling
+
+/// Pair of `PitchSpelling` values.
 typealias Edge = (PitchSpelling, PitchSpelling)
+
+/// All `PitchSpelling` values comprising a graph.
 typealias Graph = [PitchSpelling]
 
+/// Defintion of a spelling rule that takes a cost multiplier and an input, returning a cost.
+///
+/// The cost multiplier can be used within the closure to worsen the penalty depending on 
+/// more or less egregious offences.
+///
+/// The `Input` can be any of the following:
+/// - `Node` (aka `PitchSpelling`)
+/// - `Edge` (aka `(PitchSpelling, PitchSpelling)`)
+/// - `Graph` (aka `[PitchSpelling]`)
 typealias Rule<Input> = (Float) -> (Input) -> Float
 
-// Node rules
+// MARK: - Node-level rules
 
 let doubleSharpOrDoubleFlat: Rule<Node> = { costMultiplier in
     return { spelling in abs(spelling.quarterStep.rawValue) == 2 ? 1 : 0 }
@@ -43,9 +59,10 @@ let quarterStepEighthStepCombination: Rule<Node> = { costMultiplier in
     }
 }
 
-// Edge rules
+// MARK: - Edge-level rules
+
 let unison: Rule<Edge> = { costMultiplier in
-    return { (a,b) in a.letterName == b.letterName ? 0 : 1 }
+    return { (a,b) in a.letterName == b.letterName ? 1 : 0 }
 }
 
 let augmentedOrDiminished: Rule<Edge> = { costMultiplier in
@@ -58,15 +75,19 @@ let augmentedOrDiminished: Rule<Edge> = { costMultiplier in
 }
 
 let crossover: Rule<Edge> = { costMultiplier in
-    return { edge in
-        /* TODO */
-        return 0
+    return { (a,b) in
+        return (a.letterName.steps < b.letterName.steps) != (a.pitchClass < b.pitchClass)
+            ? 1
+            : 0
     }
 }
 
+/// - TODO: Consider merging this into augmented / diminished
 let flatSharpIncompatibility: Rule<Edge> = { costMultiplier in
     return { (a,b) in
-        return a.quarterStep.direction.rawValue * b.quarterStep.direction.rawValue == -1 ? 1 : 0
+        return a.quarterStep.direction.rawValue * b.quarterStep.direction.rawValue == -1
+            ? 1
+            : 0
     }
 }
 
@@ -80,10 +101,10 @@ let eighthStepDirectionIncompatibility: Rule<Graph> = { costMultiplier in
 
 // TODO: initialize PitchClassSetSpeller with rules and costMultipliers
 let nodeRules: [(Node) -> Float] = [
-    doubleSharpOrDoubleFlat(1.0),
-    badEnharmonic(1.0),
-    quarterStepEighthStepCombination(1.0)
-    //threeQuarterSharpOrThreeQuarterFlat(costMultiplier: 1.0),
+    doubleSharpOrDoubleFlat(1),
+    badEnharmonic(1),
+    quarterStepEighthStepCombination(1),
+    threeQuarterSharpOrThreeQuarterFlat(1),
 ]
 
 let edgeRules: [(Edge) -> Float] = [
