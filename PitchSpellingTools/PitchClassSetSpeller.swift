@@ -132,16 +132,11 @@ let graphRules: [(Graph) -> Float] = [
 // MARK: - Cost functions
 
 func cost<A>(_ a: A, _ rules: [(A) -> Float]) -> Float {
-    return rules.reduce(0) {
-        accum, rule in
-        let cost = rule(a)
-        print("input: \(a); cost: \(cost)")
-        return accum + cost
-    }
+    return rules.reduce(0) { $0 + $1(a) }
 }
 
 func cost(_ a: Node, _ graph: Graph, _ rules: [(Edge) -> Float]) -> Float {
-    return graph.reduce(0) { accum, b in accum + cost((a,b), rules) }
+    return graph.reduce(0) { $0 + cost((a,$1), rules) }
 }
 
 public struct PitchClassSetSpeller {
