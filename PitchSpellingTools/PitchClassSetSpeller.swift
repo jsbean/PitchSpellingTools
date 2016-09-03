@@ -107,6 +107,7 @@ let eighthStepDirectionIncompatibility: Rule<Edge> = { costMultiplier in
 
 // MARK: - Rule collections
 
+// Rules for individual spellings out of context
 let nodeRules: [(Node) -> Float] = [
     doubleSharpOrDoubleFlat(1),
     badEnharmonic(1),
@@ -114,6 +115,7 @@ let nodeRules: [(Node) -> Float] = [
     threeQuarterSharpOrThreeQuarterFlat(1),
 ]
 
+// Rules for which n-jeopardy may be applied
 let edgeRules: [(Edge) -> Float] = [
     unison(1.0),
     augmentedOrDiminished(1.0),
@@ -121,6 +123,7 @@ let edgeRules: [(Edge) -> Float] = [
     flatSharpIncompatibility(1.0)
 ]
 
+// Rules for which double-jeopardy is not applied
 let graphRules: [(Edge) -> Float] = [
     eighthStepDirectionIncompatibility(1.0)
 ]
