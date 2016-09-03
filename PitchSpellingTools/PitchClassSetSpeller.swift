@@ -93,17 +93,13 @@ let flatSharpIncompatibility: Rule<Edge> = { costMultiplier in
 
 // MARK: - Graph-level rules
 
-let eighthStepDirectionIncompatibility: Rule<Graph> = { costMultiplier in
-    return { graph in
-        for ai in graph.indices {
-            let a = graph[ai]
-            for bi in ai + 1 ..< graph.endIndex {
-                let b = graph[bi]
-                switch (a.eighthStep.rawValue, b.eighthStep.rawValue) {
-                case (0, _), (_, 0), (-0.25, -0.25), (0.25, 0.25): break
-                default: return 1
-                }
-            }
+// FIXME: The graph-level looping should not be implemented within here.
+// - In fact, this is actually an edge rule that has no "double jeopardy".
+let eighthStepDirectionIncompatibility: Rule<Edge> = { costMultiplier in
+    return { (a,b) in
+        switch (a.eighthStep.rawValue, b.eighthStep.rawValue) {
+        case (0, _), (_, 0), (-0.25, -0.25), (0.25, 0.25): break
+        default: return 1
         }
         return 0
     }
@@ -125,18 +121,34 @@ let edgeRules: [(Edge) -> Float] = [
     flatSharpIncompatibility(1.0)
 ]
 
-let graphRules: [(Graph) -> Float] = [
+let graphRules: [(Edge) -> Float] = [
     eighthStepDirectionIncompatibility(1.0)
 ]
 
 // MARK: - Cost functions
 
+// Node cost
 func cost<A>(_ a: A, _ rules: [(A) -> Float]) -> Float {
     return rules.reduce(0) { $0 + $1(a) }
 }
 
+// Edge cost
 func cost(_ a: Node, _ graph: Graph, _ rules: [(Edge) -> Float]) -> Float {
     return graph.reduce(0) { $0 + cost((a,$1), rules) }
+}
+
+/// Graph cost
+// No double jeopardy
+func cost(_ graph: Graph, _ rules: [(Edge) -> Float]) -> Float {
+    for ai in graph.indices {
+        let a = graph[ai]
+        for bi in ai + 1 ..< graph.endIndex {
+            let b = graph[bi]
+            let cost = rules.reduce(0) { $0 + $1(a,b) }
+            if cost > 0 { return cost }
+       }
+    }
+    return 0
 }
 
 public struct PitchClassSetSpeller {
