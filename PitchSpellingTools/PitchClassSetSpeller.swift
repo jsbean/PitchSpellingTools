@@ -172,8 +172,6 @@ public struct PitchClassSetSpeller {
             let nodeEdgeCost: Float
         }
         
-        var spellingContexts: [SpellingContext] = []
-        
         func traverseToSpell(
             _ pitchClasses: [PitchClass],
             graph: Graph,
@@ -185,65 +183,73 @@ public struct PitchClassSetSpeller {
                 return SpelledPitchClassSet()
             }
             
-            for spelling in pitchClass.spellings {
-                
-                var spellingCost = accumCost
-                print("spelling cost coming in: \(spellingCost)")
-                
-                // TODO: consider best way to structure this flow
-                // - i.e., the return type of each of these wrapping functions
-                // - e.g., (Spelling, (Spelling) -> Float, maxThreshold: Float) -> Float?
-                // - if `nil`, threshold crossed 
-                
-                // node
-                let nodeCost = cost(spelling, nodeRules)
-                spellingCost += nodeCost
-                
-                guard spellingCost < costThreshold else { fatalError() } // todo
-                
-                // edge
-                let edgeCost = cost(spelling, graph, edgeRules)
-                spellingCost += edgeCost
-                
-                guard spellingCost < costThreshold else {
-                    fatalError()
-                }
-                
-                // temporary graph
-                var tempGraph = graph
-                tempGraph.append(spelling)
-                let graphCost = cost(tempGraph, graphRules)
-                spellingCost += graphCost
-                
-                guard spellingCost < costThreshold else { fatalError() } // todo
-                
-                let spellingContext = SpellingContext(
-                    spelling: spelling,
-                    totalCost: spellingCost,
-                    nodeEdgeCost: nodeCost + edgeCost
-                )
-                
-                spellingContexts.append(spellingContext)
-                tempGraph.removeLast()
+            print("pitch class: \(pitchClass); graph: \(graph)")
+            
+            var spellingContexts: [SpellingContext] = []
+            
+            enum CostError: Error { case thresholdExceeded }
+            
+            func incrementTotalCost(_ totalCost: inout Float, with cost: Float) throws {
+                totalCost += cost
+                guard totalCost < costThreshold else { throw CostError.thresholdExceeded }
             }
             
-            guard !spellingContexts.isEmpty else { fatalError() } // todo
+            // refactor: flatmap() -> pitchClass.spellings.flatMap { ... } -> [SpellingContext]
+            for spelling in pitchClass.spellings {
+                
+                print("spelling: \(spelling)")
+                
+                var totalCost = accumCost
+                print("spelling cost coming in: \(totalCost)")
+                
+                do {
+                    let nodeCost = cost(spelling, nodeRules)
+                    try incrementTotalCost(&totalCost, with: nodeCost)
+                    let edgeCost = cost(spelling, graph, edgeRules)
+                    try incrementTotalCost(&totalCost, with: edgeCost)
+                    
+                    // temporary graph -- later graph with probably have ref semantics
+                    var tempGraph = graph
+                    tempGraph.append(spelling)
+                    let graphCost = cost(tempGraph, graphRules)
+                    try incrementTotalCost(&totalCost, with: graphCost)
+                    
+                    let spellingContext = SpellingContext(
+                        spelling: spelling,
+                        totalCost: totalCost,
+                        nodeEdgeCost: nodeCost + edgeCost
+                    )
+                    
+                    spellingContexts.append(spellingContext)
+                    tempGraph.removeLast()
+                } catch {
+                    continue
+                }
+            }
+            
+            print("spelling contexts: ---")
+            spellingContexts.forEach { print($0) }
+            
+            guard !spellingContexts.isEmpty else {
+                fatalError()
+                // TODO: throw error
+            }
             
             for context in spellingContexts.sorted(by: { $0.totalCost < $1.totalCost }) {
                 if context.totalCost < costThreshold {
                     let nodeEdgeCost = context.nodeEdgeCost + nodeEdgeCost
                     var graph = graph
                     graph.append(context.spelling)
+                    
+                    print("remaining: \(remaining)")
+                    
                     return traverseToSpell(
                         remaining,
                         graph: graph,
                         accumCost: accumCost,
                         nodeEdgeCost: nodeEdgeCost
                     )
-                } else {
-                    fatalError()
-                    // bail
-                }
+                } else { continue }
             }
 
             fatalError()
