@@ -102,31 +102,6 @@ class PitchClassSetSpellerTests: XCTestCase {
         [a,b].forEach { XCTAssertEqual(flatSharpIncompatibility(1)($0), 0) }
     }
     
-    // MARK: - Graph Rule tests
-    
-//    func testEighthStepDirectionIncompatibilityPenalized() {
-//        let a = [PitchSpelling(.c, .natural, .down), PitchSpelling(.d, .natural, .up)]
-//        let b = [PitchSpelling(.a, .natural, .up), PitchSpelling(.b, .natural, .down)]
-//        let c = [
-//            PitchSpelling(.a, .natural, .up),
-//            PitchSpelling(.f, .natural, .up),
-//            PitchSpelling(.g, .sharp, .down),
-//            PitchSpelling(.b, .natural),
-//            PitchSpelling(.d, .flat, .down)
-//        ]
-//        
-//        [a,b,c].forEach { XCTAssertEqual(eighthStepDirectionIncompatibility(1)($0), 1) }
-//    }
-//    
-//    func testEighthStepDirectionIncompatibilityNotPenalized() {
-//        let a = [PitchSpelling(.c), PitchSpelling(.d)]
-//        let b = [PitchSpelling(.a), PitchSpelling(.b, .natural, .up)]
-//        let c = [PitchSpelling(.a, .natural, .up), PitchSpelling(.f, .natural, .up)]
-//        let d = [PitchSpelling(.d, .natural, .down), PitchSpelling(.f, .quarterFlat, .down)]
-//        let e = [PitchSpelling(.d, .sharp), PitchSpelling(.f, .quarterFlat, .down)]
-//        [a,b,c,d,e].forEach { XCTAssertEqual(eighthStepDirectionIncompatibility(1)($0), 0) }
-//    }
-    
     // MARK: - Speller tests
     
     func testInit() {
