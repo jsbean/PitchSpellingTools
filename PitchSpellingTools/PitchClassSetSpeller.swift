@@ -185,7 +185,7 @@ public struct PitchClassSetSpeller {
             
             print("pitch class: \(pitchClass); graph: \(graph)")
             
-            var spellingContexts: [SpellingContext] = []
+            //var spellingContexts: [SpellingContext] = []
             
             enum CostError: Error { case thresholdExceeded }
             
@@ -194,13 +194,9 @@ public struct PitchClassSetSpeller {
                 guard totalCost < costThreshold else { throw CostError.thresholdExceeded }
             }
             
-            // refactor: flatmap() -> pitchClass.spellings.flatMap { ... } -> [SpellingContext]
-            for spelling in pitchClass.spellings {
-                
-                print("spelling: \(spelling)")
+            let spellingContexts: [SpellingContext] = pitchClass.spellings.flatMap { spelling in
                 
                 var totalCost = accumCost
-                print("spelling cost coming in: \(totalCost)")
                 
                 do {
                     let nodeCost = cost(spelling, nodeRules)
@@ -220,10 +216,12 @@ public struct PitchClassSetSpeller {
                         nodeEdgeCost: nodeCost + edgeCost
                     )
                     
-                    spellingContexts.append(spellingContext)
                     tempGraph.removeLast()
+                    //spellingContexts.append(spellingContext)
+                    return spellingContext
+                    
                 } catch {
-                    continue
+                    return nil
                 }
             }
             
