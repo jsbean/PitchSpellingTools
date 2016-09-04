@@ -98,10 +98,9 @@ let flatSharpIncompatibility: Rule<Edge> = { costMultiplier in
 let eighthStepDirectionIncompatibility: Rule<Edge> = { costMultiplier in
     return { (a,b) in
         switch (a.eighthStep.rawValue, b.eighthStep.rawValue) {
-        case (0, _), (_, 0), (-0.25, -0.25), (0.25, 0.25): break
+        case (0, _), (_, 0), (-0.25, -0.25), (0.25, 0.25): return 0
         default: return 1
         }
-        return 0
     }
 }
 
@@ -135,13 +134,12 @@ func cost<A>(_ a: A, _ rules: [(A) -> Float]) -> Float {
     return rules.reduce(0) { $0 + $1(a) }
 }
 
-// Edge cost
+/// Cost of a single spelling in relationship to all of the other nodes in a graph
 func cost(_ a: Node, _ graph: Graph, _ rules: [(Edge) -> Float]) -> Float {
     return graph.reduce(0) { $0 + cost((a,$1), rules) }
 }
 
-/// Graph cost
-// No double jeopardy
+/// Graph cost (no double jeopardy applied)
 func cost(_ graph: Graph, _ rules: [(Edge) -> Float]) -> Float {
     for ai in graph.indices {
         let a = graph[ai]
@@ -189,7 +187,8 @@ public struct PitchClassSetSpeller {
             
             for spelling in pitchClass.spellings {
                 
-                var spellingCost: Float = accumCost
+                var spellingCost = accumCost
+                print("spelling cost coming in: \(spellingCost)")
                 
                 // TODO: consider best way to struct this flow
                 // - i.e., the return type of each of these wrapping functions
