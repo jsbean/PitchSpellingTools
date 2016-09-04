@@ -190,7 +190,7 @@ public struct PitchClassSetSpeller {
                 var spellingCost = accumCost
                 print("spelling cost coming in: \(spellingCost)")
                 
-                // TODO: consider best way to struct this flow
+                // TODO: consider best way to structure this flow
                 // - i.e., the return type of each of these wrapping functions
                 // - e.g., (Spelling, (Spelling) -> Float, maxThreshold: Float) -> Float?
                 // - if `nil`, threshold crossed 
