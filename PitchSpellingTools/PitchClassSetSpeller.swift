@@ -156,6 +156,14 @@ func cost(_ graph: Graph, _ rules: [(Edge) -> Float]) -> Float {
 
 public struct PitchClassSetSpeller {
 
+    enum CostError: Error { case thresholdExceeded }
+    
+    struct SpellingContext {
+        let spelling: PitchSpelling
+        let totalCost: Float
+        let nodeEdgeCost: Float
+    }
+    
     private let costThreshold: Float
     private var bestGraphs: [Graph] = []
     private let pitchClassSet: PitchClassSet
@@ -168,91 +176,97 @@ public struct PitchClassSetSpeller {
     
     public func spell() -> SpelledPitchClassSet {
         
-        struct SpellingContext {
-            let spelling: PitchSpelling
-            let totalCost: Float
-            let nodeEdgeCost: Float
-        }
-        
         func traverseToSpell(
             _ pitchClasses: [PitchClass],
             graph: Graph,
-            accumCost: Float,
+            totalCost: Float,
             nodeEdgeCost: Float
         ) -> SpelledPitchClassSet
         {
+
+            // FIXME: ensure `graph` is the right size!
             guard let (pitchClass, remaining) = pitchClasses.destructured else {
-                // FIXME: ensure `graph` is the right size!
                 return SpelledPitchClassSet(graph.map(SpelledPitchClass.init))
             }
+            
+            let contexts = spellingContexts(
+                spellings: pitchClass.spellings,
+                graph: graph,
+                totalCost: totalCost,
+                nodeEdgeCost: nodeEdgeCost
+            )
+            
+            guard !contexts.isEmpty else { fatalError() } // TODO: throw error
+            
+            // FIXME: wrap
+            for context in contexts.sorted(by: { $0.totalCost < $1.totalCost }) {
+                guard context.totalCost < costThreshold else { continue }
+                
+                // FIXME: refactor `Graph` into reference semantic object
+                var graph = graph
+                graph.append(context.spelling)
 
-            enum CostError: Error { case thresholdExceeded }
-            
-            func incrementTotalCost(_ totalCost: inout Float, with cost: Float) throws {
-                totalCost += cost
-                guard totalCost < costThreshold else { throw CostError.thresholdExceeded }
-            }
-            
-            let spellingContexts: [SpellingContext] = pitchClass.spellings.flatMap { spelling in
-                
-                var totalCost = accumCost
-                
-                do {
-                    let nodeCost = cost(spelling, nodeRules)
-                    try incrementTotalCost(&totalCost, with: nodeCost)
-                    let edgeCost = cost(spelling, graph, edgeRules)
-                    try incrementTotalCost(&totalCost, with: edgeCost)
-                    
-                    // temporary graph -- future graph impl with probably have ref semantics
-                    var tempGraph = graph
-                    tempGraph.append(spelling)
-                    let graphCost = cost(tempGraph, graphRules)
-                    try incrementTotalCost(&totalCost, with: graphCost)
-                    
-                    let spellingContext = SpellingContext(
-                        spelling: spelling,
-                        totalCost: totalCost,
-                        nodeEdgeCost: nodeCost + edgeCost
-                    )
-                    
-                    tempGraph.removeLast()
-                    return spellingContext
-                    
-                } catch {
-                    return nil
-                }
-            }
-            
-            print("spelling contexts: ---")
-            spellingContexts.forEach { print($0) }
-            
-            guard !spellingContexts.isEmpty else {
-                fatalError()
-                // TODO: throw error
-            }
-            
-            for context in spellingContexts.sorted(by: { $0.totalCost < $1.totalCost }) {
-                if context.totalCost < costThreshold {
-                    let nodeEdgeCost = context.nodeEdgeCost + nodeEdgeCost
-                    
-                    var graph = graph
-                    graph.append(context.spelling)
-                    
-                    print("remaining: \(remaining)")
-                    
-                    return traverseToSpell(
-                        remaining,
-                        graph: graph,
-                        accumCost: accumCost,
-                        nodeEdgeCost: nodeEdgeCost
-                    )
-                } else { continue }
+                return traverseToSpell(
+                    remaining,
+                    graph: graph,
+                    totalCost: context.totalCost,
+                    nodeEdgeCost: context.nodeEdgeCost
+                )
             }
 
+            // FIXME: must return something real
             fatalError()
         }
         
         let pitchClasses = Array(pitchClassSet)
-        return traverseToSpell(pitchClasses, graph: [], accumCost: 0, nodeEdgeCost: 0)
+        return traverseToSpell(pitchClasses, graph: [], totalCost: 0, nodeEdgeCost: 0)
+    }
+    
+    private func spellingContexts(
+        spellings: [Node],
+        graph: Graph,
+        totalCost: Float,
+        nodeEdgeCost: Float
+    ) -> [SpellingContext]
+    {
+     
+        return spellings.flatMap { spelling in
+            
+            var totalCost = totalCost
+            
+            do {
+                
+                let nodeCost = cost(spelling, nodeRules)
+                try incrementTotalCost(&totalCost, with: nodeCost)
+                let edgeCost = cost(spelling, graph, edgeRules)
+                try incrementTotalCost(&totalCost, with: edgeCost)
+                
+                // FIXME: Refactor `Graph` into reference semantic object
+                // Add method to `Graph.tryout(node: `Node`),
+                // - returns cost of adding that node without adding the node.
+                var tempGraph = graph
+                tempGraph.append(spelling)
+                
+                let graphCost = cost(tempGraph, graphRules)
+                try incrementTotalCost(&totalCost, with: graphCost)
+                
+                let spellingContext = SpellingContext(
+                    spelling: spelling,
+                    totalCost: totalCost,
+                    nodeEdgeCost: nodeCost + edgeCost
+                )
+                
+                tempGraph.removeLast()
+                return spellingContext
+                
+            } catch {
+                return nil
+            }
+        }
+    }
+    
+    private func incrementTotalCost(_ totalCost: inout Float, with cost: Float) throws {
+        totalCost += cost
+        guard totalCost < costThreshold else { throw CostError.thresholdExceeded }
     }
 }
