@@ -180,7 +180,8 @@ public struct PitchClassSetSpeller {
         ) -> SpelledPitchClassSet
         {
             guard let (pitchClass, remaining) = pitchClasses.destructured else {
-                return SpelledPitchClassSet()
+                // FIXME: ensure `graph` is the right size!
+                return SpelledPitchClassSet(graph.map(SpelledPitchClass.init))
             }
 
             enum CostError: Error { case thresholdExceeded }

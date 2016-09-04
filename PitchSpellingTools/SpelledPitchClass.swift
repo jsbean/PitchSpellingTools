@@ -7,17 +7,6 @@
 //
 
 import Pitch
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
 
 /**
  Spelled Pitch Class
@@ -48,6 +37,12 @@ public struct SpelledPitchClass {
     public init(_ pitchClass: PitchClass, _ spelling: PitchSpelling) {
         self.pitchClass = pitchClass
         self.spelling = spelling
+    }
+    
+    // FIXME: Refine relationship between `PitchSpelling` and `SpelledPitchClass`.
+    public init(_ spelling: PitchSpelling) {
+        self.spelling = spelling
+        self.pitchClass = PitchClass(spelling.pitchClass)
     }
 }
 
