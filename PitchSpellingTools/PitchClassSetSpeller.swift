@@ -182,11 +182,7 @@ public struct PitchClassSetSpeller {
             guard let (pitchClass, remaining) = pitchClasses.destructured else {
                 return SpelledPitchClassSet()
             }
-            
-            print("pitch class: \(pitchClass); graph: \(graph)")
-            
-            //var spellingContexts: [SpellingContext] = []
-            
+
             enum CostError: Error { case thresholdExceeded }
             
             func incrementTotalCost(_ totalCost: inout Float, with cost: Float) throws {
