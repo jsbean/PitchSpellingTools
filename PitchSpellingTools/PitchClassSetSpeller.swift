@@ -213,7 +213,6 @@ public struct PitchClassSetSpeller {
                     )
                     
                     tempGraph.removeLast()
-                    //spellingContexts.append(spellingContext)
                     return spellingContext
                     
                 } catch {
