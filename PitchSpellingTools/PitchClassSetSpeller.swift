@@ -31,6 +31,8 @@ typealias Graph = [PitchSpelling]
 /// - `Graph` (aka `[PitchSpelling]`)
 typealias Rule<Input> = (Float) -> (Input) -> Float
 
+// TODO: Move all rules to own file
+
 // MARK: - Node-level rules
 
 let doubleSharpOrDoubleFlat: Rule<Node> = { costMultiplier in
@@ -147,7 +149,7 @@ func cost(_ graph: Graph, _ rules: [(Edge) -> Float]) -> Float {
             let b = graph[bi]
             let cost = rules.reduce(0) { $0 + $1(a,b) }
             if cost > 0 { return cost }
-       }
+        }
     }
     return 0
 }
@@ -201,7 +203,7 @@ public struct PitchClassSetSpeller {
                     let edgeCost = cost(spelling, graph, edgeRules)
                     try incrementTotalCost(&totalCost, with: edgeCost)
                     
-                    // temporary graph -- later graph with probably have ref semantics
+                    // temporary graph -- future graph impl with probably have ref semantics
                     var tempGraph = graph
                     tempGraph.append(spelling)
                     let graphCost = cost(tempGraph, graphRules)
@@ -232,6 +234,7 @@ public struct PitchClassSetSpeller {
             for context in spellingContexts.sorted(by: { $0.totalCost < $1.totalCost }) {
                 if context.totalCost < costThreshold {
                     let nodeEdgeCost = context.nodeEdgeCost + nodeEdgeCost
+                    
                     var graph = graph
                     graph.append(context.spelling)
                     
