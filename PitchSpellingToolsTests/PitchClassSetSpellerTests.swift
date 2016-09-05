@@ -104,9 +104,41 @@ class PitchClassSetSpellerTests: XCTestCase {
     
     // MARK: - Speller tests
     
-    func testDiatonicMonadic() {
+    private func assert(
+        _ spelledPitchClassSet: SpelledPitchClassSet,
+        isEqualTo expected: [PitchSpelling]
+    )
+    {
+        let expected = SpelledPitchClassSet(expected.map(SpelledPitchClass.init))
+        XCTAssertEqual(spelledPitchClassSet, expected)
+    }
+    
+    func testDiatonicMonad() {
         let spelledPitchClassSet = PitchClassSetSpeller([0]).spell()
-        print("c natural: \(spelledPitchClassSet)")
+        assert(spelledPitchClassSet, isEqualTo: [PitchSpelling(.c)])
+    }
+    
+    func testChromaticMonad() {
+        assert(PitchClassSetSpeller([1]).spell(), isEqualTo: [PitchSpelling(.c, .sharp)])
+        assert(PitchClassSetSpeller([3]).spell(), isEqualTo: [PitchSpelling(.e, .flat)])
+        assert(PitchClassSetSpeller([6]).spell(), isEqualTo: [PitchSpelling(.f, .sharp)])
+        assert(PitchClassSetSpeller([8]).spell(), isEqualTo: [PitchSpelling(.a, .flat)])
+        assert(PitchClassSetSpeller([10]).spell(), isEqualTo: [PitchSpelling(.b, .flat)])
+    }
+    
+    func testQuarterToneMonad() {
+        assert(PitchClassSetSpeller([0.5]).spell(), isEqualTo: [PitchSpelling(.c, .quarterSharp)])
+        assert(PitchClassSetSpeller([1.5]).spell(), isEqualTo: [PitchSpelling(.d, .quarterFlat)])
+        assert(PitchClassSetSpeller([2.5]).spell(), isEqualTo: [PitchSpelling(.d, .quarterSharp)])
+        assert(PitchClassSetSpeller([3.5]).spell(), isEqualTo: [PitchSpelling(.e, .quarterFlat)])
+        assert(PitchClassSetSpeller([4.5]).spell(), isEqualTo: [PitchSpelling(.e, .quarterSharp)])
+        assert(PitchClassSetSpeller([5.5]).spell(), isEqualTo: [PitchSpelling(.f, .quarterSharp)])
+        assert(PitchClassSetSpeller([6.5]).spell(), isEqualTo: [PitchSpelling(.g, .quarterFlat)])
+        assert(PitchClassSetSpeller([7.5]).spell(), isEqualTo: [PitchSpelling(.g, .quarterSharp)])
+        assert(PitchClassSetSpeller([8.5]).spell(), isEqualTo: [PitchSpelling(.a, .quarterFlat)])
+        assert(PitchClassSetSpeller([9.5]).spell(), isEqualTo: [PitchSpelling(.a, .quarterSharp)])
+        assert(PitchClassSetSpeller([10.5]).spell(), isEqualTo: [PitchSpelling(.b, .quarterFlat)])
+        assert(PitchClassSetSpeller([11.5]).spell(), isEqualTo: [PitchSpelling(.b, .quarterSharp)])
     }
     
     func testDiatonicTriad() {

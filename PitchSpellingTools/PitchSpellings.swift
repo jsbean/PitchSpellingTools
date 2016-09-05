@@ -238,7 +238,7 @@ internal struct PitchSpellings {
         ],
         
         09.50: [
-            PitchSpelling(.a)
+            PitchSpelling(.a, .quarterSharp)
         ],
         
         09.75: [
