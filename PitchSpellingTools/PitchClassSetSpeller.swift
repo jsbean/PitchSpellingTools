@@ -31,81 +31,6 @@ typealias Graph = [PitchSpelling]
 /// - `Graph` (aka `[PitchSpelling]`)
 typealias Rule<Input> = (Float) -> (Input) -> Float
 
-// TODO: Move all rules to own file
-
-// MARK: - Node-level rules
-
-let doubleSharpOrDoubleFlat: Rule<Node> = { costMultiplier in
-    return { spelling in abs(spelling.quarterStep.rawValue) == 2 ? 1 : 0 }
-}
-
-let threeQuarterSharpOrThreeQuarterFlat: Rule<Node> = { costMultiplier in
-    return { spelling in abs(spelling.quarterStep.rawValue) == 1.5 ? 1 : 0 }
-}
-
-let badEnharmonic: Rule<Node> = { costMultiplier in
-    return { spelling in
-        switch (spelling.letterName, spelling.quarterStep) {
-        case (.b, .sharp), (.e, .sharp), (.c, .flat), (.f, .flat): return 1 * costMultiplier
-        default: return 0
-        }
-    }
-}
-
-let quarterStepEighthStepCombination: Rule<Node> = { costMultiplier in
-    return { spelling in
-        switch (spelling.quarterStep.resolution, abs(spelling.eighthStep.rawValue)) {
-        case (.quarterStep, 0.25): return 1
-        default: return 0
-        }
-    }
-}
-
-// MARK: - Edge-level rules
-
-let unison: Rule<Edge> = { costMultiplier in
-    return { (a,b) in a.letterName == b.letterName ? 1 : 0 }
-}
-
-let augmentedOrDiminished: Rule<Edge> = { costMultiplier in
-    return { (a,b) in
-        switch NamedInterval(a,b).quality {
-        case NamedInterval.Quality.augmented, NamedInterval.Quality.diminished: return 1
-        default: return 0
-        }
-    }
-}
-
-let crossover: Rule<Edge> = { costMultiplier in
-    return { (a,b) in
-        return (a.letterName.steps < b.letterName.steps) != (a.pitchClass < b.pitchClass)
-            ? 1
-            : 0
-    }
-}
-
-/// - TODO: Consider merging this into augmented / diminished
-let flatSharpIncompatibility: Rule<Edge> = { costMultiplier in
-    return { (a,b) in
-        return a.quarterStep.direction.rawValue * b.quarterStep.direction.rawValue == -1
-            ? 1
-            : 0
-    }
-}
-
-// MARK: - Graph-level rules
-
-// FIXME: The graph-level looping should not be implemented within here.
-// - In fact, this is actually an edge rule that has no "double jeopardy".
-let eighthStepDirectionIncompatibility: Rule<Edge> = { costMultiplier in
-    return { (a,b) in
-        switch (a.eighthStep.rawValue, b.eighthStep.rawValue) {
-        case (0, _), (_, 0), (-0.25, -0.25), (0.25, 0.25): return 0
-        default: return 1
-        }
-    }
-}
-
 // MARK: - Rule collections
 
 // Rules for individual spellings out of context
@@ -268,5 +193,80 @@ public struct PitchClassSetSpeller {
     private func incrementTotalCost(_ totalCost: inout Float, with cost: Float) throws {
         totalCost += cost
         guard totalCost < costThreshold else { throw CostError.thresholdExceeded }
+    }
+}
+
+// TODO: Move all rules to own file
+
+// MARK: - Node-level rules
+
+let doubleSharpOrDoubleFlat: Rule<Node> = { costMultiplier in
+    return { spelling in abs(spelling.quarterStep.rawValue) == 2 ? 1 : 0 }
+}
+
+let threeQuarterSharpOrThreeQuarterFlat: Rule<Node> = { costMultiplier in
+    return { spelling in abs(spelling.quarterStep.rawValue) == 1.5 ? 1 : 0 }
+}
+
+let badEnharmonic: Rule<Node> = { costMultiplier in
+    return { spelling in
+        switch (spelling.letterName, spelling.quarterStep) {
+        case (.b, .sharp), (.e, .sharp), (.c, .flat), (.f, .flat): return 1 * costMultiplier
+        default: return 0
+        }
+    }
+}
+
+let quarterStepEighthStepCombination: Rule<Node> = { costMultiplier in
+    return { spelling in
+        switch (spelling.quarterStep.resolution, abs(spelling.eighthStep.rawValue)) {
+        case (.quarterStep, 0.25): return 1
+        default: return 0
+        }
+    }
+}
+
+// MARK: - Edge-level rules
+
+let unison: Rule<Edge> = { costMultiplier in
+    return { (a,b) in a.letterName == b.letterName ? 1 : 0 }
+}
+
+let augmentedOrDiminished: Rule<Edge> = { costMultiplier in
+    return { (a,b) in
+        switch NamedInterval(a,b).quality {
+        case NamedInterval.Quality.augmented, NamedInterval.Quality.diminished: return 1
+        default: return 0
+        }
+    }
+}
+
+let crossover: Rule<Edge> = { costMultiplier in
+    return { (a,b) in
+        return (a.letterName.steps < b.letterName.steps) != (a.pitchClass < b.pitchClass)
+            ? 1
+            : 0
+    }
+}
+
+/// - TODO: Consider merging this into augmented / diminished
+let flatSharpIncompatibility: Rule<Edge> = { costMultiplier in
+    return { (a,b) in
+        return a.quarterStep.direction.rawValue * b.quarterStep.direction.rawValue == -1
+            ? 1
+            : 0
+    }
+}
+
+// MARK: - Graph-level rules
+
+// FIXME: The graph-level looping should not be implemented within here.
+// - In fact, this is actually an edge rule that has no "double jeopardy".
+let eighthStepDirectionIncompatibility: Rule<Edge> = { costMultiplier in
+    return { (a,b) in
+        switch (a.eighthStep.rawValue, b.eighthStep.rawValue) {
+        case (0, _), (_, 0), (-0.25, -0.25), (0.25, 0.25): return 0
+        default: return 1
+        }
     }
 }
