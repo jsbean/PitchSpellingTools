@@ -196,18 +196,19 @@ public struct PitchClassSetSpeller {
     }
 }
 
-// TODO: Move all rules to own file
-
 // MARK: - Node-level rules
 
+/// Avoid double sharp or double flat pitch spellings.
 let doubleSharpOrDoubleFlat: Rule<Node> = { costMultiplier in
     return { spelling in abs(spelling.quarterStep.rawValue) == 2 ? 1 : 0 }
 }
 
+/// Avoid three quarter sharp and three quarter flat pitch spellings.
 let threeQuarterSharpOrThreeQuarterFlat: Rule<Node> = { costMultiplier in
     return { spelling in abs(spelling.quarterStep.rawValue) == 1.5 ? 1 : 0 }
 }
 
+/// Avoid b sharp, e sharp, c flat, and f flat pitch spellings.
 let badEnharmonic: Rule<Node> = { costMultiplier in
     return { spelling in
         switch (spelling.letterName, spelling.quarterStep) {
@@ -217,6 +218,7 @@ let badEnharmonic: Rule<Node> = { costMultiplier in
     }
 }
 
+/// Avoid pitch spellings that have quarter step and eighth step resolutions.
 let quarterStepEighthStepCombination: Rule<Node> = { costMultiplier in
     return { spelling in
         switch (spelling.quarterStep.resolution, abs(spelling.eighthStep.rawValue)) {
@@ -228,10 +230,12 @@ let quarterStepEighthStepCombination: Rule<Node> = { costMultiplier in
 
 // MARK: - Edge-level rules
 
+/// Avoid unison intervals (this assumes that a unique set of pitch classes in the input).
 let unison: Rule<Edge> = { costMultiplier in
     return { (a,b) in a.letterName == b.letterName ? 1 : 0 }
 }
 
+/// Avoid augmented or diminished intervals.
 let augmentedOrDiminished: Rule<Edge> = { costMultiplier in
     return { (a,b) in
         switch NamedInterval(a,b).quality {
@@ -241,6 +245,8 @@ let augmentedOrDiminished: Rule<Edge> = { costMultiplier in
     }
 }
 
+/// Avoid circumstances where the letter name value relationship is not equivalent to the 
+/// pitch class relationship (e.g., b sharp up, c natural)
 let crossover: Rule<Edge> = { costMultiplier in
     return { (a,b) in
         return (a.letterName.steps < b.letterName.steps) != (a.pitchClass < b.pitchClass)
@@ -249,7 +255,10 @@ let crossover: Rule<Edge> = { costMultiplier in
     }
 }
 
-/// - TODO: Consider merging this into augmented / diminished
+
+/// Avoid dyads with sharps and flats.
+///
+/// - TODO: Consider merging this into augmented / diminished.
 let flatSharpIncompatibility: Rule<Edge> = { costMultiplier in
     return { (a,b) in
         return a.quarterStep.direction.rawValue * b.quarterStep.direction.rawValue == -1
@@ -260,8 +269,7 @@ let flatSharpIncompatibility: Rule<Edge> = { costMultiplier in
 
 // MARK: - Graph-level rules
 
-// FIXME: The graph-level looping should not be implemented within here.
-// - In fact, this is actually an edge rule that has no "double jeopardy".
+/// Avoid up and down eighth step value mixtures.
 let eighthStepDirectionIncompatibility: Rule<Edge> = { costMultiplier in
     return { (a,b) in
         switch (a.eighthStep.rawValue, b.eighthStep.rawValue) {
