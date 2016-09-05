@@ -109,6 +109,7 @@ public struct PitchClassSetSpeller {
         ) -> SpelledPitchClassSet
         {
 
+            // Base case: all pitch classes have been spelled
             // FIXME: ensure `graph` is the right size!
             guard let (pitchClass, remaining) = pitchClasses.destructured else {
                 return SpelledPitchClassSet(graph.map(SpelledPitchClass.init))
@@ -278,3 +279,4 @@ let eighthStepDirectionIncompatibility: Rule<Edge> = { costMultiplier in
         }
     }
 }
+

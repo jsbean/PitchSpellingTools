@@ -14,11 +14,10 @@ extension PitchSpelling: CustomStringConvertible {
     
     /// Printed description.
     public var description: String {
-        var result = "("
+        var result = ""
         result += "\(letterName)"
         if quarterStep != .natural { result += " \(quarterStep)" }
         if eighthStep != .none { result += " \(eighthStep)" }
-        result += ")"
         return result
     }
 }

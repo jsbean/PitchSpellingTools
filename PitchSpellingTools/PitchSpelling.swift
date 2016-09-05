@@ -45,6 +45,8 @@ public struct PitchSpelling {
     public let quarterStep: QuarterStepModifier
     
     /// `PitchClass` represented by this `PitchSpelling` value.
+    ///
+    /// - TODO: Refactor to `PitchClass`.
     public var pitchClass: Float {
         return letterName.pitchClass + quarterStep.rawValue + eighthStep.rawValue
     }

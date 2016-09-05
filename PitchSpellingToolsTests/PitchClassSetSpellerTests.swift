@@ -104,7 +104,12 @@ class PitchClassSetSpellerTests: XCTestCase {
     
     // MARK: - Speller tests
     
-    func testInit() {
+    func testDiatonicMonadic() {
+        let spelledPitchClassSet = PitchClassSetSpeller([0]).spell()
+        print("c natural: \(spelledPitchClassSet)")
+    }
+    
+    func testDiatonicTriad() {
         let pitchClassSet: PitchClassSet = [0,2,4]
         let speller = PitchClassSetSpeller(pitchClassSet)
         let spelledPitchClassSet = speller.spell()
