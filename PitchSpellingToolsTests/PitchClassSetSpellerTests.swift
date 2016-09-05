@@ -126,6 +126,7 @@ class PitchClassSetSpellerTests: XCTestCase {
         assert(PitchClassSetSpeller([10]).spell(), isEqualTo: [PitchSpelling(.b, .flat)])
     }
     
+    // FIXME: Abstract this to an array: [(Float, (.letterName, .quarterStep))]
     func testQuarterToneMonad() {
         assert(PitchClassSetSpeller([0.5]).spell(), isEqualTo: [PitchSpelling(.c, .quarterSharp)])
         assert(PitchClassSetSpeller([1.5]).spell(), isEqualTo: [PitchSpelling(.d, .quarterFlat)])
@@ -139,6 +140,15 @@ class PitchClassSetSpellerTests: XCTestCase {
         assert(PitchClassSetSpeller([9.5]).spell(), isEqualTo: [PitchSpelling(.a, .quarterSharp)])
         assert(PitchClassSetSpeller([10.5]).spell(), isEqualTo: [PitchSpelling(.b, .quarterFlat)])
         assert(PitchClassSetSpeller([11.5]).spell(), isEqualTo: [PitchSpelling(.b, .quarterSharp)])
+    }
+    
+    func testDiatonicDyad() {
+        let dyad: PitchClassSet = [0,2]
+        assert(PitchClassSetSpeller(dyad).spell(), isEqualTo: [PitchSpelling(.c), PitchSpelling(.d)])
+    }
+    
+    func testChromaticDyad() {
+        
     }
     
     func testDiatonicTriad() {
