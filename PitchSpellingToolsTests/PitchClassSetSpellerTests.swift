@@ -147,14 +147,26 @@ class PitchClassSetSpellerTests: XCTestCase {
         assert(PitchClassSetSpeller(dyad).spell(), isEqualTo: [PitchSpelling(.c), PitchSpelling(.d)])
     }
     
-    func testChromaticDyad() {
-        
+    func testChromaticDiatonicDyad() {
+        assert(
+            PitchClassSetSpeller([1,2]).spell(),
+            isEqualTo: [PitchSpelling(.c, .sharp), PitchSpelling(.d)]
+        )
     }
+    
+    /// - note: Consider (d flat, e flat) vs (c sharp, d sharp)
+    func testChromaticDyad() {
+        assert(
+            PitchClassSetSpeller([1,3]).spell(),
+            isEqualTo: [PitchSpelling(.c, .sharp), PitchSpelling(.d, .sharp)]
+        )
+    }
+    
+    
     
     func testDiatonicTriad() {
         let pitchClassSet: PitchClassSet = [0,2,4]
         let speller = PitchClassSetSpeller(pitchClassSet)
-        let spelledPitchClassSet = speller.spell()
-        print("spelled pitch class set: \(spelledPitchClassSet)")
+        let _ = speller.spell()
     }
 }
