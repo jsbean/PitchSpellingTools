@@ -23,13 +23,75 @@ import Pitch
  
  - TODO: Create names for quarter-step and eighth-step modified intervals
  
- - TODO: Consider creating better names for `family` / `Family`. Traditionally, `class` is
-    used; however, `class` is a reserved keyword in Swift.
- 
  - TODO: Use actual specialized `Interval` and `IntervlClass` value types, as opposed to
     throwing anonymous `Float` values around.
  */
 public struct NamedInterval {
+    
+    /**
+     Ordinal of `NamedInterval`.
+     
+     - TODO: Add documentation!
+     */
+    public enum Ordinal: Int {
+        
+        /// Unison ordinal.
+        case unison = 0
+        
+        /// Second ordinal.
+        case second = 1
+        
+        /// Third ordinal.
+        case third = 2
+        
+        /// Fourth ordinal.
+        case fourth = 3
+        
+        /// Fifth ordinal.
+        case fifth = 4
+        
+        /// Sixth ordinal.
+        case sixth = 5
+        
+        /// Seventh ordinal.
+        case seventh = 6
+        
+        /**
+         Perfect and imperfect class of interval ordinal.
+         */
+        public enum Family: String {
+            
+            /**
+             Perfect interval family (e.g., `.unison`, `.fourth`, `.fifth`)
+             
+             > `.diminished`, `.perfect`, and `.augmented` interval qualities allowed.
+             */
+            case perfect
+            
+            /**
+             Imperfect interval family (e.g., `.second`, `.third`, `.sixth`, `.seventh`)
+             
+             > `.diminished`, `.minor`, `.major`, and `.augmented` interval qualities allowed.
+             */
+            case imperfect
+        }
+        
+        /**
+         The inverse of an `Ordinal`
+         (e.g., `.second.inverse == .seventh`, `.third.inverse == .sixth`, etc).
+         */
+        public var inverse: Ordinal {
+            return Ordinal(rawValue: 7 - rawValue)!
+        }
+        
+        /// `Family` of an `Ordinal`.
+        public var family: Family {
+            switch self {
+            case .unison, .fourth, .fifth: return .perfect
+            default: return .imperfect
+            }
+        }
+    }
     
     /**
      `Quality` of a `NamedInterval`.
@@ -42,7 +104,7 @@ public struct NamedInterval {
          `Degree` of a `Quality` (e.g., `double augmented second`).
          
          - note: Only applicable for `.augmented` and `.diminished` values.
-        */
+         */
         public enum Degree: Int {
             case quintuple = 5
             case quadruple = 4
@@ -80,7 +142,7 @@ public struct NamedInterval {
          (e.g., `.major.inverse == .minor`, `.perfect.inverse == .perfect`, etc).
          
          - TODO: Make table of inverse `Quality` pairs.
-        */
+         */
         public var inverse: Quality {
             return Quality(rawValue: -1 * rawValue, degree: degree)
         }
@@ -112,7 +174,7 @@ public struct NamedInterval {
         // MARK: - Subscripts
         
         /**
-         - returns: Quality with the given `degree` if `.diminished` or `.augmented`. 
+         - returns: Quality with the given `degree` if `.diminished` or `.augmented`.
          Otherwise, `nil`.
          */
         public subscript (degree: Degree) -> Quality? {
@@ -128,7 +190,7 @@ public struct NamedInterval {
         
         /**
          - returns: `true` if this `Quality` is valid for a given `Ordinal`. Otherwise, `false`.
-        
+         
          > One cannot have a major fifth, etc.
          
          - TODO: Flesh out documentation.
@@ -159,8 +221,10 @@ public struct NamedInterval {
         }
     }
     
+    // MARK: - Type Methods
+    
     /**
-     - returns: `Quality` for the given `normalizedIntervalClass` value, and the given 
+     - returns: `Quality` for the given `normalizedIntervalClass` value, and the given
      `ordinal` value.
      
      - TODO: Find more elegant way to do this. This implementation & api exists only
@@ -190,7 +254,7 @@ public struct NamedInterval {
         default: fatalError() // impossible
         }
     }
-
+    
     // MARK: - Instance Properties
     
     /**
@@ -258,7 +322,7 @@ public struct NamedInterval {
      Helper initializer that gathers the ordinal and quality from the given `steps` and 
         `intervalClass`.
      */
-    fileprivate init?(steps: Int, intervalClass: Float) {
+    public init?(steps: Int, intervalClass: Float) {
         guard let ordinal = NamedInterval.Ordinal(rawValue: steps) else { return nil }
         print("ordianal: \(ordinal)")
         let quality = NamedInterval.quality(for: intervalClass, ordinal: ordinal)
@@ -268,7 +332,7 @@ public struct NamedInterval {
 }
 
 /// - returns: Delta between letter name steps of two `SpelledPitch` values.
-fileprivate func steps(_ a: SpelledPitch, _ b: SpelledPitch) -> Int {
+public func steps(_ a: SpelledPitch, _ b: SpelledPitch) -> Int {
     return Int.mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7)
 }
 /**
@@ -276,7 +340,7 @@ fileprivate func steps(_ a: SpelledPitch, _ b: SpelledPitch) -> Int {
  
  - TODO: Return `Interval` rather than `Float`.
  */
-fileprivate func interval(_ a: SpelledPitch, _ b: SpelledPitch) -> Float {
+public func interval(_ a: SpelledPitch, _ b: SpelledPitch) -> Float {
     return b.pitch.noteNumber.value - a.pitch.noteNumber.value
 }
 
@@ -284,7 +348,7 @@ fileprivate func interval(_ a: SpelledPitch, _ b: SpelledPitch) -> Float {
  - returns: The given `intervalClass`, enforcing positive values if there is a `unison`
  relationship.
  */
-private func adjustedIntervalClass(_ intervalClass: Float, steps: Int) -> Float {
+public func adjustedIntervalClass(_ intervalClass: Float, steps: Int) -> Float {
     return steps == 0 ? abs(intervalClass) : intervalClass
 }
 
@@ -293,14 +357,14 @@ private func adjustedIntervalClass(_ intervalClass: Float, steps: Int) -> Float 
  
  - TODO: Return `IntervalClass` instead of `Float`.
  */
-private func normalizedIntervalClass(_ normalizedInterval: Float)  -> Float {
+public func normalizedIntervalClass(_ normalizedInterval: Float)  -> Float {
     return Float.mod(normalizedInterval + 6.0, 12.0) - 6.0
 }
 
 /**
  - returns: The ideal interval class for the given `steps`.
  */
-private func idealIntervalClass(steps: Int) -> Float {
+public func idealIntervalClass(steps: Int) -> Float {
     let steps = Int.mod(steps, 4) // remove fifths, sixths, sevenths
     var idealInterval: Float {
         switch steps {
