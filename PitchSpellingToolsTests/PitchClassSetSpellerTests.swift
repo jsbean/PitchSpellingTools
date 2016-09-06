@@ -161,12 +161,11 @@ class PitchClassSetSpellerTests: XCTestCase {
             isEqualTo: [PitchSpelling(.c, .sharp), PitchSpelling(.d, .sharp)]
         )
     }
-    
-    
-    
+
     func testDiatonicTriad() {
-        let pitchClassSet: PitchClassSet = [0,2,4]
-        let speller = PitchClassSetSpeller(pitchClassSet)
-        let _ = speller.spell()
+        assert(
+            PitchClassSetSpeller([0,2,4]).spell(),
+            isEqualTo: [PitchSpelling(.c), PitchSpelling(.d), PitchSpelling(.e)]
+        )
     }
 }
