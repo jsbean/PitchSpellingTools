@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// Rule that takes a cost multiplier, and a given input (either a single pitch spelling, or
+/// a pair of pitch spellings), and returns a penalty.
 typealias Rule<Input> = (Float) -> (Input) -> Float
 
 // MARK: - Node-level rules
