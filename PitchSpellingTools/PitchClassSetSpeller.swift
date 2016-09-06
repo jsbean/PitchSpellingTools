@@ -9,17 +9,6 @@
 import ArrayTools
 import Pitch
 
-// MARK: - Typealiases
-
-/// Single `PitchSpelling` value.
-typealias Node = PitchSpelling
-
-/// Pair of `PitchSpelling` values.
-typealias Edge = (PitchSpelling, PitchSpelling)
-
-/// All `PitchSpelling` values comprising a graph.
-typealias Graph = [PitchSpelling]
-
 /// Defintion of a spelling rule that takes a cost multiplier and an input, returning a cost.
 ///
 /// The cost multiplier can be used within the closure to worsen the penalty depending on 
