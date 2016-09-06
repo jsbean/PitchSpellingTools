@@ -32,71 +32,6 @@ import Pitch
 public struct NamedInterval {
     
     /**
-     Ordinal of `NamedInterval`.
-     
-     - TODO: Add documentation!
-    */
-    public enum Ordinal: Int {
-
-        /// Unison ordinal.
-        case unison = 0
-        
-        /// Second ordinal.
-        case second = 1
-        
-        /// Third ordinal.
-        case third = 2
-        
-        /// Fourth ordinal.
-        case fourth = 3
-        
-        /// Fifth ordinal.
-        case fifth = 4
-        
-        /// Sixth ordinal.
-        case sixth = 5
-        
-        /// Seventh ordinal.
-        case seventh = 6
-
-        /**
-         Perfect and imperfect class of interval ordinal.
-         */
-        public enum Family: String {
-            
-            /**
-             Perfect interval family (e.g., `.unison`, `.fourth`, `.fifth`)
-             
-             > `.diminished`, `.perfect`, and `.augmented` interval qualities allowed.
-            */
-            case perfect
-            
-            /**
-             Imperfect interval family (e.g., `.second`, `.third`, `.sixth`, `.seventh`)
-             
-             > `.diminished`, `.minor`, `.major`, and `.augmented` interval qualities allowed.
-            */
-            case imperfect
-        }
-
-        /**
-         The inverse of an `Ordinal` 
-         (e.g., `.second.inverse == .seventh`, `.third.inverse == .sixth`, etc).
-        */
-        public var inverse: Ordinal {
-            return Ordinal(rawValue: 7 - rawValue)!
-        }
-
-        /// `Family` of an `Ordinal`.
-        public var family: Family {
-            switch self {
-            case .unison, .fourth, .fifth: return .perfect
-            default: return .imperfect
-            }
-        }
-    }
-    
-    /**
      `Quality` of a `NamedInterval`.
      
      - TODO: Add documentation!
@@ -293,6 +228,8 @@ public struct NamedInterval {
      - TODO: Add examples to documentation.
      */
     public init?(_ degree: Quality.Degree, _ quality: Quality, _ ordinal: Ordinal) {
+        print("degree: \(degree)")
+        print("quality: \(quality)")
         guard let quality = quality[degree] else { return nil }
         self.init(quality, ordinal)
     }
@@ -301,10 +238,12 @@ public struct NamedInterval {
      Create a `NamedInterval` with two `SpelledPitch` values.
      */
     public init(_ a: SpelledPitch, _ b: SpelledPitch) {
+        print("a: \(a); b: \(b)")
         let letterNameSteps = steps(a,b)
         let ideal = idealIntervalClass(steps: letterNameSteps)
         let normalized = normalizedIntervalClass(interval(a,b) - ideal)
         let intervalClass = adjustedIntervalClass(normalized, steps: letterNameSteps)
+        print("intervalClass: \(intervalClass)")
         self.init(steps: letterNameSteps, intervalClass: intervalClass)!
     }
     
@@ -321,7 +260,9 @@ public struct NamedInterval {
      */
     fileprivate init?(steps: Int, intervalClass: Float) {
         guard let ordinal = NamedInterval.Ordinal(rawValue: steps) else { return nil }
+        print("ordianal: \(ordinal)")
         let quality = NamedInterval.quality(for: intervalClass, ordinal: ordinal)
+        print("quality: \(quality)")
         self.init(quality, ordinal)
     }
 }

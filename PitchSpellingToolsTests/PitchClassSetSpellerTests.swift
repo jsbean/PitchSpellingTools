@@ -161,6 +161,14 @@ class PitchClassSetSpellerTests: XCTestCase {
             isEqualTo: [PitchSpelling(.c, .sharp), PitchSpelling(.d, .sharp)]
         )
     }
+    
+//    func testQuarterStepMixedDyad() {
+//        // 0, 0.5
+//        assert(
+//            PitchClassSetSpeller([0,0.5]).spell(),
+//            isEqualTo: [PitchSpelling(.c), PitchSpelling(.d, .threeQuarterFlat)]
+//        )
+//    }
 
     func testDiatonicTriad() {
         assert(
