@@ -1,51 +1,21 @@
 # PitchSpellingTools
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Build Status](https://travis-ci.org/dn-m/PitchSpellingTools.svg?branch=master)](https://travis-ci.org/dn-m/PitchSpellingTools)
 
-Structures that enable the spelling of pitches. Compatible with macOS and iOS.
-
-See the [documentation](http://dn-m.github.io/PitchSpellingTools/).
-
-***
-
-## Usage
-
-This framework has several dependencies, though they all originate from the [dn-m](https://github.com/dn-m) project.  
-
-Use [Carthage](https://github.com/Carthage/Carthage) to keep these dependencies up-to-date. Follow [these instructions](https://github.com/Carthage/Carthage#installing-carthage) to install Carthage, if necessary.
-
-### Clone
-
-To work on this framework on its own:
-
-1. **Clone this repo:**
->```Bash
->git clone https://github.com/dn-m/PitchSpellingTools
->cd PitchSpellingTools
->```
-
-2. **Call upon Carthage to manage the dependencies herein:**
->```Bash
->carthage update
->```
-
-3. **Open the Xcodeproj:**
->```Bash
->open PitchSpellingTools.xcodeproj
->```
-
-4. **Run the tests** by hitting `⌘ + u`.
+[![Build Status](https://travis-ci.org/dn-m/DictionaryTools.svg?branch=master)](https://travis-ci.org/dn-m/PitchSpellingTools)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) 
+[![GitHub version](https://badge.fury.io/gh/dn-m%2FDictionaryTools.svg)](https://badge.fury.io/gh/dn-m%2FPitchSpellingTools)
 
 <a name="integration"></a>
-### Integrate
+## Integration
 
-To integrate **PitchSpellingTools** into your macOS or iOS project, follow these steps: 
+### Carthage
+Integrate **PitchSpellingTools** into your OSX or iOS project with [Carthage](https://github.com/Carthage/Carthage).
 
-1. Add `github "dn-m/PitchSpellingTools"` to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile) 
-2. Follow [these instructions](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application) to integrate **PitchSpellingTools** into your macOS or iOS project.
+1. Follow [these instructions](https://github.com/Carthage/Carthage#installing-carthage) to install Carthage, if necessary.
+2. Add  to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile) 
+3. Follow [these instructions](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application) to integrate **PitchSpellingTools** into your OSX or iOS project.
 
 ***
 
+### Documentation
 
-
-
- 
+See the [documentation](http://dn-m.github.io/PitchSpellingTools/).
