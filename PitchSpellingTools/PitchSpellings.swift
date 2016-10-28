@@ -11,7 +11,8 @@ import Pitch
 
 internal struct PitchSpellings {
     
-    private static let spellingsByPitchClass: [PitchClass: [PitchSpelling]] = [
+    /// - FIXME: Ensure this is exhaustive and correct!
+    fileprivate static let spellingsByPitchClass: [PitchClass: [PitchSpelling]] = [
         
         00.00: [
             PitchSpelling(.c),
@@ -237,7 +238,7 @@ internal struct PitchSpellings {
         ],
         
         09.50: [
-            PitchSpelling(.a)
+            PitchSpelling(.a, .quarterSharp)
         ],
         
         09.75: [

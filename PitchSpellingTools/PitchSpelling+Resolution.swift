@@ -10,6 +10,9 @@ import Foundation
 
 extension PitchSpelling {
     
+    /**
+     Resolution of a `PitchSpelling`.
+     */
     public enum Resolution: Float {
         
         // chromatic
@@ -24,9 +27,9 @@ extension PitchSpelling {
     
     /// `Resolution` (e.g., halfstep (chromatic), quarter-step, or eighth-step)
     public var resolution: Resolution {
-        return fine != .none
+        return eighthStep != .none
             ? .eighthStep
-            : coarse.resolution == .quarterStep ? .quarterStep
+            : quarterStep.resolution == .quarterStep ? .quarterStep
             : .halfStep
     }
     
@@ -36,9 +39,9 @@ extension PitchSpelling {
     public func quantized(to resolution: Resolution) -> PitchSpelling {
         switch resolution {
         case .quarterStep:
-            return PitchSpelling(letterName: letterName, coarse: coarse, fine: .none)
-        case .halfStep where coarse.resolution == .quarterStep:
-            return PitchSpelling(letterName, coarse.quantizedToHalfStep, .none)
+            return PitchSpelling(letterName, quarterStep, .none)
+        case .halfStep where quarterStep.resolution == .quarterStep:
+            return PitchSpelling(letterName, quarterStep.quantizedToHalfStep, .none)
         default:
             return self
         }

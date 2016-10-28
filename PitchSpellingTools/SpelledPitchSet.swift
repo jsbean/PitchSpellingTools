@@ -13,28 +13,19 @@ import Pitch
  */
 public struct SpelledPitchSet {
     
-    private let pitches: Set<SpelledPitch>
+    fileprivate let pitches: Set<SpelledPitch>
     
     // MARK: - Initializers
     
     /**
      Create a `SpelledPitchSet` with an array of `SpelledPitch` values.
      */
-    public init<S: SequenceType where S.Generator.Element == SpelledPitch>(_ pitches: S) {
+    public init<S: Sequence>(_ pitches: S) where S.Iterator.Element == SpelledPitch {
         self.pitches = Set(pitches)
     }
-    
-//    /**
-//     Create a `SpelledPitchSet` for a given `PitchSet` value.
-//     
-//     - throws: `PitchSpelling.Error` if the given `pitchSet` cannot be spelled with current technology.
-//     */
-//    public init(_ pitchSet: PitchSet) throws {
-//        self = try PitchSetSpeller(pitchSet).spell()
-//    }
 }
 
-extension SpelledPitchSet: ArrayLiteralConvertible {
+extension SpelledPitchSet: ExpressibleByArrayLiteral {
     
     public typealias Element = SpelledPitch
     
@@ -43,14 +34,14 @@ extension SpelledPitchSet: ArrayLiteralConvertible {
     }
 }
 
-extension SpelledPitchSet: SequenceType {
+extension SpelledPitchSet: Sequence {
     
     // MARK: - SequenceType
     
     /// Generate `Pitches` for iteration.
-    public func generate() -> AnyGenerator<SpelledPitch> {
-        var generator = pitches.generate()
-        return AnyGenerator { return generator.next() }
+    public func makeIterator() -> AnyIterator<SpelledPitch> {
+        var generator = pitches.makeIterator()
+        return AnyIterator { return generator.next() }
     }
 }
 

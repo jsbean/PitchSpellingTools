@@ -10,12 +10,14 @@ import Foundation
 
 extension PitchSpelling: CustomStringConvertible {
     
+    // MARK: - CustomStringConvertible
+    
+    /// Printed description.
     public var description: String {
-        var result = "("
+        var result = ""
         result += "\(letterName)"
-        if coarse != .natural { result += " \(coarse)" }
-        if fine != .none { result += " \(fine)" }
-        result += ")"
+        if quarterStep != .natural { result += " \(quarterStep)" }
+        if eighthStep != .none { result += " \(eighthStep)" }
         return result
     }
 }

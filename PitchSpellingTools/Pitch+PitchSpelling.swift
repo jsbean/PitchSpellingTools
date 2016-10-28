@@ -21,12 +21,12 @@ extension Pitch {
      ```
      */
     public var canBeSpelledObjectively: Bool {
-        return spellings.anySatisfy({ $0.coarse == .natural && $0.fine == .none })
+        return spellings.anySatisfy({ $0.quarterStep == .natural && $0.eighthStep == .none })
     }
  
     /// All `PitchSpelling` structures available for this `Pitch`.
     public var spellings: [PitchSpelling] {
-        return PitchSpellings.spellings(forPitchClass: pitchClass) ?? []
+        return pitchClass.spellings
     }
     
     /// - TODO: Encapsulate this logic within `PitchSpellings` `struct`.
@@ -35,27 +35,27 @@ extension Pitch {
         
         // c flat
         spellings = spellings.filter {
-            !($0.letterName == .c && $0.coarse == .flat)
+            !($0.letterName == .c && $0.quarterStep == .flat)
         }
         
         // f flat
         spellings = spellings.filter {
-            !($0.letterName == .f && $0.coarse == .flat)
+            !($0.letterName == .f && $0.quarterStep == .flat)
         }
         
         // e sharp
         spellings = spellings.filter {
-            !($0.letterName == .e && $0.coarse == .sharp)
+            !($0.letterName == .e && $0.quarterStep == .sharp)
         }
         
         // b sharp
         spellings = spellings.filter {
-            !($0.letterName == .b && $0.coarse == .sharp)
+            !($0.letterName == .b && $0.quarterStep == .sharp)
         }
         
         // double flats and sharps
         spellings = spellings.filter {
-            !($0.coarse == .doubleSharp || $0.coarse == .doubleFlat)
+            !($0.quarterStep == .doubleSharp || $0.quarterStep == .doubleFlat)
         }
         
         return spellings
@@ -75,9 +75,9 @@ extension Pitch {
      - TODO: make `throw` in the case of a strange resolution (e.g., 60.81356)
      */
     public var resolution: Float {
-        if noteNumber.value % 1.0 == 0.0 { return 1.0 }
-        else if noteNumber.value % 0.5 == 0.0 { return 0.5 }
-        else if noteNumber.value % 0.25 == 0.0 { return 0.25 }
+        if noteNumber.value.truncatingRemainder(dividingBy: 1.0) == 0.0 { return 1.0 }
+        else if noteNumber.value.truncatingRemainder(dividingBy: 0.5) == 0.0 { return 0.5 }
+        else if noteNumber.value.truncatingRemainder(dividingBy: 0.25) == 0.0 { return 0.25 }
         return 0.0
     }
     
@@ -92,8 +92,8 @@ extension Pitch {
      */
     public func spelled(with spelling: PitchSpelling) throws -> SpelledPitch {
         
-        guard spelling.isValid(forPitch: self) else {
-            throw PitchSpelling.Error.invalidSpelling(self, spelling)
+        guard spelling.isValid(for: self) else {
+            throw PitchSpelling.SpellingError.invalidSpelling(self, spelling)
         }
         
         return SpelledPitch(pitch: self, spelling: spelling)
@@ -106,7 +106,7 @@ extension Pitch {
      */
     public func spelledWithDefaultSpelling() throws -> SpelledPitch {
         guard let defaultSpelling = defaultSpelling else {
-            throw PitchSpelling.Error.noSpellingForPitch(self)
+            throw PitchSpelling.SpellingError.noSpellingForPitch(self)
         }
         
         return try spelled(with: defaultSpelling)

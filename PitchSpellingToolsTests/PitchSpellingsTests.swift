@@ -13,7 +13,7 @@ import Pitch
 class PitchSpellingsTests: XCTestCase {
 
     func testDefaultPitchSpellingsForEighthToneResolution() {
-        Float(0).stride(to: 12.0, by: 0.25).forEach {
+        stride(from: Float(0), to: 12.0, by: 0.25).forEach {
             XCTAssertNotNil(
                 PitchSpellings.defaultSpelling(forPitchClass: PitchClass(floatLiteral: $0))
             )

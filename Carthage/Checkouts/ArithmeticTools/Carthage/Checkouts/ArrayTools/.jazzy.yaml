@@ -1,0 +1,18 @@
+module: ArrayTools
+author: James Bean
+author_url: http://github.io/dn-m/ArrayTools
+github_url: https://github.com/dn-m/ArrayTools
+min_acl: public
+readme: /README.md
+swift_version: 2.2
+
+custom_categories:
+  - name: Data Structures
+    children:
+    - SortedArray
+    - Stack
+
+  - name: Error
+    children:
+    - ArrayError
+    
