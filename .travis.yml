@@ -1,11 +1,9 @@
 language: objective-c
 osx_image: xcode8
-xcode_project: PitchSpellingTools.xcodeproj
-xcode_scheme: PitchSpellingToolsMac
-xcode_sdk: macosx
-before_script:
-  - carthage bootstrap
+env:
+  matrix:
+    - DESTINATION="platform=iOS Simulator,OS=10.0,name=iPad Pro (12.9 inch)"
 
-before_install:
-  - brew update
-  - brew outdated xctool || brew upgrade xctool
+before_script: carthage update
+
+script: xcodebuild test -project PitchSpellingTools.xcodeproj -scheme PitchSpellingTools -destination "${DESTINATION}" TOOLCHAINS=swift
