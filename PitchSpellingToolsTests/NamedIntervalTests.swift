@@ -51,4 +51,8 @@ class NamedIntervalTests: XCTestCase {
     func testQualitySingleNotNil() {
         XCTAssertNotNil(NamedInterval.Quality.major[.single])
     }
+    
+    func testInitUnisonQuarterToneAugmentedNotNil() {
+        XCTAssertNotNil(NamedInterval(steps: 0, intervalClass: 0.5))
+    }
 }

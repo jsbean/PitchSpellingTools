@@ -292,7 +292,6 @@
 				079B19DB1D5CD59F007D506B /* PitchSpelling+Comparable.swift */,
 				074B33671D31166C0042104B /* PitchSpelling+CustomStringConvertible.swift */,
 				074B336F1D31166C0042104B /* PitchSpellings.swift */,
-				07D4E3AE1D5A3FB8007F2D3A /* NamedInterval.swift */,
 			);
 			name = PitchSpelling;
 			sourceTree = "<group>";
@@ -402,6 +401,7 @@
 			children = (
 				07BE559E1D7F793D00732845 /* Speller */,
 				079B19DE1D5CDA69007D506B /* PitchSpelling */,
+				07D4E3AE1D5A3FB8007F2D3A /* NamedInterval.swift */,
 				074B33591D31166C0042104B /* Interval+PitchSpelling.swift */,
 				074B335A1D31166C0042104B /* IntervalClass+PitchSpelling.swift */,
 				074B33631D31166C0042104B /* PitchClass+PitchSpelling.swift */,

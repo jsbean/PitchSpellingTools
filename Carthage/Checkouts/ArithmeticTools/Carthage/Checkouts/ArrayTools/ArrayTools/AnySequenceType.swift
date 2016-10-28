@@ -51,9 +51,9 @@ extension AnySequenceType {
     /**
      Returns a generator over the elements of this sequence.
      */
-    public func generate() -> AnyIterator<Element> {
-        let generator = sequence.makeIterator()
-        return AnyIterator { return generator.next() }
+    public func makeIterator() -> AnyIterator<Element> {
+        let iterator = sequence.makeIterator()
+        return AnyIterator { return iterator.next() }
     }
 }
 

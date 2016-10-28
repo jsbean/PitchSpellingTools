@@ -234,19 +234,31 @@ public struct NamedInterval {
     public static func quality(for normalizedIntervalClass: Float, ordinal: Ordinal)
         -> Quality
     {
-        let diminished: Float = ordinal.family == .perfect ? -1 : -1.5
-        let augmented: Float = ordinal.family == .perfect ? 1 : 1.5
+        
+        print("normalized interval class: \(normalizedIntervalClass)")
+        
+        let diminished: Float = ordinal == .unison
+            ? -0.5
+            : ordinal.family == .perfect
+                ? -1
+                : -1.5
+        
+        let augmented: Float = ordinal == .unison
+            ? 0.5
+            : ordinal.family == .perfect
+                ? 1
+                : 1.5
         
         switch normalizedIntervalClass {
+        case diminished: return Quality.diminished
+        case augmented: return Quality.augmented
         case _ where normalizedIntervalClass < diminished:
             let degreeValue = Int(abs(normalizedIntervalClass - diminished - 1))
             let degree = Quality.Degree(rawValue: degreeValue)!
             return Quality.diminished[degree]!
-        case diminished: return Quality.diminished
         case -0.5: return Quality.minor
         case +0.0: return Quality.perfect
         case +0.5: return Quality.major
-        case augmented: return Quality.augmented
         case _ where normalizedIntervalClass > augmented:
             let degreeValue = Int(abs(normalizedIntervalClass - augmented + 1))
             let degree = Quality.Degree(rawValue: degreeValue)!
@@ -304,8 +316,11 @@ public struct NamedInterval {
     public init(_ a: SpelledPitch, _ b: SpelledPitch) {
         print("a: \(a); b: \(b)")
         let letterNameSteps = steps(a,b)
+        print("letter name steps: \(letterNameSteps)")
         let ideal = idealIntervalClass(steps: letterNameSteps)
+        print("ideal interval class: \(ideal)")
         let normalized = normalizedIntervalClass(interval(a,b) - ideal)
+        print("normalized interval class: \(normalized)")
         let intervalClass = adjustedIntervalClass(normalized, steps: letterNameSteps)
         print("intervalClass: \(intervalClass)")
         self.init(steps: letterNameSteps, intervalClass: intervalClass)!
@@ -324,7 +339,7 @@ public struct NamedInterval {
      */
     public init?(steps: Int, intervalClass: Float) {
         guard let ordinal = NamedInterval.Ordinal(rawValue: steps) else { return nil }
-        print("ordianal: \(ordinal)")
+        print("ordinal: \(ordinal)")
         let quality = NamedInterval.quality(for: intervalClass, ordinal: ordinal)
         print("quality: \(quality)")
         self.init(quality, ordinal)
@@ -349,6 +364,7 @@ public func interval(_ a: SpelledPitch, _ b: SpelledPitch) -> Float {
  relationship.
  */
 public func adjustedIntervalClass(_ intervalClass: Float, steps: Int) -> Float {
+    print("adjusting interval class: \(intervalClass); steps: \(steps)")
     return steps == 0 ? abs(intervalClass) : intervalClass
 }
 
@@ -365,6 +381,7 @@ public func normalizedIntervalClass(_ normalizedInterval: Float)  -> Float {
  - returns: The ideal interval class for the given `steps`.
  */
 public func idealIntervalClass(steps: Int) -> Float {
+    print("ideal interval class for steps: \(steps)")
     let steps = Int.mod(steps, 4) // remove fifths, sixths, sevenths
     var idealInterval: Float {
         switch steps {

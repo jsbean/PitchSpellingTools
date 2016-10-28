@@ -162,13 +162,16 @@ class PitchClassSetSpellerTests: XCTestCase {
         )
     }
     
-//    func testQuarterStepMixedDyad() {
-//        // 0, 0.5
-//        assert(
-//            PitchClassSetSpeller([0,0.5]).spell(),
-//            isEqualTo: [PitchSpelling(.c), PitchSpelling(.d, .threeQuarterFlat)]
-//        )
-//    }
+    // FIXME: Currently crashing named interval creation
+    /*
+    func testQuarterStepMixedDyad() {
+        // 0, 0.5
+        assert(
+            PitchClassSetSpeller([0,0.5]).spell(),
+            isEqualTo: [PitchSpelling(.c), PitchSpelling(.d, .threeQuarterFlat)]
+        )
+    }
+    */
 
     func testDiatonicTriad() {
         assert(
