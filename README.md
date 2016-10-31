@@ -1,6 +1,8 @@
 # PitchSpellingTools
 
+![Swift](https://img.shields.io/badge/%20in-swift%203.0-orange.svg)
 [![Build Status](https://travis-ci.org/dn-m/PitchSpellingTools.svg?branch=master)](https://travis-ci.org/dn-m/PitchSpellingTools)
+[![codecov](https://codecov.io/gh/dn-m/PitchSpellingTools/branch/master/graph/badge.svg)](https://codecov.io/gh/dn-m/PitchSpellingTools/)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) 
 [![GitHub version](https://badge.fury.io/gh/dn-m%2FPitchSpellingTools.svg)](https://badge.fury.io/gh/dn-m%2FPitchSpellingTools)
 
