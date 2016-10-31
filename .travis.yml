@@ -7,3 +7,6 @@ env:
 before_script: carthage update
 
 script: xcodebuild test -project PitchSpellingTools.xcodeproj -scheme PitchSpellingTools -destination "${DESTINATION}" TOOLCHAINS=swift
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
