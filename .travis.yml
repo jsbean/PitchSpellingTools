@@ -2,11 +2,20 @@ language: objective-c
 osx_image: xcode8
 env:
   matrix:
+    - DESTINATION="platform=iOS Simulator,OS=9.3,name=iPad 2" 
+      SCHEME="PitchSpellingTools"
     - DESTINATION="platform=iOS Simulator,OS=10.0,name=iPad Pro (12.9 inch)"
+      SCHEME="PitchSpellingTools"
+    - DESTINATION="platform=OS X" 
+      SCHEME="PitchSpellingToolsMac"
 
 before_script: carthage update
 
-script: xcodebuild test -project PitchSpellingTools.xcodeproj -scheme PitchSpellingTools -destination "${DESTINATION}" TOOLCHAINS=swift
+script: travis_retry xcodebuild test 
+  -project PitchSpellingTools.xcodeproj
+  -scheme "${SCHEME}"
+  -destination "${DESTINATION}"
+  TOOLCHAINS=swift
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
