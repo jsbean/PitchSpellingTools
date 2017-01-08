@@ -14,6 +14,6 @@ public enum Comparison {
     case greaterThan
 }
 
-public func compare<T: Comparable>(_ a: T, _ b: T) -> Comparison {
+public func compare <T: Comparable> (_ a: T, _ b: T) -> Comparison {
     return a < b ? .lessThan : a > b ? .greaterThan : .equal
 }

@@ -10,12 +10,6 @@ import XCTest
 @testable import ArithmeticTools
 
 class PowerSequenceTests: XCTestCase {
-
-    func testforLoop() {
-        var array: [Float] = []
-        for p in PowerSequence(coefficient: Float(1.0), max: Float(64.0)) { array.append(p) }
-        XCTAssertEqual(array, [1.0, 2.0, 4.0, 8.0, 16.0, 32.0, 64.0])
-    }
     
     func testFilter() {
         let powerSequence = PowerSequence(coefficient: 1, max: 128)

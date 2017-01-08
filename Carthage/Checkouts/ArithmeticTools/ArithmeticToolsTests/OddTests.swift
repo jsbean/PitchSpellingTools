@@ -18,12 +18,4 @@ class OddTests: XCTestCase {
     func testIntOddFalse() {
         XCTAssertFalse(4.isOdd)
     }
-    
-    func testFloatOddTrue() {
-        XCTAssertTrue(5.0.isOdd)
-    }
-    
-    func testFloatOddFalse() {
-        XCTAssertFalse(4.0.isOdd)
-    }
 }

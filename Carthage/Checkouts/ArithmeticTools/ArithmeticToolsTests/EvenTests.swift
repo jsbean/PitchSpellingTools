@@ -19,15 +19,7 @@ class EvenTests: XCTestCase {
         XCTAssertFalse(333.isEven)
     }
     
-    func testFloatEvenTrue() {
-        XCTAssertTrue(222.0.isEven)
-    }
-    
     func testFloatEvenFalse() {
         XCTAssertFalse(333.isEven)
-    }
-    
-    func testFloatEvenFalseDecimal() {
-        XCTAssertFalse(2.3.isEven)
     }
 }

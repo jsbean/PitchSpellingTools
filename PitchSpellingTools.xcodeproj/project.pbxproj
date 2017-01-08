@@ -204,7 +204,7 @@
 		07ED70121D68A43400C9C000 /* SpelledPitchClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpelledPitchClass.swift; path = PitchSpellingTools/SpelledPitchClass.swift; sourceTree = "<group>"; };
 		15496228BCC09F160A08B8B2 /* Pitch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pitch.framework; path = Carthage/Build/iOS/Pitch.framework; sourceTree = "<group>"; };
 		1659EF3BBB8FDD0D4636D0BA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = PitchSpellingToolsTests/Info.plist; sourceTree = "<group>"; };
-		177D6AAC8933BFFE5B5449B6 /* PitchSpellingToolsMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitchSpellingToolsMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		177D6AAC8933BFFE5B5449B6 /* PitchSpellingTools macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PitchSpellingTools macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AEEB1BEC72BCA5126F31F49 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = PitchSpellingTools/Info.plist; sourceTree = "<group>"; };
 		2F939CA34A1E6CD8D9AC3EA1 /* PitchSpellingTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PitchSpellingTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		410F27F0494C102D11F3BD87 /* PitchSpellingTools.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; path = PitchSpellingTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,7 +215,7 @@
 		6AB74E2D7DC71FFB059C5E18 /* EnumTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumTools.framework; path = Carthage/Build/iOS/EnumTools.framework; sourceTree = "<group>"; };
 		81AC9740F207E12BDE3BCEA5 /* TreeTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TreeTools.framework; path = Carthage/Build/Mac/TreeTools.framework; sourceTree = "<group>"; };
 		8C0495E35B158A8243480648 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		914276EC710CD2E7F82799C9 /* PitchSpellingToolsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitchSpellingToolsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		914276EC710CD2E7F82799C9 /* PitchSpellingTools iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PitchSpellingTools iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91796D76C4CDCD11DF08DFD9 /* ArrayTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArrayTools.framework; path = Carthage/Build/iOS/ArrayTools.framework; sourceTree = "<group>"; };
 		A36E29DA636B31830E8C6121 /* PitchSpellingTools.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PitchSpellingTools.h; path = PitchSpellingTools/PitchSpellingTools.h; sourceTree = "<group>"; };
 		AAF117340B6A327AD35312C8 /* PitchSpellingTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PitchSpellingTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -344,9 +344,9 @@
 			isa = PBXGroup;
 			children = (
 				2F939CA34A1E6CD8D9AC3EA1 /* PitchSpellingTools.framework */,
-				914276EC710CD2E7F82799C9 /* PitchSpellingToolsTests.xctest */,
+				914276EC710CD2E7F82799C9 /* PitchSpellingTools iOS Tests.xctest */,
 				AAF117340B6A327AD35312C8 /* PitchSpellingTools.framework */,
-				177D6AAC8933BFFE5B5449B6 /* PitchSpellingToolsMacTests.xctest */,
+				177D6AAC8933BFFE5B5449B6 /* PitchSpellingTools macOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -442,9 +442,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5C07E653F9B914520E4B3C13 /* PitchSpellingTools */ = {
+		5C07E653F9B914520E4B3C13 /* PitchSpellingTools iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CB01AE3BA6BE539B2FC3049C /* Build configuration list for PBXNativeTarget "PitchSpellingTools" */;
+			buildConfigurationList = CB01AE3BA6BE539B2FC3049C /* Build configuration list for PBXNativeTarget "PitchSpellingTools iOS" */;
 			buildPhases = (
 				8182446D7E4446B8B097DABF /* Sources */,
 				DCD815CF8685C0E1A6701DCF /* Frameworks */,
@@ -454,52 +454,52 @@
 			);
 			dependencies = (
 			);
-			name = PitchSpellingTools;
+			name = "PitchSpellingTools iOS";
 			productName = PitchSpellingTools;
 			productReference = 2F939CA34A1E6CD8D9AC3EA1 /* PitchSpellingTools.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		5F56C094E5DD5F0EBCF2298E /* PitchSpellingToolsMacTests */ = {
+		5F56C094E5DD5F0EBCF2298E /* PitchSpellingTools macOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C502C16650032427EB39DB9D /* Build configuration list for PBXNativeTarget "PitchSpellingToolsMacTests" */;
+			buildConfigurationList = C502C16650032427EB39DB9D /* Build configuration list for PBXNativeTarget "PitchSpellingTools macOS Tests" */;
 			buildPhases = (
 				00EE0BB1DEBA395AB1206C3A /* Sources */,
 				27FD50E45F0CA7EF3A598012 /* Frameworks */,
 				70E17B90421801C9C2380A04 /* CopyFiles */,
-				075EA8F81D327FAD007963C0 /* ShellScript */,
+				680588AA71FF6372ACEE82EA /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				BD7FDC2FBAC8BEF3BA1DA4E0 /* PBXTargetDependency */,
 			);
-			name = PitchSpellingToolsMacTests;
+			name = "PitchSpellingTools macOS Tests";
 			productName = PitchSpellingToolsMacTests;
-			productReference = 177D6AAC8933BFFE5B5449B6 /* PitchSpellingToolsMacTests.xctest */;
+			productReference = 177D6AAC8933BFFE5B5449B6 /* PitchSpellingTools macOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A1E0B73866639A4FDDF8F7FE /* PitchSpellingToolsTests */ = {
+		A1E0B73866639A4FDDF8F7FE /* PitchSpellingTools iOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 62EC50150BA48979605A7C11 /* Build configuration list for PBXNativeTarget "PitchSpellingToolsTests" */;
+			buildConfigurationList = 62EC50150BA48979605A7C11 /* Build configuration list for PBXNativeTarget "PitchSpellingTools iOS Tests" */;
 			buildPhases = (
 				CEBE5BD850F7C13417EA6C89 /* Sources */,
 				F0503C1CE6C7F941C9C84C5F /* Frameworks */,
 				376B30FD3BC4045849B8604E /* CopyFiles */,
-				075EA8F71D327F2B007963C0 /* ShellScript */,
+				0254674F8654B373C1623999 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				0DBAF0968800E16FFB8617C6 /* PBXTargetDependency */,
 			);
-			name = PitchSpellingToolsTests;
+			name = "PitchSpellingTools iOS Tests";
 			productName = PitchSpellingToolsTests;
-			productReference = 914276EC710CD2E7F82799C9 /* PitchSpellingToolsTests.xctest */;
+			productReference = 914276EC710CD2E7F82799C9 /* PitchSpellingTools iOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AB078245BAE609A201115C6F /* PitchSpellingToolsMac */ = {
+		AB078245BAE609A201115C6F /* PitchSpellingTools macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 164F151F977340D62CAE3FB0 /* Build configuration list for PBXNativeTarget "PitchSpellingToolsMac" */;
+			buildConfigurationList = 164F151F977340D62CAE3FB0 /* Build configuration list for PBXNativeTarget "PitchSpellingTools macOS" */;
 			buildPhases = (
 				586EFF7A3E2B7D8FD8228148 /* Sources */,
 				29C1B38AD94B5DD4427FF804 /* Frameworks */,
@@ -509,7 +509,7 @@
 			);
 			dependencies = (
 			);
-			name = PitchSpellingToolsMac;
+			name = "PitchSpellingTools macOS";
 			productName = PitchSpellingToolsMac;
 			productReference = AAF117340B6A327AD35312C8 /* PitchSpellingTools.framework */;
 			productType = "com.apple.product-type.framework";
@@ -543,50 +543,48 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5C07E653F9B914520E4B3C13 /* PitchSpellingTools */,
-				A1E0B73866639A4FDDF8F7FE /* PitchSpellingToolsTests */,
-				AB078245BAE609A201115C6F /* PitchSpellingToolsMac */,
-				5F56C094E5DD5F0EBCF2298E /* PitchSpellingToolsMacTests */,
+				5C07E653F9B914520E4B3C13 /* PitchSpellingTools iOS */,
+				A1E0B73866639A4FDDF8F7FE /* PitchSpellingTools iOS Tests */,
+				AB078245BAE609A201115C6F /* PitchSpellingTools macOS */,
+				5F56C094E5DD5F0EBCF2298E /* PitchSpellingTools macOS Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		075EA8F71D327F2B007963C0 /* ShellScript */ = {
+		0254674F8654B373C1623999 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/ArithmeticTools.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ArrayTools.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/EnumTools.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Collections.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Pitch.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/TreeTools.framework",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			showEnvVarsInLog = 1;
 		};
-		075EA8F81D327FAD007963C0 /* ShellScript */ = {
+		680588AA71FF6372ACEE82EA /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/ArithmeticTools.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/ArrayTools.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/EnumTools.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/Pitch.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/TreeTools.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ArithmeticTools.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Collections.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Pitch.framework",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			showEnvVarsInLog = 1;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -693,13 +691,13 @@
 		0DBAF0968800E16FFB8617C6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PitchSpellingTools;
-			target = 5C07E653F9B914520E4B3C13 /* PitchSpellingTools */;
+			target = 5C07E653F9B914520E4B3C13 /* PitchSpellingTools iOS */;
 			targetProxy = 73E35119AF88A3680B7BA91B /* PBXContainerItemProxy */;
 		};
 		BD7FDC2FBAC8BEF3BA1DA4E0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PitchSpellingToolsMac;
-			target = AB078245BAE609A201115C6F /* PitchSpellingToolsMac */;
+			target = AB078245BAE609A201115C6F /* PitchSpellingTools macOS */;
 			targetProxy = 51AD7CC630CA3B08DF7AC40C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -755,14 +753,11 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingToolsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(SRCROOT)/Carthage/Build/iOS";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -812,13 +807,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingToolsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(SRCROOT)/Carthage/Build/Mac";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -882,7 +874,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bean.PitchSpellingTools;
@@ -915,7 +907,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bean.PitchSpellingTools;
@@ -938,13 +930,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingToolsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(SRCROOT)/Carthage/Build/Mac";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -994,14 +983,11 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingToolsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(SRCROOT)/Carthage/Build/iOS";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1013,7 +999,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		164F151F977340D62CAE3FB0 /* Build configuration list for PBXNativeTarget "PitchSpellingToolsMac" */ = {
+		164F151F977340D62CAE3FB0 /* Build configuration list for PBXNativeTarget "PitchSpellingTools macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CB12B5A2403E9401B9F13A96 /* Release */,
@@ -1022,7 +1008,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		62EC50150BA48979605A7C11 /* Build configuration list for PBXNativeTarget "PitchSpellingToolsTests" */ = {
+		62EC50150BA48979605A7C11 /* Build configuration list for PBXNativeTarget "PitchSpellingTools iOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D3BC2020E63924E8BE23B94 /* Release */,
@@ -1040,7 +1026,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C502C16650032427EB39DB9D /* Build configuration list for PBXNativeTarget "PitchSpellingToolsMacTests" */ = {
+		C502C16650032427EB39DB9D /* Build configuration list for PBXNativeTarget "PitchSpellingTools macOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				467E7B102FCE347FAD50BFFC /* Release */,
@@ -1049,7 +1035,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CB01AE3BA6BE539B2FC3049C /* Build configuration list for PBXNativeTarget "PitchSpellingTools" */ = {
+		CB01AE3BA6BE539B2FC3049C /* Build configuration list for PBXNativeTarget "PitchSpellingTools iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9BE20BF7F09F8D9105A8F4EE /* Release */,

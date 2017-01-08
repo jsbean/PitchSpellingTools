@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AB078245BAE609A201115C6F"
                BuildableName = "PitchSpellingTools.framework"
-               BlueprintName = "PitchSpellingToolsMac"
+               BlueprintName = "PitchSpellingTools macOS"
                ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5F56C094E5DD5F0EBCF2298E"
-               BuildableName = "PitchSpellingToolsMacTests.xctest"
-               BlueprintName = "PitchSpellingToolsMacTests"
+               BuildableName = "PitchSpellingTools macOS Tests.xctest"
+               BlueprintName = "PitchSpellingTools macOS Tests"
                ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,8 +48,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5F56C094E5DD5F0EBCF2298E"
-               BuildableName = "PitchSpellingToolsMacTests.xctest"
-               BlueprintName = "PitchSpellingToolsMacTests"
+               BuildableName = "PitchSpellingTools macOS Tests.xctest"
+               BlueprintName = "PitchSpellingTools macOS Tests"
                ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -72,7 +72,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AB078245BAE609A201115C6F"
             BuildableName = "PitchSpellingTools.framework"
-            BlueprintName = "PitchSpellingToolsMac"
+            BlueprintName = "PitchSpellingTools macOS"
             ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

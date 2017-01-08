@@ -14,10 +14,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "078141BD1C7CBCF8004B68D3"
-               BuildableName = "ArrayTools.framework"
-               BlueprintName = "ArrayToolsMac"
-               ReferencedContainer = "container:ArrayTools.xcodeproj">
+               BlueprintIdentifier = "5C07E653F9B914520E4B3C13"
+               BuildableName = "PitchSpellingTools.framework"
+               BlueprintName = "PitchSpellingTools iOS"
+               ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A1E0B73866639A4FDDF8F7FE"
+               BuildableName = "PitchSpellingTools iOS Tests.xctest"
+               BlueprintName = "PitchSpellingTools iOS Tests"
+               ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,22 +47,13 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "078141C61C7CBCF8004B68D3"
-               BuildableName = "ArrayToolsMacTests.xctest"
-               BlueprintName = "ArrayToolsMacTests"
-               ReferencedContainer = "container:ArrayTools.xcodeproj">
+               BlueprintIdentifier = "A1E0B73866639A4FDDF8F7FE"
+               BuildableName = "PitchSpellingTools iOS Tests.xctest"
+               BlueprintName = "PitchSpellingTools iOS Tests"
+               ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "078141BD1C7CBCF8004B68D3"
-            BuildableName = "ArrayTools.framework"
-            BlueprintName = "ArrayToolsMac"
-            ReferencedContainer = "container:ArrayTools.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -65,10 +70,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "078141BD1C7CBCF8004B68D3"
-            BuildableName = "ArrayTools.framework"
-            BlueprintName = "ArrayToolsMac"
-            ReferencedContainer = "container:ArrayTools.xcodeproj">
+            BlueprintIdentifier = "5C07E653F9B914520E4B3C13"
+            BuildableName = "PitchSpellingTools.framework"
+            BlueprintName = "PitchSpellingTools iOS"
+            ReferencedContainer = "container:PitchSpellingTools.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -80,15 +85,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "078141BD1C7CBCF8004B68D3"
-            BuildableName = "ArrayTools.framework"
-            BlueprintName = "ArrayToolsMac"
-            ReferencedContainer = "container:ArrayTools.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

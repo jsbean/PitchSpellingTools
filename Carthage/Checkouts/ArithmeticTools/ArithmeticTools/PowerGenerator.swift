@@ -7,29 +7,30 @@
 //
 
 import Foundation
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l < r
+    case (nil, _?):
+        return true
+    default:
+        return false
+    }
 }
 
 fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l > r
+    default:
+        return rhs < lhs
+    }
 }
 
 
 /// Power-of-two Generator
-internal class PowerGenerator<T: ArithmeticType>: IteratorProtocol {
+internal class PowerGenerator<T: Integer>: IteratorProtocol {
     
     // MARK: - Associated Types
     
@@ -73,7 +74,7 @@ internal class PowerGenerator<T: ArithmeticType>: IteratorProtocol {
             }
         }
         let result = power
-        power = power * T.two
+        power = power * 2
         if let max = max { return result <= max ? result : nil }
         return result
     }
