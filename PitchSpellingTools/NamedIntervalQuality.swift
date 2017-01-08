@@ -6,6 +6,8 @@
 //
 //
 
+import ArithmeticTools
+
 public struct NamedIntervalQuality: OptionSet, Invertible {
     
     // MARK: - Nested Types
@@ -13,17 +15,6 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
     public enum Degree: Int {
         case single = 1
         case double = 2
-    }
-    
-    // MARK: - Instance Properties
-    
-    /// Raw value.
-    public let rawValue: Int
-    
-    // MARK: - Initializers
-    
-    public init(rawValue: Int) {
-        self.rawValue = rawValue
     }
     
     // MARK: - Cases
@@ -37,7 +28,43 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
     static let perfectClass: NamedIntervalQuality = [diminished, perfect, augmented]
     static let imperfectClass: NamedIntervalQuality = [diminished, minor, major, augmented]
     
+    // MARK: - Instance Properties
+    
+    /// Raw value.
+    public let rawValue: Int
+
+    /// Degree (single)
+    public let degree: Degree
+    
+    // MARK: - Initializers
+    
+    public init(rawValue: Int) {
+        self.rawValue = rawValue
+        self.degree = .single
+    }
+    
+    public init(rawValue: Int, degree: Degree) {
+        self.rawValue = rawValue
+        self.degree = degree
+    }
+    
+    // MARK: - Subscripts
+    
+    public subscript(degree: Degree) -> NamedIntervalQuality? {
+        switch (degree, self) {
+        case
+        (.single, _),
+        (_, NamedIntervalQuality.diminished),
+        (_, NamedIntervalQuality.augmented):
+            return NamedIntervalQuality(rawValue: rawValue, degree: degree)
+        default:
+            return nil
+        }
+    }
+
     public var inverse: NamedIntervalQuality {
-        return NamedIntervalQuality.major
+        fatalError("Must test")
+        return NamedIntervalQuality(rawValue: 1 << invert(powerOfTwo: rawValue, within: 4))
     }
 }
+

@@ -6,7 +6,7 @@
 //
 //
 
-public protocol NamedInterval: Invertible {
+public protocol NamedInterval: Invertible, Equatable {
     
     associatedtype Ordinal: NamedIntervalOrdinal
 
@@ -20,8 +20,23 @@ public protocol NamedInterval: Invertible {
 
 extension NamedInterval {
     
+    // MARK: - `Equatable`
+    
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        return (
+            //lhs.ordinal == rhs.ordinal &&
+            lhs.quality == rhs.quality &&
+            lhs.quality.degree == rhs.quality.degree
+        )
+    }
+}
+
+extension NamedInterval {
+
+    // MARK: - `Invertible`
+    
     public var inverse: Self {
-        return .init(quality: quality.inverse, ordinal: ordinal.inverse)
+        return .init(quality.inverse, ordinal.inverse)
     }
 }
 

@@ -46,5 +46,10 @@ public struct RelativeNamedInterval: NamedInterval {
     public let ordinal: Ordinal
     public let quality: NamedIntervalQuality
     
+    // MARK: - Initializers
     
+    public init(_ quality: NamedIntervalQuality, _ ordinal: Ordinal) {
+        self.quality = quality
+        self.ordinal = ordinal
+    }
 }

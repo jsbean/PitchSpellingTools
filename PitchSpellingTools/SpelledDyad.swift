@@ -35,11 +35,16 @@ public struct SpelledDyad {
      ```
      
      - TODO: Add examples to documentation.
+     - TODO: Use RelativeNamedInterval
      */
-    public var namedInterval: NamedInterval {
-        let (a, b, needsInversion) = swappedIfNecessary(self.lower, self.higher)
-        let interval = NamedInterval(a,b)
-        return needsInversion ? interval.inverse : interval
+    public var namedInterval: AbsoluteNamedInterval {
+        fatalError()
+        
+        
+        
+//        let (a, b, needsInversion) = swappedIfNecessary(self.lower, self.higher)
+//        let interval = NamedInterval(a,b)
+//        return needsInversion ? interval.inverse : interval
     }
     
     // MARK: - Initializers
