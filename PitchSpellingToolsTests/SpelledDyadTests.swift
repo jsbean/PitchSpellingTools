@@ -9,6 +9,7 @@
 import XCTest
 @testable import PitchSpellingTools
 
+/*
 class SpelledDyadTests: XCTestCase {
     
     func testInitSorted() {
@@ -129,3 +130,4 @@ class SpelledDyadTests: XCTestCase {
     }
     */
 }
+*/

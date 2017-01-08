@@ -19,14 +19,24 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
     
     // MARK: - Cases
     
-    static let diminished = NamedIntervalQuality(rawValue: 1 << 0)
-    static let minor = NamedIntervalQuality(rawValue: 1 << 1)
-    static let perfect = NamedIntervalQuality(rawValue: 1 << 2)
-    static let major = NamedIntervalQuality(rawValue: 1 << 3)
-    static let augmented = NamedIntervalQuality(rawValue: 1 << 4)
+    public static let diminished = NamedIntervalQuality(rawValue: 1 << 0)
+    public static let minor = NamedIntervalQuality(rawValue: 1 << 1)
+    public static let perfect = NamedIntervalQuality(rawValue: 1 << 2)
+    public static let major = NamedIntervalQuality(rawValue: 1 << 3)
+    public static let augmented = NamedIntervalQuality(rawValue: 1 << 4)
     
-    static let perfectClass: NamedIntervalQuality = [diminished, perfect, augmented]
-    static let imperfectClass: NamedIntervalQuality = [diminished, minor, major, augmented]
+    public static let perfectClass: NamedIntervalQuality = [
+        diminished,
+        perfect,
+        augmented
+    ]
+    
+    public static let imperfectClass: NamedIntervalQuality = [
+        diminished,
+        minor,
+        major,
+        augmented
+    ]
     
     // MARK: - Instance Properties
     
@@ -63,7 +73,6 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
     }
 
     public var inverse: NamedIntervalQuality {
-        fatalError("Must test")
         return NamedIntervalQuality(rawValue: 1 << invert(powerOfTwo: rawValue, within: 4))
     }
 }
