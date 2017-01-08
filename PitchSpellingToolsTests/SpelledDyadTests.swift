@@ -48,13 +48,15 @@ class SpelledDyadTests: XCTestCase {
     }
     
     func testNamedIntervalMinorSecond() {
-        assertNamedInterval(for: SpelledDyad(c,dflat), equals: NamedInterval(.minor, .second))
+        assertNamedInterval(for: SpelledDyad(c, dflat), equals: NamedInterval(.minor, .second))
     }
+    
     
     func testNamedIntervalPerfectFifth() {
-        assertNamedInterval(for: SpelledDyad(c,g), equals: NamedInterval(.perfect, .fifth))
+        assertNamedInterval(for: SpelledDyad(c, g), equals: NamedInterval(.perfect, .fifth))
     }
     
+    /*
     func testNamedIntervalAugmentedFifth() {
         assertNamedInterval(
             for: SpelledDyad(c,gsharp),
@@ -125,4 +127,5 @@ class SpelledDyadTests: XCTestCase {
             equals: NamedInterval(.triple, .augmented, .unison)
         )
     }
+    */
 }

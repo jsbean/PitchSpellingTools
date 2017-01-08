@@ -13,12 +13,12 @@ import Pitch
 class DyadTests: XCTestCase {
 
     func testFinestResolutionQuarterTone() {
-        let dyad = Dyad(Pitch(noteNumber: 60), Pitch(noteNumber: 60.5))
+        let dyad = PitchDyad(60, 60.5)
         XCTAssertEqual(dyad.finestResolution, 0.5)
     }
     
     func testFinestResolutionEighthTone() {
-        let dyad = Dyad(Pitch(noteNumber: 60), Pitch(noteNumber: 60.25))
+        let dyad = PitchDyad(60, 60.25)
         XCTAssertEqual(dyad.finestResolution, 0.25)
     }
 }

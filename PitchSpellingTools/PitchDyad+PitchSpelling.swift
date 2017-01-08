@@ -1,5 +1,5 @@
 //
-//  Dyad+PitchSpelling.swift
+//  PitchDyad+PitchSpelling.swift
 //  PitchSpellingTools
 //
 //  Created by James Bean on 5/3/16.
@@ -8,7 +8,7 @@
 
 import Pitch
 
-extension Dyad {
+extension PitchDyad {
     
     /// - returns: `true` if either `Pitch` value contained herein has a resolution of `0.25`
     public var hasEighthTone: Bool {

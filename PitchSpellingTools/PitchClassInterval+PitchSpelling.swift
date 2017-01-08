@@ -1,5 +1,5 @@
 //
-//  IntervalClass+PitchSpelling.swift
+//  PitchClassInterval+PitchSpelling.swift
 //  PitchSpellingTools
 //
 //  Created by James Bean on 5/19/16.
@@ -8,14 +8,14 @@
 
 import Pitch
 
-extension IntervalClass {
+extension PitchClassInterval {
     
     // MARK: - Associated Types
     
     /// Priority for a given `IntervalClass` to be spelled. Lower value is higher priority.
     public typealias SpellingPriority = Int
     
-    fileprivate static let intervalClassOrderedBySpellingPriority: [IntervalClass] = [
+    fileprivate static let intervalClassOrderedBySpellingPriority: [PitchClassInterval] = [
         
         // minor second, major seventh 1/8th tone neighborood
         00.75, 01.25, 11.25, 10.75,
@@ -68,6 +68,6 @@ extension IntervalClass {
     
     /// Priority for this `IntervalClass` to be spelled. Lower value is higher priority.
     public var spellingPriority: SpellingPriority? {
-        return IntervalClass.intervalClassOrderedBySpellingPriority.index(of: self)
+        return PitchClassInterval.intervalClassOrderedBySpellingPriority.index(of: self)
     }
 }

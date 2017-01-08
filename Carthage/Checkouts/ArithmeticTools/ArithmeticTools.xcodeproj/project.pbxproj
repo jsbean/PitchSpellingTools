@@ -65,6 +65,8 @@
 		078142BC1C7CF494004B68D3 /* SequenceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142B21C7CF494004B68D3 /* SequenceTypeTests.swift */; };
 		0799D96F1E21777A00516ADF /* QuadraticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799D96E1E21777A00516ADF /* QuadraticTests.swift */; };
 		0799D9701E21777A00516ADF /* QuadraticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799D96E1E21777A00516ADF /* QuadraticTests.swift */; };
+		07C563761E226DE100E73FB2 /* ModuloTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C563751E226DE100E73FB2 /* ModuloTests.swift */; };
+		07C563771E226DE100E73FB2 /* ModuloTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C563751E226DE100E73FB2 /* ModuloTests.swift */; };
 		07C9DA411DF0B8C80071B801 /* NumberFormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C9DA401DF0B8C80071B801 /* NumberFormattingTests.swift */; };
 		07C9DA421DF0B8C80071B801 /* NumberFormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C9DA401DF0B8C80071B801 /* NumberFormattingTests.swift */; };
 		07C9DA441DF0BF130071B801 /* RandomProducing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C9DA431DF0BF130071B801 /* RandomProducing.swift */; };
@@ -158,6 +160,7 @@
 		078142B11C7CF494004B68D3 /* PrimeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimeTests.swift; sourceTree = "<group>"; };
 		078142B21C7CF494004B68D3 /* SequenceTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceTypeTests.swift; sourceTree = "<group>"; };
 		0799D96E1E21777A00516ADF /* QuadraticTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuadraticTests.swift; sourceTree = "<group>"; };
+		07C563751E226DE100E73FB2 /* ModuloTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModuloTests.swift; path = ArithmeticToolsTests/ModuloTests.swift; sourceTree = SOURCE_ROOT; };
 		07C9DA401DF0B8C80071B801 /* NumberFormattingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberFormattingTests.swift; sourceTree = "<group>"; };
 		07C9DA431DF0BF130071B801 /* RandomProducing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomProducing.swift; sourceTree = "<group>"; };
 		07C9DA461DF0C4A00071B801 /* StringFormatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringFormatting.swift; sourceTree = "<group>"; };
@@ -256,6 +259,7 @@
 				07C9DA431DF0BF130071B801 /* RandomProducing.swift */,
 				078142A31C7CF3F1004B68D3 /* BidirectionalCollectionExtensions.swift */,
 				078142A41C7CF3F1004B68D3 /* Functions.swift */,
+				07C563751E226DE100E73FB2 /* ModuloTests.swift */,
 				078142A51C7CF3F1004B68D3 /* SequenceExtensions.swift */,
 				07502CA81DD2A2A20095AB27 /* LinearRegression.swift */,
 				077554641E1B012700CF4A8A /* Rational.swift */,
@@ -572,6 +576,7 @@
 				078142B31C7CF494004B68D3 /* EvenTests.swift in Sources */,
 				07C9DA411DF0B8C80071B801 /* NumberFormattingTests.swift in Sources */,
 				078142B71C7CF494004B68D3 /* OddTests.swift in Sources */,
+				07C563761E226DE100E73FB2 /* ModuloTests.swift in Sources */,
 				907335901DFE2523000504C8 /* IsPowerOfTwoTests.swift in Sources */,
 				073A93481C8E6C5C003DAF9C /* IsDivisibleTests.swift in Sources */,
 				071D19C51C94BEB100543F77 /* OrderedTests.swift in Sources */,
@@ -610,6 +615,7 @@
 				0719FA8B1C876792009EACB4 /* PowerGeneratorTests.swift in Sources */,
 				071F3C731C8227F300F6BD28 /* RandomTests.swift in Sources */,
 				07C9DA4E1DF0C66F0071B801 /* CumulativeTests.swift in Sources */,
+				07C563771E226DE100E73FB2 /* ModuloTests.swift in Sources */,
 				07F538331CE3AEC6001294CC /* ComparisonTests.swift in Sources */,
 				07690BE31E0D913C0095F1D5 /* MeanTests.swift in Sources */,
 				077554691E1B013400CF4A8A /* RationalTests.swift in Sources */,

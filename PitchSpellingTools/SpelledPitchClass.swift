@@ -42,7 +42,7 @@ public struct SpelledPitchClass {
     // FIXME: Refine relationship between `PitchSpelling` and `SpelledPitchClass`.
     public init(_ spelling: PitchSpelling) {
         self.spelling = spelling
-        self.pitchClass = PitchClass(spelling.pitchClass)
+        self.pitchClass = spelling.pitchClass
     }
 }
 

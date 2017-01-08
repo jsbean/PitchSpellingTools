@@ -6,6 +6,26 @@
 //
 //
 
+public protocol NamedInterval: Invertible {
+    
+    associatedtype Ordinal: NamedIntervalOrdinal
+
+    var ordinal: Ordinal { get }
+    var quality: NamedIntervalQuality { get }
+    
+    var inverse: Self { get }
+    
+    init(_ quality: NamedIntervalQuality, _ ordinal: Ordinal)
+}
+
+extension NamedInterval {
+    
+    public var inverse: Self {
+        return .init(quality: quality.inverse, ordinal: ordinal.inverse)
+    }
+}
+
+/*
 import ArithmeticTools
 import Pitch
 
@@ -23,7 +43,7 @@ import Pitch
  
  - TODO: Create names for quarter-step and eighth-step modified intervals
  
- - TODO: Use actual specialized `Interval` and `IntervlClass` value types, as opposed to
+ - TODO: Use actual specialized `Interval` and `IntervalClass` value types, as opposed to
     throwing anonymous `Float` values around.
  */
 public struct NamedInterval {
@@ -87,17 +107,17 @@ public struct NamedInterval {
         /// `Family` of an `Ordinal`.
         public var family: Family {
             switch self {
-            case .unison, .fourth, .fifth: return .perfect
-            default: return .imperfect
+            case .unison, .fourth, .fifth:
+                return .perfect
+            default:
+                return .imperfect
             }
         }
     }
     
-    /**
-     `Quality` of a `NamedInterval`.
-     
-     - TODO: Add documentation!
-     */
+    /// `Quality` of a `NamedInterval`.
+    ///
+    /// - TODO: Add documentation!
     public struct Quality: OptionSet, CustomStringConvertible {
         
         /**
@@ -227,6 +247,7 @@ public struct NamedInterval {
      - returns: `Quality` for the given `normalizedIntervalClass` value, and the given
      `ordinal` value.
      
+     - FIXME: Explain wtf a `normalizedIntervalClass` is.
      - TODO: Find more elegant way to do this. This implementation & api exists only
      - TODO: Factor out duplication in multiply diminished / augmented cases
      - TODO: Handle bad values properly. Currently things can blow up in extreme cases. Test.
@@ -234,8 +255,6 @@ public struct NamedInterval {
     public static func quality(for normalizedIntervalClass: Float, ordinal: Ordinal)
         -> Quality
     {
-        
-        print("normalized interval class: \(normalizedIntervalClass)")
         
         let diminished: Float = ordinal == .unison
             ? -0.5
@@ -250,20 +269,26 @@ public struct NamedInterval {
                 : 1.5
         
         switch normalizedIntervalClass {
-        case diminished: return Quality.diminished
-        case augmented: return Quality.augmented
+        case diminished:
+            return Quality.diminished
+        case augmented:
+            return Quality.augmented
         case _ where normalizedIntervalClass < diminished:
             let degreeValue = Int(abs(normalizedIntervalClass - diminished - 1))
             let degree = Quality.Degree(rawValue: degreeValue)!
             return Quality.diminished[degree]!
-        case -0.5: return Quality.minor
-        case +0.0: return Quality.perfect
-        case +0.5: return Quality.major
+        case -0.5:
+            return Quality.minor
+        case +0.0:
+            return Quality.perfect
+        case +0.5:
+            return Quality.major
         case _ where normalizedIntervalClass > augmented:
             let degreeValue = Int(abs(normalizedIntervalClass - augmented + 1))
             let degree = Quality.Degree(rawValue: degreeValue)!
             return Quality.augmented[degree]!
-        default: fatalError() // impossible
+        default:
+            fatalError() // impossible
         }
     }
     
@@ -293,7 +318,11 @@ public struct NamedInterval {
      - TODO: Add examples to documentation.
      */
     public init?(_ quality: Quality, _ ordinal: Ordinal) {
-        guard quality.isValid(for: ordinal) else { return nil }
+        
+        guard quality.isValid(for: ordinal) else {
+            return nil
+        }
+        
         self.quality = quality
         self.ordinal = ordinal
     }
@@ -304,51 +333,77 @@ public struct NamedInterval {
      - TODO: Add examples to documentation.
      */
     public init?(_ degree: Quality.Degree, _ quality: Quality, _ ordinal: Ordinal) {
-        print("degree: \(degree)")
-        print("quality: \(quality)")
-        guard let quality = quality[degree] else { return nil }
+        
+        guard let quality = quality[degree] else {
+            return nil
+        }
+        
         self.init(quality, ordinal)
     }
 
-    /**
-     Create a `NamedInterval` with two `SpelledPitch` values.
-     */
+    /// Create a `NamedInterval` with two `SpelledPitch` values.
+    ///
+    /// - TODO: Perhaps make internal only, as it can crash with programmer error.
     public init(_ a: SpelledPitch, _ b: SpelledPitch) {
-        print("a: \(a); b: \(b)")
+        
         let letterNameSteps = steps(a,b)
-        print("letter name steps: \(letterNameSteps)")
-        let ideal = idealIntervalClass(steps: letterNameSteps)
-        print("ideal interval class: \(ideal)")
-        let normalized = normalizedIntervalClass(interval(a,b) - ideal)
-        print("normalized interval class: \(normalized)")
+        
+        print("letterNameSteps: \(letterNameSteps)")
+        
+        // Neutral interval class (for imperfect interval, give mean value of two vals)
+        let ideal = neutralIntervalClass(steps: letterNameSteps)
+        
+        print("ideal: \(ideal)")
+        
+        let i = interval(a,b)
+        
+        print("interval: \(i)")
+        
+        let normalized = normalizedIntervalClass(i - ideal)
+        
+        print("normalized: \(normalized)")
+        
         let intervalClass = adjustedIntervalClass(normalized, steps: letterNameSteps)
-        print("intervalClass: \(intervalClass)")
+        
+        print("adjusted interval class: \(intervalClass)")
+        
         self.init(steps: letterNameSteps, intervalClass: intervalClass)!
+    }
+
+    /// Helper initializer that gathers the ordinal and quality from the given `steps` and
+    /// `intervalClass`.
+    public init?(steps: Int, intervalClass: Float) {
+        
+        print("init with steps: \(steps); interval class: \(intervalClass)")
+        
+        guard let ordinal = NamedInterval.Ordinal(rawValue: steps) else {
+            return nil
+        }
+        
+        print("ordinal: \(ordinal)")
+        
+        let quality = NamedInterval.quality(for: intervalClass, ordinal: ordinal)
+        
+        print("quality: \(quality)")
+        
+        self.init(quality, ordinal)
     }
     
     /// - warning: Not yet documented!
     public init(_ a: PitchSpelling, _ b: PitchSpelling) {
-        let a = SpelledPitch(Pitch(noteNumber: NoteNumber(a.pitchClass)), a)
-        let b = SpelledPitch(Pitch(noteNumber: NoteNumber(b.pitchClass)), b)
+        let a = SpelledPitch(Pitch(noteNumber: a.pitchClass.noteNumber), a)
+        let b = SpelledPitch(Pitch(noteNumber: b.pitchClass.noteNumber), b)
         self.init(a,b)
-    }
-    
-    /**
-     Helper initializer that gathers the ordinal and quality from the given `steps` and 
-        `intervalClass`.
-     */
-    public init?(steps: Int, intervalClass: Float) {
-        guard let ordinal = NamedInterval.Ordinal(rawValue: steps) else { return nil }
-        print("ordinal: \(ordinal)")
-        let quality = NamedInterval.quality(for: intervalClass, ordinal: ordinal)
-        print("quality: \(quality)")
-        self.init(quality, ordinal)
     }
 }
 
 /// - returns: Delta between letter name steps of two `SpelledPitch` values.
 public func steps(_ a: SpelledPitch, _ b: SpelledPitch) -> Int {
-    return Int.mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7)
+    
+    print("steps: \(a); \(b)")
+    
+    let diff = b.spelling.letterName.steps - a.spelling.letterName.steps
+    return mod(diff, 7)
 }
 /**
  - returns: Delta between pitch noteNumber values
@@ -356,7 +411,7 @@ public func steps(_ a: SpelledPitch, _ b: SpelledPitch) -> Int {
  - TODO: Return `Interval` rather than `Float`.
  */
 public func interval(_ a: SpelledPitch, _ b: SpelledPitch) -> Float {
-    return b.pitch.noteNumber.value - a.pitch.noteNumber.value
+    return mod(b.pitch.noteNumber.value - a.pitch.noteNumber.value, 7)
 }
 
 /**
@@ -364,7 +419,6 @@ public func interval(_ a: SpelledPitch, _ b: SpelledPitch) -> Float {
  relationship.
  */
 public func adjustedIntervalClass(_ intervalClass: Float, steps: Int) -> Float {
-    print("adjusting interval class: \(intervalClass); steps: \(steps)")
     return steps == 0 ? abs(intervalClass) : intervalClass
 }
 
@@ -373,17 +427,26 @@ public func adjustedIntervalClass(_ intervalClass: Float, steps: Int) -> Float {
  
  - TODO: Return `IntervalClass` instead of `Float`.
  */
-public func normalizedIntervalClass(_ normalizedInterval: Float)  -> Float {
-    return Float.mod(normalizedInterval + 6.0, 12.0) - 6.0
+public func normalizedIntervalClass(_ normalizedInterval: Float) -> Float {
+    
+    print("normalized interval: \(normalizedInterval)")
+    let leveled = normalizedInterval + 6
+    print("leveled: \(leveled)")
+    let mod12 = mod(leveled, 12)
+    print("mod12: \(mod12)")
+    let deleveled = mod12 - 6
+    print("deleveled: \(deleveled)")
+    
+    return deleveled
 }
 
-/**
- - returns: The ideal interval class for the given `steps`.
- */
-public func idealIntervalClass(steps: Int) -> Float {
-    print("ideal interval class for steps: \(steps)")
-    let steps = Int.mod(steps, 4) // remove fifths, sixths, sevenths
-    var idealInterval: Float {
+/// - returns: The ideal interval class for the given `steps`.
+///
+/// - TODO: Consider renaming to `platonic` or something.
+/// - FIXME: Documentation.
+public func neutralIntervalClass(steps: Int) -> Float {
+    let steps = mod(steps, 4)
+    var neutral: Float {
         switch steps {
         case 0: return 0
         case 1: return 1.5
@@ -392,7 +455,7 @@ public func idealIntervalClass(steps: Int) -> Float {
         default: fatalError()
         }
     }
-    return idealInterval
+    return neutral
 }
 
 extension NamedInterval: CustomStringConvertible {
@@ -405,17 +468,17 @@ extension NamedInterval: CustomStringConvertible {
     }
 }
 
-// MARK: - Equatable
+extension NamedInterval: Equatable {
+    
+    // MARK: - `Equatable`
 
-extension NamedInterval: Equatable { }
-
-/**
- - returns: `true` if `ordinal` and `quality` values are equivalent. Otherwise, `false`.
- */
-public func == (lhs: NamedInterval, rhs: NamedInterval) -> Bool {
-    return (
-        lhs.ordinal == rhs.ordinal &&
-        lhs.quality == rhs.quality &&
-        lhs.quality.degree == rhs.quality.degree
-    )
+    /// - returns: `true` if `ordinal` and `quality` values are equivalent. Otherwise, `false`.
+    public static func == (lhs: NamedInterval, rhs: NamedInterval) -> Bool {
+        return (
+            lhs.ordinal == rhs.ordinal &&
+            lhs.quality == rhs.quality &&
+            lhs.quality.degree == rhs.quality.degree
+        )
+    }
 }
+*/

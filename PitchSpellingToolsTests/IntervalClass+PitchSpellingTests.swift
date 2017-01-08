@@ -24,14 +24,14 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 class IntervalClass_PitchSpellingTests: XCTestCase {
 
     func testOctaveLessComplexThanPerfectFifth() {
-        let p5: IntervalClass = 7
-        let p8: IntervalClass = 0
+        let p5: PitchClassInterval = 7
+        let p8: PitchClassInterval = 0
         XCTAssert(p8.spellingPriority < p5.spellingPriority)
     }
     
     func testPerfectFifthLessComplexThanMajorThird() {
-        let p5: IntervalClass = 7
-        let M3: IntervalClass = 4
+        let p5: PitchClassInterval = 7
+        let M3: PitchClassInterval = 4
         XCTAssert(p5.spellingPriority < M3.spellingPriority)
     }
 }

@@ -17,6 +17,6 @@ extension PitchClass {
     
     /// Spelling priority of a `PitchClass`. Lower values indicate higher priority.
     public var spellingPriority: Int? {
-        return IntervalClass(self.value).spellingPriority
+        return PitchClassInterval(noteNumber: noteNumber).spellingPriority
     }
 }

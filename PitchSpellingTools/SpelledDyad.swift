@@ -16,11 +16,11 @@ public struct SpelledDyad {
     
     // MARK: - Instance Properties
     
-    /// Higher of the two `SpelledPitch` values.
-    public let higher: SpelledPitch
-    
     /// Lower of the two `SpelledPitch` values.
     public let lower: SpelledPitch
+    
+    /// Higher of the two `SpelledPitch` values.
+    public let higher: SpelledPitch
     
     /**
      `NamedInterval` of a `SpelledDyad`.
@@ -58,9 +58,10 @@ public struct SpelledDyad {
 private func swappedIfNecessary(_ a: SpelledPitch, _ b: SpelledPitch)
     -> (SpelledPitch, SpelledPitch, Bool)
 {
+
     return swapped(a,b) {
-        Int.mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7) >
-        Int.mod(a.spelling.letterName.steps - b.spelling.letterName.steps, 7)
+        mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7) >
+        mod(a.spelling.letterName.steps - b.spelling.letterName.steps, 7)
     }
 }
 
