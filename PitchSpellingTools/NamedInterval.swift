@@ -13,12 +13,21 @@ public protocol NamedInterval: Invertible, Equatable {
     
     /// Type descripting ordinality of an `AbsoluteNamedInterval`.
     associatedtype Ordinal: NamedIntervalOrdinal
+    
+    /// MARK: - Instance Properties
 
+    /// Ordinal of a `NamedInterval`.
     var ordinal: Ordinal { get }
+    
+    /// Quality of a `NamedInterval`
     var quality: NamedIntervalQuality { get }
     
+    /// Inverse of a `NamedInterval`.
     var inverse: Self { get }
     
+    // MARK: - Initializers
+    
+    /// Create a `NamedInterval` with a given `quality` and `ordinal`.
     init(_ quality: NamedIntervalQuality, _ ordinal: Ordinal)
 }
 
