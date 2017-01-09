@@ -8,12 +8,18 @@
 
 import ArithmeticTools
 
-/// Named intervals assuming no order between `SpelledPitch` values.
+/// Named intervals between two `SpelledPitch` values that does not honor order between
+/// `SpelledPitch` values.
 public struct RelativeNamedInterval: NamedInterval {
+    
+    // MARK: - Associated Types
+    
+    /// Type describing the quality of a `NamedInterval`-conforming type.
+    public typealias Quality = NamedIntervalQuality
     
     // MARK: - Nested Types
     
-    /// Ordinal of a `RelativeNamedInterval`
+    /// Type descripting ordinality of a `RelativeNamedInterval`.
     public struct Ordinal: OptionSet, NamedIntervalOrdinal {
         
         // MARK: - Instance Properties
@@ -79,7 +85,7 @@ public struct RelativeNamedInterval: NamedInterval {
     
     /// Quality value of a `RelativeNamedInterval`
     /// (`diminished`, `minor`, `perfect`, `major`, `augmented`).
-    public let quality: NamedIntervalQuality
+    public let quality: Quality
     
     // MARK: - Initializers
     
@@ -90,7 +96,12 @@ public struct RelativeNamedInterval: NamedInterval {
     /// let minorSecond = RelativeNamedInterval(.minor, .second)
     /// let augmentedSixth = RelativeNamedInterval(.relative, .sixth)
     /// ```
-    public init(_ quality: NamedIntervalQuality, _ ordinal: Ordinal) {
+    public init(_ quality: Quality, _ ordinal: Ordinal) {
+        
+        guard areValid(quality, ordinal) else {
+            fatalError("Cannot create an RelativeNamedInterval with \(quality) and \(ordinal)")
+        }
+        
         self.quality = quality
         self.ordinal = ordinal
     }

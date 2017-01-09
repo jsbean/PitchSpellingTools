@@ -20,6 +20,22 @@ public protocol NamedInterval: Invertible, Equatable {
     init(_ quality: NamedIntervalQuality, _ ordinal: Ordinal)
 }
 
+public func areValid <O: NamedIntervalOrdinal> (
+    _ quality: NamedIntervalQuality,
+    _ ordinal: O
+) -> Bool
+{
+    
+    if
+        (ordinal.isPerfect && quality.isPerfect) ||
+        (ordinal.isImperfect && quality.isImperfect)
+    {
+        return true
+    }
+    
+    return false
+}
+
 extension NamedInterval {
     
     // MARK: - `Equatable`

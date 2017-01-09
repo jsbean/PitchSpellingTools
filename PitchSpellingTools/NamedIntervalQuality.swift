@@ -93,3 +93,10 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
         }
     }
 }
+
+extension NamedIntervalQuality: Equatable {
+    
+    public static func == (lhs: NamedIntervalQuality, rhs: NamedIntervalQuality) -> Bool {
+        return lhs.rawValue == rhs.rawValue
+    }
+}
