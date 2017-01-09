@@ -6,9 +6,8 @@
 //
 //
 
-import Foundation
+import Collections
 import ArithmeticTools
-
 
 /// Dyad of `SpelledPitch` values.
 public struct SpelledDyad {
@@ -37,7 +36,7 @@ public struct SpelledDyad {
     
     /// Create a `SpelledDyad` with two `SpelledPitch` values.
     public init(_ lower: SpelledPitch, _ higher: SpelledPitch) {
-        let (lower, higher, _) = swapped(lower, higher) { lower > higher }
+        let (lower, higher) = ordered(lower, higher)
         self.lower = lower
         self.higher = higher
     }

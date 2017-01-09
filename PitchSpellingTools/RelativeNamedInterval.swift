@@ -6,6 +6,7 @@
 //
 //
 
+import Collections
 import ArithmeticTools
 import Pitch
 
@@ -113,77 +114,83 @@ public struct RelativeNamedInterval: NamedInterval {
     /// Create a `RelativeNamedInterval` with two `SpelledPitch` values.
     public init(_ a: SpelledPitchClass, _ b: SpelledPitchClass) {
         
-        let (newA, newB, _) = swapped(a,b) { mod(steps(a,b), 7) > mod(steps(b,a), 7) }
+        // Ensure that the two `SpelledPitchClass` values are in the correct order to create
+        // a relative interval.
+        let (a,b) = ordered(a,b)
+
+        // Given the ordered `SpelledPitchClass` values, retrieve the difference in steps of
+        // the `PitchSpelling.letterName` properties, and the difference between the
+        // `noteNumber` properties.
+        let (steps, interval) = stepsAndInterval(a,b)
         
-        // 1. steps
-        let intervalSteps = steps(newA, newB)
+        // Sanitize interval in order to calulate the `Quality`.
+        let sanitizedInterval = sanitizeIntervalClass(interval, steps: steps)
         
-        // 2. steps -> neutral interval class
-        let neutral = neutralIntervalClass(steps: intervalSteps)
+        // Create the necessary structures
+        let ordinal = Ordinal(steps: steps)
+        let quality = Quality(sanitizedIntervalClass: sanitizedInterval, ordinal: ordinal)
         
-        // 3. interval = return mod(b.pitch.noteNumber.value - a.pitch.noteNumber.value, 7)
-        
-        
-        // 4. diff (interval - neutral interval class)
-        // 5. diff -> normalized
-        //      - print("normalized interval: \(normalizedInterval)")
-        //        let leveled = normalizedInterval + 6
-        //        let mod12 = mod(leveled, 12)
-        //        let deleveled = mod12 - 6
-        // 6. enforce positive values if unison
-        //      - return steps == 0 ? abs(intervalClass) : intervalClass
-        //
-        
-        print("steps: \(intervalSteps)")
-        print("neutral: \(neutral)")
-        self.init(.perfect, .unison)
+        // Init
+        self.init(quality, ordinal)
     }
+}
+
+// FIXME: Get rid of `_ =` with update in Collections API
+internal func ordered (_ a: SpelledPitchClass, _ b: SpelledPitchClass)
+    -> (SpelledPitchClass, SpelledPitchClass)
+{
+    let (a,b,_) = swapped(a, b, if: { mod(steps(a,b), 7) > mod(steps(b,a), 7) })
+    return (a,b)
+}
+
+internal func stepsAndInterval(_ a: SpelledPitchClass, _ b: SpelledPitchClass)
+    -> (Int, Float)
+{
+    return (steps(a,b), interval(a,b))
+}
+
+internal func sanitizeIntervalClass(_ intervalClass: Float, steps: Int) -> Float {
+
+    // 1. Retrieve the platonic ideal interval class (neutral second, neutral third)
+    let neutral = neutralIntervalClass(steps: steps)
+
+    // 2. Calculate the difference between the actual and ideal
+    let difference = intervalClass - neutral
+
+    // 3. Normalize the difference
+    let normalizedDifference = mod(difference + 6, 12) - 6
+    
+    // 4. enforce positive values if unison
+    return steps == 0 ? abs(normalizedDifference) : normalizedDifference
 }
 
 public func neutralIntervalClass(steps: Int) -> Float {
     
     assert(steps < 4)
-    
-    let steps = steps
-    
+
     var neutral: Float {
         switch steps {
-            
-        // unison
-        case 0:
+        case 0: // unison
             return 0
-        
-        // second
-        case 1:
+        case 1: // second
             return 1.5
-            
-        // third
-        case 2:
+        case 2: // third
             return 3.5
-            
-        // fourth
-        case 3:
+        case 3: // fourth
             return 5
-            
-        // impossible
-        default:
+        default: // impossible
             fatalError()
         }
     }
+    
     return neutral
+}
+
+fileprivate func interval(_ a: SpelledPitchClass, _ b: SpelledPitchClass) -> Float {
+    return (b.pitchClass - a.pitchClass).noteNumber.value
 }
 
 /// Wraps around 7
 fileprivate func steps(_ a: SpelledPitchClass, _ b: SpelledPitchClass) -> Int {
     return mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7)
 }
-
-//private func swappedIfNecessary <C: Comparable(_ a: C, _ b: C)
-//    -> (C, C, Bool)
-//{
-//    
-//    return swapped(a,b) {
-//        mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7) >
-//        mod(a.spelling.letterName.steps - b.spelling.letterName.steps, 7)
-//    }
-//}

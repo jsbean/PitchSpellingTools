@@ -82,7 +82,7 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
     }
     
     public init <Ordinal: NamedIntervalOrdinal> (
-        neutralIntervalClass: Float,
+        sanitizedIntervalClass: Float,
         ordinal: Ordinal
     )
     {
@@ -95,12 +95,12 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
         /// intervals.
         let (diminished, augmented) = diminishedAndAugmentedThresholds(ordinal: ordinal)
         
-        switch neutralIntervalClass {
+        switch sanitizedIntervalClass {
         case diminished:
             self = NamedIntervalQuality.diminished
         case augmented:
             self = NamedIntervalQuality.augmented
-        case _ where neutralIntervalClass < diminished:
+        case _ where sanitizedIntervalClass < diminished:
             fatalError("DANGER ZONE: double or more diminished")
         case -0.5:
             self = NamedIntervalQuality.minor
@@ -108,7 +108,7 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
             self = NamedIntervalQuality.perfect
         case +0.5:
             self = NamedIntervalQuality.major
-        case _ where neutralIntervalClass > augmented:
+        case _ where sanitizedIntervalClass > augmented:
             fatalError("DANGER ZONE: double or more augmented")
         default:
             fatalError("Not possible to create a NamedIntervalQuality with")

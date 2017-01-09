@@ -55,5 +55,33 @@ class RelativeNamedIntervalTests: XCTestCase {
         let a = SpelledPitchClass(0, PitchSpelling(.c))
         let b = SpelledPitchClass(10, PitchSpelling(.a, .sharp))
         let result = RelativeNamedInterval(a,b)
+        let expected = RelativeNamedInterval(.diminished, .third)
+        XCTAssertEqual(result, expected)
     }
+    
+    func testDFSharpMajorThird() {
+        let a = SpelledPitchClass(2, PitchSpelling(.d))
+        let b = SpelledPitchClass(6, PitchSpelling(.f, .sharp))
+        let result = RelativeNamedInterval(a,b)
+        let expected = RelativeNamedInterval(.major, .third)
+        XCTAssertEqual(result, expected)
+    }
+    
+    func testBFlatDSharpAugmentedThird() {
+        let a = SpelledPitchClass(10, PitchSpelling(.b, .flat))
+        let b = SpelledPitchClass(3, PitchSpelling(.d, .sharp))
+        let result = RelativeNamedInterval(a,b)
+        let expected = RelativeNamedInterval(.augmented, .third)
+        XCTAssertEqual(result, expected)
+    }
+    
+    // double?
+    
+//    func testCASharpAugmentedSixthDiminishedThird() {
+//        let a = SpelledPitchClass(0, PitchSpelling(.c))
+//        let b = SpelledPitchClass(10, PitchSpelling(.a, .sharp))
+//        let result = RelativeNamedInterval(a,b)
+//        let expected = RelativeNamedInterval(.diminished, .third)
+//        XCTAssertEqual(result, expected)
+//    }
 }
