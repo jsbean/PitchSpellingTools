@@ -6,10 +6,12 @@
 //
 //
 
+/// Interface for types describing intervals between `SpelledPitch` values.
 public protocol NamedInterval: Invertible, Equatable {
     
     // MARK: - Associated Types
     
+    /// Type descripting ordinality of an `AbsoluteNamedInterval`.
     associatedtype Ordinal: NamedIntervalOrdinal
 
     var ordinal: Ordinal { get }
@@ -20,16 +22,21 @@ public protocol NamedInterval: Invertible, Equatable {
     init(_ quality: NamedIntervalQuality, _ ordinal: Ordinal)
 }
 
-public func areValid <O: NamedIntervalOrdinal> (
-    _ quality: NamedIntervalQuality,
-    _ ordinal: O
-) -> Bool
+/// - returns: `true` if the given `quality` and `ordinal` can be paired to create a valid
+/// `NamedInterval`. Otherwise, `false`.
+///
+/// **Example:**
+/// ```
+/// areValid(.major, .third) // true
+/// areValid(.augmented, .second) // true
+/// areValid(.perfect, .fourth) // true
+/// areValid(.perfect, .second) // false
+/// areValid(.major, .second) // false
+/// ```
+public func areValid <O: NamedIntervalOrdinal> (_ quality: NamedIntervalQuality, _ ordinal: O) -> Bool
 {
     
-    if
-        (ordinal.isPerfect && quality.isPerfect) ||
-        (ordinal.isImperfect && quality.isImperfect)
-    {
+    if ordinal.isPerfect && quality.isPerfect || ordinal.isImperfect && quality.isImperfect {
         return true
     }
     
