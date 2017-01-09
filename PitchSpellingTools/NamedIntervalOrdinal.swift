@@ -6,16 +6,17 @@
 //
 //
 
-public protocol NamedIntervalOrdinal: RawRepresentable, Invertible {
+public protocol NamedIntervalOrdinal: RawRepresentable, Equatable, Invertible {
     
     // Set of `perfect` interval ordinals
-    static var perfect: Self { get }
+    static var perfects: Self { get }
     
     // Set of `imperfect` interval ordinals
-    static var imperfect: Self { get }
+    static var imperfects: Self { get }
     
-    static var unison: Self { get }
-    static var second: Self { get }
-    static var third: Self { get }
-    static var fourth: Self { get }
+    // Whether or not this ordinal belongs to the `perfects` class.
+    var isPerfect: Bool { get }
+    
+    // Whether or not this ordinal belongs to the `imperfects` class.
+    var isImperfect: Bool { get }
 }

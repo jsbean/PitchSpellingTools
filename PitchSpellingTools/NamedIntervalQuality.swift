@@ -8,6 +8,7 @@
 
 import ArithmeticTools
 
+/// - TODO: Documentation
 public struct NamedIntervalQuality: OptionSet, Invertible {
     
     // MARK: - Nested Types
@@ -25,13 +26,13 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
     public static let major = NamedIntervalQuality(rawValue: 1 << 3)
     public static let augmented = NamedIntervalQuality(rawValue: 1 << 4)
     
-    public static let perfectClass: NamedIntervalQuality = [
+    public static let perfects: NamedIntervalQuality = [
         diminished,
         perfect,
         augmented
     ]
     
-    public static let imperfectClass: NamedIntervalQuality = [
+    public static let imperfects: NamedIntervalQuality = [
         diminished,
         minor,
         major,
@@ -40,11 +41,31 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
     
     // MARK: - Instance Properties
     
+    /// Inverse of `self`.
+    ///
+    /// ```
+    /// major.inverse // minor
+    /// minor.inverse // major
+    /// augmented.inverse // diminished
+    /// perfect.inverse // perfect
+    /// ```
+    public var inverse: NamedIntervalQuality {
+        return NamedIntervalQuality(rawValue: 1 << invert(powerOfTwo: rawValue, within: 4))
+    }
+    
     /// Raw value.
     public let rawValue: Int
 
     /// Degree (single)
     public let degree: Degree
+    
+    public var isPerfect: Bool {
+        return NamedIntervalQuality.perfects.contains(self)
+    }
+    
+    public var isImperfect: Bool {
+        return NamedIntervalQuality.imperfects.contains(self)
+    }
     
     // MARK: - Initializers
     
@@ -71,9 +92,4 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
             return nil
         }
     }
-
-    public var inverse: NamedIntervalQuality {
-        return NamedIntervalQuality(rawValue: 1 << invert(powerOfTwo: rawValue, within: 4))
-    }
 }
-

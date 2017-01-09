@@ -29,4 +29,24 @@ class NamedIntervalQualityTests: XCTestCase {
         let perfect = NamedIntervalQuality.perfect
         XCTAssertEqual(perfect.inverse, perfect)
     }
+    
+    func testDegreeSubscriptSinglePerfectNotNil() {
+        let perfect = NamedIntervalQuality.perfect[.single]
+        XCTAssertNotNil(perfect)
+    }
+    
+    func testDegreeSubscriptDoublePerfectNil() {
+        let perfect = NamedIntervalQuality.perfect[.double]
+        XCTAssertNil(perfect)
+    }
+    
+    func testDegreeSubscriptDoubleMajorNil() {
+        let major = NamedIntervalQuality.major[.double]
+        XCTAssertNil(major)
+    }
+    
+    func testDegreeSubscriptAugmentedNotNil() {
+        let aug = NamedIntervalQuality.augmented[.double]
+        XCTAssertNotNil(aug)
+    }
 }

@@ -6,14 +6,15 @@
 //
 //
 
-import Foundation
+import ArithmeticTools
 
 public struct AbsoluteNamedInterval: NamedInterval {
     
-    public init(_ quality: NamedIntervalQuality, _ ordinal: Ordinal) {
-        fatalError()
-    }
-
+    // MARK: - Associated Types
+    
+    public typealias Quality = NamedIntervalQuality
+    
+    // MARK: - Nested Types
     
     public struct Ordinal: OptionSet, NamedIntervalOrdinal {
         
@@ -25,10 +26,10 @@ public struct AbsoluteNamedInterval: NamedInterval {
         // MARK: - Cases
         
         // Set of `perfect` interval ordinals
-        public static let perfect: Ordinal = [unison, fourth, fifth]
+        public static let perfects: Ordinal = [unison, fourth, fifth]
         
         // Set of `imperfect` interval ordinals
-        public static var imperfect: Ordinal = [second, third, sixth, seventh]
+        public static var imperfects: Ordinal = [second, third, sixth, seventh]
         
         public static var unison = Ordinal(rawValue: 1 << 0)
         public static var second = Ordinal(rawValue: 1 << 1)
@@ -47,14 +48,44 @@ public struct AbsoluteNamedInterval: NamedInterval {
         // MARK: - Instance Properties
         
         public var inverse: Ordinal {
-            fatalError()
+            return Ordinal(rawValue: 1 << invert(powerOfTwo: rawValue, within: 7))
+        }
+        
+        public var isPerfect: Bool {
+            return Ordinal.perfects.contains(self)
+        }
+        
+        public var isImperfect: Bool {
+            return Ordinal.imperfects.contains(self)
         }
     }
     
     // MARK: - Instance Properties
     
     public let ordinal: Ordinal
-    public let quality: NamedIntervalQuality
+    public let quality: Quality
     
+    public init(_ quality: NamedIntervalQuality, _ ordinal: Ordinal) {
+        
+        // can't have major (perfect) interval class types
+        
+        guard AbsoluteNamedInterval.areValid(quality, ordinal) else {
+            fatalError()
+        }
+        
+        self.quality = quality
+        self.ordinal = ordinal
+    }
     
+    public static func areValid(_ quality: Quality, _ ordinal: Ordinal) -> Bool {
+        
+        if
+            (ordinal.isPerfect && quality.isPerfect) ||
+            (ordinal.isImperfect && quality.isImperfect)
+        {
+            return true
+        }
+        
+        return false
+    }
 }

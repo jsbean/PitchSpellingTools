@@ -8,6 +8,8 @@
 
 public protocol NamedInterval: Invertible, Equatable {
     
+    // MARK: - Associated Types
+    
     associatedtype Ordinal: NamedIntervalOrdinal
 
     var ordinal: Ordinal { get }
@@ -24,7 +26,7 @@ extension NamedInterval {
     
     public static func == (lhs: Self, rhs: Self) -> Bool {
         return (
-            //lhs.ordinal == rhs.ordinal &&
+            lhs.ordinal == rhs.ordinal &&
             lhs.quality == rhs.quality &&
             lhs.quality.degree == rhs.quality.degree
         )
