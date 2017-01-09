@@ -11,7 +11,10 @@ public protocol NamedInterval: Invertible, Equatable {
     
     // MARK: - Associated Types
     
-    /// Type descripting ordinality of an `AbsoluteNamedInterval`.
+    /// Type with level of ordering necessary to construct a `RelativeNamedInterval`.
+    associatedtype SpelledPitchType
+    
+    /// Type describing ordinality of an `AbsoluteNamedInterval`.
     associatedtype Ordinal: NamedIntervalOrdinal
     
     /// MARK: - Instance Properties
@@ -29,6 +32,11 @@ public protocol NamedInterval: Invertible, Equatable {
     
     /// Create a `NamedInterval` with a given `quality` and `ordinal`.
     init(_ quality: NamedIntervalQuality, _ ordinal: Ordinal)
+    
+    
+    // Instead, use `PitchType` associatedtype
+    /// Create a `NamedInterval` with two `SpelledPitch` values.
+    init(_ a: SpelledPitchType, _ b: SpelledPitchType)
 }
 
 /// - returns: `true` if the given `quality` and `ordinal` can be paired to create a valid
@@ -73,6 +81,31 @@ extension NamedInterval {
         return .init(quality.inverse, ordinal.inverse)
     }
 }
+
+// TEMP: Update Collections
+
+// Immutable swap.
+public func swapped <T, U> (_ a: T, _ b: U) -> (U, T) {
+    return (b,a)
+}
+
+/// - returns: If the given `predicate` is `true`, a tuple of `(b, a, true)`
+/// Otherwise, `(a, b, false)`
+public func swapped <T> (_ a: T, _ b: T, if predicate: () -> Bool) -> (T, T, Bool) {
+    return predicate() ? (b, a, true) : (a, b, false)
+}
+
+/// If the given predicate if `true`, the given `a` and `b` values are swapped in an `inout`
+/// fasion, and `true` is returned. Otherwise, no `swap` takes place, and `false` is returned.
+public func swap <T> (_ a: inout T, _ b: inout T, if predicate: () -> Bool) -> Bool {
+    
+    if predicate() {
+        swap(&a,&b)
+        return true
+    }
+    return false
+}
+
 
 /*
 import ArithmeticTools
@@ -408,6 +441,7 @@ public struct NamedInterval {
         
         print("interval: \(i)")
         
+        // get difference, then normalize it around 0(?)
         let normalized = normalizedIntervalClass(i - ideal)
         
         print("normalized: \(normalized)")
@@ -507,6 +541,7 @@ public func neutralIntervalClass(steps: Int) -> Float {
     return neutral
 }
 
+/*
 extension NamedInterval: CustomStringConvertible {
     
     // MARK: - CustomStringConvertible
@@ -530,4 +565,5 @@ extension NamedInterval: Equatable {
         )
     }
 }
+*/
 */

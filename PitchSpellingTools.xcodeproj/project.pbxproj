@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		070490FBDF037CEA86C3A3DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0495E35B158A8243480648 /* Cocoa.framework */; };
+		0708D5521E2419B3004FE445 /* Spelled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0708D5511E2419B3004FE445 /* Spelled.swift */; };
+		0708D5531E2419B3004FE445 /* Spelled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0708D5511E2419B3004FE445 /* Spelled.swift */; };
 		071C21C71D6E55C4008A6A4B /* PitchClassSetSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C21C61D6E55C4008A6A4B /* PitchClassSetSpeller.swift */; };
 		071C21C81D6E55C4008A6A4B /* PitchClassSetSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C21C61D6E55C4008A6A4B /* PitchClassSetSpeller.swift */; };
 		072526A01D6FB244001EBF2A /* PitchClassSetSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0725269F1D6FB244001EBF2A /* PitchClassSetSpellerTests.swift */; };
@@ -143,6 +145,7 @@
 
 /* Begin PBXFileReference section */
 		0246148C69B040DF1A3BF09C /* EnumTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumTools.framework; path = Carthage/Build/Mac/EnumTools.framework; sourceTree = "<group>"; };
+		0708D5511E2419B3004FE445 /* Spelled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Spelled.swift; path = PitchSpellingTools/Spelled.swift; sourceTree = "<group>"; };
 		071C21C61D6E55C4008A6A4B /* PitchClassSetSpeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchClassSetSpeller.swift; path = PitchSpellingTools/PitchClassSetSpeller.swift; sourceTree = "<group>"; };
 		0725269F1D6FB244001EBF2A /* PitchClassSetSpellerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchClassSetSpellerTests.swift; path = PitchSpellingToolsTests/PitchClassSetSpellerTests.swift; sourceTree = "<group>"; };
 		074B33571D31166C0042104B /* PitchDyad+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchDyad+PitchSpelling.swift"; path = "PitchSpellingTools/PitchDyad+PitchSpelling.swift"; sourceTree = "<group>"; };
@@ -389,6 +392,7 @@
 				074B33621D31166C0042104B /* Pitch+PitchSpelling.swift */,
 				074B336C1D31166C0042104B /* PitchSpellingDyad.swift */,
 				074B33731D31166C0042104B /* SpelledPitch.swift */,
+				0708D5511E2419B3004FE445 /* Spelled.swift */,
 				07ED70121D68A43400C9C000 /* SpelledPitchClass.swift */,
 				074B33751D31166C0042104B /* SpelledPitchSet.swift */,
 				07DCEB6B1D6F55170028B53D /* SpelledPitchClassSet.swift */,
@@ -592,6 +596,7 @@
 			files = (
 				07C5637E1E228EB800E73FB2 /* AbsoluteNamedInterval.swift in Sources */,
 				074B33B01D31166C0042104B /* SpelledPitch.swift in Sources */,
+				0708D5531E2419B3004FE445 /* Spelled.swift in Sources */,
 				071C21C81D6E55C4008A6A4B /* PitchClassSetSpeller.swift in Sources */,
 				07ED70141D68A43400C9C000 /* SpelledPitchClass.swift in Sources */,
 				074B33AE1D31166C0042104B /* SpelledDyad.swift in Sources */,
@@ -629,6 +634,7 @@
 			files = (
 				07C5637D1E228EB800E73FB2 /* AbsoluteNamedInterval.swift in Sources */,
 				074B33AF1D31166C0042104B /* SpelledPitch.swift in Sources */,
+				0708D5521E2419B3004FE445 /* Spelled.swift in Sources */,
 				071C21C71D6E55C4008A6A4B /* PitchClassSetSpeller.swift in Sources */,
 				07ED70131D68A43400C9C000 /* SpelledPitchClass.swift in Sources */,
 				074B33AD1D31166C0042104B /* SpelledDyad.swift in Sources */,

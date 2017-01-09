@@ -7,6 +7,7 @@
 //
 
 import ArithmeticTools
+import Pitch
 
 /// Named intervals between two `SpelledPitch` values that does not honor order between
 /// `SpelledPitch` values.
@@ -14,12 +15,15 @@ public struct RelativeNamedInterval: NamedInterval {
     
     // MARK: - Associated Types
     
+    /// `PitchType` with level of ordering necessary to construct a `RelativeNamedInterval`.
+    public typealias PitchType = PitchClass
+    
     /// Type describing the quality of a `NamedInterval`-conforming type.
     public typealias Quality = NamedIntervalQuality
     
     // MARK: - Nested Types
     
-    /// Type descripting ordinality of a `RelativeNamedInterval`.
+    /// Type describing ordinality of a `RelativeNamedInterval`.
     public struct Ordinal: OptionSet, NamedIntervalOrdinal {
         
         // MARK: - Instance Properties
@@ -105,4 +109,81 @@ public struct RelativeNamedInterval: NamedInterval {
         self.quality = quality
         self.ordinal = ordinal
     }
+    
+    /// Create a `RelativeNamedInterval` with two `SpelledPitch` values.
+    public init(_ a: SpelledPitchClass, _ b: SpelledPitchClass) {
+        
+        let (newA, newB, _) = swapped(a,b) { mod(steps(a,b), 7) > mod(steps(b,a), 7) }
+        
+        // 1. steps
+        let intervalSteps = steps(newA, newB)
+        
+        // 2. steps -> neutral interval class
+        let neutral = neutralIntervalClass(steps: intervalSteps)
+        
+        // 3. interval = return mod(b.pitch.noteNumber.value - a.pitch.noteNumber.value, 7)
+        
+        
+        // 4. diff (interval - neutral interval class)
+        // 5. diff -> normalized
+        //      - print("normalized interval: \(normalizedInterval)")
+        //        let leveled = normalizedInterval + 6
+        //        let mod12 = mod(leveled, 12)
+        //        let deleveled = mod12 - 6
+        // 6. enforce positive values if unison
+        //      - return steps == 0 ? abs(intervalClass) : intervalClass
+        //
+        
+        print("steps: \(intervalSteps)")
+        print("neutral: \(neutral)")
+        self.init(.perfect, .unison)
+    }
 }
+
+public func neutralIntervalClass(steps: Int) -> Float {
+    
+    assert(steps < 4)
+    
+    let steps = steps
+    
+    var neutral: Float {
+        switch steps {
+            
+        // unison
+        case 0:
+            return 0
+        
+        // second
+        case 1:
+            return 1.5
+            
+        // third
+        case 2:
+            return 3.5
+            
+        // fourth
+        case 3:
+            return 5
+            
+        // impossible
+        default:
+            fatalError()
+        }
+    }
+    return neutral
+}
+
+/// Wraps around 7
+fileprivate func steps(_ a: SpelledPitchClass, _ b: SpelledPitchClass) -> Int {
+    return mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7)
+}
+
+//private func swappedIfNecessary <C: Comparable(_ a: C, _ b: C)
+//    -> (C, C, Bool)
+//{
+//    
+//    return swapped(a,b) {
+//        mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7) >
+//        mod(a.spelling.letterName.steps - b.spelling.letterName.steps, 7)
+//    }
+//}

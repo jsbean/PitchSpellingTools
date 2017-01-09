@@ -8,10 +8,8 @@
 
 import Pitch
 
-/**
- Spelled Pitch Class
- */
-public struct SpelledPitchClass {
+/// Spelled pitch class.
+public struct SpelledPitchClass: Spelled {
     
     // MARK: - Instance Properties
     
@@ -23,17 +21,13 @@ public struct SpelledPitchClass {
     
     // MARK: - Initializers
     
-    /**
-     Create a `SpelledPitchClass` (with argument labels).
-     */
+    /// Create a `SpelledPitchClass` (with argument labels).
     public init(pitchClass: PitchClass, spelling: PitchSpelling) {
         self.pitchClass = pitchClass
         self.spelling = spelling
     }
     
-    /**
-     Create a `SpelledPitchClass` (without argument labels).
-     */
+    /// Create a `SpelledPitchClass` (without argument labels).
     public init(_ pitchClass: PitchClass, _ spelling: PitchSpelling) {
         self.pitchClass = pitchClass
         self.spelling = spelling
@@ -60,7 +54,9 @@ extension SpelledPitchClass: Hashable {
     
     // MARK: - Hashable
     
-    public var hashValue: Int { return "\(pitchClass)\(spelling)".hashValue }
+    public var hashValue: Int {
+        return "\(pitchClass)\(spelling)".hashValue
+    }
 }
 
 // MARK: - Equatable

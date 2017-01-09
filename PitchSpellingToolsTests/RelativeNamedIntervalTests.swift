@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Pitch
 import PitchSpellingTools
 
 class RelativeNamedIntervalTests: XCTestCase {
@@ -40,5 +41,19 @@ class RelativeNamedIntervalTests: XCTestCase {
         let d2 = RelativeNamedInterval(.diminished, .second)
         XCTAssertEqual(A4.inverse, d2)
         XCTAssertEqual(d2.inverse, A4)
+    }
+    
+    func testInitUnisonSamePitchClass() {
+        let a = SpelledPitchClass(0, PitchSpelling(.c))
+        let b = SpelledPitchClass(0, PitchSpelling(.c))
+        let result = RelativeNamedInterval(a,b)
+        let expected = RelativeNamedInterval(.perfect, .unison)
+        XCTAssertEqual(result, expected)
+    }
+    
+    func testCASharpAugmentedSixthDiminishedThird() {
+        let a = SpelledPitchClass(0, PitchSpelling(.c))
+        let b = SpelledPitchClass(10, PitchSpelling(.a, .sharp))
+        let result = RelativeNamedInterval(a,b)
     }
 }

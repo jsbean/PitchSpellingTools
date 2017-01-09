@@ -8,7 +8,7 @@
 
 import ArithmeticTools
 
-/// - TODO: Documentation
+/// - FIXME: Documentation
 public struct NamedIntervalQuality: OptionSet, Invertible {
     
     // MARK: - Nested Types
@@ -59,10 +59,12 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
     /// Degree (single)
     public let degree: Degree
     
+    /// - returns: `true` if this `NamedIntervalQuality` is in the perfect class.
     public var isPerfect: Bool {
         return NamedIntervalQuality.perfects.contains(self)
     }
     
+    /// - returns: `true` if this `NamedIntervalQuality` is in the imperfect class.
     public var isImperfect: Bool {
         return NamedIntervalQuality.imperfects.contains(self)
     }
@@ -77,6 +79,40 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
     public init(rawValue: Int, degree: Degree) {
         self.rawValue = rawValue
         self.degree = degree
+    }
+    
+    public init <Ordinal: NamedIntervalOrdinal> (
+        neutralIntervalClass: Float,
+        ordinal: Ordinal
+    )
+    {
+        func diminishedAndAugmentedThresholds(ordinal: Ordinal) -> (Float, Float) {
+            let result: Float = ordinal == Ordinal.unison ? 0.5 : ordinal.isPerfect ? 1 : 1.5
+            return (-result, result)
+        }
+        
+        /// The thresholds that need to be crossed in order to manage diminished and augmented
+        /// intervals.
+        let (diminished, augmented) = diminishedAndAugmentedThresholds(ordinal: ordinal)
+        
+        switch neutralIntervalClass {
+        case diminished:
+            self = NamedIntervalQuality.diminished
+        case augmented:
+            self = NamedIntervalQuality.augmented
+        case _ where neutralIntervalClass < diminished:
+            fatalError("DANGER ZONE: double or more diminished")
+        case -0.5:
+            self = NamedIntervalQuality.minor
+        case +0.0:
+            self = NamedIntervalQuality.perfect
+        case +0.5:
+            self = NamedIntervalQuality.major
+        case _ where neutralIntervalClass > augmented:
+            fatalError("DANGER ZONE: double or more augmented")
+        default:
+            fatalError("Not possible to create a NamedIntervalQuality with")
+        }
     }
     
     // MARK: - Subscripts
@@ -96,6 +132,10 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
 
 extension NamedIntervalQuality: Equatable {
     
+    // MARK: - `Equatable`
+    
+    /// - returns: `true` if both `NamedIntervalQuality` values are equivalent. Otherwise,
+    /// `false.`
     public static func == (lhs: NamedIntervalQuality, rhs: NamedIntervalQuality) -> Bool {
         return lhs.rawValue == rhs.rawValue
     }

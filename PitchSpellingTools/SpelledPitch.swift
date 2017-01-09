@@ -12,7 +12,7 @@ import Pitch
 /**
  Structure that wraps a `Pitch` with a `PitchSpelling`.
  */
-public struct SpelledPitch {
+public struct SpelledPitch: Spelled {
     
     // MARK: - Instance Properties
     

@@ -66,7 +66,7 @@ public struct AbsoluteNamedInterval: NamedInterval {
         public init(rawValue: Int) {
             self.rawValue = rawValue
         }
-        
+
         // MARK: - Instance Properties
         
         /// - returns: The inverse of an `Ordinal`.
@@ -108,5 +108,10 @@ public struct AbsoluteNamedInterval: NamedInterval {
         
         self.quality = quality
         self.ordinal = ordinal
+    }
+    
+    /// Create a `NamedInterval` with two `SpelledPitch` values.
+    public init(_ a: SpelledPitch, _ b: SpelledPitch) {
+        fatalError()
     }
 }
