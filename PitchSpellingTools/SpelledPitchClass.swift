@@ -68,9 +68,7 @@ public func == (lhs: SpelledPitchClass, rhs: SpelledPitchClass) -> Bool {
 // MARK: - Comparable
 
 
-/**
- - TODO: Refine.
- */
+/// - TODO: Refine.
 public func < (lhs: SpelledPitchClass, rhs: SpelledPitchClass) -> Bool {
     return lhs.pitchClass < rhs.pitchClass
 }

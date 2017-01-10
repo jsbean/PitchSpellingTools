@@ -101,7 +101,10 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
         case augmented:
             self = NamedIntervalQuality.augmented
         case _ where sanitizedIntervalClass < diminished:
-            fatalError("DANGER ZONE: double or more diminished")
+            
+            print("Warning: only support up to double diminished!")
+            self = NamedIntervalQuality.diminished[.double]!
+            
         case -0.5:
             self = NamedIntervalQuality.minor
         case +0.0:
@@ -109,7 +112,10 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
         case +0.5:
             self = NamedIntervalQuality.major
         case _ where sanitizedIntervalClass > augmented:
-            fatalError("DANGER ZONE: double or more augmented")
+            
+            print("Warning: only support up to double augmented!")
+            self = NamedIntervalQuality.augmented[.double]!
+            
         default:
             fatalError("Not possible to create a NamedIntervalQuality with")
         }

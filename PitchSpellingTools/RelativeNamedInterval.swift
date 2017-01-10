@@ -136,20 +136,20 @@ public struct RelativeNamedInterval: NamedInterval {
 }
 
 // FIXME: Get rid of `_ =` with update in Collections API
-internal func ordered (_ a: SpelledPitchClass, _ b: SpelledPitchClass)
+private func ordered (_ a: SpelledPitchClass, _ b: SpelledPitchClass)
     -> (SpelledPitchClass, SpelledPitchClass)
 {
     let (a,b,_) = swapped(a, b, if: { mod(steps(a,b), 7) > mod(steps(b,a), 7) })
     return (a,b)
 }
 
-internal func stepsAndInterval(_ a: SpelledPitchClass, _ b: SpelledPitchClass)
+private func stepsAndInterval(_ a: SpelledPitchClass, _ b: SpelledPitchClass)
     -> (Int, Float)
 {
     return (steps(a,b), interval(a,b))
 }
 
-internal func sanitizeIntervalClass(_ intervalClass: Float, steps: Int) -> Float {
+private func sanitizeIntervalClass(_ intervalClass: Float, steps: Int) -> Float {
 
     // 1. Retrieve the platonic ideal interval class (neutral second, neutral third)
     let neutral = neutralIntervalClass(steps: steps)
@@ -164,7 +164,7 @@ internal func sanitizeIntervalClass(_ intervalClass: Float, steps: Int) -> Float
     return steps == 0 ? abs(normalizedDifference) : normalizedDifference
 }
 
-public func neutralIntervalClass(steps: Int) -> Float {
+private func neutralIntervalClass(steps: Int) -> Float {
     
     assert(steps < 4)
 
@@ -186,11 +186,11 @@ public func neutralIntervalClass(steps: Int) -> Float {
     return neutral
 }
 
-fileprivate func interval(_ a: SpelledPitchClass, _ b: SpelledPitchClass) -> Float {
+private func interval(_ a: SpelledPitchClass, _ b: SpelledPitchClass) -> Float {
     return (b.pitchClass - a.pitchClass).noteNumber.value
 }
 
 /// Wraps around 7
-fileprivate func steps(_ a: SpelledPitchClass, _ b: SpelledPitchClass) -> Int {
+private func steps(_ a: SpelledPitchClass, _ b: SpelledPitchClass) -> Int {
     return mod(b.spelling.letterName.steps - a.spelling.letterName.steps, 7)
 }
