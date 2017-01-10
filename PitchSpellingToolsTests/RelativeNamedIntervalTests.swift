@@ -74,14 +74,4 @@ class RelativeNamedIntervalTests: XCTestCase {
         let expected = RelativeNamedInterval(.augmented, .third)
         XCTAssertEqual(result, expected)
     }
-    
-    // double?
-    
-//    func testCASharpAugmentedSixthDiminishedThird() {
-//        let a = SpelledPitchClass(0, PitchSpelling(.c))
-//        let b = SpelledPitchClass(10, PitchSpelling(.a, .sharp))
-//        let result = RelativeNamedInterval(a,b)
-//        let expected = RelativeNamedInterval(.diminished, .third)
-//        XCTAssertEqual(result, expected)
-//    }
 }

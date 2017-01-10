@@ -49,8 +49,6 @@ class SpelledDyadTests: XCTestCase {
     let bdoubleflat = SpelledPitch(69, PitchSpelling(.b, .doubleFlat))
     let bflat = SpelledPitch(70, PitchSpelling(.b, .flat))
     let gdoublesharp = SpelledPitch(81, PitchSpelling(.g, .doubleSharp))
-
-    
     
     func testRelativeNamedIntervalPerfectUnison() {
         let spelledDyad = SpelledDyad(c,c)
@@ -60,18 +58,6 @@ class SpelledDyadTests: XCTestCase {
     func testRelativeNamedIntervalMinorSecond() {
         assertRelativeNamedInterval(for: SpelledDyad(c, dflat), equals: RelativeNamedInterval(.minor, .second))
     }
-    
-    
-//    func testRelativeNamedIntervalPerfectFifth() {
-//        assertRelativeNamedInterval(for: SpelledDyad(c, g), equals: RelativeNamedInterval(.perfect, .fifth))
-//    }
-//    
-//    func testRelativeNamedIntervalAugmentedFifth() {
-//        assertRelativeNamedInterval(
-//            for: SpelledDyad(c,gsharp),
-//            equals: RelativeNamedInterval(.augmented, .fifth)
-//        )
-//    }
     
     func testRelativeNamedIntervalAugmentedFourth() {
         assertRelativeNamedInterval(
@@ -101,14 +87,7 @@ class SpelledDyadTests: XCTestCase {
             equals: RelativeNamedInterval(.diminished, .second)
         )
     }
-    
-//    func testRelativeNamedIntervalDoubleDiminishedSecond() {
-//        assertRelativeNamedInterval(
-//            for: SpelledDyad(csharp, ddoubleflat),
-//            equals: RelativeNamedInterval(.double, .diminished, .second)
-//        )
-//    }
-    
+
     func testRelativeNamedIntervalAugmentedSecond() {
         assertRelativeNamedInterval(
             for: SpelledDyad(c, dsharp),
@@ -122,6 +101,26 @@ class SpelledDyadTests: XCTestCase {
             equals: RelativeNamedInterval(.diminished, .third)
         )
     }
+
+    
+//    func testRelativeNamedIntervalDoubleDiminishedSecond() {
+//        assertRelativeNamedInterval(
+//            for: SpelledDyad(csharp, ddoubleflat),
+//            equals: RelativeNamedInterval(.double, .diminished, .second)
+//        )
+//    }
+
+
+//    func testRelativeNamedIntervalPerfectFifth() {
+//        assertRelativeNamedInterval(for: SpelledDyad(c, g), equals: RelativeNamedInterval(.perfect, .fifth))
+//    }
+//
+//    func testRelativeNamedIntervalAugmentedFifth() {
+//        assertRelativeNamedInterval(
+//            for: SpelledDyad(c,gsharp),
+//            equals: RelativeNamedInterval(.augmented, .fifth)
+//        )
+//    }
     
 //    func testDoubleAugmentedSixth() {
 //        assertRelativeNamedInterval(

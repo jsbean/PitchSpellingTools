@@ -49,19 +49,4 @@ class NamedIntervalQualityTests: XCTestCase {
         let aug = NamedIntervalQuality.augmented[.double]
         XCTAssertNotNil(aug)
     }
-    
-    func testInitNeutralIntevalClassOrdinal() {
-        
-        // make a minor third
-        /*
-        let ordinal = RelativeNamedInterval.Ordinal.third
-        let neutralInterval: Float = 3
-        let quality = NamedIntervalQuality(
-            sanitizedIntervalClass: neutralInterval,
-            ordinal: ordinal
-        )
-        
-        print("quality: \(quality)")
-         */
-    }
 }
