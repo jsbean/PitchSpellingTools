@@ -9,7 +9,7 @@
 import Foundation
 
 /// Power-of-two Sequence
-internal class PowerSequence<T: ArithmeticType>: Sequence {
+internal class PowerSequence<T: Integer>: Sequence {
 
     fileprivate let doOvershoot: Bool
     fileprivate let coefficient: T

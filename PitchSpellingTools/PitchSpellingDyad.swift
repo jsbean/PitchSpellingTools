@@ -79,7 +79,9 @@ public struct PitchSpellingDyad {
     /**
      `true if `eighthStep` values of `PitchSpelling` objects are equivalent. Otherwise `false`.
      */
-    public var isFineMatching: Bool { return a.eighthStep == b.eighthStep }
+    public var isFineMatching: Bool {
+        return a.eighthStep == b.eighthStep
+    }
     
     /**
      - warning: Undocumented!
@@ -96,18 +98,19 @@ public struct PitchSpellingDyad {
     
     /// Mean of `spellingDistance` values of both `PitchSpelling` objects.
     public var meanSpellingDistance: Float {
-        return [a.spellingDistance, b.spellingDistance].mean!
+        return mean(Float(a.spellingDistance), Float(b.spellingDistance))
     }
     
     /// Mean of `quarterStep.distance` values of both `PitchSpelling objects.
     public var meanCoarseDistance: Float {
-        return [a.quarterStep.distance, b.quarterStep.distance].mean!
+        return mean(Float(a.quarterStep.distance), Float(b.quarterStep.distance))
     }
     
     /// Amount of steps between two `PitchSpelling` objects.
     internal var steps: Int {
         let difference = b.letterName.steps - a.letterName.steps
-        return abs(Int.mod(difference, 7))
+        return abs(difference % 7)
+        //return abs(Int.mod(difference, 7))
     }
 
     fileprivate var eitherIsNatural: Bool {

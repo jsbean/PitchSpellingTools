@@ -8,16 +8,17 @@
 
 import Foundation
 
-public protocol FloatWrapping: ExpressibleByFloatLiteral,
+// TODO: Add doc comments.
+// - Wrap global functions as static methods in extensions, where possible.
+public protocol FloatWrapping:
+    ExpressibleByFloatLiteral,
     ExpressibleByIntegerLiteral,
     Hashable,
     Comparable
 {
-    associatedtype FloatLiteralType = Float
-    associatedtype IntegerLiteralType = Int
     init(floatLiteral: Float)
-    var value: Float { get set }
     init(integerLiteral: Int)
+    var value: Float { get set }
     init(_ float: Float)
 }
 
@@ -28,8 +29,11 @@ extension FloatWrapping {
     }
 }
 
-// MARK: - Hashable
+
 extension FloatWrapping {
+    
+    // MARK: - `Hashable`
+    
     public var hashValue: Int { return value.hashValue }
 }
 

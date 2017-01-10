@@ -8,19 +8,41 @@
 
 import Foundation
 
-/**
- Get the greatest common divisor of two values.
- 
- >`greatestCommonDivisor(12,16) -> 4`
- 
- - parameter a: ArithmeticType value
- - parameter b: ArithmeticType value
- 
- - returns: Greatest common divisor of a and b
- */
-public func greatestCommonDivisor<T: ArithmeticType>(_ a: T, _ b: T) -> T {
-    let result = T.mod(a,b)
-    return result == T.zero ? b : greatestCommonDivisor(b, result)
+// TODO: Make `quadratic` generic over `FloatingPoint` type, when possible (Swift 3.1 / 4)
+
+/// - returns: A `Set` of either 0, 1, or 2 x-intercepts for the given coefficients.
+public func quadratic (_ a: Float, _ b: Float, _ c: Float) -> Set<Float> {
+    
+    let discriminant = pow(b,2) - 4 * a * c
+    
+    guard discriminant > 0 else {
+        return Set()
+    }
+    
+    return Set(
+        [1,-1].map { sign in (-b + sign * sqrt(discriminant)) / (2 * a) }
+    )
+}
+
+/// - returns: A `Set` of either 0, 1, or 2 x-intercepts for the given coefficients.
+public func quadratic (_ a: Double, _ b: Double, _ c: Double) -> Set<Double> {
+    
+    let discriminant = pow(b,2) - 4 * a * c
+    
+    guard discriminant > 0 else {
+        return Set()
+    }
+    
+    return Set(
+        [1,-1].map { sign in (-b + sign * sqrt(discriminant)) / (2 * a) }
+    )
+}
+
+
+/// - returns: Greatest common divisor of a and b
+public func gcd <I: Integer> (_ a: I, _ b: I) -> I {
+    let result = a % b
+    return result == 0 ? b : gcd(b, result)
 }
 
 /**
@@ -35,8 +57,8 @@ public func greatestCommonDivisor<T: ArithmeticType>(_ a: T, _ b: T) -> T {
 
  - returns: Value closer to target value
  */
-public func closer<T: ArithmeticType>(to target: T, a: T, b: T) -> T {
-    return T.abs(a - target) <= T.abs(b - target) ? a : b
+public func closer <T: SignedNumber> (to target: T, a: T, b: T) -> T {
+    return abs(a - target) <= abs(b - target) ? a : b
 }
 
 /**
@@ -44,10 +66,23 @@ public func closer<T: ArithmeticType>(to target: T, a: T, b: T) -> T {
  
  - returns: 2-tuple of two `Comparable` types, in order.
  */
-public func ordered<T: Comparable>(_ a: T, _ b: T) -> (T,T) {
+public func ordered <T: Comparable> (_ a: T, _ b: T) -> (T, T) {
     return a <= b ? (a,b) : (b,a)
 }
 
-public func mean<T: ArithmeticType>(_ a: T, _ b: T) -> T {
-    return (a + b) / T.two
+/// - returns: The average to the two given values.
+public func mean <F: FloatingPoint> (_ a: F, _ b: F) -> F {
+    return (a + b) / 2
+}
+
+/// - returns: "True" modulo (not "remainder", which is implemented by Swift's `%`).
+public func mod <T: Integer> (_ dividend: T, _ modulus: T) -> T {
+    let result = dividend % modulus
+    return result < 0 ? result + modulus : result
+}
+
+/// - returns: "True" modulo (not "remainder", which is implemented by Swift's `%`).
+public func mod <T: FloatingPoint> (_ dividend: T, _ modulus: T) -> T {
+    let result = dividend.truncatingRemainder(dividingBy: modulus)
+    return result < 0 ? result + modulus : result
 }

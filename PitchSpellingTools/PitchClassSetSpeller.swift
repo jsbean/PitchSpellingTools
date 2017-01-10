@@ -6,7 +6,8 @@
 //
 //
 
-import ArrayTools
+/*
+import Collections
 import Pitch
 
 /// Defintion of a spelling rule that takes a cost multiplier and an input, returning a cost.
@@ -185,3 +186,4 @@ public struct PitchClassSetSpeller {
         guard totalCost < costThreshold else { throw CostError.thresholdExceeded }
     }
 }
+*/

@@ -25,24 +25,34 @@
 		074276CE1C877EE400D50A30 /* Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074276CC1C877EE400D50A30 /* Power.swift */; };
 		074276D01C877EF700D50A30 /* PowerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074276CF1C877EF700D50A30 /* PowerTests.swift */; };
 		074276D11C877EF700D50A30 /* PowerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074276CF1C877EF700D50A30 /* PowerTests.swift */; };
+		07502CA91DD2A2A20095AB27 /* LinearRegression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07502CA81DD2A2A20095AB27 /* LinearRegression.swift */; };
+		07502CAA1DD2A2A20095AB27 /* LinearRegression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07502CA81DD2A2A20095AB27 /* LinearRegression.swift */; };
+		07502CAC1DD2A90E0095AB27 /* LinearRegressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07502CAB1DD2A90E0095AB27 /* LinearRegressionTests.swift */; };
+		07502CAD1DD2A90E0095AB27 /* LinearRegressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07502CAB1DD2A90E0095AB27 /* LinearRegressionTests.swift */; };
 		075F16E61CE2570600545125 /* FloatWrapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075F16E51CE2570600545125 /* FloatWrapping.swift */; };
 		075F16E71CE2570600545125 /* FloatWrapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075F16E51CE2570600545125 /* FloatWrapping.swift */; };
 		07652E101C8788B300359A03 /* CloserToTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07652E0F1C8788B300359A03 /* CloserToTests.swift */; };
 		07652E111C8788B300359A03 /* CloserToTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07652E0F1C8788B300359A03 /* CloserToTests.swift */; };
+		07690BE21E0D913C0095F1D5 /* MeanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07690BE11E0D913C0095F1D5 /* MeanTests.swift */; };
+		07690BE31E0D913C0095F1D5 /* MeanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07690BE11E0D913C0095F1D5 /* MeanTests.swift */; };
+		077554651E1B012700CF4A8A /* Rational.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077554641E1B012700CF4A8A /* Rational.swift */; };
+		077554661E1B012700CF4A8A /* Rational.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077554641E1B012700CF4A8A /* Rational.swift */; };
+		077554681E1B013400CF4A8A /* RationalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077554671E1B013400CF4A8A /* RationalTests.swift */; };
+		077554691E1B013400CF4A8A /* RationalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077554671E1B013400CF4A8A /* RationalTests.swift */; };
+		0775546E1E1B0FBE00CF4A8A /* IntegerWrapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0775546D1E1B0FBE00CF4A8A /* IntegerWrapping.swift */; };
+		0775546F1E1B0FBE00CF4A8A /* IntegerWrapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0775546D1E1B0FBE00CF4A8A /* IntegerWrapping.swift */; };
 		078142561C7CECD5004B68D3 /* ArithmeticTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 078142551C7CECD5004B68D3 /* ArithmeticTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0781425D1C7CECD5004B68D3 /* ArithmeticTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078142521C7CECD5004B68D3 /* ArithmeticTools.framework */; };
 		0781427B1C7CECE0004B68D3 /* ArithmeticTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078142711C7CECE0004B68D3 /* ArithmeticTools.framework */; };
 		078142881C7CED15004B68D3 /* ArithmeticTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 078142551C7CECD5004B68D3 /* ArithmeticTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0781428A1C7CED35004B68D3 /* ArithmeticTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 078142521C7CECD5004B68D3 /* ArithmeticTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0781428C1C7CED3C004B68D3 /* ArithmeticTools.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 078142711C7CECE0004B68D3 /* ArithmeticTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		078142A61C7CF3F1004B68D3 /* ArithmeticType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142A21C7CF3F1004B68D3 /* ArithmeticType.swift */; };
-		078142A71C7CF3F1004B68D3 /* ArithmeticType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142A21C7CF3F1004B68D3 /* ArithmeticType.swift */; };
-		078142A81C7CF3F1004B68D3 /* Array+ArithmeticType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142A31C7CF3F1004B68D3 /* Array+ArithmeticType.swift */; };
-		078142A91C7CF3F1004B68D3 /* Array+ArithmeticType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142A31C7CF3F1004B68D3 /* Array+ArithmeticType.swift */; };
+		078142A81C7CF3F1004B68D3 /* BidirectionalCollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142A31C7CF3F1004B68D3 /* BidirectionalCollectionExtensions.swift */; };
+		078142A91C7CF3F1004B68D3 /* BidirectionalCollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142A31C7CF3F1004B68D3 /* BidirectionalCollectionExtensions.swift */; };
 		078142AA1C7CF3F1004B68D3 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142A41C7CF3F1004B68D3 /* Functions.swift */; };
 		078142AB1C7CF3F1004B68D3 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142A41C7CF3F1004B68D3 /* Functions.swift */; };
-		078142AC1C7CF3F1004B68D3 /* SequenceType+ArithmeticType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142A51C7CF3F1004B68D3 /* SequenceType+ArithmeticType.swift */; };
-		078142AD1C7CF3F1004B68D3 /* SequenceType+ArithmeticType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142A51C7CF3F1004B68D3 /* SequenceType+ArithmeticType.swift */; };
+		078142AC1C7CF3F1004B68D3 /* SequenceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142A51C7CF3F1004B68D3 /* SequenceExtensions.swift */; };
+		078142AD1C7CF3F1004B68D3 /* SequenceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142A51C7CF3F1004B68D3 /* SequenceExtensions.swift */; };
 		078142B31C7CF494004B68D3 /* EvenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142AE1C7CF494004B68D3 /* EvenTests.swift */; };
 		078142B41C7CF494004B68D3 /* EvenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142AE1C7CF494004B68D3 /* EvenTests.swift */; };
 		078142B51C7CF494004B68D3 /* GreatestCommonDivisorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142AF1C7CF494004B68D3 /* GreatestCommonDivisorTests.swift */; };
@@ -53,13 +63,31 @@
 		078142BA1C7CF494004B68D3 /* PrimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142B11C7CF494004B68D3 /* PrimeTests.swift */; };
 		078142BB1C7CF494004B68D3 /* SequenceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142B21C7CF494004B68D3 /* SequenceTypeTests.swift */; };
 		078142BC1C7CF494004B68D3 /* SequenceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078142B21C7CF494004B68D3 /* SequenceTypeTests.swift */; };
-		079D1FC11C9657C100A272B9 /* ArrayTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079D1FC01C9657C100A272B9 /* ArrayTools.framework */; };
-		079D1FC31C9657CF00A272B9 /* ArrayTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079D1FC21C9657CF00A272B9 /* ArrayTools.framework */; };
-		07D3322F1D325FE1009B0A33 /* ArrayTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079D1FC01C9657C100A272B9 /* ArrayTools.framework */; };
+		0799D96F1E21777A00516ADF /* QuadraticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799D96E1E21777A00516ADF /* QuadraticTests.swift */; };
+		0799D9701E21777A00516ADF /* QuadraticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799D96E1E21777A00516ADF /* QuadraticTests.swift */; };
+		07C563761E226DE100E73FB2 /* ModuloTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C563751E226DE100E73FB2 /* ModuloTests.swift */; };
+		07C563771E226DE100E73FB2 /* ModuloTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C563751E226DE100E73FB2 /* ModuloTests.swift */; };
+		07C563AF1E22B81A00E73FB2 /* BitwiseOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C563AE1E22B81A00E73FB2 /* BitwiseOperations.swift */; };
+		07C563B01E22B81A00E73FB2 /* BitwiseOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C563AE1E22B81A00E73FB2 /* BitwiseOperations.swift */; };
+		07C563B21E22B88700E73FB2 /* BitwiseOperationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C563B11E22B88700E73FB2 /* BitwiseOperationsTests.swift */; };
+		07C563B31E22B88700E73FB2 /* BitwiseOperationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C563B11E22B88700E73FB2 /* BitwiseOperationsTests.swift */; };
+		07C9DA411DF0B8C80071B801 /* NumberFormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C9DA401DF0B8C80071B801 /* NumberFormattingTests.swift */; };
+		07C9DA421DF0B8C80071B801 /* NumberFormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C9DA401DF0B8C80071B801 /* NumberFormattingTests.swift */; };
+		07C9DA441DF0BF130071B801 /* RandomProducing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C9DA431DF0BF130071B801 /* RandomProducing.swift */; };
+		07C9DA451DF0BF130071B801 /* RandomProducing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C9DA431DF0BF130071B801 /* RandomProducing.swift */; };
+		07C9DA471DF0C4A00071B801 /* StringFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C9DA461DF0C4A00071B801 /* StringFormatting.swift */; };
+		07C9DA481DF0C4A00071B801 /* StringFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C9DA461DF0C4A00071B801 /* StringFormatting.swift */; };
+		07C9DA4A1DF0C4D60071B801 /* IntegerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C9DA491DF0C4D60071B801 /* IntegerExtensions.swift */; };
+		07C9DA4B1DF0C4D60071B801 /* IntegerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C9DA491DF0C4D60071B801 /* IntegerExtensions.swift */; };
+		07C9DA4D1DF0C66F0071B801 /* CumulativeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C9DA4C1DF0C66F0071B801 /* CumulativeTests.swift */; };
+		07C9DA4E1DF0C66F0071B801 /* CumulativeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C9DA4C1DF0C66F0071B801 /* CumulativeTests.swift */; };
 		07F5382F1CE3AEAC001294CC /* Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F5382E1CE3AEAC001294CC /* Comparison.swift */; };
 		07F538301CE3AEAC001294CC /* Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F5382E1CE3AEAC001294CC /* Comparison.swift */; };
 		07F538321CE3AEC6001294CC /* ComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F538311CE3AEC6001294CC /* ComparisonTests.swift */; };
 		07F538331CE3AEC6001294CC /* ComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F538311CE3AEC6001294CC /* ComparisonTests.swift */; };
+		907335901DFE2523000504C8 /* IsPowerOfTwoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9073358F1DFE2523000504C8 /* IsPowerOfTwoTests.swift */; };
+		CE9D18DD4880C2C3390AE17F /* Collections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA73FEF407912A83BEC1554 /* Collections.framework */; };
+		E6B88D15871E1EEEF7D003A4 /* Collections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D664028AC29575BD5C05D506 /* Collections.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,23 +110,23 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		078142891C7CED30004B68D3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
 				0781428A1C7CED35004B68D3 /* ArithmeticTools.framework in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 		0781428B1C7CED38004B68D3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
 				0781428C1C7CED3C004B68D3 /* ArithmeticTools.framework in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -112,28 +140,43 @@
 		074276C91C8775B800D50A30 /* PowerSequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerSequenceTests.swift; sourceTree = "<group>"; };
 		074276CC1C877EE400D50A30 /* Power.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Power.swift; sourceTree = "<group>"; };
 		074276CF1C877EF700D50A30 /* PowerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerTests.swift; sourceTree = "<group>"; };
+		07502CA81DD2A2A20095AB27 /* LinearRegression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearRegression.swift; sourceTree = "<group>"; };
+		07502CAB1DD2A90E0095AB27 /* LinearRegressionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearRegressionTests.swift; sourceTree = "<group>"; };
 		075F16E51CE2570600545125 /* FloatWrapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatWrapping.swift; sourceTree = "<group>"; };
 		07652E0F1C8788B300359A03 /* CloserToTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloserToTests.swift; sourceTree = "<group>"; };
+		07690BE11E0D913C0095F1D5 /* MeanTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeanTests.swift; sourceTree = "<group>"; };
+		077554641E1B012700CF4A8A /* Rational.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rational.swift; sourceTree = "<group>"; };
+		077554671E1B013400CF4A8A /* RationalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RationalTests.swift; sourceTree = "<group>"; };
+		0775546D1E1B0FBE00CF4A8A /* IntegerWrapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegerWrapping.swift; sourceTree = "<group>"; };
 		078142521C7CECD5004B68D3 /* ArithmeticTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ArithmeticTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		078142551C7CECD5004B68D3 /* ArithmeticTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ArithmeticTools.h; path = ArithmeticTools/ArithmeticTools.h; sourceTree = "<group>"; };
 		078142571C7CECD5004B68D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0781425C1C7CECD5004B68D3 /* ArithmeticToolsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArithmeticToolsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0781425C1C7CECD5004B68D3 /* ArithmeticTools iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ArithmeticTools iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		078142631C7CECD5004B68D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		078142711C7CECE0004B68D3 /* ArithmeticTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ArithmeticTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0781427A1C7CECE0004B68D3 /* ArithmeticToolsMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArithmeticToolsMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		078142A21C7CF3F1004B68D3 /* ArithmeticType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArithmeticType.swift; sourceTree = "<group>"; };
-		078142A31C7CF3F1004B68D3 /* Array+ArithmeticType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+ArithmeticType.swift"; sourceTree = "<group>"; };
+		0781427A1C7CECE0004B68D3 /* ArithmeticTools macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ArithmeticTools macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		078142A31C7CF3F1004B68D3 /* BidirectionalCollectionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BidirectionalCollectionExtensions.swift; sourceTree = "<group>"; };
 		078142A41C7CF3F1004B68D3 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
-		078142A51C7CF3F1004B68D3 /* SequenceType+ArithmeticType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+ArithmeticType.swift"; sourceTree = "<group>"; };
+		078142A51C7CF3F1004B68D3 /* SequenceExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceExtensions.swift; sourceTree = "<group>"; };
 		078142AE1C7CF494004B68D3 /* EvenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvenTests.swift; sourceTree = "<group>"; };
 		078142AF1C7CF494004B68D3 /* GreatestCommonDivisorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreatestCommonDivisorTests.swift; sourceTree = "<group>"; };
 		078142B01C7CF494004B68D3 /* OddTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OddTests.swift; sourceTree = "<group>"; };
 		078142B11C7CF494004B68D3 /* PrimeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimeTests.swift; sourceTree = "<group>"; };
 		078142B21C7CF494004B68D3 /* SequenceTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceTypeTests.swift; sourceTree = "<group>"; };
-		079D1FC01C9657C100A272B9 /* ArrayTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArrayTools.framework; path = Carthage/Build/iOS/ArrayTools.framework; sourceTree = "<group>"; };
-		079D1FC21C9657CF00A272B9 /* ArrayTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArrayTools.framework; path = Carthage/Build/Mac/ArrayTools.framework; sourceTree = "<group>"; };
+		0799D96E1E21777A00516ADF /* QuadraticTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuadraticTests.swift; sourceTree = "<group>"; };
+		07C563751E226DE100E73FB2 /* ModuloTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModuloTests.swift; path = ArithmeticToolsTests/ModuloTests.swift; sourceTree = SOURCE_ROOT; };
+		07C563AE1E22B81A00E73FB2 /* BitwiseOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitwiseOperations.swift; sourceTree = "<group>"; };
+		07C563B11E22B88700E73FB2 /* BitwiseOperationsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitwiseOperationsTests.swift; sourceTree = "<group>"; };
+		07C9DA401DF0B8C80071B801 /* NumberFormattingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberFormattingTests.swift; sourceTree = "<group>"; };
+		07C9DA431DF0BF130071B801 /* RandomProducing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomProducing.swift; sourceTree = "<group>"; };
+		07C9DA461DF0C4A00071B801 /* StringFormatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringFormatting.swift; sourceTree = "<group>"; };
+		07C9DA491DF0C4D60071B801 /* IntegerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegerExtensions.swift; sourceTree = "<group>"; };
+		07C9DA4C1DF0C66F0071B801 /* CumulativeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CumulativeTests.swift; sourceTree = "<group>"; };
 		07F5382E1CE3AEAC001294CC /* Comparison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comparison.swift; sourceTree = "<group>"; };
 		07F538311CE3AEC6001294CC /* ComparisonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparisonTests.swift; sourceTree = "<group>"; };
+		1DA73FEF407912A83BEC1554 /* Collections.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Collections.framework; path = Carthage/Build/Mac/Collections.framework; sourceTree = "<group>"; };
+		9073358F1DFE2523000504C8 /* IsPowerOfTwoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsPowerOfTwoTests.swift; sourceTree = "<group>"; };
+		D664028AC29575BD5C05D506 /* Collections.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Collections.framework; path = Carthage/Build/iOS/Collections.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				079D1FC11C9657C100A272B9 /* ArrayTools.framework in Frameworks */,
+				E6B88D15871E1EEEF7D003A4 /* Collections.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +192,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07D3322F1D325FE1009B0A33 /* ArrayTools.framework in Frameworks */,
 				0781425D1C7CECD5004B68D3 /* ArithmeticTools.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,7 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				079D1FC31C9657CF00A272B9 /* ArrayTools.framework in Frameworks */,
+				CE9D18DD4880C2C3390AE17F /* Collections.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,9 +246,9 @@
 			isa = PBXGroup;
 			children = (
 				078142521C7CECD5004B68D3 /* ArithmeticTools.framework */,
-				0781425C1C7CECD5004B68D3 /* ArithmeticToolsTests.xctest */,
+				0781425C1C7CECD5004B68D3 /* ArithmeticTools iOS Tests.xctest */,
 				078142711C7CECE0004B68D3 /* ArithmeticTools.framework */,
-				0781427A1C7CECE0004B68D3 /* ArithmeticToolsMacTests.xctest */,
+				0781427A1C7CECE0004B68D3 /* ArithmeticTools macOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,11 +258,18 @@
 			children = (
 				07F538341CE3AF11001294CC /* Power */,
 				075F16E51CE2570600545125 /* FloatWrapping.swift */,
+				0775546D1E1B0FBE00CF4A8A /* IntegerWrapping.swift */,
 				07F5382E1CE3AEAC001294CC /* Comparison.swift */,
-				078142A21C7CF3F1004B68D3 /* ArithmeticType.swift */,
-				078142A31C7CF3F1004B68D3 /* Array+ArithmeticType.swift */,
+				07C9DA491DF0C4D60071B801 /* IntegerExtensions.swift */,
+				07C9DA461DF0C4A00071B801 /* StringFormatting.swift */,
+				07C9DA431DF0BF130071B801 /* RandomProducing.swift */,
+				078142A31C7CF3F1004B68D3 /* BidirectionalCollectionExtensions.swift */,
 				078142A41C7CF3F1004B68D3 /* Functions.swift */,
-				078142A51C7CF3F1004B68D3 /* SequenceType+ArithmeticType.swift */,
+				07C563751E226DE100E73FB2 /* ModuloTests.swift */,
+				07C563AE1E22B81A00E73FB2 /* BitwiseOperations.swift */,
+				078142A51C7CF3F1004B68D3 /* SequenceExtensions.swift */,
+				07502CA81DD2A2A20095AB27 /* LinearRegression.swift */,
+				077554641E1B012700CF4A8A /* Rational.swift */,
 				074276C41C8767F300D50A30 /* Supporting Files */,
 			);
 			path = ArithmeticTools;
@@ -230,11 +279,13 @@
 			isa = PBXGroup;
 			children = (
 				078142AE1C7CF494004B68D3 /* EvenTests.swift */,
+				07690BE11E0D913C0095F1D5 /* MeanTests.swift */,
 				071F3C711C8227F300F6BD28 /* RandomTests.swift */,
 				078142AF1C7CF494004B68D3 /* GreatestCommonDivisorTests.swift */,
 				07652E0F1C8788B300359A03 /* CloserToTests.swift */,
 				078142B01C7CF494004B68D3 /* OddTests.swift */,
 				078142B11C7CF494004B68D3 /* PrimeTests.swift */,
+				9073358F1DFE2523000504C8 /* IsPowerOfTwoTests.swift */,
 				073A93471C8E6C5C003DAF9C /* IsDivisibleTests.swift */,
 				078142B21C7CF494004B68D3 /* SequenceTypeTests.swift */,
 				0719FA891C876792009EACB4 /* PowerGeneratorTests.swift */,
@@ -242,7 +293,13 @@
 				074276CF1C877EF700D50A30 /* PowerTests.swift */,
 				071D19C41C94BEB100543F77 /* OrderedTests.swift */,
 				07F538311CE3AEC6001294CC /* ComparisonTests.swift */,
+				07502CAB1DD2A90E0095AB27 /* LinearRegressionTests.swift */,
+				07C9DA401DF0B8C80071B801 /* NumberFormattingTests.swift */,
+				07C9DA4C1DF0C66F0071B801 /* CumulativeTests.swift */,
+				077554671E1B013400CF4A8A /* RationalTests.swift */,
+				0799D96E1E21777A00516ADF /* QuadraticTests.swift */,
 				074276C51C8767FD00D50A30 /* Supporting Files */,
+				07C563B11E22B88700E73FB2 /* BitwiseOperationsTests.swift */,
 			);
 			path = ArithmeticToolsTests;
 			sourceTree = "<group>";
@@ -251,7 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				0781428E1C7CF095004B68D3 /* iOS */,
-				0781428F1C7CF099004B68D3 /* Mac */,
+				07B018F830D420A18AF0727B /* OS X */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -259,17 +316,17 @@
 		0781428E1C7CF095004B68D3 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				079D1FC01C9657C100A272B9 /* ArrayTools.framework */,
+				D664028AC29575BD5C05D506 /* Collections.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		0781428F1C7CF099004B68D3 /* Mac */ = {
+		07B018F830D420A18AF0727B /* OS X */ = {
 			isa = PBXGroup;
 			children = (
-				079D1FC21C9657CF00A272B9 /* ArrayTools.framework */,
+				1DA73FEF407912A83BEC1554 /* Collections.framework */,
 			);
-			name = Mac;
+			name = "OS X";
 			sourceTree = "<group>";
 		};
 		07F538341CE3AF11001294CC /* Power */ = {
@@ -304,9 +361,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		078142511C7CECD5004B68D3 /* ArithmeticTools */ = {
+		078142511C7CECD5004B68D3 /* ArithmeticTools iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 078142661C7CECD5004B68D3 /* Build configuration list for PBXNativeTarget "ArithmeticTools" */;
+			buildConfigurationList = 078142661C7CECD5004B68D3 /* Build configuration list for PBXNativeTarget "ArithmeticTools iOS" */;
 			buildPhases = (
 				0781424D1C7CECD5004B68D3 /* Sources */,
 				0781424E1C7CECD5004B68D3 /* Frameworks */,
@@ -317,14 +374,14 @@
 			);
 			dependencies = (
 			);
-			name = ArithmeticTools;
+			name = "ArithmeticTools iOS";
 			productName = ArithmeticTools;
 			productReference = 078142521C7CECD5004B68D3 /* ArithmeticTools.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		0781425B1C7CECD5004B68D3 /* ArithmeticToolsTests */ = {
+		0781425B1C7CECD5004B68D3 /* ArithmeticTools iOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 078142691C7CECD5004B68D3 /* Build configuration list for PBXNativeTarget "ArithmeticToolsTests" */;
+			buildConfigurationList = 078142691C7CECD5004B68D3 /* Build configuration list for PBXNativeTarget "ArithmeticTools iOS Tests" */;
 			buildPhases = (
 				078142581C7CECD5004B68D3 /* Sources */,
 				078142591C7CECD5004B68D3 /* Frameworks */,
@@ -337,14 +394,14 @@
 			dependencies = (
 				0781425F1C7CECD5004B68D3 /* PBXTargetDependency */,
 			);
-			name = ArithmeticToolsTests;
+			name = "ArithmeticTools iOS Tests";
 			productName = ArithmeticToolsTests;
-			productReference = 0781425C1C7CECD5004B68D3 /* ArithmeticToolsTests.xctest */;
+			productReference = 0781425C1C7CECD5004B68D3 /* ArithmeticTools iOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		078142701C7CECE0004B68D3 /* ArithmeticToolsMac */ = {
+		078142701C7CECE0004B68D3 /* ArithmeticTools macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 078142821C7CECE0004B68D3 /* Build configuration list for PBXNativeTarget "ArithmeticToolsMac" */;
+			buildConfigurationList = 078142821C7CECE0004B68D3 /* Build configuration list for PBXNativeTarget "ArithmeticTools macOS" */;
 			buildPhases = (
 				0781426C1C7CECE0004B68D3 /* Sources */,
 				0781426D1C7CECE0004B68D3 /* Frameworks */,
@@ -355,14 +412,14 @@
 			);
 			dependencies = (
 			);
-			name = ArithmeticToolsMac;
+			name = "ArithmeticTools macOS";
 			productName = ArithmeticToolsMac;
 			productReference = 078142711C7CECE0004B68D3 /* ArithmeticTools.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		078142791C7CECE0004B68D3 /* ArithmeticToolsMacTests */ = {
+		078142791C7CECE0004B68D3 /* ArithmeticTools macOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 078142851C7CECE0004B68D3 /* Build configuration list for PBXNativeTarget "ArithmeticToolsMacTests" */;
+			buildConfigurationList = 078142851C7CECE0004B68D3 /* Build configuration list for PBXNativeTarget "ArithmeticTools macOS Tests" */;
 			buildPhases = (
 				078142761C7CECE0004B68D3 /* Sources */,
 				078142771C7CECE0004B68D3 /* Frameworks */,
@@ -375,9 +432,9 @@
 			dependencies = (
 				0781427D1C7CECE0004B68D3 /* PBXTargetDependency */,
 			);
-			name = ArithmeticToolsMacTests;
+			name = "ArithmeticTools macOS Tests";
 			productName = ArithmeticToolsMacTests;
-			productReference = 0781427A1C7CECE0004B68D3 /* ArithmeticToolsMacTests.xctest */;
+			productReference = 0781427A1C7CECE0004B68D3 /* ArithmeticTools macOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -418,10 +475,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				078142511C7CECD5004B68D3 /* ArithmeticTools */,
-				0781425B1C7CECD5004B68D3 /* ArithmeticToolsTests */,
-				078142701C7CECE0004B68D3 /* ArithmeticToolsMac */,
-				078142791C7CECE0004B68D3 /* ArithmeticToolsMacTests */,
+				078142511C7CECD5004B68D3 /* ArithmeticTools iOS */,
+				0781425B1C7CECD5004B68D3 /* ArithmeticTools iOS Tests */,
+				078142701C7CECE0004B68D3 /* ArithmeticTools macOS */,
+				078142791C7CECE0004B68D3 /* ArithmeticTools macOS Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -464,7 +521,7 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/ArrayTools.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Collections.framework",
 			);
 			outputPaths = (
 			);
@@ -478,7 +535,7 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/ArrayTools.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/Collections.framework",
 			);
 			outputPaths = (
 			);
@@ -493,15 +550,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				078142A61C7CF3F1004B68D3 /* ArithmeticType.swift in Sources */,
-				078142A81C7CF3F1004B68D3 /* Array+ArithmeticType.swift in Sources */,
+				0775546E1E1B0FBE00CF4A8A /* IntegerWrapping.swift in Sources */,
+				078142A81C7CF3F1004B68D3 /* BidirectionalCollectionExtensions.swift in Sources */,
 				074276C71C8768A100D50A30 /* PowerSequence.swift in Sources */,
-				078142AC1C7CF3F1004B68D3 /* SequenceType+ArithmeticType.swift in Sources */,
+				078142AC1C7CF3F1004B68D3 /* SequenceExtensions.swift in Sources */,
+				07C563AF1E22B81A00E73FB2 /* BitwiseOperations.swift in Sources */,
+				07C9DA441DF0BF130071B801 /* RandomProducing.swift in Sources */,
 				075F16E61CE2570600545125 /* FloatWrapping.swift in Sources */,
+				077554651E1B012700CF4A8A /* Rational.swift in Sources */,
 				078142AA1C7CF3F1004B68D3 /* Functions.swift in Sources */,
+				07C9DA471DF0C4A00071B801 /* StringFormatting.swift in Sources */,
+				07C9DA4A1DF0C4D60071B801 /* IntegerExtensions.swift in Sources */,
 				074276CD1C877EE400D50A30 /* Power.swift in Sources */,
 				07F5382F1CE3AEAC001294CC /* Comparison.swift in Sources */,
 				0719FA871C875584009EACB4 /* PowerGenerator.swift in Sources */,
+				07502CA91DD2A2A20095AB27 /* LinearRegression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,17 +574,26 @@
 			files = (
 				0719FA8A1C876792009EACB4 /* PowerGeneratorTests.swift in Sources */,
 				071F3C721C8227F300F6BD28 /* RandomTests.swift in Sources */,
+				07C9DA4D1DF0C66F0071B801 /* CumulativeTests.swift in Sources */,
 				07F538321CE3AEC6001294CC /* ComparisonTests.swift in Sources */,
+				0799D96F1E21777A00516ADF /* QuadraticTests.swift in Sources */,
 				074276D01C877EF700D50A30 /* PowerTests.swift in Sources */,
 				078142BB1C7CF494004B68D3 /* SequenceTypeTests.swift in Sources */,
 				078142B51C7CF494004B68D3 /* GreatestCommonDivisorTests.swift in Sources */,
 				074276CA1C8775B800D50A30 /* PowerSequenceTests.swift in Sources */,
+				077554681E1B013400CF4A8A /* RationalTests.swift in Sources */,
 				078142B31C7CF494004B68D3 /* EvenTests.swift in Sources */,
+				07C563B21E22B88700E73FB2 /* BitwiseOperationsTests.swift in Sources */,
+				07C9DA411DF0B8C80071B801 /* NumberFormattingTests.swift in Sources */,
 				078142B71C7CF494004B68D3 /* OddTests.swift in Sources */,
+				07C563761E226DE100E73FB2 /* ModuloTests.swift in Sources */,
+				907335901DFE2523000504C8 /* IsPowerOfTwoTests.swift in Sources */,
 				073A93481C8E6C5C003DAF9C /* IsDivisibleTests.swift in Sources */,
 				071D19C51C94BEB100543F77 /* OrderedTests.swift in Sources */,
 				07652E101C8788B300359A03 /* CloserToTests.swift in Sources */,
 				078142B91C7CF494004B68D3 /* PrimeTests.swift in Sources */,
+				07690BE21E0D913C0095F1D5 /* MeanTests.swift in Sources */,
+				07502CAC1DD2A90E0095AB27 /* LinearRegressionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,15 +601,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				078142A71C7CF3F1004B68D3 /* ArithmeticType.swift in Sources */,
-				078142A91C7CF3F1004B68D3 /* Array+ArithmeticType.swift in Sources */,
+				0775546F1E1B0FBE00CF4A8A /* IntegerWrapping.swift in Sources */,
+				078142A91C7CF3F1004B68D3 /* BidirectionalCollectionExtensions.swift in Sources */,
 				074276C81C8768A100D50A30 /* PowerSequence.swift in Sources */,
-				078142AD1C7CF3F1004B68D3 /* SequenceType+ArithmeticType.swift in Sources */,
+				078142AD1C7CF3F1004B68D3 /* SequenceExtensions.swift in Sources */,
+				07C563B01E22B81A00E73FB2 /* BitwiseOperations.swift in Sources */,
+				07C9DA451DF0BF130071B801 /* RandomProducing.swift in Sources */,
 				075F16E71CE2570600545125 /* FloatWrapping.swift in Sources */,
+				077554661E1B012700CF4A8A /* Rational.swift in Sources */,
 				078142AB1C7CF3F1004B68D3 /* Functions.swift in Sources */,
+				07C9DA481DF0C4A00071B801 /* StringFormatting.swift in Sources */,
+				07C9DA4B1DF0C4D60071B801 /* IntegerExtensions.swift in Sources */,
 				074276CE1C877EE400D50A30 /* Power.swift in Sources */,
 				07F538301CE3AEAC001294CC /* Comparison.swift in Sources */,
 				0719FA881C875584009EACB4 /* PowerGenerator.swift in Sources */,
+				07502CAA1DD2A2A20095AB27 /* LinearRegression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,17 +625,25 @@
 			files = (
 				0719FA8B1C876792009EACB4 /* PowerGeneratorTests.swift in Sources */,
 				071F3C731C8227F300F6BD28 /* RandomTests.swift in Sources */,
+				07C9DA4E1DF0C66F0071B801 /* CumulativeTests.swift in Sources */,
+				07C563B31E22B88700E73FB2 /* BitwiseOperationsTests.swift in Sources */,
+				07C563771E226DE100E73FB2 /* ModuloTests.swift in Sources */,
 				07F538331CE3AEC6001294CC /* ComparisonTests.swift in Sources */,
+				07690BE31E0D913C0095F1D5 /* MeanTests.swift in Sources */,
+				077554691E1B013400CF4A8A /* RationalTests.swift in Sources */,
 				074276D11C877EF700D50A30 /* PowerTests.swift in Sources */,
 				078142BC1C7CF494004B68D3 /* SequenceTypeTests.swift in Sources */,
 				078142B61C7CF494004B68D3 /* GreatestCommonDivisorTests.swift in Sources */,
 				074276CB1C8775B800D50A30 /* PowerSequenceTests.swift in Sources */,
 				078142B41C7CF494004B68D3 /* EvenTests.swift in Sources */,
+				0799D9701E21777A00516ADF /* QuadraticTests.swift in Sources */,
+				07C9DA421DF0B8C80071B801 /* NumberFormattingTests.swift in Sources */,
 				078142B81C7CF494004B68D3 /* OddTests.swift in Sources */,
 				073A93491C8E6C5D003DAF9C /* IsDivisibleTests.swift in Sources */,
 				071D19C61C94BEB100543F77 /* OrderedTests.swift in Sources */,
 				07652E111C8788B300359A03 /* CloserToTests.swift in Sources */,
 				078142BA1C7CF494004B68D3 /* PrimeTests.swift in Sources */,
+				07502CAD1DD2A90E0095AB27 /* LinearRegressionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,12 +652,12 @@
 /* Begin PBXTargetDependency section */
 		0781425F1C7CECD5004B68D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 078142511C7CECD5004B68D3 /* ArithmeticTools */;
+			target = 078142511C7CECD5004B68D3 /* ArithmeticTools iOS */;
 			targetProxy = 0781425E1C7CECD5004B68D3 /* PBXContainerItemProxy */;
 		};
 		0781427D1C7CECE0004B68D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 078142701C7CECE0004B68D3 /* ArithmeticToolsMac */;
+			target = 078142701C7CECE0004B68D3 /* ArithmeticTools macOS */;
 			targetProxy = 0781427C1C7CECE0004B68D3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -676,22 +762,20 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = ArithmeticTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bean.ArithmeticTools;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ArithmeticTools;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -703,22 +787,20 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = ArithmeticTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bean.ArithmeticTools;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ArithmeticTools;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -729,10 +811,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = ArithmeticToolsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bean.ArithmeticToolsTests;
@@ -747,10 +826,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = ArithmeticToolsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bean.ArithmeticToolsTests;
@@ -770,10 +846,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = ArithmeticTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -799,10 +872,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = ArithmeticTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -823,6 +893,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
 				INFOPLIST_FILE = ArithmeticToolsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -841,6 +912,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
 				INFOPLIST_FILE = ArithmeticToolsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -863,7 +935,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		078142661C7CECD5004B68D3 /* Build configuration list for PBXNativeTarget "ArithmeticTools" */ = {
+		078142661C7CECD5004B68D3 /* Build configuration list for PBXNativeTarget "ArithmeticTools iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				078142671C7CECD5004B68D3 /* Debug */,
@@ -872,7 +944,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		078142691C7CECD5004B68D3 /* Build configuration list for PBXNativeTarget "ArithmeticToolsTests" */ = {
+		078142691C7CECD5004B68D3 /* Build configuration list for PBXNativeTarget "ArithmeticTools iOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0781426A1C7CECD5004B68D3 /* Debug */,
@@ -881,7 +953,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		078142821C7CECE0004B68D3 /* Build configuration list for PBXNativeTarget "ArithmeticToolsMac" */ = {
+		078142821C7CECE0004B68D3 /* Build configuration list for PBXNativeTarget "ArithmeticTools macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				078142831C7CECE0004B68D3 /* Debug */,
@@ -890,7 +962,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		078142851C7CECE0004B68D3 /* Build configuration list for PBXNativeTarget "ArithmeticToolsMacTests" */ = {
+		078142851C7CECE0004B68D3 /* Build configuration list for PBXNativeTarget "ArithmeticTools macOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				078142861C7CECE0004B68D3 /* Debug */,

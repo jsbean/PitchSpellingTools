@@ -9,6 +9,7 @@
 import XCTest
 @testable import PitchSpellingTools
 
+/*
 class NamedIntervalTests: XCTestCase {
 
     func testInitPerfectUnisonNotNil() {
@@ -56,3 +57,4 @@ class NamedIntervalTests: XCTestCase {
         XCTAssertNotNil(NamedInterval(steps: 0, intervalClass: 0.5))
     }
 }
+*/

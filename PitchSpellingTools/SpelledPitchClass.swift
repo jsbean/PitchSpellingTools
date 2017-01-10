@@ -8,10 +8,8 @@
 
 import Pitch
 
-/**
- Spelled Pitch Class
- */
-public struct SpelledPitchClass {
+/// Spelled pitch class.
+public struct SpelledPitchClass: Spelled {
     
     // MARK: - Instance Properties
     
@@ -23,17 +21,13 @@ public struct SpelledPitchClass {
     
     // MARK: - Initializers
     
-    /**
-     Create a `SpelledPitchClass` (with argument labels).
-     */
+    /// Create a `SpelledPitchClass` (with argument labels).
     public init(pitchClass: PitchClass, spelling: PitchSpelling) {
         self.pitchClass = pitchClass
         self.spelling = spelling
     }
     
-    /**
-     Create a `SpelledPitchClass` (without argument labels).
-     */
+    /// Create a `SpelledPitchClass` (without argument labels).
     public init(_ pitchClass: PitchClass, _ spelling: PitchSpelling) {
         self.pitchClass = pitchClass
         self.spelling = spelling
@@ -42,7 +36,7 @@ public struct SpelledPitchClass {
     // FIXME: Refine relationship between `PitchSpelling` and `SpelledPitchClass`.
     public init(_ spelling: PitchSpelling) {
         self.spelling = spelling
-        self.pitchClass = PitchClass(spelling.pitchClass)
+        self.pitchClass = spelling.pitchClass
     }
 }
 
@@ -60,7 +54,9 @@ extension SpelledPitchClass: Hashable {
     
     // MARK: - Hashable
     
-    public var hashValue: Int { return "\(pitchClass)\(spelling)".hashValue }
+    public var hashValue: Int {
+        return "\(pitchClass)\(spelling)".hashValue
+    }
 }
 
 // MARK: - Equatable
@@ -72,9 +68,7 @@ public func == (lhs: SpelledPitchClass, rhs: SpelledPitchClass) -> Bool {
 // MARK: - Comparable
 
 
-/**
- - TODO: Refine.
- */
+/// - TODO: Refine.
 public func < (lhs: SpelledPitchClass, rhs: SpelledPitchClass) -> Bool {
     return lhs.pitchClass < rhs.pitchClass
 }

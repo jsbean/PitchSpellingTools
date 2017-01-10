@@ -47,8 +47,9 @@ public struct PitchSpelling {
     /// `PitchClass` represented by this `PitchSpelling` value.
     ///
     /// - TODO: Refactor to `PitchClass`.
-    public var pitchClass: Float {
-        return letterName.pitchClass + quarterStep.rawValue + eighthStep.rawValue
+    public var pitchClass: PitchClass {
+        let nn = NoteNumber(letterName.pitchClass + quarterStep.rawValue + eighthStep.rawValue)
+        return PitchClass(noteNumber: nn)
     }
     
     // MARK: - Initializers

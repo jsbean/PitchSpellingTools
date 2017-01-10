@@ -14,19 +14,14 @@ class GreatestCommonDivisorTests: XCTestCase {
     func testIntALessThanB() {
         let a: Int = 8
         let b: Int = 12
-        let gcd = greatestCommonDivisor(a,b)
-        XCTAssertEqual(gcd, 4)
+        let greatestCommonDivisor = gcd(a,b)
+        XCTAssertEqual(greatestCommonDivisor, 4)
     }
     
     func testIntAGreaterThanB() {
         let a: Int = 12
         let b: Int = 8
-        let gcd = greatestCommonDivisor(a,b)
-        XCTAssertEqual(gcd, 4)
-    }
-    
-    func testFloat() {
-        let gcd = greatestCommonDivisor(12.0, 16.0)
-        XCTAssertEqual(gcd, 4.0)
+        let greatestCommonDivisor = gcd(a,b)
+        XCTAssertEqual(greatestCommonDivisor, 4)
     }
 }

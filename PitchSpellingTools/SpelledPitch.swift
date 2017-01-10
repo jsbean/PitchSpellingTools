@@ -9,10 +9,8 @@
 import Foundation
 import Pitch
 
-/**
- Structure that wraps a `Pitch` with a `PitchSpelling`.
- */
-public struct SpelledPitch {
+/// Structure that wraps a `Pitch` with a `PitchSpelling`.
+public struct SpelledPitch: Spelled {
     
     // MARK: - Instance Properties
     
@@ -53,9 +51,7 @@ public struct SpelledPitch {
         self.spelling = spelling
     }
     
-    /**
-     Create a `SpelledPitch` with a given `pitch` and `spelling`, without argument labels.
-     */
+    /// Create a `SpelledPitch` with a given `pitch` and `spelling`, without argument labels.
     public init(_ pitch: Pitch, _ spelling: PitchSpelling) {
         self.pitch = pitch
         self.spelling = spelling
@@ -77,7 +73,9 @@ extension SpelledPitch: Hashable {
     // MARK: - Hashable
     
     /// Hash value.
-    public var hashValue: Int { return "\(pitch)\(spelling)".hashValue }
+    public var hashValue: Int {
+        return "\(pitch)\(spelling)".hashValue
+    }
 }
 
 // MARK: - Equatable
