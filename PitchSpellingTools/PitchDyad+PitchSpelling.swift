@@ -22,6 +22,6 @@ extension PitchDyad {
     
     /// Finest resolution of the `Pitch` values contained herein.
     public var finestResolution: Float {
-        return [higher.resolution, lower.resolution].min()!
+        return min(higher.resolution, lower.resolution)
     }
 }

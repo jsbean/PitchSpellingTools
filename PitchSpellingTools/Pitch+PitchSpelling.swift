@@ -63,8 +63,8 @@ extension Pitch {
     }
     
     /// The first available `PitchSpelling` for this `Pitch`, if present. Otherwise `nil`.
-    public var defaultSpelling: PitchSpelling? {
-        return PitchSpellings.defaultSpelling(forPitchClass: pitchClass)
+    public var defaultSpelling: PitchSpelling {
+        return PitchSpellings.defaultSpelling(forPitchClass: pitchClass)!
     }
     
     /**
@@ -100,16 +100,8 @@ extension Pitch {
         return SpelledPitch(pitch: self, spelling: spelling)
     }
     
-    /**
-     - throws: `PitchSpelling.Error` if no default spelling exists for this `Pitch`.
-     
-     - returns: `SpelledPitch` with the default spelling for this `Pitch`, if possible.
-     */
-    public func spelledWithDefaultSpelling() throws -> SpelledPitch {
-        guard let defaultSpelling = defaultSpelling else {
-            throw PitchSpelling.SpellingError.noSpellingForPitch(self)
-        }
-        
-        return try spelled(with: defaultSpelling)
+    /// - returns: `SpelledPitch` with the default spelling for this `Pitch`.
+    public func spelledWithDefaultSpelling() -> SpelledPitch {
+        return try! spelled(with: defaultSpelling)
     }
 }

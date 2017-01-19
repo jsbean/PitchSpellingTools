@@ -8,6 +8,9 @@
 
 import Pitch
 
+/// Unordered set of `SpelledPitchClass` values.
+///
+/// - TODO: Conform to `AnySequenceWrapping`.
 public struct SpelledPitchClassSet {
     
     fileprivate let pitches: Set<SpelledPitchClass>
@@ -34,8 +37,9 @@ extension SpelledPitchClassSet: Sequence {
     }
 }
 
-extension SpelledPitchClassSet: Equatable { }
+extension SpelledPitchClassSet: Equatable {
 
-public func == (lhs: SpelledPitchClassSet, rhs: SpelledPitchClassSet) -> Bool {
-    return lhs.pitches == rhs.pitches
+    public static func == (lhs: SpelledPitchClassSet, rhs: SpelledPitchClassSet) -> Bool {
+        return lhs.pitches == rhs.pitches
+    }
 }
