@@ -84,13 +84,13 @@ extension Pitch {
     
     // MARK: - Instance Methods
     
-    /**
-     - returns: `SpelledPitch` with the given `PitchSpelling`,
-     if the given `PitchSpelling` is valid for the `PitchClass` of the given `pitch`.
     
-     - throws: `PitchSpelling.Error.InvalidPitchSpellingForPitch` if the given `spelling` is
-     not appropriate for this `Pitch`.
-     */
+    /// - returns: `SpelledPitch` with the given `PitchSpelling`,
+    /// if the given `PitchSpelling` is valid for the `PitchClass` of the given `pitch`.
+    ///
+    /// - throws: `PitchSpelling.Error.InvalidPitchSpellingForPitch` if the given `spelling` is
+    /// not appropriate for this `Pitch`.
+    ///
     public func spelled(with spelling: PitchSpelling) throws -> SpelledPitch {
         
         guard spelling.isValid(for: self) else {
