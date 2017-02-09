@@ -80,8 +80,6 @@
 		07C5637E1E228EB800E73FB2 /* AbsoluteNamedInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C5637C1E228EB800E73FB2 /* AbsoluteNamedInterval.swift */; };
 		07C563801E2293A000E73FB2 /* NamedIntervalOrdinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C5637F1E2293A000E73FB2 /* NamedIntervalOrdinal.swift */; };
 		07C563811E2293A000E73FB2 /* NamedIntervalOrdinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C5637F1E2293A000E73FB2 /* NamedIntervalOrdinal.swift */; };
-		07C563831E2293B500E73FB2 /* Invertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C563821E2293B500E73FB2 /* Invertible.swift */; };
-		07C563841E2293B500E73FB2 /* Invertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C563821E2293B500E73FB2 /* Invertible.swift */; };
 		07C563861E2293D000E73FB2 /* NamedIntervalQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C563851E2293D000E73FB2 /* NamedIntervalQuality.swift */; };
 		07C563871E2293D000E73FB2 /* NamedIntervalQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C563851E2293D000E73FB2 /* NamedIntervalQuality.swift */; };
 		07C563B81E22CA3400E73FB2 /* NamedIntervalQualityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C563B71E22CA3400E73FB2 /* NamedIntervalQualityTests.swift */; };
@@ -186,7 +184,6 @@
 		07C563781E2285A000E73FB2 /* RelativeNamedInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RelativeNamedInterval.swift; path = PitchSpellingTools/RelativeNamedInterval.swift; sourceTree = "<group>"; };
 		07C5637C1E228EB800E73FB2 /* AbsoluteNamedInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbsoluteNamedInterval.swift; path = PitchSpellingTools/AbsoluteNamedInterval.swift; sourceTree = "<group>"; };
 		07C5637F1E2293A000E73FB2 /* NamedIntervalOrdinal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NamedIntervalOrdinal.swift; path = PitchSpellingTools/NamedIntervalOrdinal.swift; sourceTree = "<group>"; };
-		07C563821E2293B500E73FB2 /* Invertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Invertible.swift; path = PitchSpellingTools/Invertible.swift; sourceTree = "<group>"; };
 		07C563851E2293D000E73FB2 /* NamedIntervalQuality.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NamedIntervalQuality.swift; path = PitchSpellingTools/NamedIntervalQuality.swift; sourceTree = "<group>"; };
 		07C563B71E22CA3400E73FB2 /* NamedIntervalQualityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NamedIntervalQualityTests.swift; path = PitchSpellingToolsTests/NamedIntervalQualityTests.swift; sourceTree = "<group>"; };
 		07C563BA1E22CE6B00E73FB2 /* RelativeNamedIntervalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RelativeNamedIntervalTests.swift; path = PitchSpellingToolsTests/RelativeNamedIntervalTests.swift; sourceTree = "<group>"; };
@@ -295,7 +292,6 @@
 		07C5637B1E228EAA00E73FB2 /* NamedInterval */ = {
 			isa = PBXGroup;
 			children = (
-				07C563821E2293B500E73FB2 /* Invertible.swift */,
 				07C5637F1E2293A000E73FB2 /* NamedIntervalOrdinal.swift */,
 				07D4E3AE1D5A3FB8007F2D3A /* NamedInterval.swift */,
 				07C563851E2293D000E73FB2 /* NamedIntervalQuality.swift */,
@@ -628,7 +624,6 @@
 				07C563811E2293A000E73FB2 /* NamedIntervalOrdinal.swift in Sources */,
 				074B339E1D31166C0042104B /* PitchSpelling+Resolution.swift in Sources */,
 				07C5637A1E2285A000E73FB2 /* RelativeNamedInterval.swift in Sources */,
-				07C563841E2293B500E73FB2 /* Invertible.swift in Sources */,
 				074B33901D31166C0042104B /* PitchClass+PitchSpelling.swift in Sources */,
 				074B339A1D31166C0042104B /* PitchSpelling+EighthStepModifier.swift in Sources */,
 				074B33861D31166C0042104B /* LineOfFifths.swift in Sources */,
@@ -667,7 +662,6 @@
 				07C563801E2293A000E73FB2 /* NamedIntervalOrdinal.swift in Sources */,
 				074B339D1D31166C0042104B /* PitchSpelling+Resolution.swift in Sources */,
 				07C563791E2285A000E73FB2 /* RelativeNamedInterval.swift in Sources */,
-				07C563831E2293B500E73FB2 /* Invertible.swift in Sources */,
 				074B338F1D31166C0042104B /* PitchClass+PitchSpelling.swift in Sources */,
 				074B33991D31166C0042104B /* PitchSpelling+EighthStepModifier.swift in Sources */,
 				074B33851D31166C0042104B /* LineOfFifths.swift in Sources */,
