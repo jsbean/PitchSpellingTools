@@ -20,7 +20,7 @@ public struct AbsoluteNamedInterval: NamedInterval {
     // MARK: - Nested Types
     
     /// Type descripting ordinality of an `AbsoluteNamedInterval`.
-    public struct Ordinal: OptionSet, NamedIntervalOrdinal {
+    public struct Ordinal: NamedIntervalOrdinal {
         
         // MARK: - Instance Properties
         
@@ -60,18 +60,18 @@ public struct AbsoluteNamedInterval: NamedInterval {
         /// Seventh.
         public static var seventh = Ordinal(rawValue: 1 << 6)
         
-        // MARK: - Initializers
-        
-        /// Create an `AbsoluteNamedInterval` with a given `rawValue`.
-        public init(rawValue: Int) {
-            self.rawValue = rawValue
-        }
-
         // MARK: - Instance Properties
         
-        /// - returns: The inverse of an `Ordinal`.
+        /// Amount of options contained herein.
+        public var optionsCount: Int {
+            return 7
+        }
+        
+        /// Inverse of `self`.
         public var inverse: Ordinal {
-            return Ordinal(rawValue: 1 << invert(powerOfTwo: rawValue, within: 7))
+            let ordinal = countTrailingZeros(rawValue)
+            let inverseOrdinal = optionsCount - ordinal
+            return Ordinal(rawValue: 1 << inverseOrdinal)
         }
         
         /// - returns: `true` if an `Ordinal` belongs to the `perfects` class. Otherwise,
@@ -85,6 +85,14 @@ public struct AbsoluteNamedInterval: NamedInterval {
         public var isImperfect: Bool {
             return Ordinal.imperfects.contains(self)
         }
+        
+        // MARK: - Initializers
+        
+        /// Create an `AbsoluteNamedInterval` with a given `rawValue`.
+        public init(rawValue: Int) {
+            self.rawValue = rawValue
+        }
+
     }
     
     // MARK: - Instance Properties

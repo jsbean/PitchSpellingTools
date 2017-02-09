@@ -9,7 +9,7 @@
 import ArithmeticTools
 
 /// - FIXME: Documentation
-public struct NamedIntervalQuality: OptionSet, Invertible {
+public struct NamedIntervalQuality: InvertibleOptionSet {
     
     // MARK: - Nested Types
     
@@ -41,16 +41,9 @@ public struct NamedIntervalQuality: OptionSet, Invertible {
     
     // MARK: - Instance Properties
     
-    /// Inverse of `self`.
-    ///
-    /// ```
-    /// major.inverse // minor
-    /// minor.inverse // major
-    /// augmented.inverse // diminished
-    /// perfect.inverse // perfect
-    /// ```
-    public var inverse: NamedIntervalQuality {
-        return NamedIntervalQuality(rawValue: 1 << invert(powerOfTwo: rawValue, within: 4))
+    /// Amount of options contained herein.
+    public var optionsCount: Int {
+        return 5
     }
     
     /// Raw value.

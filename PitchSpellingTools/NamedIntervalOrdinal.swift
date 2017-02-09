@@ -6,8 +6,10 @@
 //
 //
 
+import ArithmeticTools
+
 /// Interface for ordinals of `NamedInterval`-conforming types.
-public protocol NamedIntervalOrdinal: RawRepresentable, Equatable, Invertible {
+public protocol NamedIntervalOrdinal: InvertibleOptionSet {
     
     /// Set of `perfect` interval ordinals
     static var perfects: Self { get }
