@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import ArithmeticTools
 import PitchSpellingTools
 
 class NamedIntervalQualityTests: XCTestCase {

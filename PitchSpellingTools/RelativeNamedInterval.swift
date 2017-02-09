@@ -25,12 +25,7 @@ public struct RelativeNamedInterval: NamedInterval {
     // MARK: - Nested Types
     
     /// Type describing ordinality of a `RelativeNamedInterval`.
-    public struct Ordinal: OptionSet, NamedIntervalOrdinal {
-        
-        // MARK: - Instance Properties
-        
-        /// Raw value.
-        public let rawValue: Int
+    public struct Ordinal: NamedIntervalOrdinal {
         
         // MARK: - Cases
         
@@ -56,18 +51,18 @@ public struct RelativeNamedInterval: NamedInterval {
         /// Fourth.
         public static var fourth = Ordinal(rawValue: 1 << 3)
         
-        // MARK: - Initializers
-        
-        /// Create a `RelativeNamedInterval` with a given `rawValue`.
-        public init(rawValue: Int) {
-            self.rawValue = rawValue
-        }
-        
         // MARK: - Instance Properties
         
-        /// - returns: The inverse of an `Ordinal`.
+        /// Amount of options contained herein.
+        public var optionsCount: Int {
+            return 4
+        }
+        
+        /// Inverse of `self`.
         public var inverse: Ordinal {
-            return Ordinal(rawValue: 1 << invert(powerOfTwo: rawValue, within: 4))
+            let ordinal = countTrailingZeros(rawValue)
+            let inverseOrdinal = optionsCount - ordinal
+            return Ordinal(rawValue: 1 << inverseOrdinal)
         }
         
         /// - returns: `true` if an `Ordinal` belongs to the `perfects` class. Otherwise,
@@ -80,6 +75,16 @@ public struct RelativeNamedInterval: NamedInterval {
         /// `false`.
         public var isImperfect: Bool {
             return Ordinal.imperfects.contains(self)
+        }
+        
+        // MARK: - Initializers
+        
+        /// Raw value.
+        public let rawValue: Int
+        
+        /// Create a `RelativeNamedInterval` with a given `rawValue`.
+        public init(rawValue: Int) {
+            self.rawValue = rawValue
         }
     }
     
@@ -160,7 +165,7 @@ private func sanitizeIntervalClass(_ intervalClass: Float, steps: Int) -> Float 
     // 3. Normalize the difference
     let normalizedDifference = mod(difference + 6, 12) - 6
     
-    // 4. enforce positive values if unison
+    // 4. Enforce positive values if unison
     return steps == 0 ? abs(normalizedDifference) : normalizedDifference
 }
 

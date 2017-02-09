@@ -6,6 +6,8 @@
 //
 //
 
+import ArithmeticTools
+
 /// Interface for types describing intervals between `SpelledPitch` values.
 public protocol NamedInterval: Invertible, Equatable {
     
@@ -24,9 +26,9 @@ public protocol NamedInterval: Invertible, Equatable {
     
     /// Quality of a `NamedInterval`
     var quality: NamedIntervalQuality { get }
-    
-    /// Inverse of a `NamedInterval`.
-    var inverse: Self { get }
+//    
+//    /// Inverse of a `NamedInterval`.
+//    var inverse: Self { get }
     
     // MARK: - Initializers
     
