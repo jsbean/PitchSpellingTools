@@ -6,6 +6,6 @@
 //
 //
 
-public protocol Invertible {
-    var inverse: Self { get }
-}
+//public protocol Invertible {
+//    var inverse: Self { get }
+//}
