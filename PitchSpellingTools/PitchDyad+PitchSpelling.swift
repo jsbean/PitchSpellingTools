@@ -8,7 +8,7 @@
 
 import Pitch
 
-extension PitchDyad {
+extension Dyad where Element == Pitch {
     
     /// - returns: `true` if either `Pitch` value contained herein has a resolution of `0.25`
     public var hasEighthTone: Bool {

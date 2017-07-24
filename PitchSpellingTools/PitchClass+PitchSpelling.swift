@@ -8,7 +8,7 @@
 
 import Pitch
 
-extension PitchClass {
+extension Pitch.Class {
     
     /// All `PitchSpelling` structures available for this `PitchClass`.
     public var spellings: [PitchSpelling] {
@@ -17,6 +17,6 @@ extension PitchClass {
     
     /// Spelling priority of a `PitchClass`. Lower values indicate higher priority.
     public var spellingPriority: Int? {
-        return PitchClassInterval(noteNumber: noteNumber).spellingPriority
+        return UnorderedInterval<Pitch.Class>(noteNumber: noteNumber).spellingPriority
     }
 }

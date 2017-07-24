@@ -22,12 +22,12 @@ extension Pitch {
      ```
      */
     public var canBeSpelledObjectively: Bool {
-        return spellings.anySatisfy({ $0.quarterStep == .natural && $0.eighthStep == .none })
+        return spellings.any { $0.quarterStep == .natural && $0.eighthStep == .none }
     }
  
     /// All `PitchSpelling` structures available for this `Pitch`.
     public var spellings: [PitchSpelling] {
-        return pitchClass.spellings
+        return self.class.spellings
     }
     
     /// - TODO: Encapsulate this logic within `PitchSpellings` `struct`.
@@ -64,7 +64,7 @@ extension Pitch {
     
     /// The first available `PitchSpelling` for this `Pitch`, if present. Otherwise `nil`.
     public var defaultSpelling: PitchSpelling {
-        return PitchSpellings.defaultSpelling(forPitchClass: pitchClass)!
+        return PitchSpellings.defaultSpelling(forPitchClass: self.class)!
     }
     
     /**

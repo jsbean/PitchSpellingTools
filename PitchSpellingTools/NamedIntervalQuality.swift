@@ -75,12 +75,12 @@ public struct NamedIntervalQuality: InvertibleOptionSet {
     }
     
     public init <Ordinal: NamedIntervalOrdinal> (
-        sanitizedIntervalClass: Float,
+        sanitizedIntervalClass: Double,
         ordinal: Ordinal
     )
     {
-        func diminishedAndAugmentedThresholds(ordinal: Ordinal) -> (Float, Float) {
-            let result: Float = ordinal == Ordinal.unison ? 0.5 : ordinal.isPerfect ? 1 : 1.5
+        func diminishedAndAugmentedThresholds(ordinal: Ordinal) -> (Double, Double) {
+            let result: Double = ordinal == Ordinal.unison ? 0.5 : ordinal.isPerfect ? 1 : 1.5
             return (-result, result)
         }
         

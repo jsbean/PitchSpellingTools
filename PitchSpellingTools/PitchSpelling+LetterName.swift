@@ -72,7 +72,7 @@ extension PitchSpelling {
             }
         }
         
-        public var pitchClass: Float {
+        public var pitchClass: Double {
             switch self {
             case .c: return 0
             case .d: return 2

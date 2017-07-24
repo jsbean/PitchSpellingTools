@@ -26,15 +26,15 @@ extension PitchSpelling {
      Coarse resolution component of a `PitchSpelling`.
      Analogous to the body of an accidental.
      */
-    public enum QuarterStepModifier: Float, Comparable {
+    public enum QuarterStepModifier: Double, Comparable {
         
-        internal enum Direction: Float, Comparable {
+        internal enum Direction: Double, Comparable {
             case none = 0
             case up = 1
             case down = -1
         }
         
-        internal enum Resolution: Float, Comparable {
+        internal enum Resolution: Double, Comparable {
             case halfStep = 0
             case quarterStep = 0.5
         }
@@ -43,7 +43,9 @@ extension PitchSpelling {
             return self == .natural ? .none : rawValue > 0 ? .up : .down
         }
         
-        internal var distance: Float { return abs(rawValue) }
+        internal var distance: Double {
+            return abs(rawValue)
+        }
         
         internal var resolution: Resolution {
             return rawValue.truncatingRemainder(dividingBy: 1) == 0 ? .halfStep : .quarterStep
