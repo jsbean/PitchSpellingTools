@@ -12,7 +12,7 @@ import Pitch
 internal struct PitchSpellings {
     
     /// - FIXME: Ensure this is exhaustive and correct!
-    fileprivate static let spellingsByPitchClass: [PitchClass: [PitchSpelling]] = [
+    fileprivate static let spellingsByPitchClass: [Pitch.Class: [PitchSpelling]] = [
         
         00.00: [
             PitchSpelling(.c),
@@ -296,11 +296,11 @@ internal struct PitchSpellings {
         ]
     ]
     
-    internal static func spellings(forPitchClass pitchClass: PitchClass) -> [PitchSpelling]? {
+    internal static func spellings(forPitchClass pitchClass: Pitch.Class) -> [PitchSpelling]? {
         return PitchSpellings.spellingsByPitchClass[pitchClass]
     }
     
-    internal static func defaultSpelling(forPitchClass pitchClass: PitchClass)
+    internal static func defaultSpelling(forPitchClass pitchClass: Pitch.Class)
         -> PitchSpelling?
     {
         return spellings(forPitchClass: pitchClass)?.first

@@ -25,8 +25,8 @@ public struct SpelledDyad {
     public var relativeInterval: RelativeNamedInterval {
         
         // TODO: Make convenience init
-        let lowerSPC = SpelledPitchClass(lower.pitch.pitchClass, lower.spelling)
-        let higherSPC = SpelledPitchClass(higher.pitch.pitchClass, higher.spelling)
+        let lowerSPC = SpelledPitchClass(lower.pitch.class, lower.spelling)
+        let higherSPC = SpelledPitchClass(higher.pitch.class, higher.spelling)
         
         return RelativeNamedInterval(lowerSPC, higherSPC)
     }

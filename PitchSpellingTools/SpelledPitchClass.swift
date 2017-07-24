@@ -14,7 +14,7 @@ public struct SpelledPitchClass: Spelled {
     // MARK: - Instance Properties
     
     /// Pitch class.
-    public let pitchClass: PitchClass
+    public let pitchClass: Pitch.Class
     
     /// Spelling.
     public let spelling: PitchSpelling
@@ -22,13 +22,13 @@ public struct SpelledPitchClass: Spelled {
     // MARK: - Initializers
     
     /// Create a `SpelledPitchClass` (with argument labels).
-    public init(pitchClass: PitchClass, spelling: PitchSpelling) {
+    public init(pitchClass: Pitch.Class, spelling: PitchSpelling) {
         self.pitchClass = pitchClass
         self.spelling = spelling
     }
     
     /// Create a `SpelledPitchClass` (without argument labels).
-    public init(_ pitchClass: PitchClass, _ spelling: PitchSpelling) {
+    public init(_ pitchClass: Pitch.Class, _ spelling: PitchSpelling) {
         self.pitchClass = pitchClass
         self.spelling = spelling
     }

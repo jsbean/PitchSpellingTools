@@ -14,6 +14,18 @@
 		071C21C81D6E55C4008A6A4B /* PitchClassSetSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C21C61D6E55C4008A6A4B /* PitchClassSetSpeller.swift */; };
 		072526A01D6FB244001EBF2A /* PitchClassSetSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0725269F1D6FB244001EBF2A /* PitchClassSetSpellerTests.swift */; };
 		072526A11D6FB244001EBF2A /* PitchClassSetSpellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0725269F1D6FB244001EBF2A /* PitchClassSetSpellerTests.swift */; };
+		074A8CF01F26758600783BAB /* Algebra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 074A8CEF1F26758600783BAB /* Algebra.framework */; };
+		074A8CF21F26759100783BAB /* Collections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 074A8CF11F26759100783BAB /* Collections.framework */; };
+		074A8CF31F26759700783BAB /* ArithmeticTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B69F3BDCCE788437DF5875F /* ArithmeticTools.framework */; };
+		074A8CF41F26759700783BAB /* Pitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15496228BCC09F160A08B8B2 /* Pitch.framework */; };
+		074A8CF71F2675BC00783BAB /* Algebra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 074A8CF51F2675BC00783BAB /* Algebra.framework */; };
+		074A8CF81F2675BC00783BAB /* Collections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 074A8CF61F2675BC00783BAB /* Collections.framework */; };
+		074A8CF91F2675C900783BAB /* Algebra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 074A8CF51F2675BC00783BAB /* Algebra.framework */; };
+		074A8CFA1F2675C900783BAB /* Collections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 074A8CF61F2675BC00783BAB /* Collections.framework */; };
+		074A8CFB1F2675C900783BAB /* ArithmeticTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBAEFAC5A4C9077CDE9C8FA /* ArithmeticTools.framework */; };
+		074A8CFC1F2675C900783BAB /* Pitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E0E65A496DA72FECFDB794A /* Pitch.framework */; };
+		074A8CFD1F2675D200783BAB /* PitchSpellingTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF117340B6A327AD35312C8 /* PitchSpellingTools.framework */; };
+		074A8CFE1F2675D600783BAB /* PitchSpellingTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F939CA34A1E6CD8D9AC3EA1 /* PitchSpellingTools.framework */; };
 		074B33771D31166C0042104B /* PitchDyad+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33571D31166C0042104B /* PitchDyad+PitchSpelling.swift */; };
 		074B33781D31166C0042104B /* PitchDyad+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33571D31166C0042104B /* PitchDyad+PitchSpelling.swift */; };
 		074B337B1D31166C0042104B /* PitchInterval+PitchSpelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B33591D31166C0042104B /* PitchInterval+PitchSpelling.swift */; };
@@ -146,10 +158,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0246148C69B040DF1A3BF09C /* EnumTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumTools.framework; path = Carthage/Build/Mac/EnumTools.framework; sourceTree = "<group>"; };
 		0708D5511E2419B3004FE445 /* Spelled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Spelled.swift; path = PitchSpellingTools/Spelled.swift; sourceTree = "<group>"; };
 		071C21C61D6E55C4008A6A4B /* PitchClassSetSpeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchClassSetSpeller.swift; path = PitchSpellingTools/PitchClassSetSpeller.swift; sourceTree = "<group>"; };
 		0725269F1D6FB244001EBF2A /* PitchClassSetSpellerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchClassSetSpellerTests.swift; path = PitchSpellingToolsTests/PitchClassSetSpellerTests.swift; sourceTree = "<group>"; };
+		074A8CEF1F26758600783BAB /* Algebra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Algebra.framework; path = Carthage/Build/iOS/Algebra.framework; sourceTree = "<group>"; };
+		074A8CF11F26759100783BAB /* Collections.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Collections.framework; path = Carthage/Build/iOS/Collections.framework; sourceTree = "<group>"; };
+		074A8CF51F2675BC00783BAB /* Algebra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Algebra.framework; path = Carthage/Build/Mac/Algebra.framework; sourceTree = "<group>"; };
+		074A8CF61F2675BC00783BAB /* Collections.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Collections.framework; path = Carthage/Build/Mac/Collections.framework; sourceTree = "<group>"; };
 		074B33571D31166C0042104B /* PitchDyad+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchDyad+PitchSpelling.swift"; path = "PitchSpellingTools/PitchDyad+PitchSpelling.swift"; sourceTree = "<group>"; };
 		074B33591D31166C0042104B /* PitchInterval+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchInterval+PitchSpelling.swift"; path = "PitchSpellingTools/PitchInterval+PitchSpelling.swift"; sourceTree = "<group>"; };
 		074B335A1D31166C0042104B /* PitchClassInterval+PitchSpelling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PitchClassInterval+PitchSpelling.swift"; path = "PitchSpellingTools/PitchClassInterval+PitchSpelling.swift"; sourceTree = "<group>"; };
@@ -198,18 +213,13 @@
 		1AEEB1BEC72BCA5126F31F49 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = PitchSpellingTools/Info.plist; sourceTree = "<group>"; };
 		2F939CA34A1E6CD8D9AC3EA1 /* PitchSpellingTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PitchSpellingTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		410F27F0494C102D11F3BD87 /* PitchSpellingTools.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; path = PitchSpellingTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		47A049B14C3A1782EF845704 /* ArrayTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArrayTools.framework; path = Carthage/Build/Mac/ArrayTools.framework; sourceTree = "<group>"; };
 		4B69F3BDCCE788437DF5875F /* ArithmeticTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArithmeticTools.framework; path = Carthage/Build/iOS/ArithmeticTools.framework; sourceTree = "<group>"; };
 		4DBAEFAC5A4C9077CDE9C8FA /* ArithmeticTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArithmeticTools.framework; path = Carthage/Build/Mac/ArithmeticTools.framework; sourceTree = "<group>"; };
 		4E0E65A496DA72FECFDB794A /* Pitch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pitch.framework; path = Carthage/Build/Mac/Pitch.framework; sourceTree = "<group>"; };
-		6AB74E2D7DC71FFB059C5E18 /* EnumTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumTools.framework; path = Carthage/Build/iOS/EnumTools.framework; sourceTree = "<group>"; };
-		81AC9740F207E12BDE3BCEA5 /* TreeTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TreeTools.framework; path = Carthage/Build/Mac/TreeTools.framework; sourceTree = "<group>"; };
 		8C0495E35B158A8243480648 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		914276EC710CD2E7F82799C9 /* PitchSpellingTools iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PitchSpellingTools iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		91796D76C4CDCD11DF08DFD9 /* ArrayTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArrayTools.framework; path = Carthage/Build/iOS/ArrayTools.framework; sourceTree = "<group>"; };
 		A36E29DA636B31830E8C6121 /* PitchSpellingTools.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PitchSpellingTools.h; path = PitchSpellingTools/PitchSpellingTools.h; sourceTree = "<group>"; };
 		AAF117340B6A327AD35312C8 /* PitchSpellingTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PitchSpellingTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B07CC9F2ACFBE241C939BC56 /* TreeTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TreeTools.framework; path = Carthage/Build/iOS/TreeTools.framework; sourceTree = "<group>"; };
 		B5862BE9490FEE688CCB9A0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		B9CC51EDCB22A691A4B8FF0E /* PitchSpellingTools.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; path = PitchSpellingTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -220,6 +230,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				070490FBDF037CEA86C3A3DD /* Cocoa.framework in Frameworks */,
+				074A8CF91F2675C900783BAB /* Algebra.framework in Frameworks */,
+				074A8CFA1F2675C900783BAB /* Collections.framework in Frameworks */,
+				074A8CFB1F2675C900783BAB /* ArithmeticTools.framework in Frameworks */,
+				074A8CFC1F2675C900783BAB /* Pitch.framework in Frameworks */,
+				074A8CFD1F2675D200783BAB /* PitchSpellingTools.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +243,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFBE81AF1FC0D69A47A84F34 /* Cocoa.framework in Frameworks */,
+				074A8CF71F2675BC00783BAB /* Algebra.framework in Frameworks */,
+				074A8CF81F2675BC00783BAB /* Collections.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +261,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				909A067232F12497366CA005 /* Foundation.framework in Frameworks */,
+				074A8CF01F26758600783BAB /* Algebra.framework in Frameworks */,
+				074A8CF21F26759100783BAB /* Collections.framework in Frameworks */,
+				074A8CF31F26759700783BAB /* ArithmeticTools.framework in Frameworks */,
+				074A8CF41F26759700783BAB /* Pitch.framework in Frameworks */,
+				074A8CFE1F2675D600783BAB /* PitchSpellingTools.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,11 +395,10 @@
 			isa = PBXGroup;
 			children = (
 				B5862BE9490FEE688CCB9A0F /* Foundation.framework */,
+				074A8CF11F26759100783BAB /* Collections.framework */,
+				074A8CEF1F26758600783BAB /* Algebra.framework */,
 				4B69F3BDCCE788437DF5875F /* ArithmeticTools.framework */,
-				91796D76C4CDCD11DF08DFD9 /* ArrayTools.framework */,
-				6AB74E2D7DC71FFB059C5E18 /* EnumTools.framework */,
 				15496228BCC09F160A08B8B2 /* Pitch.framework */,
-				B07CC9F2ACFBE241C939BC56 /* TreeTools.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -386,11 +407,10 @@
 			isa = PBXGroup;
 			children = (
 				8C0495E35B158A8243480648 /* Cocoa.framework */,
+				074A8CF51F2675BC00783BAB /* Algebra.framework */,
+				074A8CF61F2675BC00783BAB /* Collections.framework */,
 				4DBAEFAC5A4C9077CDE9C8FA /* ArithmeticTools.framework */,
-				47A049B14C3A1782EF845704 /* ArrayTools.framework */,
-				0246148C69B040DF1A3BF09C /* EnumTools.framework */,
 				4E0E65A496DA72FECFDB794A /* Pitch.framework */,
-				81AC9740F207E12BDE3BCEA5 /* TreeTools.framework */,
 			);
 			name = "OS X";
 			sourceTree = "<group>";
@@ -557,6 +577,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ArithmeticTools.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Collections.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Pitch.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Algebra.framework",
 			);
 			outputPaths = (
 			);
@@ -573,6 +594,7 @@
 				"$(SRCROOT)/Carthage/Build/Mac/ArithmeticTools.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/Collections.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/Pitch.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/Algebra.framework",
 			);
 			outputPaths = (
 			);
@@ -767,7 +789,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingToolsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -793,7 +818,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingTools/Info.plist;
@@ -821,7 +849,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingToolsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(SRCROOT)/Carthage/Build/Mac";
@@ -944,7 +975,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingToolsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(SRCROOT)/Carthage/Build/Mac";
@@ -971,7 +1005,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingTools/Info.plist;
@@ -997,7 +1034,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PitchSpellingToolsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

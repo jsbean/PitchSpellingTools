@@ -17,7 +17,7 @@ public struct RelativeNamedInterval: NamedInterval {
     // MARK: - Associated Types
     
     /// `PitchType` with level of ordering necessary to construct a `RelativeNamedInterval`.
-    public typealias PitchType = PitchClass
+    public typealias PitchType = Pitch.Class
     
     /// Type describing the quality of a `NamedInterval`-conforming type.
     public typealias Quality = NamedIntervalQuality
@@ -149,12 +149,12 @@ private func ordered (_ a: SpelledPitchClass, _ b: SpelledPitchClass)
 }
 
 private func stepsAndInterval(_ a: SpelledPitchClass, _ b: SpelledPitchClass)
-    -> (Int, Float)
+    -> (Int, Double)
 {
     return (steps(a,b), interval(a,b))
 }
 
-private func sanitizeIntervalClass(_ intervalClass: Float, steps: Int) -> Float {
+private func sanitizeIntervalClass(_ intervalClass: Double, steps: Int) -> Double {
 
     // 1. Retrieve the platonic ideal interval class (neutral second, neutral third)
     let neutral = neutralIntervalClass(steps: steps)
@@ -169,11 +169,11 @@ private func sanitizeIntervalClass(_ intervalClass: Float, steps: Int) -> Float 
     return steps == 0 ? abs(normalizedDifference) : normalizedDifference
 }
 
-private func neutralIntervalClass(steps: Int) -> Float {
+private func neutralIntervalClass(steps: Int) -> Double {
     
     assert(steps < 4)
 
-    var neutral: Float {
+    var neutral: Double {
         switch steps {
         case 0: // unison
             return 0
@@ -191,7 +191,7 @@ private func neutralIntervalClass(steps: Int) -> Float {
     return neutral
 }
 
-private func interval(_ a: SpelledPitchClass, _ b: SpelledPitchClass) -> Float {
+private func interval(_ a: SpelledPitchClass, _ b: SpelledPitchClass) -> Double {
     return (b.pitchClass - a.pitchClass).noteNumber.value
 }
 

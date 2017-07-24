@@ -13,16 +13,16 @@ import Pitch
 class PitchSpellingsTests: XCTestCase {
 
     func testDefaultPitchSpellingsForEighthToneResolution() {
-        stride(from: Float(0), to: 12.0, by: 0.25).forEach {
+        stride(from: Double(0), to: 12.0, by: 0.25).forEach {
             XCTAssertNotNil(
-                PitchSpellings.defaultSpelling(forPitchClass: PitchClass(floatLiteral: $0))
+                PitchSpellings.defaultSpelling(forPitchClass: Pitch.Class(noteNumber: NoteNumber($0)))
             )
         }
     }
     
     func testMiddleCPitchSpelling() {
         XCTAssertEqual(
-            PitchSpellings.defaultSpelling(forPitchClass: Pitch.middleC.pitchClass)!,
+            PitchSpellings.defaultSpelling(forPitchClass: Pitch.middleC.class)!,
             PitchSpelling(.c)
         )
     }

@@ -8,7 +8,7 @@
 
 import Pitch
 
-extension PitchSet {
+extension Set where Element == Pitch {
     
     /// - returns: A `SpelledPitchSet` with the values of self spelled with the default
     /// `PitchSpelling` value.
