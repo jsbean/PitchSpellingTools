@@ -26,9 +26,6 @@ public protocol NamedInterval: Invertible, Equatable {
     
     /// Quality of a `NamedInterval`
     var quality: NamedIntervalQuality { get }
-//    
-//    /// Inverse of a `NamedInterval`.
-//    var inverse: Self { get }
     
     // MARK: - Initializers
     
@@ -52,7 +49,8 @@ public protocol NamedInterval: Invertible, Equatable {
 /// areValid(.perfect, .second) // false
 /// areValid(.major, .second) // false
 /// ```
-public func areValid <O: NamedIntervalOrdinal> (_ quality: NamedIntervalQuality, _ ordinal: O) -> Bool
+public func areValid <O> (_ quality: NamedIntervalQuality, _ ordinal: O) -> Bool
+    where O: NamedIntervalOrdinal
 {
     
     if ordinal.isPerfect && quality.isPerfect || ordinal.isImperfect && quality.isImperfect {
